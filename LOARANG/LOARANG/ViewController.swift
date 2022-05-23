@@ -7,13 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
+    @IBOutlet weak var searchButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        buttonSetting()
     }
-
-
+//MARK: - about View
+    func buttonSetting() {
+        searchButton.setTitle("", for: .normal)
+    }
 }
 
