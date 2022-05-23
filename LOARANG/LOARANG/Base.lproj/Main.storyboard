@@ -51,7 +51,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large"/>
-                                            <color key="baseForegroundColor" red="0.94757612130000002" green="1" blue="0.3119859479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="baseForegroundColor" red="0.89444496159999998" green="1" blue="0.53380957809999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
@@ -60,12 +60,61 @@
                                     <constraint firstItem="huG-h0-yTI" firstAttribute="width" secondItem="Bag-xo-6NP" secondAttribute="width" multiplier="0.161836" id="jSR-CN-vGn"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEV-Hv-x24">
+                                <rect key="frame" x="0.0" y="806.5" width="414" height="89.5"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="O34-lb-3Se"/>
+                                    <barButtonItem title="Item" id="Fwd-dJ-B0j">
+                                        <imageReference key="image" image="홈 (1)" symbolScale="large"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jUm-TS-gTr"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WEJ-mF-UQw"/>
+                                    <barButtonItem title="Item" id="6Y7-YL-2OQ">
+                                        <imageReference key="image" image="순위 (1)" symbolScale="large"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="s81-1d-CQR"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="e8d-ad-eBK"/>
+                                    <barButtonItem title="Item" id="IAs-CP-kma">
+                                        <imageReference key="image" image="북마크 (3)-1" symbolScale="large"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eC4-YA-NzD"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pf2-ce-puO"/>
+                                    <barButtonItem title="Item" id="7DG-Q0-V2R">
+                                        <imageReference key="image" image="설정 (4)" symbolScale="large"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ALW-YW-42E"/>
+                                </items>
+                                <color key="barTintColor" red="0.22368210550000001" green="0.2327575982" blue="0.23727124929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-Ut-0Ud">
+                                <rect key="frame" x="0.0" y="114" width="414" height="692.5"/>
+                                <color key="backgroundColor" red="0.22368210550000001" green="0.2327575982" blue="0.23727124929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fBA-FX-kkP">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.22368210550000001" green="0.2327575982" blue="0.23727124929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fEV-Hv-x24" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Cf-57-wx5"/>
+                            <constraint firstAttribute="bottom" secondItem="fEV-Hv-x24" secondAttribute="bottom" id="1lu-KO-46y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bag-xo-6NP" secondAttribute="trailing" id="F7C-FZ-0hm"/>
+                            <constraint firstItem="fEV-Hv-x24" firstAttribute="top" secondItem="TCh-Ut-0Ud" secondAttribute="bottom" id="IGC-QE-k2P"/>
+                            <constraint firstItem="TCh-Ut-0Ud" firstAttribute="top" secondItem="Bag-xo-6NP" secondAttribute="bottom" id="Jup-mw-6ao"/>
+                            <constraint firstItem="fEV-Hv-x24" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="10%" id="TBO-sr-AVt"/>
+                            <constraint firstItem="TCh-Ut-0Ud" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WqO-WM-Pc2"/>
                             <constraint firstItem="Bag-xo-6NP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Yj7-Fc-BA7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TCh-Ut-0Ud" secondAttribute="trailing" id="jUn-Uy-UQx"/>
+                            <constraint firstItem="fEV-Hv-x24" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qfC-z5-9NL"/>
                             <constraint firstItem="Bag-xo-6NP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xoa-jd-VUT"/>
                         </constraints>
                     </view>
@@ -81,5 +130,9 @@
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="북마크 (3)-1" width="30" height="47"/>
+        <image name="설정 (4)" width="30" height="44"/>
+        <image name="순위 (1)" width="30" height="47"/>
+        <image name="홈 (1)" width="30" height="47"/>
     </resources>
 </document>
