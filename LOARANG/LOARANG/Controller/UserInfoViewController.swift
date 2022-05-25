@@ -17,6 +17,10 @@ class UserInfoViewController: UIViewController {
         userInfoTableView.delegate = self
         userInfoTableView.register(UINib(nibName: "UserInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "UserInfoTableViewCell")
     }
+    
+    func asdf(user: UserInfo?) {
+        self.user = user
+    }
 }
 
 extension UserInfoViewController: UITableViewDataSource {
