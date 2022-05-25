@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x3o-W0-gUG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bag-xo-6NP">
-                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7J-4a-LiC">
                                         <rect key="frame" x="0.0" y="0.0" width="20.5" height="50"/>
@@ -49,10 +49,13 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huG-h0-yTI">
                                         <rect key="frame" x="347" y="0.0" width="67" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
+                                        <buttonConfiguration key="configuration" style="plain" title=" ">
                                             <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large"/>
                                             <color key="baseForegroundColor" red="0.89444496159999998" green="1" blue="0.53380957809999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="touchSearchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wqq-nj-ucB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -91,7 +94,7 @@
                                 <color key="barTintColor" red="0.22368210550000001" green="0.2327575982" blue="0.23727124929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q49-Bo-yIO">
-                                <rect key="frame" x="0.0" y="114" width="414" height="692.5"/>
+                                <rect key="frame" x="0.0" y="158" width="414" height="648.5"/>
                                 <color key="backgroundColor" red="0.22368210550000001" green="0.2327575982" blue="0.23727124929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -119,10 +122,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109" y="260"/>
+            <point key="canvasLocation" x="1992.753623188406" y="56.919642857142854"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="dnl-Xd-dLd">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="6Zf-mu-Kqt" customClass="SearchViewController" customModule="LOARANG" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MjZ-nu-OAo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jro-66-6i9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3x-Rv-7Lm">
+                                        <rect key="frame" x="0.0" y="10" width="67" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title=" ">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="touchBackButton:" destination="6Zf-mu-Kqt" eventType="touchUpInside" id="FNd-0S-hrm"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="fbI-ez-4pp">
+                                        <rect key="frame" x="67" y="0.0" width="347" height="51"/>
+                                        <color key="barTintColor" red="0.22352941179999999" green="0.23137254900000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lqm-9Z-u5d"/>
+                        <color key="backgroundColor" red="0.22352941179999999" green="0.23137254900000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Lqm-9Z-u5d" firstAttribute="trailing" secondItem="jro-66-6i9" secondAttribute="trailing" id="kKP-d9-oui"/>
+                            <constraint firstItem="jro-66-6i9" firstAttribute="top" secondItem="Lqm-9Z-u5d" secondAttribute="top" id="niy-rd-QLm"/>
+                            <constraint firstItem="jro-66-6i9" firstAttribute="leading" secondItem="Lqm-9Z-u5d" secondAttribute="leading" id="vaz-Sc-dI4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lnc-rj-CSM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2755" y="57"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lcd-DL-us9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3o-W0-gUG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="mFV-B1-wdt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6Sg-lQ-5Jc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJE-Cp-P2k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1082.608695652174" y="56.919642857142854"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="북마크 (3)-1" width="30" height="47"/>
         <image name="설정 (4)" width="30" height="44"/>

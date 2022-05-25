@@ -16,10 +16,13 @@ final class ViewController: UIViewController {
         setInitailStatus()
     }
     private func setInitailStatus() {
-        searchButton.setTitle("", for: .normal)
         mainTableView.dataSource = self
         mainTableView.delegate = self
         mainTableView.register(UINib(nibName: "BookMarkTableViewCell", bundle: nil), forCellReuseIdentifier: "BookMarkTableViewCell")
+    }
+    @IBAction func touchSearchButton(_ sender: UIButton) {
+        guard let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
+        navigationController?.pushViewController(searchVC, animated: true)
     }
 }
 
