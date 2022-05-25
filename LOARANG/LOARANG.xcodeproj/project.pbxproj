@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */; };
+		AC31A8E4283B8FDE00597055 /* BookMarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */; };
+		AC31A8E5283B8FDE00597055 /* BookMarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */; };
+		AC31A8E8283B925100597055 /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */; };
+		AC31A8E9283B925100597055 /* BookMarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */; };
 		ACD92682283B3A970026985C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92681283B3A970026985C /* AppDelegate.swift */; };
 		ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92683283B3A970026985C /* SceneDelegate.swift */; };
 		ACD92686283B3A970026985C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92685283B3A970026985C /* ViewController.swift */; };
@@ -18,6 +22,10 @@
 
 /* Begin PBXFileReference section */
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
+		AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCell.swift; sourceTree = "<group>"; };
+		AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCell.xib; sourceTree = "<group>"; };
+		AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
+		AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkTableViewCell.xib; sourceTree = "<group>"; };
 		ACD9267E283B3A970026985C /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD92681283B3A970026985C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD92683283B3A970026985C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +78,11 @@
 				ACD92681283B3A970026985C /* AppDelegate.swift */,
 				ACD92683283B3A970026985C /* SceneDelegate.swift */,
 				ACD92685283B3A970026985C /* ViewController.swift */,
+				AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */,
+				AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */,
 				ACD92687283B3A970026985C /* Main.storyboard */,
+				AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */,
+				AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */,
 				ACD9268A283B3A970026985C /* Assets.xcassets */,
 				ACD9268C283B3A970026985C /* LaunchScreen.storyboard */,
 				ACD9268F283B3A970026985C /* Info.plist */,
@@ -137,8 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */,
+				AC31A8E9283B925100597055 /* BookMarkTableViewCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
 				ACD9268B283B3A970026985C /* Assets.xcassets in Resources */,
+				AC31A8E5283B8FDE00597055 /* BookMarkCell.xib in Resources */,
 				ACD92689283B3A970026985C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,8 +165,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD92686283B3A970026985C /* ViewController.swift in Sources */,
+				AC31A8E8283B925100597055 /* BookMarkTableViewCell.swift in Sources */,
 				ACD92682283B3A970026985C /* AppDelegate.swift in Sources */,
 				ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */,
+				AC31A8E4283B8FDE00597055 /* BookMarkCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
