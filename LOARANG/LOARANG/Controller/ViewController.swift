@@ -18,6 +18,7 @@ final class ViewController: UIViewController {
     private func setInitailStatus() {
         mainTableView.dataSource = self
         mainTableView.delegate = self
+        mainTableView.separatorStyle = .none
         mainTableView.register(UINib(nibName: "BookMarkTableViewCell", bundle: nil), forCellReuseIdentifier: "BookMarkTableViewCell")
     }
     @IBAction func touchSearchButton(_ sender: UIButton) {

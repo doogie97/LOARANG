@@ -43,7 +43,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YqC-RG-PQj">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YqC-RG-PQj">
                                                 <rect key="frame" x="0.0" y="46" width="507" height="256"/>
                                                 <color key="backgroundColor" red="0.22352941176470587" green="0.23137254901960785" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QpH-nO-IRX">
@@ -60,14 +60,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.22352941176470587" green="0.23137254901960785" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.13725490196078433" green="0.14117647058823529" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="xQo-tp-uZ0" firstAttribute="height" secondItem="Kqh-Tq-fcO" secondAttribute="height" multiplier="0.08" id="Jbl-hA-Kux"/>
                                             <constraint firstItem="hAN-3C-2Ky" firstAttribute="height" secondItem="Kqh-Tq-fcO" secondAttribute="height" multiplier="0.08" id="S0I-bp-4jW"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.22352941176470587" green="0.23137254901960785" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13725490196078433" green="0.14117647058823529" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Kqh-Tq-fcO" firstAttribute="leading" secondItem="vBS-c4-h7x" secondAttribute="leading" constant="10" id="0XW-ti-Qdh"/>
                                     <constraint firstAttribute="trailing" secondItem="Kqh-Tq-fcO" secondAttribute="trailing" constant="10" id="Fiu-eS-PMN"/>
@@ -76,7 +76,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.18043718434343436" green="0.18043718434343436" blue="0.18043718434343436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="vBS-c4-h7x" secondAttribute="bottom" id="Keo-Tv-mY6"/>
                             <constraint firstAttribute="trailing" secondItem="vBS-c4-h7x" secondAttribute="trailing" id="je8-Y7-hVv"/>
