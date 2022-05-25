@@ -19,9 +19,13 @@
 		ACD92689283B3A970026985C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD92687283B3A970026985C /* Main.storyboard */; };
 		ACD9268B283B3A970026985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD9268A283B3A970026985C /* Assets.xcassets */; };
 		ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD9268C283B3A970026985C /* LaunchScreen.storyboard */; };
+		E9F3B5CEB0F4F431AB6934C4 /* Pods_LOARANG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C14C631BAF65479E128D06 /* Pods_LOARANG.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02C14C631BAF65479E128D06 /* Pods_LOARANG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C253EC8E4F80C72BD38420C /* Pods-LOARANG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.release.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.release.xcconfig"; sourceTree = "<group>"; };
+		85BE14C612AC81859F78A55C /* Pods-LOARANG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.debug.xcconfig"; sourceTree = "<group>"; };
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCell.swift; sourceTree = "<group>"; };
 		AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCell.xib; sourceTree = "<group>"; };
@@ -43,12 +47,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9F3B5CEB0F4F431AB6934C4 /* Pods_LOARANG.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60D40BA2CA09A6A764C2E169 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02C14C631BAF65479E128D06 /* Pods_LOARANG.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81B7BAC7AD72578C29440671 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85BE14C612AC81859F78A55C /* Pods-LOARANG.debug.xcconfig */,
+				7C253EC8E4F80C72BD38420C /* Pods-LOARANG.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AC31A8D9283B3F2C00597055 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +114,8 @@
 			children = (
 				ACD92680283B3A970026985C /* LOARANG */,
 				ACD9267F283B3A970026985C /* Products */,
+				81B7BAC7AD72578C29440671 /* Pods */,
+				60D40BA2CA09A6A764C2E169 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACD92692283B3A970026985C /* Build configuration list for PBXNativeTarget "LOARANG" */;
 			buildPhases = (
+				525688BCCC17EF45A1D42004 /* [CP] Check Pods Manifest.lock */,
 				ACD9267A283B3A970026985C /* Sources */,
 				ACD9267B283B3A970026985C /* Frameworks */,
 				ACD9267C283B3A970026985C /* Resources */,
+				AC3DDE2E27D3A7519AD660AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,6 +212,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		525688BCCC17EF45A1D42004 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LOARANG-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC3DDE2E27D3A7519AD660AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LOARANG/Pods-LOARANG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LOARANG/Pods-LOARANG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LOARANG/Pods-LOARANG-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ACD9267A283B3A970026985C /* Sources */ = {
@@ -338,6 +407,7 @@
 		};
 		ACD92693283B3A970026985C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85BE14C612AC81859F78A55C /* Pods-LOARANG.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -366,6 +436,7 @@
 		};
 		ACD92694283B3A970026985C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C253EC8E4F80C72BD38420C /* Pods-LOARANG.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
