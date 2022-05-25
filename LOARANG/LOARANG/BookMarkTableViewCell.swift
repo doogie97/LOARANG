@@ -7,23 +7,14 @@
 
 import UIKit
 
-class BookMarkTableViewCell: UITableViewCell {
-    @IBOutlet weak var bookMarkCollectionView: UICollectionView!
+final class BookMarkTableViewCell: UITableViewCell {
+    @IBOutlet private weak var bookMarkCollectionView: UICollectionView!
     
-    func regist() {
+    func setTVCell() {
         bookMarkCollectionView.register(UINib(nibName: "BookMarkCell", bundle: nil), forCellWithReuseIdentifier: "BookMarkCell")
         bookMarkCollectionView.dataSource = self
-    }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
- 
-    override func prepareForReuse() {
-        super.prepareForReuse()
+        self.backgroundColor = #colorLiteral(red: 0.2236821055, green: 0.2327575982, blue: 0.2372712493, alpha: 1)
+        setbookMarkCVLayout()
     }
 }
 
@@ -34,15 +25,13 @@ extension BookMarkTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookMarkCell", for: indexPath) as? BookMarkCell else { return BookMarkCell() }
-        cell.justLabel.text = indexPath.row.description
-        cell.backgroundColor = .systemGreen
-
+        cell.setBookMarkCell()
         return cell
     }
 }
 
 extension BookMarkTableViewCell {
-    func setCellLayout() {
+    private func setbookMarkCVLayout() {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)

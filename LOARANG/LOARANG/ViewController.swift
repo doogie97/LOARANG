@@ -8,21 +8,18 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet private weak var mainTableView: UITableView!
+    @IBOutlet private weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setInitailStatus()
+    }
+    private func setInitailStatus() {
+        searchButton.setTitle("", for: .normal)
         mainTableView.dataSource = self
         mainTableView.delegate = self
         mainTableView.register(UINib(nibName: "BookMarkTableViewCell", bundle: nil), forCellReuseIdentifier: "BookMarkTableViewCell")
-        
-        buttonSetting()
-    }
-//MARK: - about View
-    func buttonSetting() {
-        searchButton.setTitle("", for: .normal)
-        mainTableView.rowHeight = 350
     }
 }
 
@@ -32,9 +29,7 @@ extension ViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookMarkTableViewCell") as? BookMarkTableViewCell else { return BookMarkTableViewCell()}
-        cell.regist()
-        cell.setCellLayout()
-        cell.backgroundColor = #colorLiteral(red: 0.2236821055, green: 0.2327575982, blue: 0.2372712493, alpha: 1)
+        cell.setTVCell()
         return cell
     }
 }

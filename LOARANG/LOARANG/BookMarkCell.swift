@@ -7,9 +7,13 @@
 
 import UIKit
 
-class BookMarkCell: UICollectionViewCell {
-    @IBOutlet weak var justLabel: UILabel!
+final class BookMarkCell: UICollectionViewCell {
+    @IBOutlet private weak var justLabel: UILabel!
     
+    func setBookMarkCell() {
+        self.backgroundColor = .systemGreen
+        self.justLabel.text = ""
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
