@@ -17,6 +17,7 @@
 		ACB73C40283E81C2006B25EA /* CrawlManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C3F283E81C2006B25EA /* CrawlManagerTest.swift */; };
 		ACB73C48283E868F006B25EA /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C47283E868F006B25EA /* String + Extension.swift */; };
 		ACB73C4A283E8846006B25EA /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C49283E8846006B25EA /* UserInfoModel.swift */; };
+		ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */; };
 		ACD92682283B3A970026985C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92681283B3A970026985C /* AppDelegate.swift */; };
 		ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92683283B3A970026985C /* SceneDelegate.swift */; };
 		ACD92686283B3A970026985C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92685283B3A970026985C /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		ACB73C3F283E81C2006B25EA /* CrawlManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlManagerTest.swift; sourceTree = "<group>"; };
 		ACB73C47283E868F006B25EA /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		ACB73C49283E8846006B25EA /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		ACD9267E283B3A970026985C /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD92681283B3A970026985C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD92683283B3A970026985C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				ACD92685283B3A970026985C /* ViewController.swift */,
 				AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */,
+				ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */,
 				AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */,
 				AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */,
 			);
@@ -351,6 +354,7 @@
 				AC31A8E8283B925100597055 /* BookMarkTableViewCell.swift in Sources */,
 				ACD92682283B3A970026985C /* AppDelegate.swift in Sources */,
 				ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */,
+				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
 				AC31A8E4283B8FDE00597055 /* BookMarkCell.swift in Sources */,
 				ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */,
 			);
