@@ -178,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnc-rj-CSM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2755" y="57"/>
+            <point key="canvasLocation" x="3033" y="57"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="i1x-cu-sRZ">
@@ -187,13 +187,28 @@
                     <view key="view" contentMode="scaleToFill" id="j3F-X7-5h3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cFZ-Ca-10j">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yR9-iI-KH4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cFZ-Ca-10j" firstAttribute="leading" secondItem="yR9-iI-KH4" secondAttribute="leading" id="SZ5-I5-gNs"/>
+                            <constraint firstItem="yR9-iI-KH4" firstAttribute="trailing" secondItem="cFZ-Ca-10j" secondAttribute="trailing" id="Xeg-8G-Bix"/>
+                            <constraint firstItem="yR9-iI-KH4" firstAttribute="bottom" secondItem="cFZ-Ca-10j" secondAttribute="bottom" id="aBc-OD-ZqC"/>
+                            <constraint firstItem="cFZ-Ca-10j" firstAttribute="top" secondItem="yR9-iI-KH4" secondAttribute="top" id="jw2-0k-vJd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userInfoTableView" destination="cFZ-Ca-10j" id="NZJ-ii-UXV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iA-7c-wwZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3727" y="55"/>
+            <point key="canvasLocation" x="4062" y="57"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lcd-DL-us9">
