@@ -16,6 +16,7 @@
 		ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C37283E7BB5006B25EA /* CrawlManager.swift */; };
 		ACB73C40283E81C2006B25EA /* CrawlManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C3F283E81C2006B25EA /* CrawlManagerTest.swift */; };
 		ACB73C48283E868F006B25EA /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C47283E868F006B25EA /* String + Extension.swift */; };
+		ACB73C4A283E8846006B25EA /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C49283E8846006B25EA /* UserInfoModel.swift */; };
 		ACD92682283B3A970026985C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92681283B3A970026985C /* AppDelegate.swift */; };
 		ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92683283B3A970026985C /* SceneDelegate.swift */; };
 		ACD92686283B3A970026985C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92685283B3A970026985C /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		ACB73C3D283E81C2006B25EA /* CrawlManagerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrawlManagerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB73C3F283E81C2006B25EA /* CrawlManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlManagerTest.swift; sourceTree = "<group>"; };
 		ACB73C47283E868F006B25EA /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		ACB73C49283E8846006B25EA /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		ACD9267E283B3A970026985C /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD92681283B3A970026985C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD92683283B3A970026985C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				ACB73C46283E867D006B25EA /* Extension */,
 				ACB73C37283E7BB5006B25EA /* CrawlManager.swift */,
+				ACB73C49283E8846006B25EA /* UserInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB73C4A283E8846006B25EA /* UserInfoModel.swift in Sources */,
 				AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */,
 				ACD92686283B3A970026985C /* ViewController.swift in Sources */,
 				ACB73C48283E868F006B25EA /* String + Extension.swift in Sources */,
