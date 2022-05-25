@@ -63,13 +63,6 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEV-Hv-x24">
                                 <rect key="frame" x="0.0" y="806.5" width="414" height="89.5"/>
                                 <items>
-                                    <barButtonItem style="plain" id="B0a-ee-EJP">
-                                        <searchBar key="customView" contentMode="redraw" misplaced="YES" id="mwM-Jb-yMe">
-                                            <rect key="frame" x="20" y="17" width="339" height="56"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="O34-lb-3Se"/>
                                     <barButtonItem title="Item" id="Fwd-dJ-B0j">
                                         <imageReference key="image" image="홈 (1)" symbolScale="large"/>
@@ -100,15 +93,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q49-Bo-yIO">
                                 <rect key="frame" x="0.0" y="114" width="414" height="692.5"/>
                                 <color key="backgroundColor" red="0.22368210550000001" green="0.2327575982" blue="0.23727124929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" searchBarStyle="minimal" translucent="NO" id="eNP-ZI-5P4">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="mwM-Jb-yMe">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="barTintColor" red="0.22352941176470587" green="0.23137254901960785" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <textInputTraits key="textInputTraits"/>
-                                    <scopeButtonTitles>
-                                        <string>Title</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
                                 </searchBar>
                             </tableView>
                         </subviews>
