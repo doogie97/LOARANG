@@ -7,11 +7,12 @@
 
 struct UserInfo {
     let name: String
+    let server: String
+    let `class`: String
     let expeditionLevel: String
-    let battleLevel: String
-    let itemLevel: String
     let title: String
+    let itemLevel: String
     let guild: String
-    let pvpGrade: String
+    let pvp: String
     let wisdom: String
 }
