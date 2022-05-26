@@ -41,7 +41,7 @@ extension BookMarkTableViewCell {
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.orthogonalScrollingBehavior = .paging
+        section.orthogonalScrollingBehavior = .continuous
         
         bookMarkCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: section)
     }
