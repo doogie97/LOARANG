@@ -13,7 +13,7 @@ final class BookMarkTableViewCell: UITableViewCell {
     func setTVCell() {
         bookMarkCollectionView.register(UINib(nibName: "BookMarkCell", bundle: nil), forCellWithReuseIdentifier: "BookMarkCell")
         bookMarkCollectionView.dataSource = self
-        self.backgroundColor = #colorLiteral(red: 0.2236821055, green: 0.2327575982, blue: 0.2372712493, alpha: 1)
+        bookMarkCollectionView.layer.cornerRadius = 10
         setbookMarkCVLayout()
     }
 }

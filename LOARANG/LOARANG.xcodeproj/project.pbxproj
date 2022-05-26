@@ -137,11 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				ACD92685283B3A970026985C /* ViewController.swift */,
+				AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */,
+				AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */,
 				AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */,
 				ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */,
 				ACB73C4D283E9292006B25EA /* UserInfoTableViewCell.swift */,
-				AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */,
-				AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

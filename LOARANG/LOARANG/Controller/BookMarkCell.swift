@@ -8,15 +8,7 @@
 import UIKit
 
 final class BookMarkCell: UICollectionViewCell {
-    @IBOutlet private weak var justLabel: UILabel!
-    
     func setBookMarkCell() {
-        self.backgroundColor = .systemGreen
-        self.justLabel.text = ""
+        self.layer.cornerRadius = 10
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
 }

@@ -16,25 +16,9 @@
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kHE-L3-aZy">
                 <rect key="frame" x="0.0" y="0.0" width="153" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연결됨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vG7-xf-0HG">
-                        <rect key="frame" x="0.0" y="0.0" width="153" height="124"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                </subviews>
-                <constraints>
-                    <constraint firstAttribute="bottom" secondItem="vG7-xf-0HG" secondAttribute="bottom" id="0kq-lz-10g"/>
-                    <constraint firstAttribute="trailing" secondItem="vG7-xf-0HG" secondAttribute="trailing" id="Gbm-mv-ojv"/>
-                    <constraint firstItem="vG7-xf-0HG" firstAttribute="top" secondItem="kHE-L3-aZy" secondAttribute="top" id="N2h-n4-42I"/>
-                    <constraint firstItem="vG7-xf-0HG" firstAttribute="leading" secondItem="kHE-L3-aZy" secondAttribute="leading" id="Yea-iE-UYp"/>
-                </constraints>
             </collectionViewCellContentView>
+            <color key="backgroundColor" red="0.20392156862745098" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <size key="customSize" width="153" height="124"/>
-            <connections>
-                <outlet property="justLabel" destination="vG7-xf-0HG" id="DL3-uY-hom"/>
-            </connections>
             <point key="canvasLocation" x="209.42028985507247" y="150.66964285714286"/>
         </collectionViewCell>
     </objects>
