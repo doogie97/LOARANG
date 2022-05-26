@@ -20,6 +20,8 @@
 		ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */; };
 		ACB73C4F283E9292006B25EA /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C4D283E9292006B25EA /* UserInfoTableViewCell.swift */; };
 		ACB73C50283E9292006B25EA /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB73C4E283E9292006B25EA /* UserInfoTableViewCell.xib */; };
+		ACD34D54283F6FE200A5AA72 /* MianUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD34D52283F6FE200A5AA72 /* MianUserTableViewCell.swift */; };
+		ACD34D55283F6FE200A5AA72 /* MianUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD34D53283F6FE200A5AA72 /* MianUserTableViewCell.xib */; };
 		ACD92682283B3A970026985C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92681283B3A970026985C /* AppDelegate.swift */; };
 		ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92683283B3A970026985C /* SceneDelegate.swift */; };
 		ACD92686283B3A970026985C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92685283B3A970026985C /* ViewController.swift */; };
@@ -57,6 +59,8 @@
 		ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		ACB73C4D283E9292006B25EA /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		ACB73C4E283E9292006B25EA /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		ACD34D52283F6FE200A5AA72 /* MianUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MianUserTableViewCell.swift; sourceTree = "<group>"; };
+		ACD34D53283F6FE200A5AA72 /* MianUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MianUserTableViewCell.xib; sourceTree = "<group>"; };
 		ACD9267E283B3A970026985C /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD92681283B3A970026985C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD92683283B3A970026985C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD92687283B3A970026985C /* Main.storyboard */,
+				ACD34D53283F6FE200A5AA72 /* MianUserTableViewCell.xib */,
 				AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */,
 				AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */,
 				ACB73C4E283E9292006B25EA /* UserInfoTableViewCell.xib */,
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD92685283B3A970026985C /* ViewController.swift */,
+				ACD34D52283F6FE200A5AA72 /* MianUserTableViewCell.swift */,
 				AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */,
 				AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */,
 				AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */,
@@ -288,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */,
+				ACD34D55283F6FE200A5AA72 /* MianUserTableViewCell.xib in Resources */,
 				AC31A8E9283B925100597055 /* BookMarkTableViewCell.xib in Resources */,
 				ACB73C50283E9292006B25EA /* UserInfoTableViewCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
@@ -355,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACB73C4A283E8846006B25EA /* UserInfoModel.swift in Sources */,
+				ACD34D54283F6FE200A5AA72 /* MianUserTableViewCell.swift in Sources */,
 				AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */,
 				ACD92686283B3A970026985C /* ViewController.swift in Sources */,
 				ACB73C48283E868F006B25EA /* String + Extension.swift in Sources */,

@@ -20,7 +20,9 @@ final class ViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.separatorStyle = .none
         mainTableView.register(UINib(nibName: "BookMarkTableViewCell", bundle: nil), forCellReuseIdentifier: "BookMarkTableViewCell")
+        mainTableView.register(UINib(nibName: "MianUserTableViewCell", bundle: nil), forCellReuseIdentifier: "MianUserTableViewCell")
     }
+    
     @IBAction func touchSearchButton(_ sender: UIButton) {
         guard let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
         navigationController?.pushViewController(searchVC, animated: true)
@@ -29,12 +31,23 @@ final class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookMarkTableViewCell") as? BookMarkTableViewCell else { return BookMarkTableViewCell()}
-        cell.setTVCell()
-        return cell
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MianUserTableViewCell") as? MianUserTableViewCell else { return MianUserTableViewCell()}
+            cell.setCell()
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookMarkTableViewCell") as? BookMarkTableViewCell else { return BookMarkTableViewCell()}
+            cell.setTVCell()
+            return cell
+        default:
+            break
+        }
+
+        return BookMarkTableViewCell()
     }
 }
 
