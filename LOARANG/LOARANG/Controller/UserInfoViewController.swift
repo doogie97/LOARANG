@@ -37,19 +37,21 @@ extension UserInfoViewController: UITableViewDataSource {
         case 0:
             cell.showInfo(info: user.name)
         case 1:
-            cell.showInfo(info: user.expeditionLevel)
+            cell.showInfo(info: "서버 : " + user.server)
         case 2:
-            cell.showInfo(info: user.battleLevel)
+            cell.showInfo(info: "클래스 : " + user.class)
         case 3:
-            cell.showInfo(info: user.itemLevel)
+            cell.showInfo(info: "원정대 : " + user.expeditionLevel)
         case 4:
-            cell.showInfo(info: user.title)
+            cell.showInfo(info: "칭호 : " + user.title)
         case 5:
-            cell.showInfo(info: user.guild)
+            cell.showInfo(info: "아이템 : " + user.itemLevel)
         case 6:
-            cell.showInfo(info: user.pvpGrade)
+            cell.showInfo(info: "길드 : " + user.guild)
+        case 7:
+            cell.showInfo(info: "PVP : " + user.pvp)
         default:
-            cell.showInfo(info: user.wisdom)
+            cell.showInfo(info: "영지 : " + user.wisdom)
         }
         
         return cell
