@@ -15,4 +15,5 @@ struct UserInfo {
     let guild: String
     let pvp: String
     let wisdom: String
+    let battleLevel: String
 }

@@ -25,7 +25,7 @@ class UserInfoViewController: UIViewController {
 
 extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        8
+        10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,12 +43,14 @@ extension UserInfoViewController: UITableViewDataSource {
         case 3:
             cell.showInfo(info: "원정대 : " + user.expeditionLevel)
         case 4:
-            cell.showInfo(info: "칭호 : " + user.title)
+            cell.showInfo(info: "전투 : " + user.battleLevel)
         case 5:
-            cell.showInfo(info: "아이템 : " + user.itemLevel)
+            cell.showInfo(info: "칭호 : " + user.title)
         case 6:
-            cell.showInfo(info: "길드 : " + user.guild)
+            cell.showInfo(info: "아이템 : " + user.itemLevel)
         case 7:
+            cell.showInfo(info: "길드 : " + user.guild)
+        case 8:
             cell.showInfo(info: "PVP : " + user.pvp)
         default:
             cell.showInfo(info: "영지 : " + user.wisdom)

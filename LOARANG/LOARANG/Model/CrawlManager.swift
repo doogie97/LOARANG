@@ -18,14 +18,18 @@ struct CrawlManager {
             let html = try String(contentsOf: url, encoding: .utf8)
             let doc: Document = try SwiftSoup.parse(html)
             
-            let expeditionLevel22 = try doc.select(".define").select("dd")
+            let userInfo = try doc.select(".define").select("dd")
             
-            for i in expeditionLevel22 {
+            for i in userInfo {
                 info.append(try i.text())
             }
+            let battleLevel = try doc.select(".myinfo__character--button2").select("span").text().replacingOccurrences(of: "Lv.", with: "")
+            
+            info.append(battleLevel)
+            
             
             if info.isEmpty { return nil }
-            return UserInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[5], pvp: info[6], wisdom: info[7])
+            return UserInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[6], pvp: info[7], wisdom: info[8], battleLevel: info[9])
         } catch {}
         return nil
     }
