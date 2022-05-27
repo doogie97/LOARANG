@@ -7,26 +7,82 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NIXGONFONTS B 2.0.otf">
+            <string>NIXGONB-Vb</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MianUserTableViewCell" rowHeight="267" id="KGk-i7-Jjw" customClass="MianUserTableViewCell" customModule="LOARANG" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="304" height="267"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MianUserTableViewCell" rowHeight="240" id="KGk-i7-Jjw" customClass="MianUserTableViewCell" customModule="LOARANG" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="240"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="304" height="267"/>
+                <rect key="frame" x="0.0" y="0.0" width="364" height="240"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRL-5p-8WP">
-                        <rect key="frame" x="16" y="20" width="272" height="227"/>
+                        <rect key="frame" x="16" y="20" width="332" height="200"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bcJ-V7-qhu">
-                                <rect key="frame" x="0.0" y="0.0" width="272" height="227"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bcJ-V7-qhu">
+                                <rect key="frame" x="0.0" y="0.0" width="332" height="190"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YCH-9v-Y72">
+                                        <rect key="frame" x="0.0" y="0.0" width="332" height="95"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzB-9C-Vha">
+                                                <rect key="frame" x="0.0" y="0.0" width="110.5" height="95"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="블레이드프로필" translatesAutoresizingMaskIntoConstraints="NO" id="Jnn-lH-4ma">
+                                                <rect key="frame" x="110.5" y="0.0" width="111" height="95"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZD-DQ-XrC">
+                                                <rect key="frame" x="221.5" y="0.0" width="110.5" height="95"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ccy-ZK-3sF">
+                                        <rect key="frame" x="0.0" y="95" width="332" height="95"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@니나브" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jua-CK-Y1z">
+                                                <rect key="frame" x="0.0" y="0.0" width="332" height="24"/>
+                                                <fontDescription key="fontDescription" name="NIXGONB-Vb" family="NIXGONFONTS V2.0" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LV60 최지근" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foe-1w-idb">
+                                                <rect key="frame" x="0.0" y="24" width="332" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="NIXGONB-Vb" family="NIXGONFONTS V2.0" pointSize="20"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="블레이드" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ek-7e-YJE">
+                                                <rect key="frame" x="0.0" y="47.5" width="332" height="24"/>
+                                                <fontDescription key="fontDescription" name="NIXGONB-Vb" family="NIXGONFONTS V2.0" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1460.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trA-2P-DLo">
+                                                <rect key="frame" x="0.0" y="71.5" width="332" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="NIXGONB-Vb" family="NIXGONFONTS V2.0" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="bcJ-V7-qhu" secondAttribute="bottom" id="Jw5-Pz-gz3"/>
+                            <constraint firstAttribute="bottom" secondItem="bcJ-V7-qhu" secondAttribute="bottom" constant="10" id="Jw5-Pz-gz3"/>
                             <constraint firstItem="bcJ-V7-qhu" firstAttribute="leading" secondItem="aRL-5p-8WP" secondAttribute="leading" id="KIc-Se-5YT"/>
                             <constraint firstAttribute="trailing" secondItem="bcJ-V7-qhu" secondAttribute="trailing" id="Lse-bp-jNx"/>
                             <constraint firstItem="bcJ-V7-qhu" firstAttribute="top" secondItem="aRL-5p-8WP" secondAttribute="top" id="QBO-9f-Wbd"/>
@@ -44,9 +100,17 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" red="0.1137254902" green="0.1137254902" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="classLabel" destination="2ek-7e-YJE" id="QoC-5s-ais"/>
+                <outlet property="itemLvLabel" destination="trA-2P-DLo" id="Ky2-Ap-ZNl"/>
+                <outlet property="lvNameLabel" destination="foe-1w-idb" id="MKg-gY-9YD"/>
                 <outlet property="mainView" destination="aRL-5p-8WP" id="F7U-Wb-f59"/>
+                <outlet property="profileImageView" destination="Jnn-lH-4ma" id="BG3-f1-zUF"/>
+                <outlet property="serverLabel" destination="Jua-CK-Y1z" id="uhg-Ou-7mE"/>
             </connections>
-            <point key="canvasLocation" x="118.84057971014494" y="147.65625"/>
+            <point key="canvasLocation" x="162.31884057971016" y="136.60714285714286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="블레이드프로필" width="571" height="571"/>
+    </resources>
 </document>
