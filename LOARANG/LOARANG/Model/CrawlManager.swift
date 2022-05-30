@@ -9,7 +9,7 @@ import Foundation
 import SwiftSoup
 
 struct CrawlManager {
-    func getBasicInfo(userName: String) -> UserInfo? {
+    func getBasicInfo(userName: String) -> UserBasicInfo? {
         var info: [String] = []
         let urlString = "https://m-lostark.game.onstove.com/Profile/Character/" + userName.changeToPercent()
         guard let url = URL(string: urlString) else { return nil}
@@ -29,7 +29,7 @@ struct CrawlManager {
             
             
             if info.isEmpty { return nil }
-            return UserInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[6], pvp: info[7], wisdom: info[8], battleLevel: info[9])
+            return UserBasicInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[6], pvp: info[7], wisdom: info[8], battleLevel: info[9])
         } catch {}
         return nil
     }

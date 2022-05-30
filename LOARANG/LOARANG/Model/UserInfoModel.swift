@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/05/26.
 //
 
-struct UserInfo {
+struct UserBasicInfo {
     let name: String
     let server: String
     let `class`: String

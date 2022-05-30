@@ -9,7 +9,7 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
     @IBOutlet weak var userInfoTableView: UITableView!
-    private var user: UserInfo?
+    private var user: UserBasicInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class UserInfoViewController: UIViewController {
         userInfoTableView.register(UINib(nibName: "\(UserInfoTableViewCell.self)", bundle: nil), forCellReuseIdentifier: "\(UserInfoTableViewCell.self)")
     }
     
-    func asdf(user: UserInfo?) {
+    func asdf(user: UserBasicInfo?) {
         self.user = user
     }
 }
