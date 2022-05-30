@@ -8,7 +8,9 @@
 import UIKit
 
 class MianUserTableViewCell: UITableViewCell {
-    @IBOutlet weak var mainView: UIView!
+    
+    @IBOutlet weak var mainStackView: UIStackView!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var serverLabel: UILabel!
     @IBOutlet weak var lvNameLabel: UILabel!
@@ -17,6 +19,8 @@ class MianUserTableViewCell: UITableViewCell {
     
     
     func setCell() {
-        mainView.layer.cornerRadius = 10
+        topView.layer.cornerRadius = 10
+        mainStackView.layer.cornerRadius = 10
+        profileImageView.layer.cornerRadius = 60
     }
 }

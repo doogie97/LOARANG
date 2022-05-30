@@ -55,8 +55,8 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return UIScreen.main.bounds.height * 0.3
+            return UIScreen.main.bounds.width * 0.75
         }
-        return UIScreen.main.bounds.height * 0.2
+        return UIScreen.main.bounds.width * 0.45
     }
 }
