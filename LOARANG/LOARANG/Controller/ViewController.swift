@@ -19,12 +19,12 @@ final class ViewController: UIViewController {
         mainTableView.dataSource = self
         mainTableView.delegate = self
         mainTableView.separatorStyle = .none
-        mainTableView.register(UINib(nibName: "BookMarkTableViewCell", bundle: nil), forCellReuseIdentifier: "BookMarkTableViewCell")
-        mainTableView.register(UINib(nibName: "MianUserTableViewCell", bundle: nil), forCellReuseIdentifier: "MianUserTableViewCell")
+        mainTableView.register(UINib(nibName: "\(BookMarkTableViewCell.self)", bundle: nil), forCellReuseIdentifier: "\(BookMarkTableViewCell.self)")
+        mainTableView.register(UINib(nibName: "\(MianUserTableViewCell.self)", bundle: nil), forCellReuseIdentifier: "\(MianUserTableViewCell.self)")
     }
     
     @IBAction func touchSearchButton(_ sender: UIButton) {
-        guard let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
+        guard let searchVC = storyboard?.instantiateViewController(withIdentifier: "\(SearchViewController.self)") as? SearchViewController else { return }
         navigationController?.pushViewController(searchVC, animated: true)
     }
 }
@@ -37,11 +37,11 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MianUserTableViewCell") as? MianUserTableViewCell else { return MianUserTableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MianUserTableViewCell.self)") as? MianUserTableViewCell else { return MianUserTableViewCell()}
             cell.setCell()
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookMarkTableViewCell") as? BookMarkTableViewCell else { return BookMarkTableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookMarkTableViewCell.self)") as? BookMarkTableViewCell else { return BookMarkTableViewCell()}
             cell.setTVCell()
             return cell
         default:

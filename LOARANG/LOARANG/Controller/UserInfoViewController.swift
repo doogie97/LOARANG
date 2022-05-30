@@ -15,7 +15,7 @@ class UserInfoViewController: UIViewController {
         super.viewDidLoad()
         userInfoTableView.dataSource = self
         userInfoTableView.delegate = self
-        userInfoTableView.register(UINib(nibName: "UserInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "UserInfoTableViewCell")
+        userInfoTableView.register(UINib(nibName: "\(UserInfoTableViewCell.self)", bundle: nil), forCellReuseIdentifier: "\(UserInfoTableViewCell.self)")
     }
     
     func asdf(user: UserInfo?) {
@@ -29,7 +29,7 @@ extension UserInfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserInfoTableViewCell") as? UserInfoTableViewCell else { return UserInfoTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UserInfoTableViewCell.self)") as? UserInfoTableViewCell else { return UserInfoTableViewCell() }
         
         guard let user = user else { return cell }
  
