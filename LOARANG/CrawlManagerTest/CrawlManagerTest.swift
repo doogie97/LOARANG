@@ -21,15 +21,15 @@ class CrawlManagerTest: XCTestCase {
         try super.tearDownWithError()
         sut = nil
     }
-
-    func test_getCharacterTitle호출시_최지근의정보를잘가져오는지(){
+    
+    func test_getCharacterTitle호출시_userName이_최지근일때_이름을잘가져오는지(){
         //given
         let userName = "최지근"
         
         //then
-        guard let result = sut.getCharacterTitle(userName: userName) else { return }
+        guard let result = sut.getBasicInfo(userName: userName) else { XCTFail(); return }
         
         //then
-        XCTAssertEqual(result.wisdom, "그df리운 친구")
+        XCTAssertEqual(result.name, "최지근")
     }
 }
