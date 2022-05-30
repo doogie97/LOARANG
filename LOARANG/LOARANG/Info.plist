@@ -4,7 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BlackHanSans-Regular</string>
+		<string>BlackHanSans-Regular.ttf</string>
+		<string>ONE-Mobile-Bold.ttf</string>
+		<string>ONE-Mobile-Light.ttf</string>
+		<string>ONE-Mobile-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
