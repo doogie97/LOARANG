@@ -20,9 +20,6 @@
 		ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */; };
 		ACB73C4F283E9292006B25EA /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C4D283E9292006B25EA /* UserInfoTableViewCell.swift */; };
 		ACB73C50283E9292006B25EA /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB73C4E283E9292006B25EA /* UserInfoTableViewCell.xib */; };
-		ACC005CD28404D9500EB46FB /* NIXGONFONTS B 2.0.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACC005CC28404D9500EB46FB /* NIXGONFONTS B 2.0.otf */; };
-		ACC005CF28404DB200EB46FB /* NIXGONFONTS L 2.0.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACC005CE28404DB200EB46FB /* NIXGONFONTS L 2.0.otf */; };
-		ACC005D128404DE200EB46FB /* NIXNTS M 2.0.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACC005D028404DE200EB46FB /* NIXNTS M 2.0.otf */; };
 		ACD34D54283F6FE200A5AA72 /* MianUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD34D52283F6FE200A5AA72 /* MianUserTableViewCell.swift */; };
 		ACD34D55283F6FE200A5AA72 /* MianUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD34D53283F6FE200A5AA72 /* MianUserTableViewCell.xib */; };
 		ACD92682283B3A970026985C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92681283B3A970026985C /* AppDelegate.swift */; };
@@ -62,9 +59,6 @@
 		ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		ACB73C4D283E9292006B25EA /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		ACB73C4E283E9292006B25EA /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
-		ACC005CC28404D9500EB46FB /* NIXGONFONTS B 2.0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NIXGONFONTS B 2.0.otf"; sourceTree = "<group>"; };
-		ACC005CE28404DB200EB46FB /* NIXGONFONTS L 2.0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NIXGONFONTS L 2.0.otf"; sourceTree = "<group>"; };
-		ACC005D028404DE200EB46FB /* NIXNTS M 2.0.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NIXNTS M 2.0.otf"; sourceTree = "<group>"; };
 		ACD34D52283F6FE200A5AA72 /* MianUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MianUserTableViewCell.swift; sourceTree = "<group>"; };
 		ACD34D53283F6FE200A5AA72 /* MianUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MianUserTableViewCell.xib; sourceTree = "<group>"; };
 		ACD9267E283B3A970026985C /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,9 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */,
-				ACC005CC28404D9500EB46FB /* NIXGONFONTS B 2.0.otf */,
-				ACC005CE28404DB200EB46FB /* NIXGONFONTS L 2.0.otf */,
-				ACC005D028404DE200EB46FB /* NIXNTS M 2.0.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -305,9 +296,6 @@
 				AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */,
 				ACD34D55283F6FE200A5AA72 /* MianUserTableViewCell.xib in Resources */,
 				AC31A8E9283B925100597055 /* BookMarkTableViewCell.xib in Resources */,
-				ACC005CF28404DB200EB46FB /* NIXGONFONTS L 2.0.otf in Resources */,
-				ACC005D128404DE200EB46FB /* NIXNTS M 2.0.otf in Resources */,
-				ACC005CD28404D9500EB46FB /* NIXGONFONTS B 2.0.otf in Resources */,
 				ACB73C50283E9292006B25EA /* UserInfoTableViewCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
 				ACD9268B283B3A970026985C /* Assets.xcassets in Resources */,
