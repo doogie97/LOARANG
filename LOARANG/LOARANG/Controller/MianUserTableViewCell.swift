@@ -12,15 +12,41 @@ class MianUserTableViewCell: UITableViewCell {
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var serverLabel: UILabel!
+    
     @IBOutlet weak var lvNameLabel: UILabel!
     @IBOutlet weak var classLabel: UILabel!
+    @IBOutlet weak var classInfoLabel: UILabel!
+    @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var itemLvLabel: UILabel!
+    @IBOutlet weak var serverLabel: UILabel!
+    @IBOutlet weak var serverInfoLabel: UILabel!
     
     
     func setCell() {
+        setCorner()
+        setLabelFont()
+    }
+    
+    private func setCorner() {
         topView.layer.cornerRadius = 10
         mainStackView.layer.cornerRadius = 10
-        profileImageView.layer.cornerRadius = 60
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2.8
+    }
+    
+    private func setLabelFont() {
+        lvNameLabel.font = UIFont.one(size: 18, family: .Bold)
+        lvNameLabel.textColor = .white
+        classLabel.font = UIFont.one(size: 15, family: .Bold)
+        classLabel.textColor = .white
+        classInfoLabel.font = UIFont.one(size: 15, family: .Bold)
+        classInfoLabel.textColor = .white
+        itemLabel.font = UIFont.one(size: 15, family: .Bold)
+        itemLabel.textColor = .white
+        itemLvLabel.font = UIFont.one(size: 15, family: .Bold)
+        itemLvLabel.textColor = .white
+        serverLabel.font = UIFont.one(size: 15, family: .Bold)
+        serverLabel.textColor = .white
+        serverInfoLabel.font = UIFont.one(size: 15, family: .Bold)
+        serverInfoLabel.textColor = .white
     }
 }
