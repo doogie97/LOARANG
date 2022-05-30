@@ -11,7 +11,7 @@ final class BookMarkTableViewCell: UITableViewCell {
     @IBOutlet private weak var bookMarkCollectionView: UICollectionView!
     
     func setTVCell() {
-        bookMarkCollectionView.register(UINib(nibName: "BookMarkCell", bundle: nil), forCellWithReuseIdentifier: "BookMarkCell")
+        bookMarkCollectionView.register(UINib(nibName: "BookMarkCVCell", bundle: nil), forCellWithReuseIdentifier: "BookMarkCVCell")
         bookMarkCollectionView.dataSource = self
         bookMarkCollectionView.layer.cornerRadius = 10
         setbookMarkCVLayout()
@@ -24,7 +24,7 @@ extension BookMarkTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookMarkCell", for: indexPath) as? BookMarkCell else { return BookMarkCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookMarkCVCell", for: indexPath) as? BookMarkCVCell else { return BookMarkCVCell() }
         cell.setBookMarkCell()
         return cell
     }

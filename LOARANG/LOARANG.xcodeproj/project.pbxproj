@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */; };
-		AC31A8E4283B8FDE00597055 /* BookMarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */; };
-		AC31A8E5283B8FDE00597055 /* BookMarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */; };
+		AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */; };
+		AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */; };
 		AC31A8E8283B925100597055 /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */; };
 		AC31A8E9283B925100597055 /* BookMarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */; };
 		AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */; };
@@ -50,8 +50,8 @@
 		7C253EC8E4F80C72BD38420C /* Pods-LOARANG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.release.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.release.xcconfig"; sourceTree = "<group>"; };
 		85BE14C612AC81859F78A55C /* Pods-LOARANG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.debug.xcconfig"; sourceTree = "<group>"; };
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
-		AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCell.swift; sourceTree = "<group>"; };
-		AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCell.xib; sourceTree = "<group>"; };
+		AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCVCell.swift; sourceTree = "<group>"; };
+		AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCVCell.xib; sourceTree = "<group>"; };
 		AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
 		AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkTableViewCell.xib; sourceTree = "<group>"; };
 		AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -140,10 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				ACD92687283B3A970026985C /* Main.storyboard */,
-				ACD34D53283F6FE200A5AA72 /* MianUserTableViewCell.xib */,
-				AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */,
-				AC31A8E3283B8FDE00597055 /* BookMarkCell.xib */,
-				ACB73C4E283E9292006B25EA /* UserInfoTableViewCell.xib */,
+				ACAF1B6428451C0800BD7991 /* MainUser */,
+				ACAF1B6528451C2000BD7991 /* Bookmark */,
+				ACAF1B6628451D3400BD7991 /* UserInfo */,
 				ACD9268C283B3A970026985C /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -153,14 +152,39 @@
 			isa = PBXGroup;
 			children = (
 				ACD92685283B3A970026985C /* ViewController.swift */,
-				ACD34D52283F6FE200A5AA72 /* MianUserTableViewCell.swift */,
-				AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */,
-				AC31A8E2283B8FDE00597055 /* BookMarkCell.swift */,
 				AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */,
 				ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */,
-				ACB73C4D283E9292006B25EA /* UserInfoTableViewCell.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		ACAF1B6428451C0800BD7991 /* MainUser */ = {
+			isa = PBXGroup;
+			children = (
+				ACD34D53283F6FE200A5AA72 /* MianUserTableViewCell.xib */,
+				ACD34D52283F6FE200A5AA72 /* MianUserTableViewCell.swift */,
+			);
+			path = MainUser;
+			sourceTree = "<group>";
+		};
+		ACAF1B6528451C2000BD7991 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */,
+				AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */,
+				AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */,
+				AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		ACAF1B6628451D3400BD7991 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				ACB73C4E283E9292006B25EA /* UserInfoTableViewCell.xib */,
+				ACB73C4D283E9292006B25EA /* UserInfoTableViewCell.swift */,
+			);
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		ACB73C3E283E81C2006B25EA /* CrawlManagerTest */ = {
@@ -313,7 +337,7 @@
 				ACB73C50283E9292006B25EA /* UserInfoTableViewCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
 				ACD9268B283B3A970026985C /* Assets.xcassets in Resources */,
-				AC31A8E5283B8FDE00597055 /* BookMarkCell.xib in Resources */,
+				AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */,
 				ACCB6556284501E5008FFF9A /* ONE-Mobile-Bold.ttf in Resources */,
 				ACD92689283B3A970026985C /* Main.storyboard in Resources */,
 			);
@@ -387,7 +411,7 @@
 				ACD92682283B3A970026985C /* AppDelegate.swift in Sources */,
 				ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */,
 				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
-				AC31A8E4283B8FDE00597055 /* BookMarkCell.swift in Sources */,
+				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
 				ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
