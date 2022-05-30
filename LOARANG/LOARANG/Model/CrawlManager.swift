@@ -25,10 +25,15 @@ struct CrawlManager {
             }
             let battleLevel = try doc.select(".myinfo__character--button2").select("span").text().replacingOccurrences(of: "Lv.", with: "")
             
+            if battleLevel.isEmpty {
+                return nil
+            }
+            
             info.append(battleLevel)
             
             
             if info.isEmpty { return nil }
+            
             return UserBasicInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[6], pvp: info[7], wisdom: info[8], battleLevel: info[9])
         } catch {}
         return nil
