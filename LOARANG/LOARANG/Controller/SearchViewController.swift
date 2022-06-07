@@ -33,9 +33,13 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
         guard let userName = searchBar.text else { return }
-        guard let userInfo = crawlManager.getBasicInfo(userName: userName) else {showAlert(); return}
         guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
-        userInfoVC.asdf(user: userInfo)
+        do {
+            let info = try crawlManager.searchUser(userName: userName)
+            userInfoVC.receiveInfo(user: info.basicInfo)
+        } catch {
+            showAlert()
+        }
         navigationController?.pushViewController(userInfoVC, animated: true)
     }
 }
