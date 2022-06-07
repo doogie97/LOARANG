@@ -24,5 +24,12 @@ struct UserBasicInfo {
 }
 
 struct BasicAbility {
-    
+    let att: String
+    let vitality: String
+    let crit: String
+    let specialization: String
+    let domination: String
+    let swiftness: String
+    let endurance: String
+    let expertise: String
 }
