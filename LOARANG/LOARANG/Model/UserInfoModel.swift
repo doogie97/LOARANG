@@ -6,11 +6,11 @@
 //
 
 struct UserInfo {
-    let basicInfo: UserBasicInfo
+    let basicInfo: BasicInfo
     let basicAbility: BasicAbility
 }
 
-struct UserBasicInfo {
+struct BasicInfo {
     let name: String
     let server: String
     let `class`: String

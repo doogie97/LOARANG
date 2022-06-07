@@ -20,7 +20,7 @@ class BasicInfoTVCell: UITableViewCell {
     @IBOutlet weak var guildLabel: UILabel!
     @IBOutlet weak var wisdomLabel: UILabel!
     
-    func configuerInfo(info: UserBasicInfo) {
+    func configuerInfo(info: BasicInfo) {
         basicInfoStackView.layer.cornerRadius = 10
         classImageView.layer.cornerRadius = classImageView.frame.height / 2.8
         classImageView.image = UIImage(named: "\(info.`class`)프로필")

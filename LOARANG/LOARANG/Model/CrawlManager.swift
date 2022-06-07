@@ -20,7 +20,7 @@ struct CrawlManager {
         return UserInfo(basicInfo: info, basicAbility: ability)
     }
     
-    private func getbainfo(userName:String ,doc: Document) throws -> UserBasicInfo {
+    private func getbainfo(userName:String ,doc: Document) throws -> BasicInfo {
         var info: [String] = []
         let userInfo = try doc.select(".define").select("dd")
         
@@ -34,7 +34,7 @@ struct CrawlManager {
         
         info.append(battleLevel)
         
-        return UserBasicInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[6], pvp: info[7], wisdom: info[8], battleLevel: info[9])
+        return BasicInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[6], pvp: info[7], wisdom: info[8], battleLevel: info[9])
     }
     
     private func getBasicAbility(doc: Document) throws -> BasicAbility {
