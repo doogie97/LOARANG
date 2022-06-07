@@ -18,7 +18,7 @@ class UserInfoViewController: UIViewController {
         userInfoTableView.register(UINib(nibName: "\(UserInfoTableViewCell.self)", bundle: nil), forCellReuseIdentifier: "\(UserInfoTableViewCell.self)")
     }
     
-    func asdf(user: UserBasicInfo?) {
+    func receiveInfo(user: UserBasicInfo?) {
         self.user = user
     }
 }
