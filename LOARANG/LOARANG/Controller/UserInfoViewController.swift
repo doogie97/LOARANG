@@ -40,6 +40,6 @@ extension UserInfoViewController: UITableViewDataSource {
 
 extension UserInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.width * 0.35
+        return UIScreen.main.bounds.width * 0.45
     }
 }
