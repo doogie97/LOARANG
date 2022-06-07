@@ -6,6 +6,6 @@
 //
 
 enum CrawlError: Error {
-    case basicInfoError
-    case basicAbilityError
+    case convertError
+    case searchError
 }
