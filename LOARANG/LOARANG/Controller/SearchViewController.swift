@@ -38,7 +38,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
         do {
             let info = try crawlManager.searchUser(userName: userName)
-            userInfoVC.receiveInfo(user: info.basicInfo)
+            userInfoVC.receiveInfo(user: info)
         } catch {
             showAlert()
         }

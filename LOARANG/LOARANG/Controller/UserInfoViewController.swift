@@ -9,7 +9,7 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
     @IBOutlet weak var userInfoTableView: UITableView!
-    private var user: BasicInfo?
+    private var user: UserInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class UserInfoViewController: UIViewController {
         userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
     }
     
-    func receiveInfo(user: BasicInfo) {
+    func receiveInfo(user: UserInfo) {
         self.user = user
     }
 }
@@ -35,7 +35,7 @@ extension UserInfoViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicInfoTVCell.self)") as? BasicInfoTVCell else { return BasicInfoTVCell() }
             
             guard let user = user else { return cell }
-            cell.configuerInfo(info: user)
+            cell.configuerInfo(info: user.basicInfo)
             
             return cell
         case 1:
