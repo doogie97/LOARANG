@@ -16,13 +16,12 @@ struct CrawlManager {
         let doc: Document = try SwiftSoup.parse(html)
         
         let info = try getbainfo(userName: userName, doc: doc)
-        
-        return UserInfo(basicInfo: info, basicAbility: BasicAbility())
+        let ability = try getBasicAbility(doc: doc)
+        return UserInfo(basicInfo: info, basicAbility: ability)
     }
     
     private func getbainfo(userName:String ,doc: Document) throws -> UserBasicInfo {
         var info: [String] = []
-        
         let userInfo = try doc.select(".define").select("dd")
         
         for i in userInfo {
@@ -38,18 +37,18 @@ struct CrawlManager {
         return UserBasicInfo(name: userName, server: info[0], class: info[1], expeditionLevel: info[2], title: info[3], itemLevel: info[4], guild: info[6], pvp: info[7], wisdom: info[8], battleLevel: info[9])
     }
     
-    
-    private func getBasicAbility(url: URL) { //임시임
-        do {
-            let html = try String(contentsOf: url, encoding: .utf8)
-            let doc: Document = try SwiftSoup.parse(html)
-            let 스탯 = try doc.select(".profile-ability-basic").select("span")
-            for i in 스탯 {
-                print(try i.text())
-            }
-            let 각인 = try doc.select(".profile-ability-engrave").select("span").text()
-            print(각인)
-        } catch {}
+    private func getBasicAbility(doc: Document) throws -> BasicAbility {
+        var ability: [String] = []
+        let userAbility = try doc.select(".profile-ability-basic").select("span")
+        
+        for i in userAbility {
+            ability.append(try i.text())
+        }
+        
+        if ability.isEmpty {
+        return BasicAbility(att: "0", vitality: "0", crit: "0", specialization: "0", domination: "0", swiftness: "0", endurance: "0", expertise: "0")
+        }
+        
+        return BasicAbility(att: ability[1], vitality: ability[3], crit: ability[5], specialization: ability[7], domination: ability[9], swiftness: ability[11], endurance: ability[13], expertise: ability[15])
     }
 }
-
