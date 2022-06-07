@@ -22,7 +22,7 @@ class BasicInfoTVCell: UITableViewCell {
     
     func configuerInfo(info: UserBasicInfo) {
         basicInfoStackView.layer.cornerRadius = 10
-        classImageView.layer.cornerRadius = classImageView.frame.height / 4.7
+        classImageView.layer.cornerRadius = classImageView.frame.height / 2.8
         classImageView.image = UIImage(named: "\(info.`class`)프로필")
         setFont()
         serverLvNameLabel.text = "\(info.server) \(info.name)"
