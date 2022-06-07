@@ -146,8 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD92687283B3A970026985C /* Main.storyboard */,
-				ACAF1B6428451C0800BD7991 /* MainUser */,
-				ACAF1B6528451C2000BD7991 /* Bookmark */,
+				ACEE2DDA284EF75D0032B136 /* MainHome */,
 				ACAF1B6628451D3400BD7991 /* UserInfo */,
 				ACD9268C283B3A970026985C /* LaunchScreen.storyboard */,
 			);
@@ -251,6 +250,15 @@
 				ACD9268F283B3A970026985C /* Info.plist */,
 			);
 			path = LOARANG;
+			sourceTree = "<group>";
+		};
+		ACEE2DDA284EF75D0032B136 /* MainHome */ = {
+			isa = PBXGroup;
+			children = (
+				ACAF1B6428451C0800BD7991 /* MainUser */,
+				ACAF1B6528451C2000BD7991 /* Bookmark */,
+			);
+			path = MainHome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
