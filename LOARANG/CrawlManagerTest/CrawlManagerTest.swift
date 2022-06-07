@@ -22,14 +22,17 @@ class CrawlManagerTest: XCTestCase {
         sut = nil
     }
     
-    func test_getCharacterTitle호출시_userName이_최지근일때_이름을잘가져오는지(){
+    func test_getCharacterTitle호출시_userName이_최지근일때_길드이름을잘가져오는지(){
         //given
         let userName = "최지근"
         
-        //then
-        guard let result = sut.getBasicInfo(userName: userName) else { XCTFail(); return }
-        
-        //then
-        XCTAssertEqual(result.name, "최지근")
+        //when
+        do {
+            let result = try sut.searchUser(userName: userName)
+            //then
+            XCTAssertEqual(result.basicInfo.guild, "미지근")
+        } catch {
+            XCTFail()
+        }
     }
 }
