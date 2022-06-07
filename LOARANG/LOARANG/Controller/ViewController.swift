@@ -45,10 +45,8 @@ extension ViewController: UITableViewDataSource {
             cell.setTVCell()
             return cell
         default:
-            break
+            return BookMarkTableViewCell()
         }
-
-        return BookMarkTableViewCell()
     }
 }
 

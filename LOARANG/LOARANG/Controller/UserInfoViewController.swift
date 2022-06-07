@@ -16,6 +16,7 @@ class UserInfoViewController: UIViewController {
         userInfoTableView.dataSource = self
         userInfoTableView.delegate = self
         userInfoTableView.register(UINib(nibName: "\(BasicInfoTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicInfoTVCell.self)")
+        userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
     }
     
     func receiveInfo(user: BasicInfo) {
@@ -25,21 +26,37 @@ class UserInfoViewController: UIViewController {
 
 extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicInfoTVCell.self)") as? BasicInfoTVCell else { return BasicInfoTVCell() }
-        
-        guard let user = user else { return cell }
-        cell.configuerInfo(info: user)
-        
-        return cell
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicInfoTVCell.self)") as? BasicInfoTVCell else { return BasicInfoTVCell() }
+            
+            guard let user = user else { return cell }
+            cell.configuerInfo(info: user)
+            
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicAbilityTVCell.self)") as? BasicAbilityTVCell else { return BasicAbilityTVCell() }
+            cell.set()
+            return cell
+        default:
+            return BasicInfoTVCell()
+        }
     }
 }
 
 extension UserInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.width * 0.45
+        switch indexPath.row {
+        case 0:
+            return UIScreen.main.bounds.width * 0.45
+        case 1:
+            return UIScreen.main.bounds.width * 0.3
+        default:
+            return 0
+        }
     }
 }

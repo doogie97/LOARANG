@@ -13,6 +13,8 @@
 		AC31A8E8283B925100597055 /* BookMarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */; };
 		AC31A8E9283B925100597055 /* BookMarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */; };
 		AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */; };
+		AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */; };
+		AC740CA6284F444B0015562C /* BasicAbilityTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */; };
 		ACAF1B61284504A000BD7991 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF1B60284504A000BD7991 /* UIFont + Extension.swift */; };
 		ACAF1B692845265E00BD7991 /* Accessoryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF1B682845265E00BD7991 /* Accessoryable.swift */; };
 		ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C37283E7BB5006B25EA /* CrawlManager.swift */; };
@@ -57,6 +59,8 @@
 		AC31A8E6283B925100597055 /* BookMarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTableViewCell.swift; sourceTree = "<group>"; };
 		AC31A8E7283B925100597055 /* BookMarkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkTableViewCell.xib; sourceTree = "<group>"; };
 		AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
+		AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicAbilityTVCell.xib; sourceTree = "<group>"; };
 		ACAF1B60284504A000BD7991 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		ACAF1B682845265E00BD7991 /* Accessoryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessoryable.swift; sourceTree = "<group>"; };
 		ACB73C37283E7BB5006B25EA /* CrawlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlManager.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 			children = (
 				ACEE2DE1284EFC9B0032B136 /* BasicInfoTVCell.xib */,
 				ACEE2DE0284EFC9B0032B136 /* BasicInfoTVCell.swift */,
+				AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */,
+				AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -356,6 +362,7 @@
 				ACCB6557284501E5008FFF9A /* ONE-Mobile-Light.ttf in Resources */,
 				AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */,
 				ACD34D55283F6FE200A5AA72 /* MianUserTableViewCell.xib in Resources */,
+				AC740CA6284F444B0015562C /* BasicAbilityTVCell.xib in Resources */,
 				AC31A8E9283B925100597055 /* BookMarkTableViewCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
 				ACD9268B283B3A970026985C /* Assets.xcassets in Resources */,
@@ -435,6 +442,7 @@
 				ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */,
 				ACAF1B692845265E00BD7991 /* Accessoryable.swift in Sources */,
 				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
+				AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */,
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
 				ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */,
 			);
