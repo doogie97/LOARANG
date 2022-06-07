@@ -30,17 +30,19 @@ extension UserInfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let user = user else { return BasicInfoTVCell() }
+        
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicInfoTVCell.self)") as? BasicInfoTVCell else { return BasicInfoTVCell() }
             
-            guard let user = user else { return cell }
+            
             cell.configuerInfo(info: user.basicInfo)
             
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicAbilityTVCell.self)") as? BasicAbilityTVCell else { return BasicAbilityTVCell() }
-            cell.set()
+            cell.configureInfo(info: user.basicAbility)
             return cell
         default:
             return BasicInfoTVCell()
@@ -54,7 +56,7 @@ extension UserInfoViewController: UITableViewDelegate {
         case 0:
             return UIScreen.main.bounds.width * 0.45
         case 1:
-            return UIScreen.main.bounds.width * 0.3
+            return UIScreen.main.bounds.width * 0.5
         default:
             return 0
         }
