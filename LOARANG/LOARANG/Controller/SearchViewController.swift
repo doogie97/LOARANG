@@ -9,6 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var userSearchBar: UISearchBar!
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     private let crawlManager = CrawlManager()
     
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        myActivityIndicator.isHidden = false
         self.view.endEditing(true)
         guard let userName = searchBar.text else { return }
         guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
@@ -41,5 +43,6 @@ extension SearchViewController: UISearchBarDelegate {
             showAlert()
         }
         navigationController?.pushViewController(userInfoVC, animated: true)
+        myActivityIndicator.isHidden = true
     }
 }

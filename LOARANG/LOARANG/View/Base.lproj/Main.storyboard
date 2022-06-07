@@ -162,16 +162,23 @@
                                     <constraint firstItem="c3x-Rv-7Lm" firstAttribute="width" secondItem="jro-66-6i9" secondAttribute="width" multiplier="0.1" id="xZg-cO-aGB"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-9W-rpu">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lqm-9Z-u5d"/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="yvG-9W-rpu" firstAttribute="centerY" secondItem="MjZ-nu-OAo" secondAttribute="centerY" id="hnB-7J-oNN"/>
                             <constraint firstItem="Lqm-9Z-u5d" firstAttribute="trailing" secondItem="jro-66-6i9" secondAttribute="trailing" id="kKP-d9-oui"/>
+                            <constraint firstItem="yvG-9W-rpu" firstAttribute="centerX" secondItem="MjZ-nu-OAo" secondAttribute="centerX" id="mXF-Kh-uEv"/>
                             <constraint firstItem="jro-66-6i9" firstAttribute="top" secondItem="Lqm-9Z-u5d" secondAttribute="top" id="niy-rd-QLm"/>
                             <constraint firstItem="jro-66-6i9" firstAttribute="leading" secondItem="Lqm-9Z-u5d" secondAttribute="leading" id="vaz-Sc-dI4"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="myActivityIndicator" destination="yvG-9W-rpu" id="iws-13-Y6m"/>
                         <outlet property="userSearchBar" destination="fbI-ez-4pp" id="3Ye-bA-ux6"/>
                     </connections>
                 </viewController>
