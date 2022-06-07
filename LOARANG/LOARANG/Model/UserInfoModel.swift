@@ -5,6 +5,11 @@
 //  Created by 최최성균 on 2022/05/26.
 //
 
+struct UserInfo {
+    let basicInfo: UserBasicInfo
+    let basicAbility: BasicAbility
+}
+
 struct UserBasicInfo {
     let name: String
     let server: String
@@ -16,4 +21,8 @@ struct UserBasicInfo {
     let pvp: String
     let wisdom: String
     let battleLevel: String
+}
+
+struct BasicAbility {
+    
 }
