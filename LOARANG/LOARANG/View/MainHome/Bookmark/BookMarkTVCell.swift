@@ -20,7 +20,7 @@ final class BookMarkTVCell: UITableViewCell {
 
 extension BookMarkTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        BookmarkManager.shared.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

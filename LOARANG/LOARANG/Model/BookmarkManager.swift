@@ -11,6 +11,10 @@ final class BookmarkManager {
     static let shared = BookmarkManager()
     private var bookmarks: [String : String] = [:]
     
+    var count: Int {
+        return bookmarks.count
+    }
+    
     func setUsers() {
         guard let users = UserDefaults.standard.dictionary(forKey: "bookmarks") as? [String : String] else { return }
         bookmarks = users
