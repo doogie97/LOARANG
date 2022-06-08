@@ -21,8 +21,13 @@ class BasicInfoTVCell: UITableViewCell {
     @IBOutlet private weak var wisdomLabel: UILabel!
     @IBOutlet private weak var bookmarkButton: UIButton!
     
-    func configuerInfo(info: BasicInfo) {
     private var userInfo: BasicInfo?
+    
+    func receiveUserInfo(info: BasicInfo) {
+        userInfo = info
+        configuerInfo()
+    }
+    
     @IBAction private func touchBookmarkButton(_ sender: UIButton) {
         guard let userInfo = userInfo else { return }
         if BookmarkManager.shared.isContain(name: userInfo.name) {
