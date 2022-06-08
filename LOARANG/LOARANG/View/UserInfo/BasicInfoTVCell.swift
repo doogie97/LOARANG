@@ -8,17 +8,18 @@
 import UIKit
 
 class BasicInfoTVCell: UITableViewCell {
-    @IBOutlet weak var basicInfoStackView: UIStackView!
-    @IBOutlet weak var classImageView: UIImageView!
-    @IBOutlet weak var classLabel: UILabel!
-    @IBOutlet weak var serverLvNameLabel: UILabel!
-    @IBOutlet weak var itemLvLabel: UILabel!
-    @IBOutlet weak var pvpLabel: UILabel!
-    @IBOutlet weak var expLvLabel: UILabel!
-    @IBOutlet weak var battleLvLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var guildLabel: UILabel!
-    @IBOutlet weak var wisdomLabel: UILabel!
+    @IBOutlet private weak var basicInfoStackView: UIStackView!
+    @IBOutlet private weak var classImageView: UIImageView!
+    @IBOutlet private weak var classLabel: UILabel!
+    @IBOutlet private weak var serverLvNameLabel: UILabel!
+    @IBOutlet private weak var itemLvLabel: UILabel!
+    @IBOutlet private weak var pvpLabel: UILabel!
+    @IBOutlet private weak var expLvLabel: UILabel!
+    @IBOutlet private weak var battleLvLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var guildLabel: UILabel!
+    @IBOutlet private weak var wisdomLabel: UILabel!
+    @IBOutlet private weak var bookmarkButton: UIButton!
     
     @IBOutlet weak var touchBookmarkButton: UIButton!
     func configuerInfo(info: BasicInfo) {
