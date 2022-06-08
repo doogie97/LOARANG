@@ -8,20 +8,29 @@
 import UIKit
 
 class UserInfoViewController: UIViewController {
-    @IBOutlet weak var userInfoTableView: UITableView!
+    @IBOutlet private weak var userInfoTableView: UITableView!
     @IBOutlet private weak var navigationTitle: UINavigationItem!
     private var user: UserInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userInfoTableView.dataSource = self
-        userInfoTableView.delegate = self
-        userInfoTableView.register(UINib(nibName: "\(BasicInfoTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicInfoTVCell.self)")
-        userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
+        setInitialView()
     }
     
     func receiveInfo(user: UserInfo) {
         self.user = user
+    }
+
+    @IBAction private func touchBackButton(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func setInitialView() {
+        navigationTitle.title = user?.basicInfo.name
+        userInfoTableView.dataSource = self
+        userInfoTableView.delegate = self
+        userInfoTableView.register(UINib(nibName: "\(BasicInfoTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicInfoTVCell.self)")
+        userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
     }
 }
 
