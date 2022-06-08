@@ -46,8 +46,7 @@ extension UserInfoViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicInfoTVCell.self)") as? BasicInfoTVCell else { return BasicInfoTVCell() }
             
-            
-            cell.configuerInfo(info: user.basicInfo)
+            cell.receiveUserInfo(info: user.basicInfo)
             
             return cell
         case 1:

@@ -23,19 +23,28 @@ class BasicInfoTVCell: UITableViewCell {
     
     @IBOutlet weak var touchBookmarkButton: UIButton!
     func configuerInfo(info: BasicInfo) {
+    private var userInfo: BasicInfo?
+//MARK: - about view
+extension BasicInfoTVCell {
+    private func configuerInfo() {
+        guard let userInfo = userInfo else { return }
+
         basicInfoStackView.layer.cornerRadius = 10
         classImageView.layer.cornerRadius = classImageView.frame.height / 2.8
-        classImageView.image = UIImage(named: "\(info.`class`)프로필")
+        classImageView.image = UIImage(named: "\(userInfo.`class`)프로필")
         setFont()
-        serverLvNameLabel.text = "\(info.server) \(info.name)"
-        classLabel.text = info.`class`
-        itemLvLabel.text = "아이템 : " + info.itemLevel
-        pvpLabel.text = "PVP : " + info.pvp
-        expLvLabel.text = "원정대 : " + info.expeditionLevel
-        battleLvLabel.text = "전투 레벨 : " + info.battleLevel
-        titleLabel.text = "칭호 : " + info.title
-        guildLabel.text = "길드 : " + info.guild
-        wisdomLabel.text = "영지 : " + info.wisdom
+        serverLvNameLabel.text = "\(userInfo.server) \(userInfo.name)"
+        classLabel.text = userInfo.`class`
+        itemLvLabel.text = "아이템 : " + userInfo.itemLevel
+        pvpLabel.text = "PVP : " + userInfo.pvp
+        expLvLabel.text = "원정대 : " + userInfo.expeditionLevel
+        battleLvLabel.text = "전투 레벨 : " + userInfo.battleLevel
+        titleLabel.text = "칭호 : " + userInfo.title
+        guildLabel.text = "길드 : " + userInfo.guild
+        wisdomLabel.text = "영지 : " + userInfo.wisdom
+        changeBookmarkButton(name: userInfo.name)
+       
+    }
     }
     
     private func setFont() {
