@@ -31,7 +31,9 @@ extension BookMarkTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(BookMarkCVCell.self)", for: indexPath) as? BookMarkCVCell else { return BookMarkCVCell() }
         let users = BookmarkManager.shared.getUsersArrays()
-        cell.configureCell(name: users[0][indexPath.row], class: users[1][indexPath.row])
+        let name = users[0][indexPath.row]
+        let `class` = users[1][indexPath.row]
+        cell.configureCell(name: name, class: `class`)
         return cell
     }
 }
