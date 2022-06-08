@@ -21,9 +21,18 @@ class BasicInfoTVCell: UITableViewCell {
     @IBOutlet private weak var wisdomLabel: UILabel!
     @IBOutlet private weak var bookmarkButton: UIButton!
     
-    @IBOutlet weak var touchBookmarkButton: UIButton!
     func configuerInfo(info: BasicInfo) {
     private var userInfo: BasicInfo?
+    @IBAction private func touchBookmarkButton(_ sender: UIButton) {
+        guard let userInfo = userInfo else { return }
+        if BookmarkManager.shared.isContain(name: userInfo.name) {
+            BookmarkManager.shared.removeUser(name: userInfo.name)
+        } else {
+            BookmarkManager.shared.addUser(name: userInfo.name, class: userInfo.class)
+        }
+        bookmarkButton.setButtonColor(name: userInfo.name)
+    }
+}
 //MARK: - about view
 extension BasicInfoTVCell {
     private func configuerInfo() {
@@ -42,9 +51,7 @@ extension BasicInfoTVCell {
         titleLabel.text = "칭호 : " + userInfo.title
         guildLabel.text = "길드 : " + userInfo.guild
         wisdomLabel.text = "영지 : " + userInfo.wisdom
-        changeBookmarkButton(name: userInfo.name)
-       
-    }
+        bookmarkButton.setButtonColor(name: userInfo.name)
     }
     
     private func setFont() {
