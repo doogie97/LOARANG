@@ -45,6 +45,14 @@ extension BookMarkTVCell: UICollectionViewDataSource {
     }
 }
 
+extension BookMarkTVCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let users = BookmarkManager.shared.getUsersArrays()
+        let name = users[0][indexPath.row]
+        delegate?.moveToUserInfoVC(name: name)
+    }
+}
+
 extension BookMarkTVCell {
     private func setbookMarkCVLayout() {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))

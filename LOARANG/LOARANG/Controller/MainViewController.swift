@@ -60,3 +60,16 @@ extension MainViewController: UITableViewDelegate {
         return UIScreen.main.bounds.width * 0.58
     }
 }
+
+extension MainViewController: TouchCellDelegate {
+    func moveToUserInfoVC(name: String) {
+        guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
+        do {
+            let info = try CrawlManager.shared.searchUser(userName: name)
+            userInfoVC.receiveInfo(user: info)
+        } catch {
+            
+        }
+        navigationController?.pushViewController(userInfoVC, animated: true)
+    }
+}
