@@ -30,7 +30,9 @@ final class BookMarkCVCell: UICollectionViewCell {
     }
 
     @IBAction func touchStarButton(_ sender: UIButton) {
-        print("북마크 해제(nameLabel에 있는 이름 유저디폴트에서 제거 하면서 모 어쩌고 델리게이트 패턴으로라던지 콜렉션뷰 리로드 하기")
+        guard let name = nameLabel.text else { return }
+        BookmarkManager.shared.removeUser(name: name)
+        NotificationCenter.default.post(name: Notification.Name.bookmark, object: nil)
     }
     
     override func prepareForReuse() {
