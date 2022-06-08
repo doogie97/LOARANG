@@ -26,5 +26,9 @@ final class BookmarkManager {
         UserDefaults.standard.set(bookmarks, forKey: "bookmarks")
     }
     
+    func isContain(name: String) -> Bool {
+        return bookmarks.contains {$0.key == name }
+    }
+    
     private init() {}
 }
