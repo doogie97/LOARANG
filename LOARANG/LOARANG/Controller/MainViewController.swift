@@ -11,12 +11,6 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var mainTableView: UITableView!
     @IBOutlet private weak var searchButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        BookmarkManager.shared.setUsers()
-        mainTableView.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitailStatus()
@@ -28,6 +22,7 @@ final class MainViewController: UIViewController {
         mainTableView.separatorStyle = .none
         mainTableView.register(UINib(nibName: "\(BookMarkTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BookMarkTVCell.self)")
         mainTableView.register(UINib(nibName: "\(MianUserTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(MianUserTVCell.self)")
+        BookmarkManager.shared.setUsers()
     }
     
     @IBAction func touchSearchButton(_ sender: UIButton) {
