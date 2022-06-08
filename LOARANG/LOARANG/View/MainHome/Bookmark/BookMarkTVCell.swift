@@ -7,12 +7,19 @@
 
 import UIKit
 
+protocol TouchCellDelegate {
+    func moveToUserInfoVC(name: String)
+}
+
 final class BookMarkTVCell: UITableViewCell {
     @IBOutlet private weak var bookMarkCollectionView: UICollectionView!
+    private var delegate: TouchCellDelegate?
     
-    func setTVCell() {
+    func setTVCell(vc: TouchCellDelegate) {
         bookMarkCollectionView.register(UINib(nibName: "\(BookMarkCVCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(BookMarkCVCell.self)")
         bookMarkCollectionView.dataSource = self
+        bookMarkCollectionView.delegate = self
+        delegate = vc
         bookMarkCollectionView.layer.cornerRadius = 10
         setbookMarkCVLayout()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCV), name: Notification.Name.bookmark, object: nil)

@@ -44,7 +44,7 @@ extension MainViewController: UITableViewDataSource {
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookMarkTVCell.self)") as? BookMarkTVCell else { return BookMarkTVCell()}
-            cell.setTVCell()
+            cell.setTVCell(vc: self)
             return cell
         default:
             return BookMarkTVCell()
