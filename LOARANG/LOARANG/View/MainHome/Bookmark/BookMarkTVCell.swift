@@ -15,6 +15,10 @@ final class BookMarkTVCell: UITableViewCell {
         bookMarkCollectionView.dataSource = self
         bookMarkCollectionView.layer.cornerRadius = 10
         setbookMarkCVLayout()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCV), name: Notification.Name.bookmark, object: nil)
+    }
+    
+    @objc private func reloadCV() {
         bookMarkCollectionView.reloadData()
     }
 }
