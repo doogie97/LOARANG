@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BookMarkTableViewCell: UITableViewCell {
+final class BookMarkTVCell: UITableViewCell {
     @IBOutlet private weak var bookMarkCollectionView: UICollectionView!
     
     func setTVCell() {
@@ -18,7 +18,7 @@ final class BookMarkTableViewCell: UITableViewCell {
     }
 }
 
-extension BookMarkTableViewCell: UICollectionViewDataSource {
+extension BookMarkTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         10
     }
@@ -30,7 +30,7 @@ extension BookMarkTableViewCell: UICollectionViewDataSource {
     }
 }
 
-extension BookMarkTableViewCell {
+extension BookMarkTVCell {
     private func setbookMarkCVLayout() {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)

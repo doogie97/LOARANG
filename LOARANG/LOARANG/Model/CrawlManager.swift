@@ -15,12 +15,12 @@ struct CrawlManager {
         let html = try String(contentsOf: url, encoding: .utf8)
         let doc: Document = try SwiftSoup.parse(html)
         
-        let info = try getbainfo(userName: userName, doc: doc)
+        let info = try getBasicInfo(userName: userName, doc: doc)
         let ability = try getBasicAbility(doc: doc)
         return UserInfo(basicInfo: info, basicAbility: ability)
     }
     
-    private func getbainfo(userName:String ,doc: Document) throws -> BasicInfo {
+    private func getBasicInfo(userName:String ,doc: Document) throws -> BasicInfo {
         var info: [String] = []
         let userInfo = try doc.select(".define").select("dd")
         

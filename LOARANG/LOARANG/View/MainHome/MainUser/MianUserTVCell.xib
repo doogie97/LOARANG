@@ -14,7 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MianUserTableViewCell" rowHeight="376" id="2Sg-vZ-mog" userLabel="MianUserTableViewCell" customClass="MianUserTableViewCell" customModule="LOARANG" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MianUserTVCell" rowHeight="376" id="2Sg-vZ-mog" userLabel="MianUserTVCell" customClass="MianUserTVCell" customModule="LOARANG" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="561" height="376"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Sg-vZ-mog" id="LA0-vE-vfo">

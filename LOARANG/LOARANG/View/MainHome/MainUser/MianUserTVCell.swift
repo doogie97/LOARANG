@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MianUserTableViewCell: UITableViewCell {
+class MianUserTVCell: UITableViewCell {
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var topView: UIView!
