@@ -55,6 +55,6 @@ extension ViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             return UIScreen.main.bounds.width * 0.75
         }
-        return UIScreen.main.bounds.width * 0.45
+        return UIScreen.main.bounds.width * 0.58
     }
 }
