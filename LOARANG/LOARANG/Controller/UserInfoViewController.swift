@@ -9,6 +9,7 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
     @IBOutlet weak var userInfoTableView: UITableView!
+    @IBOutlet private weak var navigationTitle: UINavigationItem!
     private var user: UserInfo?
     
     override func viewDidLoad() {

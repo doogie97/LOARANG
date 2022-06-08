@@ -20,6 +20,7 @@ class BasicInfoTVCell: UITableViewCell {
     @IBOutlet weak var guildLabel: UILabel!
     @IBOutlet weak var wisdomLabel: UILabel!
     
+    @IBOutlet weak var touchBookmarkButton: UIButton!
     func configuerInfo(info: BasicInfo) {
         basicInfoStackView.layer.cornerRadius = 10
         classImageView.layer.cornerRadius = classImageView.frame.height / 2.8

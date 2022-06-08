@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,16 +44,27 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="azQ-eL-yQO">
                                         <rect key="frame" x="146.5" y="10" width="358.5" height="204"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lY2-pj-Ooy">
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lY2-pj-Ooy">
                                                 <rect key="frame" x="0.0" y="0.0" width="358.5" height="51"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5g-Wa-JPf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="358.5" height="51"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="322.5" height="51"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOC-h1-CMO">
+                                                        <rect key="frame" x="322.5" y="0.0" width="36" height="51"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title=" ">
+                                                            <imageReference key="image" image="star.fill" catalog="system" symbolScale="small"/>
+                                                            <color key="baseForegroundColor" red="0.89411764709999997" green="1" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </buttonConfiguration>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="JOC-h1-CMO" firstAttribute="width" secondItem="lY2-pj-Ooy" secondAttribute="width" multiplier="0.1" id="40d-oB-3Mu"/>
+                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HlD-hW-BrG">
                                                 <rect key="frame" x="0.0" y="51" width="358.5" height="153"/>
@@ -157,9 +169,13 @@
                 <outlet property="pvpLabel" destination="1Rj-iW-D7W" id="4TD-tb-Hfn"/>
                 <outlet property="serverLvNameLabel" destination="p5g-Wa-JPf" id="j79-rJ-ciQ"/>
                 <outlet property="titleLabel" destination="UxM-vf-wb7" id="MV7-hZ-kJ7"/>
+                <outlet property="touchBookmarkButton" destination="JOC-h1-CMO" id="Ktl-0l-Ddv"/>
                 <outlet property="wisdomLabel" destination="6nG-Fb-8zw" id="gd7-ys-De4"/>
             </connections>
             <point key="canvasLocation" x="274.63768115942031" y="167.41071428571428"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+    </resources>
 </document>

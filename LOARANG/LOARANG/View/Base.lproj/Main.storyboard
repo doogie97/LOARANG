@@ -194,27 +194,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHZ-0g-zOj">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="Bg3-bV-21a"/>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cFZ-Ca-10j">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B52-ry-eR9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="유저 정보" id="OEQ-zJ-9Xl">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="zvC-iz-ebW">
+                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="small"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="touchBackButton:" destination="zgo-T0-Lig" id="Iqv-Y7-OEU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yR9-iI-KH4"/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="B52-ry-eR9" firstAttribute="top" secondItem="yR9-iI-KH4" secondAttribute="top" id="5aM-V3-9rC"/>
+                            <constraint firstItem="cFZ-Ca-10j" firstAttribute="top" secondItem="B52-ry-eR9" secondAttribute="bottom" id="8pC-Pw-ohg"/>
                             <constraint firstItem="cFZ-Ca-10j" firstAttribute="leading" secondItem="yR9-iI-KH4" secondAttribute="leading" id="SZ5-I5-gNs"/>
+                            <constraint firstItem="B52-ry-eR9" firstAttribute="leading" secondItem="yR9-iI-KH4" secondAttribute="leading" id="UJ7-XI-M3J"/>
                             <constraint firstItem="yR9-iI-KH4" firstAttribute="trailing" secondItem="cFZ-Ca-10j" secondAttribute="trailing" id="Xeg-8G-Bix"/>
                             <constraint firstItem="yR9-iI-KH4" firstAttribute="bottom" secondItem="cFZ-Ca-10j" secondAttribute="bottom" id="aBc-OD-ZqC"/>
-                            <constraint firstItem="cFZ-Ca-10j" firstAttribute="top" secondItem="yR9-iI-KH4" secondAttribute="top" id="jw2-0k-vJd"/>
+                            <constraint firstItem="B52-ry-eR9" firstAttribute="trailing" secondItem="yR9-iI-KH4" secondAttribute="trailing" id="qgy-tQ-pkB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationTitle" destination="OEQ-zJ-9Xl" id="PD5-49-gY2"/>
                         <outlet property="userInfoTableView" destination="cFZ-Ca-10j" id="NZJ-ii-UXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iA-7c-wwZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3770" y="57"/>
+            <point key="canvasLocation" x="3769.5652173913045" y="56.919642857142854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lcd-DL-us9">
@@ -237,6 +266,7 @@
     </scenes>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="북마크 (3)-1" width="30" height="47"/>
         <image name="설정 (4)" width="30" height="44"/>
