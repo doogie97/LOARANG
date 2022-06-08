@@ -14,8 +14,8 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitailStatus()
-        BookmarkManager.shared.setUsers()
     }
+    
     private func setInitailStatus() {
         mainTableView.dataSource = self
         mainTableView.delegate = self

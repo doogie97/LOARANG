@@ -9,7 +9,7 @@ import Foundation
 
 final class BookmarkManager {
     static let shared = BookmarkManager()
-    private var bookmarks: [String : String] = [:]
+    private var bookmarks = UserDefaults.standard.dictionary(forKey: "bookmarks") as? [String : String] ?? [:]
     
     var count: Int {
         return bookmarks.count
@@ -24,11 +24,6 @@ final class BookmarkManager {
         }
         
         return [name, `class`]
-    }
-    
-    func setUsers() {
-        guard let users = UserDefaults.standard.dictionary(forKey: "bookmarks") as? [String : String] else { return }
-        bookmarks = users
     }
     
     func addUser(name: String, `class`: String) {
