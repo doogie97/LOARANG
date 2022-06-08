@@ -36,6 +36,7 @@ class BasicInfoTVCell: UITableViewCell {
             BookmarkManager.shared.addUser(name: userInfo.name, class: userInfo.class)
         }
         bookmarkButton.setButtonColor(name: userInfo.name)
+        NotificationCenter.default.post(name: Notification.Name.bookmark, object: nil)
     }
 }
 //MARK: - about view
