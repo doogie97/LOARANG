@@ -8,8 +8,8 @@
 import UIKit
 
 final class BookMarkCVCell: UICollectionViewCell {
-    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     override var bounds: CGRect {
          didSet {
@@ -17,7 +17,13 @@ final class BookMarkCVCell: UICollectionViewCell {
          }
      }
     
-    func setBookMarkCell() {
+    func configureCell(name: String, `class`: String) {
+        nameLabel.text = name
+        profileImageView.image = UIImage(named: `class` + "프로필")
+        setBookMarkCell()
+    }
+    
+    private func setBookMarkCell() {
         self.layer.cornerRadius = 10
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         nameLabel.font = UIFont.one(size: 15, family: .Bold)
