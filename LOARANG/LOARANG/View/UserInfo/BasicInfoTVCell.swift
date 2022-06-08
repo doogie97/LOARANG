@@ -45,7 +45,7 @@ extension BasicInfoTVCell {
 
         basicInfoStackView.layer.cornerRadius = 10
         classImageView.layer.cornerRadius = classImageView.frame.height / 2.8
-        classImageView.image = UIImage(named: "\(userInfo.`class`)프로필")
+        classImageView.image = UIImage(named: userInfo.`class` + "프로필")
         setFont()
         serverLvNameLabel.text = "\(userInfo.server) \(userInfo.name)"
         classLabel.text = userInfo.`class`
