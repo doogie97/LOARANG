@@ -15,6 +15,7 @@ final class BookMarkTVCell: UITableViewCell {
         bookMarkCollectionView.dataSource = self
         bookMarkCollectionView.layer.cornerRadius = 10
         setbookMarkCVLayout()
+        bookMarkCollectionView.reloadData()
     }
 }
 

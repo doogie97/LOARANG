@@ -11,6 +11,12 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var mainTableView: UITableView!
     @IBOutlet private weak var searchButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        BookmarkManager.shared.setUsers()
+        mainTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitailStatus()
