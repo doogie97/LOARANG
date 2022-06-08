@@ -12,6 +12,7 @@
 		AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */; };
 		AC31A8E8283B925100597055 /* BookMarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E6283B925100597055 /* BookMarkTVCell.swift */; };
 		AC31A8E9283B925100597055 /* BookMarkTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E7283B925100597055 /* BookMarkTVCell.xib */; };
+		AC39064B28508F2C00361391 /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064A28508F2C00361391 /* BookmarkManager.swift */; };
 		AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */; };
 		AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */; };
 		AC740CA6284F444B0015562C /* BasicAbilityTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */; };
@@ -58,6 +59,7 @@
 		AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCVCell.xib; sourceTree = "<group>"; };
 		AC31A8E6283B925100597055 /* BookMarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTVCell.swift; sourceTree = "<group>"; };
 		AC31A8E7283B925100597055 /* BookMarkTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkTVCell.xib; sourceTree = "<group>"; };
+		AC39064A28508F2C00361391 /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
 		AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
 		AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicAbilityTVCell.xib; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				ACAF1B672845249E00BD7991 /* Protocol */,
 				ACB73C46283E867D006B25EA /* Extension */,
 				ACB73C37283E7BB5006B25EA /* CrawlManager.swift */,
+				AC39064A28508F2C00361391 /* BookmarkManager.swift */,
 				ACEE2DD8284EE47B0032B136 /* CrawlError.swift */,
 				ACB73C49283E8846006B25EA /* UserInfoModel.swift */,
 			);
@@ -431,6 +434,7 @@
 			files = (
 				ACB73C4A283E8846006B25EA /* UserInfoModel.swift in Sources */,
 				ACD34D54283F6FE200A5AA72 /* MianUserTVCell.swift in Sources */,
+				AC39064B28508F2C00361391 /* BookmarkManager.swift in Sources */,
 				AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */,
 				ACD92686283B3A970026985C /* ViewController.swift in Sources */,
 				ACB73C48283E868F006B25EA /* String + Extension.swift in Sources */,

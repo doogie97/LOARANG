@@ -1,0 +1,30 @@
+//
+//  BookmarkManager.swift
+//  LOARANG
+//
+//  Created by 최최성균 on 2022/06/08.
+//
+
+import Foundation
+
+final class BookmarkManager {
+    static let shared = BookmarkManager()
+    private var bookmarks: [String : String] = [:]
+    
+    func setUsers() {
+        guard let users = UserDefaults.standard.dictionary(forKey: "bookmarks") as? [String : String] else { return }
+        bookmarks = users
+    }
+    
+    func addUser(name: String, `class`: String) {
+        bookmarks.updateValue(`class`, forKey: name)
+        UserDefaults.standard.set(bookmarks, forKey: "bookmarks")
+    }
+    
+    func removeUser(name: String) {
+        bookmarks.removeValue(forKey: name)
+        UserDefaults.standard.set(bookmarks, forKey: "bookmarks")
+    }
+    
+    private init() {}
+}
