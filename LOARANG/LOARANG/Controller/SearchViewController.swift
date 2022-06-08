@@ -10,7 +10,6 @@ import UIKit
 class SearchViewController: UIViewController {
     @IBOutlet weak var userSearchBar: UISearchBar!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
-    private let crawlManager = CrawlManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +36,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let userName = searchBar.text else { return }
         guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
         do {
-            let info = try crawlManager.searchUser(userName: userName)
+            let info = try CrawlManager.shared.searchUser(userName: userName)
             userInfoVC.receiveInfo(user: info)
         } catch {
             showAlert()
