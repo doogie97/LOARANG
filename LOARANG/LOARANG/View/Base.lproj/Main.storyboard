@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LOARANG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="LOARANG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOARANG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MO1-hE-fTX">
-                                        <rect key="frame" x="20.5" y="0.0" width="150.5" height="50"/>
+                                        <rect key="frame" x="20.5" y="0.0" width="143.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="y67-d2-zDV"/>
                                         </constraints>
@@ -41,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhV-eb-q5f">
-                                        <rect key="frame" x="171" y="0.0" width="176" height="50"/>
+                                        <rect key="frame" x="164" y="0.0" width="183" height="50"/>
                                         <fontDescription key="fontDescription" name="BlackHanSans-Regular" family="Black Han Sans" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

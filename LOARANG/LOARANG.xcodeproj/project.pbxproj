@@ -31,7 +31,7 @@
 		ACD34D55283F6FE200A5AA72 /* MianUserTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD34D53283F6FE200A5AA72 /* MianUserTVCell.xib */; };
 		ACD92682283B3A970026985C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92681283B3A970026985C /* AppDelegate.swift */; };
 		ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92683283B3A970026985C /* SceneDelegate.swift */; };
-		ACD92686283B3A970026985C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92685283B3A970026985C /* ViewController.swift */; };
+		ACD92686283B3A970026985C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92685283B3A970026985C /* MainViewController.swift */; };
 		ACD92689283B3A970026985C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD92687283B3A970026985C /* Main.storyboard */; };
 		ACD9268B283B3A970026985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD9268A283B3A970026985C /* Assets.xcassets */; };
 		ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD9268C283B3A970026985C /* LaunchScreen.storyboard */; };
@@ -81,7 +81,7 @@
 		ACD9267E283B3A970026985C /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD92681283B3A970026985C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD92683283B3A970026985C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ACD92685283B3A970026985C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ACD92685283B3A970026985C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ACD92688283B3A970026985C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACD9268A283B3A970026985C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACD9268D283B3A970026985C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		AC5F81DC283DE4760006A2BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ACD92685283B3A970026985C /* ViewController.swift */,
+				ACD92685283B3A970026985C /* MainViewController.swift */,
 				AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */,
 				ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */,
 			);
@@ -439,7 +439,7 @@
 				ACD34D54283F6FE200A5AA72 /* MianUserTVCell.swift in Sources */,
 				AC39064B28508F2C00361391 /* BookmarkManager.swift in Sources */,
 				AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */,
-				ACD92686283B3A970026985C /* ViewController.swift in Sources */,
+				ACD92686283B3A970026985C /* MainViewController.swift in Sources */,
 				AC39064D2850ED3F00361391 /* UIButton + Extension.swift in Sources */,
 				ACB73C48283E868F006B25EA /* String + Extension.swift in Sources */,
 				ACEE2DD9284EE47B0032B136 /* CrawlError.swift in Sources */,

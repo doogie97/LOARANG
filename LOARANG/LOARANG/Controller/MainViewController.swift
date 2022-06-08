@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  LOARANG
 //
 //  Created by 최최성균 on 2022/05/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class MainViewController: UIViewController {
     @IBOutlet private weak var mainTableView: UITableView!
     @IBOutlet private weak var searchButton: UIButton!
     
@@ -30,7 +30,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
@@ -51,7 +51,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return UIScreen.main.bounds.width * 0.75
