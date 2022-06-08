@@ -15,6 +15,17 @@ final class BookmarkManager {
         return bookmarks.count
     }
     
+    func getUsersArrays() -> [[String]] {
+        var name: [String] = []
+        var `class`: [String] = []
+        for user in bookmarks {
+            name.append(user.key)
+            `class`.append(user.value)
+        }
+        
+        return [name, `class`]
+    }
+    
     func setUsers() {
         guard let users = UserDefaults.standard.dictionary(forKey: "bookmarks") as? [String : String] else { return }
         bookmarks = users
