@@ -139,6 +139,16 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		AC1E3F4C2851C37500462AA9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ACD92685283B3A970026985C /* MainViewController.swift */,
+				AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */,
+				ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		AC31A8D9283B3F2C00597055 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,8 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD92687283B3A970026985C /* Main.storyboard */,
-				ACEE2DDA284EF75D0032B136 /* MainHome */,
-				AC1E3F492851B04D00462AA9 /* Setting */,
+				ACEE2DDA284EF75D0032B136 /* Home */,
 				ACD9268C283B3A970026985C /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -177,9 +186,8 @@
 		AC5F81DC283DE4760006A2BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ACD92685283B3A970026985C /* MainViewController.swift */,
-				AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */,
-				ACB73C4B283E9196006B25EA /* UserInfoViewController.swift */,
+				AC1E3F4C2851C37500462AA9 /* Home */,
+				AC1E3F492851B04D00462AA9 /* Setting */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,14 +285,14 @@
 			path = LOARANG;
 			sourceTree = "<group>";
 		};
-		ACEE2DDA284EF75D0032B136 /* MainHome */ = {
+		ACEE2DDA284EF75D0032B136 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				ACAF1B6428451C0800BD7991 /* MainUser */,
 				ACAF1B6528451C2000BD7991 /* Bookmark */,
 				ACAF1B6628451D3400BD7991 /* UserInfo */,
 			);
-			path = MainHome;
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
