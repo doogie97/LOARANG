@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC1E3F4B2851B08900462AA9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */; };
+		AC1E3F502851C3F000462AA9 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E3F4E2851C3F000462AA9 /* SettingTVCell.swift */; };
+		AC1E3F512851C3F000462AA9 /* SettingTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3F4F2851C3F000462AA9 /* SettingTVCell.xib */; };
 		AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */; };
 		AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */; };
 		AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */; };
@@ -58,6 +60,8 @@
 		7C253EC8E4F80C72BD38420C /* Pods-LOARANG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.release.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.release.xcconfig"; sourceTree = "<group>"; };
 		85BE14C612AC81859F78A55C /* Pods-LOARANG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.debug.xcconfig"; sourceTree = "<group>"; };
 		AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		AC1E3F4E2851C3F000462AA9 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
+		AC1E3F4F2851C3F000462AA9 /* SettingTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTVCell.xib; sourceTree = "<group>"; };
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCVCell.swift; sourceTree = "<group>"; };
 		AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCVCell.xib; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		AC1E3F4D2851C3C600462AA9 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AC1E3F4E2851C3F000462AA9 /* SettingTVCell.swift */,
+				AC1E3F4F2851C3F000462AA9 /* SettingTVCell.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		AC31A8D9283B3F2C00597055 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +191,7 @@
 			children = (
 				ACD92687283B3A970026985C /* Main.storyboard */,
 				ACEE2DDA284EF75D0032B136 /* Home */,
+				AC1E3F4D2851C3C600462AA9 /* Setting */,
 				ACD9268C283B3A970026985C /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -395,6 +409,7 @@
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
 				ACD9268B283B3A970026985C /* Assets.xcassets in Resources */,
 				AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */,
+				AC1E3F512851C3F000462AA9 /* SettingTVCell.xib in Resources */,
 				ACCB6556284501E5008FFF9A /* ONE-Mobile-Bold.ttf in Resources */,
 				ACD92689283B3A970026985C /* Main.storyboard in Resources */,
 			);
@@ -473,6 +488,7 @@
 				ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */,
 				ACAF1B692845265E00BD7991 /* Accessoryable.swift in Sources */,
 				AC1E3F4B2851B08900462AA9 /* SettingViewController.swift in Sources */,
+				AC1E3F502851C3F000462AA9 /* SettingTVCell.swift in Sources */,
 				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
 				AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */,
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
