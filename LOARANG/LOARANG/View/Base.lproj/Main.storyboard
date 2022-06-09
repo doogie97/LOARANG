@@ -95,9 +95,12 @@
             <objects>
                 <navigationController id="NKN-e0-hTq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="설정" image="gearshape.fill" catalog="system" id="N9q-ay-Uxo"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ln-Ks-S67">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" largeTitles="YES" id="1Ln-Ks-S67">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="BlackHanSans-Regular" family="Black Han Sans" pointSize="30"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="sW0-wJ-sOi" kind="relationship" relationship="rootViewController" id="WL9-Df-BFI"/>
@@ -107,17 +110,55 @@
             </objects>
             <point key="canvasLocation" x="1083" y="778"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="ijK-Le-YzC">
             <objects>
-                <viewController id="sW0-wJ-sOi" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" id="sW0-wJ-sOi" customClass="SettingViewController" customModule="LOARANG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nVQ-Ou-gIR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Hx7-Hj-fAE">
+                                <rect key="frame" x="0.0" y="158" width="414" height="655"/>
+                                <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGE-9e-JMM">
+                                <rect key="frame" x="0.0" y="108" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnH-GX-ycU">
+                                        <rect key="frame" x="0.0" y="0.0" width="20.5" height="50"/>
+                                        <fontDescription key="fontDescription" name="BlackHanSans-Regular" family="Black Han Sans" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jj-cb-CEc">
+                                        <rect key="frame" x="20.5" y="0.0" width="393.5" height="50"/>
+                                        <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="RnH-GX-ycU" firstAttribute="width" secondItem="MGE-9e-JMM" secondAttribute="width" multiplier="0.05" id="vbh-oY-ZNA"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2Fm-xF-4yf"/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Hx7-Hj-fAE" firstAttribute="leading" secondItem="2Fm-xF-4yf" secondAttribute="leading" id="7Ik-6W-4H0"/>
+                            <constraint firstItem="MGE-9e-JMM" firstAttribute="leading" secondItem="2Fm-xF-4yf" secondAttribute="leading" id="MWd-Iu-5ae"/>
+                            <constraint firstItem="MGE-9e-JMM" firstAttribute="top" secondItem="2Fm-xF-4yf" secondAttribute="top" constant="20" id="O4o-S6-zXf"/>
+                            <constraint firstItem="2Fm-xF-4yf" firstAttribute="trailing" secondItem="Hx7-Hj-fAE" secondAttribute="trailing" id="WpZ-Rl-Hgo"/>
+                            <constraint firstItem="2Fm-xF-4yf" firstAttribute="trailing" secondItem="MGE-9e-JMM" secondAttribute="trailing" id="eFt-bF-uHs"/>
+                            <constraint firstItem="2Fm-xF-4yf" firstAttribute="bottom" secondItem="Hx7-Hj-fAE" secondAttribute="bottom" id="fpB-19-pf6"/>
+                            <constraint firstItem="Hx7-Hj-fAE" firstAttribute="top" secondItem="MGE-9e-JMM" secondAttribute="bottom" id="zFG-JL-0Tn"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NDr-Us-fiU"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NDr-Us-fiU"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="9Jj-cb-CEc" id="9L5-kg-6Co"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGv-MN-AOG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,6 +286,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>

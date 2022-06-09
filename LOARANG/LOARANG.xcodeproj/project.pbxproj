@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC1E3F4B2851B08900462AA9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */; };
 		AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */; };
 		AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */; };
 		AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */; };
@@ -56,6 +57,7 @@
 		02C14C631BAF65479E128D06 /* Pods_LOARANG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C253EC8E4F80C72BD38420C /* Pods-LOARANG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.release.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.release.xcconfig"; sourceTree = "<group>"; };
 		85BE14C612AC81859F78A55C /* Pods-LOARANG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.debug.xcconfig"; sourceTree = "<group>"; };
+		AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCVCell.swift; sourceTree = "<group>"; };
 		AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCVCell.xib; sourceTree = "<group>"; };
@@ -129,6 +131,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AC1E3F492851B04D00462AA9 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		AC31A8D9283B3F2C00597055 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +168,7 @@
 			children = (
 				ACD92687283B3A970026985C /* Main.storyboard */,
 				ACEE2DDA284EF75D0032B136 /* MainHome */,
-				ACAF1B6628451D3400BD7991 /* UserInfo */,
+				AC1E3F492851B04D00462AA9 /* Setting */,
 				ACD9268C283B3A970026985C /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -454,6 +464,7 @@
 				ACD92682283B3A970026985C /* AppDelegate.swift in Sources */,
 				ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */,
 				ACAF1B692845265E00BD7991 /* Accessoryable.swift in Sources */,
+				AC1E3F4B2851B08900462AA9 /* SettingViewController.swift in Sources */,
 				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
 				AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */,
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
