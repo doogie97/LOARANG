@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UYv-FY-sQ4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x3o-W0-gUG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Main View Controller-->
+        <!--홈-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="LOARANG" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,6 +81,9 @@
                             <constraint firstItem="Bag-xo-6NP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xoa-jd-VUT"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="홈" id="oxR-u2-MsE">
+                        <imageReference key="image" image="house.fill" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="ycU-kg-84s"/>
                     <connections>
                         <outlet property="mainTableView" destination="Q49-Bo-yIO" id="7U2-c0-XVX"/>
@@ -92,26 +95,6 @@
             <point key="canvasLocation" x="1992.753623188406" y="56.919642857142854"/>
         </scene>
         <!--설정-->
-        <scene sceneID="aRQ-SI-Xci">
-            <objects>
-                <navigationController id="NKN-e0-hTq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="설정" image="gearshape.fill" catalog="system" id="N9q-ay-Uxo"/>
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" largeTitles="YES" id="1Ln-Ks-S67">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" name="BlackHanSans-Regular" family="Black Han Sans" pointSize="30"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="sW0-wJ-sOi" kind="relationship" relationship="rootViewController" id="WL9-Df-BFI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8sw-ow-law" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1083" y="778"/>
-        </scene>
-        <!--Setting View Controller-->
         <scene sceneID="ijK-Le-YzC">
             <objects>
                 <viewController storyboardIdentifier="SettingViewController" id="sW0-wJ-sOi" customClass="SettingViewController" customModule="LOARANG" customModuleProvider="target" sceneMemberID="viewController">
@@ -156,6 +139,9 @@
                             <constraint firstItem="Hx7-Hj-fAE" firstAttribute="top" secondItem="MGE-9e-JMM" secondAttribute="bottom" id="zFG-JL-0Tn"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="설정" id="3L8-Ik-uGP">
+                        <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NDr-Us-fiU"/>
                     <connections>
                         <outlet property="settingTableView" destination="Hx7-Hj-fAE" id="G5Y-ng-LZa"/>
@@ -298,6 +284,7 @@
         <scene sceneID="f8T-xk-SEr">
             <objects>
                 <tabBarController id="UYv-FY-sQ4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6Qd-Rf-mHe"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hdS-VM-LJd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -306,13 +293,13 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="x3o-W0-gUG" kind="relationship" relationship="viewControllers" id="ewz-2F-8Ty"/>
-                        <segue destination="NKN-e0-hTq" kind="relationship" relationship="viewControllers" id="Lm7-50-EZD"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="g4Y-z2-MM4"/>
+                        <segue destination="sW0-wJ-sOi" kind="relationship" relationship="viewControllers" id="mAV-Uh-dEr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEr-Ix-mmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="410"/>
+            <point key="canvasLocation" x="945" y="404"/>
         </scene>
         <!--홈-->
         <scene sceneID="lcd-DL-us9">
@@ -328,12 +315,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6Sg-lQ-5Jc"/>
+                        <segue destination="UYv-FY-sQ4" kind="relationship" relationship="rootViewController" id="XEa-gw-kza"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJE-Cp-P2k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082.608695652174" y="56.919642857142854"/>
+            <point key="canvasLocation" x="88" y="404"/>
         </scene>
     </scenes>
     <resources>
