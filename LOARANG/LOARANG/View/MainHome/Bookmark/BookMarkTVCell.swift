@@ -13,6 +13,8 @@ protocol TouchCellDelegate {
 
 final class BookMarkTVCell: UITableViewCell {
     @IBOutlet private weak var bookMarkCollectionView: UICollectionView!
+    @IBOutlet weak var bookmarkCountLabel: UILabel!
+    
     private var delegate: TouchCellDelegate?
     
     func setTVCell(vc: TouchCellDelegate) {
@@ -22,11 +24,14 @@ final class BookMarkTVCell: UITableViewCell {
         delegate = vc
         bookMarkCollectionView.layer.cornerRadius = 10
         setbookMarkCVLayout()
+        setLabelFont()
+        bookmarkCountLabel.text = "(\(BookmarkManager.shared.count))"
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCV), name: Notification.Name.bookmark, object: nil)
     }
     
     @objc private func reloadCV() {
         bookMarkCollectionView.reloadData()
+        bookmarkCountLabel.text = "(\(BookmarkManager.shared.count))"
     }
 }
 
@@ -67,5 +72,9 @@ extension BookMarkTVCell {
         section.orthogonalScrollingBehavior = .continuous
         
         bookMarkCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    private func setLabelFont() {
+        bookmarkCountLabel.font = UIFont.one(size: 15, family: .Bold)
     }
 }
