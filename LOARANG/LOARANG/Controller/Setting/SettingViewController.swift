@@ -22,6 +22,16 @@ class SettingViewController: UIViewController {
                 return "공지사항"
             }
         }
+    
+        func move(stryboard:UIStoryboard? ,navigation: UINavigationController?) {
+            switch self {
+            case .mainCharacter:
+                guard let SetMainCharacterVC = stryboard?.instantiateViewController(withIdentifier: "\(SetMainCharacterViewController.self)") as? SetMainCharacterViewController else { return }
+                navigation?.pushViewController(SetMainCharacterVC, animated: true)
+            case .notice:
+                print(self.title)
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -55,6 +65,7 @@ extension SettingViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        guard let menu = Menu(rawValue: indexPath.row) else { return }
+        menu.move(stryboard: storyboard, navigation: navigationController)
     }
 }
