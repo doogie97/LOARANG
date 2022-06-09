@@ -272,6 +272,7 @@
 			children = (
 				ACAF1B6428451C0800BD7991 /* MainUser */,
 				ACAF1B6528451C2000BD7991 /* Bookmark */,
+				ACAF1B6628451D3400BD7991 /* UserInfo */,
 			);
 			path = MainHome;
 			sourceTree = "<group>";
