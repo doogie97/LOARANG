@@ -10,7 +10,6 @@
 		AC1E3F4B2851B08900462AA9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */; };
 		AC1E3F502851C3F000462AA9 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E3F4E2851C3F000462AA9 /* SettingTVCell.swift */; };
 		AC1E3F512851C3F000462AA9 /* SettingTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1E3F4F2851C3F000462AA9 /* SettingTVCell.xib */; };
-		AC1E3F552851CFEB00462AA9 /* SetMainCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E3F542851CFEB00462AA9 /* SetMainCharacterViewController.swift */; };
 		AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */; };
 		AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */; };
 		AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */; };
@@ -63,7 +62,6 @@
 		AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AC1E3F4E2851C3F000462AA9 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		AC1E3F4F2851C3F000462AA9 /* SettingTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTVCell.xib; sourceTree = "<group>"; };
-		AC1E3F542851CFEB00462AA9 /* SetMainCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMainCharacterViewController.swift; sourceTree = "<group>"; };
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCVCell.swift; sourceTree = "<group>"; };
 		AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCVCell.xib; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				AC1E3F4A2851B08900462AA9 /* SettingViewController.swift */,
-				AC1E3F542851CFEB00462AA9 /* SetMainCharacterViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -493,7 +490,6 @@
 				AC1E3F4B2851B08900462AA9 /* SettingViewController.swift in Sources */,
 				AC1E3F502851C3F000462AA9 /* SettingTVCell.swift in Sources */,
 				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
-				AC1E3F552851CFEB00462AA9 /* SetMainCharacterViewController.swift in Sources */,
 				AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */,
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
 				ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */,
