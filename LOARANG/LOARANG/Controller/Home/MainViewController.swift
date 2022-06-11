@@ -30,6 +30,11 @@ final class MainViewController: UIViewController {
         mainTableView.reloadData()
     }
     
+    @objc private func touchMainUserCell() {
+        guard let userName = UserDefaults.standard.string(forKey: "mainCharacter") else { return }
+        moveToUserInfoVC(name: userName)
+    }
+    
     @IBAction func touchSearchButton(_ sender: UIButton) {
         guard let searchVC = storyboard?.instantiateViewController(withIdentifier: "\(SearchViewController.self)") as? SearchViewController else { return }
         searchVC.setVCType(type: .searchCharacter)
@@ -47,6 +52,8 @@ extension MainViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MianUserTVCell.self)") as? MianUserTVCell else { return MianUserTVCell()}
             cell.setCell()
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchMainUserCell))
+            cell.addGestureRecognizer(tapGestureRecognizer)
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookMarkTVCell.self)") as? BookMarkTVCell else { return BookMarkTVCell()}
