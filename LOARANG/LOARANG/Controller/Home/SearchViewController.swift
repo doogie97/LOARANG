@@ -32,8 +32,6 @@ class SearchViewController: UIViewController {
         userSearchBar.delegate = self
     }
     
-    private func showAlert() {
-        let alert = UIAlertController(title: "", message: "검색하신 유저가 없습니다", preferredStyle: .alert)
     func setVCType(type: VCType) {
         self.vcType = type
     }
@@ -46,6 +44,12 @@ class SearchViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    private func moveToUserInfoVC(info: UserInfo) {
+        guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
+        userInfoVC.receiveInfo(user: info)
+        navigationController?.pushViewController(userInfoVC, animated: true)
+    }
+    
     @IBAction func touchBackButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
@@ -56,14 +60,16 @@ extension SearchViewController: UISearchBarDelegate {
         myActivityIndicator.isHidden = false
         self.view.endEditing(true)
         guard let userName = searchBar.text else { return }
-        guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
+
         do {
             let info = try CrawlManager.shared.searchUser(userName: userName)
-            userInfoVC.receiveInfo(user: info)
+            if self.vcType == .searchCharacter {
+                moveToUserInfoVC(info: info)
+            }
         } catch {
-            showAlert()
+            showAlert(title: "", message: vcType.alertMessage)
         }
-        navigationController?.pushViewController(userInfoVC, animated: true)
+        
         myActivityIndicator.isHidden = true
     }
 }
