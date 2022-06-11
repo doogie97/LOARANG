@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
             case .searchCharacter:
                 return "검색하신 유저가 없습니다"
             case .settingMainCharacter:
-                return "해당 캐릭터로 태표 캐릭터를 설정 하시겠습니까?"
+                return "대표 캐릭터를 설정 하시겠습니까?"
             }
         }
     }
@@ -36,10 +36,20 @@ class SearchViewController: UIViewController {
         self.vcType = type
     }
     
-    private func showAlert(title: String, message: String) {
+    private func showAlert(title: String, message: String, userName: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(action)
+        let yesAction = UIAlertAction(title: "확인", style: .default) { _ in
+            guard let userName = userName else {
+                return
+            }
+            UserDefaults.standard.set(userName, forKey: "mainCharacter")
+        }
+        alert.addAction(yesAction)
+        
+        if userName != nil {
+            let noAction = UIAlertAction(title: "취소", style: .destructive)
+            alert.addAction(noAction)
+        }
         
         present(alert, animated: true, completion: nil)
     }
@@ -65,9 +75,11 @@ extension SearchViewController: UISearchBarDelegate {
             let info = try CrawlManager.shared.searchUser(userName: userName)
             if self.vcType == .searchCharacter {
                 moveToUserInfoVC(info: info)
+            } else {
+                showAlert(title: "\(info.basicInfo.name) LV.\(info.basicInfo.itemLevel)(\(info.basicInfo.class))", message: vcType.alertMessage, userName: userName)
             }
         } catch {
-            showAlert(title: "", message: vcType.alertMessage)
+            showAlert(title: "", message: vcType.alertMessage, userName: nil)
         }
         
         myActivityIndicator.isHidden = true

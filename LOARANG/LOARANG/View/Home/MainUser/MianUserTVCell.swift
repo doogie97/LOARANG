@@ -23,6 +23,7 @@ class MianUserTVCell: UITableViewCell {
     
     
     func setCell() {
+        setCharacterInfo()
         setCorner()
         setLabelFont()
     }
@@ -31,6 +32,16 @@ class MianUserTVCell: UITableViewCell {
         topView.layer.cornerRadius = 10
         mainStackView.layer.cornerRadius = 10
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2.8
+    }
+    
+    private func setCharacterInfo() {
+        guard let userName = UserDefaults.standard.string(forKey: "mainCharacter") else { return }
+        guard let basicInfo = try? CrawlManager.shared.searchUser(userName: userName).basicInfo else { return }
+        profileImageView.image = UIImage(named: basicInfo.class + "프로필")
+        lvNameLabel.text = "Lv \(basicInfo.battleLevel) \(basicInfo.name)"
+        classInfoLabel.text = basicInfo.`class`
+        itemLvLabel.text = basicInfo.itemLevel
+        serverInfoLabel.text = basicInfo.server
     }
     
     private func setLabelFont() {
