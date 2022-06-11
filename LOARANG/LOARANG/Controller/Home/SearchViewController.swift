@@ -11,6 +11,22 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var userSearchBar: UISearchBar!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
+    enum VCType {
+        case searchCharacter
+        case settingMainCharacter
+        
+        var alertMessage: String {
+            switch self {
+            case .searchCharacter:
+                return "검색하신 유저가 없습니다"
+            case .settingMainCharacter:
+                return "해당 캐릭터로 태표 캐릭터를 설정 하시겠습니까?"
+            }
+        }
+    }
+    
+    private var vcType: VCType = .searchCharacter
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userSearchBar.delegate = self
@@ -18,6 +34,12 @@ class SearchViewController: UIViewController {
     
     private func showAlert() {
         let alert = UIAlertController(title: "", message: "검색하신 유저가 없습니다", preferredStyle: .alert)
+    func setVCType(type: VCType) {
+        self.vcType = type
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
         alert.addAction(action)
         

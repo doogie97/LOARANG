@@ -27,6 +27,7 @@ final class MainViewController: UIViewController {
     
     @IBAction func touchSearchButton(_ sender: UIButton) {
         guard let searchVC = storyboard?.instantiateViewController(withIdentifier: "\(SearchViewController.self)") as? SearchViewController else { return }
+        searchVC.setVCType(type: .searchCharacter)
         navigationController?.pushViewController(searchVC, animated: true)
     }
 }

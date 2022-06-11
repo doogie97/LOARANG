@@ -26,8 +26,9 @@ class SettingViewController: UIViewController {
         func move(stryboard:UIStoryboard? ,navigation: UINavigationController?) {
             switch self {
             case .mainCharacter:
-                guard let SetMainCharacterVC = stryboard?.instantiateViewController(withIdentifier: "\(SetMainCharacterViewController.self)") as? SetMainCharacterViewController else { return }
-                navigation?.pushViewController(SetMainCharacterVC, animated: true)
+                guard let searchVC = stryboard?.instantiateViewController(withIdentifier: "\(SearchViewController.self)") as? SearchViewController else { return }
+                searchVC.setVCType(type: .settingMainCharacter)
+                navigation?.pushViewController(searchVC, animated: true)
             case .notice:
                 print(self.title)
             }
