@@ -23,6 +23,11 @@ final class MainViewController: UIViewController {
         mainTableView.register(UINib(nibName: "\(BookMarkTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BookMarkTVCell.self)")
         mainTableView.register(UINib(nibName: "\(MianUserTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(MianUserTVCell.self)")
         BookmarkManager.shared.setUsers()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name.mainCharacter, object: nil)
+    }
+    
+    @objc private func reloadTV() {
+        mainTableView.reloadData()
     }
     
     @IBAction func touchSearchButton(_ sender: UIButton) {

@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
     static let bookmark = Notification.Name("bookmark")
+    static let mainCharacter = Notification.Name("mainCharacter")
 }

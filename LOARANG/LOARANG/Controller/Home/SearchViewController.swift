@@ -43,6 +43,7 @@ class SearchViewController: UIViewController {
                 return
             }
             UserDefaults.standard.set(userName, forKey: "mainCharacter")
+            NotificationCenter.default.post(name: Notification.Name.mainCharacter, object: nil)
         }
         alert.addAction(yesAction)
         
