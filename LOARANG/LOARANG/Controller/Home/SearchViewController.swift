@@ -14,15 +14,6 @@ class SearchViewController: UIViewController {
     enum VCType {
         case searchCharacter
         case settingMainCharacter
-        
-        var alertMessage: String {
-            switch self {
-            case .searchCharacter:
-                return "검색하신 유저가 없습니다"
-            case .settingMainCharacter:
-                return "대표 캐릭터를 설정 하시겠습니까?"
-            }
-        }
     }
     
     private var vcType: VCType = .searchCharacter
@@ -82,10 +73,10 @@ extension SearchViewController: UISearchBarDelegate {
             if self.vcType == .searchCharacter {
                 moveToUserInfoVC(info: info)
             } else {
-                showAlert(title: "\(info.basicInfo.name) LV.\(info.basicInfo.itemLevel)(\(info.basicInfo.class))", message: vcType.alertMessage, userName: userName)
+                showAlert(title: "\(info.basicInfo.name) LV.\(info.basicInfo.itemLevel)(\(info.basicInfo.class))", message: "대표 캐릭터를 설정 하시겠습니까?", userName: userName)
             }
         } catch {
-            showAlert(title: "", message: vcType.alertMessage, userName: nil)
+            showAlert(title: "", message: "검색하신 유저가 없습니다", userName: nil)
         }
         
         myActivityIndicator.isHidden = true
