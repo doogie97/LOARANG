@@ -42,8 +42,7 @@ class SearchViewController: UIViewController {
             guard let userName = userName else {
                 return
             }
-            UserDefaults.standard.set(userName, forKey: "mainCharacter")
-            NotificationCenter.default.post(name: Notification.Name.mainCharacter, object: nil)
+            self.setMainCharacter(userName: userName)
         }
         alert.addAction(yesAction)
         
@@ -59,6 +58,12 @@ class SearchViewController: UIViewController {
         guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
         userInfoVC.receiveInfo(user: info)
         navigationController?.pushViewController(userInfoVC, animated: true)
+    }
+    
+    private func setMainCharacter(userName: String) {
+        UserDefaults.standard.set(userName, forKey: "mainCharacter")
+        NotificationCenter.default.post(name: Notification.Name.mainCharacter, object: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func touchBackButton(_ sender: UIButton) {
