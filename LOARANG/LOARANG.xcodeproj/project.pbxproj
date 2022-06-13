@@ -42,6 +42,7 @@
 		ACEE2DD9284EE47B0032B136 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE2DD8284EE47B0032B136 /* CrawlError.swift */; };
 		ACEE2DE2284EFC9B0032B136 /* BasicInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE2DE0284EFC9B0032B136 /* BasicInfoTVCell.swift */; };
 		ACEE2DE3284EFC9B0032B136 /* BasicInfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACEE2DE1284EFC9B0032B136 /* BasicInfoTVCell.xib */; };
+		ACEE744E2856BC5500E1F805 /* InfoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE744D2856BC5500E1F805 /* InfoDecoder.swift */; };
 		E9F3B5CEB0F4F431AB6934C4 /* Pods_LOARANG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C14C631BAF65479E128D06 /* Pods_LOARANG.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		ACEE2DD8284EE47B0032B136 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
 		ACEE2DE0284EFC9B0032B136 /* BasicInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoTVCell.swift; sourceTree = "<group>"; };
 		ACEE2DE1284EFC9B0032B136 /* BasicInfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicInfoTVCell.xib; sourceTree = "<group>"; };
+		ACEE744D2856BC5500E1F805 /* InfoDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				ACAF1B672845249E00BD7991 /* Protocol */,
 				ACB73C46283E867D006B25EA /* Extension */,
 				ACB73C37283E7BB5006B25EA /* CrawlManager.swift */,
+				ACEE744D2856BC5500E1F805 /* InfoDecoder.swift */,
 				AC39064A28508F2C00361391 /* BookmarkManager.swift */,
 				ACEE2DD8284EE47B0032B136 /* CrawlError.swift */,
 				ACB73C49283E8846006B25EA /* UserInfoModel.swift */,
@@ -492,6 +495,7 @@
 				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
 				AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */,
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
+				ACEE744E2856BC5500E1F805 /* InfoDecoder.swift in Sources */,
 				ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

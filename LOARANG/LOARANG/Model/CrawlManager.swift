@@ -16,6 +16,13 @@ struct CrawlManager {
         let html = try String(contentsOf: url, encoding: .utf8)
         let doc: Document = try SwiftSoup.parse(html)
         
+        if let a = try doc.select("#profile-ability > script").first()?.data() {
+            let b = a.replacingOccurrences(of: "$.Profile = ", with: "")
+            let c = b.replacingOccurrences(of: ";", with: "")
+            InfoDecoder.decode(info: c)
+        }
+        
+        
         let info = try getBasicInfo(userName: userName, doc: doc)
         let ability = try getBasicAbility(doc: doc)
         return UserInfo(basicInfo: info, basicAbility: ability)
