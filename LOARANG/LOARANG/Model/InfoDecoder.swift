@@ -11,8 +11,12 @@ struct InfoDecoder {
         guard let data = info.data(using: .utf8) else { return }
         let json = JSON(data)
         let items = JSON(json["Equip"])
-        for i in items {
-            print(i.1["Element_000"]["value"])
+        for (index, sub) in items {
+            if index.description.contains("Gem"){
+//                print(sub["Element_000"]["value"])
+            } else {
+                print(sub["Element_000"]["value"])
+            }
         }
     }
 }
