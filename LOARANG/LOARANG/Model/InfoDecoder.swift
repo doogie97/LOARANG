@@ -4,16 +4,15 @@
 //
 //  Created by 최최성균 on 2022/06/13.
 //
-
-import Foundation
+import SwiftyJSON
 
 struct InfoDecoder {
     static func decode(info: String) {
         guard let data = info.data(using: .utf8) else { return }
-        if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]{
-            if let info = json["Card"] {
-                print(info)
-            }
+        let json = JSON(data)
+        let items = JSON(json["Equip"])
+        for i in items {
+            print(i.1["Element_000"]["value"])
         }
     }
 }
