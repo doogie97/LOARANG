@@ -22,7 +22,7 @@ class CrawlManagerTest: XCTestCase {
         sut = nil
     }
     
-    func test_getCharacterTitle호출시_userName이_최지근일때_길드이름을잘가져오는지(){
+    func test_searchUser호출시_userName이_최지근일때_길드이름을잘가져오는지(){
         //given
         let userName = "최지근"
         
@@ -31,6 +31,20 @@ class CrawlManagerTest: XCTestCase {
             let result = try sut.searchUser(userName: userName)
             //then
             XCTAssertEqual(result.basicInfo.guild, "미지근")
+        } catch {
+            XCTFail()
+        }
+    }
+    
+    func test_searchUser호출시_userName이_최지근일때_첫번째카드세트효과를_잘가져오는지(){
+        //given
+        let userName = "최지근"
+        
+        //when
+        do {
+            let result = try sut.searchUser(userName: userName)
+            //then
+            XCTAssertEqual(result.cardInfo.effect[0].title, "남겨진 바람의 절벽 2세트" )
         } catch {
             XCTFail()
         }
