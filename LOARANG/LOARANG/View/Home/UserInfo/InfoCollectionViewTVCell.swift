@@ -6,11 +6,15 @@
 //
 
 import UIKit
+protocol InfoCellHeightDelegate {
+    func changeHeigh(index: Int)
+}
 
 class InfoCollectionViewTVCell: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var infoCollectionView: UICollectionView!
     @IBOutlet weak var menuStackView: UIStackView!
+    private var delegate: InfoCellHeightDelegate?
     
     private var userInfo: UserInfo?
     private var previousIndex = 10
@@ -18,6 +22,7 @@ class InfoCollectionViewTVCell: UITableViewCell {
     
     func setInitailView(info: UserInfo, delegate: InfoCellHeightDelegate) {
         userInfo = info
+        self.delegate = delegate
         mainView.layer.cornerRadius = 10
         infoCollectionView.layer.cornerRadius = 10
         menuStackView.layer.cornerRadius = 10
@@ -31,6 +36,7 @@ class InfoCollectionViewTVCell: UITableViewCell {
         if currentIndex == sender.tag {
             return
         }
+        delegate?.changeHeigh(index: sender.tag)
         var direction: UICollectionView.ScrollPosition {
             sender.tag > previousIndex ? .right : .left
         }
