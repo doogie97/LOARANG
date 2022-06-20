@@ -12,6 +12,9 @@ class InfoPageViewTVCell: UITableViewCell {
     @IBOutlet weak var infoCollectionView: UICollectionView!
     @IBOutlet weak var menuStackView: UIStackView!
     
+    private var previousIndex = 10
+    private var currentIndex = 0
+    
     func setInitailView() {
         mainView.layer.cornerRadius = 10
         infoCollectionView.layer.cornerRadius = 10
@@ -23,10 +26,17 @@ class InfoPageViewTVCell: UITableViewCell {
     }
     
     @IBAction func touchStatButton(_ sender: UIButton) {
-        print("특성")
+        if currentIndex == sender.tag {
+            return
+        }
+        var direction: UICollectionView.ScrollPosition {
+            sender.tag > previousIndex ? .right : .left
+        }
+        infoCollectionView.scrollToItem(at: IndexPath(row: sender.tag, section: 0), at: direction, animated: true)
+        currentIndex = sender.tag
     }
-    @IBAction func touchCardButton(_ sender: UIButton) {
-        print("카드")
+}
+
 extension InfoPageViewTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         3
