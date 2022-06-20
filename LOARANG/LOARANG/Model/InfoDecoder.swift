@@ -14,7 +14,11 @@ struct InfoDecoder {
         guard let data = info.data(using: .utf8) else { return nil }
         let json = JSON(data)
         let cardJson = JSON(json["Card"])
-        return getCardInfo(json: cardJson)
+        let cardSetJson = JSON(json["CardSet"])
+        
+        let cards = getCardInfo(json: cardJson)
+        let effects = getCardSetEffect(json: cardSetJson)
+        return CardInfo(cards: cards, effect: effects)
     }
     
     private func getCardInfo(json: JSON) -> [Card] {
@@ -25,8 +29,23 @@ struct InfoDecoder {
                  awakeTotal: $0["Element_001"]["value"]["awakeTotal"].intValue)
         }
         
-        let userCards = CardInfo(first: carddd.popFirst() , second: carddd.popFirst(), third: carddd.popFirst(), fourth: carddd.popFirst(), fifth: carddd.popFirst(), sixth: carddd.popFirst())
+        return cards
+    }
+    
+    private func getCardSetEffect(json: JSON) -> [CardSetEffect] {
+        var cardSetEffects: [CardSetEffect] = []
         
-        return userCards
+        let cardArray = json.sortedUp
+        for card in cardArray {
+            var effects = card.sortedUp.compactMap { effect in
+                CardSetEffect(desc: effect["desc"].stringValue,
+                              title: effect["title"].stringValue)
+            }
+            
+            let _ = effects.popFirst()
+            cardSetEffects.append(contentsOf: effects)
+        }
+        
+        return cardSetEffects
     }
 }
