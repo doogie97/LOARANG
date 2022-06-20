@@ -15,6 +15,8 @@
 		AC1EC22C286046AB00156BF5 /* BasicAbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EC22B286046AB00156BF5 /* BasicAbility.swift */; };
 		AC1EC22E286046BD00156BF5 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EC22D286046BD00156BF5 /* CardInfo.swift */; };
 		AC1EC231286065BE00156BF5 /* JSON + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EC230286065BE00156BF5 /* JSON + Extension.swift */; };
+		AC1EC2362860706100156BF5 /* InfoPageViewTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EC2342860706100156BF5 /* InfoPageViewTVCell.swift */; };
+		AC1EC2372860706100156BF5 /* InfoPageViewTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1EC2352860706100156BF5 /* InfoPageViewTVCell.xib */; };
 		AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */; };
 		AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */; };
 		AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */; };
@@ -73,6 +75,8 @@
 		AC1EC22B286046AB00156BF5 /* BasicAbility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbility.swift; sourceTree = "<group>"; };
 		AC1EC22D286046BD00156BF5 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		AC1EC230286065BE00156BF5 /* JSON + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON + Extension.swift"; sourceTree = "<group>"; };
+		AC1EC2342860706100156BF5 /* InfoPageViewTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPageViewTVCell.swift; sourceTree = "<group>"; };
+		AC1EC2352860706100156BF5 /* InfoPageViewTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoPageViewTVCell.xib; sourceTree = "<group>"; };
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCVCell.swift; sourceTree = "<group>"; };
 		AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCVCell.xib; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				ACEE2DE0284EFC9B0032B136 /* BasicInfoTVCell.swift */,
 				AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */,
 				AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */,
+				AC1EC2352860706100156BF5 /* InfoPageViewTVCell.xib */,
+				AC1EC2342860706100156BF5 /* InfoPageViewTVCell.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				ACCB6557284501E5008FFF9A /* ONE-Mobile-Light.ttf in Resources */,
 				AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */,
 				ACD34D55283F6FE200A5AA72 /* MianUserTVCell.xib in Resources */,
+				AC1EC2372860706100156BF5 /* InfoPageViewTVCell.xib in Resources */,
 				AC740CA6284F444B0015562C /* BasicAbilityTVCell.xib in Resources */,
 				AC31A8E9283B925100597055 /* BookMarkTVCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
@@ -503,6 +510,7 @@
 				ACB73C4A283E8846006B25EA /* UserInfo.swift in Sources */,
 				AC39064F2851125200361391 /* Notification.Name + Extension.swift in Sources */,
 				ACD34D54283F6FE200A5AA72 /* MianUserTVCell.swift in Sources */,
+				AC1EC2362860706100156BF5 /* InfoPageViewTVCell.swift in Sources */,
 				AC1EC22528602FEB00156BF5 /* Array + Extension.swift in Sources */,
 				AC1EC22E286046BD00156BF5 /* CardInfo.swift in Sources */,
 				AC39064B28508F2C00361391 /* BookmarkManager.swift in Sources */,
