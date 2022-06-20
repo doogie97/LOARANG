@@ -54,7 +54,7 @@ struct CrawlManager {
         }
         
         if ability.isEmpty {
-        return BasicAbility(att: "0", vitality: "0", crit: "0", specialization: "0", domination: "0", swiftness: "0", endurance: "0", expertise: "0")
+            return BasicAbility(att: "0", vitality: "0", crit: "0", specialization: "0", domination: "0", swiftness: "0", endurance: "0", expertise: "0")
         }
         
         return BasicAbility(att: ability[1], vitality: ability[3], crit: ability[5], specialization: ability[7], domination: ability[9], swiftness: ability[11], endurance: ability[13], expertise: ability[15])
