@@ -28,6 +28,8 @@
 		AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */; };
 		AC68DC6E2860CF740076F959 /* BasicAbilityCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */; };
 		AC68DC6F2860CF740076F959 /* BasicAbilityCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */; };
+		AC68DC722860DEDA0076F959 /* CardSetCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68DC702860DEDA0076F959 /* CardSetCVCell.swift */; };
+		AC68DC732860DEDA0076F959 /* CardSetCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC68DC712860DEDA0076F959 /* CardSetCVCell.xib */; };
 		ACAF1B61284504A000BD7991 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF1B60284504A000BD7991 /* UIFont + Extension.swift */; };
 		ACAF1B692845265E00BD7991 /* Accessoryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF1B682845265E00BD7991 /* Accessoryable.swift */; };
 		ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB73C37283E7BB5006B25EA /* CrawlManager.swift */; };
@@ -88,6 +90,8 @@
 		AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityCVCell.swift; sourceTree = "<group>"; };
 		AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicAbilityCVCell.xib; sourceTree = "<group>"; };
+		AC68DC702860DEDA0076F959 /* CardSetCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetCVCell.swift; sourceTree = "<group>"; };
+		AC68DC712860DEDA0076F959 /* CardSetCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSetCVCell.xib; sourceTree = "<group>"; };
 		ACAF1B60284504A000BD7991 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		ACAF1B682845265E00BD7991 /* Accessoryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessoryable.swift; sourceTree = "<group>"; };
 		ACB73C37283E7BB5006B25EA /* CrawlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlManager.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				AC1EC2342860706100156BF5 /* InfoCollectionViewTVCell.swift */,
 				AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */,
 				AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */,
+				AC68DC712860DEDA0076F959 /* CardSetCVCell.xib */,
+				AC68DC702860DEDA0076F959 /* CardSetCVCell.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -439,6 +445,7 @@
 				AC1EC2372860706100156BF5 /* InfoCollectionViewTVCell.xib in Resources */,
 				AC31A8E9283B925100597055 /* BookMarkTVCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
+				AC68DC732860DEDA0076F959 /* CardSetCVCell.xib in Resources */,
 				ACD9268B283B3A970026985C /* Assets.xcassets in Resources */,
 				AC68DC6F2860CF740076F959 /* BasicAbilityCVCell.xib in Resources */,
 				AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */,
@@ -512,6 +519,7 @@
 				ACD34D54283F6FE200A5AA72 /* MianUserTVCell.swift in Sources */,
 				AC1EC2362860706100156BF5 /* InfoCollectionViewTVCell.swift in Sources */,
 				AC1EC22528602FEB00156BF5 /* Array + Extension.swift in Sources */,
+				AC68DC722860DEDA0076F959 /* CardSetCVCell.swift in Sources */,
 				AC1EC22E286046BD00156BF5 /* CardInfo.swift in Sources */,
 				AC39064B28508F2C00361391 /* BookmarkManager.swift in Sources */,
 				AC68DC6E2860CF740076F959 /* BasicAbilityCVCell.swift in Sources */,

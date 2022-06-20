@@ -22,6 +22,8 @@ class InfoCollectionViewTVCell: UITableViewCell {
         infoCollectionView.layer.cornerRadius = 10
         menuStackView.layer.cornerRadius = 10
         infoCollectionView.register(UINib(nibName: "\(BasicAbilityCVCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(BasicAbilityCVCell.self)")
+        infoCollectionView.register(UINib(nibName: "\(CardSetCVCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CardSetCVCell.self)")
+        
         infoCollectionView.dataSource = self
         infoCollectionView.delegate = self
         setbasicAbilityCVLayout()
@@ -41,18 +43,26 @@ class InfoCollectionViewTVCell: UITableViewCell {
 // MARK: - about collectionview
 extension InfoCollectionViewTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(BasicAbilityCVCell.self)", for: indexPath) as? BasicAbilityCVCell else {
-            return BasicAbilityCVCell()
-        }
         guard let user = userInfo else {
             return BasicAbilityCVCell()
         }
-        cell.configureInfo(info: user.basicAbility)
-        return cell
+        if indexPath.row == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(BasicAbilityCVCell.self)", for: indexPath) as? BasicAbilityCVCell else {
+                return BasicAbilityCVCell()
+            }
+
+            cell.configureInfo(info: user.basicAbility)
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardSetCVCell.self)", for: indexPath) as? CardSetCVCell else {
+                return CardSetCVCell()
+            }
+            return cell
+        }
     }
 }
 
