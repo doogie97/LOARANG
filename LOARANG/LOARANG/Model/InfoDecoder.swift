@@ -25,10 +25,10 @@ struct InfoDecoder {
         let cardArray = json.sortedUp
         let cards: [Card] = cardArray.compactMap {
             return Card(name: $0["Element_000"]["value"].stringValue.centerName,
+                        tierGrade: $0["Element_001"]["value"]["tierGrade"].intValue,
                         awakeCount: $0["Element_001"]["value"]["awakeCount"].intValue,
                         awakeTotal: $0["Element_001"]["value"]["awakeTotal"].intValue)
         }
-        
         return cards
     }
     

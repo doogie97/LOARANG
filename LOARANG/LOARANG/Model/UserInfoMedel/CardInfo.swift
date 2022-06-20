@@ -12,6 +12,7 @@ struct CardInfo {
 
 struct Card {
     let name: String
+    let tierGrade: Int
     let awakeCount: Int
     let awakeTotal: Int
 }
