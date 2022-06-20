@@ -31,12 +31,13 @@ class UserInfoViewController: UIViewController {
         userInfoTableView.delegate = self
         userInfoTableView.register(UINib(nibName: "\(BasicInfoTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicInfoTVCell.self)")
         userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
+        userInfoTableView.register(UINib(nibName: "\(InfoPageViewTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(InfoPageViewTVCell.self)")
     }
 }
 
 extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,6 +53,9 @@ extension UserInfoViewController: UITableViewDataSource {
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicAbilityTVCell.self)") as? BasicAbilityTVCell else { return BasicAbilityTVCell() }
             cell.configureInfo(info: user.basicAbility)
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(InfoPageViewTVCell.self)") as? InfoPageViewTVCell else { return BasicAbilityTVCell() }
             return cell
         default:
             return BasicInfoTVCell()
