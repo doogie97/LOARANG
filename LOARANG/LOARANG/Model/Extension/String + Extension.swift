@@ -14,4 +14,11 @@ extension String {
         }
         return string
     }
+    var centerName: String {
+        let removedLast = self.replacingOccurrences(of: "</FONT>", with: "")
+        let center = removedLast.components(separatedBy: ">")[1]
+        
+        return center
+    }
+
 }
