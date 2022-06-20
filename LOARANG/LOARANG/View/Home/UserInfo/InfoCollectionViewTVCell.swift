@@ -7,15 +7,17 @@
 
 import UIKit
 
-class InfoPageViewTVCell: UITableViewCell {
+class InfoCollectionViewTVCell: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var infoCollectionView: UICollectionView!
     @IBOutlet weak var menuStackView: UIStackView!
     
+    private var userInfo: UserInfo?
     private var previousIndex = 10
     private var currentIndex = 0
     
-    func setInitailView() {
+    func setInitailView(info: UserInfo, delegate: InfoCellHeightDelegate) {
+        userInfo = info
         mainView.layer.cornerRadius = 10
         infoCollectionView.layer.cornerRadius = 10
         menuStackView.layer.cornerRadius = 10
@@ -36,8 +38,8 @@ class InfoPageViewTVCell: UITableViewCell {
         currentIndex = sender.tag
     }
 }
-
-extension InfoPageViewTVCell: UICollectionViewDataSource {
+// MARK: - about collectionview
+extension InfoCollectionViewTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         3
     }
@@ -46,9 +48,19 @@ extension InfoPageViewTVCell: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(BasicAbilityCVCell.self)", for: indexPath) as? BasicAbilityCVCell else {
             return BasicAbilityCVCell()
         }
+        guard let user = userInfo else {
+            return BasicAbilityCVCell()
+        }
+        cell.configureInfo(info: user.basicAbility)
         return cell
     }
+}
+
+extension InfoCollectionViewTVCell: UICollectionViewDelegate {
     
+}
+
+extension InfoCollectionViewTVCell {
     private func setbasicAbilityCVLayout() {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -63,8 +75,4 @@ extension InfoPageViewTVCell: UICollectionViewDataSource {
         
         infoCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: section)
     }
-}
-
-extension InfoPageViewTVCell: UICollectionViewDelegate {
-    
 }

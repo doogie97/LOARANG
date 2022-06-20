@@ -30,14 +30,13 @@ class UserInfoViewController: UIViewController {
         userInfoTableView.dataSource = self
         userInfoTableView.delegate = self
         userInfoTableView.register(UINib(nibName: "\(BasicInfoTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicInfoTVCell.self)")
-        userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
-        userInfoTableView.register(UINib(nibName: "\(InfoPageViewTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(InfoPageViewTVCell.self)")
+        userInfoTableView.register(UINib(nibName: "\(InfoCollectionViewTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(InfoCollectionViewTVCell.self)")
     }
 }
 
 extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

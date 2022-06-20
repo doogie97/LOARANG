@@ -211,6 +211,24 @@
             </collectionViewCellContentView>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <size key="customSize" width="306" height="151"/>
+            <connections>
+                <outlet property="attLabel" destination="503-Tb-w4d" id="hBl-cI-DzJ"/>
+                <outlet property="attTitleLabel" destination="yne-cU-Bl2" id="qgS-ih-WRh"/>
+                <outlet property="critLabel" destination="Cd5-6j-PWL" id="ICD-zb-Y4z"/>
+                <outlet property="critTitleLabel" destination="edj-jh-b1T" id="gM5-DG-32G"/>
+                <outlet property="dominationLabel" destination="V4H-hh-lUU" id="pQ8-M5-fXH"/>
+                <outlet property="dominationTitleLabel" destination="Vnl-gn-BSA" id="vbe-tc-2hk"/>
+                <outlet property="enduranceLabel" destination="a8e-qc-cBx" id="frf-gj-i76"/>
+                <outlet property="enduranceTitleLabel" destination="UuC-Ld-2b6" id="k2r-0Y-St3"/>
+                <outlet property="expertiseLabel" destination="Ead-Hl-ybS" id="9lQ-D3-R9l"/>
+                <outlet property="expertiseTitleLabel" destination="PlO-gP-AJH" id="URf-3U-zbO"/>
+                <outlet property="specializationLabel" destination="ToA-mw-YsE" id="08T-xK-5it"/>
+                <outlet property="specializationTitleLabel" destination="uPH-aK-BpL" id="TpP-tb-EGI"/>
+                <outlet property="swiftnessLabel" destination="hHO-79-qBy" id="Vm6-Vh-GUd"/>
+                <outlet property="swiftnessTitleLabel" destination="hYn-b2-x0d" id="WrL-GW-iwQ"/>
+                <outlet property="vitalityLabel" destination="Hsn-bC-Uto" id="Xr1-4E-vap"/>
+                <outlet property="vitalityTitleLabel" destination="ubw-8z-hyf" id="tgD-HC-s9h"/>
+            </connections>
             <point key="canvasLocation" x="203" y="121"/>
         </collectionViewCell>
     </objects>
