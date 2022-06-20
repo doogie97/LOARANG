@@ -7,8 +7,9 @@
 import SwiftyJSON
 
 struct InfoDecoder {
-    static func decode(info: String) {
-        guard let data = info.data(using: .utf8) else { return }
+    static let shared = InfoDecoder()
+    private init() {}
+    
         let json = JSON(data)
         let items = JSON(json["Equip"])
         for (index, sub) in items {
