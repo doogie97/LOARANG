@@ -8,17 +8,16 @@
 import UIKit
 
 class InfoPageViewTVCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var pageView: UIView!
+    @IBOutlet weak var menuStackView: UIStackView!
+    
+    func setInitailView() {
+        mainView.layer.cornerRadius = 10
+        pageView.layer.cornerRadius = 10
+        menuStackView.layer.cornerRadius = 10
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
     @IBAction func touchStatButton(_ sender: UIButton) {
         print("특성")
     }

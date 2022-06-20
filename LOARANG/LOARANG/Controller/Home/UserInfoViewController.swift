@@ -55,6 +55,7 @@ extension UserInfoViewController: UITableViewDataSource {
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(InfoPageViewTVCell.self)") as? InfoPageViewTVCell else { return BasicAbilityTVCell() }
+            cell.setInitailView()
             return cell
         default:
             return BasicInfoTVCell()
