@@ -26,6 +26,8 @@
 		AC39064D2850ED3F00361391 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064C2850ED3F00361391 /* UIButton + Extension.swift */; };
 		AC39064F2851125200361391 /* Notification.Name + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064E2851125200361391 /* Notification.Name + Extension.swift */; };
 		AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */; };
+		AC68DC6E2860CF740076F959 /* BasicAbilityCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */; };
+		AC68DC6F2860CF740076F959 /* BasicAbilityCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */; };
 		AC740CA5284F444B0015562C /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */; };
 		AC740CA6284F444B0015562C /* BasicAbilityTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */; };
 		ACAF1B61284504A000BD7991 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAF1B60284504A000BD7991 /* UIFont + Extension.swift */; };
@@ -86,6 +88,8 @@
 		AC39064C2850ED3F00361391 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		AC39064E2851125200361391 /* Notification.Name + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name + Extension.swift"; sourceTree = "<group>"; };
 		AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityCVCell.swift; sourceTree = "<group>"; };
+		AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicAbilityCVCell.xib; sourceTree = "<group>"; };
 		AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
 		AC740CA4284F444B0015562C /* BasicAbilityTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicAbilityTVCell.xib; sourceTree = "<group>"; };
 		ACAF1B60284504A000BD7991 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				AC740CA3284F444B0015562C /* BasicAbilityTVCell.swift */,
 				AC1EC2352860706100156BF5 /* InfoPageViewTVCell.xib */,
 				AC1EC2342860706100156BF5 /* InfoPageViewTVCell.swift */,
+				AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */,
+				AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				AC31A8E9283B925100597055 /* BookMarkTVCell.xib in Resources */,
 				ACD9268E283B3A970026985C /* LaunchScreen.storyboard in Resources */,
 				ACD9268B283B3A970026985C /* Assets.xcassets in Resources */,
+				AC68DC6F2860CF740076F959 /* BasicAbilityCVCell.xib in Resources */,
 				AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */,
 				AC1E3F512851C3F000462AA9 /* SettingTVCell.xib in Resources */,
 				ACCB6556284501E5008FFF9A /* ONE-Mobile-Bold.ttf in Resources */,
@@ -514,6 +521,7 @@
 				AC1EC22528602FEB00156BF5 /* Array + Extension.swift in Sources */,
 				AC1EC22E286046BD00156BF5 /* CardInfo.swift in Sources */,
 				AC39064B28508F2C00361391 /* BookmarkManager.swift in Sources */,
+				AC68DC6E2860CF740076F959 /* BasicAbilityCVCell.swift in Sources */,
 				AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */,
 				ACD92686283B3A970026985C /* MainViewController.swift in Sources */,
 				AC39064D2850ED3F00361391 /* UIButton + Extension.swift in Sources */,
