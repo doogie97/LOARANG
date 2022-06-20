@@ -16,13 +16,6 @@ struct CrawlManager {
         let html = try String(contentsOf: url, encoding: .utf8)
         let doc: Document = try SwiftSoup.parse(html)
         
-        if let a = try doc.select("#profile-ability > script").first()?.data() {
-            let b = a.replacingOccurrences(of: "$.Profile = ", with: "")
-            let c = b.replacingOccurrences(of: ";", with: "")
-            InfoDecoder.decode(info: c)
-        }
-        
-        
         let info = try getBasicInfo(userName: userName, doc: doc)
         let ability = try getBasicAbility(doc: doc)
         return UserInfo(basicInfo: info, basicAbility: ability)
@@ -58,5 +51,18 @@ struct CrawlManager {
         }
         
         return BasicAbility(att: ability[1], vitality: ability[3], crit: ability[5], specialization: ability[7], domination: ability[9], swiftness: ability[11], endurance: ability[13], expertise: ability[15])
+    }
+    
+    private func getCardInfo(doc: Document) throws -> CardInfo {
+        guard let wholeJsonString = try doc.select("#profile-ability > script").first()?.data() else { throw CrawlError.getJsonError}
+        let replacedString = wholeJsonString
+            .replacingOccurrences(of: "$.Profile = ", with: "")
+            .replacingOccurrences(of: ";", with: "")
+        
+        guard let cardInfo = InfoDecoder.shared.decode(info: replacedString) else {
+            throw CrawlError.cardInfoError
+        }
+        
+        return cardInfo
     }
 }
