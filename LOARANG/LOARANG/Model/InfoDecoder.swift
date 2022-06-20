@@ -23,10 +23,10 @@ struct InfoDecoder {
     
     private func getCardInfo(json: JSON) -> [Card] {
         let cardArray = json.sortedUp
-        let cards = cardArray.compactMap {
-            Card(name: $0["Element_000"]["value"].stringValue,
-                 awakeCount: $0["Element_001"]["value"]["awakeCount"].intValue,
-                 awakeTotal: $0["Element_001"]["value"]["awakeTotal"].intValue)
+        let cards: [Card] = cardArray.compactMap {
+            return Card(name: $0["Element_000"]["value"].stringValue.centerName,
+                        awakeCount: $0["Element_001"]["value"]["awakeCount"].intValue,
+                        awakeTotal: $0["Element_001"]["value"]["awakeTotal"].intValue)
         }
         
         return cards
