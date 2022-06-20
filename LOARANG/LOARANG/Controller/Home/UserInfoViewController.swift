@@ -28,6 +28,7 @@ class UserInfoViewController: UIViewController {
     private func setInitialView() {
         navigationTitle.title = user?.basicInfo.name
         userInfoTableView.dataSource = self
+        userInfoTableView.delegate = self
         userInfoTableView.register(UINib(nibName: "\(BasicInfoTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicInfoTVCell.self)")
         userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
         userInfoTableView.register(UINib(nibName: "\(InfoPageViewTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(InfoPageViewTVCell.self)")
@@ -59,6 +60,19 @@ extension UserInfoViewController: UITableViewDataSource {
             return cell
         default:
             return BasicInfoTVCell()
+        }
+    }
+}
+
+extension UserInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return UIScreen.main.bounds.width * 0.45
+        case 1:
+            return UIScreen.main.bounds.width * 0.5
+        default:
+            return UIScreen.main.bounds.width * 1
         }
     }
 }
