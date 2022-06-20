@@ -18,7 +18,8 @@ struct CrawlManager {
         
         let info = try getBasicInfo(userName: userName, doc: doc)
         let ability = try getBasicAbility(doc: doc)
-        return UserInfo(basicInfo: info, basicAbility: ability)
+        let cardInfo = try getCardInfo(doc: doc)
+        return UserInfo(basicInfo: info, basicAbility: ability, cardInfo: cardInfo)
     }
     
     private func getBasicInfo(userName:String ,doc: Document) throws -> BasicInfo {

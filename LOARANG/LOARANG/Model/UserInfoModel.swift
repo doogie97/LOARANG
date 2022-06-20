@@ -8,6 +8,7 @@
 struct UserInfo {
     let basicInfo: BasicInfo
     let basicAbility: BasicAbility
+    let cardInfo: CardInfo
 }
 
 struct BasicInfo {
