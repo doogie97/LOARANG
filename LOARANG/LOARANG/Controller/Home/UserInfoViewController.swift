@@ -28,7 +28,6 @@ class UserInfoViewController: UIViewController {
     private func setInitialView() {
         navigationTitle.title = user?.basicInfo.name
         userInfoTableView.dataSource = self
-        userInfoTableView.delegate = self
         userInfoTableView.register(UINib(nibName: "\(BasicInfoTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicInfoTVCell.self)")
         userInfoTableView.register(UINib(nibName: "\(BasicAbilityTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(BasicAbilityTVCell.self)")
         userInfoTableView.register(UINib(nibName: "\(InfoPageViewTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(InfoPageViewTVCell.self)")
