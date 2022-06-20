@@ -58,16 +58,3 @@ extension UserInfoViewController: UITableViewDataSource {
         }
     }
 }
-
-extension UserInfoViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return UIScreen.main.bounds.width * 0.45
-        case 1:
-            return UIScreen.main.bounds.width * 0.5
-        default:
-            return 0
-        }
-    }
-}
