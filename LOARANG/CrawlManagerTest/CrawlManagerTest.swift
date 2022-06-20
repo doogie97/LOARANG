@@ -49,4 +49,18 @@ class CrawlManagerTest: XCTestCase {
             XCTFail()
         }
     }
+    
+    func test_searchUser호출시_userName이_최지근일때_첫번째카이름을_잘가져오는지(){
+        //given
+        let userName = "최지근"
+        
+        //when
+        do {
+            let result = try sut.searchUser(userName: userName)
+            //then
+            XCTAssertEqual(result.cardInfo.cards[0].name, "아만" )
+        } catch {
+            XCTFail()
+        }
+    }
 }
