@@ -11,11 +11,6 @@ class UserInfoViewController: UIViewController {
     @IBOutlet private weak var userInfoTableView: UITableView!
     @IBOutlet private weak var navigationTitle: UINavigationItem!
     private var user: UserInfo?
-    private var userInfoTableViewHeight = UIScreen.main.bounds.width * 0.6 {
-        didSet {
-            userInfoTableView.reloadData()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +51,7 @@ extension UserInfoViewController: UITableViewDataSource {
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(InfoCollectionViewTVCell.self)") as? InfoCollectionViewTVCell else { return InfoCollectionViewTVCell() }
-            cell.setInitailView(info: user, delegate: self)
+            cell.setInitailView(info: user)
             return cell
         default:
             return BasicInfoTVCell()
@@ -70,19 +65,9 @@ extension UserInfoViewController: UITableViewDelegate {
         case 0:
             return UIScreen.main.bounds.width * 0.45
         case 1:
-            return userInfoTableViewHeight
+            return UIScreen.main.bounds.width * 0.6
         default:
             return UIScreen.main.bounds.width * 1
-        }
-    }
-}
-
-extension UserInfoViewController: InfoCellHeightDelegate {
-    func changeHeigh(index: Int) {
-        if index == 0 {
-            userInfoTableViewHeight = UIScreen.main.bounds.width * 0.6
-        } else {
-            userInfoTableViewHeight = UIScreen.main.bounds.width * 1
         }
     }
 }
