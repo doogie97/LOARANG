@@ -6,16 +6,17 @@
 //
 
 struct CardInfo {
-    var first: Card?
-    let second: Card?
-    let third: Card?
-    let fourth: Card?
-    var fifth: Card?
-    let sixth: Card?
+    let cards: [Card]
+    let effect: [CardSetEffect]
 }
 
 struct Card {
     let name: String
     let awakeCount: Int
     let awakeTotal: Int
+}
+
+struct CardSetEffect {
+    let desc: String
+    let title: String
 }
