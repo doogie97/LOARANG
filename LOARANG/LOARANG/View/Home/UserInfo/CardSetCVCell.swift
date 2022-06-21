@@ -44,6 +44,26 @@ final class CardSetCVCell: UICollectionViewCell {
     @IBOutlet weak var secondStackView: UIStackView!
     private var cards: [Card]?
     private var effects: [CardSetEffect]?
+    
+    enum TierColor: Int {
+        case one = 1
+        case two, three, four, five
+        
+        var color: UIColor {
+            switch self {
+            case .one:
+                return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case .two:
+                return #colorLiteral(red: 0.2665745945, green: 0.7807122976, blue: 0.2393269469, alpha: 1)
+            case .three:
+                return #colorLiteral(red: 3.330669074e-16, green: 0.5668461069, blue: 1, alpha: 1)
+            case .four:
+                return #colorLiteral(red: 0.6180220535, green: 0.2016021288, blue: 0.7555841048, alpha: 1)
+            case .five:
+                return #colorLiteral(red: 0.8724854504, green: 0.5156878221, blue: 0, alpha: 1)
+            }
+        }
+    }
 }
 //MARK: - method
 extension CardSetCVCell {
