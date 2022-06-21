@@ -17,6 +17,20 @@ final class CardSetCVCell: UICollectionViewCell {
     @IBOutlet private weak var sixthCardNameLabel: UILabel!
     private lazy var cardLabels: [UILabel] = [firstCardNameLabel, secondCardNameLabel, thirdCardNameLabel, fourthCardNameLabel, fifthCardNameLabel, sixthCardNameLabel]
     
+    @IBOutlet private weak var firstCardImageView: UIImageView!
+    @IBOutlet private weak var secondCardImageView: UIImageView!
+    @IBOutlet private weak var thirdCardImageView: UIImageView!
+    @IBOutlet private weak var fourthCardImageView: UIImageView!
+    @IBOutlet private weak var fifthCardImageView: UIImageView!
+    @IBOutlet private weak var sixthCardImageView: UIImageView!
+    
+    @IBOutlet private weak var firstCardGemStacView: UIStackView!
+    @IBOutlet private weak var secondCardGemStackView: UIStackView!
+    @IBOutlet private weak var thridCardGemStackView: UIStackView!
+    @IBOutlet private weak var fourthCardGemStackView: UIStackView!
+    @IBOutlet private weak var fifthCardGemStackView: UIStackView!
+    @IBOutlet private weak var sixthCardGemStackView: UIStackView!
+    
     @IBOutlet private weak var firstCardView: UIView!
     @IBOutlet private weak var secondCardView: UIView!
     @IBOutlet private weak var thirdCardView: UIView!
