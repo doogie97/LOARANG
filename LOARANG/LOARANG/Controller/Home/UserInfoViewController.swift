@@ -67,7 +67,7 @@ extension UserInfoViewController: UITableViewDelegate {
         case 1:
             return UIScreen.main.bounds.width * 1
         default:
-            return UIScreen.main.bounds.width * 1
+            return 0
         }
     }
 }
