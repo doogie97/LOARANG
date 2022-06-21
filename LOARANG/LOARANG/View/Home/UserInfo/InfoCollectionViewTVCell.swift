@@ -61,6 +61,7 @@ extension InfoCollectionViewTVCell: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardSetCVCell.self)", for: indexPath) as? CardSetCVCell else {
                 return CardSetCVCell()
             }
+            cell.setCards(cardInfo: user.cardInfo)
             return cell
         }
     }

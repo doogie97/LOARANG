@@ -9,4 +9,5 @@ import UIKit
 
 class CardSetCVCell: UICollectionViewCell {
     @IBOutlet weak var cardName: UILabel!
+    func setCards(cardInfo: CardInfo) {
 }
