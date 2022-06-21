@@ -78,6 +78,8 @@ extension CardSetCVCell {
         guard let cards = cards else {
             return
         }
+        setNameLabelFont()
+        
         if cards.count != 6 {
             hideViews(cardViews.count - cards.count)
         }
@@ -137,6 +139,13 @@ extension CardSetCVCell {
     }
 }
 
+// MARK: - font Setting
+extension CardSetCVCell {
+    private func setNameLabelFont() {
+        for label in cardLabels {
+            label.font = UIFont.one(size: 12, family: .Bold)
+        }
+    }
     
     private func setTierColor(index: Int, tierGrade: Int) {
         let tierColor = TierColor(rawValue: tierGrade)?.color
