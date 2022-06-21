@@ -30,6 +30,7 @@ final class CardSetCVCell: UICollectionViewCell {
     @IBOutlet private weak var fourthCardGemStackView: UIStackView!
     @IBOutlet private weak var fifthCardGemStackView: UIStackView!
     @IBOutlet private weak var sixthCardGemStackView: UIStackView!
+    private lazy var cardGemStackView: [UIStackView] = [firstCardGemStacView, secondCardGemStackView, thridCardGemStackView, fourthCardGemStackView, fifthCardGemStackView, sixthCardGemStackView]
     
     @IBOutlet private weak var firstCardView: UIView!
     @IBOutlet private weak var secondCardView: UIView!
@@ -62,6 +63,7 @@ extension CardSetCVCell {
         
         for (index, card) in cards.enumerated() {
             cardLabels[index].text = card.name
+            setGemStacview(index: index, awakeCount: card.awakeCount, awakeTotal: card.awakeTotal)
         }
     }
     
@@ -91,4 +93,26 @@ extension CardSetCVCell {
         return label
     }
     
+    private func setGemStacview(index: Int, awakeCount: Int, awakeTotal: Int) {
+        if awakeCount != 0 {
+            for _ in 0...awakeCount - 1 {
+                cardGemStackView[index].addArrangedSubview(gemImage(awake: true))
+            }
+        }
+        
+        if awakeCount != 5 {
+            for _ in 0...4 - awakeCount {
+                cardGemStackView[index].addArrangedSubview(gemImage(awake: false))
+            }
+        }
+    }
+    
+    private func gemImage(awake: Bool) -> UIImageView {
+        let imageName = awake ? "activeGem" : "inActiveGem"
+        let imageView = UIImageView(image: UIImage(named: imageName))
+        
+        return imageView
+    }
+}
+
 }
