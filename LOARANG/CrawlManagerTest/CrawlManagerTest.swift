@@ -44,7 +44,7 @@ class CrawlManagerTest: XCTestCase {
         do {
             let result = try sut.searchUser(userName: userName)
             //then
-            XCTAssertEqual(result.cardInfo.effect[0].title, "남겨진 바람의 절벽 2세트" )
+            XCTAssertEqual(result.cardInfo.effects[0].title, "남겨진 바람의 절벽 2세트" )
         } catch {
             XCTFail()
         }

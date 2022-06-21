@@ -18,7 +18,7 @@ struct InfoDecoder {
         
         let cards = getCardInfo(json: cardJson)
         let effects = getCardSetEffect(json: cardSetJson)
-        return CardInfo(cards: cards, effect: effects)
+        return CardInfo(cards: cards, effects: effects)
     }
     
     private func getCardInfo(json: JSON) -> [Card] {

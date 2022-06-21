@@ -7,7 +7,7 @@
 
 struct CardInfo {
     let cards: [Card]
-    let effect: [CardSetEffect]
+    let effects: [CardSetEffect]
 }
 
 struct Card {
