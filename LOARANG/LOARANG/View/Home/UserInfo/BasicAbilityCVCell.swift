@@ -26,8 +26,7 @@ class BasicAbilityCVCell: UICollectionViewCell {
     @IBOutlet weak var enduranceLabel: UILabel!
     @IBOutlet weak var expertiseLabel: UILabel!
     
-    private let mainFontSize = CGFloat(18)
-    private let subFontSize = CGFloat(15)
+    @IBOutlet weak var gemLabel: UILabel!
     
     func configureInfo(info: BasicAbility) {
         setFont()
@@ -42,6 +41,9 @@ class BasicAbilityCVCell: UICollectionViewCell {
     }
     
     private func setFont() {
+        let mainFontSize = CGFloat(18)
+        let subFontSize = CGFloat(15)
+        
         attTitleLabel.font = UIFont.one(size: mainFontSize, family: .Bold)
         vitalityTitleLabel.font = UIFont.one(size: mainFontSize, family: .Bold)
         critTitleLabel.font = UIFont.one(size: subFontSize, family: .Bold)
@@ -59,5 +61,7 @@ class BasicAbilityCVCell: UICollectionViewCell {
         swiftnessLabel.font = UIFont.one(size: subFontSize, family: .Bold)
         enduranceLabel.font = UIFont.one(size: subFontSize, family: .Bold)
         expertiseLabel.font = UIFont.one(size: subFontSize, family: .Bold)
+        
+        gemLabel.font = UIFont.one(size: mainFontSize, family: .Bold)
     }
 }
