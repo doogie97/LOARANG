@@ -41,8 +41,9 @@ final class CardSetCVCell: UICollectionViewCell {
     @IBOutlet private weak var sixthCardView: UIView!
     private lazy var cardViews: [UIView] = [sixthCardView, fifthCardView, fourthCardView, thirdCardView, secondCardView, firstCardView]
     
-    @IBOutlet weak var firstStackView: UIStackView!
-    @IBOutlet weak var secondStackView: UIStackView!
+    @IBOutlet private weak var firstStackView: UIStackView!
+    @IBOutlet private weak var secondStackView: UIStackView!
+    
     private var cards: [Card]?
     private var effects: [CardSetEffect]?
     
