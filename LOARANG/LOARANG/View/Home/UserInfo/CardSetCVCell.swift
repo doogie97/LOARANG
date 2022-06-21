@@ -23,6 +23,7 @@ final class CardSetCVCell: UICollectionViewCell {
     @IBOutlet private weak var fourthCardImageView: UIImageView!
     @IBOutlet private weak var fifthCardImageView: UIImageView!
     @IBOutlet private weak var sixthCardImageView: UIImageView!
+    private lazy var cardImageViews: [UIImageView] = [firstCardImageView, secondCardImageView, thirdCardImageView, fourthCardImageView, fifthCardImageView, sixthCardImageView]
     
     @IBOutlet private weak var firstCardGemStacView: UIStackView!
     @IBOutlet private weak var secondCardGemStackView: UIStackView!
@@ -84,6 +85,7 @@ extension CardSetCVCell {
         for (index, card) in cards.enumerated() {
             cardLabels[index].text = card.name
             setGemStacview(index: index, awakeCount: card.awakeCount, awakeTotal: card.awakeTotal)
+            setTierColor(index: index, tierGrade: card.tierGrade)
         }
     }
     
@@ -135,4 +137,11 @@ extension CardSetCVCell {
     }
 }
 
+    
+    private func setTierColor(index: Int, tierGrade: Int) {
+        let tierColor = TierColor(rawValue: tierGrade)?.color
+        cardLabels[index].textColor = tierColor
+        cardImageViews[index].layer.borderColor = tierColor?.cgColor
+        cardImageViews[index].layer.borderWidth = 1
+    }
 }
