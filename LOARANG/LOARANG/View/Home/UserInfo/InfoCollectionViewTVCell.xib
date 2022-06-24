@@ -29,7 +29,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NR-Yv-fnK">
                                                 <rect key="frame" x="0.0" y="0.0" width="264" height="61"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="특성"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="특성 &amp; 보석"/>
                                                 <connections>
                                                     <action selector="touchStatButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="STh-sj-Xce"/>
                                                 </connections>
