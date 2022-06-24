@@ -12,20 +12,22 @@ struct InfoDecoder {
     
     private let imageBaseURL = "https://cdn-lostark.game.onstove.com/"
     
-    func decode(info: String) -> CardInfo? {
+    func decode(info: String) -> UserJsonInfo? {
         guard let data = info.data(using: .utf8) else { return nil }
         let json = JSON(data)
-        let cardJson = JSON(json["Card"])
-        let cardSetJson = JSON(json["CardSet"])
+        let cardJson = JSON(json["Card"]).sortedUp
+        let cardSetJson = JSON(json["CardSet"]).sortedUp
+        let gemJson: [JSON] = JSON(json["Equip"]).getInfo(of: "Gem")
         
-        let cards = getCardInfo(json: cardJson)
-        let effects = getCardSetEffect(json: cardSetJson)
-        return CardInfo(cards: cards, effects: effects)
+        let cards = getCardInfo(cardJson)
+        let effects = getCardSetEffect(cardSetJson)
+        let cardInfo = CardInfo(cards: cards, effects: effects)
+//        let gems = getGemInfo(gemJson)
+        return UserJsonInfo(cardInfo: cardInfo)
     }
     
-    private func getCardInfo(json: JSON) -> [Card] {
-        let cardArray = json.sortedUp
-        let cards: [Card] = cardArray.compactMap {
+    private func getCardInfo(_ json: [JSON]) -> [Card] {
+        let cards: [Card] = json.compactMap {
             return Card(name: $0["Element_000"]["value"].stringValue.centerName,
                         tierGrade: $0["Element_001"]["value"]["tierGrade"].intValue,
                         awakeCount: $0["Element_001"]["value"]["awakeCount"].intValue,
@@ -35,11 +37,10 @@ struct InfoDecoder {
         return cards
     }
     
-    private func getCardSetEffect(json: JSON) -> [CardSetEffect] {
+    private func getCardSetEffect(_ json: [JSON]) -> [CardSetEffect] {
         var cardSetEffects: [CardSetEffect] = []
         
-        let cardArray = json.sortedUp
-        for card in cardArray {
+        for card in json {
             var effects = card.sortedUp.compactMap { effect in
                 CardSetEffect(desc: effect["desc"].stringValue,
                               title: effect["title"].stringValue)
@@ -51,4 +52,8 @@ struct InfoDecoder {
         
         return cardSetEffects
     }
+    
+//    private func getGemInfo(_ json: [JSON]) -> [Gem] {
+//
+//    }
 }

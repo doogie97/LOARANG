@@ -21,9 +21,9 @@ struct CrawlManager {
         
         let info = try getBasicInfo(userName: userName, doc: doc)
         let ability = try getBasicAbility(doc: doc)
-        let cardInfo = try getCardInfo(doc: doc)
+        let jsonInfo = try getJsonInfo(doc: doc)
         
-        return UserInfo(basicInfo: info, basicAbility: ability, cardInfo: cardInfo)
+        return UserInfo(basicInfo: info, basicAbility: ability, userJsonInfo: jsonInfo)
     }
     
     private func getBasicInfo(userName:String ,doc: Document) throws -> BasicInfo {
@@ -60,7 +60,7 @@ struct CrawlManager {
         return BasicAbility(att: ability[1], vitality: ability[3], crit: ability[5], specialization: ability[7], domination: ability[9], swiftness: ability[11], endurance: ability[13], expertise: ability[15])
     }
     
-    private func getUserJson(doc: Document) throws -> String {
+    private func getInfoJson(doc: Document) throws -> String {
         guard let wholeJsonString = try doc.select("#profile-ability > script").first()?.data() else { throw CrawlError.getJsonError
         }
         let replacedString = wholeJsonString
@@ -69,11 +69,11 @@ struct CrawlManager {
         return replacedString
     }
     
-    private func getCardInfo(doc: Document) throws -> CardInfo {
-        let jsonString = try getUserJson(doc: doc)
-        guard let cardInfo = InfoDecoder.shared.decode(info: jsonString) else {
-            throw CrawlError.cardInfoError
+    private func getJsonInfo(doc: Document) throws -> UserJsonInfo {
+        let jsonString = try getInfoJson(doc: doc)
+        guard let userJsonInfo = InfoDecoder.shared.decode(info: jsonString) else {
+            throw CrawlError.jsonInfoError
         }
-        return cardInfo
+        return userJsonInfo
     }
 }

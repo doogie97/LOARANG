@@ -9,5 +9,5 @@ enum CrawlError: Error {
     case convertError
     case searchError
     case getJsonError
-    case cardInfoError
+    case jsonInfoError
 }

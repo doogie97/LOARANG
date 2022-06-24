@@ -8,5 +8,10 @@
 struct UserInfo {
     let basicInfo: BasicInfo
     let basicAbility: BasicAbility
+    let userJsonInfo: UserJsonInfo
+}
+
+struct UserJsonInfo {
     let cardInfo: CardInfo
+//    let gemInfo: [Gem]
 }
