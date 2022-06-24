@@ -10,6 +10,8 @@ struct InfoDecoder {
     static let shared = InfoDecoder()
     private init() {}
     
+    private let imageBaseURL = "https://cdn-lostark.game.onstove.com/"
+    
     func decode(info: String) -> CardInfo? {
         guard let data = info.data(using: .utf8) else { return nil }
         let json = JSON(data)
@@ -27,7 +29,8 @@ struct InfoDecoder {
             return Card(name: $0["Element_000"]["value"].stringValue.centerName,
                         tierGrade: $0["Element_001"]["value"]["tierGrade"].intValue,
                         awakeCount: $0["Element_001"]["value"]["awakeCount"].intValue,
-                        awakeTotal: $0["Element_001"]["value"]["awakeTotal"].intValue)
+                        awakeTotal: $0["Element_001"]["value"]["awakeTotal"].intValue,
+                        imageURL: imageBaseURL + $0["Element_001"]["value"]["iconData"]["iconPath"].stringValue)
         }
         return cards
     }

@@ -15,6 +15,7 @@ struct Card {
     let tierGrade: Int
     let awakeCount: Int
     let awakeTotal: Int
+    let imageURL: String
 }
 
 struct CardSetEffect {
