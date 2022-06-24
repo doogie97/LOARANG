@@ -19,4 +19,14 @@ extension JSON {
         
         return jsonArray
     }
+    
+    func getInfo(of: String) -> [JSON] {
+        let infoJson: [JSON] = self.compactMap { (String, JSON) in
+            if String.contains(of) {
+                return JSON
+            }
+            return nil
+        }
+        return infoJson
+    }
 }
