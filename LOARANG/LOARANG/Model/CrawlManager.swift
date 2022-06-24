@@ -10,9 +10,12 @@ import SwiftSoup
 
 struct CrawlManager {
     static let shared = CrawlManager()
+    let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
     func searchUser(userName: String) throws -> UserInfo {
-        let urlString = "https://m-lostark.game.onstove.com/Profile/Character/" + userName.changeToPercent()
-        guard let url = URL(string: urlString) else { throw CrawlError.convertError }
+        guard let url = URL(string: baseURL + userName.changeToPercent()) else {
+            throw CrawlError.convertError
+        }
+        
         let html = try String(contentsOf: url, encoding: .utf8)
         let doc: Document = try SwiftSoup.parse(html)
         
@@ -31,7 +34,9 @@ struct CrawlManager {
             info.append(try i.text())
         }
         
-        if info.isEmpty { throw CrawlError.searchError }
+        if info.isEmpty {
+            throw CrawlError.searchError
+        }
         
         let battleLevel = try doc.select(".myinfo__character--button2").select("span").text().replacingOccurrences(of: "Lv.", with: "")
         
@@ -56,7 +61,8 @@ struct CrawlManager {
     }
     
     private func getUserJson(doc: Document) throws -> String {
-        guard let wholeJsonString = try doc.select("#profile-ability > script").first()?.data() else { throw CrawlError.getJsonError}
+        guard let wholeJsonString = try doc.select("#profile-ability > script").first()?.data() else { throw CrawlError.getJsonError
+        }
         let replacedString = wholeJsonString
             .replacingOccurrences(of: "$.Profile = ", with: "")
             .replacingOccurrences(of: ";", with: "")
