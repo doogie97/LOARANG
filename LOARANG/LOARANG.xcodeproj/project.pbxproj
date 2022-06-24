@@ -42,6 +42,7 @@
 		ACCB6558284501E5008FFF9A /* ONE-Mobile-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACCB6555284501E5008FFF9A /* ONE-Mobile-Regular.ttf */; };
 		ACD34D54283F6FE200A5AA72 /* MianUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD34D52283F6FE200A5AA72 /* MianUserTVCell.swift */; };
 		ACD34D55283F6FE200A5AA72 /* MianUserTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD34D53283F6FE200A5AA72 /* MianUserTVCell.xib */; };
+		ACD45BB4286586D600753CB6 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD45BB3286586D600753CB6 /* UIImageView + Extension.swift */; };
 		ACD92682283B3A970026985C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92681283B3A970026985C /* AppDelegate.swift */; };
 		ACD92684283B3A970026985C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92683283B3A970026985C /* SceneDelegate.swift */; };
 		ACD92686283B3A970026985C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD92685283B3A970026985C /* MainViewController.swift */; };
@@ -105,6 +106,7 @@
 		ACCB6555284501E5008FFF9A /* ONE-Mobile-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Regular.ttf"; sourceTree = "<group>"; };
 		ACD34D52283F6FE200A5AA72 /* MianUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MianUserTVCell.swift; sourceTree = "<group>"; };
 		ACD34D53283F6FE200A5AA72 /* MianUserTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MianUserTVCell.xib; sourceTree = "<group>"; };
+		ACD45BB3286586D600753CB6 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		ACD9267E283B3A970026985C /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD92681283B3A970026985C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD92683283B3A970026985C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				AC39064C2850ED3F00361391 /* UIButton + Extension.swift */,
 				AC1EC22428602FEB00156BF5 /* Array + Extension.swift */,
 				AC1EC230286065BE00156BF5 /* JSON + Extension.swift */,
+				ACD45BB3286586D600753CB6 /* UIImageView + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				ACAF1B692845265E00BD7991 /* Accessoryable.swift in Sources */,
 				AC1E3F4B2851B08900462AA9 /* SettingViewController.swift in Sources */,
 				AC1E3F502851C3F000462AA9 /* SettingTVCell.swift in Sources */,
+				ACD45BB4286586D600753CB6 /* UIImageView + Extension.swift in Sources */,
 				ACB73C4C283E9196006B25EA /* UserInfoViewController.swift in Sources */,
 				AC1EC22C286046AB00156BF5 /* BasicAbility.swift in Sources */,
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
