@@ -89,6 +89,7 @@ extension CardSetCVCell {
             cardLabels[index].text = card.name
             setGemStacview(index: index, awakeCount: card.awakeCount, awakeTotal: card.awakeTotal)
             setTierColor(index: index, tierGrade: card.tierGrade)
+            cardImageViews[index].setImage(card.imageURL)
         }
     }
     
