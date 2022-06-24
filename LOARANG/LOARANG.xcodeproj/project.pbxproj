@@ -25,6 +25,7 @@
 		AC39064B28508F2C00361391 /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064A28508F2C00361391 /* BookmarkManager.swift */; };
 		AC39064D2850ED3F00361391 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064C2850ED3F00361391 /* UIButton + Extension.swift */; };
 		AC39064F2851125200361391 /* Notification.Name + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064E2851125200361391 /* Notification.Name + Extension.swift */; };
+		AC4D4C062865AB7800F87893 /* GemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D4C052865AB7800F87893 /* GemInfo.swift */; };
 		AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */; };
 		AC68DC6E2860CF740076F959 /* BasicAbilityCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */; };
 		AC68DC6F2860CF740076F959 /* BasicAbilityCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */; };
@@ -88,6 +89,7 @@
 		AC39064A28508F2C00361391 /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
 		AC39064C2850ED3F00361391 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		AC39064E2851125200361391 /* Notification.Name + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name + Extension.swift"; sourceTree = "<group>"; };
+		AC4D4C052865AB7800F87893 /* GemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemInfo.swift; sourceTree = "<group>"; };
 		AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityCVCell.swift; sourceTree = "<group>"; };
 		AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicAbilityCVCell.xib; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				AC1EC2292860468700156BF5 /* BasicInfo.swift */,
 				AC1EC22B286046AB00156BF5 /* BasicAbility.swift */,
 				AC1EC22D286046BD00156BF5 /* CardInfo.swift */,
+				AC4D4C052865AB7800F87893 /* GemInfo.swift */,
 			);
 			path = UserInfoMedel;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
 				ACEE744E2856BC5500E1F805 /* InfoDecoder.swift in Sources */,
 				ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */,
+				AC4D4C062865AB7800F87893 /* GemInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
