@@ -15,18 +15,15 @@ struct InfoDecoder {
     func decode(info: String) -> UserJsonInfo? {
         guard let data = info.data(using: .utf8) else { return nil }
         let json = JSON(data)
-        let cardJson = JSON(json["Card"]).sortedUp
-        let cardSetJson = JSON(json["CardSet"]).sortedUp
         
         let gemJson = JSON(json["Equip"]).gemInfo
-        let equipmentInfo = JSON(json["Equip"])
-        getEquipmentInfo(equipmentInfo)
+        
+        let cardJson = JSON(json["Card"]).sortedUp
+        let cardSetJson = JSON(json["CardSet"]).sortedUp
         
         let cards = getCardInfo(cardJson)
         let effects = getCardSetEffect(cardSetJson)
         let cardInfo = CardInfo(cards: cards, effects: effects)
-//        let gems = getGemInfo(gemJson)
-        return UserJsonInfo(cardInfo: cardInfo)
         
         //전체 장비(아바타,악세 포함) json
         let equipmentJson = JSON(json["Equip"]).equipInfo
