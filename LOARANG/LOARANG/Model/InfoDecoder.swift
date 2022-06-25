@@ -17,7 +17,10 @@ struct InfoDecoder {
         let json = JSON(data)
         let cardJson = JSON(json["Card"]).sortedUp
         let cardSetJson = JSON(json["CardSet"]).sortedUp
-        let gemJson: [JSON] = JSON(json["Equip"]).getInfo(of: "Gem")
+        
+        let gemJson = JSON(json["Equip"]).gemInfo
+        let equipmentInfo = JSON(json["Equip"])
+        getEquipmentInfo(equipmentInfo)
         
         let cards = getCardInfo(cardJson)
         let effects = getCardSetEffect(cardSetJson)
@@ -56,4 +59,20 @@ struct InfoDecoder {
 //    private func getGemInfo(_ json: [JSON]) -> [Gem] {
 //
 //    }
+    
+    private func getEquipmentInfo(_ json: JSON) {
+        let infoJson: [(String, JSON)] = json.compactMap {
+            if !$0.0.contains("Gem") {
+                return $0
+            }
+            return nil
+        }
+        
+        for info in infoJson {
+            if info.0.contains(EquimentIndex.bottom.rawValue) {
+                let equipment = info.1.equipmentPart
+                print(equipment.thirdSetEffect)
+            }
+        }
+    }
 }
