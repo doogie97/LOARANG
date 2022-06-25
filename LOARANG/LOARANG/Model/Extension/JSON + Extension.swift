@@ -39,6 +39,17 @@ extension JSON {
         return jsonArray
     }
     
+    var equipInfo: [(String, JSON)] {
+        let infoJson: [(String, JSON)] = self.compactMap {
+            if !$0.0.contains("Gem") {
+                return $0
+            }
+            return nil
+        }
+        
+        return infoJson
+    }
+    
     var equipmentPart: EquipmentPart {
         let isFullLv = self["Element_007"]["type"].stringValue == "Progress"
         let elementNum = isFullLv ? 8 : 7
