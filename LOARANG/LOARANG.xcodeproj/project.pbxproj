@@ -26,6 +26,7 @@
 		AC39064D2850ED3F00361391 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064C2850ED3F00361391 /* UIButton + Extension.swift */; };
 		AC39064F2851125200361391 /* Notification.Name + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39064E2851125200361391 /* Notification.Name + Extension.swift */; };
 		AC4D4C062865AB7800F87893 /* GemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D4C052865AB7800F87893 /* GemInfo.swift */; };
+		AC4D4C092866A8B500F87893 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D4C082866A8B500F87893 /* Equipment.swift */; };
 		AC5F81DE283DE53D0006A2BB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */; };
 		AC68DC6E2860CF740076F959 /* BasicAbilityCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */; };
 		AC68DC6F2860CF740076F959 /* BasicAbilityCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */; };
@@ -90,6 +91,7 @@
 		AC39064C2850ED3F00361391 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		AC39064E2851125200361391 /* Notification.Name + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name + Extension.swift"; sourceTree = "<group>"; };
 		AC4D4C052865AB7800F87893 /* GemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemInfo.swift; sourceTree = "<group>"; };
+		AC4D4C082866A8B500F87893 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		AC5F81DD283DE53D0006A2BB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC68DC6C2860CF740076F959 /* BasicAbilityCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityCVCell.swift; sourceTree = "<group>"; };
 		AC68DC6D2860CF740076F959 /* BasicAbilityCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicAbilityCVCell.xib; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				AC1EC22B286046AB00156BF5 /* BasicAbility.swift */,
 				AC1EC22D286046BD00156BF5 /* CardInfo.swift */,
 				AC4D4C052865AB7800F87893 /* GemInfo.swift */,
+				AC4D4C082866A8B500F87893 /* Equipment.swift */,
 			);
 			path = UserInfoMedel;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			files = (
 				AC1EC22A2860468700156BF5 /* BasicInfo.swift in Sources */,
 				AC1EC231286065BE00156BF5 /* JSON + Extension.swift in Sources */,
+				AC4D4C092866A8B500F87893 /* Equipment.swift in Sources */,
 				ACB73C4A283E8846006B25EA /* UserInfo.swift in Sources */,
 				AC39064F2851125200361391 /* Notification.Name + Extension.swift in Sources */,
 				ACD34D54283F6FE200A5AA72 /* MianUserTVCell.swift in Sources */,
