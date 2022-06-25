@@ -15,8 +15,10 @@ extension String {
         return string
     }
     var centerName: String {
-        let removedLast = self.replacingOccurrences(of: "</FONT>", with: "")
-        let center = removedLast.components(separatedBy: ">")[1]
+        let removedAlign = self.replacingOccurrences(of: "<P ALIGN='CENTER'>", with: "")
+        let removedFont = removedAlign.replacingOccurrences(of: "</FONT>", with: "")
+        let removedP = removedFont.replacingOccurrences(of: "</P>", with: "")
+        let center = removedP.components(separatedBy: ">")[1]
         
         return center
     }
