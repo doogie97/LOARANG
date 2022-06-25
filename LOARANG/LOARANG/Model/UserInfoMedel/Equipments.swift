@@ -4,16 +4,16 @@
 //
 //  Created by 최최성균 on 2022/06/25.
 //
-struct UserEquipmentInfo {
-    let equipments: Equipment
+struct EquipmentInfo {
+    let equipments: Equipments
 }
 
-struct Equipment {
-    let haed: EquipmentPart
-    let shoulder: EquipmentPart
-    let top: EquipmentPart
-    let bottom: EquipmentPart
-    let weapon: EquipmentPart
+struct Equipments {
+    let haed: EquipmentPart?
+    let shoulder: EquipmentPart?
+    let top: EquipmentPart?
+    let bottom: EquipmentPart?
+    let weapon: EquipmentPart?
 }
 
 struct EquipmentPart {
