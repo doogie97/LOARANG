@@ -13,5 +13,6 @@ struct UserInfo {
 
 struct UserJsonInfo {
     let cardInfo: CardInfo
+    let equipmenInfo: EquipmentInfo
 //    let gemInfo: [Gem]
 }
