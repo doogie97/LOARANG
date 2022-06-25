@@ -16,22 +16,15 @@ struct InfoDecoder {
         guard let data = info.data(using: .utf8) else { return nil }
         let json = JSON(data)
         
-        let gemJson = JSON(json["Equip"]).gemInfo
-        
         let cardJson = JSON(json["Card"]).sortedUp
         let cardSetJson = JSON(json["CardSet"]).sortedUp
-        
         let cards = getCardInfo(cardJson)
         let effects = getCardSetEffect(cardSetJson)
+        
         let cardInfo = CardInfo(cards: cards, effects: effects)
         
-        //전체 장비(아바타,악세 포함) json
-        let equipmentJson = JSON(json["Equip"]).equipInfo
-        //only 장비만
-        let equipments = getEquipments(equipmentJson)
-        
-        //최종 적으로 UserJsonInfo에 들어갈 형태의 모든 장비들(현재는 only장비만 있으나 악세, 아바타도 추가예정)
-        let equipmentInfo = EquipmentInfo(equipments: equipments)
+        let eqJson = JSON(json["Equip"])
+        let equipmentInfo = getWholeEquipments(eqJson)
 
         return UserJsonInfo(cardInfo: cardInfo, equipmenInfo: equipmentInfo)
     }
@@ -63,11 +56,15 @@ struct InfoDecoder {
         return cardSetEffects
     }
     
-//    private func getGemInfo(_ json: [JSON]) -> [Gem] {
-//
-//    }
+    private func getWholeEquipments(_ json: JSON) -> EquipmentInfo {
+        let equipments = getOnlyEquipments(json.equipInfo)
+        let gems = getGemInfo(json.gemInfo)
+        
+        return EquipmentInfo(equipments: equipments, gems: gems)
+    }
     
-    private func getEquipments(_ json: [(String, JSON)]) -> Equipments {       
+    private func getOnlyEquipments(_ json: [(String, JSON)]) -> Equipments {
+        //여기서 장비 뿐만 아니라 아바타 등등 다가져와야함 그니까 Equipments의 프로퍼티가 많아져야함
         var head: EquipmentPart?
         var shoulder: EquipmentPart?
         var top: EquipmentPart?
@@ -89,5 +86,15 @@ struct InfoDecoder {
         }
 
         return Equipments(haed: head, shoulder: shoulder, top: top, bottom: bottom, weapon: weapon)
+    }
+    
+    private func getGemInfo(_ json: [JSON]) -> [Gem] {
+        let gems: [Gem] = json.compactMap {
+            return Gem(name: $0["Element_000"]["value"].stringValue.centerName,
+                       grade: $0["Element_001"]["value"]["slotData"]["iconGrade"].intValue,
+                       lvString: $0["Element_001"]["value"]["slotData"]["rtString"].stringValue,
+                       effect: $0["Element_004"]["value"]["Element_001"].stringValue)
+        }
+        return gems
     }
 }
