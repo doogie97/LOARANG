@@ -27,6 +27,16 @@ struct InfoDecoder {
         let cardInfo = CardInfo(cards: cards, effects: effects)
 //        let gems = getGemInfo(gemJson)
         return UserJsonInfo(cardInfo: cardInfo)
+        
+        //전체 장비(아바타,악세 포함) json
+        let equipmentJson = JSON(json["Equip"]).equipInfo
+        //only 장비만
+        let equipments = getEquipments(equipmentJson)
+        
+        //최종 적으로 UserJsonInfo에 들어갈 형태의 모든 장비들(현재는 only장비만 있으나 악세, 아바타도 추가예정)
+        let equipmentInfo = EquipmentInfo(equipments: equipments)
+
+        return UserJsonInfo(cardInfo: cardInfo, equipmenInfo: equipmentInfo)
     }
     
     private func getCardInfo(_ json: [JSON]) -> [Card] {
@@ -60,19 +70,27 @@ struct InfoDecoder {
 //
 //    }
     
-    private func getEquipmentInfo(_ json: JSON) {
-        let infoJson: [(String, JSON)] = json.compactMap {
-            if !$0.0.contains("Gem") {
-                return $0
-            }
-            return nil
-        }
+    private func getEquipments(_ json: [(String, JSON)]) -> Equipments {       
+        var head: EquipmentPart?
+        var shoulder: EquipmentPart?
+        var top: EquipmentPart?
+        var bottom: EquipmentPart?
+        var weapon: EquipmentPart?
         
-        for info in infoJson {
-            if info.0.contains(EquimentIndex.bottom.rawValue) {
-                let equipment = info.1.equipmentPart
-                print(equipment.thirdSetEffect)
+        for info in json {
+            if info.0.contains(EquimentIndex.head.rawValue) {
+                head = info.1.equipmentPart
+            } else if info.0.contains(EquimentIndex.shoulder.rawValue) {
+                shoulder = info.1.equipmentPart
+            } else if info.0.contains(EquimentIndex.top.rawValue) {
+                top = info.1.equipmentPart
+            } else if info.0.contains(EquimentIndex.bottom.rawValue) {
+                bottom = info.1.equipmentPart
+            } else if info.0.contains(EquimentIndex.weapon.rawValue) {
+                weapon = info.1.equipmentPart
             }
         }
+
+        return Equipments(haed: head, shoulder: shoulder, top: top, bottom: bottom, weapon: weapon)
     }
 }
