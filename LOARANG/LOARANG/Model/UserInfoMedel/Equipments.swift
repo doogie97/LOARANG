@@ -6,6 +6,7 @@
 //
 struct EquipmentInfo {
     let equipments: Equipments
+    let gems: [Gem]
 }
 
 struct Equipments {
@@ -14,6 +15,7 @@ struct Equipments {
     let top: EquipmentPart?
     let bottom: EquipmentPart?
     let weapon: EquipmentPart?
+    //let necklace: Accessory? 이런식으로 추가 필요
 }
 
 struct EquipmentPart {
