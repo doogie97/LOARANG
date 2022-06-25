@@ -20,13 +20,24 @@ extension JSON {
         return jsonArray
     }
     
-    func getInfo(of: String) -> [JSON] {
-        let infoJson: [JSON] = self.compactMap { (String, JSON) in
-            if String.contains(of) {
-                return JSON
+    var gemInfo: [JSON] {
+        let infoJson: [(String, JSON)] = self.compactMap {
+            if $0.0.contains("Gem") {
+                return $0
             }
             return nil
         }
-        return infoJson
+        
+        let sortedJson = infoJson.sorted { first, second in
+            return first.0 < second.0
+        }
+        
+        let jsonArray = sortedJson.compactMap {
+            return $0.1
+        }
+        
+        return jsonArray
+    }
+    
     }
 }
