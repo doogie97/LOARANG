@@ -10,4 +10,5 @@ enum CrawlError: Error {
     case searchError
     case getJsonError
     case jsonInfoError
+    case inspection
 }

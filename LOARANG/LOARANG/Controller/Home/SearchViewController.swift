@@ -76,7 +76,12 @@ extension SearchViewController: UISearchBarDelegate {
                 showAlert(title: "\(info.basicInfo.name) LV.\(info.basicInfo.itemLevel)(\(info.basicInfo.class))", message: "대표 캐릭터를 설정 하시겠습니까?", userName: userName)
             }
         } catch {
-            showAlert(title: "", message: "검색하신 유저가 없습니다", userName: nil)
+            switch error {
+            case CrawlError.inspection:
+                showInspectionAlert()
+            default:
+                showAlert(title: "", message: "검색하신 유저가 없습니다", userName: nil)
+            }
         }
         
         myActivityIndicator.isHidden = true

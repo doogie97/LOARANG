@@ -19,6 +19,10 @@ struct CrawlManager {
         let html = try String(contentsOf: url, encoding: .utf8)
         let doc: Document = try SwiftSoup.parse(html)
         
+        if try doc.select("title").text() == "로스트아크 - 서비스 점검" {
+            throw CrawlError.inspection
+        }
+        
         let info = try getBasicInfo(userName: userName, doc: doc)
         let ability = try getBasicAbility(doc: doc)
         let jsonInfo = try getJsonInfo(doc: doc)
@@ -75,5 +79,17 @@ struct CrawlManager {
             throw CrawlError.jsonInfoError
         }
         return userJsonInfo
+    }
+    
+    func checkInspection() throws {
+        guard let url = URL(string: "https://m-lostark.game.onstove.com") else {
+            return
+        }
+        let html = try String(contentsOf: url, encoding: .utf8)
+        let doc: Document = try SwiftSoup.parse(html)
+        let title = try doc.select("title").text()
+        if title == "로스트아크 - 서비스 점검" {
+            throw CrawlError.inspection
+        }
     }
 }

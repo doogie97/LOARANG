@@ -24,6 +24,12 @@ final class MainViewController: UIViewController {
         mainTableView.register(UINib(nibName: "\(MianUserTVCell.self)", bundle: nil), forCellReuseIdentifier: "\(MianUserTVCell.self)")
         BookmarkManager.shared.setUsers()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name.mainCharacter, object: nil)
+        
+        do {
+            try CrawlManager.shared.checkInspection()
+        } catch {
+            showInspectionAlert()
+        }
     }
     
     @objc private func reloadTV() {
@@ -80,9 +86,18 @@ extension MainViewController: TouchCellDelegate {
         do {
             let info = try CrawlManager.shared.searchUser(userName: name)
             userInfoVC.receiveInfo(user: info)
+            navigationController?.pushViewController(userInfoVC, animated: true)
         } catch {
-            
+            switch error {
+            case CrawlError.inspection :
+                do {
+                    try CrawlManager.shared.checkInspection()
+                } catch {
+                    showInspectionAlert()
+                }
+            default:
+                return
+            }
         }
-        navigationController?.pushViewController(userInfoVC, animated: true)
     }
 }
