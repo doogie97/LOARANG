@@ -69,6 +69,7 @@ struct InfoDecoder {
         var shoulder: EquipmentPart?
         var top: EquipmentPart?
         var bottom: EquipmentPart?
+        var gloves: EquipmentPart?
         var weapon: EquipmentPart?
         
         for info in json {
@@ -80,12 +81,14 @@ struct InfoDecoder {
                 top = info.1.equipmentPart
             } else if info.0.contains(EquimentIndex.bottom.rawValue) {
                 bottom = info.1.equipmentPart
+            } else if info.0.contains(EquimentIndex.glove.rawValue) {
+                gloves = info.1.equipmentPart
             } else if info.0.contains(EquimentIndex.weapon.rawValue) {
                 weapon = info.1.equipmentPart
             }
         }
 
-        return Equipments(haed: head, shoulder: shoulder, top: top, bottom: bottom, weapon: weapon)
+        return Equipments(haed: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon)
     }
     
     private func getGemInfo(_ json: [JSON]) -> [Gem] {

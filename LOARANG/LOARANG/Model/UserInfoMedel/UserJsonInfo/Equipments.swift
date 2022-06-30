@@ -14,6 +14,7 @@ struct Equipments {
     let shoulder: EquipmentPart?
     let top: EquipmentPart?
     let bottom: EquipmentPart?
+    let gloves: EquipmentPart?
     let weapon: EquipmentPart?
     //let necklace: AccessoryPart? 이런식으로 추가 필요
 }
