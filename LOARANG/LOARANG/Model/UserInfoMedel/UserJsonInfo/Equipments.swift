@@ -25,22 +25,37 @@ struct EquipmentPart {
     let lv: String
     let quality: Int?
     let grade: Int
-    let basicEffects: String
-    let additionalEffects: String
+    let basicEffects: BasicEffects
     let estherEffect: EstherEffect?
-    let firstTripod: String
-    let secondTripod: String
-    let thirdTripod: String
-    let setEffectLv: String
-    let firstSetEffect: String
-    let secondSetEffect: String
-    let thirdSetEffect: String
+    let triPods: Tripods?
+    let setEffects: SetEffects?
     let imageURL: String
 }
 
+struct BasicEffects {
+    let basicEffect: String?
+    let aditionalEffect: String?
+}
+
 struct EstherEffect {
-    let first: String
-    let second: String
+    let firstEffect: String
+    let secondEffect: String
+}
+
+struct Tripods {
+    let firstTripod: String?
+    let secondTripod: String?
+    let thirdTripod: String?
+}
+
+struct SetEffects {
+    struct Effects {
+        let firstSetEffect: String?
+        let secondSetEffect: String?
+        let thirdSetEffect: String?
+    }
+    let setEffectLv: String?
+    let effects: Effects?
 }
 
 enum EquimentIndex: String {
