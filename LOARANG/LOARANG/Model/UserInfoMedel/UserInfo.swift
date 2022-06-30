@@ -10,9 +10,3 @@ struct UserInfo {
     let basicAbility: BasicAbility
     let userJsonInfo: UserJsonInfo
 }
-
-struct UserJsonInfo {
-    let cardInfo: CardInfo
-    let equipmenInfo: EquipmentInfo
-//    let gemInfo: [Gem]
-}

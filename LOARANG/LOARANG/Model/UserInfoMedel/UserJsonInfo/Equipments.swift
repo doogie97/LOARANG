@@ -15,14 +15,14 @@ struct Equipments {
     let top: EquipmentPart?
     let bottom: EquipmentPart?
     let weapon: EquipmentPart?
-    //let necklace: Accessory? 이런식으로 추가 필요
+    //let necklace: AccessoryPart? 이런식으로 추가 필요
 }
 
 struct EquipmentPart {
     let titlt: String
     let part: String
     let lv: String
-    let quality: Int
+    let quality: Int?
     let grade: Int
     let basicEffects: String
     let additionalEffects: String
