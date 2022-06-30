@@ -15,11 +15,17 @@ extension String {
         return string
     }
     var centerNameOne: String {
-        return self
+        let stringArray = self
             .replacingOccurrences(of: "<P ALIGN='CENTER'>", with: "")
             .replacingOccurrences(of: "</FONT>", with: "")
             .replacingOccurrences(of: "</P>", with: "")
-            .components(separatedBy: ">")[1]
+            .components(separatedBy: ">")
+        
+        if stringArray.count < 2 {
+            return stringArray.joined()
+        }
+        
+        return stringArray[1]
     }
 
     var centerNameTwo: String {
