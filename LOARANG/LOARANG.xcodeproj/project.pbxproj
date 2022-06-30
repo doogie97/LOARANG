@@ -200,7 +200,6 @@
 				ACB73C49283E8846006B25EA /* UserInfo.swift */,
 				AC1EC2292860468700156BF5 /* BasicInfo.swift */,
 				AC1EC22B286046AB00156BF5 /* BasicAbility.swift */,
-				AC1EC22D286046BD00156BF5 /* CardInfo.swift */,
 				AC2AC6C5286D953500505868 /* UserJsonInfo */,
 			);
 			path = UserInfoMedel;
@@ -210,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				AC2AC6C6286D954400505868 /* UserJsonInfo.swift */,
+				AC1EC22D286046BD00156BF5 /* CardInfo.swift */,
 				AC4D4C052865AB7800F87893 /* GemInfo.swift */,
 				AC4D4C082866A8B500F87893 /* Equipments.swift */,
 			);
