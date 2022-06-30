@@ -93,7 +93,8 @@ struct InfoDecoder {
             return Gem(name: $0["Element_000"]["value"].stringValue.centerNameOne,
                        grade: $0["Element_001"]["value"]["slotData"]["iconGrade"].intValue,
                        lvString: $0["Element_001"]["value"]["slotData"]["rtString"].stringValue,
-                       effect: $0["Element_004"]["value"]["Element_001"].stringValue.centerNameOne)
+                       effect: $0["Element_004"]["value"]["Element_001"].stringValue.centerNameOne,
+                       imageURL: imageBaseURL + $0["Element_001"]["value"]["slotData"]["iconPath"].stringValue)
         }
         return gems
     }

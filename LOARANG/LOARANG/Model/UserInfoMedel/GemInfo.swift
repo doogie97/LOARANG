@@ -10,4 +10,5 @@ struct Gem {
     let grade: Int
     let lvString: String
     let effect: String
+    let imageURL: String
 }
