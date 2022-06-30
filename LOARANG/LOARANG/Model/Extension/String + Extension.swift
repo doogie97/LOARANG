@@ -15,12 +15,11 @@ extension String {
         return string
     }
     var centerNameOne: String {
-        let removedAlign = self.replacingOccurrences(of: "<P ALIGN='CENTER'>", with: "")
-        let removedFont = removedAlign.replacingOccurrences(of: "</FONT>", with: "")
-        let removedP = removedFont.replacingOccurrences(of: "</P>", with: "")
-        let center = removedP.components(separatedBy: ">")[1]
-        
-        return center
+        return self
+            .replacingOccurrences(of: "<P ALIGN='CENTER'>", with: "")
+            .replacingOccurrences(of: "</FONT>", with: "")
+            .replacingOccurrences(of: "</P>", with: "")
+            .components(separatedBy: ">")[1]
     }
 
     var centerNameTwo: String {
@@ -47,5 +46,14 @@ extension String {
         let lv = self.centerNameOne
         
         return setName + lv
+    }
+    
+    var estherEffect: String {
+        return self
+            .replacingOccurrences(of: "<FONT COLOR='#33ffcc'>", with: "")
+            .replacingOccurrences(of: "</FONT>", with: "")
+            .replacingOccurrences(of: "<BR>", with: "\n")
+            .replacingOccurrences(of: "<FONT COLOR='#ffff99'>", with: "")
+            .replacingOccurrences(of: "<FONT COLOR='#99ff99'>", with: "")
     }
 }

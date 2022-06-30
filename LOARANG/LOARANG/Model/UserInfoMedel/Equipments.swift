@@ -26,6 +26,7 @@ struct EquipmentPart {
     let grade: Int
     let basicEffects: String
     let additionalEffects: String
+    let estherEffect: EstherEffect?
     let firstTripod: String
     let secondTripod: String
     let thirdTripod: String
@@ -34,6 +35,11 @@ struct EquipmentPart {
     let secondSetEffect: String
     let thirdSetEffect: String
     let imageURL: String
+}
+
+struct EstherEffect {
+    let first: String
+    let second: String
 }
 
 enum EquimentIndex: String {
