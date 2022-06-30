@@ -31,7 +31,7 @@ struct InfoDecoder {
     
     private func getCardInfo(_ json: [JSON]) -> [Card] {
         let cards: [Card] = json.compactMap {
-            return Card(name: $0["Element_000"]["value"].stringValue.centerName,
+            return Card(name: $0["Element_000"]["value"].stringValue.centerNameOne,
                         tierGrade: $0["Element_001"]["value"]["tierGrade"].intValue,
                         awakeCount: $0["Element_001"]["value"]["awakeCount"].intValue,
                         awakeTotal: $0["Element_001"]["value"]["awakeTotal"].intValue,
@@ -90,10 +90,10 @@ struct InfoDecoder {
     
     private func getGemInfo(_ json: [JSON]) -> [Gem] {
         let gems: [Gem] = json.compactMap {
-            return Gem(name: $0["Element_000"]["value"].stringValue.centerName,
+            return Gem(name: $0["Element_000"]["value"].stringValue.centerNameOne,
                        grade: $0["Element_001"]["value"]["slotData"]["iconGrade"].intValue,
                        lvString: $0["Element_001"]["value"]["slotData"]["rtString"].stringValue,
-                       effect: $0["Element_004"]["value"]["Element_001"].stringValue.centerName)
+                       effect: $0["Element_004"]["value"]["Element_001"].stringValue.centerNameOne)
         }
         return gems
     }

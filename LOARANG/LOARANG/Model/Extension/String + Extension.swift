@@ -14,7 +14,7 @@ extension String {
         }
         return string
     }
-    var centerName: String {
+    var centerNameOne: String {
         let removedAlign = self.replacingOccurrences(of: "<P ALIGN='CENTER'>", with: "")
         let removedFont = removedAlign.replacingOccurrences(of: "</FONT>", with: "")
         let removedP = removedFont.replacingOccurrences(of: "</P>", with: "")
@@ -23,4 +23,29 @@ extension String {
         return center
     }
 
+    var centerNameTwo: String {
+        return self.components(separatedBy: ">")[2].components(separatedBy: "<")[0]
+    }
+    
+    var tripod: String {
+        if self.isEmpty {
+            return ""
+        }
+        let stringArray = self.components(separatedBy: "]")
+        let skilname = stringArray[1].centerNameOne
+        let tripodName = stringArray[2].components(separatedBy: "<")[0]
+        let tripodLV = stringArray[2].centerNameOne
+        
+        return "[\(skilname)]\(tripodName)\(tripodLV)"
+    }
+    
+    var setLv: String {
+        if self.isEmpty {
+            return ""
+        }
+        let setName = self.components(separatedBy: "<")[0]
+        let lv = self.centerNameOne
+        
+        return setName + lv
+    }
 }
