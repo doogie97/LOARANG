@@ -18,6 +18,7 @@
 		AC1EC231286065BE00156BF5 /* JSON + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EC230286065BE00156BF5 /* JSON + Extension.swift */; };
 		AC1EC2362860706100156BF5 /* InfoCollectionViewTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1EC2342860706100156BF5 /* InfoCollectionViewTVCell.swift */; };
 		AC1EC2372860706100156BF5 /* InfoCollectionViewTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1EC2352860706100156BF5 /* InfoCollectionViewTVCell.xib */; };
+		AC2AC6C7286D954400505868 /* UserJsonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2AC6C6286D954400505868 /* UserJsonInfo.swift */; };
 		AC31A8DD283B3F4D00597055 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */; };
 		AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */; };
 		AC31A8E5283B8FDE00597055 /* BookMarkCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */; };
@@ -85,6 +86,7 @@
 		AC1EC230286065BE00156BF5 /* JSON + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON + Extension.swift"; sourceTree = "<group>"; };
 		AC1EC2342860706100156BF5 /* InfoCollectionViewTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewTVCell.swift; sourceTree = "<group>"; };
 		AC1EC2352860706100156BF5 /* InfoCollectionViewTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCollectionViewTVCell.xib; sourceTree = "<group>"; };
+		AC2AC6C6286D954400505868 /* UserJsonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJsonInfo.swift; sourceTree = "<group>"; };
 		AC31A8DC283B3F4D00597055 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		AC31A8E2283B8FDE00597055 /* BookMarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCVCell.swift; sourceTree = "<group>"; };
 		AC31A8E3283B8FDE00597055 /* BookMarkCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMarkCVCell.xib; sourceTree = "<group>"; };
@@ -199,10 +201,19 @@
 				AC1EC2292860468700156BF5 /* BasicInfo.swift */,
 				AC1EC22B286046AB00156BF5 /* BasicAbility.swift */,
 				AC1EC22D286046BD00156BF5 /* CardInfo.swift */,
+				AC2AC6C5286D953500505868 /* UserJsonInfo */,
+			);
+			path = UserInfoMedel;
+			sourceTree = "<group>";
+		};
+		AC2AC6C5286D953500505868 /* UserJsonInfo */ = {
+			isa = PBXGroup;
+			children = (
+				AC2AC6C6286D954400505868 /* UserJsonInfo.swift */,
 				AC4D4C052865AB7800F87893 /* GemInfo.swift */,
 				AC4D4C082866A8B500F87893 /* Equipments.swift */,
 			);
-			path = UserInfoMedel;
+			path = UserJsonInfo;
 			sourceTree = "<group>";
 		};
 		AC31A8D9283B3F2C00597055 /* Font */ = {
@@ -560,6 +571,7 @@
 				AC31A8E4283B8FDE00597055 /* BookMarkCVCell.swift in Sources */,
 				ACEE744E2856BC5500E1F805 /* InfoDecoder.swift in Sources */,
 				ACB73C38283E7BB5006B25EA /* CrawlManager.swift in Sources */,
+				AC2AC6C7286D954400505868 /* UserJsonInfo.swift in Sources */,
 				AC4D4C062865AB7800F87893 /* GemInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
