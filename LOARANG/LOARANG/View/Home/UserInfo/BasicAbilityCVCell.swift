@@ -26,12 +26,18 @@ class BasicAbilityCVCell: UICollectionViewCell {
     @IBOutlet weak var enduranceLabel: UILabel!
     @IBOutlet weak var expertiseLabel: UILabel!
     
-    @IBOutlet weak var gemLabel: UILabel!
+    @IBOutlet weak var gemStackView: UIStackView!
+    
 }
 //MARK: - method
 extension BasicAbilityCVCell {
-    func configureInfo(info: BasicAbility) {
+    func configureInfo(info: UserInfo) {
         setFont()
+        setBasicAbility(info.basicAbility)
+        setGem(info.userJsonInfo.equipmenInfo.gems)
+    }
+    
+    private func setBasicAbility(_ info: BasicAbility) {
         attLabel.text = info.att
         vitalityLabel.text = info.vitality
         critLabel.text = info.crit
@@ -41,7 +47,71 @@ extension BasicAbilityCVCell {
         enduranceLabel.text = info.endurance
         expertiseLabel.text = info.expertise
     }
+    
+    private func setGem(_ gems: [Gem]) {
+        if gems.isEmpty {
+            gemStackView.addArrangedSubview(noGemLabel())
+            return
+        }
+        
+        if gems.count <= 6 {
+            gemStackView.addArrangedSubview(insideGemStackView(gems))
+        }
+        overSixGemStackView(gems)
+    }
 }
+
+// MARK: - make view
+extension BasicAbilityCVCell {
+    private func noGemLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "장착된 보석이 없습니다"
+        label.font = UIFont.one(size: 22, family: .Bold)
+        label.textColor = .white
+        
+        return label
+    }
+    
+    private func gemImageView(_ gem: Gem) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.setImage(gem.imageURL)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }
+    
+    private func insideGemStackView(_ gems: [Gem]) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        
+        for i in 0...gems.count - 1 {
+            stackView.addArrangedSubview(gemImageView(gems[i]))
+        }
+        
+        if 6 - gems.count != 0 {
+            for _ in 1...6 - gems.count{
+                stackView.addArrangedSubview(UIImageView())
+            }
+            
+        }
+        
+        return stackView
+    }
+    
+    private func overSixGemStackView(_ gems: [Gem]) {
+        var firstGems: [Gem] = []
+        var secondGems = gems
+        for _ in 0...5 {
+            guard let gem = secondGems.popFirst() else {
+                return
+            }
+            firstGems.append(gem)
+        }
+        
+        gemStackView.addArrangedSubview(insideGemStackView(firstGems))
+        gemStackView.addArrangedSubview(insideGemStackView(secondGems))
+    }
+}
+
 //MARK: - font Setting
 extension BasicAbilityCVCell {
     private func setFont() {

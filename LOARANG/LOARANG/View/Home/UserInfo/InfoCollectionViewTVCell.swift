@@ -55,7 +55,7 @@ extension InfoCollectionViewTVCell: UICollectionViewDataSource {
                 return BasicAbilityCVCell()
             }
 
-            cell.configureInfo(info: user.basicAbility)
+            cell.configureInfo(info: user)
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CardSetCVCell.self)", for: indexPath) as? CardSetCVCell else {
