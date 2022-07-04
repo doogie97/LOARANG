@@ -4,6 +4,7 @@
 //
 //  Created by 최최성균 on 2022/05/26.
 //
+import Foundation
 
 extension String {
     func changeToPercent() -> String {
@@ -14,6 +15,22 @@ extension String {
         }
         return string
     }
+    
+    func crawlUser(_ completion: @escaping (Result<UserInfo, Error>) -> Void) {
+        DispatchQueue.global().async {
+            do {
+                let info = try CrawlManager.shared.searchUser(userName: self)
+                DispatchQueue.main.async {
+                    completion(.success(info))
+                }
+            } catch(let error) {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
     var centerNameOne: String {
         let stringArray = self
             .replacingOccurrences(of: "<P ALIGN='CENTER'>", with: "")

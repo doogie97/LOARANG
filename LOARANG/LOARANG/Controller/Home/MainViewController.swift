@@ -82,22 +82,21 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: TouchCellDelegate {
     func moveToUserInfoVC(name: String) {
-        guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
-        do {
-            let info = try CrawlManager.shared.searchUser(userName: name)
-            userInfoVC.receiveInfo(user: info)
-            navigationController?.pushViewController(userInfoVC, animated: true)
-        } catch {
-            switch error {
-            case CrawlError.inspection :
-                do {
-                    try CrawlManager.shared.checkInspection()
-                } catch {
-                    showInspectionAlert()
-                }
-            default:
-                return
+        name.crawlUser { info in
+            switch info {
+            case .success(let info):
+                self.showUser(info)
+            case .failure(_):
+                //일단은 점검 오류 얼럿 표시, 추후 에러에 따를 추가 필요
+                self.showInspectionAlert()
             }
         }
+    }
+    
+    private func showUser(_ info: UserInfo) {
+        guard let userInfoVC = storyboard?.instantiateViewController(withIdentifier: "\(UserInfoViewController.self)") as? UserInfoViewController else { return }
+        
+        userInfoVC.receiveInfo(user: info)
+        self.navigationController?.pushViewController(userInfoVC, animated: true)
     }
 }
