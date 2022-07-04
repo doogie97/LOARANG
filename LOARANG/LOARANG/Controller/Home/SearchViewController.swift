@@ -72,6 +72,8 @@ extension SearchViewController: UISearchBarDelegate {
         }
         
         userName.crawlUser { info in
+            self.myActivityIndicator.isHidden = true
+            
             switch info {
             case .success(let info):
                 self.showUser(info)
@@ -87,8 +89,6 @@ extension SearchViewController: UISearchBarDelegate {
         } else {
             self.showAlert(title: "\(info.basicInfo.name) LV.\(info.basicInfo.itemLevel)(\(info.basicInfo.class))", message: "대표 캐릭터를 설정 하시겠습니까?", userName: info.basicInfo.name)
         }
-        
-        self.myActivityIndicator.isHidden = true
     }
     
     private func handleError(_ error: Error) {
@@ -101,7 +101,5 @@ extension SearchViewController: UISearchBarDelegate {
         default:
             self.showAlert(title: "", message: "알 수 없는 오류", userName: nil)
         }
-        
-        self.myActivityIndicator.isHidden = true
     }
 }
