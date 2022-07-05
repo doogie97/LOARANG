@@ -21,6 +21,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         userSearchBar.delegate = self
+        userSearchBar.searchTextField.textColor = .white
     }
     
     func setVCType(type: VCType) {
