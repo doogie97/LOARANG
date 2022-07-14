@@ -15,6 +15,7 @@
 		AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1F2880697700CDE796 /* MainViewModel.swift */; };
 		AC3FEC2528806DB300CDE796 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2428806DB300CDE796 /* MockStorage.swift */; };
 		AC3FEC27288071CF00CDE796 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC26288071CF00CDE796 /* Container.swift */; };
+		AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC292880761300CDE796 /* MainUserTVCell.swift */; };
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
 		ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */; };
 		ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		AC3FEC1F2880697700CDE796 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		AC3FEC2428806DB300CDE796 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 		AC3FEC26288071CF00CDE796 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		AC3FEC292880761300CDE796 /* MainUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserTVCell.swift; sourceTree = "<group>"; };
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
 		ACAEF31F287FF0D200AE98F1 /* LOARANG-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LOARANG-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 				AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */,
 			);
 			path = SettingView;
+			sourceTree = "<group>";
+		};
+		AC3FEC28288075F000CDE796 /* MainTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				AC3FEC292880761300CDE796 /* MainUserTVCell.swift */,
+			);
+			path = MainTableViewCells;
 			sourceTree = "<group>";
 		};
 		ACAEF316287FF0D200AE98F1 = {
@@ -226,6 +236,7 @@
 				ACAEF35E287FFC4900AE98F1 /* MainView.swift */,
 				ACAEF326287FF0D200AE98F1 /* MainViewController.swift */,
 				AC3FEC1F2880697700CDE796 /* MainViewModel.swift */,
+				AC3FEC28288075F000CDE796 /* MainTableViewCells */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -390,6 +401,7 @@
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
+				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
