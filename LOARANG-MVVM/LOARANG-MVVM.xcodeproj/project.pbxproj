@@ -89,6 +89,14 @@
 			path = Extesnsion;
 			sourceTree = "<group>";
 		};
+		AC3FEC0B2880525E00CDE796 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				ACAEF35C287FFBB600AE98F1 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		ACAEF316287FF0D200AE98F1 = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +122,7 @@
 				ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */,
 				ACAEF3602880039F00AE98F1 /* Utils */,
 				ACAEF338287FF60000AE98F1 /* Model */,
-				ACAEF35C287FFBB600AE98F1 /* View */,
+				AC3FEC0B2880525E00CDE796 /* Scenes */,
 				ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */,
 				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
@@ -170,13 +178,13 @@
 			path = Avatar;
 			sourceTree = "<group>";
 		};
-		ACAEF35C287FFBB600AE98F1 /* View */ = {
+		ACAEF35C287FFBB600AE98F1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				ACAEF326287FF0D200AE98F1 /* MainViewController.swift */,
 				ACAEF35E287FFC4900AE98F1 /* MainView.swift */,
 			);
-			path = View;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
