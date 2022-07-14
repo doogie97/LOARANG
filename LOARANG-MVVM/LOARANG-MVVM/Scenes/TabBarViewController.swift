@@ -19,7 +19,7 @@ final class TabBarViewController: UITabBarController {
     private func setTabBarView() {
         setMainVCButton()
         settingVCButton()
-        self.tabBar.tintColor = .backButtonColor
+        self.tabBar.tintColor = .buttonColor
         self.setViewControllers([mainVC, settingVC], animated: true)
     }
     

@@ -26,7 +26,7 @@ final class SearchView: UIView {
     
     private(set) var backButton: UIButton = {
         let button = UIButton()
-        button.imageView?.tintColor = .backButtonColor
+        button.imageView?.tintColor = .buttonColor
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 25, weight: .regular, scale: .default), forImageIn: .normal)
 
