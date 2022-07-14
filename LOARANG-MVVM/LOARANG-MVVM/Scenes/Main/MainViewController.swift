@@ -48,6 +48,7 @@ final class MainViewController: UIViewController {
     
     private func setMainTableView() {
         mainView.mainTableView.dataSource = self
+        mainView.mainTableView.delegate = self
         mainView.mainTableView.register(MainUserTVCell.self)
     }
 }
@@ -59,5 +60,11 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         viewModel.makeTableViewCell(index: indexPath.row, tableView: tableView)
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        viewModel.setTableViewHeight(index: indexPath.row)
     }
 }

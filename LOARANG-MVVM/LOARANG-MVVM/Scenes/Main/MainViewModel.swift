@@ -21,17 +21,27 @@ final class MainViewModel {
         self.mainUser = storage.mainUser
         self.bookMark = storage.bookMark.asDriver()
     }
+    
+    func setTableViewHeight(index: Int) -> CGFloat {
+        if index == 0 {
+            return UIScreen.main.bounds.width * 0.75
+        }
+        return UIScreen.main.bounds.width * 0.58
+    }
+    
+    
     func makeTableViewCell(index: Int, tableView: UITableView) -> UITableViewCell {
-            if index == 0 {
-                return makeMainUserTVCell(tableView)
-            }
-            return UITableViewCell()
+        if index == 0 {
+            return makeMainUserTVCell(tableView)
+        }
+        return UITableViewCell()
     }
     
     private func makeMainUserTVCell(_ tableView: UITableView) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
             return UITableViewCell()
         }
+        cell.setUserInfo(mainUser.basicInfo)
         return cell
     }
 }

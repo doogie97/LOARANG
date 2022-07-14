@@ -44,6 +44,7 @@ final class MainView: UIView {
     private(set) lazy var mainTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .tableViewColor
+        tableView.separatorStyle = .none
         
         return tableView
     }()
