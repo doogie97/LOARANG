@@ -22,6 +22,11 @@
 		ACAEF358287FFA9F00AE98F1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF357287FFA9F00AE98F1 /* Equipment.swift */; };
 		ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF35A287FFB0400AE98F1 /* Avatar.swift */; };
 		ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */; };
+		ACAEF3652880076C00AE98F1 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3642880076C00AE98F1 /* BlackHanSans-Regular.ttf */; };
+		ACAEF3692880077C00AE98F1 /* ONE-Mobile-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3662880077C00AE98F1 /* ONE-Mobile-Bold.ttf */; };
+		ACAEF36A2880077C00AE98F1 /* ONE-Mobile-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3672880077C00AE98F1 /* ONE-Mobile-Light.ttf */; };
+		ACAEF36B2880077C00AE98F1 /* ONE-Mobile-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3682880077C00AE98F1 /* ONE-Mobile-Regular.ttf */; };
+		ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +50,11 @@
 		ACAEF357287FFA9F00AE98F1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		ACAEF35A287FFB0400AE98F1 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		ACAEF3642880076C00AE98F1 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
+		ACAEF3662880077C00AE98F1 /* ONE-Mobile-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Bold.ttf"; sourceTree = "<group>"; };
+		ACAEF3672880077C00AE98F1 /* ONE-Mobile-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Light.ttf"; sourceTree = "<group>"; };
+		ACAEF3682880077C00AE98F1 /* ONE-Mobile-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Regular.ttf"; sourceTree = "<group>"; };
+		ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,9 +170,22 @@
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ACAEF3632880075A00AE98F1 /* Font */,
 				ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */,
+				ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		ACAEF3632880075A00AE98F1 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				ACAEF3642880076C00AE98F1 /* BlackHanSans-Regular.ttf */,
+				ACAEF3662880077C00AE98F1 /* ONE-Mobile-Bold.ttf */,
+				ACAEF3672880077C00AE98F1 /* ONE-Mobile-Light.ttf */,
+				ACAEF3682880077C00AE98F1 /* ONE-Mobile-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		C1BE94E9D9DBB579AF2C7E5C /* Pods */ = {
@@ -234,8 +257,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACAEF36A2880077C00AE98F1 /* ONE-Mobile-Light.ttf in Resources */,
+				ACAEF3692880077C00AE98F1 /* ONE-Mobile-Bold.ttf in Resources */,
+				ACAEF36B2880077C00AE98F1 /* ONE-Mobile-Regular.ttf in Resources */,
 				ACAEF32F287FF0D300AE98F1 /* LaunchScreen.storyboard in Resources */,
 				ACAEF32C287FF0D300AE98F1 /* Assets.xcassets in Resources */,
+				ACAEF3652880076C00AE98F1 /* BlackHanSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
 				ACAEF34E287FF9F000AE98F1 /* Equips.swift in Sources */,
 				ACAEF358287FFA9F00AE98F1 /* Equipment.swift in Sources */,
