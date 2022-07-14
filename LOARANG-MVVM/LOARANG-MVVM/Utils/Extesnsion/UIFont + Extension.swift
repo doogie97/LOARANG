@@ -12,11 +12,11 @@ extension UIFont {
         case Bold, Light, Regular, Title
     }
     
-    static func one(size: CGFloat, family: Family) -> UIFont {
-        return UIFont(name: "ONEMobile\(family)", size: size) ?? UIFont()
+    static func one(size: Int, family: Family) -> UIFont {
+        return UIFont(name: "ONEMobile\(family)", size: CGFloat(size)) ?? UIFont()
     }
     
-    static func BlackHanSans(size: CGFloat) -> UIFont {
-        return UIFont(name: "BlackHanSans-Regular", size: size) ?? UIFont()
+    static func BlackHanSans(size: Int) -> UIFont {
+        return UIFont(name: "BlackHanSans-Regular", size: CGFloat(size)) ?? UIFont()
     }
 }
