@@ -21,6 +21,7 @@
 		ACAEF356287FFA9100AE98F1 /* Equipments.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF355287FFA9100AE98F1 /* Equipments.swift */; };
 		ACAEF358287FFA9F00AE98F1 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF357287FFA9F00AE98F1 /* Equipment.swift */; };
 		ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF35A287FFB0400AE98F1 /* Avatar.swift */; };
+		ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF35E287FFC4900AE98F1 /* MainView.swift */; };
 		ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */; };
 		ACAEF3652880076C00AE98F1 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3642880076C00AE98F1 /* BlackHanSans-Regular.ttf */; };
 		ACAEF3692880077C00AE98F1 /* ONE-Mobile-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3662880077C00AE98F1 /* ONE-Mobile-Bold.ttf */; };
@@ -49,6 +50,7 @@
 		ACAEF355287FFA9100AE98F1 /* Equipments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipments.swift; sourceTree = "<group>"; };
 		ACAEF357287FFA9F00AE98F1 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		ACAEF35A287FFB0400AE98F1 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		ACAEF35E287FFC4900AE98F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		ACAEF3642880076C00AE98F1 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		ACAEF3662880077C00AE98F1 /* ONE-Mobile-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Bold.ttf"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF326287FF0D200AE98F1 /* MainViewController.swift */,
+				ACAEF35E287FFC4900AE98F1 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			files = (
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
+				ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */,
 				ACAEF34E287FF9F000AE98F1 /* Equips.swift in Sources */,
 				ACAEF358287FFA9F00AE98F1 /* Equipment.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,

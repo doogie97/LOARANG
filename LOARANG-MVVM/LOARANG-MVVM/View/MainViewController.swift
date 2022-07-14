@@ -7,13 +7,17 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-
+final class MainViewController: UIViewController {
+    let mainView = MainView()
+    
+    override func loadView() {
+        super.loadView()
+        self.view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        self.navigationController?.isNavigationBarHidden = true
     }
-
-
 }
 
