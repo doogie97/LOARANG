@@ -33,7 +33,7 @@ final class TabBarViewController: UITabBarController {
         settingVC.title = "설정"
         settingVC.tabBarItem.image = UIImage(systemName: "gearshape.fill")
         
-        return mainVC
+        return settingVC
     }()
 
 }
