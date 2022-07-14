@@ -41,15 +41,28 @@ final class MainView: UIView {
         return button
     }()
     
+    private(set) lazy var mainTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .tableViewColor
+        
+        return tableView
+    }()
+    
     private func setLayout() {
         self.addSubview(titleStackView)
+        self.addSubview(mainTableView)
         
-        titleStackView.snp.makeConstraints{
+        titleStackView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
         
-        title.snp.makeConstraints{
+        title.snp.makeConstraints {
             $0.height.equalTo(50)
+        }
+        
+        mainTableView.snp.makeConstraints {
+            $0.top.equalTo(titleStackView.snp.bottom)
+            $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
