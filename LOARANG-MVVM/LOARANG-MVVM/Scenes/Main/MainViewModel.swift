@@ -21,4 +21,17 @@ final class MainViewModel {
         self.mainUser = storage.mainUser.asDriver()
         self.bookMark = storage.bookMark.asDriver()
     }
+    func makeTableViewCell(index: Int, tableView: UITableView) -> UITableViewCell {
+            if index == 0 {
+                return makeMainUserTVCell(tableView)
+            }
+            return UITableViewCell()
+    }
+    
+    private func makeMainUserTVCell(_ tableView: UITableView) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
+            return UITableViewCell()
+        }
+        return cell
+    }
 }
