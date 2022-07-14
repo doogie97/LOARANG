@@ -8,7 +8,7 @@
 import RxRelay
 
 protocol Storageable {
-    var mainUser: BehaviorRelay<UserInfo> { get }
+    var mainUser: UserInfo { get }
     var bookMark: BehaviorRelay<[UserInfo]> { get }
     func addUser(_ user: UserInfo)
     func deleteUser(_ user: UserInfo)
@@ -16,7 +16,7 @@ protocol Storageable {
 }
 
 final class MockStorage: Storageable {
-    lazy var mainUser: BehaviorRelay<UserInfo> = BehaviorRelay(value: fakeUser().user)
+    lazy var mainUser = fakeUser().user
     lazy var bookMark = BehaviorRelay<[UserInfo]>(value: [])
     
     func addUser(_ user: UserInfo) {
@@ -28,7 +28,7 @@ final class MockStorage: Storageable {
     }
     
     func changeMainUser(_ user: UserInfo) {
-        mainUser.accept(user)
+        mainUser = user
     }
     
     

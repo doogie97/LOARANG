@@ -12,13 +12,13 @@ import RxCocoa
 final class MainViewModel {
     private var storage: Storageable
     
-    let mainUser: Driver<UserInfo>
+    let mainUser: UserInfo
     let bookMark: Driver<[UserInfo]>
     
     init(storage: Storageable) {
         self.storage = storage
         
-        self.mainUser = storage.mainUser.asDriver()
+        self.mainUser = storage.mainUser
         self.bookMark = storage.bookMark.asDriver()
     }
     func makeTableViewCell(index: Int, tableView: UITableView) -> UITableViewCell {
