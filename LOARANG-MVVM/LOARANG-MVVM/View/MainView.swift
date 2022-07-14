@@ -28,13 +28,13 @@ final class MainView: UIView {
         let label = UILabel()
         label.text = "LOARANG"
         label.font = UIFont.BlackHanSans(size: 35)
-        label.textColor = #colorLiteral(red: 0.8941176471, green: 1, blue: 0.5333333333, alpha: 1)
+        label.textColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         return label
     }()
     
     lazy var searchButton: UIButton = {
         let button = UIButton()
-        button.imageView?.tintColor = #colorLiteral(red: 0.8941176471, green: 1, blue: 0.5333333333, alpha: 1)
+        button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 25, weight: .regular, scale: .default), forImageIn: .normal)
 
