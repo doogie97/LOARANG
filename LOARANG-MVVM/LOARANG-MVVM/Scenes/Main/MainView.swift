@@ -18,13 +18,13 @@ final class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var titleStackView: UIStackView = {
+    private lazy var titleStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [title, searchButton])
         stackView.distribution = .equalSpacing
         return stackView
     }()
     
-    lazy var title: UILabel = {
+    private lazy var title: UILabel = {
         let label = UILabel()
         label.text = "LOARANG"
         label.font = UIFont.BlackHanSans(size: 35)
@@ -32,7 +32,7 @@ final class MainView: UIView {
         return label
     }()
     
-    lazy var searchButton: UIButton = {
+    private(set) lazy var searchButton: UIButton = {
         let button = UIButton()
         button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)

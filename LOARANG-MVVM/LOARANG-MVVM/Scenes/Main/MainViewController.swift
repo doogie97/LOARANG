@@ -8,7 +8,7 @@
 import UIKit
 
 final class MainViewController: UIViewController {
-    let mainView = MainView()
+    private let mainView = MainView()
     
     override func loadView() {
         super.loadView()
