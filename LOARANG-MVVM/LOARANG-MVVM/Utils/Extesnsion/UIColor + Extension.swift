@@ -9,5 +9,5 @@ import UIKit
 
 extension UIColor {
     class var mainBackground: UIColor? { return UIColor(named: "mainBackground") }
-    class var backButtonColor: UIColor? { return UIColor(named: "backButtonColor") }
+    class var buttonColor: UIColor? { return UIColor(named: "buttonColor") }
 }
