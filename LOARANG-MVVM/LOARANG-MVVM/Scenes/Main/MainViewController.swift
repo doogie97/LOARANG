@@ -71,6 +71,8 @@ extension MainViewController: UITableViewDelegate {
         viewModel.setTableViewHeight(index: indexPath.row)
     }
     
+    
+    //testcode
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.deleteBookmark("JJODAENG")
     }
