@@ -22,8 +22,4 @@ final class BookmarkTVCellViewModel {
     func searchUser(_ name: String) -> UserInfo {
         return CralManager.shared.getUserInfo(name)
     }
-    
-    func deleteBookmark(_ name: String) {
-        storage.deleteUser(name)
-    }
 }

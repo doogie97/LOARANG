@@ -55,7 +55,7 @@ final class MainViewModel {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
             return UITableViewCell()
         }
-        cell.getBookmark(container)
+        cell.setContainer(container)
         return cell
     }
 }

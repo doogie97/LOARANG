@@ -101,7 +101,7 @@ final class BookmarkTVCell: UITableViewCell {
         }
     }
     
-    private func bindCollectionView() {
+    private func bindView() {
         viewModel?.bookmark
             .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, name, cell in
                 guard let self = self else {
@@ -110,23 +110,19 @@ final class BookmarkTVCell: UITableViewCell {
                 guard let basicInfo = self.viewModel?.searchUser(name).basicInfo else {
                     return
                 }
-                cell.setCell(basicInfo)
-                cell.bookmarkButton.rx.tap
-                    .bind(onNext: {
-                        self.viewModel?.deleteBookmark(name)
-                    })
-                    .disposed(by: self.disposBag)
                 cell.setCell(basicInfo, viewModel: self.container?.makeBookmarkCVCellViewModel())
             }
             .disposed(by: disposBag)
-    }
-    
-    func getBookmark(_ container: Container) {
-        self.viewModel = container.makeBookmarkTVCellViewModel()
+        
         viewModel?.bookmark.map { "(\($0.count))"}
             .drive(bookmarkCount.rx.text)
             .disposed(by: disposBag)
-        
-        bindCollectionView()
+    }
+    
+    func setContainer(_ container: Container) {
+        self.container = container
+        self.viewModel = container.makeBookmarkTVCellViewModel()
+
+        bindView()
     }
 }
