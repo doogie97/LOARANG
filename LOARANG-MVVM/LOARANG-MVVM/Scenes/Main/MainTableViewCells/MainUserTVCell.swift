@@ -58,7 +58,7 @@ final class MainUserTVCell: UITableViewCell {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "testImagefull")?.cropImage() //test code
+        imageView.image = UIImage(named: "최지근")?.cropImage() //test code
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = UIScreen.main.bounds.width / 5.2
         return imageView

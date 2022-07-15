@@ -111,9 +111,9 @@ final class BookmarkCVCell: UICollectionViewCell {
         .disposed(by: disposeBag)
     }
     
-    func setCell(_ info: BasicInfo, viewModel: BookmarkCVCellViewModel?) {
+    func setCell(_ info: BookmarkUser, viewModel: BookmarkCVCellViewModel?) {
         self.viewModel = viewModel
         nameLabel.text = info.name
-        //이미지할당기능 구현 필요
+        userImageView.image = info.image.cropImage()
     }
 }

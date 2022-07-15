@@ -103,14 +103,12 @@ final class BookmarkTVCell: UITableViewCell {
     
     private func bindView() {
         viewModel?.bookmark
-            .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, name, cell in
+            .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, bookmarkUser, cell in
                 guard let self = self else {
                     return
                 }
-                guard let basicInfo = self.viewModel?.searchUser(name).basicInfo else {
-                    return
-                }
-                cell.setCell(basicInfo, viewModel: self.container?.makeBookmarkCVCellViewModel())
+                
+                cell.setCell(bookmarkUser, viewModel: self.container?.makeBookmarkCVCellViewModel())
             }
             .disposed(by: disposBag)
         

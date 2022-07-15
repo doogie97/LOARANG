@@ -9,25 +9,32 @@ import RxRelay
 
 protocol Storageable {
     var mainUser: String { get }
-    var bookMark: BehaviorRelay<[String]> { get }
-    func addUser(_ user: String)
-    func deleteUser(_ user: String)
-    func changeMainUser(_ user: String)
+    var bookMark: BehaviorRelay<[BookmarkUser]> { get }
+    func addUser(_ user: BookmarkUser)
+    func deleteUser(_ name: String)
+    func changeMainUser(_ name: String)
 }
 
 final class MockStorage: Storageable {
     lazy var mainUser = "최지근"
-    lazy var bookMark = BehaviorRelay<[String]>(value: ["최지근", "권두기", "JJODAENG"])
+    lazy var bookMark = BehaviorRelay<[BookmarkUser]>(value: [
+        BookmarkUser(name: "최지근",
+                     image: UIImage(named: "최지근") ?? UIImage()),
+        BookmarkUser(name: "최두기",
+                     image: UIImage(named: "최두기") ?? UIImage()),
+        BookmarkUser(name: "나는두기",
+                     image: UIImage(named: "나는두기") ?? UIImage())
+    ])
     
-    func addUser(_ user: String) {
+    func addUser(_ user: BookmarkUser) {
         bookMark.accept(bookMark.value + [user])
     }
     
-    func deleteUser(_ user: String) {
-        bookMark.accept(bookMark.value.filter { user != $0 })
+    func deleteUser(_ name: String) {
+        bookMark.accept(bookMark.value.filter { name != $0.name })
     }
     
-    func changeMainUser(_ user: String) {
-        mainUser = user
+    func changeMainUser(_ name: String) {
+        mainUser = name
     }    
 }

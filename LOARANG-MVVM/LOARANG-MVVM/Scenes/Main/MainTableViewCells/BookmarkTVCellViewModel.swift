@@ -12,7 +12,7 @@ import RxCocoa
 final class BookmarkTVCellViewModel {
     private let storage: Storageable
     
-    let bookmark: Driver<[String]>
+    let bookmark: Driver<[BookmarkUser]>
     
     init(storage: Storageable) {
         self.storage = storage
