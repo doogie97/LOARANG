@@ -6,9 +6,12 @@
 //
 
 import SnapKit
+import RxSwift
 
 final class BookmarkCVCell: UICollectionViewCell {
     private var viewModel: BookmarkCVCellViewModel?
+    private let disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
@@ -97,6 +100,15 @@ final class BookmarkCVCell: UICollectionViewCell {
         nameLabel.snp.makeConstraints {
             $0.height.equalToSuperview().multipliedBy(0.25)
         }
+        
+        bind()
+    }
+    
+    private func bind() {
+        bookmarkButton.rx.tap.bind(onNext: {
+            self.viewModel?.deleteBookmark(self.nameLabel.text ?? "")
+        })
+        .disposed(by: disposeBag)
     }
     
     func setCell(_ info: BasicInfo, viewModel: BookmarkCVCellViewModel?) {
