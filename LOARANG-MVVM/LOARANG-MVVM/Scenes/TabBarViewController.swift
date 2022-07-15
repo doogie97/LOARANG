@@ -17,7 +17,7 @@ final class TabBarViewController: UITabBarController {
     
     private func setTabBarView() {
         self.tabBar.tintColor = .buttonColor
-        self.setViewControllers([mainVC, settingVC], animated: true)
+        self.setViewControllers([mainVC, settingVC], animated: false)
     }
     
     private lazy var mainVC: UINavigationController = {
