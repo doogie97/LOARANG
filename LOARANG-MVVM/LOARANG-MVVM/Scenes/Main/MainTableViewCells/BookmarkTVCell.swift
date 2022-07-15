@@ -103,10 +103,18 @@ final class BookmarkTVCell: UITableViewCell {
     private func bindCollectionView() {
         viewModel?.bookmark
             .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, name, cell in
-                guard let basicInfo = self?.viewModel?.searchUser(name).basicInfo else {
+                guard let self = self else {
+                    return
+                }
+                guard let basicInfo = self.viewModel?.searchUser(name).basicInfo else {
                     return
                 }
                 cell.setCell(basicInfo)
+                cell.bookmarkButton.rx.tap
+                    .bind(onNext: {
+                        self.viewModel?.deleteBookmark(name)
+                    })
+                    .disposed(by: self.disposBag)
             }
             .disposed(by: disposBag)
     }
