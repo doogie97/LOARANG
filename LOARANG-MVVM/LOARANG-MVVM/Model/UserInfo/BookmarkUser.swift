@@ -9,4 +9,5 @@ import UIKit
 struct BookmarkUser {
     let name: String
     let image: UIImage
+    let `class`: String
 }

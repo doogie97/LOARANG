@@ -59,7 +59,6 @@ final class BookmarkCVCell: UICollectionViewCell {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "testImagefull")?.cropImage() //test code
         imageView.setContentHuggingPriority(.required, for: .vertical)
         imageView.contentMode = .scaleAspectFit
         
@@ -114,6 +113,6 @@ final class BookmarkCVCell: UICollectionViewCell {
     func setCell(_ info: BookmarkUser, viewModel: BookmarkCVCellViewModel?) {
         self.viewModel = viewModel
         nameLabel.text = info.name
-        userImageView.image = info.image.cropImage()
+        userImageView.image = info.image.cropImage(class: info.class)
     }
 }

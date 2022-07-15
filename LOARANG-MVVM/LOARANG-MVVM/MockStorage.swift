@@ -19,11 +19,14 @@ final class MockStorage: Storageable {
     lazy var mainUser = "최지근"
     lazy var bookMark = BehaviorRelay<[BookmarkUser]>(value: [
         BookmarkUser(name: "최지근",
-                     image: UIImage(named: "최지근") ?? UIImage()),
+                     image: UIImage(named: "최지근") ?? UIImage(),
+                     class: "블레이드"),
         BookmarkUser(name: "최두기",
-                     image: UIImage(named: "최두기") ?? UIImage()),
+                     image: UIImage(named: "최두기") ?? UIImage(),
+                     class: "배틀마스터"),
         BookmarkUser(name: "나는두기",
-                     image: UIImage(named: "나는두기") ?? UIImage())
+                     image: UIImage(named: "나는두기") ?? UIImage(),
+                     class: "기상술사")
     ])
     
     func addUser(_ user: BookmarkUser) {
