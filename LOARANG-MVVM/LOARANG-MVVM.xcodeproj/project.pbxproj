@@ -19,7 +19,7 @@
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
-		AC8F11CA2881059800D06AA6 /* bookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* bookmarkTVCell.swift */; };
+		AC8F11CA2881059800D06AA6 /* BookmarTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarTVCell.swift */; };
 		ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */; };
 		ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */; };
 		ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF326287FF0D200AE98F1 /* MainViewController.swift */; };
@@ -59,7 +59,7 @@
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
-		AC8F11C92881059800D06AA6 /* bookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookmarkTVCell.swift; sourceTree = "<group>"; };
+		AC8F11C92881059800D06AA6 /* BookmarTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarTVCell.swift; sourceTree = "<group>"; };
 		ACAEF31F287FF0D200AE98F1 /* LOARANG-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LOARANG-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3FEC292880761300CDE796 /* MainUserTVCell.swift */,
-				AC8F11C92881059800D06AA6 /* bookmarkTVCell.swift */,
+				AC8F11C92881059800D06AA6 /* BookmarTVCell.swift */,
 			);
 			path = MainTableViewCells;
 			sourceTree = "<group>";
@@ -416,7 +416,7 @@
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
 				ACAEF356287FFA9100AE98F1 /* Equipments.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
-				AC8F11CA2881059800D06AA6 /* bookmarkTVCell.swift in Sources */,
+				AC8F11CA2881059800D06AA6 /* BookmarTVCell.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
 				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
