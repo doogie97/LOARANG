@@ -19,7 +19,7 @@ final class BookmarkTVCellViewModel {
         bookmark = storage.bookMark.asDriver()
     }
     
-    var count: Int {
-        return storage.bookMark.value.count
+    func searchUser(_ name: String) -> UserInfo {
+        return CralManager.shared.getUserInfo(name)
     }
 }
