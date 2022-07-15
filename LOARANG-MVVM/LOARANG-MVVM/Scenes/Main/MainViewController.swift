@@ -70,10 +70,4 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         viewModel.setTableViewHeight(index: indexPath.row)
     }
-    
-    
-    //testcode
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.deleteBookmark("JJODAENG")
-    }
 }
