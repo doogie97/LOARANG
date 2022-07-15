@@ -12,8 +12,8 @@ import RxCocoa
 final class MainViewModel {
     private var storage: Storageable
     
-    let mainUser: UserInfo
-    let bookMark: Driver<[UserInfo]>
+    let mainUser: String
+    let bookMark: Driver<[String]>
     
     init(storage: Storageable) {
         self.storage = storage
@@ -41,7 +41,7 @@ final class MainViewModel {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
             return UITableViewCell()
         }
-        cell.setUserInfo(mainUser.basicInfo)
+        cell.setUserInfo(CralManager.shared.getUserInfo(mainUser).basicInfo)
         return cell
     }
 }
