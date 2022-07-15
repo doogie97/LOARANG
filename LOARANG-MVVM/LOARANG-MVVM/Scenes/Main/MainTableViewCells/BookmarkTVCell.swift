@@ -53,6 +53,7 @@ final class BookmarkTVCell: UITableViewCell {
         let label = UILabel()
         label.text = "즐겨찾기"
         label.font = UIFont.BlackHanSans(size: 20)
+        label.textColor = .buttonColor
         label.setContentHuggingPriority(.required, for: .horizontal)
         
         return label
@@ -61,6 +62,7 @@ final class BookmarkTVCell: UITableViewCell {
     private lazy var bookmarkCount: UILabel = {
         let label = UILabel()
         label.font = UIFont.one(size: 15, family: .Bold)
+        label.textColor = .buttonColor
         
         return label
     }()
@@ -74,11 +76,12 @@ final class BookmarkTVCell: UITableViewCell {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
-        
+        section.orthogonalScrollingBehavior = .continuous
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .cellBackgroundColor
+        collectionView.register(BookmarkCVCell.self, forCellWithReuseIdentifier: "\(BookmarkCVCell.self)")
 
         return collectionView
     }()
@@ -97,10 +100,23 @@ final class BookmarkTVCell: UITableViewCell {
         }
     }
     
+    private func bindCollectionView() {
+        viewModel?.bookmark
+            .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, name, cell in
+                guard let basicInfo = self?.viewModel?.searchUser(name).basicInfo else {
+                    return
+                }
+                cell.setCell(basicInfo)
+            }
+            .disposed(by: disposBag)
+    }
+    
     func getBookmark(_ container: Container) {
         self.viewModel = container.makeBookmarkTVCellViewModel()
         viewModel?.bookmark.map { "(\($0.count))"}
             .drive(bookmarkCount.rx.text)
             .disposed(by: disposBag)
+        
+        bindCollectionView()
     }
 }
