@@ -50,12 +50,13 @@ final class MainViewController: UIViewController {
         mainView.mainTableView.dataSource = self
         mainView.mainTableView.delegate = self
         mainView.mainTableView.register(MainUserTVCell.self)
+        mainView.mainTableView.register(BookmarkTVCell.self)
     }
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

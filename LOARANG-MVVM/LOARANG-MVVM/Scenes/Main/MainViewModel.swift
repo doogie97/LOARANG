@@ -34,11 +34,23 @@ final class MainViewModel {
         if index == 0 {
             return makeMainUserTVCell(tableView)
         }
+        
+        if index == 1 {
+            return makeBookmarkTVCell(tableView)
+        }
         return UITableViewCell()
     }
     
     private func makeMainUserTVCell(_ tableView: UITableView) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
+            return UITableViewCell()
+        }
+        cell.setUserInfo(CralManager.shared.getUserInfo(mainUser).basicInfo)
+        return cell
+    }
+    
+    private func makeBookmarkTVCell(_ tableView: UITableView) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
             return UITableViewCell()
         }
         cell.setUserInfo(CralManager.shared.getUserInfo(mainUser).basicInfo)
