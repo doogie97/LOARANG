@@ -8,6 +8,7 @@
 import SnapKit
 
 final class BookmarkCVCell: UICollectionViewCell {
+    private var viewModel: BookmarkCVCellViewModel?
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
@@ -98,7 +99,8 @@ final class BookmarkCVCell: UICollectionViewCell {
         }
     }
     
-    func setCell(_ info: BasicInfo) {
+    func setCell(_ info: BasicInfo, viewModel: BookmarkCVCellViewModel?) {
+        self.viewModel = viewModel
         nameLabel.text = info.name
         //이미지할당기능 구현 필요
     }

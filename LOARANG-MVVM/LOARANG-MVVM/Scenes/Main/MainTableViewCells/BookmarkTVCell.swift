@@ -11,6 +11,7 @@ import SnapKit
 
 final class BookmarkTVCell: UITableViewCell {
     private var viewModel: BookmarkTVCellViewModel?
+    private var container: Container?
     private let disposBag = DisposeBag()
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -115,6 +116,7 @@ final class BookmarkTVCell: UITableViewCell {
                         self.viewModel?.deleteBookmark(name)
                     })
                     .disposed(by: self.disposBag)
+                cell.setCell(basicInfo, viewModel: self.container?.makeBookmarkCVCellViewModel())
             }
             .disposed(by: disposBag)
     }

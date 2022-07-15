@@ -22,6 +22,7 @@
 		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
 		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
 		AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */; };
+		AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */; };
 		ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */; };
 		ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */; };
 		ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF326287FF0D200AE98F1 /* MainViewController.swift */; };
@@ -64,6 +65,7 @@
 		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
 		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
 		AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCell.swift; sourceTree = "<group>"; };
+		AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCellViewModel.swift; sourceTree = "<group>"; };
 		ACAEF31F287FF0D200AE98F1 /* LOARANG-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LOARANG-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */,
 				AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */,
 				AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */,
+				AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */,
 			);
 			path = MainTableViewCells;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
+				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
 				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
