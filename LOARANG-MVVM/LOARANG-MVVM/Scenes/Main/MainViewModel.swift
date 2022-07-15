@@ -13,13 +13,13 @@ final class MainViewModel {
     private var storage: Storageable
     
     let mainUser: String
-    let bookmark: BehaviorRelay<[String]>
+    let bookmark: Driver<[String]>
     
     init(storage: Storageable) {
         self.storage = storage
         
         self.mainUser = storage.mainUser
-        self.bookmark = storage.bookMark
+        self.bookmark = storage.bookMark.asDriver(onErrorJustReturn: [])
     }
     
     func setTableViewHeight(index: Int) -> CGFloat {
@@ -53,7 +53,7 @@ final class MainViewModel {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
             return UITableViewCell()
         }
-        cell.setUserInfo(bookmark)
+        cell.getBookmark(bookmark)
         return cell
     }
 }

@@ -6,10 +6,13 @@
 //
 import RxRelay
 import RxCocoa
-
+import RxSwift
 import SnapKit
 
 final class BookmarkTVCell: UITableViewCell {
+    private var viewModel: BookmarkTVCellViewModel?
+    private let disposBag = DisposeBag()
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: false)
     }
@@ -58,7 +61,6 @@ final class BookmarkTVCell: UITableViewCell {
     private lazy var bookmarkCount: UILabel = {
         let label = UILabel()
         label.font = UIFont.one(size: 15, family: .Bold)
-        label.text = "(0)"
         
         return label
     }()
@@ -95,7 +97,10 @@ final class BookmarkTVCell: UITableViewCell {
         }
     }
     
-    func setUserInfo(_ bookmark: BehaviorRelay<[String]>) {
-        bookmarkCount.text = "(\(bookmark.value.count))"
+    func getBookmark(_ bookmark: Driver<[String]>) {
+        self.viewModel = BookmarkTVCellViewModel(bookmark: bookmark)
+        bookmark.map { "(\($0.count))"}
+            .drive(bookmarkCount.rx.text)
+            .disposed(by: disposBag)
     }
 }
