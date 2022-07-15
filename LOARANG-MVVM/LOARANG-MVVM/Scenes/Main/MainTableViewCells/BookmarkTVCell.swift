@@ -97,9 +97,9 @@ final class BookmarkTVCell: UITableViewCell {
         }
     }
     
-    func getBookmark(_ bookmark: Driver<[String]>) {
-        self.viewModel = BookmarkTVCellViewModel(bookmark: bookmark)
-        bookmark.map { "(\($0.count))"}
+    func getBookmark(_ container: Container) {
+        self.viewModel = container.makeBookmarkTVCellViewModel()
+        viewModel?.bookmark.map { "(\($0.count))"}
             .drive(bookmarkCount.rx.text)
             .disposed(by: disposBag)
     }

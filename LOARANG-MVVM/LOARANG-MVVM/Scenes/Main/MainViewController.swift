@@ -60,12 +60,18 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        viewModel.makeTableViewCell(index: indexPath.row, tableView: tableView)
+        viewModel.makeTableViewCell(index: indexPath.row,
+                                    tableView: tableView,
+                                    container: container)
     }
 }
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         viewModel.setTableViewHeight(index: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.deleteBookmark("JJODAENG")
     }
 }

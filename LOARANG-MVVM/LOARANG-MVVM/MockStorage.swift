@@ -25,6 +25,7 @@ final class MockStorage: Storageable {
     
     func deleteUser(_ user: String) {
         bookMark.accept(bookMark.value.filter { user != $0 })
+        print(bookMark.value)
     }
     
     func changeMainUser(_ user: String) {

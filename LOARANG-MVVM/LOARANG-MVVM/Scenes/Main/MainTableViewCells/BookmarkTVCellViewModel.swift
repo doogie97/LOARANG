@@ -10,9 +10,16 @@ import RxRelay
 import RxCocoa
 
 final class BookmarkTVCellViewModel {
+    private let storage: Storageable
+    
     let bookmark: Driver<[String]>
     
-    init(bookmark: Driver<[String]>) {
-        self.bookmark = bookmark
+    init(storage: Storageable) {
+        self.storage = storage
+        bookmark = storage.bookMark.asDriver()
+    }
+    
+    var count: Int {
+        return storage.bookMark.value.count
     }
 }

@@ -13,13 +13,15 @@ final class MainViewModel {
     private var storage: Storageable
     
     let mainUser: String
-    let bookmark: Driver<[String]>
     
     init(storage: Storageable) {
         self.storage = storage
         
         self.mainUser = storage.mainUser
-        self.bookmark = storage.bookMark.asDriver(onErrorJustReturn: [])
+    }
+    
+    func deleteBookmark(_ name: String) {
+        storage.deleteUser(name)
     }
     
     func setTableViewHeight(index: Int) -> CGFloat {
@@ -30,13 +32,13 @@ final class MainViewModel {
     }
     
     
-    func makeTableViewCell(index: Int, tableView: UITableView) -> UITableViewCell {
+    func makeTableViewCell(index: Int, tableView: UITableView, container: Container) -> UITableViewCell {
         if index == 0 {
             return makeMainUserTVCell(tableView)
         }
         
         if index == 1 {
-            return makeBookmarkTVCell(tableView)
+            return makeBookmarkTVCell(tableView, container)
         }
         return UITableViewCell()
     }
@@ -49,11 +51,11 @@ final class MainViewModel {
         return cell
     }
     
-    private func makeBookmarkTVCell(_ tableView: UITableView) -> UITableViewCell {
+    private func makeBookmarkTVCell(_ tableView: UITableView, _ container: Container) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
             return UITableViewCell()
         }
-        cell.getBookmark(bookmark)
+        cell.getBookmark(container)
         return cell
     }
 }
