@@ -157,8 +157,7 @@
 				AC3FEC292880761300CDE796 /* MainUserTVCell.swift */,
 				AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */,
 				AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */,
-				AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */,
-				AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */,
+				AC8F11D128814EB000D06AA6 /* BookmarCell */,
 			);
 			path = MainTableViewCells;
 			sourceTree = "<group>";
@@ -169,6 +168,15 @@
 				AC8F11C72881026600D06AA6 /* CrawManager.swift */,
 			);
 			path = CrawlManager;
+			sourceTree = "<group>";
+		};
+		AC8F11D128814EB000D06AA6 /* BookmarCell */ = {
+			isa = PBXGroup;
+			children = (
+				AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */,
+				AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */,
+			);
+			path = BookmarCell;
 			sourceTree = "<group>";
 		};
 		ACAEF316287FF0D200AE98F1 = {
