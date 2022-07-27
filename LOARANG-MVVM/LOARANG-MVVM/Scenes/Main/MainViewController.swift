@@ -46,7 +46,10 @@ final class MainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.showSearchView.bind(onNext: { [weak self] in
-            self?.navigationController?.pushViewController(SearchViewController(), animated: true)
+            guard let self = self else {
+                return
+            }
+            self.navigationController?.pushViewController(self.container.makeSearchViewController(), animated: true)
         })
         .disposed(by: disposeBag)
     }

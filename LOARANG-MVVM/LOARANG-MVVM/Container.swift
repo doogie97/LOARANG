@@ -27,4 +27,13 @@ final class Container {
     func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModel {
         return BookmarkCVCellViewModel(storage: storage)
     }
+    
+    func makeSearchViewController() -> SearchViewController {
+        return SearchViewController(viewModel: makeSearchViewModel(), container: self)
+    }
+    
+    private func makeSearchViewModel() -> SearchViewModelable {
+        return SearchViewModel()
+    }
+    
 }
