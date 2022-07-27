@@ -24,7 +24,7 @@ final class Container {
         return BookmarkTVCellViewModel(storage: storage)
     }
     
-    func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModel {
+    func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModelable {
         return BookmarkCVCellViewModel(storage: storage)
     }
     

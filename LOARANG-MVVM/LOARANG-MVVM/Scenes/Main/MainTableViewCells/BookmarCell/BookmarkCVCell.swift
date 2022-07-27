@@ -9,7 +9,7 @@ import SnapKit
 import RxSwift
 
 final class BookmarkCVCell: UICollectionViewCell {
-    private var viewModel: BookmarkCVCellViewModel?
+    private var viewModel: BookmarkCVCellViewModelable?
     private let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
@@ -105,12 +105,12 @@ final class BookmarkCVCell: UICollectionViewCell {
     
     private func bind() {
         bookmarkButton.rx.tap.bind(onNext: {
-            self.viewModel?.deleteBookmark(self.nameLabel.text ?? "")
+            self.viewModel?.touchStarButton(self.nameLabel.text ?? "")
         })
         .disposed(by: disposeBag)
     }
     
-    func setCell(_ info: BookmarkUser, viewModel: BookmarkCVCellViewModel?) {
+    func setCell(_ info: BookmarkUser, viewModel: BookmarkCVCellViewModelable?) {
         self.viewModel = viewModel
         nameLabel.text = info.name
         userImageView.image = info.image.cropImage(class: info.class)
