@@ -36,4 +36,12 @@ final class Container {
         return SearchViewModel()
     }
     
+    func makeUserInfoViewController(_ userInfo: UserInfo) -> UserInfoViewController {
+        return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo))
+    }
+    
+    private func makeUserInfoViewModel(_ userInfo: UserInfo) -> UserInfoViewModelable {
+        return UserInfoViewModel(storage: storage, userInfo: userInfo)
+    }
+    
 }
