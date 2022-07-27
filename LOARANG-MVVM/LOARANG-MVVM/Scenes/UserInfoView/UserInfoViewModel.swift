@@ -5,12 +5,17 @@
 //  Created by 최최성균 on 2022/07/27.
 //
 
+import RxRelay
+
 protocol UserInfoViewModelable: UserInfoViewModelInput, UserInfoViewModelOutput {}
 
-protocol UserInfoViewModelInput {}
+protocol UserInfoViewModelInput {
+    func touchBackButton()
+}
 
 protocol UserInfoViewModelOutput {
     var userInfo: UserInfo { get }
+    var popView: PublishRelay<Void> { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
@@ -21,4 +26,11 @@ final class UserInfoViewModel: UserInfoViewModelable {
         self.storage = storage
         self.userInfo = userInfo
     }
+    
+    //in
+    func touchBackButton() {
+        popView.accept(())
+    }
+    //out
+    let popView = PublishRelay<Void>()
 }

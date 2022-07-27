@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/07/27.
 //
 
-import UIKit
+import RxSwift
 
 final class UserInfoViewController: UIViewController {
     private let viewModel: UserInfoViewModelable
@@ -20,6 +20,7 @@ final class UserInfoViewController: UIViewController {
     }
     
     private let userInfoView = UserInfoView()
+    private let disposBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -28,6 +29,21 @@ final class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(viewModel.userInfo.basicInfo.name)
+        userInfoView.setCellContents(viewModel.userInfo)
+        bindView()
+    }
+    
+    func bindView() {
+        userInfoView.backButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchBackButton()
+            })
+            .disposed(by: disposBag)
+        
+        viewModel.popView
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposBag)
     }
 }
