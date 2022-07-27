@@ -58,7 +58,12 @@ final class MainViewModel: MainViewModelInOut {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
             return UITableViewCell()
         }
-        cell.setUserInfo(CralManager.shared.getUserInfo(mainUser).basicInfo)
+        
+        guard let user = CralManager.shared.getUserInfo(mainUser) else {
+            return UITableViewCell()
+        }
+        
+        cell.setUserInfo(user.basicInfo)
         return cell
     }
     

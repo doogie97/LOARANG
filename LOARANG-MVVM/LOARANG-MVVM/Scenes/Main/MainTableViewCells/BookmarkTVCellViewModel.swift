@@ -16,8 +16,9 @@ final class BookmarkTVCellViewModel {
         self.storage = storage
         bookmark = storage.bookMark.asDriver()
     }
-    
-    func searchUser(_ name: String) -> UserInfo {
-        return CralManager.shared.getUserInfo(name)
-    }
+// 이건 일단 지금 쓰는데 없음
+//    func searchUser(_ name: String) -> UserInfo {
+//
+//        return CralManager.shared.getUserInfo(name)
+//    }
 }
