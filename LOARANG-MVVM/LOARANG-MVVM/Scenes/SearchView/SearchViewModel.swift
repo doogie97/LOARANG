@@ -5,7 +5,6 @@
 //  Created by 최최성균 on 2022/07/27.
 //
 
-import Foundation
 import RxRelay
 
 protocol SearchViewModelable: SearchViewModelInput, SearchViewModelOutput {}

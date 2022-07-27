@@ -6,7 +6,6 @@
 //
 
 import RxSwift
-import RxCocoa
 
 final class SearchViewController: UIViewController {
     private let viewModel: SearchViewModelable
