@@ -11,10 +11,13 @@ protocol SearchViewModelable: SearchViewModelInput, SearchViewModelOutput {}
 
 protocol SearchViewModelInput {
     func touchBackButton()
+    func touchSearchButton(_ name: String)
 }
 
 protocol SearchViewModelOutput {
     var popView: PublishRelay<Void> { get }
+    var showUserInfo: PublishRelay<UserInfo> { get }
+    var errorAlert: PublishRelay<Void> { get }
 }
 
 final class SearchViewModel: SearchViewModelable {
@@ -23,6 +26,16 @@ final class SearchViewModel: SearchViewModelable {
         popView.accept(())
     }
     
+    func touchSearchButton(_ name: String) {
+        guard let user = CralManager.shared.getUserInfo(name) else {
+            errorAlert.accept(())
+            return
+        }
+        showUserInfo.accept(user)
+    }
+    
     //out
-    var popView = PublishRelay<Void>()
+    let popView = PublishRelay<Void>()
+    let showUserInfo = PublishRelay<UserInfo>()
+    let errorAlert = PublishRelay<Void>()
 }

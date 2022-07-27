@@ -118,6 +118,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC035E9D28911CDC0068DC7E /* UserInfoView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserInfoView;
+			sourceTree = "<group>";
+		};
 		AC3FEBFE28804E9600CDE796 /* Extesnsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +143,7 @@
 				AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */,
 				ACAEF35C287FFBB600AE98F1 /* Main */,
 				AC3FEC112880566A00CDE796 /* SearchView */,
+				AC035E9D28911CDC0068DC7E /* UserInfoView */,
 				AC3FEC1828805DBD00CDE796 /* SettingView */,
 			);
 			path = Scenes;
