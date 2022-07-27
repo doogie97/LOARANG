@@ -11,7 +11,7 @@ struct CralManager {
     static let shared = CralManager()
     private init(){}
     
-    func getUserInfo(_ name: String) -> UserInfo {
+    func getUserInfo(_ name: String) -> UserInfo? {
         //임시 구현
         let fakeUsers: [UserInfo] = [fakeUser().user1, fakeUser().user2, fakeUser().user3]
         
@@ -22,6 +22,6 @@ struct CralManager {
             }
         }
         
-        return user ?? fakeUser().user1
+        return user
     }
 }
