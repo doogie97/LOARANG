@@ -35,10 +35,6 @@ final class MainViewModel: MainViewModelInOut {
     // out
     let showSearchView = PublishRelay<Void>()
     
-    func deleteBookmark(_ name: String) {
-        storage.deleteUser(name)
-    }
-    
     func setTableViewHeight(index: Int) -> CGFloat {
         if index == 0 {
             return UIScreen.main.bounds.width * 0.75
