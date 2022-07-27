@@ -19,12 +19,8 @@ protocol MainViewModelOutPut {
 final class MainViewModel: MainViewModelInOut {
     private var storage: Storageable
     
-    let mainUser: String
-    
     init(storage: Storageable) {
         self.storage = storage
-        
-        self.mainUser = storage.mainUser
     }
     
     // in
@@ -59,7 +55,7 @@ final class MainViewModel: MainViewModelInOut {
             return UITableViewCell()
         }
         
-        guard let user = CralManager.shared.getUserInfo(mainUser) else {
+        guard let user = CralManager.shared.getUserInfo(storage.mainUser) else {
             return UITableViewCell()
         }
         
