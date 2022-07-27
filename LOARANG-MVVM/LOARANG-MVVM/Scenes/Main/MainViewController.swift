@@ -6,7 +6,6 @@
 //
 
 import RxSwift
-import RxCocoa
 
 final class MainViewController: UIViewController {
     private let viewModel: MainViewModel
@@ -39,13 +38,19 @@ final class MainViewController: UIViewController {
     }
     
     private func bindView() {
+        //MARK: - searchButton
         mainView.searchButton.rx.tap
             .bind(onNext: { [weak self] in
-                self?.navigationController?.pushViewController(SearchViewController(), animated: true)
+                self?.viewModel.touchSerachButton()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.showSearchView.bind(onNext: { [weak self] in
+            self?.navigationController?.pushViewController(SearchViewController(), animated: true)
+        })
+        .disposed(by: disposeBag)
     }
-    
+
     private func setMainTableView() {
         mainView.mainTableView.dataSource = self
         mainView.mainTableView.delegate = self

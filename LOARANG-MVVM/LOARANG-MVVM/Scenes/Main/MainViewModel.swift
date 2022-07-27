@@ -5,11 +5,18 @@
 //  Created by 최최성균 on 2022/07/15.
 //
 
-import RxSwift
 import RxRelay
-import RxCocoa
 
-final class MainViewModel {
+protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutPut {}
+
+protocol MainViewModelInput {
+    func touchSerachButton()
+}
+protocol MainViewModelOutPut {
+    var showSearchView: PublishRelay<Void> { get }
+}
+
+final class MainViewModel: MainViewModelInOut {
     private var storage: Storageable
     
     let mainUser: String
@@ -19,6 +26,14 @@ final class MainViewModel {
         
         self.mainUser = storage.mainUser
     }
+    
+    // in
+    func touchSerachButton() {
+        showSearchView.accept(())
+    }
+    
+    // out
+    let showSearchView = PublishRelay<Void>()
     
     func deleteBookmark(_ name: String) {
         storage.deleteUser(name)
