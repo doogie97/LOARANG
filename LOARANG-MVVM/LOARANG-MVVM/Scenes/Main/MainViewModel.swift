@@ -14,6 +14,7 @@ protocol MainViewModelInput {
 }
 protocol MainViewModelOutPut {
     var showSearchView: PublishRelay<Void> { get }
+    var showUserInfo: PublishRelay<UserInfo> { get }
 }
 
 final class MainViewModel: MainViewModelInOut {
@@ -30,6 +31,7 @@ final class MainViewModel: MainViewModelInOut {
     
     // out
     let showSearchView = PublishRelay<Void>()
+    let showUserInfo = PublishRelay<UserInfo>()
     
     func setTableViewHeight(index: Int) -> CGFloat {
         if index == 0 {
@@ -67,7 +69,16 @@ final class MainViewModel: MainViewModelInOut {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
             return UITableViewCell()
         }
-        cell.setContainer(container)
+        cell.setContainer(container: container, delegate: self)
         return cell
+    }
+}
+
+extension MainViewModel: TouchBookmarkCellDelegate {
+    func showUserInfo(userName: String) {
+        guard let userInfo = CralManager.shared.getUserInfo(userName) else {
+            return
+        }
+        showUserInfo.accept(userInfo)
     }
 }

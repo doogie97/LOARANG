@@ -38,7 +38,7 @@ final class MainViewController: UIViewController {
     }
     
     private func bindView() {
-        //MARK: - searchButton
+        //SearchButton
         mainView.searchButton.rx.tap
             .bind(onNext: { [weak self] in
                 self?.viewModel.touchSerachButton()
@@ -52,6 +52,17 @@ final class MainViewController: UIViewController {
             self.navigationController?.pushViewController(self.container.makeSearchViewController(), animated: true)
         })
         .disposed(by: disposeBag)
+        
+        //ShowUserInfo
+        viewModel.showUserInfo
+            .bind(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                self.navigationController?
+                    .pushViewController(self.container.makeUserInfoViewController($0), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setMainTableView() {

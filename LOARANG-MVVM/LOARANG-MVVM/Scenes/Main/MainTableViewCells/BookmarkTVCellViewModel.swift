@@ -6,6 +6,7 @@
 //
 
 import RxCocoa
+
 protocol BookmarkTVCellViewModelable: BookmarkTVCellViewModelInput, BookmarkTVCellViewModelOutput {}
 
 protocol BookmarkTVCellViewModelInput {
@@ -14,14 +15,19 @@ protocol BookmarkTVCellViewModelInput {
 
 protocol BookmarkTVCellViewModelOutput {
     var bookmark: Driver<[BookmarkUser]> { get }
-    var showUserInfo: PublishRelay<String> { get }
+}
+
+protocol TouchBookmarkCellDelegate: AnyObject {
+    func showUserInfo(userName: String)
 }
 
 final class BookmarkTVCellViewModel: BookmarkTVCellViewModelable {
     private let storage: Storageable
+    private weak var delegate: TouchBookmarkCellDelegate?
     
-    init(storage: Storageable) {
+    init(storage: Storageable, delegate: TouchBookmarkCellDelegate) {
         self.storage = storage
+        self.delegate = delegate
         bookmark = storage.bookMark.asDriver()
     }
     
@@ -29,10 +35,9 @@ final class BookmarkTVCellViewModel: BookmarkTVCellViewModelable {
     func touchBookmarkCell(index: Int) {
         let userName = storage.bookMark.value[index].name
         
-        showUserInfo.accept(userName)
+        delegate?.showUserInfo(userName: userName)
     }
     
     // out
     let bookmark: Driver<[BookmarkUser]>
-    let showUserInfo = PublishRelay<String>()
 }

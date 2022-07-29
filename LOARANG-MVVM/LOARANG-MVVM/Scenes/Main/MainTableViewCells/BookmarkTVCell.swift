@@ -119,24 +119,15 @@ final class BookmarkTVCell: UITableViewCell {
             })
             .disposed(by: disposBag)
         
-        viewModel?.showUserInfo.bind(onNext: { [weak self] in
-            guard let self = self else {
-                return
-            }
-            print($0)
-            //여기서 메인 뷰컨에서 받아온 델리게이트로 유저 뷰로 이동기능 실행하기
-        })
-        .disposed(by: disposBag)
-        
         //bookmark count
         viewModel?.bookmark.map { "(\($0.count))"}
             .drive(bookmarkCount.rx.text)
             .disposed(by: disposBag)
     }
     
-    func setContainer(_ container: Container) {
+    func setContainer(container: Container, delegate: TouchBookmarkCellDelegate) {
         self.container = container
-        self.viewModel = container.makeBookmarkTVCellViewModel()
+        self.viewModel = container.makeBookmarkTVCellViewModel(delegate: delegate)
 
         bindView()
     }
