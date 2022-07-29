@@ -14,7 +14,7 @@ final class MainUserTVCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setLayout()
+        setBasicLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -24,7 +24,6 @@ final class MainUserTVCell: UITableViewCell {
     private lazy var backgourndView: UIView = {
         let view = UIView()
         view.backgroundColor = .cellBackgroundColor
-        view.addSubview(mainStackView)
         
         return view
     }()
@@ -110,11 +109,13 @@ final class MainUserTVCell: UITableViewCell {
     private lazy var itemLvLabel = makeLabel(16)
     private lazy var serverLabel = makeLabel(16)
     
+    private lazy var noMainUserLabel = makeLabel(20)
+    
     private func setBackgroundColor() {
         self.backgroundColor = .tableViewColor
     }
     
-    private func setLayout() {
+    private func setBasicLayout() {
         setBackgroundColor()
         self.selectionStyle = .none
         
@@ -123,6 +124,13 @@ final class MainUserTVCell: UITableViewCell {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(8)
             $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
         }
+        
+        // 유저가 있을 경우
+
+    }
+    
+    private func setUserLayout() {
+        backgourndView.addSubview(mainStackView)
         
         mainStackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(10)
@@ -141,7 +149,18 @@ final class MainUserTVCell: UITableViewCell {
         }
     }
     
+    func setNoMainUserLayout() {
+        backgourndView.addSubview(noMainUserLabel)
+        
+        noMainUserLabel.text = "등록된 대표 캐릭터가 없습니다"
+        
+        noMainUserLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
     func setUserInfo(_ info: BasicInfo) {
+        setUserLayout()
         classTitle.text = "클래스"
         itemLvTitle.text = "아이템"
         serverTitle.text = "서버"

@@ -33,7 +33,7 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchMainUserCell() {
-        guard let userInfo = crawlManager.getUserInfo(storage.mainUser) else {
+        guard let userInfo = crawlManager.getUserInfo(storage.mainUser ?? "") else {
             return
         }
         showUserInfo.accept(userInfo)
