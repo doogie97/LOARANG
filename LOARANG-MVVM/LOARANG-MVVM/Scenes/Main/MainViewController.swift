@@ -110,4 +110,10 @@ extension MainViewController: UITableViewDelegate {
         }
         return cell.cellHeight
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == CellType.mainUser.rawValue {
+            viewModel.touchMainUserCell()
+        }
+    }
 }

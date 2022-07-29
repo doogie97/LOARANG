@@ -11,6 +11,7 @@ protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutPut {}
 
 protocol MainViewModelInput {
     func touchSerachButton()
+    func touchMainUserCell()
 }
 protocol MainViewModelOutPut {
     var showSearchView: PublishRelay<Void> { get }
@@ -29,6 +30,13 @@ final class MainViewModel: MainViewModelInOut {
     // in
     func touchSerachButton() {
         showSearchView.accept(())
+    }
+    
+    func touchMainUserCell() {
+        guard let userInfo = crawlManager.getUserInfo(storage.mainUser) else {
+            return
+        }
+        showUserInfo.accept(userInfo)
     }
     
     // out
