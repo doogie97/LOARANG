@@ -7,9 +7,11 @@
 
 final class Container {
     private let storage: Storageable
+    private let crawlManager: CrawlManagerable
     
-    init(storage: Storageable) {
+    init(storage: Storageable, crawlManager: CrawlManagerable) {
         self.storage = storage
+        self.crawlManager = crawlManager
     }
     
     func makeMainViewController() -> MainViewController {
@@ -17,7 +19,7 @@ final class Container {
     }
     
     private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(storage: storage)
+        return MainViewModel(storage: storage, crawlManager: crawlManager)
     }
     
     func makeBookmarkTVCellViewModel(delegate: TouchBookmarkCellDelegate) -> BookmarkTVCellViewModel {
@@ -33,7 +35,7 @@ final class Container {
     }
     
     private func makeSearchViewModel() -> SearchViewModelable {
-        return SearchViewModel()
+        return SearchViewModel(crawlManager: crawlManager)
     }
     
     func makeUserInfoViewController(_ userInfo: UserInfo) -> UserInfoViewController {

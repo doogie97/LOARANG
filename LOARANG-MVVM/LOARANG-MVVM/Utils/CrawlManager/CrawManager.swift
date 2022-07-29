@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct CralManager {
-    static let shared = CralManager()
-    private init(){}
-    
+protocol CrawlManagerable {
+    func getUserInfo(_ name: String) -> UserInfo?
+}
+
+struct CrawlManager: CrawlManagerable {
     func getUserInfo(_ name: String) -> UserInfo? {
         //임시 구현
         let fakeUsers: [UserInfo] = [fakeUser().user1, fakeUser().user2, fakeUser().user3]

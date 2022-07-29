@@ -21,13 +21,19 @@ protocol SearchViewModelOutput {
 }
 
 final class SearchViewModel: SearchViewModelable {
+    private var crawlManager: CrawlManagerable
+    
+    init(crawlManager: CrawlManagerable) {
+        self.crawlManager = crawlManager
+    }
+    
     //in
     func touchBackButton() {
         popView.accept(())
     }
     
     func touchSearchButton(_ name: String) {
-        guard let user = CralManager.shared.getUserInfo(name) else {
+        guard let user = crawlManager.getUserInfo(name) else {
             errorAlert.accept(())
             return
         }

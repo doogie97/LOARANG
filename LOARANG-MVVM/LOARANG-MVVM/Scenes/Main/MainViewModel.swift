@@ -19,9 +19,11 @@ protocol MainViewModelOutPut {
 
 final class MainViewModel: MainViewModelInOut {
     private var storage: Storageable
+    private var crawlManager: CrawlManagerable
     
-    init(storage: Storageable) {
+    init(storage: Storageable, crawlManager: CrawlManagerable) {
         self.storage = storage
+        self.crawlManager = crawlManager
     }
     
     // in
@@ -57,7 +59,7 @@ final class MainViewModel: MainViewModelInOut {
             return UITableViewCell()
         }
         
-        guard let user = CralManager.shared.getUserInfo(storage.mainUser) else {
+        guard let user = crawlManager.getUserInfo(storage.mainUser) else {
             return UITableViewCell()
         }
         
@@ -76,7 +78,7 @@ final class MainViewModel: MainViewModelInOut {
 
 extension MainViewModel: TouchBookmarkCellDelegate {
     func showUserInfo(userName: String) {
-        guard let userInfo = CralManager.shared.getUserInfo(userName) else {
+        guard let userInfo = crawlManager.getUserInfo(userName) else {
             return
         }
         showUserInfo.accept(userInfo)
