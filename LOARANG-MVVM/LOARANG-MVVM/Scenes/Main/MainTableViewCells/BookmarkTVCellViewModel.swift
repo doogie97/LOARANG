@@ -6,19 +6,33 @@
 //
 
 import RxCocoa
+protocol BookmarkTVCellViewModelable: BookmarkTVCellViewModelInput, BookmarkTVCellViewModelOutput {}
 
-final class BookmarkTVCellViewModel {
+protocol BookmarkTVCellViewModelInput {
+    func touchBookmarkCell(index: Int)
+}
+
+protocol BookmarkTVCellViewModelOutput {
+    var bookmark: Driver<[BookmarkUser]> { get }
+    var showUserInfo: PublishRelay<String> { get }
+}
+
+final class BookmarkTVCellViewModel: BookmarkTVCellViewModelable {
     private let storage: Storageable
-    
-    let bookmark: Driver<[BookmarkUser]>
     
     init(storage: Storageable) {
         self.storage = storage
         bookmark = storage.bookMark.asDriver()
     }
-// 이건 일단 지금 쓰는데 없음
-//    func searchUser(_ name: String) -> UserInfo {
-//
-//        return CralManager.shared.getUserInfo(name)
-//    }
+    
+    // in
+    func touchBookmarkCell(index: Int) {
+        let userName = storage.bookMark.value[index].name
+        
+        showUserInfo.accept(userName)
+    }
+    
+    // out
+    let bookmark: Driver<[BookmarkUser]>
+    let showUserInfo = PublishRelay<String>()
 }
