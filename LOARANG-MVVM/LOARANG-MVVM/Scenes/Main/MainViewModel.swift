@@ -34,21 +34,51 @@ final class MainViewModel: MainViewModelInOut {
     // out
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<UserInfo>()
+}
+//MARK: - about TableView
+extension MainViewModel {
+    enum TableViewConstant {
+        case mainUser
+        case bookmark
+        
+        var index: Int {
+            switch self {
+            case .mainUser:
+                return 0
+            case .bookmark:
+                return 1
+            }
+        }
+        
+        var cellHeight: CGFloat {
+            switch self {
+            case .mainUser:
+                return UIScreen.main.bounds.width * 0.75
+            case .bookmark:
+                return UIScreen.main.bounds.width * 0.58
+            }
+        }
+    }
     
     func setTableViewHeight(index: Int) -> CGFloat {
-        if index == 0 {
-            return UIScreen.main.bounds.width * 0.75
+        if index == TableViewConstant.mainUser.index {
+            return TableViewConstant.mainUser.cellHeight
         }
-        return UIScreen.main.bounds.width * 0.58
+        
+        if index == TableViewConstant.bookmark.index {
+            return TableViewConstant.bookmark.cellHeight
+        }
+        
+        return 0
     }
     
     
     func makeTableViewCell(index: Int, tableView: UITableView, container: Container) -> UITableViewCell {
-        if index == 0 {
+        if index == TableViewConstant.mainUser.index {
             return makeMainUserTVCell(tableView)
         }
         
-        if index == 1 {
+        if index == TableViewConstant.bookmark.index {
             return makeBookmarkTVCell(tableView, container)
         }
         return UITableViewCell()
@@ -76,6 +106,7 @@ final class MainViewModel: MainViewModelInOut {
     }
 }
 
+//MARK: - about Delegate
 extension MainViewModel: TouchBookmarkCellDelegate {
     func showUserInfo(userName: String) {
         guard let userInfo = crawlManager.getUserInfo(userName) else {
