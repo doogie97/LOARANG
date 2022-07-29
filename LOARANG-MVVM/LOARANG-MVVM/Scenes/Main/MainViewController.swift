@@ -73,20 +73,50 @@ final class MainViewController: UIViewController {
     }
 }
 
+//MARK: - about TableView
 extension MainViewController: UITableViewDataSource {
+    enum CellType: Int, CaseIterable {
+        case mainUser = 0
+        case bookmark = 1
+        
+        var index: Int {
+            switch self {
+            case .mainUser:
+                return 0
+            case .bookmark:
+                return 1
+            }
+        }
+        
+        var cellHeight: CGFloat {
+            switch self {
+            case .mainUser:
+                return UIScreen.main.bounds.width * 0.75
+            case .bookmark:
+                return UIScreen.main.bounds.width * 0.58
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        CellType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        viewModel.makeTableViewCell(index: indexPath.row,
-                                    tableView: tableView,
-                                    container: container)
+        // 이 부분도 아래 cellHeight처럼 어떻게 수정 할 수 있을 것 같은데...
+        if indexPath.row == 0 {
+            return container.makeMainUserTVCell(tableView)
+        } else {
+            return container.makeBookmarkTVCell(tableView: tableView, delegate: viewModel)
+        }
     }
 }
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        viewModel.setTableViewHeight(index: indexPath.row)
+        guard let cell = CellType(rawValue: indexPath.row) else {
+            return 0
+        }
+        return cell.cellHeight
     }
 }

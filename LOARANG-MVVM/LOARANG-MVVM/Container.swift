@@ -5,6 +5,8 @@
 //  Created by 최최성균 on 2022/07/15.
 //
 
+import UIKit
+
 final class Container {
     private let storage: Storageable
     private let crawlManager: CrawlManagerable
@@ -21,6 +23,28 @@ final class Container {
     private func makeMainViewModel() -> MainViewModel {
         return MainViewModel(storage: storage, crawlManager: crawlManager)
     }
+    
+    func makeMainUserTVCell(_ tableView: UITableView) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
+            return UITableViewCell()
+        }
+        
+        guard let user = crawlManager.getUserInfo(storage.mainUser) else {
+            return UITableViewCell()
+        }
+        
+        cell.setUserInfo(user.basicInfo)
+        return cell
+    }
+    
+    func makeBookmarkTVCell(tableView: UITableView, delegate: TouchBookmarkCellDelegate) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
+            return UITableViewCell()
+        }
+        cell.setContainer(container: self, delegate: delegate)
+        return cell
+    }
+
     
     func makeBookmarkTVCellViewModel(delegate: TouchBookmarkCellDelegate) -> BookmarkTVCellViewModel {
         return BookmarkTVCellViewModel(storage: storage, delegate: delegate)
