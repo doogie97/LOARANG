@@ -95,7 +95,7 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 이 부분도 아래 cellHeight처럼 어떻게 수정 할 수 있을 것 같은데...
-        if indexPath.row == 0 {
+        if indexPath.row == CellType.mainUser.rawValue {
             return container.makeMainUserTVCell(tableView)
         } else {
             return container.makeBookmarkTVCell(tableView: tableView, delegate: viewModel)
