@@ -79,15 +79,6 @@ extension MainViewController: UITableViewDataSource {
         case mainUser = 0
         case bookmark = 1
         
-        var index: Int {
-            switch self {
-            case .mainUser:
-                return 0
-            case .bookmark:
-                return 1
-            }
-        }
-        
         var cellHeight: CGFloat {
             switch self {
             case .mainUser:
