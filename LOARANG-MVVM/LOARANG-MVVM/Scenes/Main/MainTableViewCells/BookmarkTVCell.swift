@@ -9,7 +9,7 @@ import RxSwift
 import SnapKit
 
 final class BookmarkTVCell: UITableViewCell {
-    private var viewModel: BookmarkTVCellViewModel?
+    private var viewModel: BookmarkTVCellViewModelable?
     private var container: Container?
     private let disposBag = DisposeBag()
     
@@ -101,6 +101,7 @@ final class BookmarkTVCell: UITableViewCell {
     }
     
     private func bindView() {
+        //collectionView
         viewModel?.bookmark
             .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, bookmarkUser, cell in
                 guard let self = self else {
@@ -111,6 +112,23 @@ final class BookmarkTVCell: UITableViewCell {
             }
             .disposed(by: disposBag)
         
+        //touch collectionView cell
+        bookMarkCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel?.touchBookmarkCell(index: $0.row)
+            })
+            .disposed(by: disposBag)
+        
+        viewModel?.showUserInfo.bind(onNext: { [weak self] in
+            guard let self = self else {
+                return
+            }
+            print($0)
+            //여기서 메인 뷰컨에서 받아온 델리게이트로 유저 뷰로 이동기능 실행하기
+        })
+        .disposed(by: disposBag)
+        
+        //bookmark count
         viewModel?.bookmark.map { "(\($0.count))"}
             .drive(bookmarkCount.rx.text)
             .disposed(by: disposBag)
