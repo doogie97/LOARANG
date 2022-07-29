@@ -23,6 +23,10 @@
 		AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC292880761300CDE796 /* MainUserTVCell.swift */; };
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
+		AC6CA2942893BC1D0049C12F /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* FirstInfoViewController.swift */; };
+		AC6CA2962893BC270049C12F /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */; };
+		AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */; };
+		AC6CA29A2893BC390049C12F /* ForthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* ForthInfoViewController.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
 		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
@@ -72,6 +76,10 @@
 		AC3FEC292880761300CDE796 /* MainUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserTVCell.swift; sourceTree = "<group>"; };
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		AC6CA2932893BC1D0049C12F /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
+		AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
+		AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInfoViewController.swift; sourceTree = "<group>"; };
+		AC6CA2992893BC390049C12F /* ForthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForthInfoViewController.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
 		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
@@ -130,6 +138,10 @@
 				AC035EA2289122160068DC7E /* UserInfoView.swift */,
 				AC035EA0289121FD0068DC7E /* UserInfoViewController.swift */,
 				AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */,
+				AC6CA28F2893BBCF0049C12F /* FirstInfoView */,
+				AC6CA2902893BBD70049C12F /* SecondInfoView */,
+				AC6CA2912893BBEF0049C12F /* ThirdInfoView */,
+				AC6CA2922893BBF90049C12F /* ForthInfoView */,
 			);
 			path = UserInfoView;
 			sourceTree = "<group>";
@@ -185,6 +197,38 @@
 				AC8F11D128814EB000D06AA6 /* BookmarCell */,
 			);
 			path = MainTableViewCells;
+			sourceTree = "<group>";
+		};
+		AC6CA28F2893BBCF0049C12F /* FirstInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				AC6CA2932893BC1D0049C12F /* FirstInfoViewController.swift */,
+			);
+			path = FirstInfoView;
+			sourceTree = "<group>";
+		};
+		AC6CA2902893BBD70049C12F /* SecondInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */,
+			);
+			path = SecondInfoView;
+			sourceTree = "<group>";
+		};
+		AC6CA2912893BBEF0049C12F /* ThirdInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */,
+			);
+			path = ThirdInfoView;
+			sourceTree = "<group>";
+		};
+		AC6CA2922893BBF90049C12F /* ForthInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				AC6CA2992893BC390049C12F /* ForthInfoViewController.swift */,
+			);
+			path = ForthInfoView;
 			sourceTree = "<group>";
 		};
 		AC8F11C62881025900D06AA6 /* CrawlManager */ = {
@@ -469,12 +513,16 @@
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
 				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
+				AC6CA29A2893BC390049C12F /* ForthInfoViewController.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
+				AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
+				AC6CA2962893BC270049C12F /* SecondInfoViewController.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
 				ACAEF33C287FF8F600AE98F1 /* BasicInfo.swift in Sources */,
+				AC6CA2942893BC1D0049C12F /* FirstInfoViewController.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC3FEC2528806DB300CDE796 /* MockStorage.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
