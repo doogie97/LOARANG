@@ -87,6 +87,7 @@ final class BookmarkTVCell: UITableViewCell {
     }()
 
     private func setLayout() {
+        self.selectionStyle = .none
         self.backgroundColor = .tableViewColor
         self.contentView.addSubview(backgourndView)
         
