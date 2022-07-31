@@ -49,9 +49,20 @@ final class UserInfoView: UIView {
         return button
     }()
     
+    private lazy var separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        
+        return view
+    }()
+    
+    private let segmentController = SegmentControllerView()
+    
     private func setLayout() {
         self.backgroundColor = .mainBackground
         self.addSubview(navigationStackView)
+        self.addSubview(segmentController)
+        self.addSubview(separatorView)
         
         navigationStackView.snp.makeConstraints{
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
@@ -63,6 +74,18 @@ final class UserInfoView: UIView {
         
         bookMarkButton.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(0.1)
+        }
+        
+        segmentController.snp.makeConstraints {
+            $0.top.equalTo(navigationStackView.snp.bottom).inset(-16)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(40)
+        }
+        
+        separatorView.snp.makeConstraints {
+            $0.top.equalTo(segmentController.snp.bottom).inset(-2)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(0.5)
         }
     }
     
