@@ -9,9 +9,11 @@ import UIKit
 
 final class BasicInfoViewController: UIViewController {
     private let container: Container
+    private let viewModel: BasicInfoViewModelable
     
-    init(container: Container) {
+    init(container: Container, viewModel: BasicInfoViewModelable) {
         self.container = container
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,7 +63,8 @@ extension BasicInfoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == CellType.mainInfo.rawValue {
-            return container.makeUserMainInfoTVCell(tableView: tableView, userInfo: fakeUser().user3)
+            return container.makeUserMainInfoTVCell(tableView: tableView,
+                                                    userInfo: viewModel.userInfo)
         }
         
         return UITableViewCell()
