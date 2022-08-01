@@ -12,11 +12,14 @@ protocol UserInfoViewModelable: UserInfoViewModelInput, UserInfoViewModelOutput 
 protocol UserInfoViewModelInput {
     func touchBackButton()
     func touchSegmentControl(_ index: Int)
+    func detailViewDidShow(_ index: Int)
 }
 
 protocol UserInfoViewModelOutput {
     var userInfo: UserInfo { get }
     var popView: PublishRelay<Void> { get }
+    var currentPage: BehaviorRelay<Int> { get }
+    var previousPage: BehaviorRelay<Int> { get }
     var detailVC: BehaviorRelay<UIViewController> { get }
 }
 
@@ -38,10 +41,17 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     func touchSegmentControl(_ index: Int) {
+        currentPage.accept(index)
         detailVC.accept(viewList[index])
+    }
+    
+    func detailViewDidShow(_ index: Int) {
+        previousPage.accept(index)
     }
     
     //out
     let popView = PublishRelay<Void>()
     let detailVC: BehaviorRelay<UIViewController>
+    let currentPage = BehaviorRelay<Int>(value: 0)
+    let previousPage = BehaviorRelay<Int>(value: 50)
 }
