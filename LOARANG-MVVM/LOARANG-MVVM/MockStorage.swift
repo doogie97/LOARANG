@@ -16,7 +16,7 @@ protocol Storageable {
 }
 
 final class MockStorage: Storageable {
-    lazy var mainUser: String? = nil
+    lazy var mainUser: String? = "최지근"
     lazy var bookMark = BehaviorRelay<[BookmarkUser]>(value: [
         BookmarkUser(name: "최지근",
                      image: UIImage(named: "최지근") ?? UIImage(),
