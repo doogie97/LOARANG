@@ -15,7 +15,7 @@ final class Container {
         self.storage = storage
         self.crawlManager = crawlManager
     }
-    
+//MARK: - about Main View
     func makeMainViewController() -> MainViewController {
         return MainViewController(viewModel: makeMainViewModel(), container: self)
     }
@@ -46,7 +46,6 @@ final class Container {
         return cell
     }
 
-    
     func makeBookmarkTVCellViewModel(delegate: TouchBookmarkCellDelegate) -> BookmarkTVCellViewModel {
         return BookmarkTVCellViewModel(storage: storage, delegate: delegate)
     }
@@ -55,6 +54,7 @@ final class Container {
         return BookmarkCVCellViewModel(storage: storage)
     }
     
+//MARK: - about searchView
     func makeSearchViewController() -> SearchViewController {
         return SearchViewController(viewModel: makeSearchViewModel(), container: self)
     }
@@ -63,6 +63,7 @@ final class Container {
         return SearchViewModel(crawlManager: crawlManager)
     }
     
+//MARK: - about UserInfoView
     func makeUserInfoViewController(_ userInfo: UserInfo) -> UserInfoViewController {
         return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo),
                                       viewList: [makeFirstVC(), makeSecondVC(), makeThirdVC(), makeFourthVC()])
@@ -73,7 +74,7 @@ final class Container {
                                  viewList: [makeFirstVC(), makeSecondVC(), makeThirdVC(), makeFourthVC()]
                                  , userInfo: userInfo)
     }
-    
+    //MARK: - about BasicInfoView
     private func makeFirstVC() -> BasicInfoViewController {
         return BasicInfoViewController(container: self)
     }
