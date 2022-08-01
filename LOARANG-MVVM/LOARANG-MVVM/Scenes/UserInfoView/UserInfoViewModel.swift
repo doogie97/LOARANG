@@ -11,6 +11,7 @@ protocol UserInfoViewModelable: UserInfoViewModelInput, UserInfoViewModelOutput 
 
 protocol UserInfoViewModelInput {
     func touchBackButton()
+    func touchSegmentControl(_ index: Int)
 }
 
 protocol UserInfoViewModelOutput {
@@ -31,6 +32,11 @@ final class UserInfoViewModel: UserInfoViewModelable {
     func touchBackButton() {
         popView.accept(())
     }
+    
+    func touchSegmentControl(_ index: Int) {
+        print(index)
+    }
+    
     //out
     let popView = PublishRelay<Void>()
 }

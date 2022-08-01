@@ -56,7 +56,7 @@ final class UserInfoView: UIView {
         return view
     }()
     
-    private let segmentController = SegmentControllerView()
+    let segmentController = SegmentControllerView()
     
     private func setLayout() {
         self.backgroundColor = .mainBackground

@@ -45,5 +45,11 @@ final class UserInfoViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposBag)
+        
+        userInfoView.segmentController.segmentController.rx.value
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchSegmentControl($0)
+            })
+            .disposed(by: disposBag)
     }
 }

@@ -17,7 +17,7 @@ final class SegmentControllerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var segmentController: UISegmentedControl = {
+    private(set) lazy var segmentController: UISegmentedControl = {
         let segment = UISegmentedControl()
         segment.selectedSegmentTintColor = .clear // 없어도되는거 같은데 이거는
         
