@@ -28,14 +28,37 @@ final class BasicInfoViewController: UIViewController {
 }
 
 extension BasicInfoViewController: UITableViewDataSource {
+    enum CellType: Int, CaseIterable {
+        case mainInfo = 0
+        case equipment = 1
+        case stat = 2
+        
+        var cellHeight: CGFloat {
+            switch self {
+            case .mainInfo:
+                return UIScreen.main.bounds.width * 0.5
+            case .equipment:
+                return UIScreen.main.bounds.width * 1.2
+            case .stat:
+                return UIScreen.main.bounds.width * 0.6
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        CellType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        return UserMainInfoTVCell()
     }
 }
 
 extension BasicInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let cell = CellType(rawValue: indexPath.row) else {
+            return 0
+        }
+        return cell.cellHeight
+    }
 }
