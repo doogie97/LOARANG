@@ -24,7 +24,7 @@ protocol UserInfoViewModelOutput {
 
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: Storageable
-    let userInfo: UserInfo // 이건 나중에 제거될듯? 아마 userInfo는 얘가 받는게 아니라 container에서 각각의 detailViewModel이 필요할 것 같음
+    let userInfo: UserInfo // 이건 나중에 제거될듯? 아마 userInfo는 얘가 받는게 아니라 container에서 각각의 detailViewModel이 필요할 것 같음 이라고 생각했으나 북마크 기능에서 필요할지도?
     
     init(storage: Storageable, userInfo: UserInfo) {
         self.storage = storage
