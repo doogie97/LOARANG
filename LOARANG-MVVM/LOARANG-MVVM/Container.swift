@@ -74,8 +74,8 @@ final class Container {
                                  , userInfo: userInfo)
     }
     
-    private func makeFirstVC() -> FirstInfoViewController {
-        return FirstInfoViewController()
+    private func makeFirstVC() -> BasicInfoViewController {
+        return BasicInfoViewController()
     }
     
     private func makeSecondVC() -> SecondInfoViewController {
