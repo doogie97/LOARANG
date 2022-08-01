@@ -8,6 +8,16 @@
 import UIKit
 
 final class BasicInfoViewController: UIViewController {
+    private let container: Container
+    
+    init(container: Container) {
+        self.container = container
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let basicInfoView = BasicInfoView()
     
@@ -50,7 +60,12 @@ extension BasicInfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UserMainInfoTVCell()
+        if indexPath.row == CellType.mainInfo.rawValue {
+            return container.makeUserMainInfoTVCell(tableView: tableView, userInfo: fakeUser().user3)
+        }
+        
+        return UITableViewCell()
+        
     }
 }
 

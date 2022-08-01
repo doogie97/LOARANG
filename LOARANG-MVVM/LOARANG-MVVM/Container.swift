@@ -75,7 +75,16 @@ final class Container {
     }
     
     private func makeFirstVC() -> BasicInfoViewController {
-        return BasicInfoViewController()
+        return BasicInfoViewController(container: self)
+    }
+    
+    func makeUserMainInfoTVCell(tableView: UITableView, userInfo: UserInfo) -> UserMainInfoTVCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UserMainInfoTVCell.self)") as? UserMainInfoTVCell else {
+            return UserMainInfoTVCell()
+        }
+        cell.setCellContents(userInfo)
+        
+        return cell
     }
     
     private func makeSecondVC() -> SecondInfoViewController {
