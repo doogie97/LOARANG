@@ -66,16 +66,16 @@ final class Container {
 //MARK: - about UserInfoView
     func makeUserInfoViewController(_ userInfo: UserInfo) -> UserInfoViewController {
         return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo),
-                                      viewList: [makeFirstVC(), makeSecondVC(), makeThirdVC(), makeFourthVC()])
+                                      viewList: [makeBasicInfoVC(), makeSecondVC(), makeThirdVC(), makeFourthVC()])
     }
     
     private func makeUserInfoViewModel(_ userInfo: UserInfo) -> UserInfoViewModelable {
         return UserInfoViewModel(storage: storage,
-                                 viewList: [makeFirstVC(), makeSecondVC(), makeThirdVC(), makeFourthVC()]
+                                 viewList: [makeBasicInfoVC(), makeSecondVC(), makeThirdVC(), makeFourthVC()]
                                  , userInfo: userInfo)
     }
     //MARK: - about BasicInfoView
-    private func makeFirstVC() -> BasicInfoViewController {
+    private func makeBasicInfoVC() -> BasicInfoViewController {
         return BasicInfoViewController(container: self)
     }
     
