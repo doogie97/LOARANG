@@ -7,11 +7,7 @@
 
 import UIKit
 
-final class MainUserTVCell: UITableViewCell {
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: false)
-    }
-    
+final class MainUserTVCell: UITableViewCell {    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setBasicLayout()

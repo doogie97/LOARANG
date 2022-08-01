@@ -13,10 +13,6 @@ final class BookmarkTVCell: UITableViewCell {
     private var container: Container?
     private let disposBag = DisposeBag()
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: false)
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
