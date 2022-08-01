@@ -60,12 +60,6 @@ final class UserInfoViewController: UIViewController {
                  self?.changeView(index: $0)
              })
              .disposed(by: disposBag)
-        
-        viewModel.detailVC
-            .bind(onNext: { [weak self] in
-                print($0.self)
-            })
-            .disposed(by: disposBag)
     }
     
     private func changeView(index: Int) {

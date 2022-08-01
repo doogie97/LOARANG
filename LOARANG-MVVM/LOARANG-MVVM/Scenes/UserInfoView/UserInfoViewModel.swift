@@ -20,7 +20,6 @@ protocol UserInfoViewModelOutput {
     var popView: PublishRelay<Void> { get }
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
-    var detailVC: BehaviorRelay<UIViewController> { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
@@ -32,7 +31,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
         self.storage = storage
         self.viewList = viewList
         self.userInfo = userInfo
-        self.detailVC = BehaviorRelay<UIViewController>(value: viewList.first ?? UIViewController())
     }
     
     //in
@@ -42,7 +40,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     func touchSegmentControl(_ index: Int) {
         currentPage.accept(index)
-        detailVC.accept(viewList[index])
     }
     
     func detailViewDidShow(_ index: Int) {
@@ -51,7 +48,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     //out
     let popView = PublishRelay<Void>()
-    let detailVC: BehaviorRelay<UIViewController>
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
 }
