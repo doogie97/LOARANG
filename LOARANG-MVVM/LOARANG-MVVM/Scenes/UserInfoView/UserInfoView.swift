@@ -56,6 +56,13 @@ final class UserInfoView: UIView {
         return view
     }()
     
+    private(set) lazy var pageView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .mainBackground
+        
+        return view
+    }()
+    
     let segmentController = SegmentControllerView()
     
     private func setLayout() {
@@ -63,6 +70,7 @@ final class UserInfoView: UIView {
         self.addSubview(navigationStackView)
         self.addSubview(segmentController)
         self.addSubview(separatorView)
+        self.addSubview(pageView)
         
         navigationStackView.snp.makeConstraints{
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
@@ -86,6 +94,11 @@ final class UserInfoView: UIView {
             $0.top.equalTo(segmentController.snp.bottom).inset(-2)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(0.5)
+        }
+        
+        pageView.snp.makeConstraints {
+            $0.top.equalTo(separatorView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
