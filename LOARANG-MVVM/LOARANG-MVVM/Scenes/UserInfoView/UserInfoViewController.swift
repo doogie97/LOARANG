@@ -51,5 +51,11 @@ final class UserInfoViewController: UIViewController {
                 self?.viewModel.touchSegmentControl($0)
             })
             .disposed(by: disposBag)
+        
+        viewModel.detailVC
+            .bind(onNext: { [weak self] in
+                print($0.self)
+            })
+            .disposed(by: disposBag)
     }
 }

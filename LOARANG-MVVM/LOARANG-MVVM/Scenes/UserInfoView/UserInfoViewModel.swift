@@ -17,6 +17,7 @@ protocol UserInfoViewModelInput {
 protocol UserInfoViewModelOutput {
     var userInfo: UserInfo { get }
     var popView: PublishRelay<Void> { get }
+    var detailVC: BehaviorRelay<UIViewController> { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
@@ -28,6 +29,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
         self.storage = storage
         self.viewList = viewList
         self.userInfo = userInfo
+        self.detailVC = BehaviorRelay<UIViewController>(value: viewList.first ?? UIViewController())
     }
     
     //in
@@ -36,9 +38,10 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     func touchSegmentControl(_ index: Int) {
-        print(index)
+        detailVC.accept(viewList[index])
     }
     
     //out
     let popView = PublishRelay<Void>()
+    let detailVC: BehaviorRelay<UIViewController>
 }
