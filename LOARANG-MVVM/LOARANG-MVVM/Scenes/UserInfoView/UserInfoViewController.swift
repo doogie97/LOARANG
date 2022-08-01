@@ -21,6 +21,7 @@ final class UserInfoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let userInfoView = UserInfoView()
     private let disposBag = DisposeBag()
     
@@ -54,10 +55,31 @@ final class UserInfoViewController: UIViewController {
             })
             .disposed(by: disposBag)
         
+        viewModel.currentPage
+             .bind(onNext: { [weak self] in
+                 self?.changeView(index: $0)
+             })
+             .disposed(by: disposBag)
+        
         viewModel.detailVC
             .bind(onNext: { [weak self] in
                 print($0.self)
             })
             .disposed(by: disposBag)
+    }
+    
+    private func changeView(index: Int) {
+        if viewModel.previousPage.value == index {
+             return
+        }
+        
+        var direction: UIPageViewController.NavigationDirection {
+            index > viewModel.previousPage.value ? .forward : .reverse
+        }
+        
+        pageVC.setViewControllers([pageViewList[index]], direction: direction, animated: true)
+        pageVC.view.frame = CGRect(x: 0, y: 0, width: userInfoView.pageView.frame.width, height: userInfoView.pageView.frame.height)
+        userInfoView.pageView.addSubview(pageVC.view)
+        viewModel.detailViewDidShow(index)
     }
 }
