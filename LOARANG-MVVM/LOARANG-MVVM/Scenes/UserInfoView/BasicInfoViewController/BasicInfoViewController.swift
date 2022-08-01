@@ -16,6 +16,11 @@ final class BasicInfoViewController: UIViewController {
         self.view = basicInfoView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setBasicTableView()
+    }
+    
     private func setBasicTableView() {
         basicInfoView.basicInfoTableView.dataSource = self
         basicInfoView.basicInfoTableView.delegate = self
