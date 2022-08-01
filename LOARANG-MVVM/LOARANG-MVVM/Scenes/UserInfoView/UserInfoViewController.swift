@@ -9,9 +9,11 @@ import RxSwift
 
 final class UserInfoViewController: UIViewController {
     private let viewModel: UserInfoViewModelable
+    private let pageViewList: [UIViewController]  //이건 viewModel에 있는게 맞을까 여기가 맞을까?
     
-    init(viewModel: UserInfoViewModelable) {
+    init(viewModel: UserInfoViewModelable, viewList: [UIViewController]) {
         self.viewModel = viewModel
+        self.pageViewList = viewList
         super.init(nibName: nil, bundle: nil)
     }
     

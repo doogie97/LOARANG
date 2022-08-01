@@ -64,7 +64,8 @@ final class Container {
     }
     
     func makeUserInfoViewController(_ userInfo: UserInfo) -> UserInfoViewController {
-        return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo))
+        return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo),
+                                      viewList: [makeFirstVC(), makeSecondVC(), makeThirdVC(), makeFourthVC()])
     }
     
     private func makeUserInfoViewModel(_ userInfo: UserInfo) -> UserInfoViewModelable {
