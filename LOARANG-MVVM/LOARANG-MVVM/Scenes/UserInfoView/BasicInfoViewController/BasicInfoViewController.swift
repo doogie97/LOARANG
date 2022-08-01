@@ -7,10 +7,30 @@
 
 import UIKit
 
-class BasicInfoViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .red
+final class BasicInfoViewController: UIViewController {
+    
+    private let basicInfoView = BasicInfoView()
+    
+    override func loadView() {
+        super.loadView()
+        self.view = basicInfoView
     }
+    
+    private func setBasicTableView() {
+        basicInfoView.basicInfoTableView.dataSource = self
+        basicInfoView.basicInfoTableView.delegate = self
+    }
+}
+
+extension BasicInfoViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        UITableViewCell()
+    }
+}
+
+extension BasicInfoViewController: UITableViewDelegate {
 }

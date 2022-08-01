@@ -55,6 +55,7 @@
 		ACAEF36B2880077C00AE98F1 /* ONE-Mobile-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3682880077C00AE98F1 /* ONE-Mobile-Regular.ttf */; };
 		ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */; };
 		ACB837F228961ECE00F75BA2 /* SegmentControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */; };
+		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +206,7 @@
 		AC6CA28F2893BBCF0049C12F /* BasicInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */,
 				AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */,
 			);
 			path = BasicInfoViewController;
@@ -512,6 +514,7 @@
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
+				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
