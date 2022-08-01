@@ -19,7 +19,6 @@ final class SegmentControllerView: UIView {
     
     private(set) lazy var segmentController: UISegmentedControl = {
         let segment = UISegmentedControl()
-        segment.selectedSegmentTintColor = .clear // 없어도되는거 같은데 이거는
         
         // 백그라운트 이미지 제거
         segment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
@@ -40,8 +39,8 @@ final class SegmentControllerView: UIView {
         
         segment.insertSegment(withTitle: "기본 정보", at: 0, animated: true)
         segment.insertSegment(withTitle: "스킬", at: 1, animated: true)
-        segment.insertSegment(withTitle: "카드", at: 3, animated: true)
-        segment.insertSegment(withTitle: "보유캐릭터", at: 4, animated: true)
+        segment.insertSegment(withTitle: "카드", at: 2, animated: true)
+        segment.insertSegment(withTitle: "보유캐릭터", at: 3, animated: true)
 
         segment.selectedSegmentIndex = 0
         
