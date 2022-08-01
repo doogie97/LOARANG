@@ -28,13 +28,13 @@ final class SegmentControllerView: UIView {
         // 선택안된 버튼 폰트
         segment.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.systemGray,
-            NSAttributedString.Key.font: UIFont.one(size: 15, family: .Light)
+            NSAttributedString.Key.font: UIFont.one(size: 14, family: .Light)
         ], for: .normal)
         
         // 선택된 버튼 폰트
         segment.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1),
-            NSAttributedString.Key.font: UIFont.one(size: 15, family: .Bold)
+            NSAttributedString.Key.font: UIFont.one(size: 14, family: .Bold)
         ], for: .selected)
         
         segment.insertSegment(withTitle: "기본 정보", at: 0, animated: true)
