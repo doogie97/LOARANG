@@ -35,11 +35,11 @@ struct CrawlManager: CrawlManagerable {
     
     private func makeDocument(url: URL) throws -> Document {
         guard let html = try? String(contentsOf: url, encoding: .utf8) else {
-            throw CrawlError.searchError
+            throw CrawlError.documentError
         }
         
         guard let doc = try? SwiftSoup.parse(html) else {
-            throw CrawlError.searchError
+            throw CrawlError.documentError
         }
         
         return doc
@@ -48,11 +48,11 @@ struct CrawlManager: CrawlManagerable {
     //MARK: - basic info
     private func getBasicInfo(name: String) throws -> BasicInfo {
         guard let url = makeURL(urlString: baseURL, name: name) else {
-            throw CrawlError.searchError
+            throw CrawlError.urlError
         }
         
         guard let doc = try? makeDocument(url: url) else {
-            throw CrawlError.searchError
+            throw CrawlError.documentError
         }
         
         let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()

@@ -7,4 +7,6 @@
 
 enum CrawlError: Error {
     case searchError
+    case urlError
+    case documentError
 }
