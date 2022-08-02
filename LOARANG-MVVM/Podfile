@@ -9,6 +9,7 @@ pod 'RxCocoa', '6.5.0'
 pod 'SnapKit', '~> 5.0.0'
 pod 'SwiftyJSON'
 pod 'SwiftSoup'
+pod 'RealmSwift'
   # Pods for LOARANG-MVVM
 
 end
