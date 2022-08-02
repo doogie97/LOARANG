@@ -33,12 +33,12 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchSearchButton(_ name: String) {
-        crawlManager.getUserInfo(name) { result in
+        crawlManager.getUserInfo(name) { [weak self] result in
             switch result {
             case .success(let userInfo):
-                showUserInfo.accept(userInfo)
+                self?.showUserInfo.accept(userInfo)
             case .failure(_):
-                errorAlert.accept(())
+                self?.errorAlert.accept(())
             }
         }
     }

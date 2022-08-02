@@ -5,6 +5,8 @@
 //  Created by 최최성균 on 2022/07/14.
 //
 
+import UIKit
+
 struct BasicInfo {
     let server: String
     let name: String
@@ -16,5 +18,5 @@ struct BasicInfo {
     let pvp: String
     let wisdom: String
     let `class`: String
-    let userImageURL: String
+    let userImage: UIImage
 }

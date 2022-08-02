@@ -178,6 +178,6 @@ final class UserMainInfoTVCell: UITableViewCell {
         titleLabel.text = "칭호 : \(basicInfo.title)"
         guildLabel.text = "길드 : \(basicInfo.guild)"
         wisdomLabel.text = "영지 : \(basicInfo.wisdom)"
-        userImageView.setProfileImage(urlString: basicInfo.userImageURL, class: basicInfo.`class`)
+        userImageView.image = userInfo.basicInfo.userImage.cropImage(class: userInfo.basicInfo.`class`)
     }
 }

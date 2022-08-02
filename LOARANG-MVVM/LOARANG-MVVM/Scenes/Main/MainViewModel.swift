@@ -35,10 +35,10 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchMainUserCell() {
-        crawlManager.getUserInfo(storage.mainUser?.value.name ?? "") { result in
+        crawlManager.getUserInfo(storage.mainUser?.value.name ?? "") { [weak self] result in
             switch result {
             case .success(let userInfo):
-                showUserInfo.accept(userInfo)
+                self?.showUserInfo.accept(userInfo)
             case .failure(_):
                 return
             }
@@ -54,10 +54,10 @@ final class MainViewModel: MainViewModelInOut {
 //MARK: - about Delegate
 extension MainViewModel: TouchBookmarkCellDelegate {
     func showUserInfo(userName: String) {
-        crawlManager.getUserInfo(storage.mainUser?.value.name ?? "") { result in
+        crawlManager.getUserInfo(storage.mainUser?.value.name ?? "") { [weak self] result in
             switch result {
             case .success(let userInfo):
-                showUserInfo.accept(userInfo)
+                self?.showUserInfo.accept(userInfo)
             case .failure(_):
                 return
             }

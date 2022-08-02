@@ -8,21 +8,24 @@
 import SwiftSoup
 
 protocol CrawlManagerable {
-    func getUserInfo(_ name: String, completion: (Result<UserInfo, Error>) -> Void)
+    func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void)
 }
 
 struct CrawlManager: CrawlManagerable {
     private let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
     
-    func getUserInfo(_ name: String, completion: (Result<UserInfo, Error>) -> Void) {
-        guard let basicInfo = try? getBasicInfo(name: name) else {
-            completion(.failure(CrawlError.searchError))
-            return
+    func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
+        let stat: Stat? = nil // 추후에 이런식으로 다른 정보들도 가져와 놓은 다음에 이미지 다운이 완료되면 UserInfo만들어서 completion으로 보내기
+        getBasicInfo(name: name) { result in
+            switch result {
+            case .success(let basicInfo):
+                completion(.success(UserInfo(basicInfo: basicInfo,
+                                             stat: stat,
+                                             equips: nil)))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
-        
-        completion(.success(UserInfo(basicInfo: basicInfo,
-                                     stat: nil,
-                                     equips: nil)))
     }
     
     private func makeURL(urlString: String, name: String) -> URL? {
@@ -46,48 +49,62 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - basic info
-    private func getBasicInfo(name: String) throws -> BasicInfo {
+    private func getBasicInfo(name: String, completion: @escaping (Result<BasicInfo, Error>) -> Void) {
         guard let url = makeURL(urlString: baseURL, name: name) else {
-            throw CrawlError.urlError
+            completion(.failure(CrawlError.urlError))
+            return
         }
         
         guard let doc = try? makeDocument(url: url) else {
-            throw CrawlError.documentError
+            completion(.failure(CrawlError.documentError))
+            return
         }
         
-        let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
-        
-        if server == "" {
-            throw CrawlError.searchError
+        do {
+            let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
+            
+            if server == "" {
+                throw CrawlError.searchError
+            }
+            
+            let name = name
+            let battleLV = try doc.select("#myinfo__character--button2 > span").text().replacingOccurrences(of: "Lv.", with: "")
+            let itemLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(2) > dl.define.item > dd").text()
+            let expeditionLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(1) > dl:nth-child(1) > dd").text()
+            let title = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(1) > dl:nth-child(2) > dd").text()
+            let guild = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(3) > dl:nth-child(1) > dd").text()
+            let pvp = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(3) > dl:nth-child(2) > dd").text()
+            let wisdom = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(4) > dl > dd").text()
+            let `class` = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(2) > dd").text()
+            
+            getUserImage(name: name) { image in
+                DispatchQueue.main.async {
+                    completion(.success(BasicInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: image)))
+                }
+            }
+        } catch {
+            completion(.failure(CrawlError.searchError))
         }
-        
-        let name = name
-        let battleLV = try doc.select("#myinfo__character--button2 > span").text().replacingOccurrences(of: "Lv.", with: "")
-        let itemLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(2) > dl.define.item > dd").text()
-        let expeditionLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(1) > dl:nth-child(1) > dd").text()
-        let title = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(1) > dl:nth-child(2) > dd").text()
-        let guild = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(3) > dl:nth-child(1) > dd").text()
-        let pvp = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(3) > dl:nth-child(2) > dd").text()
-        let wisdom = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(4) > dl > dd").text()
-        let `class` = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(2) > dd").text()
-        let userImageURL = getUserImageURL(name: name)
-        
-        return BasicInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImageURL: userImageURL)
     }
     
-    private func getUserImageURL(name: String) -> String {
+    private func getUserImage(name: String, completion: @escaping (UIImage) -> Void) {
         let urlString = "https://lostark.game.onstove.com/Profile/Character/"
-        guard let url = makeURL(urlString: urlString, name: name) else {
-            return ""
+        guard let url = makeURL(urlString: urlString, name: name),
+              let doc = try? makeDocument(url: url),
+              let imageURL = try? doc.select("#profile-equipment > div.profile-equipment__character > img").attr("src"),
+              let url = URL(string: imageURL) else {
+            completion(UIImage())
+            return
         }
         
-        guard let doc = try? makeDocument(url: url) else {
-            return ""
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, _ in
+            guard let data = data else {
+                completion(UIImage())
+                return
+            }
+            completion(UIImage(data: data) ?? UIImage())
         }
-        
-        let imageURL = try? doc.select("#profile-equipment > div.profile-equipment__character > img").attr("src")
-        return imageURL ?? ""
+        dataTask.resume()
+        // 빈 이미지 리턴 하는 부분은 추후 이미지 다운 실패이미지로 변경 필요
     }
 }
-
-
