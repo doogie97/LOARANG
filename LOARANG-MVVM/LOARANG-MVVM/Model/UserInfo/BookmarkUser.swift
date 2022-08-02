@@ -6,8 +6,18 @@
 //
 
 import UIKit
+
 struct BookmarkUser {
     let name: String
     let image: UIImage
     let `class`: String
+    
+    var convertedInfo: BookmarkUserDTO {
+        let bookmarkUser = BookmarkUserDTO()
+        bookmarkUser.name = self.name
+        bookmarkUser.imageData = self.image.pngData() ?? Data()
+        bookmarkUser.class = self.`class`
+        
+        return bookmarkUser
+    }
 }
