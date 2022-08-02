@@ -81,8 +81,4 @@ final class LocalStorage {
     func changeMainUser(_ user: MainUser) {
         
     }
-    
-    func isBookmarkUser(_ name: String) -> Bool {
-        return true
-    }
 }
