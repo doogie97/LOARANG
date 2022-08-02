@@ -72,6 +72,12 @@ final class UserInfoViewController: UIViewController {
                 self?.userInfoView.bookMarkButton.setBookmarkButtonColor($0)
             })
             .disposed(by: disposBag)
+        
+        viewModel.showErrorAlert
+            .bind(onNext: { [weak self] in
+                self?.showAlert(title: "", message: $0)
+            })
+            .disposed(by: disposBag)
     }
     
     private func changeView(index: Int) {
