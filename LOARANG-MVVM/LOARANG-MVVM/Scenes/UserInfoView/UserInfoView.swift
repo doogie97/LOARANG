@@ -40,7 +40,7 @@ final class UserInfoView: UIView {
         return button
     }()
     
-    private lazy var bookMarkButton: UIButton = {
+    private(set) lazy var bookMarkButton: UIButton = {
         let button = UIButton()
         button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         button.setImage(UIImage(systemName: "star.fill"), for: .normal)

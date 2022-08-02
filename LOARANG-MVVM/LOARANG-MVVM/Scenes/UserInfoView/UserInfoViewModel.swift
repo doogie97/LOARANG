@@ -20,6 +20,7 @@ protocol UserInfoViewModelOutput {
     var popView: PublishRelay<Void> { get }
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
+    var isBookmarkUser: BehaviorRelay<Bool> { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
@@ -29,6 +30,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     init(storage: Storageable, userInfo: UserInfo) {
         self.storage = storage
         self.userInfo = userInfo
+        self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userInfo.basicInfo.name))
     }
     
     //in
@@ -48,4 +50,5 @@ final class UserInfoViewModel: UserInfoViewModelable {
     let popView = PublishRelay<Void>()
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
+    let isBookmarkUser: BehaviorRelay<Bool>
 }

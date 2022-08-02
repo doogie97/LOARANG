@@ -60,6 +60,13 @@ final class UserInfoViewController: UIViewController {
                  self?.changeView(index: $0)
              })
              .disposed(by: disposBag)
+        
+        viewModel.isBookmarkUser
+            .bind(onNext: { [weak self] in
+                print($0)
+                self?.userInfoView.bookMarkButton.setBookmarkButtonColor($0)
+            })
+            .disposed(by: disposBag)
     }
     
     private func changeView(index: Int) {
