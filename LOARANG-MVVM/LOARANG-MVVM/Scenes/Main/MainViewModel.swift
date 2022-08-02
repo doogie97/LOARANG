@@ -54,7 +54,7 @@ final class MainViewModel: MainViewModelInOut {
 //MARK: - about Delegate
 extension MainViewModel: TouchBookmarkCellDelegate {
     func showUserInfo(userName: String) {
-        crawlManager.getUserInfo(storage.mainUser?.value.name ?? "") { [weak self] result in
+        crawlManager.getUserInfo(userName) { [weak self] result in
             switch result {
             case .success(let userInfo):
                 self?.showUserInfo.accept(userInfo)
