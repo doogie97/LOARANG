@@ -154,7 +154,7 @@ final class MainUserTVCell: UITableViewCell {
         }
     }
     
-    func setUserInfo(_ info: BasicInfo) {
+    func setUserInfo(_ info: MainUser) {
         setUserLayout()
         classTitle.text = "클래스"
         itemLvTitle.text = "아이템"
@@ -164,6 +164,6 @@ final class MainUserTVCell: UITableViewCell {
         itemLvLabel.text = info.itemLV
         classLabel.text = info.`class`
         serverLabel.text = "\(info.server)"
-        userImageView.setProfileImage(urlString: info.userImageURL, class: info.`class`)
+        userImageView.image = info.image.cropImage(class: info.`class`)
     }
 }

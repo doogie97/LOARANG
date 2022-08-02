@@ -28,15 +28,12 @@ final class Container {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
             return UITableViewCell()
         }
-        
-        crawlManager.getUserInfo(storage.mainUser ?? "") { result in
-            switch result {
-            case .success(let userInfo):
-                cell.setUserInfo(userInfo.basicInfo)
-            case .failure(_):
-                cell.setNoMainUserLayout()
-            }
+        guard let mainUser = storage.mainUser else {
+            cell.setNoMainUserLayout()
+            return cell
         }
+        
+        cell.setUserInfo(mainUser.value) // 이거 뷰모델로 보내서 저장하게 만들어야함
         return cell
     }
     
