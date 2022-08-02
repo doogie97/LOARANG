@@ -23,27 +23,6 @@ final class Container {
     private func makeMainViewModel() -> MainViewModel {
         return MainViewModel(storage: storage, crawlManager: crawlManager)
     }
-    
-    func makeMainUserTVCell(_ tableView: UITableView) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
-            return UITableViewCell()
-        }
-        guard let mainUser = storage.mainUser else {
-            cell.setNoMainUserLayout()
-            return cell
-        }
-        
-        cell.setUserInfo(mainUser.value) // 이거 뷰모델로 보내서 저장하게 만들어야함
-        return cell
-    }
-    
-    func makeBookmarkTVCell(tableView: UITableView, delegate: TouchBookmarkCellDelegate) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
-            return UITableViewCell()
-        }
-        cell.setContainer(container: self, delegate: delegate)
-        return cell
-    }
 
     func makeBookmarkTVCellViewModel(delegate: TouchBookmarkCellDelegate) -> BookmarkTVCellViewModel {
         return BookmarkTVCellViewModel(storage: storage, delegate: delegate)
@@ -82,15 +61,6 @@ final class Container {
     
     private func makeBasicInfoViewModel(userInfo: UserInfo) -> BasicInfoViewModelable {
         return BasicInfoViewModel(userInfo: userInfo)
-    }
-    
-    func makeUserMainInfoTVCell(tableView: UITableView, userInfo: UserInfo) -> UserMainInfoTVCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UserMainInfoTVCell.self)") as? UserMainInfoTVCell else {
-            return UserMainInfoTVCell()
-        }
-        cell.setCellContents(userInfo)
-        
-        return cell
     }
     
     private func makeSecondVC() -> SecondInfoViewController {

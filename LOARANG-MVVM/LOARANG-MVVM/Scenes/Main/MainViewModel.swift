@@ -16,6 +16,7 @@ protocol MainViewModelInput {
 protocol MainViewModelOutPut {
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<UserInfo> { get }
+    var mainUser: BehaviorRelay<MainUser>? { get }
 }
 
 final class MainViewModel: MainViewModelInOut {
@@ -24,6 +25,7 @@ final class MainViewModel: MainViewModelInOut {
     
     init(storage: Storageable, crawlManager: CrawlManagerable) {
         self.storage = storage
+        self.mainUser = storage.mainUser
         self.crawlManager = crawlManager
     }
     
@@ -46,6 +48,7 @@ final class MainViewModel: MainViewModelInOut {
     // out
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<UserInfo>()
+    let mainUser: BehaviorRelay<MainUser>?
 }
 
 //MARK: - about Delegate
