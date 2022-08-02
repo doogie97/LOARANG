@@ -54,7 +54,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 try storage.deleteUser(userInfo.basicInfo.name)
             } else {
                 try storage.addUser(BookmarkUser(name: userInfo.basicInfo.name,
-                                                 image: UIImage(),
+                                                 image: userInfo.basicInfo.userImage,
                                                  class: userInfo.basicInfo.`class`))
             }
         } catch {
