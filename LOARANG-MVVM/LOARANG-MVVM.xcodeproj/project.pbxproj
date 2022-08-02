@@ -58,6 +58,7 @@
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
 		ACB837FB2897ED9800F75BA2 /* UserMainInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837FA2897ED9800F75BA2 /* UserMainInfoTVCell.swift */; };
+		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		ACB837FA2897ED9800F75BA2 /* UserMainInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainInfoTVCell.swift; sourceTree = "<group>"; };
+		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8F11C72881026600D06AA6 /* CrawManager.swift */,
+				ACBA78F62898B34600CB39D5 /* CrawlError.swift */,
 			);
 			path = CrawlManager;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
+				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
