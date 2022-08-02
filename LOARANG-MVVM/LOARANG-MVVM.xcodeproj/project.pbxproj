@@ -16,9 +16,7 @@
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
 		AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */; };
-		AC3FEC1E2880674200CDE796 /* FakeUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1D2880674100CDE796 /* FakeUserInfo.swift */; };
 		AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1F2880697700CDE796 /* MainViewModel.swift */; };
-		AC3FEC2528806DB300CDE796 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2428806DB300CDE796 /* MockStorage.swift */; };
 		AC3FEC27288071CF00CDE796 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC26288071CF00CDE796 /* Container.swift */; };
 		AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC292880761300CDE796 /* MainUserTVCell.swift */; };
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
@@ -65,6 +63,7 @@
 		ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */; };
 		ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA7901289929A100CB39D5 /* LocalStorage.swift */; };
 		ACBA790428992C5100CB39D5 /* BookmarkUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */; };
+		ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA79052899424900CB39D5 /* AppStorage.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,9 +79,7 @@
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		AC3FEC1D2880674100CDE796 /* FakeUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUserInfo.swift; sourceTree = "<group>"; };
 		AC3FEC1F2880697700CDE796 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		AC3FEC2428806DB300CDE796 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 		AC3FEC26288071CF00CDE796 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		AC3FEC292880761300CDE796 /* MainUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserTVCell.swift; sourceTree = "<group>"; };
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
@@ -131,6 +128,7 @@
 		ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		ACBA7901289929A100CB39D5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserDTO.swift; sourceTree = "<group>"; };
+		ACBA79052899424900CB39D5 /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -305,8 +303,7 @@
 				ACAEF3602880039F00AE98F1 /* Utils */,
 				ACAEF338287FF60000AE98F1 /* Model */,
 				AC3FEC0B2880525E00CDE796 /* Scenes */,
-				AC3FEC1D2880674100CDE796 /* FakeUserInfo.swift */,
-				AC3FEC2428806DB300CDE796 /* MockStorage.swift */,
+				ACBA79052899424900CB39D5 /* AppStorage.swift */,
 				ACBA7901289929A100CB39D5 /* LocalStorage.swift */,
 				ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */,
 				ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */,
@@ -575,14 +572,13 @@
 				ACAEF33C287FF8F600AE98F1 /* BasicInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
-				AC3FEC2528806DB300CDE796 /* MockStorage.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
+				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,
 				ACAEF349287FF9A200AE98F1 /* Gem.swift in Sources */,
-				AC3FEC1E2880674200CDE796 /* FakeUserInfo.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
 				AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */,
 			);

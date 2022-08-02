@@ -8,10 +8,10 @@
 import UIKit
 
 final class Container {
-    private let storage: Storageable
+    private let storage: AppStorageable
     private let crawlManager: CrawlManagerable
     
-    init(storage: Storageable, crawlManager: CrawlManagerable) {
+    init(storage: AppStorageable, crawlManager: CrawlManagerable) {
         self.storage = storage
         self.crawlManager = crawlManager
     }

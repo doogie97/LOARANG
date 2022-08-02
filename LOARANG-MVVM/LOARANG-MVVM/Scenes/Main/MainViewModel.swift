@@ -20,10 +20,10 @@ protocol MainViewModelOutPut {
 }
 
 final class MainViewModel: MainViewModelInOut {
-    private var storage: Storageable
+    private var storage: AppStorageable
     private var crawlManager: CrawlManagerable
     
-    init(storage: Storageable, crawlManager: CrawlManagerable) {
+    init(storage: AppStorageable, crawlManager: CrawlManagerable) {
         self.storage = storage
         self.mainUser = storage.mainUser
         self.crawlManager = crawlManager

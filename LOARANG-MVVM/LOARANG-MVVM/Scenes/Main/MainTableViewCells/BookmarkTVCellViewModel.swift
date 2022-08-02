@@ -22,10 +22,10 @@ protocol TouchBookmarkCellDelegate: AnyObject {
 }
 
 final class BookmarkTVCellViewModel: BookmarkTVCellViewModelable {
-    private let storage: Storageable
+    private let storage: AppStorageable
     private weak var delegate: TouchBookmarkCellDelegate?
     
-    init(storage: Storageable, delegate: TouchBookmarkCellDelegate) {
+    init(storage: AppStorageable, delegate: TouchBookmarkCellDelegate) {
         self.storage = storage
         self.delegate = delegate
         bookmark = storage.bookMark.asDriver()

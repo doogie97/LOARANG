@@ -14,9 +14,9 @@ protocol BookmarkCVCellViewModelInput {
 protocol BookmarkCVCellViewModelOutput {}
 
 final class BookmarkCVCellViewModel: BookmarkCVCellViewModelable {
-    private let storage: Storageable
+    private let storage: AppStorageable
     
-    init(storage: Storageable) {
+    init(storage: AppStorageable) {
         self.storage = storage
     }
     
