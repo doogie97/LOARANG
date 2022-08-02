@@ -60,7 +60,7 @@ final class BookmarkCVCell: UICollectionViewCell {
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setContentHuggingPriority(.required, for: .vertical)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = UIScreen.main.bounds.width / 10
@@ -93,7 +93,7 @@ final class BookmarkCVCell: UICollectionViewCell {
         }
         
         userImageView.snp.makeConstraints {
-            $0.width.equalTo(userImageView.snp.height).multipliedBy(1)
+            $0.width.equalTo(userImageView.snp.height)
         }
         
         nameLabel.snp.makeConstraints {
