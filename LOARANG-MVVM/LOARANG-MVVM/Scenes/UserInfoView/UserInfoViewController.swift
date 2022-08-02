@@ -63,7 +63,6 @@ final class UserInfoViewController: UIViewController {
         
         viewModel.isBookmarkUser
             .bind(onNext: { [weak self] in
-                print($0)
                 self?.userInfoView.bookMarkButton.setBookmarkButtonColor($0)
             })
             .disposed(by: disposBag)
