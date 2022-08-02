@@ -14,13 +14,13 @@ enum LocalStorageError: Error {
     var errorDescrption: String {
         switch self {
         case .addError:
-            return "북마크에 실패하였습니다. 잠시 후 다시 시도해 주세요"
+            return "북마크에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
         case .updateError:
-            return "유저 갱신에 실패하였습니다. 잠시 후 다시 시도해 주세요"
+            return "유저 갱신에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
         case .deleteError:
-            return "북마크 제거에 실패하였습니다. 잠시 후 다시 시도해 주세요"
+            return "북마크 제거에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
         case .changeMainUserError:
-            return "대표캐릭터 변경에 실패하였습니다. 잠시 후 다시 시도해 주세요"
+            return "대표캐릭터 변경에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
         }
     }
 }
