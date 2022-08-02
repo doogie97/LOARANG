@@ -171,7 +171,7 @@ final class UserMainInfoTVCell: UITableViewCell {
     func setCellContents(_ userInfo: UserInfo) {
         let basicInfo = userInfo.basicInfo
         classLabel.text = basicInfo.`class`
-        serverNameLabel.text = "@\(basicInfo.server) \(basicInfo.name)"
+        serverNameLabel.text = "\(basicInfo.server) \(basicInfo.name)"
         itemLvLabel.text = "아이템 : \(basicInfo.itemLV)"
         pvpLabel.text = "PVP : \(basicInfo.pvp)"
         expeditionLvLabel.text = "원정대 : \(basicInfo.expeditionLV)"

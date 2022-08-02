@@ -164,7 +164,7 @@ final class MainUserTVCell: UITableViewCell {
         lvNameLabel.text = "Lv \(info.battleLV) \(info.name)"
         itemLvLabel.text = info.itemLV
         classLabel.text = info.`class`
-        serverLabel.text = "@\(info.server)"
+        serverLabel.text = "\(info.server)"
         //이미지 로드 기능 추가 후 이미지 할당 기능 추가 필요
     }
 }
