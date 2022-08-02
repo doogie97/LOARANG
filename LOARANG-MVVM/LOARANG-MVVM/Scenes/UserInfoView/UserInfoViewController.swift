@@ -61,6 +61,12 @@ final class UserInfoViewController: UIViewController {
              })
              .disposed(by: disposBag)
         
+        userInfoView.bookMarkButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchBookmarkButton()
+            })
+            .disposed(by: disposBag)
+        
         viewModel.isBookmarkUser
             .bind(onNext: { [weak self] in
                 self?.userInfoView.bookMarkButton.setBookmarkButtonColor($0)

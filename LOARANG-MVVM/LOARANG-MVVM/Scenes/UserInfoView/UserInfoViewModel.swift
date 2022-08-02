@@ -13,6 +13,7 @@ protocol UserInfoViewModelInput {
     func touchBackButton()
     func touchSegmentControl(_ index: Int)
     func detailViewDidShow(_ index: Int)
+    func touchBookmarkButton()
 }
 
 protocol UserInfoViewModelOutput {
@@ -44,6 +45,17 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     func detailViewDidShow(_ index: Int) {
         previousPage.accept(index)
+    }
+    
+    func touchBookmarkButton() {
+        if storage.isBookmarkUser(userInfo.basicInfo.name) {
+            storage.deleteUser(userInfo.basicInfo.name)
+        } else {
+            storage.addUser(BookmarkUser(name: userInfo.basicInfo.name,
+                                         image: UIImage(),
+                                         class: userInfo.basicInfo.`class`))
+        }
+        isBookmarkUser.accept(storage.isBookmarkUser(userInfo.basicInfo.name))
     }
     
     //out
