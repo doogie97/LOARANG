@@ -61,11 +61,21 @@ final class LocalStorage {
         } catch {
             throw LocalStorageError.addError
         }
-
     }
     
-    func deleteUser(_ name: String) {
-        
+    func deleteUser(_ name: String) throws {
+        guard let bookmarkList = realm.objects(LocalStorageModel.self).first?.bookmarkUsers,
+              let bookmarkUserDTO: BookmarkUserDTO = bookmarkList
+            .filter({ $0.name == name }).first else {
+                throw LocalStorageError.deleteError
+            }
+        do {
+            try realm.write {
+                realm.delete(bookmarkUserDTO)
+            }
+        } catch {
+            throw LocalStorageError.deleteError
+        }
     }
     
     func changeMainUser(_ user: MainUser) {
