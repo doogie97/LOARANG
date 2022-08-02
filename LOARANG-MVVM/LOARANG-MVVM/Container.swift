@@ -29,12 +29,14 @@ final class Container {
             return UITableViewCell()
         }
         
-        guard let user = crawlManager.getUserInfo(storage.mainUser ?? "") else {
-            cell.setNoMainUserLayout()
-            return cell
+        crawlManager.getUserInfo(storage.mainUser ?? "") { result in
+            switch result {
+            case .success(let userInfo):
+                cell.setUserInfo(userInfo.basicInfo)
+            case .failure(_):
+                cell.setNoMainUserLayout()
+            }
         }
-        
-        cell.setUserInfo(user.basicInfo)
         return cell
     }
     

@@ -8,21 +8,11 @@
 import Foundation
 
 protocol CrawlManagerable {
-    func getUserInfo(_ name: String) -> UserInfo?
+    func getUserInfo(_ name: String, completion: (Result<UserInfo, Error>) -> Void)
 }
 
 struct CrawlManager: CrawlManagerable {
-    func getUserInfo(_ name: String) -> UserInfo? {
-        //임시 구현
-        let fakeUsers: [UserInfo] = [fakeUser().user1, fakeUser().user2, fakeUser().user3]
-        
-        var user: UserInfo?
-        fakeUsers.forEach {
-            if $0.basicInfo.name == name {
-                user = $0
-            }
-        }
-        
-        return user
+    func getUserInfo(_ name: String, completion: (Result<UserInfo, Error>) -> Void) {
+
     }
 }
