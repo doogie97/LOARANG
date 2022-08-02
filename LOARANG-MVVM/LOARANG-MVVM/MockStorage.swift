@@ -13,6 +13,7 @@ protocol Storageable {
     func addUser(_ user: BookmarkUser)
     func deleteUser(_ name: String)
     func changeMainUser(_ user: MainUser)
+    func isBookmarkUser(_ name: String) -> Bool
 }
 
 final class MockStorage: Storageable {
@@ -39,5 +40,15 @@ final class MockStorage: Storageable {
     
     func changeMainUser(_ user: MainUser) {
         mainUser?.accept(user)
-    }    
+    }
+    
+    func isBookmarkUser(_ name: String) -> Bool {
+        let user = bookMark.value.filter { name == $0.name }
+        
+        if user.isEmpty {
+            return false
+        }
+        
+        return true
+    }
 }
