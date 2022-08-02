@@ -53,13 +53,13 @@ final class LocalStorage {
             } else {
                 try realm.write {
                     guard let localStorageModel = realm.objects(LocalStorageModel.self).first else {
-                        return
+                        throw LocalStorageError.addError
                     }
                     localStorageModel.bookmarkUsers.append(user.convertedInfo)
                 }
             }
         } catch {
-            print("에러")
+            throw LocalStorageError.addError
         }
 
     }
