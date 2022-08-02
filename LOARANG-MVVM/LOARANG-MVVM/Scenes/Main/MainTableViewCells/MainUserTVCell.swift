@@ -53,7 +53,6 @@ final class MainUserTVCell: UITableViewCell {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "최지근")?.cropImage(class: "블레이드") //test code
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = UIScreen.main.bounds.width / 5.2
         return imageView
@@ -165,6 +164,6 @@ final class MainUserTVCell: UITableViewCell {
         itemLvLabel.text = info.itemLV
         classLabel.text = info.`class`
         serverLabel.text = "\(info.server)"
-        //이미지 로드 기능 추가 후 이미지 할당 기능 추가 필요
+        userImageView.setProfileImage(urlString: info.userImageURL, class: info.`class`)
     }
 }

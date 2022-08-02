@@ -53,7 +53,6 @@ final class UserMainInfoTVCell: UITableViewCell {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "최지근")?.cropImage(class: "블레이드") //test code
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = UIScreen.main.bounds.width / 7
         return imageView
@@ -179,6 +178,6 @@ final class UserMainInfoTVCell: UITableViewCell {
         titleLabel.text = "칭호 : \(basicInfo.title)"
         guildLabel.text = "길드 : \(basicInfo.guild)"
         wisdomLabel.text = "영지 : \(basicInfo.wisdom)"
-        
+        userImageView.setProfileImage(urlString: basicInfo.userImageURL, class: basicInfo.`class`)
     }
 }
