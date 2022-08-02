@@ -57,6 +57,13 @@ extension MainViewModel: TouchBookmarkCellDelegate {
         crawlManager.getUserInfo(userName) { [weak self] result in
             switch result {
             case .success(let userInfo):
+                do {
+                    try self?.storage.updateUser(BookmarkUser(name: userName,
+                                                              image: userInfo.basicInfo.userImage,
+                                                              class: userInfo.basicInfo.`class`))
+                } catch {
+                    print("갱신실패 어쩌고 에러 표시 필요")
+                }
                 self?.showUserInfo.accept(userInfo)
             case .failure(_):
                 return
