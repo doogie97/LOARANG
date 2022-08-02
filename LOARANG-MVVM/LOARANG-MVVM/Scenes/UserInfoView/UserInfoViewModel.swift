@@ -27,7 +27,7 @@ protocol UserInfoViewModelOutput {
 
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: AppStorageable
-    let userInfo: UserInfo // 이건 나중에 제거될듯? 아마 userInfo는 얘가 받는게 아니라 container에서 각각의 detailViewModel이 필요할 것 같음 이라고 생각했으나 북마크 기능에서 필요할지도?
+    let userInfo: UserInfo
     
     init(storage: AppStorageable, userInfo: UserInfo) {
         self.storage = storage
@@ -49,22 +49,21 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     func touchBookmarkButton() {
-        if storage.isBookmarkUser(userInfo.basicInfo.name) {
-            storage.deleteUser(userInfo.basicInfo.name)
-        } else {
-            do {
+        do {
+            if storage.isBookmarkUser(userInfo.basicInfo.name) {
+                try storage.deleteUser(userInfo.basicInfo.name)
+            } else {
                 try storage.addUser(BookmarkUser(name: userInfo.basicInfo.name,
                                                  image: UIImage(),
                                                  class: userInfo.basicInfo.`class`))
-            } catch {
-                guard let error = error as? LocalStorageError else {
-                    showErrorAlert.accept(nil)
-                    return
-                }
-                
-                showErrorAlert.accept(error.errorDescrption)
+            }
+        } catch {
+            guard let error = error as? LocalStorageError else {
+                showErrorAlert.accept(nil)
+                return
             }
             
+            showErrorAlert.accept(error.errorDescrption)
         }
         isBookmarkUser.accept(storage.isBookmarkUser(userInfo.basicInfo.name))
     }
