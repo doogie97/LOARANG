@@ -63,6 +63,12 @@ final class MainViewController: UIViewController {
                     .pushViewController(self.container.makeUserInfoViewController($0), animated: true)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.showErrorAlert
+            .bind(onNext: { [weak self] in
+                self?.showAlert(title: "", message: $0)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setMainTableView() {
