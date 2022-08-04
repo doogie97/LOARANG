@@ -19,12 +19,7 @@ final class LocalStorage {
             return nil
         }
         
-        return MainUser(image: UIImage(data: mainUserDTO.imageData) ?? UIImage(),
-                        battleLV: mainUserDTO.battleLV,
-                        name: mainUserDTO.name,
-                        class: mainUserDTO.`class`,
-                        itemLV: mainUserDTO.itemLV,
-                        server: mainUserDTO.server)
+        return mainUserDTO.convertedInfo
     }
     
     func bookmarkUsers() -> [BookmarkUser] {
@@ -33,9 +28,7 @@ final class LocalStorage {
         }
         
         let bookmarkUsers: [BookmarkUser] = bookmarkList.map {
-            return BookmarkUser(name: $0.name,
-                                image: UIImage(data: $0.imageData) ?? UIImage(),
-                                class: $0.`class`)
+            return $0.convertedInfo
         }
         
         return bookmarkUsers
