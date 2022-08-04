@@ -119,9 +119,6 @@ final class MainUserTVCell: UITableViewCell {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(8)
             $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
         }
-        
-        // 유저가 있을 경우
-
     }
     
     private func setUserLayout() {
