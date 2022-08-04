@@ -65,7 +65,7 @@ final class SearchViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.errorAlert.bind(onNext: { [weak self] in
-            self?.showAlert(title: nil, message: "검색하신 유저가 없습니다.")
+            self?.showAlert(title: nil, message: $0)
         })
         .disposed(by: disposeBag)
     }
