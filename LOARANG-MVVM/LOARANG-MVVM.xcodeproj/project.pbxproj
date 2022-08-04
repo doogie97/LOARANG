@@ -169,6 +169,18 @@
 			path = UserInfoView;
 			sourceTree = "<group>";
 		};
+		AC0B89F7289B8185005BE193 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				ACBA79052899424900CB39D5 /* AppStorage.swift */,
+				ACBA7901289929A100CB39D5 /* LocalStorage.swift */,
+				ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */,
+				ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */,
+			);
+			name = Storage;
+			path = ../Storage;
+			sourceTree = "<group>";
+		};
 		AC3FEBFE28804E9600CDE796 /* Extesnsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,10 +317,6 @@
 				ACAEF3602880039F00AE98F1 /* Utils */,
 				ACAEF338287FF60000AE98F1 /* Model */,
 				AC3FEC0B2880525E00CDE796 /* Scenes */,
-				ACBA79052899424900CB39D5 /* AppStorage.swift */,
-				ACBA7901289929A100CB39D5 /* LocalStorage.swift */,
-				ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */,
-				ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */,
 				ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */,
 				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
@@ -380,6 +388,7 @@
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AC0B89F7289B8185005BE193 /* Storage */,
 				AC8F11C62881025900D06AA6 /* CrawlManager */,
 				ACAEF3632880075A00AE98F1 /* Font */,
 				AC3FEBFE28804E9600CDE796 /* Extesnsion */,
