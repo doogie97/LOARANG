@@ -46,6 +46,9 @@ final class MainView: UIView {
         tableView.backgroundColor = .tableViewColor
         tableView.separatorStyle = .none
         
+        tableView.register(MainUserTVCell.self)
+        tableView.register(BookmarkTVCell.self)
+        
         return tableView
     }()
     

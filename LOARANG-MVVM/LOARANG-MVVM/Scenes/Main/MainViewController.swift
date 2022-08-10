@@ -74,8 +74,6 @@ final class MainViewController: UIViewController {
     private func setMainTableView() {
         mainView.mainTableView.dataSource = self
         mainView.mainTableView.delegate = self
-        mainView.mainTableView.register(MainUserTVCell.self)
-        mainView.mainTableView.register(BookmarkTVCell.self)
     }
 }
 
