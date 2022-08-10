@@ -8,6 +8,17 @@
 import UIKit
 
 final class SettingViewController: UIViewController {
+    let viewModel: SettingViewModelable
+    
+    init(viewModel: SettingViewModelable) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let settingView = SettingView()
     override func loadView() {
         super.loadView()
@@ -58,6 +69,8 @@ extension SettingViewController: UITableViewDataSource {
 
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(CellType(rawValue: indexPath.row)?.title)
+        if indexPath.row == CellType.changeMainUser.rawValue {
+            viewModel.touchChangeMainUserCell()
+        }
     }
 }

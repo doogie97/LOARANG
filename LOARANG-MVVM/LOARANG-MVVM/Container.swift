@@ -75,4 +75,8 @@ final class Container {
         return FourthInfoViewController()
     }
     
+    //MARK: - about settingVIew
+    func makeSettingViewModel() -> SettingViewModelable {
+        return SettingViewModel(storage: storage)
+    }
 }
