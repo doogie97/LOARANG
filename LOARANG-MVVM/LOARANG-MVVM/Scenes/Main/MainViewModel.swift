@@ -55,7 +55,9 @@ final class MainViewModel: MainViewModelInOut {
 
 //MARK: - about Delegate
 extension MainViewModel: TouchBookmarkCellDelegate {
-    func showUserInfo(userName: String) {
+    func showBookmarkUser(index: Int) {
+        let userName = storage.bookMark.value[index].name
+        
         crawlManager.getUserInfo(userName) { [weak self] result in
             switch result {
             case .success(let userInfo):
@@ -64,7 +66,8 @@ extension MainViewModel: TouchBookmarkCellDelegate {
                 do {
                     try self?.storage.updateUser(BookmarkUser(name: userName,
                                                               image: userInfo.basicInfo.userImage,
-                                                              class: userInfo.basicInfo.`class`))
+                                                              class: userInfo.basicInfo.`class`),
+                                                 index: index)
                 } catch {
                     guard let error = error as? LocalStorageError else {
                         self?.showErrorAlert.accept(nil)

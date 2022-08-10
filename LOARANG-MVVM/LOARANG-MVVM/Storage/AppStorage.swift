@@ -11,7 +11,7 @@ protocol AppStorageable {
     var bookMark: BehaviorRelay<[BookmarkUser]> { get }
     func addUser(_ user: BookmarkUser) throws
     func deleteUser(_ name: String) throws
-    func updateUser(_ user: BookmarkUser) throws
+    func updateUser(_ user: BookmarkUser, index: Int?) throws
     func changeMainUser(_ user: MainUser)
     func isBookmarkUser(_ name: String) -> Bool
 }
@@ -33,7 +33,7 @@ final class AppStorage: AppStorageable {
     
     func addUser(_ user: BookmarkUser) throws {
         do {
-            try localStorage.addUser(user)
+            try localStorage.addUser(user, index: nil)
             self.bookMark.accept(localStorage.bookmarkUsers())
         } catch {
             throw error
@@ -49,10 +49,10 @@ final class AppStorage: AppStorageable {
         }
     }
     
-    func updateUser(_ user: BookmarkUser) throws {
+    func updateUser(_ user: BookmarkUser, index: Int?) throws {
         do {
             try localStorage.deleteUser(user.name)
-            try addUser(user)
+            try localStorage.addUser(user, index: index)
         } catch {
             throw LocalStorageError.updateError
         }

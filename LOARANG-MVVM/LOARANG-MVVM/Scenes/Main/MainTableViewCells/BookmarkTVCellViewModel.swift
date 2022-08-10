@@ -18,7 +18,7 @@ protocol BookmarkTVCellViewModelOutput {
 }
 
 protocol TouchBookmarkCellDelegate: AnyObject {
-    func showUserInfo(userName: String)
+    func showBookmarkUser(index: Int)
 }
 
 final class BookmarkTVCellViewModel: BookmarkTVCellViewModelable {
@@ -33,9 +33,7 @@ final class BookmarkTVCellViewModel: BookmarkTVCellViewModelable {
     
     // in
     func touchBookmarkCell(index: Int) {
-        let userName = storage.bookMark.value[index].name
-        
-        delegate?.showUserInfo(userName: userName)
+        delegate?.showBookmarkUser(index: index)
     }
     
     // out

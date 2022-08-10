@@ -34,7 +34,7 @@ final class LocalStorage {
         return bookmarkUsers
     }
     
-    func addUser(_ user: BookmarkUser) throws {
+    func addUser(_ user: BookmarkUser, index: Int?) throws {
         do {
             if realm.objects(LocalStorageModel.self).isEmpty {
                 let localStorageModel = LocalStorageModel()
@@ -48,7 +48,12 @@ final class LocalStorage {
                     guard let localStorageModel = realm.objects(LocalStorageModel.self).first else {
                         throw LocalStorageError.addError
                     }
-                    localStorageModel.bookmarkUsers.append(user.convertedInfo)
+                    if let index = index {
+                        localStorageModel.bookmarkUsers.insert(user.convertedInfo, at: index)
+                    } else {
+                        localStorageModel.bookmarkUsers.append(user.convertedInfo)
+                    }
+                    
                 }
             }
         } catch {
