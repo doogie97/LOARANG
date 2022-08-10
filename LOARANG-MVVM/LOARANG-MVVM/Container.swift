@@ -77,6 +77,6 @@ final class Container {
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
-        return SettingViewModel(storage: storage)
+        return SettingViewModel(storage: storage, crawlManger: crawlManager)
     }
 }

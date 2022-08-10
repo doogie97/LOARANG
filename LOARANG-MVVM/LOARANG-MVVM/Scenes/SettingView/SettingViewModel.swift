@@ -15,9 +15,11 @@ protocol SettingViewModeOutput {}
 
 final class SettingViewModel: SettingViewModelable {
     private let storage: AppStorageable
+    private let crawlManager: CrawlManagerable
     
-    init(storage: AppStorageable) {
+    init(storage: AppStorageable, crawlManger: CrawlManagerable) {
         self.storage = storage
+        self.crawlManager = crawlManger
     }
     
     func touchChangeMainUserCell() {
