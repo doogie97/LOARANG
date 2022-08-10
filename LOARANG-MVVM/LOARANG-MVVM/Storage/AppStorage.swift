@@ -51,8 +51,8 @@ final class AppStorage: AppStorageable {
     
     func updateUser(_ user: BookmarkUser) throws {
         do {
-            try localStorage.deleteUser(user.name)
-            try addUser(user)
+            try localStorage.updateUser(user)
+            self.bookMark.accept(localStorage.bookmarkUsers())
         } catch {
             throw LocalStorageError.updateError
         }

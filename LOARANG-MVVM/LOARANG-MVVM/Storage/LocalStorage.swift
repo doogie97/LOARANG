@@ -37,6 +37,18 @@ final class LocalStorage {
             try realm.write {
                 realm.add(user.convertedInfo)
             }
+        } catch {
+            throw LocalStorageError.addError
+        }
+    }
+    
+    func updateUser(_ user: BookmarkUser) throws {
+        do {
+            try realm.write {
+                realm.add(user.convertedInfo, update: .modified)
+            }
+        } catch {
+            throw LocalStorageError.updateError
         }
     }
     
