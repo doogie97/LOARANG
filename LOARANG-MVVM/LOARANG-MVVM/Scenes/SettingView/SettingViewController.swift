@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import RxSwift
 
 final class SettingViewController: UIViewController {
-    let viewModel: SettingViewModelable
+    private let viewModel: SettingViewModelable
     
     init(viewModel: SettingViewModelable) {
         self.viewModel = viewModel
@@ -20,15 +21,58 @@ final class SettingViewController: UIViewController {
     }
     
     private let settingView = SettingView()
+    private let disposeBag = DisposeBag()
+    
     override func loadView() {
         super.loadView()
         self.view = settingView
         setTableView()
+        bindContents()
+    }
+    
+    private func bindContents() {
+        viewModel.checkUser
+            .bind(onNext: { [weak self] in
+                self?.showCheckUserAlert($0)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.showErrorAlert
+            .bind(onNext: { [weak self] in
+                self?.showAlert(title: nil, message: $0)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setTableView() {
         settingView.menuTableView.dataSource = self
         settingView.menuTableView.delegate = self
+    }
+    
+    private func showTextFieldAlert() {
+        let alert = UIAlertController(title: "", message: "대표 캐릭터로 설정할 캐릭터를 입력해 주세요", preferredStyle: .alert)
+        let yesction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            self?.viewModel.touchSearchButton(alert.textFields?[0].text ?? "")
+        }
+        
+        alert.addAction(yesction)
+        alert.addTextField()
+        
+        self.present(alert, animated: true)
+    }
+    
+    private func showCheckUserAlert(_ mainUser: MainUser) {
+        let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.`class`))",
+                                      message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            self?.viewModel.changeMainUser(mainUser)
+        }
+        let noAction = UIAlertAction(title: "취소", style: .destructive)
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        self.present(alert, animated: true)
     }
 }
 
@@ -70,7 +114,7 @@ extension SettingViewController: UITableViewDataSource {
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == CellType.changeMainUser.rawValue {
-            viewModel.touchChangeMainUserCell()
+            showTextFieldAlert()
         }
     }
 }
