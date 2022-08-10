@@ -8,10 +8,9 @@
 import UIKit
 
 final class SettingViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = .systemBlue
+    private let settingView = SettingView()
+    override func loadView() {
+        super.loadView()
+        self.view = settingView
     }
 }
