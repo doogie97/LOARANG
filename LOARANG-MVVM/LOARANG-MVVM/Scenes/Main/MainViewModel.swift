@@ -66,8 +66,7 @@ extension MainViewModel: TouchBookmarkCellDelegate {
                 do {
                     try self?.storage.updateUser(BookmarkUser(name: userName,
                                                               image: userInfo.basicInfo.userImage,
-                                                              class: userInfo.basicInfo.`class`),
-                                                 index: index)
+                                                              class: userInfo.basicInfo.`class`))
                 } catch {
                     guard let error = error as? LocalStorageError else {
                         self?.showErrorAlert.accept(nil)

@@ -23,9 +23,7 @@ final class LocalStorage {
     }
     
     func bookmarkUsers() -> [BookmarkUser] {
-        guard let bookmarkList = realm.objects(LocalStorageModel.self).first?.bookmarkUsers else {
-            return []
-        }
+        let bookmarkList = realm.objects(BookmarkUserDTO.self)
         
         let bookmarkUsers: [BookmarkUser] = bookmarkList.map {
             return $0.convertedInfo
@@ -34,39 +32,21 @@ final class LocalStorage {
         return bookmarkUsers
     }
     
-    func addUser(_ user: BookmarkUser, index: Int?) throws {
+    func addUser(_ user: BookmarkUser) throws {
         do {
-            if realm.objects(LocalStorageModel.self).isEmpty {
-                let localStorageModel = LocalStorageModel()
-                localStorageModel.bookmarkUsers.append(user.convertedInfo)
-                
-                try realm.write {
-                    realm.add(localStorageModel)
-                }
-            } else {
-                try realm.write {
-                    guard let localStorageModel = realm.objects(LocalStorageModel.self).first else {
-                        throw LocalStorageError.addError
-                    }
-                    if let index = index {
-                        localStorageModel.bookmarkUsers.insert(user.convertedInfo, at: index)
-                    } else {
-                        localStorageModel.bookmarkUsers.append(user.convertedInfo)
-                    }
-                    
-                }
+            try realm.write {
+                realm.add(user.convertedInfo)
             }
-        } catch {
-            throw LocalStorageError.addError
         }
     }
     
     func deleteUser(_ name: String) throws {
-        guard let bookmarkList = realm.objects(LocalStorageModel.self).first?.bookmarkUsers,
-              let bookmarkUserDTO: BookmarkUserDTO = bookmarkList
-            .filter({ $0.name == name }).first else {
-                throw LocalStorageError.deleteError
-            }
+        let bookmarkList = realm.objects(BookmarkUserDTO.self)
+        
+        guard let bookmarkUserDTO = bookmarkList.filter({ $0.name == name }).first else {
+            throw LocalStorageError.deleteError
+        }
+        
         do {
             try realm.write {
                 realm.delete(bookmarkUserDTO)

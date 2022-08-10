@@ -7,11 +7,6 @@
 
 import RealmSwift
 
-final class LocalStorageModel: Object {
-    let mainUser: MainUserDTO? = nil
-    let bookmarkUsers = List<BookmarkUserDTO>()
-}
-
 final class MainUserDTO: Object {
     @Persisted var imageData: Data
     @Persisted var battleLV: String
