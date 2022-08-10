@@ -10,10 +10,11 @@ import RealmSwift
 final class MainUserDTO: Object {
     @Persisted var imageData: Data
     @Persisted var battleLV: String
-    @Persisted(primaryKey: true) var name: String
+    @Persisted var name: String
     @Persisted var `class`: String
     @Persisted var itemLV: String
     @Persisted var server: String
+    @Persisted(primaryKey: true) var type = "main"
     
     var convertedInfo: MainUser {
         return MainUser(image: UIImage(data: self.imageData) ?? UIImage(),

@@ -15,7 +15,7 @@ final class LocalStorage {
     }
     
     func mainUser() -> MainUser? {
-        guard let mainUserDTO = realm.objects(LocalStorageModel.self).first?.mainUser else {
+        guard let mainUserDTO = realm.objects(MainUserDTO.self).first else {
             return nil
         }
         
@@ -68,7 +68,13 @@ final class LocalStorage {
         }
     }
     
-    func changeMainUser(_ user: MainUser) {
-        
+    func changeMainUser(_ user: MainUser) throws {                
+        do {
+            try realm.write {
+                realm.add(user.convertedInfo, update: .modified)
+            }
+        } catch {
+            throw LocalStorageError.changeMainUserError
+        }
     }
 }

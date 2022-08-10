@@ -16,7 +16,7 @@ protocol SettingViewModeInput {
 
 protocol SettingViewModeOutput {
     var checkUser: PublishRelay<MainUser> { get }
-    var showErrorAlert: PublishRelay<String> { get }
+    var showErrorAlert: PublishRelay<String?> { get }
 }
 
 final class SettingViewModel: SettingViewModelable {
@@ -45,10 +45,19 @@ final class SettingViewModel: SettingViewModelable {
     }
     
     func changeMainUser(_ mainUser: MainUser) {
-        storage.changeMainUser(mainUser)
+        do {
+            try storage.changeMainUser(mainUser)
+        } catch {
+            guard let error = error as? LocalStorageError else {
+                showErrorAlert.accept(nil)
+                return
+            }
+            
+            showErrorAlert.accept(error.errorDescrption)
+        }
     }
     
     //output
     let checkUser = PublishRelay<MainUser>()
-    let showErrorAlert = PublishRelay<String>()
+    let showErrorAlert = PublishRelay<String?>()
 }

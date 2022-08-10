@@ -35,11 +35,27 @@ final class MainViewModel: MainViewModelInOut {
         showSearchView.accept(())
     }
     
-    func touchMainUserCell() { // 대표캐릭터 기능 추가 후 여기서도 저장소 업데이트 해줘야함
+    func touchMainUserCell() {
         crawlManager.getUserInfo(storage.mainUser?.value.name ?? "") { [weak self] result in
             switch result {
             case .success(let userInfo):
                 self?.showUserInfo.accept(userInfo)
+                
+                do {
+                    try self?.storage.changeMainUser(MainUser(image: userInfo.basicInfo.userImage,
+                                                              battleLV: userInfo.basicInfo.battleLV,
+                                                              name: userInfo.basicInfo.name,
+                                                              class: userInfo.basicInfo.`class`,
+                                                              itemLV: userInfo.basicInfo.itemLV,
+                                                              server: userInfo.basicInfo.server))
+                } catch {
+                    guard let error = error as? LocalStorageError else {
+                        self?.showErrorAlert.accept(nil)
+                        return
+                    }
+                    
+                    self?.showErrorAlert.accept(error.errorDescrption)
+                }
             case .failure(_):
                 return
             }
