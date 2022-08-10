@@ -19,7 +19,7 @@ final class UserMainInfoTVCell: UITableViewCell {
     
     private let mainFontSize = 13
     
-    private lazy var backgourndView: UIView = {
+    private lazy var backView: UIView = {
         let view = UIView()
         view.backgroundColor = .cellBackgroundColor
         
@@ -132,10 +132,10 @@ final class UserMainInfoTVCell: UITableViewCell {
     private func setLayout() {
         self.selectionStyle = .none
         self.backgroundColor = .tableViewColor
-        self.contentView.addSubview(backgourndView)
-        self.backgourndView.addSubview(mainStackView)
+        self.contentView.addSubview(backView)
+        self.backView.addSubview(mainStackView)
         
-        backgourndView.snp.makeConstraints {
+        backView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(8)
             $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
         }

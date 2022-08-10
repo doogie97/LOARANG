@@ -17,7 +17,7 @@ final class MainUserTVCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private lazy var backgourndView: UIView = {
+    private lazy var backView: UIView = {
         let view = UIView()
         view.backgroundColor = .cellBackgroundColor
         
@@ -114,15 +114,15 @@ final class MainUserTVCell: UITableViewCell {
         setBackgroundColor()
         self.selectionStyle = .none
         
-        self.contentView.addSubview(backgourndView)
-        backgourndView.snp.makeConstraints {
+        self.contentView.addSubview(backView)
+        backView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(8)
             $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
     private func setUserLayout() {
-        backgourndView.addSubview(mainStackView)
+        backView.addSubview(mainStackView)
         
         mainStackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(10)
@@ -142,7 +142,7 @@ final class MainUserTVCell: UITableViewCell {
     }
     
     func setNoMainUserLayout() {
-        backgourndView.addSubview(noMainUserLabel)
+        backView.addSubview(noMainUserLabel)
         
         noMainUserLabel.text = "등록된 대표 캐릭터가 없습니다"
         

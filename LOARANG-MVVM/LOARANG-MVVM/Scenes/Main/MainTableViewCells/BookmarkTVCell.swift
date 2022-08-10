@@ -22,7 +22,7 @@ final class BookmarkTVCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var backgourndView: UIView = {
+    private lazy var backView: UIView = {
         let view = UIView()
         view.backgroundColor = .cellBackgroundColor
         
@@ -85,9 +85,9 @@ final class BookmarkTVCell: UITableViewCell {
     private func setLayout() {
         self.selectionStyle = .none
         self.backgroundColor = .tableViewColor
-        self.contentView.addSubview(backgourndView)
+        self.contentView.addSubview(backView)
         
-        backgourndView.snp.makeConstraints {
+        backView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
             $0.bottom.leading.trailing.equalToSuperview()
         }
