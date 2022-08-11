@@ -18,6 +18,8 @@ protocol SearchViewModelOutput {
     var popView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<UserInfo> { get }
     var errorAlert: PublishRelay<String> { get }
+    var startedLoading: PublishRelay<Void> { get }
+    var finishedLoading: PublishRelay<Void> { get }
 }
 
 final class SearchViewModel: SearchViewModelable {
@@ -33,7 +35,9 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchSearchButton(_ name: String) {
+        startedLoading.accept(())
         crawlManager.getUserInfo(name) { [weak self] result in
+            self?.finishedLoading.accept(())
             switch result {
             case .success(let userInfo):
                 self?.showUserInfo.accept(userInfo)
@@ -47,4 +51,6 @@ final class SearchViewModel: SearchViewModelable {
     let popView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<UserInfo>()
     let errorAlert = PublishRelay<String>()
+    let startedLoading = PublishRelay<Void>()
+    let finishedLoading = PublishRelay<Void>()
 }
