@@ -136,12 +136,13 @@ final class UserMainInfoTVCell: UITableViewCell {
         self.backView.addSubview(mainStackView)
         
         backView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(8)
+            $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
         }
         
         mainStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(8)
+            $0.top.leading.trailing.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview()
         }
         setLeftStackView()
         setRightStackView()
