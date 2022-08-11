@@ -73,7 +73,7 @@ final class UserInfoViewController: UIViewController {
             })
             .disposed(by: disposBag)
         
-        viewModel.showErrorAlert
+        viewModel.showAlert
             .bind(onNext: { [weak self] in
                 self?.showAlert(title: "", message: $0)
             })

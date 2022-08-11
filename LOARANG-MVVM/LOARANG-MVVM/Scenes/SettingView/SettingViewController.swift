@@ -37,7 +37,7 @@ final class SettingViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.showErrorAlert
+        viewModel.showAlert
             .bind(onNext: { [weak self] in
                 self?.showAlert(title: nil, message: $0)
             })

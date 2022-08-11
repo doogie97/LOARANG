@@ -22,7 +22,7 @@ protocol UserInfoViewModelOutput {
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
     var isBookmarkUser: BehaviorRelay<Bool> { get }
-    var showErrorAlert: PublishRelay<String?> { get }
+    var showAlert: PublishRelay<String?> { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
@@ -59,11 +59,11 @@ final class UserInfoViewModel: UserInfoViewModelable {
             }
         } catch {
             guard let error = error as? LocalStorageError else {
-                showErrorAlert.accept(nil)
+                showAlert.accept(nil)
                 return
             }
             
-            showErrorAlert.accept(error.errorDescrption)
+            showAlert.accept(error.errorDescrption)
         }
         isBookmarkUser.accept(storage.isBookmarkUser(userInfo.basicInfo.name))
     }
@@ -73,5 +73,5 @@ final class UserInfoViewModel: UserInfoViewModelable {
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
     let isBookmarkUser: BehaviorRelay<Bool>
-    let showErrorAlert = PublishRelay<String?>()
+    let showAlert = PublishRelay<String?>()
 }

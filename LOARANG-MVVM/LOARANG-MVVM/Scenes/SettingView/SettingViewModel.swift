@@ -16,7 +16,7 @@ protocol SettingViewModeInput {
 
 protocol SettingViewModeOutput {
     var checkUser: PublishRelay<MainUser> { get }
-    var showErrorAlert: PublishRelay<String?> { get }
+    var showAlert: PublishRelay<String?> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
 }
@@ -43,7 +43,7 @@ final class SettingViewModel: SettingViewModelable {
                                           itemLV: userInfo.basicInfo.itemLV,
                                           server: userInfo.basicInfo.server))
             case .failure(_):
-                self?.showErrorAlert.accept("검색하신 유저가 없습니다")
+                self?.showAlert.accept("검색하신 유저가 없습니다")
             }
         }
     }
@@ -53,17 +53,17 @@ final class SettingViewModel: SettingViewModelable {
             try storage.changeMainUser(mainUser)
         } catch {
             guard let error = error as? LocalStorageError else {
-                showErrorAlert.accept(nil)
+                showAlert.accept(nil)
                 return
             }
             
-            showErrorAlert.accept(error.errorDescrption)
+            showAlert.accept(error.errorDescrption)
         }
     }
     
     //output
     let checkUser = PublishRelay<MainUser>()
-    let showErrorAlert = PublishRelay<String?>()
+    let showAlert = PublishRelay<String?>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
 }

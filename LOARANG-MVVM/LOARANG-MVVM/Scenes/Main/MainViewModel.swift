@@ -17,7 +17,7 @@ protocol MainViewModelOutPut {
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<UserInfo> { get }
     var mainUser: BehaviorRelay<MainUser?> { get }
-    var showErrorAlert: PublishRelay<String?> { get }
+    var showAlert: PublishRelay<String?> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
 }
@@ -55,14 +55,14 @@ final class MainViewModel: MainViewModelInOut {
                                                               server: userInfo.basicInfo.server))
                 } catch {
                     guard let error = error as? LocalStorageError else {
-                        self?.showErrorAlert.accept(nil)
+                        self?.showAlert.accept(nil)
                         return
                     }
                     
-                    self?.showErrorAlert.accept(error.errorDescrption)
+                    self?.showAlert.accept(error.errorDescrption)
                 }
             case .failure(_):
-                self?.showErrorAlert.accept(nil)
+                self?.showAlert.accept(nil)
                 return
             }
         }
@@ -72,7 +72,7 @@ final class MainViewModel: MainViewModelInOut {
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<UserInfo>()
     let mainUser: BehaviorRelay<MainUser?>
-    let showErrorAlert = PublishRelay<String?>()
+    let showAlert = PublishRelay<String?>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
 }
@@ -95,14 +95,14 @@ extension MainViewModel: TouchBookmarkCellDelegate {
                                                               class: userInfo.basicInfo.`class`))
                 } catch {
                     guard let error = error as? LocalStorageError else {
-                        self?.showErrorAlert.accept(nil)
+                        self?.showAlert.accept(nil)
                         return
                     }
                     
-                    self?.showErrorAlert.accept(error.errorDescrption)
+                    self?.showAlert.accept(error.errorDescrption)
                 }
             case .failure(_):
-                self?.showErrorAlert.accept(nil)
+                self?.showAlert.accept(nil)
                 return
             }
         }

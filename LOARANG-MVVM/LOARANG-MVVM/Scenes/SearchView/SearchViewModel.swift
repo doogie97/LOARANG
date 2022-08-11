@@ -17,7 +17,7 @@ protocol SearchViewModelInput {
 protocol SearchViewModelOutput {
     var popView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<UserInfo> { get }
-    var errorAlert: PublishRelay<String> { get }
+    var showAlert: PublishRelay<String> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
 }
@@ -42,7 +42,7 @@ final class SearchViewModel: SearchViewModelable {
             case .success(let userInfo):
                 self?.showUserInfo.accept(userInfo)
             case .failure(_):
-                self?.errorAlert.accept("검색하신 유저가 없습니다.")
+                self?.showAlert.accept("검색하신 유저가 없습니다.")
             }
         }
     }
@@ -50,7 +50,7 @@ final class SearchViewModel: SearchViewModelable {
     //out
     let popView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<UserInfo>()
-    let errorAlert = PublishRelay<String>()
+    let showAlert = PublishRelay<String>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
 }
