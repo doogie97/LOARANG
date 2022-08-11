@@ -31,6 +31,7 @@
 		AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8328A50C1B008A2865 /* AvatarViewController.swift */; };
 		AC799A8628A50F07008A2865 /* EquipmentsTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */; };
 		AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */; };
+		AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
 		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
@@ -104,6 +105,7 @@
 		AC799A8328A50C1B008A2865 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCellViewModel.swift; sourceTree = "<group>"; };
 		AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentView.swift; sourceTree = "<group>"; };
+		AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewController.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
 		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */,
 				AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */,
 				AC799A8028A50B9E008A2865 /* AvatarView */,
+				AC799A8928A51A74008A2865 /* CharacterImageView */,
 			);
 			path = Equipments;
 			sourceTree = "<group>";
@@ -321,6 +324,14 @@
 				AC799A8328A50C1B008A2865 /* AvatarViewController.swift */,
 			);
 			path = AvatarView;
+			sourceTree = "<group>";
+		};
+		AC799A8928A51A74008A2865 /* CharacterImageView */ = {
+			isa = PBXGroup;
+			children = (
+				AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */,
+			);
+			path = CharacterImageView;
 			sourceTree = "<group>";
 		};
 		AC8F11C62881025900D06AA6 /* CrawlManager */ = {
@@ -629,6 +640,7 @@
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
+				AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,

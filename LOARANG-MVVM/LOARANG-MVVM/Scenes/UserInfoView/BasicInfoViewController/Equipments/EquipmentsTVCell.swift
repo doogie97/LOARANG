@@ -37,7 +37,7 @@ final class EquipmentsTVCell: UITableViewCell {
     }()
     
     let segmentControll = SegmentControllerView(frame: .zero,
-                                                segmentTitles: ["장비", "아바타"])
+                                                segmentTitles: ["장비", "아바타", "캐릭터 이미지"])
     
     private lazy var pageView: UIView = {
         let view = UIView()

@@ -77,7 +77,8 @@ final class Container {
     //MARK: - about Equipments
     func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
         return EquipmentsTVCellViewModel(userInfo: userInfo, pageViewList: [makeBasicEquipmentViewController(),
-                                                                            makeAvatarViewController()])
+                                                                            makeAvatarViewController(),
+                                                                            makeCharacterImageViewController()])
     }
     
     func makeBasicEquipmentViewController() -> BasicEquipmentViewController {
@@ -86,6 +87,10 @@ final class Container {
     
     func makeAvatarViewController() -> AvatarViewController {
         return AvatarViewController()
+    }
+    
+    func makeCharacterImageViewController() -> CharacterImageViewController {
+        return CharacterImageViewController()
     }
     
     //MARK: - about settingVIew
