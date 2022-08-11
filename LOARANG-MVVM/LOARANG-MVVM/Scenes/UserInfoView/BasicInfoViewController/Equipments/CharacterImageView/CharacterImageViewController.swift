@@ -8,5 +8,10 @@
 import UIKit
 
 final class CharacterImageViewController: UIViewController {
+    private let characterImageView = CharacterImageView()
     
+    override func loadView() {
+        super.loadView()
+        self.view = characterImageView
+    }
 }

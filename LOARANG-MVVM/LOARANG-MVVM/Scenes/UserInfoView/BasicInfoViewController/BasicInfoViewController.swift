@@ -52,7 +52,7 @@ extension BasicInfoViewController: UITableViewDataSource {
             case .basicAbility:
                 return UIScreen.main.bounds.width * 0.4
             case .equipments:
-                return UIScreen.main.bounds.width * 1.2
+                return UIScreen.main.bounds.width * 1.3
             }
         }
     }

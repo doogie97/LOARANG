@@ -32,6 +32,7 @@
 		AC799A8628A50F07008A2865 /* EquipmentsTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */; };
 		AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */; };
 		AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */; };
+		AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
 		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
@@ -106,6 +107,7 @@
 		AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCellViewModel.swift; sourceTree = "<group>"; };
 		AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentView.swift; sourceTree = "<group>"; };
 		AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewController.swift; sourceTree = "<group>"; };
+		AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
 		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */,
+				AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */,
 			);
 			path = CharacterImageView;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
+				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,
 				ACAEF358287FFA9F00AE98F1 /* Equipment.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
 				AC799A8628A50F07008A2865 /* EquipmentsTVCellViewModel.swift in Sources */,
