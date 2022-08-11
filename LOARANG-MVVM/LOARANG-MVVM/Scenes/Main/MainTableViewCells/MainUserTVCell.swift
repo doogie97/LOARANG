@@ -141,7 +141,7 @@ final class MainUserTVCell: UITableViewCell {
         }
     }
     
-    func setNoMainUserLayout() {
+    private func setNoMainUserLayout() {
         backView.addSubview(noMainUserLabel)
         
         noMainUserLabel.text = "등록된 대표 캐릭터가 없습니다"
@@ -151,7 +151,12 @@ final class MainUserTVCell: UITableViewCell {
         }
     }
     
-    func setUserInfo(_ info: MainUser) {
+    func setUserInfo(_ info: MainUser?) {
+        guard let info = info else {
+            setNoMainUserLayout()
+            return
+        }
+
         setUserLayout()
         classTitle.text = "클래스"
         itemLvTitle.text = "아이템"

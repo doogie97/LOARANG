@@ -103,15 +103,11 @@ extension MainViewController: UITableViewDataSource {
                 return MainUserTVCell()
             }
             
-            guard let mainUser = viewModel.mainUser else {
-                cell.setNoMainUserLayout()
-                return cell
-            }
-            
-            mainUser.bind(onNext: {
-                cell.setUserInfo($0)
-            })
-            .disposed(by: disposeBag)
+            viewModel.mainUser
+                .bind(onNext: {
+                    cell.setUserInfo($0)
+                })
+                .disposed(by: disposeBag)
             
             return cell
         } else {

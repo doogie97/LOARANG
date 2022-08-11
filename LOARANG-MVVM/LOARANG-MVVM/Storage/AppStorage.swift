@@ -7,7 +7,7 @@
 import RxRelay
 
 protocol AppStorageable {
-    var mainUser: BehaviorRelay<MainUser>? { get }
+    var mainUser: BehaviorRelay<MainUser?> { get }
     var bookMark: BehaviorRelay<[BookmarkUser]> { get }
     func addUser(_ user: BookmarkUser) throws
     func deleteUser(_ name: String) throws
@@ -19,16 +19,13 @@ protocol AppStorageable {
 final class AppStorage: AppStorageable {
     private let localStorage: LocalStorage
     
-    var mainUser: BehaviorRelay<MainUser>?
+    var mainUser: BehaviorRelay<MainUser?>
     var bookMark: BehaviorRelay<[BookmarkUser]>
     
     init(_ localStorage: LocalStorage) {
         self.localStorage = localStorage
         self.bookMark = BehaviorRelay<[BookmarkUser]>(value: localStorage.bookmarkUsers())
-        guard let mainUser = localStorage.mainUser() else {
-            return
-        }
-        self.mainUser = BehaviorRelay<MainUser>(value: mainUser)
+        self.mainUser = BehaviorRelay<MainUser?>(value: localStorage.mainUser())
     }
     
     func addUser(_ user: BookmarkUser) throws {
@@ -61,7 +58,7 @@ final class AppStorage: AppStorageable {
     func changeMainUser(_ user: MainUser) throws {
         do {
             try localStorage.changeMainUser(user)
-            mainUser?.accept(user)
+            mainUser.accept(user)
         } catch {
             throw LocalStorageError.changeMainUserError
         }

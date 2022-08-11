@@ -16,7 +16,7 @@ protocol MainViewModelInput {
 protocol MainViewModelOutPut {
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<UserInfo> { get }
-    var mainUser: BehaviorRelay<MainUser>? { get }
+    var mainUser: BehaviorRelay<MainUser?> { get }
     var showErrorAlert: PublishRelay<String?> { get }
 }
 
@@ -36,7 +36,7 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchMainUserCell() {
-        crawlManager.getUserInfo(storage.mainUser?.value.name ?? "") { [weak self] result in
+        crawlManager.getUserInfo(storage.mainUser.value?.name ?? "") { [weak self] result in
             switch result {
             case .success(let userInfo):
                 self?.showUserInfo.accept(userInfo)
@@ -65,7 +65,7 @@ final class MainViewModel: MainViewModelInOut {
     // out
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<UserInfo>()
-    let mainUser: BehaviorRelay<MainUser>?
+    let mainUser: BehaviorRelay<MainUser?>
     let showErrorAlert = PublishRelay<String?>()
 }
 
