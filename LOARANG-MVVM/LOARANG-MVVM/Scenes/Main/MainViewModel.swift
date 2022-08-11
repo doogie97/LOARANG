@@ -47,12 +47,12 @@ final class MainViewModel: MainViewModelInOut {
                 self?.showUserInfo.accept(userInfo)
                 
                 do {
-                    try self?.storage.changeMainUser(MainUser(image: userInfo.basicInfo.userImage,
-                                                              battleLV: userInfo.basicInfo.battleLV,
-                                                              name: userInfo.basicInfo.name,
-                                                              class: userInfo.basicInfo.`class`,
-                                                              itemLV: userInfo.basicInfo.itemLV,
-                                                              server: userInfo.basicInfo.server))
+                    try self?.storage.changeMainUser(MainUser(image: userInfo.mainInfo.userImage,
+                                                              battleLV: userInfo.mainInfo.battleLV,
+                                                              name: userInfo.mainInfo.name,
+                                                              class: userInfo.mainInfo.`class`,
+                                                              itemLV: userInfo.mainInfo.itemLV,
+                                                              server: userInfo.mainInfo.server))
                 } catch {
                     guard let error = error as? LocalStorageError else {
                         self?.showAlert.accept(nil)
@@ -91,8 +91,8 @@ extension MainViewModel: TouchBookmarkCellDelegate {
                 
                 do {
                     try self?.storage.updateUser(BookmarkUser(name: userName,
-                                                              image: userInfo.basicInfo.userImage,
-                                                              class: userInfo.basicInfo.`class`))
+                                                              image: userInfo.mainInfo.userImage,
+                                                              class: userInfo.mainInfo.`class`))
                 } catch {
                     guard let error = error as? LocalStorageError else {
                         self?.showAlert.accept(nil)

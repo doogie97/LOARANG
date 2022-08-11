@@ -6,7 +6,7 @@
 //
 
 struct UserInfo {
-    let basicInfo: BasicInfo
+    let mainInfo: MainInfo
     let stat: Stat
     let equips: Equips? //임시 옵셔널
 }

@@ -38,7 +38,7 @@
 		ACAEF32C287FF0D300AE98F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */; };
 		ACAEF32F287FF0D300AE98F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */; };
 		ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF339287FF62000AE98F1 /* UserInfo.swift */; };
-		ACAEF33C287FF8F600AE98F1 /* BasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF33B287FF8F600AE98F1 /* BasicInfo.swift */; };
+		ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */; };
 		ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF33E287FF91A00AE98F1 /* Stat.swift */; };
 		ACAEF349287FF9A200AE98F1 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF348287FF9A200AE98F1 /* Gem.swift */; };
 		ACAEF34E287FF9F000AE98F1 /* Equips.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF34D287FF9F000AE98F1 /* Equips.swift */; };
@@ -56,7 +56,7 @@
 		ACB837F228961ECE00F75BA2 /* SegmentControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
-		ACB837FB2897ED9800F75BA2 /* UserMainInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837FA2897ED9800F75BA2 /* UserMainInfoTVCell.swift */; };
+		ACB837FB2897ED9800F75BA2 /* MainInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837FA2897ED9800F75BA2 /* MainInfoTVCell.swift */; };
 		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
 		ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */; };
 		ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */; };
@@ -108,7 +108,7 @@
 		ACAEF32E287FF0D300AE98F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACAEF330287FF0D300AE98F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACAEF339287FF62000AE98F1 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		ACAEF33B287FF8F600AE98F1 /* BasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfo.swift; sourceTree = "<group>"; };
+		ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfo.swift; sourceTree = "<group>"; };
 		ACAEF33E287FF91A00AE98F1 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		ACAEF348287FF9A200AE98F1 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
 		ACAEF34D287FF9F000AE98F1 /* Equips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equips.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllerView.swift; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
-		ACB837FA2897ED9800F75BA2 /* UserMainInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainInfoTVCell.swift; sourceTree = "<group>"; };
+		ACB837FA2897ED9800F75BA2 /* MainInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoTVCell.swift; sourceTree = "<group>"; };
 		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
 		ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 				ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */,
 				AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */,
 				ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */,
-				ACB837F92897ED6500F75BA2 /* UserMainInfo */,
+				ACB837F92897ED6500F75BA2 /* MainInfo */,
 				ACD4B78B28A4A75700846E21 /* BasicEffect */,
 			);
 			path = BasicInfoViewController;
@@ -350,7 +350,7 @@
 				ACBA78FC2898DDE700CB39D5 /* MainUser.swift */,
 				AC8F11D228814F5800D06AA6 /* BookmarkUser.swift */,
 				ACAEF339287FF62000AE98F1 /* UserInfo.swift */,
-				ACAEF33B287FF8F600AE98F1 /* BasicInfo.swift */,
+				ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */,
 				ACAEF33E287FF91A00AE98F1 /* Stat.swift */,
 				ACAEF347287FF98E00AE98F1 /* Equips */,
 			);
@@ -419,12 +419,12 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		ACB837F92897ED6500F75BA2 /* UserMainInfo */ = {
+		ACB837F92897ED6500F75BA2 /* MainInfo */ = {
 			isa = PBXGroup;
 			children = (
-				ACB837FA2897ED9800F75BA2 /* UserMainInfoTVCell.swift */,
+				ACB837FA2897ED9800F75BA2 /* MainInfoTVCell.swift */,
 			);
-			path = UserMainInfo;
+			path = MainInfo;
 			sourceTree = "<group>";
 		};
 		ACD4B78B28A4A75700846E21 /* BasicEffect */ = {
@@ -572,7 +572,7 @@
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
 				ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
-				ACB837FB2897ED9800F75BA2 /* UserMainInfoTVCell.swift in Sources */,
+				ACB837FB2897ED9800F75BA2 /* MainInfoTVCell.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
 				ACAEF34E287FF9F000AE98F1 /* Equips.swift in Sources */,
 				AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */,
@@ -605,7 +605,7 @@
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
 				AC6CA2962893BC270049C12F /* SecondInfoViewController.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
-				ACAEF33C287FF8F600AE98F1 /* BasicInfo.swift in Sources */,
+				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,

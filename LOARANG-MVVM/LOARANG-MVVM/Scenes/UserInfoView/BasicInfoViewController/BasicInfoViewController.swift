@@ -63,10 +63,10 @@ extension BasicInfoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == CellType.mainInfo.rawValue {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UserMainInfoTVCell.self)") as? UserMainInfoTVCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainInfoTVCell.self)") as? MainInfoTVCell else {
                 return UITableViewCell()
             }
-            cell.setCellContents(viewModel.userInfo)
+            cell.setCellContents(viewModel.userInfo.mainInfo)
             
             return cell
         }

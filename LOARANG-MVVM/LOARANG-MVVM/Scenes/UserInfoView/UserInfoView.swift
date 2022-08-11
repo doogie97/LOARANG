@@ -101,6 +101,6 @@ final class UserInfoView: UIView {
     }
     
     func setCellContents(_ userInfo: UserInfo) {
-        self.titleLabel.text = userInfo.basicInfo.name
+        self.titleLabel.text = userInfo.mainInfo.name
     }
 }

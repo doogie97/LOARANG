@@ -36,12 +36,12 @@ final class SettingViewModel: SettingViewModelable {
             self?.finishedLoading.accept(())
             switch result {
             case .success(let userInfo):
-                self?.checkUser.accept(MainUser(image: userInfo.basicInfo.userImage,
-                                          battleLV: userInfo.basicInfo.battleLV,
-                                          name: userInfo.basicInfo.name,
-                                          class: userInfo.basicInfo.`class`,
-                                          itemLV: userInfo.basicInfo.itemLV,
-                                          server: userInfo.basicInfo.server))
+                self?.checkUser.accept(MainUser(image: userInfo.mainInfo.userImage,
+                                          battleLV: userInfo.mainInfo.battleLV,
+                                          name: userInfo.mainInfo.name,
+                                          class: userInfo.mainInfo.`class`,
+                                          itemLV: userInfo.mainInfo.itemLV,
+                                          server: userInfo.mainInfo.server))
             case .failure(_):
                 self?.showAlert.accept("검색하신 유저가 없습니다")
             }

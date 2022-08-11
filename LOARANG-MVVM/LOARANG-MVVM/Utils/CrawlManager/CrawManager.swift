@@ -30,11 +30,11 @@ struct CrawlManager: CrawlManagerable {
                 completion(.failure(CrawlError.searchError))
                 return
             }
-            getBasicInfo(name: name, doc: doc) { result in
+            getMainInfo(name: name, doc: doc) { result in
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(let basicInfo):
-                        completion(.success(UserInfo(basicInfo: basicInfo,
+                    case .success(let mainInfo):
+                        completion(.success(UserInfo(mainInfo: mainInfo,
                                                      stat: stat,
                                                      equips: nil)))
                     case .failure(let error):
@@ -67,7 +67,7 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - basic info
-    private func getBasicInfo(name: String, doc: Document, completion: @escaping (Result<BasicInfo, Error>) -> Void) {
+    private func getMainInfo(name: String, doc: Document, completion: @escaping (Result<MainInfo, Error>) -> Void) {
         
         do {
             let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
@@ -87,7 +87,7 @@ struct CrawlManager: CrawlManagerable {
             let `class` = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(2) > dd").text()
             
             getUserImage(name: name) { image in
-                completion(.success(BasicInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: image)))
+                completion(.success(MainInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: image)))
             }
         } catch {
             completion(.failure(CrawlError.searchError))

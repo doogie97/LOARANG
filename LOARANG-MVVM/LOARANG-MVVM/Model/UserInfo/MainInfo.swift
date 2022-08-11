@@ -1,5 +1,5 @@
 //
-//  BasicInfo.swift
+//  MainInfo.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/07/14.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct BasicInfo {
+struct MainInfo {
     let server: String
     let name: String
     let battleLV: String

@@ -20,7 +20,7 @@ final class BasicInfoView: UIView {
     private(set) lazy var basicInfoTableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
-        tableView.register(UserMainInfoTVCell.self)
+        tableView.register(MainInfoTVCell.self)
         tableView.register(BasicAbilityTVCell.self)
         
         tableView.backgroundColor = .tableViewColor

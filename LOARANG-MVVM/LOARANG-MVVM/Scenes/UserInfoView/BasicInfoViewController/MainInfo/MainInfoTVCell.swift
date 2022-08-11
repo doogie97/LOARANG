@@ -1,5 +1,5 @@
 //
-//  UserMainInfoTVCell.swift
+//  MainInfoTVCell.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/08/01.
@@ -7,7 +7,7 @@
 
 import SnapKit
 
-final class UserMainInfoTVCell: UITableViewCell {
+final class MainInfoTVCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
@@ -168,17 +168,16 @@ final class UserMainInfoTVCell: UITableViewCell {
         }
     }
     
-    func setCellContents(_ userInfo: UserInfo) {
-        let basicInfo = userInfo.basicInfo
-        classLabel.text = basicInfo.`class`
-        serverNameLabel.text = "\(basicInfo.server) \(basicInfo.name)"
-        itemLvLabel.text = "아이템 : \(basicInfo.itemLV)"
-        pvpLabel.text = "PVP : \(basicInfo.pvp)"
-        expeditionLvLabel.text = "원정대 : \(basicInfo.expeditionLV)"
-        battleLvLabel.text = "전투 레벨 : \(basicInfo.battleLV)"
-        titleLabel.text = "칭호 : \(basicInfo.title)"
-        guildLabel.text = "길드 : \(basicInfo.guild)"
-        wisdomLabel.text = "영지 : \(basicInfo.wisdom)"
-        userImageView.image = userInfo.basicInfo.userImage.cropImage(class: userInfo.basicInfo.`class`)
+    func setCellContents(_ mainInfo: MainInfo) {
+        classLabel.text = mainInfo.`class`
+        serverNameLabel.text = "\(mainInfo.server) \(mainInfo.name)"
+        itemLvLabel.text = "아이템 : \(mainInfo.itemLV)"
+        pvpLabel.text = "PVP : \(mainInfo.pvp)"
+        expeditionLvLabel.text = "원정대 : \(mainInfo.expeditionLV)"
+        battleLvLabel.text = "전투 레벨 : \(mainInfo.battleLV)"
+        titleLabel.text = "칭호 : \(mainInfo.title)"
+        guildLabel.text = "길드 : \(mainInfo.guild)"
+        wisdomLabel.text = "영지 : \(mainInfo.wisdom)"
+        userImageView.image = mainInfo.userImage.cropImage(class: mainInfo.`class`)
     }
 }

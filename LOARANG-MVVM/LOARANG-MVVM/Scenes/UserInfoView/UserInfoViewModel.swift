@@ -32,7 +32,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     init(storage: AppStorageable, userInfo: UserInfo) {
         self.storage = storage
         self.userInfo = userInfo
-        self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userInfo.basicInfo.name))
+        self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userInfo.mainInfo.name))
     }
     
     //in
@@ -50,12 +50,12 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     func touchBookmarkButton() {
         do {
-            if storage.isBookmarkUser(userInfo.basicInfo.name) {
-                try storage.deleteUser(userInfo.basicInfo.name)
+            if storage.isBookmarkUser(userInfo.mainInfo.name) {
+                try storage.deleteUser(userInfo.mainInfo.name)
             } else {
-                try storage.addUser(BookmarkUser(name: userInfo.basicInfo.name,
-                                                 image: userInfo.basicInfo.userImage,
-                                                 class: userInfo.basicInfo.`class`))
+                try storage.addUser(BookmarkUser(name: userInfo.mainInfo.name,
+                                                 image: userInfo.mainInfo.userImage,
+                                                 class: userInfo.mainInfo.`class`))
             }
         } catch {
             guard let error = error as? LocalStorageError else {
@@ -65,7 +65,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
             
             showAlert.accept(error.errorDescrption)
         }
-        isBookmarkUser.accept(storage.isBookmarkUser(userInfo.basicInfo.name))
+        isBookmarkUser.accept(storage.isBookmarkUser(userInfo.mainInfo.name))
     }
     
     //out
