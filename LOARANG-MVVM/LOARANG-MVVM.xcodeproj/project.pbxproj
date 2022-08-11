@@ -68,7 +68,7 @@
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
-		ACD4B78D28A4A79100846E21 /* BasicEffectTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78C28A4A79100846E21 /* BasicEffectTVCell.swift */; };
+		ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,7 +138,7 @@
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		ACD4B78C28A4A79100846E21 /* BasicEffectTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEffectTVCell.swift; sourceTree = "<group>"; };
+		ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -430,7 +430,7 @@
 		ACD4B78B28A4A75700846E21 /* BasicEffect */ = {
 			isa = PBXGroup;
 			children = (
-				ACD4B78C28A4A79100846E21 /* BasicEffectTVCell.swift */,
+				ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */,
 			);
 			path = BasicEffect;
 			sourceTree = "<group>";
@@ -597,7 +597,7 @@
 				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
-				ACD4B78D28A4A79100846E21 /* BasicEffectTVCell.swift in Sources */,
+				ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */,
 				AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,

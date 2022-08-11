@@ -1,5 +1,5 @@
 //
-//  BasicEffectTVCell.swift
+//  BasicAbilityTVCell.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/08/11.
@@ -7,7 +7,7 @@
 
 import SnapKit
 
-final class BasicEffectTVCell: UITableViewCell {
+final class BasicAbilityTVCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
