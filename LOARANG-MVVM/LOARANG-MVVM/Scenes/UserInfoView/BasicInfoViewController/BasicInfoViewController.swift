@@ -42,17 +42,17 @@ final class BasicInfoViewController: UIViewController {
 extension BasicInfoViewController: UITableViewDataSource {
     enum CellType: Int, CaseIterable {
         case mainInfo = 0
-        case equipment = 1
-        case stat = 2
+        case stat
+        case equipment
         
         var cellHeight: CGFloat {
             switch self {
             case .mainInfo:
                 return UIScreen.main.bounds.width * 0.5
-            case .equipment:
-                return UIScreen.main.bounds.width * 1.2
             case .stat:
                 return UIScreen.main.bounds.width * 0.6
+            case .equipment:
+                return UIScreen.main.bounds.width * 1.2
             }
         }
     }
@@ -64,9 +64,17 @@ extension BasicInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == CellType.mainInfo.rawValue {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UserMainInfoTVCell.self)") as? UserMainInfoTVCell else {
-                return UserMainInfoTVCell()
+                return UITableViewCell()
             }
             cell.setCellContents(viewModel.userInfo)
+            
+            return cell
+        }
+        
+        if indexPath.row == CellType.stat.rawValue {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicEffectTVCell.self)") as? BasicEffectTVCell else {
+                return UITableViewCell()
+            }
             
             return cell
         }
