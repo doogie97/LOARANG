@@ -6,23 +6,39 @@
 //
 
 import UIKit
+import RxRelay
 protocol EquipmentsTVCellViewModelable: EquipmentsTVCellViewModelableInput,
                                         EquipmentsTVCellViewModelableOutput {}
 
-protocol EquipmentsTVCellViewModelableInput {}
+protocol EquipmentsTVCellViewModelableInput {
+    func touchSegmentControl(_ index: Int)
+    func detailViewDidShow(_ index: Int)
+}
 
 protocol EquipmentsTVCellViewModelableOutput {
-    var userInfo: UserInfo { get }
-    var viewList: [UIViewController] { get }
+    var userInfo: UserInfo { get } //이건 필요 없을지도 각 뷰컨 생성할 때 컨테이너에서 넣주면 되니까
+    var pageViewList: [UIViewController] { get }
+    var currentPage: BehaviorRelay<Int> { get }
+    var previousPage: BehaviorRelay<Int> { get }
 }
 
 final class EquipmentsTVCellViewModel: EquipmentsTVCellViewModelable {
-    init(userInfo: UserInfo, viewList: [UIViewController]) {
+    init(userInfo: UserInfo, pageViewList: [UIViewController]) {
         self.userInfo = userInfo
-        self.viewList = viewList
+        self.pageViewList = pageViewList
+    }
+    //in
+    func touchSegmentControl(_ index: Int) {
+        currentPage.accept(index)
+    }
+    
+    func detailViewDidShow(_ index: Int) {
+        previousPage.accept(index)
     }
     
     //out
     var userInfo: UserInfo
-    var viewList: [UIViewController]
+    var pageViewList: [UIViewController]
+    var currentPage = BehaviorRelay<Int>(value: 0)
+    var previousPage = BehaviorRelay<Int>(value: 50)
 }

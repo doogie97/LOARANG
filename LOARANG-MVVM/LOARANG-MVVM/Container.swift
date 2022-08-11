@@ -76,8 +76,8 @@ final class Container {
     }
     //MARK: - about Equipments
     func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
-        return EquipmentsTVCellViewModel(userInfo: userInfo, viewList: [makeBasicEquipmentViewController(),
-                                                                        makeAvatarViewController()])
+        return EquipmentsTVCellViewModel(userInfo: userInfo, pageViewList: [makeBasicEquipmentViewController(),
+                                                                            makeAvatarViewController()])
     }
     
     func makeBasicEquipmentViewController() -> BasicEquipmentViewController {

@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/08/11.
 //
 
-import UIKit
+import RxSwift
 
 final class EquipmentsTVCell: UITableViewCell {
     private var viewModel: EquipmentsTVCellViewModelable?
@@ -20,6 +20,7 @@ final class EquipmentsTVCell: UITableViewCell {
     }
     
     private let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    private let disposBag = DisposeBag()
     
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [segmentControll, pageView])
@@ -60,7 +61,42 @@ final class EquipmentsTVCell: UITableViewCell {
         }
     }
     
+    private func bindView() {
+        segmentControll.segmentController.rx.value
+            .bind(onNext: { [weak self] in
+                self?.viewModel?.touchSegmentControl($0)
+            })
+            .disposed(by: disposBag)
+        
+        viewModel?.currentPage
+            .bind(onNext: { [weak self] in
+                self?.changeView(index: $0)
+            })
+            .disposed(by: disposBag)
+    }
+    
+    
+    private func changeView(index: Int) {
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        if viewModel.previousPage.value == index {
+             return
+        }
+        
+        var direction: UIPageViewController.NavigationDirection {
+            index > viewModel.previousPage.value ? .forward : .reverse
+        }
+        
+        pageVC.setViewControllers([viewModel.pageViewList[index]], direction: direction, animated: true)
+        pageVC.view.frame = CGRect(x: 0, y: 0, width: pageView.frame.width, height: pageView.frame.height)
+        pageView.addSubview(pageVC.view)
+        viewModel.detailViewDidShow(index)
+    }
+    
     func setCellContents(viewModel: EquipmentsTVCellViewModelable) {
         self.viewModel = viewModel
+        bindView()
     }
 }
