@@ -25,6 +25,7 @@ final class EquipmentsTVCell: UITableViewCell {
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [segmentControll, pageView])
         stackView.axis = .vertical
+        stackView.spacing = 2
         stackView.layer.cornerRadius = 10
         stackView.backgroundColor = .cellColor
         
