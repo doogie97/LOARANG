@@ -87,6 +87,7 @@ final class BasicEffectTVCell: UITableViewCell {
     
     private let largeFontSize = 18
     private let smallFontSize = 15
+    private let statColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
     
     private lazy var attackTitleLabel = makeLable(size: largeFontSize, text: "공격력")
     private lazy var vitalityTitleLabel = makeLable(size: largeFontSize, text: "생명력")
@@ -97,14 +98,14 @@ final class BasicEffectTVCell: UITableViewCell {
     private lazy var enduranceTitleLabel = makeLable(size: smallFontSize, text: "인내")
     private lazy var expertiseTitleLabel = makeLable(size: smallFontSize, text: "숙련")
     
-    private lazy var attackLabel = makeLable(size: smallFontSize, color: .red)
-    private lazy var vitalityLabel = makeLable(size: smallFontSize, color: .red)
-    private lazy var critLabel = makeLable(size: smallFontSize, color: .red)
-    private lazy var specializationLabel = makeLable(size: smallFontSize, color: .red)
-    private lazy var dominationLabel = makeLable(size: smallFontSize, color: .red)
-    private lazy var swiftnessLabel = makeLable(size: smallFontSize, color: .red)
-    private lazy var enduranceLabel = makeLable(size: smallFontSize, color: .red)
-    private lazy var expertiseLabel = makeLable(size: smallFontSize, color: .red)
+    private lazy var attackLabel = makeLable(size: smallFontSize, color: statColor)
+    private lazy var vitalityLabel = makeLable(size: smallFontSize, color: statColor)
+    private lazy var critLabel = makeLable(size: smallFontSize, color: statColor)
+    private lazy var specializationLabel = makeLable(size: smallFontSize, color: statColor)
+    private lazy var dominationLabel = makeLable(size: smallFontSize, color: statColor)
+    private lazy var swiftnessLabel = makeLable(size: smallFontSize, color: statColor)
+    private lazy var enduranceLabel = makeLable(size: smallFontSize, color: statColor)
+    private lazy var expertiseLabel = makeLable(size: smallFontSize, color: statColor)
     
     private func makeLable(size: Int, color: UIColor = .label, text: String = "10000") -> UILabel {
         let label = UILabel()
