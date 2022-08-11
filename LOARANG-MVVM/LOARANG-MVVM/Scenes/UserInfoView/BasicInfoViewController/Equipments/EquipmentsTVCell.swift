@@ -37,7 +37,8 @@ final class EquipmentsTVCell: UITableViewCell {
         return stackView
     }()
     
-    let segmentControll = SegmentControllerView()
+    let segmentControll = SegmentControllerView(frame: .zero,
+                                                segmentTitles: ["장비", "아바타"])
     
     private lazy var pageView: UIView = {
         let view = UIView()

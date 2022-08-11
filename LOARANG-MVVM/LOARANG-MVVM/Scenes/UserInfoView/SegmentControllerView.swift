@@ -8,7 +8,11 @@
 import SnapKit
 
 final class SegmentControllerView: UIView {
-    override init(frame: CGRect) {
+    private let segmentTitles: [String]
+    
+    init(frame: CGRect, segmentTitles: [String]) {
+        self.segmentTitles = segmentTitles
+        
         super.init(frame: frame)
         setLayout()
     }
@@ -37,10 +41,9 @@ final class SegmentControllerView: UIView {
             NSAttributedString.Key.font: UIFont.one(size: 14, family: .Bold)
         ], for: .selected)
         
-        segment.insertSegment(withTitle: "기본 정보", at: 0, animated: true)
-        segment.insertSegment(withTitle: "스킬", at: 1, animated: true)
-        segment.insertSegment(withTitle: "카드", at: 2, animated: true)
-        segment.insertSegment(withTitle: "보유캐릭터", at: 3, animated: true)
+        for (index, title) in segmentTitles.enumerated() {
+            segment.insertSegment(withTitle: title, at: index, animated: true)
+        }
 
         segment.selectedSegmentIndex = 0
         
