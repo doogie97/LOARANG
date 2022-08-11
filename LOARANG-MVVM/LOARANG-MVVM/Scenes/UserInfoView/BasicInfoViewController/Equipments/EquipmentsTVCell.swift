@@ -8,6 +8,8 @@
 import UIKit
 
 final class EquipmentsTVCell: UITableViewCell {
+    private var viewModel: EquipmentsTVCellViewModelable?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
@@ -16,6 +18,8 @@ final class EquipmentsTVCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [segmentControll, pageView])
@@ -54,5 +58,9 @@ final class EquipmentsTVCell: UITableViewCell {
             $0.top.leading.trailing.equalToSuperview().inset(8)
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    func setCellContents(viewModel: EquipmentsTVCellViewModelable) {
+        self.viewModel = viewModel
     }
 }

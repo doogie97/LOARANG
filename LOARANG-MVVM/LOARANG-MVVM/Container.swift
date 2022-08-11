@@ -74,6 +74,19 @@ final class Container {
     private func makeFourthVC() -> FourthInfoViewController {
         return FourthInfoViewController()
     }
+    //MARK: - about Equipments
+    func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
+        return EquipmentsTVCellViewModel(userInfo: userInfo, viewList: [makeBasicEquipmentViewController(),
+                                                                        makeAvatarViewController()])
+    }
+    
+    func makeBasicEquipmentViewController() -> BasicEquipmentViewController {
+        return BasicEquipmentViewController()
+    }
+    
+    func makeAvatarViewController() -> AvatarViewController {
+        return AvatarViewController()
+    }
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {

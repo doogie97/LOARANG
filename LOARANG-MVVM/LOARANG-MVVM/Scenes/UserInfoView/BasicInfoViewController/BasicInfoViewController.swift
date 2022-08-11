@@ -84,6 +84,7 @@ extension BasicInfoViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentsTVCell.self)") as? EquipmentsTVCell else {
                 return UITableViewCell()
             }
+            cell.setCellContents(viewModel: container.makeEquipmentsTVCellViewModel(userInfo: viewModel.userInfo))
             
             return cell
         }
