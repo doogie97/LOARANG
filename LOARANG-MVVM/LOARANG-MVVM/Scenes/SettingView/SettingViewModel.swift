@@ -17,6 +17,8 @@ protocol SettingViewModeInput {
 protocol SettingViewModeOutput {
     var checkUser: PublishRelay<MainUser> { get }
     var showErrorAlert: PublishRelay<String?> { get }
+    var startedLoading: PublishRelay<Void> { get }
+    var finishedLoading: PublishRelay<Void> { get }
 }
 
 final class SettingViewModel: SettingViewModelable {
@@ -29,7 +31,9 @@ final class SettingViewModel: SettingViewModelable {
     }
     //input
     func touchSearchButton(_ userName: String) {
+        startedLoading.accept(())
         crawlManager.getUserInfo(userName) { [weak self] result in
+            self?.finishedLoading.accept(())
             switch result {
             case .success(let userInfo):
                 self?.checkUser.accept(MainUser(image: userInfo.basicInfo.userImage,
@@ -60,4 +64,6 @@ final class SettingViewModel: SettingViewModelable {
     //output
     let checkUser = PublishRelay<MainUser>()
     let showErrorAlert = PublishRelay<String?>()
+    let startedLoading = PublishRelay<Void>()
+    let finishedLoading = PublishRelay<Void>()
 }
