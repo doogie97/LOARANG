@@ -40,7 +40,7 @@ final class SearchViewController: UIViewController {
                 guard let name = self?.searchView.userSearchBar.text else {
                     return
                 }
-                
+                self?.view.endEditing(true)
                 self?.viewModel.touchSearchButton(name)
         })
         .disposed(by: disposeBag)
