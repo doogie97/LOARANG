@@ -8,8 +8,10 @@
 import UIKit
 
 final class BasicEquipmentViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .red
+    private let basicEquipmentView = BasicEquipmentView()
+    
+    override func loadView() {
+        super.loadView()
+        self.view = basicEquipmentView
     }
 }
