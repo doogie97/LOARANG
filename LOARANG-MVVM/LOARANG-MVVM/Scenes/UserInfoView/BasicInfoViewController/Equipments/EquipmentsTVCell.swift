@@ -17,9 +17,44 @@ final class EquipmentsTVCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var mainStackView: UIStackView = {
+        let emptyView = UIView()
+        
+        let stackView = UIStackView(arrangedSubviews: [segmentControll, pageView, emptyView])
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        stackView.layer.cornerRadius = 10
+        stackView.backgroundColor = .cellColor
+        
+        segmentControll.snp.makeConstraints {
+            $0.height.equalToSuperview().multipliedBy(0.1)
+        }
+        
+        emptyView.snp.makeConstraints {
+            $0.height.equalToSuperview().multipliedBy(0.02)
+        }
+        
+        return stackView
+    }()
+    
+    let segmentControll = SegmentControllerView()
+    
+    private lazy var pageView: UIView = {
+        let view = UIView()
+        
+        
+        return view
+    }()
+    
     private func setLayout() {
         self.selectionStyle = .none
         self.backgroundColor = .cellBackgroundColor
         
+        self.contentView.addSubview(mainStackView)
+
+        mainStackView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview()
+        }
     }
 }
