@@ -27,6 +27,8 @@
 		AC6CA2962893BC270049C12F /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */; };
 		AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */; };
+		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
+		AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8328A50C1B008A2865 /* AvatarViewController.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
 		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
@@ -96,6 +98,8 @@
 		AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInfoViewController.swift; sourceTree = "<group>"; };
+		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
+		AC799A8328A50C1B008A2865 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
 		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */,
+				AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */,
+				AC799A8028A50B9E008A2865 /* AvatarView */,
 			);
 			path = Equipments;
 			sourceTree = "<group>";
@@ -293,6 +299,22 @@
 				AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */,
 			);
 			path = ForthInfoView;
+			sourceTree = "<group>";
+		};
+		AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */ = {
+			isa = PBXGroup;
+			children = (
+				AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */,
+			);
+			path = BasicEquipmentsView;
+			sourceTree = "<group>";
+		};
+		AC799A8028A50B9E008A2865 /* AvatarView */ = {
+			isa = PBXGroup;
+			children = (
+				AC799A8328A50C1B008A2865 /* AvatarViewController.swift */,
+			);
+			path = AvatarView;
 			sourceTree = "<group>";
 		};
 		AC8F11C62881025900D06AA6 /* CrawlManager */ = {
@@ -588,6 +610,7 @@
 				ACAEF34E287FF9F000AE98F1 /* Equips.swift in Sources */,
 				AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
+				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
 				ACAEF358287FFA9F00AE98F1 /* Equipment.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
@@ -605,6 +628,7 @@
 				ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */,
 				ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
+				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
 				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
