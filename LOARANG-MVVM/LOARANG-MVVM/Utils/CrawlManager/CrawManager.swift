@@ -83,9 +83,7 @@ struct CrawlManager: CrawlManagerable {
             let `class` = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(2) > dd").text()
             
             getUserImage(name: name) { image in
-                DispatchQueue.main.async {
-                    completion(.success(BasicInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: image)))
-                }
+                completion(.success(BasicInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: image)))
             }
         } catch {
             completion(.failure(CrawlError.searchError))
