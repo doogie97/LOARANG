@@ -18,20 +18,13 @@ final class EquipmentsTVCell: UITableViewCell {
     }
     
     private lazy var mainStackView: UIStackView = {
-        let emptyView = UIView()
-        
-        let stackView = UIStackView(arrangedSubviews: [segmentControll, pageView, emptyView])
+        let stackView = UIStackView(arrangedSubviews: [segmentControll, pageView])
         stackView.axis = .vertical
-        stackView.spacing = 5
         stackView.layer.cornerRadius = 10
         stackView.backgroundColor = .cellColor
         
         segmentControll.snp.makeConstraints {
             $0.height.equalToSuperview().multipliedBy(0.1)
-        }
-        
-        emptyView.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.02)
         }
         
         return stackView
@@ -42,7 +35,8 @@ final class EquipmentsTVCell: UITableViewCell {
     
     private lazy var pageView: UIView = {
         let view = UIView()
-        
+        view.layer.cornerRadius = 10
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
         return view
     }()
@@ -50,6 +44,9 @@ final class EquipmentsTVCell: UITableViewCell {
     private func setLayout() {
         self.selectionStyle = .none
         self.backgroundColor = .cellBackgroundColor
+        self.segmentControll.backgroundColor = .tableViewColor
+        self.segmentControll.layer.cornerRadius = 10
+        self.segmentControll.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         self.contentView.addSubview(mainStackView)
 
