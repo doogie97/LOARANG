@@ -19,13 +19,6 @@ final class MainInfoTVCell: UITableViewCell {
     
     private let mainFontSize = 13
     
-    private lazy var backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cellBackgroundColor
-        
-        return view
-    }()
-    
     private lazy var mainStackView: UIStackView = {
         let emptyView = UIView()
         let stackView = UIStackView(arrangedSubviews: [emptyView, imageClassStackView, mainInfoStackView])
@@ -131,14 +124,9 @@ final class MainInfoTVCell: UITableViewCell {
     
     private func setLayout() {
         self.selectionStyle = .none
-        self.backgroundColor = .tableViewColor
-        self.contentView.addSubview(backView)
-        self.backView.addSubview(mainStackView)
+        self.backgroundColor = .cellBackgroundColor
         
-        backView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
-        }
+        self.addSubview(mainStackView)
         
         mainStackView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(8)

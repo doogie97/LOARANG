@@ -16,14 +16,7 @@ final class BasicAbilityTVCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private lazy var backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cellBackgroundColor
-        
-        return view
-    }()
-    
+
     private lazy var mainStackView: UIStackView = {
         let topEmptyView = UIView()
         let bottomEmptyView = UIView()
@@ -119,14 +112,9 @@ final class BasicAbilityTVCell: UITableViewCell {
     
     private func setLayout() {
         self.selectionStyle = .none
-        self.backgroundColor = .tableViewColor
+        self.backgroundColor = .cellBackgroundColor
         
-        self.contentView.addSubview(backView)
-        self.backView.addSubview(mainStackView)
-        
-        backView.snp.makeConstraints {
-            $0.edges.equalTo(self.safeAreaLayoutGuide)
-        }
+        self.addSubview(mainStackView)
         
         mainStackView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(8)
