@@ -6,12 +6,12 @@
 //
 
 struct Stat {
-    let basicEffect: BasicEffect
+    let basicAbility: BasicAbility
     let propensities: Propensities? //임시 옵셔널
     let engravigs: [Engraving]? //임시 옵셔널
 }
 
-struct BasicEffect {
+struct BasicAbility {
     let attack: String
     let vitality: String
     let crit: String

@@ -118,14 +118,14 @@ struct CrawlManager: CrawlManagerable {
     
     //MARK: - Stat
     private func getStat(doc: Document) throws -> Stat {
-        guard let basicEffect = try? getBasicEffect(doc: doc) else {
+        guard let basicAbility = try? getBasicAbility(doc: doc) else {
             throw CrawlError.searchError //뭐 나중에는 어떤 에러인지 상세하게
         }
         
-        return Stat(basicEffect: basicEffect, propensities: nil, engravigs: nil)
+        return Stat(basicAbility: basicAbility, propensities: nil, engravigs: nil)
     }
     
-    private func getBasicEffect(doc: Document) throws -> BasicEffect {
+    private func getBasicAbility(doc: Document) throws -> BasicAbility {
         let attack = try doc.select("#profile-char > div:nth-child(1) > ul > li:nth-child(1) > span:nth-child(2)").text()
         let vitality = try doc.select("#profile-char > div:nth-child(1) > ul > li:nth-child(2) > span:nth-child(2)").text()
         let crit = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(1) > span:nth-child(2)").text()
@@ -135,6 +135,6 @@ struct CrawlManager: CrawlManagerable {
         let endurance = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(5) > span:nth-child(2)").text()
         let expertise = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(6) > span:nth-child(2)").text()
         
-        return BasicEffect(attack: attack, vitality: vitality, crit: crit, specialization: specialization, domination: domination, swiftness: swiftness, endurance: endurance, expertise: expertise)
+        return BasicAbility(attack: attack, vitality: vitality, crit: crit, specialization: specialization, domination: domination, swiftness: swiftness, endurance: endurance, expertise: expertise)
     }
 }
