@@ -16,14 +16,19 @@ struct CrawlManager: CrawlManagerable {
     
     func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         let stat: Stat? = nil // 추후에 이런식으로 다른 정보들도 가져와 놓은 다음에 이미지 다운이 완료되면 UserInfo만들어서 completion으로 보내기
-        getBasicInfo(name: name) { result in
-            switch result {
-            case .success(let basicInfo):
-                completion(.success(UserInfo(basicInfo: basicInfo,
-                                             stat: stat,
-                                             equips: nil)))
-            case .failure(let error):
-                completion(.failure(error))
+        DispatchQueue.global().async {
+            getBasicInfo(name: name) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let basicInfo):
+                        completion(.success(UserInfo(basicInfo: basicInfo,
+                                                     stat: stat,
+                                                     equips: nil)))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+                
             }
         }
     }

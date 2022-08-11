@@ -18,6 +18,8 @@ protocol MainViewModelOutPut {
     var showUserInfo: PublishRelay<UserInfo> { get }
     var mainUser: BehaviorRelay<MainUser?> { get }
     var showErrorAlert: PublishRelay<String?> { get }
+    var startedLoading: PublishRelay<Void> { get }
+    var finishedLoading: PublishRelay<Void> { get }
 }
 
 final class MainViewModel: MainViewModelInOut {
@@ -36,7 +38,10 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchMainUserCell() {
+        startedLoading.accept(())
         crawlManager.getUserInfo(storage.mainUser.value?.name ?? "") { [weak self] result in
+            self?.finishedLoading.accept(())
+            
             switch result {
             case .success(let userInfo):
                 self?.showUserInfo.accept(userInfo)
@@ -57,6 +62,7 @@ final class MainViewModel: MainViewModelInOut {
                     self?.showErrorAlert.accept(error.errorDescrption)
                 }
             case .failure(_):
+                self?.showErrorAlert.accept(nil)
                 return
             }
         }
@@ -67,14 +73,18 @@ final class MainViewModel: MainViewModelInOut {
     let showUserInfo = PublishRelay<UserInfo>()
     let mainUser: BehaviorRelay<MainUser?>
     let showErrorAlert = PublishRelay<String?>()
+    let startedLoading = PublishRelay<Void>()
+    let finishedLoading = PublishRelay<Void>()
 }
 
 //MARK: - about Delegate
 extension MainViewModel: TouchBookmarkCellDelegate {
     func showBookmarkUser(index: Int) {
+        startedLoading.accept(())
         let userName = storage.bookMark.value[index].name
         
         crawlManager.getUserInfo(userName) { [weak self] result in
+            self?.finishedLoading.accept(())
             switch result {
             case .success(let userInfo):
                 self?.showUserInfo.accept(userInfo)
@@ -92,6 +102,7 @@ extension MainViewModel: TouchBookmarkCellDelegate {
                     self?.showErrorAlert.accept(error.errorDescrption)
                 }
             case .failure(_):
+                self?.showErrorAlert.accept(nil)
                 return
             }
         }

@@ -69,6 +69,18 @@ final class MainViewController: UIViewController {
                 self?.showAlert(title: "", message: $0)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.startedLoading
+            .bind(onNext: { [weak self] in
+                self?.mainView.activityIndicator.startAnimating()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.finishedLoading
+            .bind(onNext: { [weak self] in
+                self?.mainView.activityIndicator.stopAnimating()
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setMainTableView() {
