@@ -51,6 +51,7 @@ final class SettingViewModel: SettingViewModelable {
     func changeMainUser(_ mainUser: MainUser) {
         do {
             try storage.changeMainUser(mainUser)
+            showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
         } catch {
             guard let error = error as? LocalStorageError else {
                 showAlert.accept(nil)
