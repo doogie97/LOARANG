@@ -15,9 +15,23 @@ struct CrawlManager: CrawlManagerable {
     private let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
     
     func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
-        let stat: Stat? = nil // 추후에 이런식으로 다른 정보들도 가져와 놓은 다음에 이미지 다운이 완료되면 UserInfo만들어서 completion으로 보내기
+        guard let url = makeURL(urlString: baseURL, name: name) else {
+            completion(.failure(CrawlError.urlError))
+            return
+        }
+        
+        guard let doc = try? makeDocument(url: url) else {
+            completion(.failure(CrawlError.documentError))
+            return
+        }
+        
+        guard let stat = try? getStat(doc: doc) else {
+            completion(.failure(CrawlError.searchError))
+            return
+        }
+        
         DispatchQueue.global().async {
-            getBasicInfo(name: name) { result in
+            getBasicInfo(name: name, doc: doc) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let basicInfo):
@@ -54,16 +68,7 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - basic info
-    private func getBasicInfo(name: String, completion: @escaping (Result<BasicInfo, Error>) -> Void) {
-        guard let url = makeURL(urlString: baseURL, name: name) else {
-            completion(.failure(CrawlError.urlError))
-            return
-        }
-        
-        guard let doc = try? makeDocument(url: url) else {
-            completion(.failure(CrawlError.documentError))
-            return
-        }
+    private func getBasicInfo(name: String, doc: Document, completion: @escaping (Result<BasicInfo, Error>) -> Void) {
         
         do {
             let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
@@ -109,5 +114,27 @@ struct CrawlManager: CrawlManagerable {
         }
         dataTask.resume()
         // 빈 이미지 리턴 하는 부분은 추후 이미지 다운 실패이미지로 변경 필요
+    }
+    
+    //MARK: - Stat
+    private func getStat(doc: Document) throws -> Stat {
+        guard let basicEffect = try? getBasicEffect(doc: doc) else {
+            throw CrawlError.searchError //뭐 나중에는 어떤 에러인지 상세하게
+        }
+        
+        return Stat(basicEffect: basicEffect, propensities: nil, engravigs: nil)
+    }
+    
+    private func getBasicEffect(doc: Document) throws -> BasicEffect {
+        let attack = try doc.select("#profile-char > div:nth-child(1) > ul > li:nth-child(1) > span:nth-child(2)").text()
+        let vitality = try doc.select("#profile-char > div:nth-child(1) > ul > li:nth-child(2) > span:nth-child(2)").text()
+        let crit = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(1) > span:nth-child(2)").text()
+        let specialization = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(2) > span:nth-child(2)").text()
+        let domination = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(3) > span:nth-child(2)").text()
+        let swiftness = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(4) > span:nth-child(2)").text()
+        let endurance = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(5) > span:nth-child(2)").text()
+        let expertise = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(6) > span:nth-child(2)").text()
+        
+        return BasicEffect(attack: attack, vitality: vitality, crit: crit, specialization: specialization, domination: domination, swiftness: swiftness, endurance: endurance, expertise: expertise)
     }
 }

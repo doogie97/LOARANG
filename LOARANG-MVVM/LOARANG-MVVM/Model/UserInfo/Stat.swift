@@ -7,8 +7,8 @@
 
 struct Stat {
     let basicEffect: BasicEffect
-    let propensities: Propensities
-    let engravigs: [Engraving]
+    let propensities: Propensities? //임시 옵셔널
+    let engravigs: [Engraving]? //임시 옵셔널
 }
 
 struct BasicEffect {

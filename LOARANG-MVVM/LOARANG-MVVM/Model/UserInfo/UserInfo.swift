@@ -7,6 +7,6 @@
 
 struct UserInfo {
     let basicInfo: BasicInfo
-    let stat: Stat? //임시 옵셔널
+    let stat: Stat
     let equips: Equips? //임시 옵셔널
 }
