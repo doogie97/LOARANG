@@ -75,6 +75,7 @@ extension BasicInfoViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicAbilityTVCell.self)") as? BasicAbilityTVCell else {
                 return UITableViewCell()
             }
+            cell.setCellContents(viewModel.userInfo.stat.basicAbility)
             
             return cell
         }

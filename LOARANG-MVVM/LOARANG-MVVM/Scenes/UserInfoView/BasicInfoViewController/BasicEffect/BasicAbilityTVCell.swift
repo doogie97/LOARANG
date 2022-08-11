@@ -137,4 +137,15 @@ final class BasicAbilityTVCell: UITableViewCell {
             $0.height.equalToSuperview().multipliedBy(0.3)
         }
     }
+    
+    func setCellContents(_ ability: BasicAbility) {
+        attackLabel.text = ability.attack
+        vitalityLabel.text = ability.vitality
+        critLabel.text = ability.crit
+        specializationLabel.text = ability.specialization
+        dominationLabel.text = ability.domination
+        swiftnessLabel.text = ability.swiftness
+        enduranceLabel.text = ability.endurance
+        expertiseLabel.text = ability.expertise
+    }
 }
