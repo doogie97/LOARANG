@@ -15,22 +15,21 @@ struct CrawlManager: CrawlManagerable {
     private let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
     
     func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
-        guard let url = makeURL(urlString: baseURL, name: name) else {
-            completion(.failure(CrawlError.urlError))
-            return
-        }
-        
-        guard let doc = try? makeDocument(url: url) else {
-            completion(.failure(CrawlError.documentError))
-            return
-        }
-        
-        guard let stat = try? getStat(doc: doc) else {
-            completion(.failure(CrawlError.searchError))
-            return
-        }
-        
         DispatchQueue.global().async {
+            guard let url = makeURL(urlString: baseURL, name: name) else {
+                completion(.failure(CrawlError.urlError))
+                return
+            }
+            
+            guard let doc = try? makeDocument(url: url) else {
+                completion(.failure(CrawlError.documentError))
+                return
+            }
+
+            guard let stat = try? getStat(doc: doc) else {
+                completion(.failure(CrawlError.searchError))
+                return
+            }
             getBasicInfo(name: name, doc: doc) { result in
                 DispatchQueue.main.async {
                     switch result {
