@@ -43,7 +43,7 @@ extension BasicInfoViewController: UITableViewDataSource {
     enum CellType: Int, CaseIterable {
         case mainInfo = 0
         case basicAbility
-        case equipment
+        case equipments
         
         var cellHeight: CGFloat {
             switch self {
@@ -51,7 +51,7 @@ extension BasicInfoViewController: UITableViewDataSource {
                 return UIScreen.main.bounds.width * 0.5
             case .basicAbility:
                 return UIScreen.main.bounds.width * 0.4
-            case .equipment:
+            case .equipments:
                 return UIScreen.main.bounds.width * 1.2
             }
         }
@@ -76,6 +76,14 @@ extension BasicInfoViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.setCellContents(viewModel.userInfo.stat.basicAbility)
+            
+            return cell
+        }
+        
+        if indexPath.row == CellType.equipments.rawValue {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentsTVCell.self)") as? EquipmentsTVCell else {
+                return UITableViewCell()
+            }
             
             return cell
         }

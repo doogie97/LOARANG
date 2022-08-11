@@ -22,6 +22,7 @@ final class BasicInfoView: UIView {
         tableView.separatorStyle = .none
         tableView.register(MainInfoTVCell.self)
         tableView.register(BasicAbilityTVCell.self)
+        tableView.register(EquipmentsTVCell.self)
         
         tableView.backgroundColor = .tableViewColor
         
