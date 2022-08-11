@@ -24,7 +24,7 @@ final class BasicInfoView: UIView {
         tableView.register(BasicAbilityTVCell.self)
         tableView.register(EquipmentsTVCell.self)
         
-        tableView.backgroundColor = .tableViewColor
+        tableView.backgroundColor = .mainBackground
         
         return tableView
     }()
