@@ -13,6 +13,7 @@
 		AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035EA2289122160068DC7E /* UserInfoView.swift */; };
 		AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */; };
 		AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B89F8289B81D6005BE193 /* SettingView.swift */; };
+		AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
@@ -88,6 +89,7 @@
 		AC035EA2289122160068DC7E /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		AC0B89F8289B81D6005BE193 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewModel.swift; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */,
+				AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */,
 				AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */,
 			);
 			path = CharacterImageView;
@@ -667,6 +670,7 @@
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
+				AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,

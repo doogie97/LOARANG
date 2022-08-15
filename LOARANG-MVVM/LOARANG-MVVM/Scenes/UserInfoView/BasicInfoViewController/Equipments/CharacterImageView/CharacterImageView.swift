@@ -17,9 +17,8 @@ final class CharacterImageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var userImageView: UIImageView = {
-       let imageView = UIImageView()
-        imageView.image = UIImage(named: "나는두기") //임시
+    private(set) lazy var userImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 10
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -35,5 +34,9 @@ final class CharacterImageView: UIView {
         userImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    func setUserImageView(_ userImage: UIImage) {
+        userImageView.image = userImage
     }
 }

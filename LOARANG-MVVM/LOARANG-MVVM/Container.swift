@@ -76,21 +76,26 @@ final class Container {
     }
     //MARK: - about Equipments
     func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
-        return EquipmentsTVCellViewModel(userInfo: userInfo, pageViewList: [makeBasicEquipmentViewController(),
-                                                                            makeAvatarViewController(),
-                                                                            makeCharacterImageViewController()])
+        return EquipmentsTVCellViewModel(userInfo: userInfo,
+                                         pageViewList: [makeBasicEquipmentViewController(),
+                                                        makeAvatarViewController(),
+                                                        makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)])
     }
     
-    func makeBasicEquipmentViewController() -> BasicEquipmentViewController {
+    private func makeBasicEquipmentViewController() -> BasicEquipmentViewController {
         return BasicEquipmentViewController()
     }
     
-    func makeAvatarViewController() -> AvatarViewController {
+    private func makeAvatarViewController() -> AvatarViewController {
         return AvatarViewController()
     }
     
-    func makeCharacterImageViewController() -> CharacterImageViewController {
-        return CharacterImageViewController()
+    private func makeCharacterImageViewController(userImage: UIImage) -> CharacterImageViewController {
+        return CharacterImageViewController(viewModel: makeCharacterImageViewModel(userImage: userImage))
+    }
+    
+    private func makeCharacterImageViewModel(userImage: UIImage) -> CharacterImageViewModelable {
+        return CharacterImageViewModel(userImage: userImage)
     }
     
     //MARK: - about settingVIew
