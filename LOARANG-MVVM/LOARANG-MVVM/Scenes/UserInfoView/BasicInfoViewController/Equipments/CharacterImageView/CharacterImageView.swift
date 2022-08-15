@@ -17,7 +17,7 @@ final class CharacterImageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private(set) lazy var userImageView: UIImageView = {
+    private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 10
@@ -26,13 +26,26 @@ final class CharacterImageView: UIView {
         
         return imageView
     }()
-    //추후 이미지 터치하면 확대 기능 및 다운로드 기능 추가 필요
+    
+    private (set) lazy var shareButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 25, weight: .regular), forImageIn: .normal)
+        button.imageView?.tintColor = .white
+        
+        return button
+    }()
     
     private func setLayout() {
         self.addSubview(userImageView)
+        self.addSubview(shareButton)
         
         userImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        shareButton.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(30)
         }
     }
     
