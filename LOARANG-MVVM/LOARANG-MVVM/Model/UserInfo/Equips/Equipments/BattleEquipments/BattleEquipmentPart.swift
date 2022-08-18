@@ -6,15 +6,15 @@
 //
 
 struct BattleEquipmentPart {
-    let titlt: String
-    let part: String
-    let lv: String
+    let titlt: String?
+    let part: String?
+    let lv: String?
     let quality: Int?
-    let grade: Int
-    let basicEffects: BasicEffects
+    let grade: Int?
+    let basicEffects: BasicEffects?
     let estherEffect: EstherEffect?
     let setEffects: SetEffects?
-    let imageURL: String
+    let imageURL: String?
 }
 
 struct BasicEffects {
