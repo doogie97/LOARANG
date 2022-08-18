@@ -1,11 +1,11 @@
 //
-//  Equipment.swift
+//  BattleEquipmentPart.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/07/14.
 //
 
-struct Equipment {
+struct BattleEquipmentPart {
     let titlt: String
     let part: String
     let lv: String

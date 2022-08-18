@@ -6,8 +6,7 @@
 //
 
 struct Equips {
-    let gems: [Gem]
-    let cardInfo: CardInfo
-    let equipments: Equipments
-    let avatar: Avatar
+    let gems: [Gem]?
+    let cardInfo: CardInfo?
+    let equipments: Equipments?
 }
