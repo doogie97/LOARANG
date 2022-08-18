@@ -13,7 +13,6 @@ struct BattleEquipmentPart {
     let grade: Int
     let basicEffects: BasicEffects
     let estherEffect: EstherEffect?
-    let triPods: Tripods?
     let setEffects: SetEffects?
     let imageURL: String
 }
@@ -26,12 +25,6 @@ struct BasicEffects {
 struct EstherEffect {
     let firstEffect: String
     let secondEffect: String
-}
-
-struct Tripods {
-    let firstTripod: String?
-    let secondTripod: String?
-    let thirdTripod: String?
 }
 
 struct SetEffects {
