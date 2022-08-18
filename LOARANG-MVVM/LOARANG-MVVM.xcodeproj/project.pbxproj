@@ -13,6 +13,7 @@
 		AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035EA2289122160068DC7E /* UserInfoView.swift */; };
 		AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */; };
 		AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B89F8289B81D6005BE193 /* SettingView.swift */; };
+		AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E68A128AE04C000575631 /* JsonInfoManager.swift */; };
 		AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
@@ -89,6 +90,7 @@
 		AC035EA2289122160068DC7E /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		AC0B89F8289B81D6005BE193 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		AC0E68A128AE04C000575631 /* JsonInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonInfoManager.swift; sourceTree = "<group>"; };
 		AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewModel.swift; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8F11C72881026600D06AA6 /* CrawManager.swift */,
+				AC0E68A128AE04C000575631 /* JsonInfoManager.swift */,
 				ACBA78F62898B34600CB39D5 /* CrawlError.swift */,
 			);
 			path = CrawlManager;
@@ -658,6 +661,7 @@
 				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
 				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */,
+				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
 				ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */,
 				AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */,
