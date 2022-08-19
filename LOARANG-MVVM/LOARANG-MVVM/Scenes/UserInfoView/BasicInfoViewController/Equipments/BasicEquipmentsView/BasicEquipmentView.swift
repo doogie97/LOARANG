@@ -19,7 +19,6 @@ final class BasicEquipmentView: UIView {
     
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [equipmentTableView, accessoryTableView])
-        stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
         return stackView
@@ -41,11 +40,27 @@ final class BasicEquipmentView: UIView {
         return tableView
     }()
     
+    private lazy var jewelryStackView: UIStackView = {
+        let label = UILabel()
+        label.text = "나중에 보석 들어올 스택뷰"
+        
+        let stackView = UIStackView(arrangedSubviews: [label])
+        
+        return stackView
+    }()
+    
     private func setLayout() {
         self.addSubview(mainStackView)
+        self.addSubview(jewelryStackView)
         
         mainStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(10)
+            $0.top.leading.trailing.equalTo(safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(jewelryStackView.snp.top)
+        }
+        
+        jewelryStackView.snp.makeConstraints {
+            $0.height.equalToSuperview().dividedBy(8)
+            $0.trailing.leading.bottom.equalToSuperview()
         }
     }
 }
