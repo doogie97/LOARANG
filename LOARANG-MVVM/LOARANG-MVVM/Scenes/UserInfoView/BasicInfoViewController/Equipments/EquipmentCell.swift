@@ -23,6 +23,9 @@ final class EquipmentCell: UITableViewCell {
         imageView.image = UIImage(named: "장비기본이미지")
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = #colorLiteral(red: 0.4440023303, green: 0.1819669902, blue: 0.03483333439, alpha: 1)
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 1
+        imageView.layer.cornerRadius = 5
         
         return imageView
     }()
@@ -51,7 +54,7 @@ final class EquipmentCell: UITableViewCell {
 
         
         partImageView.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.22)
+            $0.width.equalToSuperview().multipliedBy(0.25)
             $0.height.equalTo(partImageView.snp.width)
             $0.leading.equalTo(safeAreaLayoutGuide)
             $0.top.equalTo(safeAreaLayoutGuide)
