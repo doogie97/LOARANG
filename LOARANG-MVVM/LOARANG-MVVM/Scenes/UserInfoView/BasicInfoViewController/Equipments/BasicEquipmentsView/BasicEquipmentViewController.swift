@@ -81,6 +81,6 @@ extension BasicEquipmentViewController: UITableViewDataSource {
 
 extension BasicEquipmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / 6
+        return tableView.frame.height / 7
     }
 }
