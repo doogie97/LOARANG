@@ -14,4 +14,15 @@ extension String {
         }
         return string
     }
+    
+    func threeNum(_ isFullLv: Bool) -> String {
+        if isFullLv {
+            return self
+        } else {
+            guard let num = Int(self) else {
+                return ""
+            }
+            return String(format: "%03d", num + 1)
+        }
+    }
 }
