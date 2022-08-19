@@ -17,22 +17,30 @@ struct CrawlManager: CrawlManagerable {
     func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         DispatchQueue.global().async {
             guard let url = makeURL(urlString: baseURL, name: name) else {
+                DispatchQueue.main.async {
                 completion(.failure(CrawlError.urlError))
+                }
                 return
             }
             
             guard let doc = try? makeDocument(url: url) else {
+                DispatchQueue.main.async {
                 completion(.failure(CrawlError.documentError))
+                }
                 return
             }
 
             guard let stat = try? getStat(doc: doc) else {
+                DispatchQueue.main.async {
                 completion(.failure(CrawlError.searchError))
+                }
                 return
             }
             
             guard let equips = try? getEquips(doc: doc) else {
+                DispatchQueue.main.async {
                 completion(.failure(CrawlError.searchError))
+                }
                 return
             }
             
