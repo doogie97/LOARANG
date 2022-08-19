@@ -26,7 +26,7 @@ final class BasicEquipmentView: UIView {
     
     private(set) lazy var equipmentTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .tableViewColor
+        tableView.backgroundColor = .cellColor
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
         tableView.register(EquipmentCell.self)
@@ -35,7 +35,9 @@ final class BasicEquipmentView: UIView {
     
     private(set) lazy var accessoryTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemBlue
+        tableView.backgroundColor = .cellColor
+        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         
         return tableView
     }()
@@ -54,12 +56,13 @@ final class BasicEquipmentView: UIView {
         self.addSubview(jewelryStackView)
         
         mainStackView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(safeAreaLayoutGuide).inset(10)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(10)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(5)
             $0.bottom.equalTo(jewelryStackView.snp.top)
         }
         
         jewelryStackView.snp.makeConstraints {
-            $0.height.equalToSuperview().dividedBy(8)
+            $0.height.equalToSuperview().dividedBy(5)
             $0.trailing.leading.bottom.equalToSuperview()
         }
     }
