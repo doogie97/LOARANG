@@ -76,14 +76,20 @@ final class Container {
     }
     //MARK: - about Equipments
     func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
-        return EquipmentsTVCellViewModel(userInfo: userInfo,
-                                         pageViewList: [makeBasicEquipmentViewController(),
-                                                        makeAvatarViewController(),
-                                                        makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)])
+        return EquipmentsTVCellViewModel(
+            userInfo: userInfo,
+            pageViewList: [makeBasicEquipmentViewController(equipments: userInfo.equips.equipments),
+                           makeAvatarViewController(),
+                           makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)]
+        )
     }
     
-    private func makeBasicEquipmentViewController() -> BasicEquipmentViewController {
-        return BasicEquipmentViewController()
+    private func makeBasicEquipmentViewController(equipments: Equipments) -> BasicEquipmentViewController {
+        return BasicEquipmentViewController(viewModel: makeBasicEquipmentViewModel(equipments: equipments), container: self)
+    }
+    
+    private func makeBasicEquipmentViewModel(equipments: Equipments) -> BasicEquipmentViewModelable {
+        return BasicEquipmentViewModel(equipments: equipments)
     }
     
     private func makeAvatarViewController() -> AvatarViewController {

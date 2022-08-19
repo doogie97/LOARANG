@@ -8,5 +8,5 @@
 struct Equips {
     let gems: [Gem]?
     let cardInfo: CardInfo?
-    let equipments: Equipments?
+    let equipments: Equipments
 }
