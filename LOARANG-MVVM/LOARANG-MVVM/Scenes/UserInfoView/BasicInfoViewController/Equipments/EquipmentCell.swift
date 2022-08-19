@@ -68,8 +68,9 @@ final class EquipmentCell: UITableViewCell {
         }
     }
     
-    func setCellContents(equipmentPart: EquipmentPartable?, partString: String?) {
+    func setCellContents(equipmentPart: EquipmentPartable?, partString: String?, backColor: UIColor?) {
         partImageView.setImage(urlString: equipmentPart?.imageURL)
+        partImageView.backgroundColor = backColor
         partLabel.text = partString
         nameLabel.attributedText = equipmentPart?.name?.htmlToAttributedString
     }

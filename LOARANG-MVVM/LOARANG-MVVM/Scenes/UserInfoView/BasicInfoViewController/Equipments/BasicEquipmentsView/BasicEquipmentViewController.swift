@@ -67,6 +67,39 @@ extension BasicEquipmentViewController: UITableViewDataSource {
             }
         }
     }
+    
+    enum Grade: Int {
+        case nomal
+        case advanced
+        case rare
+        case hero
+        case legendary
+        case artifact
+        case ancient
+        case esther
+        
+        var color: UIColor {
+            switch self {
+            case .nomal:
+                return #colorLiteral(red: 0.593928329, green: 0.580765655, blue: 0.5510483948, alpha: 1)
+            case .advanced:
+                return #colorLiteral(red: 0.1626245975, green: 0.2453864515, blue: 0.06184400618, alpha: 1)
+            case .rare:
+                return #colorLiteral(red: 0.06879425794, green: 0.2269216776, blue: 0.347065717, alpha: 1)
+            case .hero:
+                return #colorLiteral(red: 0.2530562878, green: 0.06049384922, blue: 0.3300251961, alpha: 1)
+            case .legendary:
+                return #colorLiteral(red: 0.5773422718, green: 0.3460586369, blue: 0.01250262465, alpha: 1)
+            case .artifact:
+                return #colorLiteral(red: 0.4901602268, green: 0.2024044096, blue: 0.03712747619, alpha: 1)
+            case .ancient:
+                return #colorLiteral(red: 0.7324138284, green: 0.6683282852, blue: 0.5068081021, alpha: 1)
+            case .esther:
+                return #colorLiteral(red: 0.1580955684, green: 0.5807852149, blue: 0.567861557, alpha: 1)
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.battleEquips.count
     }
@@ -74,7 +107,8 @@ extension BasicEquipmentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
         cell.setCellContents(equipmentPart: viewModel.battleEquips[indexPath.row],
-                             partString: Part(rawValue: indexPath.row)?.partString)
+                             partString: Part(rawValue: indexPath.row)?.partString,
+                             backColor: Grade(rawValue: viewModel.battleEquips[indexPath.row]?.grade ?? 0)?.color)
         
         return cell
     }
