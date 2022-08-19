@@ -8,8 +8,8 @@
 import UIKit
 
 extension UIImageView {
-    func setProfileImage(urlString: String, `class`: String) {
-        guard let url  = URL(string: urlString) else {
+    func setImage(urlString: String?) {
+        guard let url  = URL(string: urlString ?? "") else {
             return
         }
         
@@ -31,7 +31,7 @@ extension UIImageView {
             }
             
             DispatchQueue.main.async {
-                self.image = image.cropImage(class: `class`)
+                self.image = image
             }
         }
         dataTask.resume()
