@@ -38,8 +38,12 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchMainUserCell() {
+        guard let mainUser = mainUser.value else {
+            return
+        }
+        
         startedLoading.accept(())
-        crawlManager.getUserInfo(storage.mainUser.value?.name ?? "") { [weak self] result in
+        crawlManager.getUserInfo(mainUser.name) { [weak self] result in
             self?.finishedLoading.accept(())
             
             switch result {
