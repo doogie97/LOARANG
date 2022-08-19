@@ -20,6 +20,7 @@ final class EquipmentCell: UITableViewCell {
     
     private lazy var partImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "장비기본이미지")
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = #colorLiteral(red: 0.4440023303, green: 0.1819669902, blue: 0.03483333439, alpha: 1)
         
