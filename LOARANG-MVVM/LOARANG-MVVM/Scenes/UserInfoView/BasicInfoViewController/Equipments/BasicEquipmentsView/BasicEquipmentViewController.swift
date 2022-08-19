@@ -42,6 +42,31 @@ final class BasicEquipmentViewController: UIViewController {
 }
 
 extension BasicEquipmentViewController: UITableViewDataSource {
+    enum Part: Int {
+        case head
+        case shoulder
+        case top
+        case bottom
+        case glove
+        case weapon
+        
+        var partString: String {
+            switch self {
+            case .head:
+                return "머리 방어구"
+            case .shoulder:
+                return "어깨 방어구"
+            case .top:
+                return "상의"
+            case .bottom:
+                return "하의"
+            case .glove:
+                return "장갑"
+            case .weapon:
+                return "무기"
+            }
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.battleEquips.count
     }
