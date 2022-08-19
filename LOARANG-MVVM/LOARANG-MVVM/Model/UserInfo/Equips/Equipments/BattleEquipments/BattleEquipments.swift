@@ -6,7 +6,7 @@
 //
 
 struct BattleEquipments {
-    let haed: BattleEquipmentPart?
+    let head: BattleEquipmentPart?
     let shoulder: BattleEquipmentPart?
     let top: BattleEquipmentPart?
     let bottom: BattleEquipmentPart?
