@@ -80,6 +80,7 @@
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */; };
 		ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */; };
+		ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +162,7 @@
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
 		ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewModel.swift; sourceTree = "<group>"; };
+		ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -284,6 +286,7 @@
 			children = (
 				AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */,
 				AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */,
+				ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */,
 				AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */,
 				AC799A8028A50B9E008A2865 /* AvatarView */,
 				AC799A8928A51A74008A2865 /* CharacterImageView */,
@@ -661,6 +664,7 @@
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
+				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,

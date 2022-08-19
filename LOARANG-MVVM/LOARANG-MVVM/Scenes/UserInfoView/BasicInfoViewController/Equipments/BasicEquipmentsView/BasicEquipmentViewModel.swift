@@ -12,17 +12,20 @@ protocol BasicEquipmentViewModelable: BasicEquipmentViewModelInput, BasicEquipme
 protocol BasicEquipmentViewModelInput {}
 
 protocol BasicEquipmentViewModelOutput {
-    var equipments: Equipments { get }
-    var battleEquips: BehaviorRelay<BattleEquipments> { get }
+    var battleEquips: [BattleEquipmentPart?] { get }
 }
 
 final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
-    init(equipments: Equipments) { //이제 나중에는 초기화 할때 equipments를 받긴 받지만 테이블 뷰에 할당해 주기 위해서 아래처럼 나눠서 할당 해줄거고 out에 있는 equipments는 필요 없어 질 듯?
-        self.equipments = equipments
-        self.battleEquips = BehaviorRelay<BattleEquipments>(value: equipments.battleEquipments)
+    init(equipments: Equipments) {
+        let battleEquipments = equipments.battleEquipments
+        self.battleEquips = [battleEquipments.head,
+                             battleEquipments.shoulder,
+                             battleEquipments.top,
+                             battleEquipments.bottom,
+                             battleEquipments.gloves,
+                             battleEquipments.weapon]
     }
     
     //out
-    let equipments: Equipments
-    let battleEquips: BehaviorRelay<BattleEquipments>
+    let battleEquips: [BattleEquipmentPart?]
 }

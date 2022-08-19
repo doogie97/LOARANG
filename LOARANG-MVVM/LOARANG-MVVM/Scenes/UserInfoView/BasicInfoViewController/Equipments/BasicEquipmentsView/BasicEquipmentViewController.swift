@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class BasicEquipmentViewController: UIViewController {
     private let viewModel: BasicEquipmentViewModelable
@@ -22,9 +23,39 @@ final class BasicEquipmentViewController: UIViewController {
     }
     
     private let basicEquipmentView = BasicEquipmentView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
         self.view = basicEquipmentView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindView()
+    }
+    
+    private func bindView() {
+        basicEquipmentView.equipmentTableView.dataSource = self
+        basicEquipmentView.equipmentTableView.delegate = self
+    }
+}
+
+extension BasicEquipmentViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.battleEquips.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
+        cell.setLayout(equipmentPart: viewModel.battleEquips[indexPath.row])
+        
+        return cell
+    }
+}
+
+extension BasicEquipmentViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / 6
     }
 }

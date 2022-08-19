@@ -17,7 +17,35 @@ final class BasicEquipmentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var mainStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [equipmentTableView, accessoryTableView])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
+        return stackView
+    }()
+    
+    private(set) lazy var equipmentTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .tableViewColor
+        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
+        tableView.register(EquipmentCell.self)
+        return tableView
+    }()
+    
+    private(set) lazy var accessoryTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .systemBlue
+        
+        return tableView
+    }()
+    
     private func setLayout() {
-        self.backgroundColor = .systemRed
+        self.addSubview(mainStackView)
+        
+        mainStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(10)
+        }
     }
 }

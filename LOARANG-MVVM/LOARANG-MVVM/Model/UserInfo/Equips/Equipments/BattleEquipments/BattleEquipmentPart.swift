@@ -4,8 +4,13 @@
 //
 //  Created by 최최성균 on 2022/07/14.
 //
-
-struct BattleEquipmentPart {
+protocol EquipmentPartable {
+    var name: String? { get }
+    var quality: Int? { get }
+    var grade: Int? { get }
+    var imageURL: String? { get }
+}
+struct BattleEquipmentPart: EquipmentPartable {
     let name: String?
     let part: String?
     let lv: String?
