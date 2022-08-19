@@ -30,18 +30,23 @@ struct CrawlManager: CrawlManagerable {
                 completion(.failure(CrawlError.searchError))
                 return
             }
+            
+            guard let equips = try? getEquips(doc: doc) else {
+                completion(.failure(CrawlError.searchError))
+                return
+            }
+            
             getMainInfo(name: name, doc: doc) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let mainInfo):
                         completion(.success(UserInfo(mainInfo: mainInfo,
                                                      stat: stat,
-                                                     equips: nil)))
+                                                     equips: equips)))
                     case .failure(let error):
                         completion(.failure(error))
                     }
                 }
-                
             }
         }
     }
@@ -135,5 +140,23 @@ struct CrawlManager: CrawlManagerable {
         let expertise = try doc.select("#profile-char > div:nth-child(2) > ul > li:nth-child(6) > span:nth-child(2)").text()
         
         return BasicAbility(attack: attack, vitality: vitality, crit: crit, specialization: specialization, domination: domination, swiftness: swiftness, endurance: endurance, expertise: expertise)
+    }
+    
+    private func getEquips(doc: Document) throws -> Equips {
+        guard let wholeJsonString = try? doc.select("#profile-ability > script").first()?.data() else {
+            throw CrawlError.jsonInfoError
+        }
+        
+        let replacedString = wholeJsonString
+            .replacingOccurrences(of: "$.Profile = ", with: "")
+            .replacingOccurrences(of: ";", with: "")
+        
+        guard let jsonInfoManager = try? JsonInfoManager(jsonString: replacedString) else {
+            throw CrawlError.jsonInfoError
+        }
+        
+        let equipments = jsonInfoManager.getEquipmentsInfo()
+        
+        return Equips(gems: nil, cardInfo: nil, equipments: equipments) //임시 nil
     }
 }
