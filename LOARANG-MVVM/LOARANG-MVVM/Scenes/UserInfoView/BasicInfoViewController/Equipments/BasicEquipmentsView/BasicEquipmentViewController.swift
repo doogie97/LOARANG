@@ -73,7 +73,8 @@ extension BasicEquipmentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
-        cell.setLayout(equipmentPart: viewModel.battleEquips[indexPath.row])
+        cell.setCellContents(equipmentPart: viewModel.battleEquips[indexPath.row],
+                             partString: Part(rawValue: indexPath.row)?.partString)
         
         return cell
     }

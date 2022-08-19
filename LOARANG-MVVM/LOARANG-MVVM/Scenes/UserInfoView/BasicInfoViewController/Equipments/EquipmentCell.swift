@@ -6,29 +6,71 @@
 //
 
 import SnapKit
+import UIKit
 
 final class EquipmentCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var laber = UILabel()
+    private lazy var partImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = #colorLiteral(red: 0.4440023303, green: 0.1819669902, blue: 0.03483333439, alpha: 1)
+        
+        return imageView
+    }()
     
-    func setLayout(equipmentPart: EquipmentPartable?) {
+    private lazy var partLabel: UILabel = {
+        let label = UILabel()
+        label.font = .one(size: 12, family: .Bold)
+        
+        return label
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        
+        return label
+    }()
+    
+    func setLayout() {
         self.selectionStyle = .none
-        self.backgroundColor = .cellBackgroundColor
-        
+        self.backgroundColor = .cellColor
 
-        laber.text = equipmentPart?.quality?.description
-        self.contentView.addSubview(laber)
+        self.contentView.addSubview(partImageView)
+        self.contentView.addSubview(partLabel)
+        self.contentView.addSubview(nameLabel)
+
         
-        laber.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        partImageView.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.22)
+            $0.height.equalTo(partImageView.snp.width)
+            $0.leading.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide)
         }
-
+        
+        partLabel.snp.makeConstraints {
+            $0.leading.equalTo(partImageView.snp.trailing).inset(-5)
+            $0.top.equalTo(partImageView.snp.top).inset(5)
+        }
+        
+        nameLabel.snp.makeConstraints {
+            $0.leading.equalTo(partImageView.snp.trailing).inset(-5)
+            $0.trailing.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(partImageView.snp.centerY)
+        }
+    }
+    
+    func setCellContents(equipmentPart: EquipmentPartable?, partString: String?) {
+        partImageView.setImage(urlString: equipmentPart?.imageURL)
+        partLabel.text = partString
+        nameLabel.attributedText = equipmentPart?.name?.htmlToAttributedString
     }
 }
