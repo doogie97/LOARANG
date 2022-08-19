@@ -34,7 +34,7 @@ struct JsonInfoManager {
         var top: BattleEquipmentPart?
         var bottom: BattleEquipmentPart?
         var gloves: BattleEquipmentPart?
-        var weapon: BattleEquipmentPart? // 무기는 무기만의 로직을 따로 만들어야함 why? 에스더 무기 때문에
+        var weapon: BattleEquipmentPart?
         
         for info in equipmentsJsons {
             if info.title.contains(EquimentIndex.head.rawValue) {
@@ -47,37 +47,66 @@ struct JsonInfoManager {
                 bottom = getBattleEquipmentPart(info.json)
             } else if info.title.contains(EquimentIndex.glove.rawValue) {
                 gloves = getBattleEquipmentPart(info.json)
+            } else if info .title.contains(EquimentIndex.weapon.rawValue) {
+                weapon = getBattleEquipmentPart(info.json)
             }
         }
-        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: nil)
+        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon)
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     
-    private func getBattleEquipmentPart(_ json: JSON) -> BattleEquipmentPart {
-        let isFullLv = json["Element_007"]["type"].stringValue != "Progress"
-        
-        let basicEffects = BasicEffects(basicEffect: json["Element_005"]["value"]["Element_000"].stringValue
-                                        + "<BR>" + json["Element_005"]["value"]["Element_001"].stringValue,
-                                        aditionalEffect: json["Element_006"]["value"]["Element_000"].stringValue
-                                        + "<BR>" + json["Element_006"]["value"]["Element_001"].stringValue)
-        
-        let effects = SetEffects.Effects(
-            firstSetEffect: json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_001"]["topStr"].stringValue + "<BR>" + json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_001"]["contentStr"]["Element_000"]["contentStr"].stringValue,
-            secondSetEffect: json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_002"]["topStr"].stringValue + "<BR>" + json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_002"]["contentStr"]["Element_000"]["contentStr"].stringValue,
-            thirdSetEffect: json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_003"]["topStr"].stringValue + "<BR>" + json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_003"]["contentStr"]["Element_000"]["contentStr"].stringValue)
-        
-        let setEffect = SetEffects(setEffectLv: json["Element_\("007".threeNum(isFullLv))"]["value"]["Element_000"].stringValue
-                                   + "<BR>" + json["Element_\("007".threeNum(isFullLv))"]["value"]["Element_001"].stringValue,
-                                   effects: effects)
-        
+    private func getBattleEquipmentPart(_ json: JSON) -> BattleEquipmentPart {        
         return BattleEquipmentPart(name: json["Element_000"]["value"].stringValue,
                                    part: json["Element_001"]["value"]["leftStr0"].stringValue,
                                    lv: json["Element_001"]["value"]["leftStr2"].stringValue,
                                    quality: json["Element_001"]["value"]["qualityValue"].intValue,
                                    grade: json["Element_001"]["value"]["slotData"]["iconGrade"].intValue,
                                    imageURL: imageBaseURL + json["Element_001"]["value"]["slotData"]["iconPath"].stringValue,
-                                   basicEffects: basicEffects,
-                                   estherEffect: nil ,//일단 nil
-                                   setEffects: setEffect)
+                                   battleEffects: getBattleEffects(json))
+    }
+    
+    //MARK: - 전투 장비 효과 가져오기    
+    private func getBattleEffects(_ json: JSON) -> String {
+        let isEsther = json["Element_001"]["value"]["slotData"]["iconGrade"].intValue == 7
+        
+        let basicEffect = json["Element_005"]["value"]["Element_000"].stringValue
+        + "<BR>" + json["Element_005"]["value"]["Element_001"].stringValue + "<BR><BR>"
+        
+        let aditionalEffect = json["Element_006"]["value"]["Element_000"].stringValue
+        + "<BR>" + json["Element_006"]["value"]["Element_001"].stringValue + "<BR><BR>"
+        
+        if isEsther {
+            let estherEffects = getEstherEffect(json)
+
+            return basicEffect + aditionalEffect + estherEffects
+        } else {
+            let setEffects = getSetEffect(json)
+
+            return basicEffect + aditionalEffect + setEffects
+        }
+    }
+    
+    private func getEstherEffect(_ json: JSON) -> String {
+        let topStr = json["Element_007"]["value"]["Element_000"]["topStr"].stringValue
+        let firstEffect = "• " + json["Element_007"]["value"]["Element_000"]["contentStr"]["Element_000"]["contentStr"].stringValue
+        let secondEffect = "• " + json["Element_007"]["value"]["Element_000"]["contentStr"]["Element_001"]["contentStr"].stringValue
+        let setEffect = json["Element_008"]["value"]["Element_000"].stringValue + "<BR>" + json["Element_008"]["value"]["Element_001"].stringValue
+        
+        return topStr + "<BR>" + firstEffect + "<BR>" + secondEffect + "<BR><BR>" + setEffect
+    }
+    
+    private func getSetEffect(_ json: JSON) -> String {
+        let isFullLv = json["Element_007"]["type"].stringValue != "Progress"
+        
+        let setEffectLv = json["Element_\("007".threeNum(isFullLv))"]["value"]["Element_000"].stringValue
+        + "<BR>" + json["Element_\("007".threeNum(isFullLv))"]["value"]["Element_001"].stringValue
+        
+        let firstSetEffect = json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_001"]["topStr"].stringValue + "<BR>" + json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_001"]["contentStr"]["Element_000"]["contentStr"].stringValue
+        
+        let secondSetEffect = json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_002"]["topStr"].stringValue + "<BR>" + json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_002"]["contentStr"]["Element_000"]["contentStr"].stringValue
+        
+        let thirdSetEffect = json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_003"]["topStr"].stringValue + "<BR>" + json["Element_\("008".threeNum(isFullLv))"]["value"]["Element_003"]["contentStr"]["Element_000"]["contentStr"].stringValue
+        
+        return setEffectLv + "<BR><BR>" + firstSetEffect + "<BR><BR>" + secondSetEffect + "<BR><BR>" + thirdSetEffect
     }
 }
