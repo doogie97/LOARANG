@@ -92,6 +92,14 @@ final class Container {
         return BasicEquipmentViewModel(equipments: equipments)
     }
     
+    func makeEquipmentDetailViewController(equipmentInfo: BattleEquipmentPart) -> EquipmentDetailViewController {
+        return EquipmentDetailViewController(viewModel: makeEquipmentDetailViewModel(equipmentInfo: equipmentInfo))
+    }
+    
+    private func makeEquipmentDetailViewModel(equipmentInfo: BattleEquipmentPart) -> EquipmentDetailViewModelable {
+        return EquipmentDetailViewModel(equipmentInfo: equipmentInfo)
+    }
+    
     private func makeAvatarViewController() -> AvatarViewController {
         return AvatarViewController()
     }
