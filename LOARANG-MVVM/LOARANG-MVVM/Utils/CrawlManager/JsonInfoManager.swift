@@ -19,7 +19,7 @@ struct JsonInfoManager {
         self.jsonInfo = JSON(jsonInfo)
     }
     
-    func getEquipmentsInfo() -> Equipments { //battleEquipments 반환
+    func getEquipmentsInfo() -> Equipments {
         let eqJson = JSON(jsonInfo["Equip"])
         
         let equipmentsJsons: [(title: String, json: JSON)] = eqJson.compactMap { (title, JSON) in
