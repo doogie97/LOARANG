@@ -41,7 +41,15 @@ final class BasicEquipmentViewController: UIViewController {
         
         viewModel.showEquipmentDetail
             .bind(onNext: { [weak self] in
-                print($0?.name?.htmlToString)
+                guard let self = self else {
+                    return
+                }
+                
+                guard let equipmentInfo = $0 else {
+                    return
+                }
+                
+                self.present(self.container.makeEquipmentDetailViewController(equipmentInfo: equipmentInfo), animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -82,7 +90,7 @@ extension BasicEquipmentViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
         cell.setCellContents(equipmentPart: viewModel.battleEquips[indexPath.row],
                              partString: Part(rawValue: indexPath.row)?.partString,
-                             backColor: BattleEquipmentPart.Grade(rawValue: viewModel.battleEquips[indexPath.row]?.grade ?? 0)?.color)
+                             backColor: BattleEquipmentPart.Grade(rawValue: viewModel.battleEquips[indexPath.row]?.grade ?? 0)?.backgroundColor)
         
         return cell
     }
