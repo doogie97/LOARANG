@@ -51,7 +51,7 @@ struct JsonInfoManager {
                 weapon = getBattleEquipmentPart(info.json, type: .battleEquipment)
             }
         }
-        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: nil, firstEarring: nil, secondEarring: nil, firstRing: nil, secondRing: nil, abilityStone: nil, bracelet: nil)
+        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: nil, firstEarring: nil, secondEarring: nil, firstRing: nil, secondRing: nil, bracelet: nil, abilityStone: nil)
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     

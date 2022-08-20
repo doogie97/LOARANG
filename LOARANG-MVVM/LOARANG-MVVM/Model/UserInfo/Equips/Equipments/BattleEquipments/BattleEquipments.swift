@@ -19,6 +19,6 @@ struct BattleEquipments {
     let secondEarring: EquipmentPart?
     let firstRing: EquipmentPart?
     let secondRing: EquipmentPart?
-    let abilityStone: EquipmentPart?
     let bracelet: EquipmentPart?
+    let abilityStone: EquipmentPart?
 }
