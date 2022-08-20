@@ -34,6 +34,24 @@ final class EquipmentDetailView: UIView {
     
     private lazy var partNameLabel = makeLabel(alignment: .left, font: .one(size: 15, family: .Bold))
     
+    private lazy var itemLvLabel = makeLabel(alignment: .left, font: .one(size: 18, family: .Bold))
+    
+    private lazy var qualityLabel = makeLabel(alignment: .left, font: .one(size: 15, family: .Bold))
+    
+    private lazy var qualityBar: UIView = { //나중에 게이지 바로 바꿀 예정
+        let view = UIView()
+        view.backgroundColor = .systemOrange
+        
+        return view
+    }()
+    private lazy var effetcTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = backgroundColor
+        textView.isEditable = false
+        
+        return textView
+    }()
+    
     private func makeLabel(alignment: NSTextAlignment, font: UIFont) -> UILabel {
         let label = UILabel()
         label.textAlignment = alignment
@@ -48,6 +66,10 @@ final class EquipmentDetailView: UIView {
         self.addSubview(underline)
         self.addSubview(equipmentImageView)
         self.addSubview(partNameLabel)
+        self.addSubview(itemLvLabel)
+        self.addSubview(qualityLabel)
+        self.addSubview(qualityBar) // 나중에 제대로 구현 필요
+        self.addSubview(effetcTextView)
      
         nameLabel.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(safeAreaLayoutGuide).inset(20)
@@ -70,6 +92,27 @@ final class EquipmentDetailView: UIView {
             $0.leading.equalTo(equipmentImageView.snp.trailing).inset(-15)
             $0.top.equalTo(equipmentImageView.snp.top)
         }
+        
+        itemLvLabel.snp.makeConstraints {
+            $0.leading.equalTo(equipmentImageView.snp.trailing).inset(-15)
+            $0.centerY.equalTo(equipmentImageView.snp.centerY)
+        }
+        
+        qualityLabel.snp.makeConstraints {
+            $0.leading.equalTo(equipmentImageView.snp.trailing).inset(-15)
+            $0.bottom.equalTo(equipmentImageView.snp.bottom)
+        }
+        
+        qualityBar.snp.makeConstraints {
+            $0.top.equalTo(qualityLabel.snp.bottom).inset(-16)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.height.equalTo(equipmentImageView).multipliedBy(0.35)
+        }
+        
+        effetcTextView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(qualityBar.snp.bottom).inset(-16)
+        }
     }
     
     func setCellContents(_ equipmentInfo: BattleEquipmentPart) {
@@ -81,5 +124,11 @@ final class EquipmentDetailView: UIView {
         
         partNameLabel.text = equipmentInfo.part?.htmlToString
         partNameLabel.textColor = BattleEquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
+        
+        itemLvLabel.text = equipmentInfo.lv?.htmlToString
+        
+        qualityLabel.text = "품질 \(equipmentInfo.quality ?? 0)"
+        
+        effetcTextView.attributedText = equipmentInfo.battleEffects?.htmlToAttributedString(fontSize: 10, alignment: .LEFT)
     }
 }
