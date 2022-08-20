@@ -76,6 +76,6 @@ final class EquipmentCell: UITableViewCell {
         partImageView.setImage(urlString: equipmentPart?.imageURL)
         partImageView.backgroundColor = backColor
         partLabel.text = partString
-        nameLabel.attributedText = equipmentPart?.name?.htmlToAttributedString(alignment: .LEFT)
+        nameLabel.attributedText = equipmentPart?.name?.htmlToAttributedString(fontSize: 12 ,alignment: .LEFT)
     }
 }

@@ -34,8 +34,9 @@ extension String {
         case RIGHT
     }
     
-    func htmlToAttributedString(alignment: HtmlAlignment = .CENTER) -> NSAttributedString? {
-        let newHTML = self.replacingOccurrences(of: "CENTER", with: alignment.rawValue)
+    func htmlToAttributedString(fontSize: Int = 10, alignment: HtmlAlignment = .CENTER) -> NSAttributedString? {
+        let newHTML = String(format:"<span style=\"font-size: \(fontSize);\">%@</span>", self).replacingOccurrences(of: "CENTER", with: alignment.rawValue)
+
         guard let data = newHTML.data(using: .utf8) else { return nil }
         do {
             return try NSAttributedString(data: data,
