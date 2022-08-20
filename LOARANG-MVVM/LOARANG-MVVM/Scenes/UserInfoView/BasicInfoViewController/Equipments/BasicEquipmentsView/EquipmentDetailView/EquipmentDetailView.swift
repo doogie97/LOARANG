@@ -46,11 +46,12 @@ final class EquipmentDetailView: UIView {
     
     private lazy var qualityLabel = makeLabel(alignment: .left, font: .one(size: 15, family: .Bold))
     
-    private lazy var qualityBar: UIView = { //나중에 게이지 바로 바꿀 예정
-        let view = UIView()
-        view.backgroundColor = .systemOrange
+    private lazy var qualityProgressView: UIProgressView = {
+        let progressView = UIProgressView()
+        progressView.trackTintColor = .lightGray
+        progressView.progressViewStyle = .bar
         
-        return view
+        return progressView
     }()
     private lazy var effetcTextView: UITextView = {
         let textView = UITextView()
@@ -77,7 +78,7 @@ final class EquipmentDetailView: UIView {
         self.addSubview(partNameLabel)
         self.addSubview(itemLvLabel)
         self.addSubview(qualityLabel)
-        self.addSubview(qualityBar) // 나중에 제대로 구현 필요
+        self.addSubview(qualityProgressView)
         self.addSubview(effetcTextView)
         
         closeButton.snp.makeConstraints {
@@ -118,15 +119,15 @@ final class EquipmentDetailView: UIView {
             $0.bottom.equalTo(equipmentImageView.snp.bottom)
         }
         
-        qualityBar.snp.makeConstraints {
+        qualityProgressView.snp.makeConstraints {
             $0.top.equalTo(qualityLabel.snp.bottom).inset(-16)
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(equipmentImageView).multipliedBy(0.35)
         }
         
         effetcTextView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(16)
-            $0.top.equalTo(qualityBar.snp.bottom).inset(-16)
+            $0.top.equalTo(qualityProgressView.snp.bottom).inset(-16)
         }
     }
     
@@ -142,7 +143,11 @@ final class EquipmentDetailView: UIView {
         
         itemLvLabel.text = equipmentInfo.lv?.htmlToString
         
-        qualityLabel.text = "품질 \(equipmentInfo.quality ?? 0)"
+        let quality = equipmentInfo.quality == -1 ? 0 : equipmentInfo.quality ?? 0
+        qualityLabel.text = "품질 \(quality)"
+        
+        qualityProgressView.progressTintColor = quality.qualityColor
+        qualityProgressView.progress = Float(quality)/100
         
         effetcTextView.attributedText = equipmentInfo.battleEffects?.htmlToAttributedString(fontSize: 5)
     }
