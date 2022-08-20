@@ -25,4 +25,8 @@ final class EquipmentDetailViewController: UIViewController {
         super.loadView()
         self.view = equipmentDetailView
     }
+    
+    override func viewDidLoad() {
+        equipmentDetailView.setCellContents(viewModel.equipmentInfo)
+    }
 }
