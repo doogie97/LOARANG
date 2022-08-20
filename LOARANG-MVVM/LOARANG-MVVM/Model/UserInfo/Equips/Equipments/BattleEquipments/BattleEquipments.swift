@@ -6,10 +6,10 @@
 //
 
 struct BattleEquipments {
-    let head: BattleEquipmentPart?
-    let shoulder: BattleEquipmentPart?
-    let top: BattleEquipmentPart?
-    let bottom: BattleEquipmentPart?
-    let gloves: BattleEquipmentPart?
-    let weapon: BattleEquipmentPart?
+    let head: EquipmentPart?
+    let shoulder: EquipmentPart?
+    let top: EquipmentPart?
+    let bottom: EquipmentPart?
+    let gloves: EquipmentPart?
+    let weapon: EquipmentPart?
 }

@@ -131,15 +131,15 @@ final class EquipmentDetailView: UIView {
         }
     }
     
-    func setCellContents(_ equipmentInfo: BattleEquipmentPart) {
+    func setCellContents(_ equipmentInfo: EquipmentPart) {
         nameLabel.text = equipmentInfo.name?.htmlToString
-        nameLabel.textColor = BattleEquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
+        nameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
         
         equipmentImageView.setImage(urlString: equipmentInfo.imageURL)
-        equipmentImageView.backgroundColor = BattleEquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.backgroundColor
+        equipmentImageView.backgroundColor = EquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.backgroundColor
         
         partNameLabel.text = equipmentInfo.part?.htmlToString
-        partNameLabel.textColor = BattleEquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
+        partNameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
         
         itemLvLabel.text = equipmentInfo.lv?.htmlToString
         

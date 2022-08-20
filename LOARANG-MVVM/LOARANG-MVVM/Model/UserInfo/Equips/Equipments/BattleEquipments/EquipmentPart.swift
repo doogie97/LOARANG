@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol EquipmentPartable {
-    var name: String? { get }
-    var quality: Int? { get }
-    var grade: Int? { get }
-    var imageURL: String? { get }
-}
-struct BattleEquipmentPart: EquipmentPartable {
+struct EquipmentPart {
     let name: String?
     let part: String?
     let lv: String?

@@ -29,12 +29,12 @@ struct JsonInfoManager {
             return nil
         }
         
-        var head: BattleEquipmentPart?
-        var shoulder: BattleEquipmentPart?
-        var top: BattleEquipmentPart?
-        var bottom: BattleEquipmentPart?
-        var gloves: BattleEquipmentPart?
-        var weapon: BattleEquipmentPart?
+        var head: EquipmentPart?
+        var shoulder: EquipmentPart?
+        var top: EquipmentPart?
+        var bottom: EquipmentPart?
+        var gloves: EquipmentPart?
+        var weapon: EquipmentPart?
         
         for info in equipmentsJsons {
             if info.title.contains(EquimentIndex.head.rawValue) {
@@ -55,8 +55,9 @@ struct JsonInfoManager {
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     
-    private func getBattleEquipmentPart(_ json: JSON) -> BattleEquipmentPart {        
-        return BattleEquipmentPart(name: json["Element_000"]["value"].stringValue,
+    //MARK: - 전투 장비
+    private func getBattleEquipmentPart(_ json: JSON) -> EquipmentPart {
+        return EquipmentPart(name: json["Element_000"]["value"].stringValue,
                                    part: json["Element_001"]["value"]["leftStr0"].stringValue,
                                    lv: json["Element_001"]["value"]["leftStr2"].stringValue,
                                    quality: json["Element_001"]["value"]["qualityValue"].intValue,

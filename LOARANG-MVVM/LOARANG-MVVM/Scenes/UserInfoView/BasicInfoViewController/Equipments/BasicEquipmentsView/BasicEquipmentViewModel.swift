@@ -14,8 +14,8 @@ protocol BasicEquipmentViewModelInput {
 }
 
 protocol BasicEquipmentViewModelOutput {
-    var battleEquips: [BattleEquipmentPart?] { get }
-    var showEquipmentDetail: PublishRelay<BattleEquipmentPart?> { get }
+    var battleEquips: [EquipmentPart?] { get }
+    var showEquipmentDetail: PublishRelay<EquipmentPart?> { get }
 }
 
 final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
@@ -35,6 +35,6 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     }
     
     //out
-    let battleEquips: [BattleEquipmentPart?]
-    let showEquipmentDetail = PublishRelay<BattleEquipmentPart?>()
+    let battleEquips: [EquipmentPart?]
+    let showEquipmentDetail = PublishRelay<EquipmentPart?>()
 }

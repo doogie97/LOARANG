@@ -92,14 +92,14 @@ final class Container {
         return BasicEquipmentViewModel(equipments: equipments)
     }
     
-    func makeEquipmentDetailViewController(equipmentInfo: BattleEquipmentPart) -> EquipmentDetailViewController {
+    func makeEquipmentDetailViewController(equipmentInfo: EquipmentPart) -> EquipmentDetailViewController {
         let detailVC = EquipmentDetailViewController(viewModel: makeEquipmentDetailViewModel(equipmentInfo: equipmentInfo))
         detailVC.modalPresentationStyle = .overFullScreen
         detailVC.modalTransitionStyle = .crossDissolve
         return detailVC
     }
     
-    private func makeEquipmentDetailViewModel(equipmentInfo: BattleEquipmentPart) -> EquipmentDetailViewModelable {
+    private func makeEquipmentDetailViewModel(equipmentInfo: EquipmentPart) -> EquipmentDetailViewModelable {
         return EquipmentDetailViewModel(equipmentInfo: equipmentInfo)
     }
     

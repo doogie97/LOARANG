@@ -54,7 +54,7 @@
 		ACAEF34E287FF9F000AE98F1 /* Equips.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF34D287FF9F000AE98F1 /* Equips.swift */; };
 		ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF34F287FFA5800AE98F1 /* CardInfo.swift */; };
 		ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */; };
-		ACAEF358287FFA9F00AE98F1 /* BattleEquipmentPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF357287FFA9F00AE98F1 /* BattleEquipmentPart.swift */; };
+		ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */; };
 		ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF35A287FFB0400AE98F1 /* Avatar.swift */; };
 		ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF35E287FFC4900AE98F1 /* MainView.swift */; };
 		ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */; };
@@ -140,7 +140,7 @@
 		ACAEF34D287FF9F000AE98F1 /* Equips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equips.swift; sourceTree = "<group>"; };
 		ACAEF34F287FFA5800AE98F1 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEquipments.swift; sourceTree = "<group>"; };
-		ACAEF357287FFA9F00AE98F1 /* BattleEquipmentPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEquipmentPart.swift; sourceTree = "<group>"; };
+		ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentPart.swift; sourceTree = "<group>"; };
 		ACAEF35A287FFB0400AE98F1 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		ACAEF35E287FFC4900AE98F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */,
-				ACAEF357287FFA9F00AE98F1 /* BattleEquipmentPart.swift */,
+				ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */,
 			);
 			path = BattleEquipments;
 			sourceTree = "<group>";
@@ -676,7 +676,7 @@
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
 				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,
-				ACAEF358287FFA9F00AE98F1 /* BattleEquipmentPart.swift in Sources */,
+				ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
 				AC799A8628A50F07008A2865 /* EquipmentsTVCellViewModel.swift in Sources */,
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
