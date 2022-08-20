@@ -83,6 +83,7 @@ final class EquipmentDetailView: UIView {
         closeButton.snp.makeConstraints {
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
             $0.centerY.equalTo(nameLabel)
+            $0.height.width.equalTo(30)
         }
      
         nameLabel.snp.makeConstraints {
