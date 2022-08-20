@@ -28,8 +28,16 @@ final class EquipmentDetailViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        equipmentDetailView.setCellContents(viewModel.equipmentInfo)
+        setViewContents()
         bindView()
+    }
+    
+    private func setViewContents() {
+        equipmentDetailView.setCellContents(viewModel.equipmentInfo)
+        
+        if  viewModel.equipmentInfo.basicInfo.part?.contains("어빌리티 스톤") == true {
+            equipmentDetailView.hideQuality()
+        }
     }
     
     private func bindView() {

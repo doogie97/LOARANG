@@ -151,4 +151,9 @@ final class EquipmentDetailView: UIView {
         
         effetcTextView.attributedText = equipmentInfo.battleEffects?.htmlToAttributedString(fontSize: 5)
     }
+    
+    func hideQuality() {
+        qualityLabel.isHidden = true
+        qualityProgressView.isHidden = true
+    }
 }
