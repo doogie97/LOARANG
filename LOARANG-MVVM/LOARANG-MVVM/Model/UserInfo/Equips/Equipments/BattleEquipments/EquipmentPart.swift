@@ -8,12 +8,7 @@
 import UIKit
 
 struct EquipmentPart {
-    let name: String?
-    let part: String?
-    let lv: String?
-    let quality: Int?
-    let grade: Int?
-    let imageURL: String?
+    let basicInfo: EquipmentBasicInfo
     let battleEffects: String?
     
     enum Grade: Int {
@@ -68,4 +63,13 @@ struct EquipmentPart {
             }
         }
     }
+}
+
+struct EquipmentBasicInfo {
+    let name: String?
+    let part: String?
+    let lv: String?
+    let quality: Int?
+    let grade: Int?
+    let imageURL: String?
 }

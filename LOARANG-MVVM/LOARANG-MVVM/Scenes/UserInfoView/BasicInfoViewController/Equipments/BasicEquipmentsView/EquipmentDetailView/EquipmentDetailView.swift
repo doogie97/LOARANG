@@ -132,18 +132,18 @@ final class EquipmentDetailView: UIView {
     }
     
     func setCellContents(_ equipmentInfo: EquipmentPart) {
-        nameLabel.text = equipmentInfo.name?.htmlToString
-        nameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
+        nameLabel.text = equipmentInfo.basicInfo.name?.htmlToString
+        nameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
         
-        equipmentImageView.setImage(urlString: equipmentInfo.imageURL)
-        equipmentImageView.backgroundColor = EquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.backgroundColor
+        equipmentImageView.setImage(urlString: equipmentInfo.basicInfo.imageURL)
+        equipmentImageView.backgroundColor = EquipmentPart.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.backgroundColor
         
-        partNameLabel.text = equipmentInfo.part?.htmlToString
-        partNameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
+        partNameLabel.text = equipmentInfo.basicInfo.part?.htmlToString
+        partNameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
         
-        itemLvLabel.text = equipmentInfo.lv?.htmlToString
+        itemLvLabel.text = equipmentInfo.basicInfo.lv?.htmlToString
         
-        let quality = equipmentInfo.quality == -1 ? 0 : equipmentInfo.quality ?? 0
+        let quality = equipmentInfo.basicInfo.quality == -1 ? 0 : equipmentInfo.basicInfo.quality ?? 0
         qualityLabel.text = "품질 \(quality)"
         
         qualityProgressView.progressTintColor = quality.qualityColor

@@ -47,26 +47,30 @@ struct JsonInfoManager {
                 bottom = getBattleEquipmentPart(info.json)
             } else if info.title.contains(EquimentIndex.glove.rawValue) {
                 gloves = getBattleEquipmentPart(info.json)
-            } else if info .title.contains(EquimentIndex.weapon.rawValue) {
+            } else if info.title.contains(EquimentIndex.weapon.rawValue) {
                 weapon = getBattleEquipmentPart(info.json)
             }
         }
-        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon)
+        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: nil, firstEarring: nil, secondEarring: nil, firstRing: nil, secondRing: nil, abilityStone: nil, bracelet: nil)
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     
     //MARK: - 전투 장비
-    private func getBattleEquipmentPart(_ json: JSON) -> EquipmentPart {
-        return EquipmentPart(name: json["Element_000"]["value"].stringValue,
-                                   part: json["Element_001"]["value"]["leftStr0"].stringValue,
-                                   lv: json["Element_001"]["value"]["leftStr2"].stringValue,
-                                   quality: json["Element_001"]["value"]["qualityValue"].intValue,
-                                   grade: json["Element_001"]["value"]["slotData"]["iconGrade"].intValue,
-                                   imageURL: imageBaseURL + json["Element_001"]["value"]["slotData"]["iconPath"].stringValue,
-                                   battleEffects: getBattleEffects(json))
+    private func getEquipmentBasicInfo(_ json: JSON) -> EquipmentBasicInfo {
+        return EquipmentBasicInfo(name: json["Element_000"]["value"].stringValue,
+                                  part: json["Element_001"]["value"]["leftStr0"].stringValue,
+                                  lv: json["Element_001"]["value"]["leftStr2"].stringValue,
+                                  quality: json["Element_001"]["value"]["qualityValue"].intValue,
+                                  grade: json["Element_001"]["value"]["slotData"]["iconGrade"].intValue,
+                                  imageURL: imageBaseURL + json["Element_001"]["value"]["slotData"]["iconPath"].stringValue)
     }
     
-    //MARK: - 전투 장비 효과 가져오기    
+    private func getBattleEquipmentPart(_ json: JSON) -> EquipmentPart {
+        return EquipmentPart(basicInfo: getEquipmentBasicInfo(json),
+                             battleEffects: getBattleEffects(json))
+    }
+    
+    //MARK: - 전투 장비 효과
     private func getBattleEffects(_ json: JSON) -> String {
         let isEsther = json["Element_001"]["value"]["slotData"]["iconGrade"].intValue == 7
         

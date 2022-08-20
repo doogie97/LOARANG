@@ -90,7 +90,7 @@ extension BasicEquipmentViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
         cell.setCellContents(equipmentPart: viewModel.battleEquips[indexPath.row],
                              partString: Part(rawValue: indexPath.row)?.partString,
-                             backColor: EquipmentPart.Grade(rawValue: viewModel.battleEquips[indexPath.row]?.grade ?? 0)?.backgroundColor)
+                             backColor: EquipmentPart.Grade(rawValue: viewModel.battleEquips[indexPath.row]?.basicInfo.grade ?? 0)?.backgroundColor)
         
         return cell
     }

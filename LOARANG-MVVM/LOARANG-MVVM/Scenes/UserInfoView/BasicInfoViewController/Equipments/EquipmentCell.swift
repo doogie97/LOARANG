@@ -76,10 +76,10 @@ final class EquipmentCell: UITableViewCell {
     }
     
     func setCellContents(equipmentPart: EquipmentPart?, partString: String?, backColor: UIColor?) {
-        partImageView.setImage(urlString: equipmentPart?.imageURL)
+        partImageView.setImage(urlString: equipmentPart?.basicInfo.imageURL)
         partImageView.backgroundColor = backColor
         partLabel.text = partString
-        nameLabel.text = equipmentPart?.name?.htmlToString
-        nameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentPart?.grade ?? 0)?.textColor
+        nameLabel.text = equipmentPart?.basicInfo.name?.htmlToString
+        nameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentPart?.basicInfo.grade ?? 0)?.textColor
     }
 }
