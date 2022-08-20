@@ -129,6 +129,6 @@ final class EquipmentDetailView: UIView {
         
         qualityLabel.text = "품질 \(equipmentInfo.quality ?? 0)"
         
-        effetcTextView.attributedText = equipmentInfo.battleEffects?.htmlToAttributedString(fontSize: 10, alignment: .LEFT)
+        effetcTextView.attributedText = equipmentInfo.battleEffects?.htmlToAttributedString(fontSize: 5)
     }
 }
