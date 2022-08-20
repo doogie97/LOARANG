@@ -35,8 +35,13 @@ extension String {
     }
     
     func htmlToAttributedString(fontSize: Int = 10, alignment: HtmlAlignment = .CENTER) -> NSAttributedString? {
-        let newHTML = String(format:"<span style=\"font-size: \(fontSize);\">%@</span>", self).replacingOccurrences(of: "CENTER", with: alignment.rawValue)
-
+        
+        let newHTML = String(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(fontSize + 12); color: #FFFFFF; \">%@</span>", self)
+            .replacingOccurrences(of: "CENTER", with: alignment.rawValue)
+            .replacingOccurrences(of: "font size=\'12", with: "font size=\'\(fontSize)")
+            .replacingOccurrences(of: "font size=\'14", with: "font size=\'\(fontSize)")
+        
+        
         guard let data = newHTML.data(using: .utf8) else { return nil }
         do {
             return try NSAttributedString(data: data,
@@ -48,7 +53,7 @@ extension String {
         }
     }
     
-    var htmlToString: String { // 추후 사용 안하면 제거 
+    var htmlToString: String {
         return htmlToAttributedString()?.string ?? ""
     }
 }
