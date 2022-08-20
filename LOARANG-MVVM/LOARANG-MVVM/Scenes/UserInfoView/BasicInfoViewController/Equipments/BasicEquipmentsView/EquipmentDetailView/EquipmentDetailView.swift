@@ -78,7 +78,6 @@ final class EquipmentDetailView: UIView {
         
         equipmentImageView.setImage(urlString: equipmentInfo.imageURL)
         equipmentImageView.backgroundColor = BattleEquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.backgroundColor
-        print(equipmentInfo.name)
         
         partNameLabel.text = equipmentInfo.part?.htmlToString
         partNameLabel.textColor = BattleEquipmentPart.Grade(rawValue: equipmentInfo.grade ?? 0)?.textColor
