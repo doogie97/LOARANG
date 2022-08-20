@@ -38,6 +38,7 @@ final class BasicEquipmentView: UIView {
         tableView.backgroundColor = .cellColor
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
+        tableView.register(EquipmentCell.self)
         
         return tableView
     }()

@@ -38,8 +38,24 @@ final class BasicEquipmentViewController: UIViewController {
     private func bindView() {
         basicEquipmentView.equipmentTableView.dataSource = self
         basicEquipmentView.equipmentTableView.delegate = self
+        basicEquipmentView.accessoryTableView.dataSource = self
+        basicEquipmentView.accessoryTableView.delegate = self
         
         viewModel.showEquipmentDetail
+            .bind(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                guard let equipmentInfo = $0 else {
+                    return
+                }
+                
+                self.present(self.container.makeEquipmentDetailViewController(equipmentInfo: equipmentInfo), animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.showAccessaryDetail
             .bind(onNext: { [weak self] in
                 guard let self = self else {
                     return
@@ -56,13 +72,8 @@ final class BasicEquipmentViewController: UIViewController {
 }
 
 extension BasicEquipmentViewController: UITableViewDataSource {
-    enum Part: Int {
-        case head
-        case shoulder
-        case top
-        case bottom
-        case glove
-        case weapon
+    enum EquipmentPartType: Int {
+        case head, shoulder, top, bottom, glove, weapon, abilityStone
         
         var partString: String {
             switch self {
@@ -78,19 +89,61 @@ extension BasicEquipmentViewController: UITableViewDataSource {
                 return "장갑"
             case .weapon:
                 return "무기"
+            case .abilityStone:
+                return ""
+            }
+        }
+    }
+    
+    enum AccessoryPartType: Int {
+        case necklace, firstEarring, secondEarring, firstRing, secondRing, bracelet, abilityStone
+        
+        var partString: String {
+            switch self {
+            case .necklace:
+                return "목걸이"
+            case .firstEarring, .secondEarring:
+                return "귀걸이"
+            case .firstRing, .secondRing:
+                return "반지"
+            case .bracelet:
+                return "팔찌"
+            case .abilityStone:
+                return "어빌리티 스톤"
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.battleEquips.count
+        if tableView == basicEquipmentView.equipmentTableView {
+            return viewModel.battleEquips.count
+        }
+        
+        if tableView == basicEquipmentView.accessoryTableView {
+            return viewModel.accessories.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var info: (equipments: [EquipmentPart?], pratString: String?) {
+            if tableView == basicEquipmentView.equipmentTableView {
+                return (viewModel.battleEquips,
+                        EquipmentPartType(rawValue: indexPath.row)?.partString)
+            }
+            if tableView == basicEquipmentView.accessoryTableView {
+                return (viewModel.accessories,
+                        AccessoryPartType(rawValue: indexPath.row)?.partString)
+            }
+            
+            return ([], nil)
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
-        cell.setCellContents(equipmentPart: viewModel.battleEquips[indexPath.row],
-                             partString: Part(rawValue: indexPath.row)?.partString,
-                             backColor: EquipmentPart.Grade(rawValue: viewModel.battleEquips[indexPath.row]?.basicInfo.grade ?? 0)?.backgroundColor)
+        cell.setCellContents(equipmentPart: info.equipments[indexPath.row],
+                             partString: info.pratString,
+                             backColor: EquipmentPart.Grade(rawValue: info.equipments[indexPath.row]?.basicInfo.grade ?? 0)?.backgroundColor)
         
         return cell
     }
@@ -102,6 +155,12 @@ extension BasicEquipmentViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.touchCell(indexPath.row)
+        if tableView == basicEquipmentView.equipmentTableView {
+            viewModel.touchBattleEquipmentCell(indexPath.row)
+        }
+        
+        if tableView == basicEquipmentView.accessoryTableView {
+            viewModel.touchAccessaryCell(indexPath.row)
+        }
     }
 }
