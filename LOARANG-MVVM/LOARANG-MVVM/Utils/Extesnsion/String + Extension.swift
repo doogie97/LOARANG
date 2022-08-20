@@ -28,8 +28,14 @@ extension String {
         }
     }
     
-    var htmlToAttributedString: NSAttributedString? {
-        let newHTML = self.replacingOccurrences(of: "CENTER", with: "LEFT")
+    enum HtmlAlignment: String {
+        case LEFT
+        case CENTER
+        case RIGHT
+    }
+    
+    func htmlToAttributedString(alignment: HtmlAlignment = .CENTER) -> NSAttributedString? {
+        let newHTML = self.replacingOccurrences(of: "CENTER", with: alignment.rawValue)
         guard let data = newHTML.data(using: .utf8) else { return nil }
         do {
             return try NSAttributedString(data: data,
@@ -40,7 +46,8 @@ extension String {
             return nil
         }
     }
+    
     var htmlToString: String { // 추후 사용 안하면 제거 
-        return htmlToAttributedString?.string ?? ""
+        return htmlToAttributedString()?.string ?? ""
     }
 }
