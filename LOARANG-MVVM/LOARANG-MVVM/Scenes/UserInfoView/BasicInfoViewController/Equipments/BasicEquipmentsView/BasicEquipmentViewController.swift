@@ -38,6 +38,12 @@ final class BasicEquipmentViewController: UIViewController {
     private func bindView() {
         basicEquipmentView.equipmentTableView.dataSource = self
         basicEquipmentView.equipmentTableView.delegate = self
+        
+        viewModel.showEquipmentDetail
+            .bind(onNext: { [weak self] in
+                print($0?.name?.htmlToString)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -117,5 +123,9 @@ extension BasicEquipmentViewController: UITableViewDataSource {
 extension BasicEquipmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height / 7
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.touchCell(indexPath.row)
     }
 }

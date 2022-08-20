@@ -9,10 +9,13 @@ import RxRelay
 
 protocol BasicEquipmentViewModelable: BasicEquipmentViewModelInput, BasicEquipmentViewModelOutput {}
 
-protocol BasicEquipmentViewModelInput {}
+protocol BasicEquipmentViewModelInput {
+    func touchCell(_ index: Int)
+}
 
 protocol BasicEquipmentViewModelOutput {
     var battleEquips: [BattleEquipmentPart?] { get }
+    var showEquipmentDetail: PublishRelay<BattleEquipmentPart?> { get }
 }
 
 final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
@@ -26,6 +29,12 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
                              battleEquipments.weapon]
     }
     
+    //in
+    func touchCell(_ index: Int) {
+        showEquipmentDetail.accept(battleEquips[index])
+    }
+    
     //out
     let battleEquips: [BattleEquipmentPart?]
+    let showEquipmentDetail = PublishRelay<BattleEquipmentPart?>()
 }
