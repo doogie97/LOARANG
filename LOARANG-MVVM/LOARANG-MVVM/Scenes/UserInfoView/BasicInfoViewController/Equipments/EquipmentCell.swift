@@ -39,7 +39,10 @@ final class EquipmentCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.font = .one(size: 12, family: .Bold)
         label.numberOfLines = 2
+        label.lineBreakMode = .byCharWrapping
+        label.textAlignment = .left
         
         return label
     }()
@@ -76,6 +79,7 @@ final class EquipmentCell: UITableViewCell {
         partImageView.setImage(urlString: equipmentPart?.imageURL)
         partImageView.backgroundColor = backColor
         partLabel.text = partString
-        nameLabel.attributedText = equipmentPart?.name?.htmlToAttributedString(fontSize: 12 ,alignment: .LEFT)
+        nameLabel.text = equipmentPart?.name?.htmlToString
+        nameLabel.textColor = BattleEquipmentPart.Grade(rawValue: equipmentPart?.grade ?? 0)?.textColor
     }
 }
