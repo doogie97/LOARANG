@@ -17,6 +17,14 @@ final class EquipmentDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private(set) lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.imageView?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        return button
+    }()
+    
     private lazy var nameLabel = makeLabel(alignment: .center, font: .one(size: 20, family: .Bold))
     
     private lazy var underline: UIView = {
@@ -62,6 +70,7 @@ final class EquipmentDetailView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
+        self.addSubview(closeButton)
         self.addSubview(nameLabel)
         self.addSubview(underline)
         self.addSubview(equipmentImageView)
@@ -70,6 +79,11 @@ final class EquipmentDetailView: UIView {
         self.addSubview(qualityLabel)
         self.addSubview(qualityBar) // 나중에 제대로 구현 필요
         self.addSubview(effetcTextView)
+        
+        closeButton.snp.makeConstraints {
+            $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
+            $0.centerY.equalTo(nameLabel)
+        }
      
         nameLabel.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(safeAreaLayoutGuide).inset(20)

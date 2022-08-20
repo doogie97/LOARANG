@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/08/20.
 //
 
-import UIKit
+import RxSwift
 
 final class EquipmentDetailViewController: UIViewController {
     private let viewModel: EquipmentDetailViewModelable
@@ -20,6 +20,7 @@ final class EquipmentDetailViewController: UIViewController {
     }
     
     private let equipmentDetailView = EquipmentDetailView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -28,5 +29,14 @@ final class EquipmentDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         equipmentDetailView.setCellContents(viewModel.equipmentInfo)
+        bindView()
+    }
+    
+    private func bindView() {
+        equipmentDetailView.closeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
