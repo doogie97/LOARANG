@@ -35,7 +35,11 @@ final class EquipmentDetailViewController: UIViewController {
     private func setViewContents() {
         equipmentDetailView.setCellContents(viewModel.equipmentInfo)
         
-        if  viewModel.equipmentInfo.basicInfo.part?.contains("어빌리티 스톤") == true {
+        if viewModel.equipmentInfo.basicInfo.part?.contains("어빌리티 스톤") == true {
+            equipmentDetailView.hideQuality()
+        }
+        
+        if viewModel.equipmentInfo.basicInfo.part?.contains("팔찌") == true {
             equipmentDetailView.hideQuality()
         }
     }

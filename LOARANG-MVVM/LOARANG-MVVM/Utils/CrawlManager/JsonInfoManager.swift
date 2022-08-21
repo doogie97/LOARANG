@@ -72,9 +72,11 @@ struct JsonInfoManager {
                 secondRing = getEquipmentPart(info.json, type: .accessory)
             } else if info.title.contains(EquimentIndex.abilityStone.rawValue) {
                 abilityStone = getEquipmentPart(info.json, type: .accessory)
+            } else if info.title.contains(EquimentIndex.bracelet.rawValue) {
+                bracelet = getEquipmentPart(info.json, type: .accessory)
             }
         }
-        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: necklace, firstEarring: firstEarring, secondEarring: secondEarring, firstRing: firstRing, secondRing: secondRing, bracelet: nil, abilityStone: abilityStone)
+        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: necklace, firstEarring: firstEarring, secondEarring: secondEarring, firstRing: firstRing, secondRing: secondRing, bracelet: bracelet, abilityStone: abilityStone)
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     
