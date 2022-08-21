@@ -12,11 +12,11 @@ extension Int {
         switch self {
         case 10..<30:
             return #colorLiteral(red: 1, green: 0.82471174, blue: 0, alpha: 1)
-        case 30..<69:
+        case 30..<70:
             return #colorLiteral(red: 0.561450541, green: 0.9948626161, blue: 0, alpha: 1)
-        case 70..<89:
+        case 70..<90:
             return #colorLiteral(red: 0.007898607291, green: 0.7087070346, blue: 1, alpha: 1)
-        case 90...99:
+        case 90..<100:
             return #colorLiteral(red: 0.8060045242, green: 0.261687547, blue: 0.9900844693, alpha: 1)
         case 100:
             return #colorLiteral(red: 0.9972185493, green: 0.5881507397, blue: 0.007285744417, alpha: 1)
