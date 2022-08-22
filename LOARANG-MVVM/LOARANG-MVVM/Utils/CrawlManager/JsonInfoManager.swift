@@ -46,9 +46,6 @@ struct JsonInfoManager {
         //각인
         let equipedEngraves = getEngrave(JSON(jsonInfo["Engrave"]))
         
-        let firstEngrave: EquipedEngrave? = equipedEngraves.firstEngraves
-        let secondEngrave: EquipedEngrave? = equipedEngraves.secondEngraves
-        
         for info in equipmentsJsons {
             //전투 장비
             if info.title.contains(EquimentIndex.head.rawValue) {
@@ -80,7 +77,7 @@ struct JsonInfoManager {
                 abilityStone = getEquipmentPart(info.json, type: .accessory)
             }
         }
-        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: necklace, firstEarring: firstEarring, secondEarring: secondEarring, firstRing: firstRing, secondRing: secondRing, bracelet: bracelet, abilityStone: abilityStone, firstEngrave: firstEngrave, secondEngrave: secondEngrave)
+        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: necklace, firstEarring: firstEarring, secondEarring: secondEarring, firstRing: firstRing, secondRing: secondRing, bracelet: bracelet, abilityStone: abilityStone, engrave: equipedEngraves)
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     
@@ -168,7 +165,7 @@ struct JsonInfoManager {
     }
     
     //MARK: - 장착 각인
-    private func getEngrave(_ json: JSON) -> (firstEngraves: EquipedEngrave?, secondEngraves: EquipedEngrave?) {
+    private func getEngrave(_ json: JSON) -> (EquipedEngrave?, EquipedEngrave?) {
         var firstEngraves: EquipedEngrave?
         var secondEngraves: EquipedEngrave?
         for engrave in json {

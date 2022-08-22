@@ -22,6 +22,5 @@ struct BattleEquipments {
     let bracelet: EquipmentPart?
     let abilityStone: EquipmentPart?
     //각인
-    let firstEngrave: EquipedEngrave?
-    let secondEngrave: EquipedEngrave?
+    let engrave: (EquipedEngrave?, EquipedEngrave?)
 }
