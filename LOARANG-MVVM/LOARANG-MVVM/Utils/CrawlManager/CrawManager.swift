@@ -164,7 +164,8 @@ struct CrawlManager: CrawlManagerable {
         }
         
         let equipments = jsonInfoManager.getEquipmentsInfo()
+        let gems = jsonInfoManager.getGemsInfo()
         
-        return Equips(gems: nil, cardInfo: nil, equipments: equipments) //임시 nil
+        return Equips(gems: gems, cardInfo: nil, equipments: equipments) //임시 nil
     }
 }

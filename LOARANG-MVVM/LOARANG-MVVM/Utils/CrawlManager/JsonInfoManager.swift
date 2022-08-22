@@ -300,3 +300,25 @@ extension JsonInfoManager {
         return topStr + basicEffect + aditionalEffect
     }
 }
+
+// MARK: - 장착 보석 관련
+extension JsonInfoManager {
+    func getGemsInfo() -> [Gem] {
+        let gemsJson: [(title: String, json: JSON)] = JSON(jsonInfo["Equip"]).compactMap { (title, JSON) in
+            if title.contains("Gem") {
+                return (title, JSON)
+            }
+            return nil
+        }
+
+        return gemsJson.map {
+            let name = $0.json["Element_000"]["value"].stringValue
+            let grade = $0.json["Element_001"]["value"]["slotData"]["iconGrade"].intValue
+            let lvString = $0.json["Element_001"]["value"]["slotData"]["rtString"].stringValue
+            let imageURL = imageBaseURL + $0.json["Element_001"]["value"]["slotData"]["iconPath"].stringValue
+            let effect = $0.json["Element_004"]["value"]["Element_001"].stringValue
+            
+            return Gem(name: name, grade: grade, lvString: lvString, effect: effect, imageURL: imageURL)
+        }
+    }
+}
