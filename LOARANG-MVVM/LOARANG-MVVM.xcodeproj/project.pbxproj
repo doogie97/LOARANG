@@ -23,6 +23,9 @@
 		AC2C2B5D28B3545900621753 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5C28B3545900621753 /* AvatarView.swift */; };
 		AC2C2B5F28B354C300621753 /* AvatarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5E28B354C300621753 /* AvatarViewModel.swift */; };
 		AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6128B360CE00621753 /* SpecialEquipments.swift */; };
+		AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6B28B3672A00621753 /* AvatarDetailView.swift */; };
+		AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6D28B3673100621753 /* AvatarDetailViewController.swift */; };
+		AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6F28B3673700621753 /* AvatarDetailViewModel.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
@@ -114,6 +117,9 @@
 		AC2C2B5C28B3545900621753 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		AC2C2B5E28B354C300621753 /* AvatarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewModel.swift; sourceTree = "<group>"; };
 		AC2C2B6128B360CE00621753 /* SpecialEquipments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEquipments.swift; sourceTree = "<group>"; };
+		AC2C2B6B28B3672A00621753 /* AvatarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailView.swift; sourceTree = "<group>"; };
+		AC2C2B6D28B3673100621753 /* AvatarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewController.swift; sourceTree = "<group>"; };
+		AC2C2B6F28B3673700621753 /* AvatarDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewModel.swift; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +273,16 @@
 			path = SpecialEquipments;
 			sourceTree = "<group>";
 		};
+		AC2C2B6A28B366F800621753 /* AvatarDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				AC2C2B6B28B3672A00621753 /* AvatarDetailView.swift */,
+				AC2C2B6D28B3673100621753 /* AvatarDetailViewController.swift */,
+				AC2C2B6F28B3673700621753 /* AvatarDetailViewModel.swift */,
+			);
+			path = AvatarDetailView;
+			sourceTree = "<group>";
+		};
 		AC3FEBFE28804E9600CDE796 /* Extesnsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +412,7 @@
 				AC2C2B5C28B3545900621753 /* AvatarView.swift */,
 				AC799A8328A50C1B008A2865 /* AvatarViewController.swift */,
 				AC2C2B5E28B354C300621753 /* AvatarViewModel.swift */,
+				AC2C2B6A28B366F800621753 /* AvatarDetailView */,
 			);
 			path = AvatarView;
 			sourceTree = "<group>";
@@ -713,6 +730,7 @@
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
 				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
 				ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */,
+				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				ACB837FB2897ED9800F75BA2 /* MainInfoTVCell.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
@@ -744,11 +762,13 @@
 				ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
 				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
+				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
 				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */,
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
+				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
 				ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */,
 				AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */,

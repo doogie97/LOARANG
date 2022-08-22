@@ -83,7 +83,7 @@ final class Container {
                            makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)]
         )
     }
-    
+    //MARK: - about BasicEquipment
     private func makeBasicEquipmentViewController(equipments: Equipments) -> BasicEquipmentViewController {
         return BasicEquipmentViewController(viewModel: makeBasicEquipmentViewModel(equipments: equipments), container: self)
     }
@@ -102,7 +102,7 @@ final class Container {
     private func makeEquipmentDetailViewModel(equipmentInfo: EquipmentPart) -> EquipmentDetailViewModelable {
         return EquipmentDetailViewModel(equipmentInfo: equipmentInfo)
     }
-    
+    //MARK: - about Avatar
     private func makeAvatarViewController(equipments: Equipments) -> AvatarViewController {
         return AvatarViewController(viewModel: makeAvatarViewModel(equipments: equipments), container: self)
     }
@@ -111,6 +111,17 @@ final class Container {
         return AvatarViewModel(equipments: equipments)
     }
     
+    func makeAvatarDetailViewController(equipmentInfo: EquipmentPart) -> AvatarDetailViewController {
+        let detailVC = AvatarDetailViewController(viewModel: makeAvatarDetailViewModel(equipmentInfo: equipmentInfo))
+        detailVC.modalPresentationStyle = .overFullScreen
+        detailVC.modalTransitionStyle = .crossDissolve
+        return detailVC
+    }
+    
+    private func makeAvatarDetailViewModel(equipmentInfo: EquipmentPart) -> AvatarDetailViewModelable {
+        return AvatarDetailViewModel(equipments: equipmentInfo)
+    }
+    //MARK: - about CharacterImage
     private func makeCharacterImageViewController(userImage: UIImage) -> CharacterImageViewController {
         return CharacterImageViewController(viewModel: makeCharacterImageViewModel(userImage: userImage))
     }
