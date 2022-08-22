@@ -21,6 +21,7 @@ protocol BasicEquipmentViewModelOutput {
     var engraves: (EquipedEngrave?,  EquipedEngrave?) { get }
     var gems: BehaviorRelay<[Gem]> { get }
     var showEquipmentDetail: PublishRelay<EquipmentPart?> { get }
+    var showGemDetail: PublishRelay<Gem> { get }
 }
 
 final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
@@ -52,7 +53,7 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     }
     
     func touchGemCell(_ index: Int) {
-        print(gems.value[index].name)
+        showGemDetail.accept(gems.value[index])
     }
     
     //out
@@ -61,4 +62,5 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     let engraves: (EquipedEngrave?, EquipedEngrave?)
     let gems: BehaviorRelay<[Gem]>
     let showEquipmentDetail = PublishRelay<EquipmentPart?>()
+    let showGemDetail = PublishRelay<Gem>()
 }

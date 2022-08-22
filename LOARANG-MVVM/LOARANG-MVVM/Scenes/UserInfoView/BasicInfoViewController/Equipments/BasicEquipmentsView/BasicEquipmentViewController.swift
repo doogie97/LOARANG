@@ -66,6 +66,16 @@ final class BasicEquipmentViewController: UIViewController {
                 self?.viewModel.touchGemCell($0.row)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.showGemDetail
+            .bind(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                self.present(self.container.makeGemDetailViewController(gem: $0), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
