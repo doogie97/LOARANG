@@ -16,4 +16,12 @@ extension JSON {
         
         return activation
     }
+    
+    var propensityString: String {
+        return self.stringValue
+            .replacingOccurrences(of: "&tdc_courage", with: "")
+            .replacingOccurrences(of: "&tdc_charm", with: "")
+            .replacingOccurrences(of: "&tdc_smart", with: "")
+            .replacingOccurrences(of: "&tdc_kind", with: "")
+    }
 }

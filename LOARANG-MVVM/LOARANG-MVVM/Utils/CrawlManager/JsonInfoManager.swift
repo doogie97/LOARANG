@@ -45,6 +45,18 @@ struct JsonInfoManager {
         var abilityStone: EquipmentPart?
         //각인
         let equipedEngraves = getEngrave(JSON(jsonInfo["Engrave"]))
+        //아바타
+        var mainWeaponAvatar: EquipmentPart?
+        var mainHeadAvatar: EquipmentPart?
+        var mainTopAvatar: EquipmentPart?
+        var mainBottomAvatar: EquipmentPart?
+        var instrumentAvarat: EquipmentPart?
+        var fisrtFaceAvarat: EquipmentPart?
+        var secondFaceAvarat: EquipmentPart?
+        var subWeaponAvatar: EquipmentPart?
+        var subHeadAvatar: EquipmentPart?
+        var subTopAvatar: EquipmentPart?
+        var subBottomAvatar: EquipmentPart?
         
         for info in equipmentsJsons {
             //전투 장비
@@ -75,9 +87,57 @@ struct JsonInfoManager {
                 bracelet = getEquipmentPart(info.json, type: .accessory)
             } else if info.title.contains(EquimentIndex.abilityStone.rawValue) {
                 abilityStone = getEquipmentPart(info.json, type: .accessory)
+            //아바타
+            } else if info.title.contains(EquimentIndex.mainWeaponAvatar.rawValue) {
+                mainWeaponAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.mainHeadAvatar.rawValue) {
+                mainHeadAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.mainTopAvatar.rawValue) {
+                mainTopAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.mainBottomAvatar.rawValue) {
+                mainBottomAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.instrumentAvarat.rawValue) {
+                instrumentAvarat = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.fisrtFaceAvarat.rawValue) {
+                fisrtFaceAvarat = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.secondFaceAvarat.rawValue) {
+                secondFaceAvarat = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.subWeaponAvatar.rawValue) {
+                subWeaponAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.subHeadAvatar.rawValue) {
+                subHeadAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.subTopAvatar.rawValue) {
+                subTopAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.subBottomAvatar.rawValue) {
+                subBottomAvatar = getEquipmentPart(info.json, type: .avatar)
             }
         }
-        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: necklace, firstEarring: firstEarring, secondEarring: secondEarring, firstRing: firstRing, secondRing: secondRing, bracelet: bracelet, abilityStone: abilityStone, engrave: equipedEngraves)
+        let battleEquipments = BattleEquipments(head: head,
+                                                shoulder: shoulder,
+                                                top: top,
+                                                bottom: bottom,
+                                                gloves: gloves,
+                                                weapon: weapon,
+                                                necklace: necklace,
+                                                firstEarring: firstEarring,
+                                                secondEarring: secondEarring,
+                                                firstRing: firstRing,
+                                                secondRing: secondRing,
+                                                bracelet: bracelet,
+                                                abilityStone: abilityStone,
+                                                engrave: equipedEngraves,
+                                                mainWeaponAvatar: mainWeaponAvatar,
+                                                mainHeadAvatar: mainHeadAvatar,
+                                                mainTopAvatar: mainTopAvatar,
+                                                mainBottomAvatar: mainBottomAvatar,
+                                                instrumentAvarat: instrumentAvarat,
+                                                fisrtFaceAvarat: fisrtFaceAvarat,
+                                                secondFaceAvarat: secondFaceAvarat,
+                                                subWeaponAvatar: subWeaponAvatar,
+                                                subHeadAvatar: subHeadAvatar,
+                                                subTopAvatar: subTopAvatar,
+                                                subBottomAvatar: subBottomAvatar
+        )
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     
@@ -90,7 +150,7 @@ struct JsonInfoManager {
             case .accessory:
                 return getAccesaryEffects(json)
             case .avatar:
-                return nil
+                return getAvatarEffects(json)
             }
         }
         return EquipmentPart(basicInfo: getEquipmentBasicInfo(json),
@@ -179,5 +239,15 @@ struct JsonInfoManager {
         }
         
         return (firstEngraves, secondEngraves)
+    }
+    
+    //MARK: - 아바타
+    private func getAvatarEffects(_ json: JSON) -> String {
+        let basicEffect = json["Element_005"]["value"]["Element_000"].stringValue
+        + "<BR>" + json["Element_005"]["value"]["Element_001"].stringValue + "<BR><BR>"
+        
+        let aditionalEffect = json["Element_006"]["value"]["titleStr"].stringValue
+        + "<BR>" + json["Element_006"]["value"]["contentStr"].propensityString
+        return basicEffect + aditionalEffect
     }
 }
