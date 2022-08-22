@@ -19,7 +19,6 @@ protocol BasicEquipmentViewModelOutput {
     var accessories: [EquipmentPart?] { get }
     var engraves: (EquipedEngrave?,  EquipedEngrave?) { get }
     var showEquipmentDetail: PublishRelay<EquipmentPart?> { get }
-    var showAccessaryDetail: PublishRelay<EquipmentPart?> { get }
 }
 
 final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
@@ -46,7 +45,7 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     }
     
     func touchAccessaryCell(_ index: Int) {
-        showAccessaryDetail.accept(accessories[index])
+        showEquipmentDetail.accept(accessories[index])
     }
     
     //out
@@ -54,5 +53,4 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     let accessories: [EquipmentPart?]
     let engraves: (EquipedEngrave?, EquipedEngrave?)
     let showEquipmentDetail = PublishRelay<EquipmentPart?>()
-    let showAccessaryDetail = PublishRelay<EquipmentPart?>()
 }
