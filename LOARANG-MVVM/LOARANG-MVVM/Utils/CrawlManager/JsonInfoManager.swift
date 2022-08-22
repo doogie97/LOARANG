@@ -138,8 +138,6 @@ struct JsonInfoManager {
                 subTopAvatar = getEquipmentPart(info.json, type: .avatar)
             } else if info.title.contains(EquimentIndex.subBottomAvatar.rawValue) {
                 subBottomAvatar = getEquipmentPart(info.json, type: .avatar)
-            } else if info.title.contains(EquimentIndex.compass.rawValue) {
-                print(getEquipmentPart(info.json, type: .accessory))
             }
         }
         
