@@ -24,7 +24,7 @@ final class EquipmentEngraveCell: UITableViewCell {
     
     private func makeLabel() -> UILabel {
         let label = UILabel()
-        label.font = .one(size: 12, family: .Bold)
+        label.font = .one(size: 13, family: .Bold)
         
         return label
     }
