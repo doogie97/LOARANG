@@ -7,6 +7,6 @@
 
 struct EquipedEngrave {
     let name: String
-    let activation: String
+    let activation: Int
     let imageURL: String
 }

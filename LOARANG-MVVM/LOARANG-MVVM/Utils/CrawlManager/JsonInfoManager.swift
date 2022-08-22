@@ -171,11 +171,11 @@ struct JsonInfoManager {
         for engrave in json {
             if engrave.0.contains("000") {
                 firstEngraves = EquipedEngrave(name: engrave.1["Element_000"]["value"].stringValue,
-                                               activation: engrave.1["Element_001"]["value"]["leftText"].stringValue,
+                                               activation: engrave.1["Element_001"]["value"]["leftText"].engraveActivation,
                                                imageURL: imageBaseURL + engrave.1["Element_001"]["value"]["slotData"]["iconPath"].stringValue)
             } else if engrave.0.contains("001") {
                 secondEngraves = EquipedEngrave(name: engrave.1["Element_000"]["value"].stringValue,
-                                                activation: engrave.1["Element_001"]["value"]["leftText"].stringValue,
+                                                activation: engrave.1["Element_001"]["value"]["leftText"].engraveActivation,
                                                 imageURL: imageBaseURL + engrave.1["Element_001"]["value"]["slotData"]["iconPath"].stringValue)
             }
         }
