@@ -46,17 +46,4 @@ enum EquimentIndex: String { //나중에 JsonInfoManager안에 넣을지 고민 
     case subHeadAvatar = "020"
     case subTopAvatar = "021"
     case subBottomAvatar = "022"
-    
-//    var partName: EquipmentPartName {
-//        switch self {
-//        case .weapon, .head, .top, .bottom, .glove, .shoulder:
-//            return .battleEquipment
-//        case .necklace, .firstEarring, .secondEarring, .firstRing, .secondRing, .abilityStone:
-//            return .accessory
-//        case .bracelet:
-//            return .bracelet
-//        case .mainWeaponAvatar, .mainHeadAvatar, .mainTopAvatar, .mainBottomAvatar, .instrumentAvarat, .fisrtFaceAvarat, .secondFaceAvarat, .subWeaponAvatar, .subHeadAvatar, .subTopAvatar, .subBottomAvatar:
-//            return .avatar
-//        }
-//    }
 }
