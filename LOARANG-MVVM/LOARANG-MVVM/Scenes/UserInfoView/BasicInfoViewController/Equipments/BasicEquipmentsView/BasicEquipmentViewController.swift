@@ -127,7 +127,7 @@ extension BasicEquipmentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == basicEquipmentView.equipmentTableView, indexPath.row == 6 {
+        if tableView == basicEquipmentView.equipmentTableView, indexPath.row == EquipmentPartType.engraves.rawValue {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentEngraveCell.self)", for: indexPath) as? EquipmentEngraveCell else { return UITableViewCell() }
             cell.setCellContents(engraves: viewModel.engraves)
             
