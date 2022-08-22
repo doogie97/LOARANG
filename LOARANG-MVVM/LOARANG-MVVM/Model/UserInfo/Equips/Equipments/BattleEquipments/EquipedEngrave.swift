@@ -10,7 +10,6 @@ import UIKit
 struct EquipedEngrave {
     let name: String
     let activation: Int
-    let imageURL: String
     
     var titleColor: UIColor {
         switch activation {
