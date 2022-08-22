@@ -78,18 +78,18 @@ final class Container {
     func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
         return EquipmentsTVCellViewModel(
             userInfo: userInfo,
-            pageViewList: [makeBasicEquipmentViewController(equipments: userInfo.equips.equipments),
-                           makeAvatarViewController(equipments: userInfo.equips.equipments),
+            pageViewList: [makeBasicEquipmentViewController(equips: userInfo.equips),
+                           makeAvatarViewController(equips: userInfo.equips),
                            makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)]
         )
     }
     //MARK: - about BasicEquipment
-    private func makeBasicEquipmentViewController(equipments: Equipments) -> BasicEquipmentViewController {
-        return BasicEquipmentViewController(viewModel: makeBasicEquipmentViewModel(equipments: equipments), container: self)
+    private func makeBasicEquipmentViewController(equips: Equips) -> BasicEquipmentViewController {
+        return BasicEquipmentViewController(viewModel: makeBasicEquipmentViewModel(equips: equips), container: self)
     }
     
-    private func makeBasicEquipmentViewModel(equipments: Equipments) -> BasicEquipmentViewModelable {
-        return BasicEquipmentViewModel(equipments: equipments)
+    private func makeBasicEquipmentViewModel(equips: Equips) -> BasicEquipmentViewModelable {
+        return BasicEquipmentViewModel(equips: equips)
     }
     
     func makeEquipmentDetailViewController(equipmentInfo: EquipmentPart) -> EquipmentDetailViewController {
@@ -103,12 +103,12 @@ final class Container {
         return EquipmentDetailViewModel(equipmentInfo: equipmentInfo)
     }
     //MARK: - about Avatar
-    private func makeAvatarViewController(equipments: Equipments) -> AvatarViewController {
-        return AvatarViewController(viewModel: makeAvatarViewModel(equipments: equipments), container: self)
+    private func makeAvatarViewController(equips: Equips) -> AvatarViewController {
+        return AvatarViewController(viewModel: makeAvatarViewModel(equips: equips), container: self)
     }
     
-    private func makeAvatarViewModel(equipments: Equipments) -> AvatarViewModelable {
-        return AvatarViewModel(equipments: equipments)
+    private func makeAvatarViewModel(equips: Equips) -> AvatarViewModelable {
+        return AvatarViewModel(equips: equips)
     }
     
     func makeAvatarDetailViewController(equipmentInfo: EquipmentPart) -> AvatarDetailViewController {

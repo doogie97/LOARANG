@@ -21,22 +21,22 @@ protocol AvatarViewModelOutput {
 }
 
 final class AvatarViewModel: AvatarViewModelable {
-    init(equipments: Equipments) {
-        self.leftAvatar = [equipments.avatar.mainWeaponAvatar,
-                           equipments.avatar.mainHeadAvatar,
-                           equipments.avatar.mainTopAvatar,
-                           equipments.avatar.mainBottomAvatar,
-                           equipments.avatar.instrumentAvarat,
-                           equipments.avatar.fisrtFaceAvarat,
-                           equipments.avatar.secondFaceAvarat]
+    init(equips: Equips) {
+        self.leftAvatar = [equips.avatar.mainWeaponAvatar,
+                           equips.avatar.mainHeadAvatar,
+                           equips.avatar.mainTopAvatar,
+                           equips.avatar.mainBottomAvatar,
+                           equips.avatar.instrumentAvarat,
+                           equips.avatar.fisrtFaceAvarat,
+                           equips.avatar.secondFaceAvarat]
         
-        self.rightAvatar = [equipments.avatar.subWeaponAvatar,
-                            equipments.avatar.subHeadAvatar,
-                            equipments.avatar.subTopAvatar,
-                            equipments.avatar.subBottomAvatar,
-                            equipments.specialEquipment.compass,
-                            equipments.specialEquipment.amulet,
-                            equipments.specialEquipment.emblem]
+        self.rightAvatar = [equips.avatar.subWeaponAvatar,
+                            equips.avatar.subHeadAvatar,
+                            equips.avatar.subTopAvatar,
+                            equips.avatar.subBottomAvatar,
+                            equips.specialEquipment.compass,
+                            equips.specialEquipment.amulet,
+                            equips.specialEquipment.emblem]
     }
     //in
     func touchLeftCell(_ index: Int){

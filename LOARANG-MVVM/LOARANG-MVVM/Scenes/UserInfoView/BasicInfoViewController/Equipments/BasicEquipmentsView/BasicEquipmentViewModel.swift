@@ -18,25 +18,27 @@ protocol BasicEquipmentViewModelOutput {
     var battleEquips: [EquipmentPart?] { get }
     var accessories: [EquipmentPart?] { get }
     var engraves: (EquipedEngrave?,  EquipedEngrave?) { get }
+    var gems: [Gem] { get }
     var showEquipmentDetail: PublishRelay<EquipmentPart?> { get }
 }
 
 final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
-    init(equipments: Equipments) {
-        self.battleEquips = [equipments.battleEquipments.head,
-                             equipments.battleEquipments.shoulder,
-                             equipments.battleEquipments.top,
-                             equipments.battleEquipments.bottom,
-                             equipments.battleEquipments.gloves,
-                             equipments.battleEquipments.weapon]
-        self.accessories = [equipments.accessories.necklace,
-                            equipments.accessories.firstEarring,
-                            equipments.accessories.secondEarring,
-                            equipments.accessories.firstRing,
-                            equipments.accessories.secondRing,
-                            equipments.accessories.bracelet,
-                            equipments.accessories.abilityStone]
-        self.engraves = equipments.engrave
+    init(equips: Equips) {
+        self.battleEquips = [equips.battleEquipments.head,
+                             equips.battleEquipments.shoulder,
+                             equips.battleEquipments.top,
+                             equips.battleEquipments.bottom,
+                             equips.battleEquipments.gloves,
+                             equips.battleEquipments.weapon]
+        self.accessories = [equips.accessories.necklace,
+                            equips.accessories.firstEarring,
+                            equips.accessories.secondEarring,
+                            equips.accessories.firstRing,
+                            equips.accessories.secondRing,
+                            equips.accessories.bracelet,
+                            equips.accessories.abilityStone]
+        self.engraves = equips.engrave
+        self.gems = equips.gems
     }
     
     //in
@@ -52,5 +54,6 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     let battleEquips: [EquipmentPart?]
     let accessories: [EquipmentPart?]
     let engraves: (EquipedEngrave?, EquipedEngrave?)
+    let gems: [Gem]
     let showEquipmentDetail = PublishRelay<EquipmentPart?>()
 }

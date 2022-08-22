@@ -22,7 +22,7 @@ struct JsonInfoManager {
 
 // MARK: - 장작 장비 관련
 extension JsonInfoManager {
-    func getEquipmentsInfo() -> Equipments {
+    func getEquipmentsInfo() -> Equips {
         let equipmentsJson: [(title: String, json: JSON)] = JSON(jsonInfo["Equip"]).compactMap { (title, JSON) in
             if !title.contains("Gem") {
                 return (title, JSON)
@@ -30,11 +30,13 @@ extension JsonInfoManager {
             return nil
         }
         
-        return Equipments(battleEquipments: getBattleEquipments(json: equipmentsJson),
-                          accessories: getAccessories(json: equipmentsJson),
-                          engrave: getEngrave(JSON(jsonInfo["Engrave"])),
-                          avatar: getAvatar(json: equipmentsJson),
-                          specialEquipment: getSpecialEquipments(json: equipmentsJson))
+        return Equips(battleEquipments: getBattleEquipments(json: equipmentsJson),
+                      accessories: getAccessories(json: equipmentsJson),
+                      engrave: getEngrave(JSON(jsonInfo["Engrave"])),
+                      avatar: getAvatar(json: equipmentsJson),
+                      specialEquipment: getSpecialEquipments(json: equipmentsJson),
+                      gems: getGemsInfo(),
+                      card: nil)
     }
     
     private func getBattleEquipments(json: [(title: String, json: JSON)]) -> BattleEquipments {

@@ -162,10 +162,7 @@ struct CrawlManager: CrawlManagerable {
         guard let jsonInfoManager = try? JsonInfoManager(jsonString: replacedString) else {
             throw CrawlError.jsonInfoError
         }
-        
-        let equipments = jsonInfoManager.getEquipmentsInfo()
-        let gems = jsonInfoManager.getGemsInfo()
-        
-        return Equips(gems: gems, cardInfo: nil, equipments: equipments) //임시 nil
+
+        return jsonInfoManager.getEquipmentsInfo()
     }
 }
