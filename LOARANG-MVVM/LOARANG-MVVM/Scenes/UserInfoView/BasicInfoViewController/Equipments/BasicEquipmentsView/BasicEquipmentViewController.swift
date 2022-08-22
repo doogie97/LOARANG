@@ -60,6 +60,12 @@ final class BasicEquipmentViewController: UIViewController {
                 cell.setCellContents(gem: gem)
             }
             .disposed(by: disposeBag)
+        
+        basicEquipmentView.gemCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchGemCell($0.row)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

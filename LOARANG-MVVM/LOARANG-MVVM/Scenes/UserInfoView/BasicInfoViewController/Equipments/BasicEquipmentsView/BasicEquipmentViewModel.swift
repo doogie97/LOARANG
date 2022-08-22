@@ -12,6 +12,7 @@ protocol BasicEquipmentViewModelable: BasicEquipmentViewModelInput, BasicEquipme
 protocol BasicEquipmentViewModelInput {
     func touchBattleEquipmentCell(_ index: Int)
     func touchAccessaryCell(_ index: Int)
+    func touchGemCell(_ index: Int)
 }
 
 protocol BasicEquipmentViewModelOutput {
@@ -48,6 +49,10 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     
     func touchAccessaryCell(_ index: Int) {
         showEquipmentDetail.accept(accessories[index])
+    }
+    
+    func touchGemCell(_ index: Int) {
+        print(gems.value[index].name)
     }
     
     //out
