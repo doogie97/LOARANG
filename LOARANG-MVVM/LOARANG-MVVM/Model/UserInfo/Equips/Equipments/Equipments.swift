@@ -13,7 +13,6 @@ struct Equipments {
 enum EquipmentType { //나중에 JsonInfoManager안에 넣을지 고민 필요
     case battleEquipment
     case accessory
-    case bracelet
     case avatar
 }
 
