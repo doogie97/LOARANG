@@ -18,7 +18,10 @@ struct JsonInfoManager {
         
         self.jsonInfo = JSON(jsonInfo)
     }
-    
+}
+
+// MARK: - 장작 장비 관련
+extension JsonInfoManager {
     func getEquipmentsInfo() -> Equipments {
         let equipmentsJson: [(title: String, json: JSON)] = JSON(jsonInfo["Equip"]).compactMap { (title, JSON) in
             if !title.contains("Gem") {
