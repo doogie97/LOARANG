@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/08/11.
 //
 
-import UIKit
+import RxSwift
 
 final class AvatarViewController: UIViewController {
     private let viewModel: AvatarViewModelable
@@ -22,6 +22,7 @@ final class AvatarViewController: UIViewController {
     }
     
     private let avatarView = AvatarView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = avatarView
@@ -37,6 +38,20 @@ final class AvatarViewController: UIViewController {
         avatarView.leftTableView.delegate = self
         avatarView.rightTableView.dataSource = self
         avatarView.rightTableView.delegate = self
+        
+        viewModel.showEquipmentDetail
+            .bind(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                guard let equipmentInfo = $0 else {
+                    return
+                }
+                
+                self.present(self.container.makeAvatarDetailViewController(equipmentInfo: equipmentInfo), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -127,5 +142,15 @@ extension AvatarViewController: UITableViewDataSource {
 extension AvatarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height / 7
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == avatarView.leftTableView {
+            viewModel.touchLeftCell(indexPath.row)
+        }
+        
+        if tableView == avatarView.rightTableView {
+            viewModel.touchRightCell(indexPath.row)
+        }
     }
 }

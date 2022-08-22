@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/08/22.
 //
 
-import UIKit
+import RxSwift
 
 final class AvatarDetailViewController: UIViewController {
     private let viewModel: AvatarDetailViewModelable
@@ -20,9 +20,24 @@ final class AvatarDetailViewController: UIViewController {
     }
     
     private let avatarDetailView = AvatarDetailView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
         self.view = avatarDetailView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        avatarDetailView.setCellContents(viewModel.equipmentInfo)
+        bindView()
+    }
+    
+    private func bindView() {
+        avatarDetailView.closeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
