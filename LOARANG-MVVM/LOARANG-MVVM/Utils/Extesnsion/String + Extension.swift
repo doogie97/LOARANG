@@ -40,6 +40,7 @@ extension String {
             .replacingOccurrences(of: "CENTER", with: alignment.rawValue)
             .replacingOccurrences(of: "font size=\'12", with: "font size=\'\(fontSize)")
             .replacingOccurrences(of: "font size=\'14", with: "font size=\'\(fontSize)")
+            .replacingOccurrences(of: "FONT SIZE='14", with: "FONT SIZE='\(fontSize)")
         
         
         guard let data = newHTML.data(using: .utf8) else { return nil }

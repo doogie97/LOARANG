@@ -131,13 +131,13 @@ struct JsonInfoManager {
             } else if info.title.contains(EquimentIndex.secondFaceAvarat.rawValue) {
                 secondFaceAvarat = getEquipmentPart(info.json, type: .avatar)
             } else if info.title.contains(EquimentIndex.subWeaponAvatar.rawValue) {
-                subWeaponAvatar = getEquipmentPart(info.json, type: .avatar)
+                subWeaponAvatar = getEquipmentPart(info.json, type: .subAvatar)
             } else if info.title.contains(EquimentIndex.subHeadAvatar.rawValue) {
-                subHeadAvatar = getEquipmentPart(info.json, type: .avatar)
+                subHeadAvatar = getEquipmentPart(info.json, type: .subAvatar)
             } else if info.title.contains(EquimentIndex.subTopAvatar.rawValue) {
-                subTopAvatar = getEquipmentPart(info.json, type: .avatar)
+                subTopAvatar = getEquipmentPart(info.json, type: .subAvatar)
             } else if info.title.contains(EquimentIndex.subBottomAvatar.rawValue) {
-                subBottomAvatar = getEquipmentPart(info.json, type: .avatar)
+                subBottomAvatar = getEquipmentPart(info.json, type: .subAvatar)
             }
         }
         
@@ -183,6 +183,8 @@ struct JsonInfoManager {
                 return getAccesaryEffects(json).replacingOccurrences(of: "<BR><BR><BR>", with: "")
             case .avatar:
                 return getAvatarEffects(json)
+            case .subAvatar:
+                return getSubAvatarEffects(json)
             }
         }
         return EquipmentPart(basicInfo: getEquipmentBasicInfo(json),
@@ -281,5 +283,17 @@ struct JsonInfoManager {
         let aditionalEffect = json["Element_006"]["value"]["titleStr"].stringValue
         + "<BR>" + json["Element_006"]["value"]["contentStr"].propensityString
         return basicEffect + aditionalEffect
+    }
+    
+    private func getSubAvatarEffects(_ json: JSON) -> String {
+        let topStr = json["Element_005"]["value"].stringValue + "<BR>"
+        
+        let basicEffect = json["Element_006"]["value"]["Element_000"].stringValue
+        + "<BR>" + json["Element_006"]["value"]["Element_001"].stringValue + "<BR><BR>"
+        
+        let aditionalEffect = json["Element_007"]["value"]["titleStr"].stringValue
+        + "<BR>" + json["Element_007"]["value"]["contentStr"].propensityString
+        
+        return topStr + basicEffect + aditionalEffect
     }
 }
