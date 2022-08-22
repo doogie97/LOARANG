@@ -78,6 +78,6 @@ final class EquipmentCell: UITableViewCell {
         partImageView.backgroundColor = backColor
         partLabel.text = partString
         nameLabel.text = equipmentPart?.basicInfo.name?.htmlToString
-        nameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentPart?.basicInfo.grade ?? 0)?.textColor
+        nameLabel.textColor = Equips.Grade(rawValue: equipmentPart?.basicInfo.grade ?? 0)?.textColor
     }
 }

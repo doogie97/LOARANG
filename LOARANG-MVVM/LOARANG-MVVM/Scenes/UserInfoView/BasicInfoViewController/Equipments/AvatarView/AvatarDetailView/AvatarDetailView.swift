@@ -106,13 +106,13 @@ final class AvatarDetailView: UIView {
     
     func setCellContents(_ equipmentInfo: EquipmentPart) {
         nameLabel.text = equipmentInfo.basicInfo.name?.htmlToString
-        nameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
+        nameLabel.textColor = Equips.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
         
         equipmentImageView.setImage(urlString: equipmentInfo.basicInfo.imageURL)
-        equipmentImageView.backgroundColor = EquipmentPart.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.backgroundColor
+        equipmentImageView.backgroundColor = Equips.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.backgroundColor
         
         partNameLabel.text = equipmentInfo.basicInfo.part?.htmlToString
-        partNameLabel.textColor = EquipmentPart.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
+        partNameLabel.textColor = Equips.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
         
         effetcTextView.attributedText = equipmentInfo.battleEffects?.htmlToAttributedString(fontSize: 5)
     }

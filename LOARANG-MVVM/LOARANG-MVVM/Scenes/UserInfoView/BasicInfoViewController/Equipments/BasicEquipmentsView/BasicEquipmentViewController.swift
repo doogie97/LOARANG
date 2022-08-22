@@ -135,7 +135,7 @@ extension BasicEquipmentViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
         cell.setCellContents(equipmentPart: info.equipments[indexPath.row],
                              partString: info.pratString,
-                             backColor: EquipmentPart.Grade(rawValue: info.equipments[indexPath.row]?.basicInfo.grade ?? 0)?.backgroundColor)
+                             backColor: Equips.Grade(rawValue: info.equipments[indexPath.row]?.basicInfo.grade ?? 0)?.backgroundColor)
         
         return cell
     }

@@ -133,7 +133,7 @@ extension AvatarViewController: UITableViewDataSource {
         
         cell.setCellContents(equipmentPart: info.equipments,
                              partString: info.pratString,
-                             backColor: EquipmentPart.Grade(rawValue: info.equipments?.basicInfo.grade ?? 0)?.backgroundColor)
+                             backColor: Equips.Grade(rawValue: info.equipments?.basicInfo.grade ?? 0)?.backgroundColor)
         
         return cell
     }
