@@ -180,7 +180,7 @@ struct JsonInfoManager {
             case .battleEquipment:
                 return getBattleEffects(json)
             case .accessory:
-                return getAccesaryEffects(json)
+                return getAccesaryEffects(json).replacingOccurrences(of: "<BR><BR><BR>", with: "")
             case .avatar:
                 return getAvatarEffects(json)
             }
