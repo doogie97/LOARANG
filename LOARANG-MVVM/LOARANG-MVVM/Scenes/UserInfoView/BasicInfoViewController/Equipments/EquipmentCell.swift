@@ -6,7 +6,6 @@
 //
 
 import SnapKit
-import UIKit
 
 final class EquipmentCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -22,7 +21,6 @@ final class EquipmentCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "장비기본이미지")
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = #colorLiteral(red: 0.4440023303, green: 0.1819669902, blue: 0.03483333439, alpha: 1)
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 1
         imageView.layer.cornerRadius = 5
