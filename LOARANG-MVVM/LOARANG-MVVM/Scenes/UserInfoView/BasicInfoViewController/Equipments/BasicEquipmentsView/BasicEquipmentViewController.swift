@@ -73,7 +73,7 @@ final class BasicEquipmentViewController: UIViewController {
 
 extension BasicEquipmentViewController: UITableViewDataSource {
     enum EquipmentPartType: Int {
-        case head, shoulder, top, bottom, glove, weapon, abilityStone
+        case head, shoulder, top, bottom, glove, weapon, engraves
         
         var partString: String {
             switch self {
@@ -89,7 +89,7 @@ extension BasicEquipmentViewController: UITableViewDataSource {
                 return "장갑"
             case .weapon:
                 return "무기"
-            case .abilityStone:
+            case .engraves:
                 return ""
             }
         }
@@ -116,7 +116,7 @@ extension BasicEquipmentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == basicEquipmentView.equipmentTableView {
-            return viewModel.battleEquips.count
+            return viewModel.battleEquips.count + 1
         }
         
         if tableView == basicEquipmentView.accessoryTableView {
@@ -127,6 +127,12 @@ extension BasicEquipmentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == basicEquipmentView.equipmentTableView, indexPath.row == 6 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentEngraveCell.self)", for: indexPath) as? EquipmentEngraveCell else { return UITableViewCell() }
+            cell.setCellContents(engraves: viewModel.engraves)
+            
+            return cell
+        }
         var info: (equipments: [EquipmentPart?], pratString: String?) {
             if tableView == basicEquipmentView.equipmentTableView {
                 return (viewModel.battleEquips,
@@ -155,7 +161,7 @@ extension BasicEquipmentViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == basicEquipmentView.equipmentTableView {
+        if tableView == basicEquipmentView.equipmentTableView, indexPath.row != EquipmentPartType.engraves.rawValue {
             viewModel.touchBattleEquipmentCell(indexPath.row)
         }
         

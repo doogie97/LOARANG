@@ -30,6 +30,7 @@ final class BasicEquipmentView: UIView {
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
         tableView.register(EquipmentCell.self)
+        tableView.register(EquipmentEngraveCell.self)
         return tableView
     }()
     

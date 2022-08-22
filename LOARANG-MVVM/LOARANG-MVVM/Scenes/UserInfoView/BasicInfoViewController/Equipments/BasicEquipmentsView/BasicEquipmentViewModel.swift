@@ -17,6 +17,7 @@ protocol BasicEquipmentViewModelInput {
 protocol BasicEquipmentViewModelOutput {
     var battleEquips: [EquipmentPart?] { get }
     var accessories: [EquipmentPart?] { get }
+    var engraves: (EquipedEngrave?,  EquipedEngrave?) { get }
     var showEquipmentDetail: PublishRelay<EquipmentPart?> { get }
     var showAccessaryDetail: PublishRelay<EquipmentPart?> { get }
 }
@@ -37,6 +38,7 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
                             battleEquipments.secondRing,
                             battleEquipments.bracelet,
                             battleEquipments.abilityStone]
+        self.engraves = battleEquipments.engrave
     }
     
     //in
@@ -51,6 +53,7 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     //out
     let battleEquips: [EquipmentPart?]
     let accessories: [EquipmentPart?]
+    let engraves: (EquipedEngrave?, EquipedEngrave?)
     let showEquipmentDetail = PublishRelay<EquipmentPart?>()
     let showAccessaryDetail = PublishRelay<EquipmentPart?>()
 }
