@@ -6,14 +6,15 @@
 //
 
 struct Avatar {
-    let mainAvatar: MainAvatar
-    let subAvatar: SubAvatar
-}
-
-struct MainAvatar {
-    
-}
-
-struct SubAvatar {
-    
+    let mainWeaponAvatar: EquipmentPart?
+    let mainHeadAvatar: EquipmentPart?
+    let mainTopAvatar: EquipmentPart?
+    let mainBottomAvatar: EquipmentPart?
+    let instrumentAvarat: EquipmentPart?
+    let fisrtFaceAvarat: EquipmentPart?
+    let secondFaceAvarat: EquipmentPart?
+    let subWeaponAvatar: EquipmentPart?
+    let subHeadAvatar: EquipmentPart?
+    let subTopAvatar: EquipmentPart?
+    let subBottomAvatar: EquipmentPart?
 }

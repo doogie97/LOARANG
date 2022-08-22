@@ -7,7 +7,9 @@
 
 struct Equipments {
     let battleEquipments: BattleEquipments
-    let avatar: Avatar? // 임시 nil
+    let accessories: Accessories
+    let engrave: (EquipedEngrave?, EquipedEngrave?)
+    let avatar: Avatar
 }
 
 enum EquipmentType { //나중에 JsonInfoManager안에 넣을지 고민 필요

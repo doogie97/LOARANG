@@ -20,7 +20,6 @@ struct JsonInfoManager {
     }
     
     func getEquipmentsInfo() -> Equipments {
-        
         let equipmentsJsons: [(title: String, json: JSON)] = JSON(jsonInfo["Equip"]).compactMap { (title, JSON) in
             if !title.contains("Gem") {
                 return (title, JSON)
@@ -28,38 +27,21 @@ struct JsonInfoManager {
             return nil
         }
         
-        //전투 장비
+        return Equipments(battleEquipments: getBattleEquipments(json: equipmentsJsons),
+                          accessories: getAccessories(json: equipmentsJsons),
+                          engrave: getEngrave(JSON(jsonInfo["Engrave"])),
+                          avatar: getAvatar(json: equipmentsJsons))
+    }
+    
+    private func getBattleEquipments(json: [(title: String, json: JSON)]) -> BattleEquipments {
         var head: EquipmentPart?
         var shoulder: EquipmentPart?
         var top: EquipmentPart?
         var bottom: EquipmentPart?
         var gloves: EquipmentPart?
         var weapon: EquipmentPart?
-        //장신구
-        var necklace: EquipmentPart?
-        var firstEarring: EquipmentPart?
-        var secondEarring: EquipmentPart?
-        var firstRing: EquipmentPart?
-        var secondRing: EquipmentPart?
-        var bracelet: EquipmentPart?
-        var abilityStone: EquipmentPart?
-        //각인
-        let equipedEngraves = getEngrave(JSON(jsonInfo["Engrave"]))
-        //아바타
-        var mainWeaponAvatar: EquipmentPart?
-        var mainHeadAvatar: EquipmentPart?
-        var mainTopAvatar: EquipmentPart?
-        var mainBottomAvatar: EquipmentPart?
-        var instrumentAvarat: EquipmentPart?
-        var fisrtFaceAvarat: EquipmentPart?
-        var secondFaceAvarat: EquipmentPart?
-        var subWeaponAvatar: EquipmentPart?
-        var subHeadAvatar: EquipmentPart?
-        var subTopAvatar: EquipmentPart?
-        var subBottomAvatar: EquipmentPart?
         
-        for info in equipmentsJsons {
-            //전투 장비
+        for info in json {
             if info.title.contains(EquimentIndex.head.rawValue) {
                 head = getEquipmentPart(info.json, type: .battleEquipment)
             } else if info.title.contains(EquimentIndex.shoulder.rawValue) {
@@ -72,8 +54,28 @@ struct JsonInfoManager {
                 gloves = getEquipmentPart(info.json, type: .battleEquipment)
             } else if info.title.contains(EquimentIndex.weapon.rawValue) {
                 weapon = getEquipmentPart(info.json, type: .battleEquipment)
-            //장신구
-            } else if info.title.contains(EquimentIndex.necklace.rawValue) {
+            }
+        }
+        
+        return BattleEquipments(head: head,
+                                shoulder: shoulder,
+                                top: top,
+                                bottom: bottom,
+                                gloves: gloves,
+                                weapon: weapon)
+    }
+    
+    private func getAccessories(json: [(title: String, json: JSON)]) -> Accessories {
+        var necklace: EquipmentPart?
+        var firstEarring: EquipmentPart?
+        var secondEarring: EquipmentPart?
+        var firstRing: EquipmentPart?
+        var secondRing: EquipmentPart?
+        var bracelet: EquipmentPart?
+        var abilityStone: EquipmentPart?
+        
+        for info in json {
+            if info.title.contains(EquimentIndex.necklace.rawValue) {
                 necklace = getEquipmentPart(info.json, type: .accessory)
             } else if info.title.contains(EquimentIndex.firstEarring.rawValue) {
                 firstEarring = getEquipmentPart(info.json, type: .accessory)
@@ -87,8 +89,33 @@ struct JsonInfoManager {
                 bracelet = getEquipmentPart(info.json, type: .accessory)
             } else if info.title.contains(EquimentIndex.abilityStone.rawValue) {
                 abilityStone = getEquipmentPart(info.json, type: .accessory)
-            //아바타
-            } else if info.title.contains(EquimentIndex.mainWeaponAvatar.rawValue) {
+            }
+        }
+        
+        return Accessories(necklace: necklace,
+                           firstEarring: firstEarring,
+                           secondEarring: secondEarring,
+                           firstRing: firstRing,
+                           secondRing: secondRing,
+                           bracelet: bracelet,
+                           abilityStone: abilityStone)
+    }
+    
+    private func getAvatar(json: [(title: String, json: JSON)]) -> Avatar {
+        var mainWeaponAvatar: EquipmentPart?
+        var mainHeadAvatar: EquipmentPart?
+        var mainTopAvatar: EquipmentPart?
+        var mainBottomAvatar: EquipmentPart?
+        var instrumentAvarat: EquipmentPart?
+        var fisrtFaceAvarat: EquipmentPart?
+        var secondFaceAvarat: EquipmentPart?
+        var subWeaponAvatar: EquipmentPart?
+        var subHeadAvatar: EquipmentPart?
+        var subTopAvatar: EquipmentPart?
+        var subBottomAvatar: EquipmentPart?
+        
+        for info in json {
+            if info.title.contains(EquimentIndex.mainWeaponAvatar.rawValue) {
                 mainWeaponAvatar = getEquipmentPart(info.json, type: .avatar)
             } else if info.title.contains(EquimentIndex.mainHeadAvatar.rawValue) {
                 mainHeadAvatar = getEquipmentPart(info.json, type: .avatar)
@@ -112,36 +139,20 @@ struct JsonInfoManager {
                 subBottomAvatar = getEquipmentPart(info.json, type: .avatar)
             }
         }
-        let battleEquipments = BattleEquipments(head: head,
-                                                shoulder: shoulder,
-                                                top: top,
-                                                bottom: bottom,
-                                                gloves: gloves,
-                                                weapon: weapon,
-                                                necklace: necklace,
-                                                firstEarring: firstEarring,
-                                                secondEarring: secondEarring,
-                                                firstRing: firstRing,
-                                                secondRing: secondRing,
-                                                bracelet: bracelet,
-                                                abilityStone: abilityStone,
-                                                engrave: equipedEngraves,
-                                                mainWeaponAvatar: mainWeaponAvatar,
-                                                mainHeadAvatar: mainHeadAvatar,
-                                                mainTopAvatar: mainTopAvatar,
-                                                mainBottomAvatar: mainBottomAvatar,
-                                                instrumentAvarat: instrumentAvarat,
-                                                fisrtFaceAvarat: fisrtFaceAvarat,
-                                                secondFaceAvarat: secondFaceAvarat,
-                                                subWeaponAvatar: subWeaponAvatar,
-                                                subHeadAvatar: subHeadAvatar,
-                                                subTopAvatar: subTopAvatar,
-                                                subBottomAvatar: subBottomAvatar
-        )
-        return Equipments(battleEquipments: battleEquipments, avatar: nil)
+        
+        return Avatar(mainWeaponAvatar: mainWeaponAvatar,
+                      mainHeadAvatar: mainHeadAvatar,
+                      mainTopAvatar: mainTopAvatar,
+                      mainBottomAvatar: mainBottomAvatar,
+                      instrumentAvarat: instrumentAvarat,
+                      fisrtFaceAvarat: fisrtFaceAvarat,
+                      secondFaceAvarat: secondFaceAvarat,
+                      subWeaponAvatar: subWeaponAvatar,
+                      subHeadAvatar: subHeadAvatar,
+                      subTopAvatar: subTopAvatar,
+                      subBottomAvatar: subBottomAvatar)
     }
     
-    //MARK: - 전투 장비 & 장신구
     private func getEquipmentPart(_ json: JSON, type: EquipmentType) -> EquipmentPart {
         var battleEffects: String? {
             switch type {
@@ -178,11 +189,11 @@ struct JsonInfoManager {
         
         if isEsther {
             let estherEffects = getEstherEffect(json)
-
+            
             return basicEffect + aditionalEffect + estherEffects
         } else {
             let setEffects = getSetEffect(json)
-
+            
             return basicEffect + aditionalEffect + setEffects
         }
     }
@@ -241,7 +252,7 @@ struct JsonInfoManager {
         return (firstEngraves, secondEngraves)
     }
     
-    //MARK: - 아바타
+    //MARK: - 아바타 효과
     private func getAvatarEffects(_ json: JSON) -> String {
         let basicEffect = json["Element_005"]["value"]["Element_000"].stringValue
         + "<BR>" + json["Element_005"]["value"]["Element_001"].stringValue + "<BR><BR>"

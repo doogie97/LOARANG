@@ -6,33 +6,10 @@
 //
 
 struct BattleEquipments {
-    //전투장비
     let head: EquipmentPart?
     let shoulder: EquipmentPart?
     let top: EquipmentPart?
     let bottom: EquipmentPart?
     let gloves: EquipmentPart?
     let weapon: EquipmentPart?
-    //장신구
-    let necklace: EquipmentPart?
-    let firstEarring: EquipmentPart?
-    let secondEarring: EquipmentPart?
-    let firstRing: EquipmentPart?
-    let secondRing: EquipmentPart?
-    let bracelet: EquipmentPart?
-    let abilityStone: EquipmentPart?
-    //각인
-    let engrave: (EquipedEngrave?, EquipedEngrave?)
-    //아바타
-    let mainWeaponAvatar: EquipmentPart?
-    let mainHeadAvatar: EquipmentPart?
-    let mainTopAvatar: EquipmentPart?
-    let mainBottomAvatar: EquipmentPart?
-    let instrumentAvarat: EquipmentPart?
-    let fisrtFaceAvarat: EquipmentPart?
-    let secondFaceAvarat: EquipmentPart?
-    let subWeaponAvatar: EquipmentPart?
-    let subHeadAvatar: EquipmentPart?
-    let subTopAvatar: EquipmentPart?
-    let subBottomAvatar: EquipmentPart?
 }

@@ -24,21 +24,20 @@ protocol BasicEquipmentViewModelOutput {
 
 final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     init(equipments: Equipments) {
-        let battleEquipments = equipments.battleEquipments
-        self.battleEquips = [battleEquipments.head,
-                             battleEquipments.shoulder,
-                             battleEquipments.top,
-                             battleEquipments.bottom,
-                             battleEquipments.gloves,
-                             battleEquipments.weapon]
-        self.accessories = [battleEquipments.necklace,
-                            battleEquipments.firstEarring,
-                            battleEquipments.secondEarring,
-                            battleEquipments.firstRing,
-                            battleEquipments.secondRing,
-                            battleEquipments.bracelet,
-                            battleEquipments.abilityStone]
-        self.engraves = battleEquipments.engrave
+        self.battleEquips = [equipments.battleEquipments.head,
+                             equipments.battleEquipments.shoulder,
+                             equipments.battleEquipments.top,
+                             equipments.battleEquipments.bottom,
+                             equipments.battleEquipments.gloves,
+                             equipments.battleEquipments.weapon]
+        self.accessories = [equipments.accessories.necklace,
+                            equipments.accessories.firstEarring,
+                            equipments.accessories.secondEarring,
+                            equipments.accessories.firstRing,
+                            equipments.accessories.secondRing,
+                            equipments.accessories.bracelet,
+                            equipments.accessories.abilityStone]
+        self.engraves = equipments.engrave
     }
     
     //in
