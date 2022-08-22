@@ -19,7 +19,6 @@ protocol EquipmentDetailViewModelOutput {
 }
 
 final class EquipmentDetailViewModel: EquipmentDetailViewModelable {
-    
     init(equipmentInfo: EquipmentPart) {
         self.equipmentInfo = equipmentInfo
     }
