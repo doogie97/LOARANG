@@ -20,9 +20,8 @@ struct JsonInfoManager {
     }
     
     func getEquipmentsInfo() -> Equipments {
-        let eqJson = JSON(jsonInfo["Equip"])
         
-        let equipmentsJsons: [(title: String, json: JSON)] = eqJson.compactMap { (title, JSON) in
+        let equipmentsJsons: [(title: String, json: JSON)] = JSON(jsonInfo["Equip"]).compactMap { (title, JSON) in
             if !title.contains("Gem") {
                 return (title, JSON)
             }
@@ -44,6 +43,11 @@ struct JsonInfoManager {
         var secondRing: EquipmentPart?
         var bracelet: EquipmentPart?
         var abilityStone: EquipmentPart?
+        //각인
+        let equipedEngraves = getEngrave(JSON(jsonInfo["Engrave"]))
+        
+        let firstEngrave: EquipedEngrave? = equipedEngraves.firstEngraves
+        let secondEngrave: EquipedEngrave? = equipedEngraves.secondEngraves
         
         for info in equipmentsJsons {
             //전투 장비
@@ -70,13 +74,13 @@ struct JsonInfoManager {
                 firstRing = getEquipmentPart(info.json, type: .accessory)
             } else if info.title.contains(EquimentIndex.secondRing.rawValue) {
                 secondRing = getEquipmentPart(info.json, type: .accessory)
-            } else if info.title.contains(EquimentIndex.abilityStone.rawValue) {
-                abilityStone = getEquipmentPart(info.json, type: .accessory)
             } else if info.title.contains(EquimentIndex.bracelet.rawValue) {
                 bracelet = getEquipmentPart(info.json, type: .accessory)
+            } else if info.title.contains(EquimentIndex.abilityStone.rawValue) {
+                abilityStone = getEquipmentPart(info.json, type: .accessory)
             }
         }
-        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: necklace, firstEarring: firstEarring, secondEarring: secondEarring, firstRing: firstRing, secondRing: secondRing, bracelet: bracelet, abilityStone: abilityStone)
+        let battleEquipments = BattleEquipments(head: head, shoulder: shoulder, top: top, bottom: bottom, gloves: gloves, weapon: weapon, necklace: necklace, firstEarring: firstEarring, secondEarring: secondEarring, firstRing: firstRing, secondRing: secondRing, bracelet: bracelet, abilityStone: abilityStone, firstEngrave: firstEngrave, secondEngrave: secondEngrave)
         return Equipments(battleEquipments: battleEquipments, avatar: nil)
     }
     
@@ -88,8 +92,6 @@ struct JsonInfoManager {
                 return getBattleEffects(json)
             case .accessory:
                 return getAccesaryEffects(json)
-            case .bracelet:
-                return nil
             case .avatar:
                 return nil
             }
@@ -163,5 +165,24 @@ struct JsonInfoManager {
         + "<BR>" + json["Element_006"]["value"]["Element_001"].stringValue
         
         return basicEffect + aditionalEffect + engravigs
+    }
+    
+    //MARK: - 장착 각인
+    private func getEngrave(_ json: JSON) -> (firstEngraves: EquipedEngrave?, secondEngraves: EquipedEngrave?) {
+        var firstEngraves: EquipedEngrave?
+        var secondEngraves: EquipedEngrave?
+        for engrave in json {
+            if engrave.0.contains("000") {
+                firstEngraves = EquipedEngrave(name: engrave.1["Element_000"]["value"].stringValue,
+                                               activation: engrave.1["Element_001"]["value"]["leftText"].stringValue,
+                                               imageURL: imageBaseURL + engrave.1["Element_001"]["value"]["slotData"]["iconPath"].stringValue)
+            } else if engrave.0.contains("001") {
+                secondEngraves = EquipedEngrave(name: engrave.1["Element_000"]["value"].stringValue,
+                                                activation: engrave.1["Element_001"]["value"]["leftText"].stringValue,
+                                                imageURL: imageBaseURL + engrave.1["Element_001"]["value"]["slotData"]["iconPath"].stringValue)
+            }
+        }
+        
+        return (firstEngraves, secondEngraves)
     }
 }
