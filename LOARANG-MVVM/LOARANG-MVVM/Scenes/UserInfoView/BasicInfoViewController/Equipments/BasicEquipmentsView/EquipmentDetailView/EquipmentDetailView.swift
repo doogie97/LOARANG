@@ -36,6 +36,9 @@ final class EquipmentDetailView: UIView {
     
     private lazy var equipmentImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 1
+        imageView.layer.cornerRadius = 5
         
         return imageView
     }()
