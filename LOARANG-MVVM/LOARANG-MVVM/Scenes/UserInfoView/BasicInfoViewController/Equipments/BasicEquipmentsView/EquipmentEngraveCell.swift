@@ -43,27 +43,21 @@ final class EquipmentEngraveCell: UITableViewCell {
             $0.leading.equalTo(safeAreaLayoutGuide).inset(5)
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
         }
-        firstNameLabel.text = "진실된 용맹"
         
         firstActivationLabel.snp.makeConstraints {
             $0.leading.equalTo(safeAreaLayoutGuide).inset(5)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(5)
         }
-        
-        firstActivationLabel.text = "+12"
 
         secondNameLabel.snp.makeConstraints {
             $0.leading.equalTo(self.snp.centerX).inset(5)
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
         }
-        secondNameLabel.text = "진실된 용맹"
         
         secondActivationLabel.snp.makeConstraints {
             $0.leading.equalTo(self.snp.centerX).inset(5)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(5)
         }
-        
-        secondActivationLabel.text = "+12"
     }
     
     func setCellContents(engraves: (first: EquipedEngrave?, second: EquipedEngrave?)) {
