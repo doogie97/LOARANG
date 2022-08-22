@@ -8,8 +8,15 @@
 import UIKit
 
 final class AvatarViewController: UIViewController {
+    private let avatarView = BasicEquipmentView()
+    
+    override func loadView() {
+        self.view = avatarView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
     }
+    
+    
 }
