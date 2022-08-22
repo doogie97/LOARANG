@@ -79,7 +79,7 @@ final class Container {
         return EquipmentsTVCellViewModel(
             userInfo: userInfo,
             pageViewList: [makeBasicEquipmentViewController(equipments: userInfo.equips.equipments),
-                           makeAvatarViewController(),
+                           makeAvatarViewController(equipments: userInfo.equips.equipments),
                            makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)]
         )
     }
@@ -103,8 +103,12 @@ final class Container {
         return EquipmentDetailViewModel(equipmentInfo: equipmentInfo)
     }
     
-    private func makeAvatarViewController() -> AvatarViewController {
-        return AvatarViewController()
+    private func makeAvatarViewController(equipments: Equipments) -> AvatarViewController {
+        return AvatarViewController(viewModel: makeAvatarViewModel(equipments: equipments), container: self)
+    }
+    
+    private func makeAvatarViewModel(equipments: Equipments) -> AvatarViewModelable {
+        return AvatarViewModel(equipments: equipments)
     }
     
     private func makeCharacterImageViewController(userImage: UIImage) -> CharacterImageViewController {
