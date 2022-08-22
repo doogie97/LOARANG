@@ -28,9 +28,9 @@ final class AvatarViewModel: AvatarViewModelable {
                             equipments.avatar.subHeadAvatar,
                             equipments.avatar.subTopAvatar,
                             equipments.avatar.subBottomAvatar,
-                            nil, //나침판
-                            nil, //부적
-                            nil] //문장
+                            equipments.specialEquipment.compass,
+                            equipments.specialEquipment.amulet,
+                            equipments.specialEquipment.emblem]
     }
     let leftAvatar: [EquipmentPart?]
     let rightAvatar: [EquipmentPart?]

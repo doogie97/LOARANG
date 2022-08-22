@@ -65,7 +65,7 @@ extension AvatarViewController: UITableViewDataSource {
     }
     
     enum RightPartType: Int {
-        case subWeaponAvatar, subHeadAvatar, subTopAvatar, subBottomAvatar, compass, amulet, 문장
+        case subWeaponAvatar, subHeadAvatar, subTopAvatar, subBottomAvatar, compass, amulet, emblem
         
         var partString: String {
             switch self {
@@ -81,7 +81,7 @@ extension AvatarViewController: UITableViewDataSource {
                 return "나침반"
             case .amulet:
                 return "부적"
-            case .문장:
+            case .emblem:
                 return "문장"
             }
         }
