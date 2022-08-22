@@ -54,6 +54,12 @@ final class BasicEquipmentViewController: UIViewController {
                 self.present(self.container.makeEquipmentDetailViewController(equipmentInfo: equipmentInfo), animated: true)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.gems
+            .bind(to: basicEquipmentView.gemCollectionView.rx.items(cellIdentifier: "\(GemCell.self)", cellType: GemCell.self)) { index, gem, cell in
+                cell.setCellContents(gem: gem)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

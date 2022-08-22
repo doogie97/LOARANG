@@ -58,10 +58,10 @@ final class BasicEquipmentView: UIView {
         return label
     }()
     
-    private lazy var gemCollectionView: UICollectionView = { //임시 레이아웃
+    private(set) lazy var gemCollectionView: UICollectionView = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: itemSize.widthDimension, heightDimension: itemSize.heightDimension)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
@@ -71,8 +71,8 @@ final class BasicEquipmentView: UIView {
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .red
-        collectionView.register(BookmarkCVCell.self, forCellWithReuseIdentifier: "\(BookmarkCVCell.self)")
+        collectionView.backgroundColor = .cellColor
+        collectionView.register(GemCell.self, forCellWithReuseIdentifier: "\(GemCell.self)")
 
         return collectionView
     }()

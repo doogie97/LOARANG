@@ -18,7 +18,7 @@ protocol BasicEquipmentViewModelOutput {
     var battleEquips: [EquipmentPart?] { get }
     var accessories: [EquipmentPart?] { get }
     var engraves: (EquipedEngrave?,  EquipedEngrave?) { get }
-    var gems: [Gem] { get }
+    var gems: BehaviorRelay<[Gem]> { get }
     var showEquipmentDetail: PublishRelay<EquipmentPart?> { get }
 }
 
@@ -38,7 +38,7 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
                             equips.accessories.bracelet,
                             equips.accessories.abilityStone]
         self.engraves = equips.engrave
-        self.gems = equips.gems
+        self.gems = BehaviorRelay<[Gem]>(value: equips.gems)
     }
     
     //in
@@ -54,6 +54,6 @@ final class BasicEquipmentViewModel: BasicEquipmentViewModelable {
     let battleEquips: [EquipmentPart?]
     let accessories: [EquipmentPart?]
     let engraves: (EquipedEngrave?, EquipedEngrave?)
-    let gems: [Gem]
+    let gems: BehaviorRelay<[Gem]>
     let showEquipmentDetail = PublishRelay<EquipmentPart?>()
 }
