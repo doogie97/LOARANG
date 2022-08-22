@@ -10,6 +10,7 @@ struct Equipments {
     let accessories: Accessories
     let engrave: (EquipedEngrave?, EquipedEngrave?)
     let avatar: Avatar
+    let specialEquipment: SpecialEquipments
 }
 
 enum EquipmentType { //나중에 JsonInfoManager안에 넣을지 고민 필요
@@ -48,4 +49,8 @@ enum EquimentIndex: String { //나중에 JsonInfoManager안에 넣을지 고민 
     case subHeadAvatar = "020"
     case subTopAvatar = "021"
     case subBottomAvatar = "022"
+    //특수장비
+    case compass = "027"
+    case amulet = "028"
+    case emblem = "029"
 }

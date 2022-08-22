@@ -30,7 +30,8 @@ struct JsonInfoManager {
         return Equipments(battleEquipments: getBattleEquipments(json: equipmentsJsons),
                           accessories: getAccessories(json: equipmentsJsons),
                           engrave: getEngrave(JSON(jsonInfo["Engrave"])),
-                          avatar: getAvatar(json: equipmentsJsons))
+                          avatar: getAvatar(json: equipmentsJsons),
+                          specialEquipment: getSpecialEquipments(json: equipmentsJsons))
     }
     
     private func getBattleEquipments(json: [(title: String, json: JSON)]) -> BattleEquipments {
@@ -137,6 +138,8 @@ struct JsonInfoManager {
                 subTopAvatar = getEquipmentPart(info.json, type: .avatar)
             } else if info.title.contains(EquimentIndex.subBottomAvatar.rawValue) {
                 subBottomAvatar = getEquipmentPart(info.json, type: .avatar)
+            } else if info.title.contains(EquimentIndex.compass.rawValue) {
+                print(getEquipmentPart(info.json, type: .accessory))
             }
         }
         
@@ -151,6 +154,26 @@ struct JsonInfoManager {
                       subHeadAvatar: subHeadAvatar,
                       subTopAvatar: subTopAvatar,
                       subBottomAvatar: subBottomAvatar)
+    }
+    
+    private func getSpecialEquipments(json: [(title: String, json: JSON)]) -> SpecialEquipments {
+        var compass: EquipmentPart?
+        var amulet: EquipmentPart?
+        var emblem: EquipmentPart?
+        
+        for info in json {
+            if info.title.contains(EquimentIndex.compass.rawValue) {
+                compass = getEquipmentPart(info.json, type: .accessory)
+            } else if info.title.contains(EquimentIndex.amulet.rawValue) {
+                amulet = getEquipmentPart(info.json, type: .accessory)
+            } else if info.title.contains(EquimentIndex.emblem.rawValue) {
+                emblem = getEquipmentPart(info.json, type: .accessory)
+            }
+        }
+        
+        return SpecialEquipments(compass: compass,
+                                 amulet: amulet,
+                                 emblem: emblem)
     }
     
     private func getEquipmentPart(_ json: JSON, type: EquipmentType) -> EquipmentPart {
