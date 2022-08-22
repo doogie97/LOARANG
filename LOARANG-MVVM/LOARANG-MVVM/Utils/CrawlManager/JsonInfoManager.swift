@@ -20,18 +20,18 @@ struct JsonInfoManager {
     }
     
     func getEquipmentsInfo() -> Equipments {
-        let equipmentsJsons: [(title: String, json: JSON)] = JSON(jsonInfo["Equip"]).compactMap { (title, JSON) in
+        let equipmentsJson: [(title: String, json: JSON)] = JSON(jsonInfo["Equip"]).compactMap { (title, JSON) in
             if !title.contains("Gem") {
                 return (title, JSON)
             }
             return nil
         }
         
-        return Equipments(battleEquipments: getBattleEquipments(json: equipmentsJsons),
-                          accessories: getAccessories(json: equipmentsJsons),
+        return Equipments(battleEquipments: getBattleEquipments(json: equipmentsJson),
+                          accessories: getAccessories(json: equipmentsJson),
                           engrave: getEngrave(JSON(jsonInfo["Engrave"])),
-                          avatar: getAvatar(json: equipmentsJsons),
-                          specialEquipment: getSpecialEquipments(json: equipmentsJsons))
+                          avatar: getAvatar(json: equipmentsJson),
+                          specialEquipment: getSpecialEquipments(json: equipmentsJson))
     }
     
     private func getBattleEquipments(json: [(title: String, json: JSON)]) -> BattleEquipments {
