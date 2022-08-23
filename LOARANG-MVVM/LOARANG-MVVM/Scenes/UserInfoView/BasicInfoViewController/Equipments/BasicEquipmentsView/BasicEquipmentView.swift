@@ -73,8 +73,58 @@ final class BasicEquipmentView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .cellColor
         collectionView.register(GemCell.self, forCellWithReuseIdentifier: "\(GemCell.self)")
+        
+        collectionView.isScrollEnabled = false
 
         return collectionView
+    }()
+    
+    //MARK: - GemDeteail
+    private(set) lazy var gemDetailView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 10
+        
+        view.addSubview(gemNameLabel)
+        view.addSubview(gemEffectLabel)
+        view.addSubview(xMarkLabel)
+        
+        gemNameLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(10)
+        }
+        
+        gemEffectLabel.snp.makeConstraints {
+            $0.top.equalTo(gemNameLabel.snp.bottom).inset(-5)
+            $0.leading.trailing.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(15)
+        }
+        
+        xMarkLabel.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(8)
+        }
+        
+        return view
+    }()
+    
+    private lazy var gemNameLabel: UILabel = {
+        let label = UILabel()
+        
+        return label
+    }()
+    
+    private lazy var gemEffectLabel: UILabel = {
+        let label = UILabel()
+        
+        return label
+    }()
+    
+    private lazy var xMarkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "×"
+        label.font = .one(size: 15, family: .Bold)
+        
+        return label
     }()
     
     private func setLayout() {
@@ -82,6 +132,13 @@ final class BasicEquipmentView: UIView {
         self.addSubview(gemView)
         gemView.addSubview(gemTitleLabel)
         gemView.addSubview(gemCollectionView)
+        self.addSubview(gemDetailView)
+        
+        gemDetailView.snp.makeConstraints {
+            $0.trailing.leading.equalTo(safeAreaLayoutGuide).inset(5)
+            $0.bottom.equalTo(gemTitleLabel.snp.bottom)
+            $0.height.equalToSuperview().multipliedBy(0.15)
+        }
         
         mainStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
@@ -102,5 +159,12 @@ final class BasicEquipmentView: UIView {
             $0.top.equalTo(gemTitleLabel.snp.bottom)
             $0.leading.bottom.trailing.equalToSuperview().inset(5)
         }
+    }
+    
+    func showGemDetail(gem: Gem) {
+        gemDetailView.isHidden = false
+        
+        gemNameLabel.attributedText = gem.name.htmlToAttributedString(fontSize: 5, alignment: .LEFT)
+        gemEffectLabel.attributedText = gem.effect.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
     }
 }

@@ -5,8 +5,8 @@
 //  Created by 최최성균 on 2022/08/11.
 //
 
-import UIKit
 import RxSwift
+import RxGesture
 
 final class BasicEquipmentViewController: UIViewController {
     private let viewModel: BasicEquipmentViewModelable
@@ -69,11 +69,13 @@ final class BasicEquipmentViewController: UIViewController {
         
         viewModel.showGemDetail
             .bind(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.present(self.container.makeGemDetailViewController(gem: $0), animated: true)
+                self?.basicEquipmentView.showGemDetail(gem: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        basicEquipmentView.gemDetailView.rx.tapGesture()
+            .bind(onNext: { [weak self] _ in
+                self?.basicEquipmentView.gemDetailView.isHidden = true
             })
             .disposed(by: disposeBag)
     }
