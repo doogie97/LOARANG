@@ -15,14 +15,15 @@ protocol AvatarViewModelInput {
 }
 
 protocol AvatarViewModelOutput {
-    var leftAvatar: [EquipmentPart?] { get }
-    var rightAvatar: [EquipmentPart?] { get }
+    var mainAvatar: [EquipmentPart?] { get }
+    var subAvatar: [EquipmentPart?] { get }
+    var specialEquipment: BehaviorRelay<[EquipmentPart?]> { get }
     var showEquipmentDetail: PublishRelay<EquipmentPart?> { get }
 }
 
 final class AvatarViewModel: AvatarViewModelable {
     init(equips: Equips) {
-        self.leftAvatar = [equips.avatar.mainWeaponAvatar,
+        self.mainAvatar = [equips.avatar.mainWeaponAvatar,
                            equips.avatar.mainHeadAvatar,
                            equips.avatar.mainTopAvatar,
                            equips.avatar.mainBottomAvatar,
@@ -30,23 +31,25 @@ final class AvatarViewModel: AvatarViewModelable {
                            equips.avatar.fisrtFaceAvarat,
                            equips.avatar.secondFaceAvarat]
         
-        self.rightAvatar = [equips.avatar.subWeaponAvatar,
-                            equips.avatar.subHeadAvatar,
-                            equips.avatar.subTopAvatar,
-                            equips.avatar.subBottomAvatar,
-                            equips.specialEquipment.compass,
-                            equips.specialEquipment.amulet,
-                            equips.specialEquipment.emblem]
+        self.subAvatar = [equips.avatar.subWeaponAvatar,
+                          equips.avatar.subHeadAvatar,
+                          equips.avatar.subTopAvatar,
+                          equips.avatar.subBottomAvatar]
+        
+        self.specialEquipment = BehaviorRelay<[EquipmentPart?]>(value: [equips.specialEquipment.compass,
+                                                                        equips.specialEquipment.amulet,
+                                                                        equips.specialEquipment.emblem])
     }
     //in
     func touchLeftCell(_ index: Int){
-        showEquipmentDetail.accept(leftAvatar[index])
+        showEquipmentDetail.accept(mainAvatar[index])
     }
     func touchRightCell(_ index: Int){
-        showEquipmentDetail.accept(rightAvatar[index])
+        showEquipmentDetail.accept(subAvatar[index])
     }
     //out
-    let leftAvatar: [EquipmentPart?]
-    let rightAvatar: [EquipmentPart?]
+    let mainAvatar: [EquipmentPart?]
+    let subAvatar: [EquipmentPart?]
+    let specialEquipment: BehaviorRelay<[EquipmentPart?]>
     let showEquipmentDetail = PublishRelay<EquipmentPart?>()
 }

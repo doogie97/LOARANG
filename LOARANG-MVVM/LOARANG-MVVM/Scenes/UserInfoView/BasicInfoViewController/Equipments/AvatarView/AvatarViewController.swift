@@ -52,6 +52,17 @@ final class AvatarViewController: UIViewController {
                 self.present(self.container.makeAvatarDetailViewController(equipmentInfo: equipmentInfo), animated: true)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.specialEquipment
+            .bind(to: avatarView.specialEquipmentCollectionView.rx.items(cellIdentifier: "\(SpecialEquipmentCell.self)", cellType: SpecialEquipmentCell.self)) { index, equipment, cell in
+                
+                let partStrings = ["나침반", "부적", "문장"]
+                
+                cell.setCellContents(equipmentPart: equipment,
+                                     partString: partStrings[safe: index],
+                                     backColor: Equips.Grade(rawValue: equipment?.basicInfo.grade ?? 0)?.backgroundColor)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -80,7 +91,7 @@ extension AvatarViewController: UITableViewDataSource {
     }
     
     enum RightPartType: Int {
-        case subWeaponAvatar, subHeadAvatar, subTopAvatar, subBottomAvatar, compass, amulet, emblem
+        case subWeaponAvatar, subHeadAvatar, subTopAvatar, subBottomAvatar
         
         var partString: String {
             switch self {
@@ -92,23 +103,17 @@ extension AvatarViewController: UITableViewDataSource {
                 return "상의 덧입기 아바타"
             case .subBottomAvatar:
                 return "하의 덧입기 아바타"
-            case .compass:
-                return "나침반"
-            case .amulet:
-                return "부적"
-            case .emblem:
-                return "문장"
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == avatarView.leftTableView {
-            return viewModel.leftAvatar.count
+            return viewModel.mainAvatar.count
         }
         
         if tableView == avatarView.rightTableView {
-            return viewModel.rightAvatar.count
+            return viewModel.subAvatar.count
         }
         
         return 0
@@ -117,11 +122,11 @@ extension AvatarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var info: (equipments: EquipmentPart?, pratString: String?) {
             if tableView == avatarView.leftTableView {
-                return (viewModel.leftAvatar[indexPath.row], LeftPartType(rawValue: indexPath.row)?.partString)
+                return (viewModel.mainAvatar[indexPath.row], LeftPartType(rawValue: indexPath.row)?.partString)
             }
             
             if tableView == avatarView.rightTableView {
-                return (viewModel.rightAvatar[indexPath.row], RightPartType(rawValue: indexPath.row)?.partString)
+                return (viewModel.subAvatar[indexPath.row], RightPartType(rawValue: indexPath.row)?.partString)
             }
             
             return (nil, nil)
