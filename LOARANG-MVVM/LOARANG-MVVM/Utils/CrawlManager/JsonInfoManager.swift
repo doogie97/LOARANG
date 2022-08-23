@@ -336,7 +336,7 @@ extension JsonInfoManager {
             let grade = $0.json["Element_001"]["value"]["slotData"]["iconGrade"].intValue
             let lvString = $0.json["Element_001"]["value"]["slotData"]["rtString"].stringValue
             let imageURL = imageBaseURL + $0.json["Element_001"]["value"]["slotData"]["iconPath"].stringValue
-            let effect = $0.json["Element_004"]["value"]["Element_001"].stringValue
+            let effect = $0.json["Element_004"]["value"]["Element_001"].stringValue + $0.json["Element_005"]["value"]["Element_001"].stringValue
             
             return Gem(name: name, grade: grade, lvString: lvString, effect: effect, imageURL: imageURL)
         }
