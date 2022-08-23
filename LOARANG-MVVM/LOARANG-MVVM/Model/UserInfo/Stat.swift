@@ -7,7 +7,7 @@
 
 struct Stat {
     let basicAbility: BasicAbility
-    let propensities: Propensities? //임시 옵셔널
+    let propensities: Propensities
     let engravigs: [Engraving]? //임시 옵셔널
 }
 
