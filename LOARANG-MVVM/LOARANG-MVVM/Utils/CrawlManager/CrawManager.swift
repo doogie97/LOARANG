@@ -134,7 +134,11 @@ struct CrawlManager: CrawlManagerable {
             throw CrawlError.searchError //뭐 나중에는 어떤 에러인지 상세하게
         }
         
-        return Stat(basicAbility: basicAbility, propensities: nil, engravigs: nil)
+        guard let propensities = try? getPropensities(doc: doc) else {
+            throw CrawlError.searchError //뭐 나중에는 어떤 에러인지 상세하게
+        }
+        
+        return Stat(basicAbility: basicAbility, propensities: propensities, engravigs: nil)
     }
     
     private func getBasicAbility(doc: Document) throws -> BasicAbility {
@@ -150,6 +154,28 @@ struct CrawlManager: CrawlManagerable {
         return BasicAbility(attack: attack, vitality: vitality, crit: crit, specialization: specialization, domination: domination, swiftness: swiftness, endurance: endurance, expertise: expertise)
     }
     
+    private func getPropensities(doc: Document) throws -> Propensities {
+        guard let propensitiesJS = try? doc.select("body > script:nth-child(11)").first()?.data() else {
+            throw CrawlError.documentError
+        }
+        
+        let propensities = (propensitiesJS.components(separatedBy: ";")[safe: 6] ?? "")
+            .replacingOccurrences(of: "\r", with: "")
+            .replacingOccurrences(of: "\n", with: "")
+            .replacingOccurrences(of: "\t", with: "")
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "$(document).ready(function(){lui.profile.StatesGraph([{id:'#chart-states',value:[", with: "")
+            .replacingOccurrences(of: "],//성향그래프수치max:1000}])", with: "")
+            .replacingOccurrences(of: "isEmptyText()", with: "")
+            .components(separatedBy: ",")
+        
+        return Propensities(intellect: propensities[safe: 0] ?? "-",
+                            courage: propensities[safe: 1] ?? "-",
+                            charm: propensities[safe: 2] ?? "-",
+                            kindness: propensities[safe: 3] ?? "-")
+    }
+    
+    //MARK: - Equips
     private func getEquips(doc: Document) throws -> Equips {
         guard let wholeJsonString = try? doc.select("#profile-ability > script").first()?.data() else {
             throw CrawlError.jsonInfoError
