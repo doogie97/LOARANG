@@ -30,7 +30,7 @@ final class SpecialEquipmentCell: UICollectionViewCell {
     
     private lazy var partLabel: UILabel = {
         let label = UILabel()
-        label.font = .one(size: 15, family: .Bold)
+        label.font = .one(size: 14, family: .Bold)
         
         return label
     }()
