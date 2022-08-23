@@ -193,7 +193,9 @@ extension JsonInfoManager {
             }
         }
         return EquipmentPart(basicInfo: getEquipmentBasicInfo(json),
-                             battleEffects: battleEffects?.replacingOccurrences(of: "<BR><BR><BR>", with: ""))
+                             battleEffects: battleEffects?.replacingOccurrences(of: "<BR><BR><BR>", with: "")
+                                                          .replacingOccurrences(of: "거래 불가", with: "")
+                                                          .replacingOccurrences(of: "|", with: ""))
     }
     
     private func getEquipmentBasicInfo(_ json: JSON) -> EquipmentBasicInfo {
@@ -290,8 +292,10 @@ extension JsonInfoManager {
         
         let aditionalEffect = json["Element_006"]["value"]["titleStr"].stringValue //거래 제한 아바타
         + json["Element_005"]["value"]["titleStr"].stringValue //무한 거래 가능 아바타
+        + json["Element_004"]["value"]["titleStr"].stringValue
         + "<BR>" + json["Element_006"]["value"]["contentStr"].propensityString
         + json["Element_005"]["value"]["contentStr"].propensityString
+        + json["Element_004"]["value"]["contentStr"].propensityString
         
         return basicEffect + aditionalEffect
     }
