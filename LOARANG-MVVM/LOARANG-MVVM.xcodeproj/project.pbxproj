@@ -89,6 +89,7 @@
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */; };
+		ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */; };
 		ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28A528B0A8E000BFD206 /* EquipmentDetailViewController.swift */; };
 		ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28A728B0A8E800BFD206 /* EquipmentDetailView.swift */; };
 		ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28A928B0A99300BFD206 /* EquipmentDetailViewModel.swift */; };
@@ -185,6 +186,7 @@
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
+		ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extension.swift"; sourceTree = "<group>"; };
 		ACDE28A528B0A8E000BFD206 /* EquipmentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailViewController.swift; sourceTree = "<group>"; };
 		ACDE28A728B0A8E800BFD206 /* EquipmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailView.swift; sourceTree = "<group>"; };
 		ACDE28A928B0A99300BFD206 /* EquipmentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailViewModel.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */,
 				ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */,
 				AC2C2B5628B33A0300621753 /* JSON + Extension.swift */,
+				ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */,
 				AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */,
 				ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */,
 			);
@@ -806,6 +809,7 @@
 				AC2C2B5F28B354C300621753 /* AvatarViewModel.swift in Sources */,
 				ACDE28AC28B11D2000BFD206 /* Int + Extension.swift in Sources */,
 				ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */,
+				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
