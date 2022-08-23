@@ -63,6 +63,12 @@ final class AvatarViewController: UIViewController {
                                      backColor: Equips.Grade(rawValue: equipment?.basicInfo.grade ?? 0)?.backgroundColor)
             }
             .disposed(by: disposeBag)
+        
+        avatarView.specialEquipmentCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchSpecialEquipmentCell($0.row)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

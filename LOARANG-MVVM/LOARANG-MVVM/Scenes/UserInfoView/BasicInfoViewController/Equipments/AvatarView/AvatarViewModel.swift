@@ -12,6 +12,7 @@ protocol AvatarViewModelable: AvatarViewModelInput, AvatarViewModelOutput {}
 protocol AvatarViewModelInput {
     func touchLeftCell(_ index: Int)
     func touchRightCell(_ index: Int)
+    func touchSpecialEquipmentCell(_ index: Int)
 }
 
 protocol AvatarViewModelOutput {
@@ -44,9 +45,15 @@ final class AvatarViewModel: AvatarViewModelable {
     func touchLeftCell(_ index: Int){
         showEquipmentDetail.accept(mainAvatar[index])
     }
+    
     func touchRightCell(_ index: Int){
         showEquipmentDetail.accept(subAvatar[index])
     }
+    
+    func touchSpecialEquipmentCell(_ index: Int) {
+        showEquipmentDetail.accept(specialEquipment.value[index])
+    }
+    
     //out
     let mainAvatar: [EquipmentPart?]
     let subAvatar: [EquipmentPart?]
