@@ -27,9 +27,6 @@
 		AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6D28B3673100621753 /* AvatarDetailViewController.swift */; };
 		AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6F28B3673700621753 /* AvatarDetailViewModel.swift */; };
 		AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B7128B38A5900621753 /* GemCell.swift */; };
-		AC2C2B7728B39A8300621753 /* GemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B7628B39A8300621753 /* GemDetailView.swift */; };
-		AC2C2B7928B39A8A00621753 /* GemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B7828B39A8A00621753 /* GemDetailViewController.swift */; };
-		AC2C2B7B28B39AD700621753 /* GemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B7A28B39AD700621753 /* GemDetailViewModel.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
@@ -124,9 +121,6 @@
 		AC2C2B6D28B3673100621753 /* AvatarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewController.swift; sourceTree = "<group>"; };
 		AC2C2B6F28B3673700621753 /* AvatarDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewModel.swift; sourceTree = "<group>"; };
 		AC2C2B7128B38A5900621753 /* GemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemCell.swift; sourceTree = "<group>"; };
-		AC2C2B7628B39A8300621753 /* GemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailView.swift; sourceTree = "<group>"; };
-		AC2C2B7828B39A8A00621753 /* GemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailViewController.swift; sourceTree = "<group>"; };
-		AC2C2B7A28B39AD700621753 /* GemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailViewModel.swift; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -305,16 +299,6 @@
 			path = CardInfo;
 			sourceTree = "<group>";
 		};
-		AC2C2B7528B39A5700621753 /* GemDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				AC2C2B7628B39A8300621753 /* GemDetailView.swift */,
-				AC2C2B7828B39A8A00621753 /* GemDetailViewController.swift */,
-				AC2C2B7A28B39AD700621753 /* GemDetailViewModel.swift */,
-			);
-			path = GemDetailView;
-			sourceTree = "<group>";
-		};
 		AC3FEBFE28804E9600CDE796 /* Extesnsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,7 +419,6 @@
 				AC2C2B5428B3209B00621753 /* EquipmentEngraveCell.swift */,
 				AC2C2B7128B38A5900621753 /* GemCell.swift */,
 				ACDE28A428B0A87A00BFD206 /* EquipmentDetailView */,
-				AC2C2B7528B39A5700621753 /* GemDetailView */,
 			);
 			path = BasicEquipmentsView;
 			sourceTree = "<group>";
@@ -748,14 +731,12 @@
 				ACB837F228961ECE00F75BA2 /* SegmentControllerView.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
-				AC2C2B7B28B39AD700621753 /* GemDetailViewModel.swift in Sources */,
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
 				ACBA790428992C5100CB39D5 /* BookmarkUserDTO.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */,
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
 				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
-				AC2C2B7728B39A8300621753 /* GemDetailView.swift in Sources */,
 				ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */,
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
@@ -801,7 +782,6 @@
 				AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
-				AC2C2B7928B39A8A00621753 /* GemDetailViewController.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUser.swift in Sources */,
 				AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,

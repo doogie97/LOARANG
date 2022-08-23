@@ -102,14 +102,7 @@ final class Container {
     private func makeEquipmentDetailViewModel(equipmentInfo: EquipmentPart) -> EquipmentDetailViewModelable {
         return EquipmentDetailViewModel(equipmentInfo: equipmentInfo)
     }
-    
-    func makeGemDetailViewController(gem: Gem) -> GemDetailViewController {
-        return GemDetailViewController(viewModel: makeGemDetailViewModel(gem: gem))
-    }
-    
-    private func makeGemDetailViewModel(gem: Gem) -> GemDetailViewModelable {
-        return GemDetailViewModel(gem: gem)
-    }
+
     //MARK: - about Avatar
     private func makeAvatarViewController(equips: Equips) -> AvatarViewController {
         return AvatarViewController(viewModel: makeAvatarViewModel(equips: equips), container: self)
