@@ -78,6 +78,8 @@ final class BookmarkTVCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .cellBackgroundColor
         collectionView.register(BookmarkCVCell.self, forCellWithReuseIdentifier: "\(BookmarkCVCell.self)")
+        
+        collectionView.isScrollEnabled = false
 
         return collectionView
     }()
