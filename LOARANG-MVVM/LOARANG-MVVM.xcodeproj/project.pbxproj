@@ -53,6 +53,7 @@
 		AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */; };
 		AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */; };
 		AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11D228814F5800D06AA6 /* BookmarkUser.swift */; };
+		ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA27A2F28B4D1AE0080EF4F /* SpecialEquipmentCell.swift */; };
 		ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */; };
 		ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */; };
 		ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF326287FF0D200AE98F1 /* MainViewController.swift */; };
@@ -148,6 +149,7 @@
 		AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCell.swift; sourceTree = "<group>"; };
 		AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCellViewModel.swift; sourceTree = "<group>"; };
 		AC8F11D228814F5800D06AA6 /* BookmarkUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUser.swift; sourceTree = "<group>"; };
+		ACA27A2F28B4D1AE0080EF4F /* SpecialEquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEquipmentCell.swift; sourceTree = "<group>"; };
 		ACAEF31F287FF0D200AE98F1 /* LOARANG-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LOARANG-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				AC2C2B5C28B3545900621753 /* AvatarView.swift */,
 				AC799A8328A50C1B008A2865 /* AvatarViewController.swift */,
 				AC2C2B5E28B354C300621753 /* AvatarViewModel.swift */,
+				ACA27A2F28B4D1AE0080EF4F /* SpecialEquipmentCell.swift */,
 				AC2C2B6A28B366F800621753 /* AvatarDetailView */,
 			);
 			path = AvatarView;
@@ -773,6 +776,7 @@
 				ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
 				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
+				ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */,
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
