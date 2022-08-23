@@ -44,28 +44,66 @@ final class AvatarView: UIView {
         return tableView
     }()
     
-    private lazy var jewelryStackView: UIStackView = {
+    private lazy var specialEquipmentsBackView: UIView = {
+        let view = UIView()
+        view.addSubview(specialEquipmentTitleLabel)
+        view.addSubview(specialEquipmentCollectionView)
+        
+        specialEquipmentTitleLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(10)
+        }
+        
+        specialEquipmentCollectionView.snp.makeConstraints {
+            $0.top.equalTo(specialEquipmentTitleLabel.snp.bottom)
+            $0.leading.bottom.trailing.equalToSuperview().inset(5)
+        }
+        
+        return view
+    }()
+    
+    private lazy var specialEquipmentTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "나중에 성향 정보 들어올 뷰"
+        label.text = "특수 장비"
+        label.font = .one(size: 15, family: .Bold)
+        label.setContentHuggingPriority(.required, for: .vertical)
         
-        let stackView = UIStackView(arrangedSubviews: [label])
+        return label
+    }()
+    
+    private(set) lazy var specialEquipmentCollectionView: UICollectionView = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
         
-        return stackView
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .cellColor
+        collectionView.register(SpecialEquipmentCell.self, forCellWithReuseIdentifier: "\(SpecialEquipmentCell.self)")
+        
+        collectionView.isScrollEnabled = false
+
+        return collectionView
     }()
     
     private func setLayout() {
         self.addSubview(mainStackView)
-        self.addSubview(jewelryStackView)
+        self.addSubview(specialEquipmentsBackView)
         
         mainStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(5)
-            $0.bottom.equalTo(jewelryStackView.snp.top)
+            $0.bottom.equalTo(specialEquipmentsBackView.snp.top)
         }
         
-        jewelryStackView.snp.makeConstraints {
+        specialEquipmentsBackView.snp.makeConstraints {
             $0.height.equalToSuperview().dividedBy(5)
             $0.trailing.leading.bottom.equalToSuperview()
         }
+
     }
 }
