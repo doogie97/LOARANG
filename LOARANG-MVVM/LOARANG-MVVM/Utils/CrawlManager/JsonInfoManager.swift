@@ -185,7 +185,7 @@ extension JsonInfoManager {
             case .battleEquipment:
                 return getBattleEffects(json)
             case .accessory:
-                return getAccesaryEffects(json).replacingOccurrences(of: "<BR><BR><BR>", with: "")
+                return getAccesaryEffects(json)
             case .avatar:
                 return getAvatarEffects(json)
             case .subAvatar:
@@ -193,7 +193,7 @@ extension JsonInfoManager {
             }
         }
         return EquipmentPart(basicInfo: getEquipmentBasicInfo(json),
-                             battleEffects: battleEffects)
+                             battleEffects: battleEffects?.replacingOccurrences(of: "<BR><BR><BR>", with: ""))
     }
     
     private func getEquipmentBasicInfo(_ json: JSON) -> EquipmentBasicInfo {
@@ -282,22 +282,36 @@ extension JsonInfoManager {
     
     //MARK: - 아바타 효과
     private func getAvatarEffects(_ json: JSON) -> String {
-        let basicEffect = json["Element_005"]["value"]["Element_000"].stringValue
-        + "<BR>" + json["Element_005"]["value"]["Element_001"].stringValue + "<BR><BR>"
+        let basicEffect = json["Element_005"]["value"]["Element_000"].stringValue //거래 제한 아바타
+        + json["Element_004"]["value"]["Element_000"].stringValue //무한 거래 가능 아바타
+        + "<BR>" + json["Element_005"]["value"]["Element_001"].stringValue
+        + json["Element_004"]["value"]["Element_001"].stringValue + "<BR><BR>"
         
-        let aditionalEffect = json["Element_006"]["value"]["titleStr"].stringValue
+        
+        let aditionalEffect = json["Element_006"]["value"]["titleStr"].stringValue //거래 제한 아바타
+        + json["Element_005"]["value"]["titleStr"].stringValue //무한 거래 가능 아바타
         + "<BR>" + json["Element_006"]["value"]["contentStr"].propensityString
+        + json["Element_005"]["value"]["contentStr"].propensityString
+        
         return basicEffect + aditionalEffect
     }
     
     private func getSubAvatarEffects(_ json: JSON) -> String {
-        let topStr = json["Element_005"]["value"].stringValue + "<BR>"
+        let topStr = json["Element_005"]["value"].stringValue //거래 제한 아바타
+        + json["Element_004"]["value"].stringValue //무한 거래 가능 아바타
+        + "<BR>"
         
-        let basicEffect = json["Element_006"]["value"]["Element_000"].stringValue
-        + "<BR>" + json["Element_006"]["value"]["Element_001"].stringValue + "<BR><BR>"
+        let basicEffect =
+        json["Element_006"]["value"]["Element_000"].stringValue //거래 제한 아바타
+        + json["Element_005"]["value"]["Element_000"].stringValue //무한 거래 가능 아바타
+        + "<BR>" + json["Element_006"]["value"]["Element_001"].stringValue
+        + json["Element_005"]["value"]["Element_001"].stringValue
+        + "<BR><BR>"
         
-        let aditionalEffect = json["Element_007"]["value"]["titleStr"].stringValue
+        let aditionalEffect = json["Element_007"]["value"]["titleStr"].stringValue //거래 제한 아바타
+        + json["Element_006"]["value"]["titleStr"].stringValue //무한 거래 가능 아바타
         + "<BR>" + json["Element_007"]["value"]["contentStr"].propensityString
+        + json["Element_006"]["value"]["contentStr"].propensityString
         
         return topStr + basicEffect + aditionalEffect
     }
