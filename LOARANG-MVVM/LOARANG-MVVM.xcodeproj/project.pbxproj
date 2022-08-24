@@ -231,8 +231,8 @@
 				ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */,
 				AC035EA0289121FD0068DC7E /* UserInfoViewController.swift */,
 				AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */,
-				AC6CA28F2893BBCF0049C12F /* BasicInfoViewController */,
-				AC6CA2902893BBD70049C12F /* SecondInfoView */,
+				AC6CA28F2893BBCF0049C12F /* BasicInfoView */,
+				AC6CA2902893BBD70049C12F /* SkillInfoView */,
 				AC6CA2912893BBEF0049C12F /* ThirdInfoView */,
 				AC6CA2922893BBF90049C12F /* ForthInfoView */,
 			);
@@ -384,7 +384,7 @@
 			path = Equipments;
 			sourceTree = "<group>";
 		};
-		AC6CA28F2893BBCF0049C12F /* BasicInfoViewController */ = {
+		AC6CA28F2893BBCF0049C12F /* BasicInfoView */ = {
 			isa = PBXGroup;
 			children = (
 				ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */,
@@ -394,15 +394,15 @@
 				ACD4B78B28A4A75700846E21 /* BasicEffect */,
 				AC50BC9328A4EB83009F39C5 /* Equipments */,
 			);
-			path = BasicInfoViewController;
+			path = BasicInfoView;
 			sourceTree = "<group>";
 		};
-		AC6CA2902893BBD70049C12F /* SecondInfoView */ = {
+		AC6CA2902893BBD70049C12F /* SkillInfoView */ = {
 			isa = PBXGroup;
 			children = (
 				AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */,
 			);
-			path = SecondInfoView;
+			path = SkillInfoView;
 			sourceTree = "<group>";
 		};
 		AC6CA2912893BBEF0049C12F /* ThirdInfoView */ = {
