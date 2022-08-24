@@ -8,5 +8,5 @@
 struct UserInfo {
     let mainInfo: MainInfo
     let stat: Stat
-    let equips: Equips
+    let userJsonInfo: UserJsonInfo
 }

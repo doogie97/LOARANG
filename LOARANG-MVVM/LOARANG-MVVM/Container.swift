@@ -87,8 +87,8 @@ final class Container {
     func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
         return EquipmentsTVCellViewModel(
             userInfo: userInfo,
-            pageViewList: [makeBasicEquipmentViewController(equips: userInfo.equips),
-                           makeAvatarViewController(equips: userInfo.equips),
+            pageViewList: [makeBasicEquipmentViewController(equips: userInfo.userJsonInfo.equips),
+                           makeAvatarViewController(equips: userInfo.userJsonInfo.equips),
                            makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)]
         )
     }

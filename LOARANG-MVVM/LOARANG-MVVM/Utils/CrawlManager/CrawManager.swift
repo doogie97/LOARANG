@@ -38,7 +38,7 @@ struct CrawlManager: CrawlManagerable {
                 return
             }
             
-            guard let equips = try? getEquips(doc: doc) else {
+            guard let userJsonInfo = try? getUserJsonInfo(doc: doc) else {
                 DispatchQueue.main.async {
                 completion(.failure(CrawlError.searchError))
                 }
@@ -51,7 +51,7 @@ struct CrawlManager: CrawlManagerable {
                     case .success(let mainInfo):
                         completion(.success(UserInfo(mainInfo: mainInfo,
                                                      stat: stat,
-                                                     equips: equips)))
+                                                     userJsonInfo: userJsonInfo)))
                     case .failure(let error):
                         completion(.failure(error))
                     }
@@ -177,7 +177,7 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - Equips
-    private func getEquips(doc: Document) throws -> Equips {
+    private func getUserJsonInfo(doc: Document) throws -> UserJsonInfo {
         guard let wholeJsonString = try? doc.select("#profile-ability > script").first()?.data() else {
             throw CrawlError.jsonInfoError
         }
@@ -189,8 +189,10 @@ struct CrawlManager: CrawlManagerable {
         guard let jsonInfoManager = try? JsonInfoManager(jsonString: replacedString) else {
             throw CrawlError.jsonInfoError
         }
+        
+        let equips = jsonInfoManager.getEquipmentsInfo()
 
-        return jsonInfoManager.getEquipmentsInfo()
+        return UserJsonInfo(equips: equips)
     }
     
     //MARK: - 점검 확인
