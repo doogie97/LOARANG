@@ -342,3 +342,29 @@ extension JsonInfoManager {
         }
     }
 }
+
+//MARK: - 스킬 관련
+extension JsonInfoManager {
+    func getskillInfo() {
+        //스킬레벨이 1초과인 것들의 타이틀만 배열로 번호순으로 정렬해서 반환해서 그 배열 돌면서 얻어온 스킬정보들을 skill의 배열로 넘기면 될듯?
+        let skillJson = JSON(jsonInfo["Skill"])
+        
+        let validSkillTitles = getValidSkillTitles(json: skillJson)
+    }
+    
+    private func getValidSkillTitles(json: JSON) -> [String] {
+        return json.compactMap { (title, json) in
+            guard let skillLv = Int(json["Element_003"]["value"].stringValue
+                .replacingOccurrences(of: "스킬 레벨 ", with: "")
+                .replacingOccurrences(of: " (최대)", with: "")) else {
+                return nil
+            }
+            
+            if skillLv > 1 {
+                return title
+            }
+            
+            return nil
+        }.sorted()
+    }
+}
