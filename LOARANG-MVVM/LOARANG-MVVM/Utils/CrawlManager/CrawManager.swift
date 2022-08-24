@@ -9,6 +9,7 @@ import SwiftSoup
 
 protocol CrawlManagerable {
     func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void)
+    func chenckInspection() throws
 }
 
 struct CrawlManager: CrawlManagerable {
@@ -190,5 +191,23 @@ struct CrawlManager: CrawlManagerable {
         }
 
         return jsonInfoManager.getEquipmentsInfo()
+    }
+    
+    //MARK: - 점검 확인
+    
+    func chenckInspection() throws {
+        guard let url = makeURL(urlString: baseURL, name: "") else {
+            return
+        }
+        
+        guard let doc = try? makeDocument(url: url) else {
+            return
+        }
+        
+        guard let a = try? doc.select("title").text(), a == "로스트아크 - 서비스 점검" else {
+            return
+        }
+        
+        throw CrawlError.inpection
     }
 }

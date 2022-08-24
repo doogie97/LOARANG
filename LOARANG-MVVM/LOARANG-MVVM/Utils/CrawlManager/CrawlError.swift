@@ -10,4 +10,5 @@ enum CrawlError: Error {
     case urlError
     case documentError
     case jsonInfoError
+    case inpection
 }
