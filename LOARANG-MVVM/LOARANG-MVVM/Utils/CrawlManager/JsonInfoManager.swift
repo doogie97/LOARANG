@@ -346,12 +346,44 @@ extension JsonInfoManager {
 //MARK: - 스킬 관련
 extension JsonInfoManager {
     func getSkills() -> [Skill] {
-        //스킬레벨이 1초과인 것들의 타이틀만 배열로 번호순으로 정렬해서 반환해서 그 배열 돌면서 얻어온 스킬정보들을 skill의 배열로 넘기면 될듯?
         let skillJson = JSON(jsonInfo["Skill"])
         
         let validSkillTitles = getValidSkillTitles(json: skillJson)
         
-        return [] //일단 빈 배열
+        let skills: [Skill] = validSkillTitles.compactMap {
+            let json = skillJson[$0]
+            
+            let name = json["Element_000"]["value"].stringValue
+            let coolTime = json["Element_001"]["value"]["leftText"].stringValue
+            let actionType = json["Element_001"]["value"]["name"].stringValue
+            let skillType = json["Element_001"]["value"]["level"].stringValue
+            let imageURL = imageBaseURL + json["Element_001"]["value"]["slotData"]["iconPath"].stringValue
+            let battleType = json["Element_002"]["value"].stringValue.replacingOccurrences(of: "|", with: "")
+            let skillLv = json["Element_003"]["value"].stringValue
+            let cost = json["Element_004"]["value"].stringValue.replacingOccurrences(of: "|", with: "")
+            let skillDescription = json["Element_005"]["value"].stringValue
+            let Tripods = [getTripods(json: json["Element_006"]["value"]["Element_000"]),
+                           getTripods(json: json["Element_006"]["value"]["Element_001"]),
+                           getTripods(json: json["Element_006"]["value"]["Element_002"]),
+            ]
+            let runeEffect = json["Element_007"]["value"]["Element_001"].stringValue
+            let gemEffect = json["Element_008"]["value"]["Element_001"].stringValue
+            
+            
+            return Skill(name: name,
+                         coolTime: coolTime,
+                         actionType: actionType,
+                         skillType: skillType,
+                         imageURL: imageURL,
+                         battleType: battleType,
+                         skillLv: skillLv,
+                         cost: cost,
+                         skillDescription: skillDescription,
+                         tripods: Tripods,
+                         runeEffect: runeEffect,
+                         gemEffect: gemEffect)
+        }
+        return skills
     }
     
     private func getValidSkillTitles(json: JSON) -> [String] {
