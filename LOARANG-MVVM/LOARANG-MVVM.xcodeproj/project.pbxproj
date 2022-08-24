@@ -48,6 +48,8 @@
 		AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */; };
 		AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */; };
 		AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */; };
+		AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403F28B5D213004B7EBB /* SkillInfo.swift */; };
+		AC86404228B5D478004B7EBB /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404128B5D478004B7EBB /* Skill.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
 		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
@@ -145,6 +147,8 @@
 		AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewController.swift; sourceTree = "<group>"; };
 		AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJsonInfo.swift; sourceTree = "<group>"; };
+		AC86403F28B5D213004B7EBB /* SkillInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
+		AC86404128B5D478004B7EBB /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
 		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
@@ -465,8 +469,18 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF34B287FF9B900AE98F1 /* Equips */,
+				AC86403E28B5D1FA004B7EBB /* SkillInfo */,
 			);
 			path = UserJsonInfos;
+			sourceTree = "<group>";
+		};
+		AC86403E28B5D1FA004B7EBB /* SkillInfo */ = {
+			isa = PBXGroup;
+			children = (
+				AC86403F28B5D213004B7EBB /* SkillInfo.swift */,
+				AC86404128B5D478004B7EBB /* Skill.swift */,
+			);
+			path = SkillInfo;
 			sourceTree = "<group>";
 		};
 		AC8F11C62881025900D06AA6 /* CrawlManager */ = {
@@ -813,11 +827,13 @@
 				AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
+				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
 				AC6CA2962893BC270049C12F /* SecondInfoViewController.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
+				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
