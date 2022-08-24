@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/07/29.
 //
 
-import UIKit
+import RxSwift
 
 final class SkillInfoViewController: UIViewController {
     private let viewModel: SkillInfoViewModelable
@@ -20,6 +20,7 @@ final class SkillInfoViewController: UIViewController {
     }
     
     private let skillInfoView = SkillInfoView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -29,10 +30,19 @@ final class SkillInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewContents()
+        bindView()
     }
     
     private func setViewContents() {
         let skillPointString = "스킬 포인트 : \(viewModel.usedSkillPoint) / \(viewModel.totalSkillPoint)"
         skillInfoView.setViewContents(skillPointString: skillPointString)
+    }
+    
+    private func bindView() {
+        viewModel.skills
+            .bind(to: skillInfoView.skillTableView.rx.items(cellIdentifier: "\(SkillTVCell.self)", cellType: SkillTVCell.self)){ index, skill, cell in
+                
+            }
+            .disposed(by: disposeBag)
     }
 }

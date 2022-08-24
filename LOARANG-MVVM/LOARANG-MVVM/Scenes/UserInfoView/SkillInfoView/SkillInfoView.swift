@@ -25,15 +25,28 @@ final class SkillInfoView: UIView {
         return label
     }()
     
-    private func setLayout() {
-        self.backgroundColor = .mainBackground
+    private(set) lazy var skillTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .mainBackground
+        tableView.separatorStyle = .none
+        tableView.register(SkillTVCell.self)
         
+        return tableView
+    }()
+    
+    private func setLayout() {
         self.addSubview(skillPointLabel)
+        self.addSubview(skillTableView)
         
         skillPointLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(5)
             $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(20)
+        }
+        
+        skillTableView.snp.makeConstraints {
+            $0.top.equalTo(skillPointLabel.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
