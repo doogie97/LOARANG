@@ -25,4 +25,14 @@ final class SkillInfoViewController: UIViewController {
         super.loadView()
         self.view = skillInfoView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setViewContents()
+    }
+    
+    private func setViewContents() {
+        let skillPointString = "스킬 포인트 : \(viewModel.usedSkillPoint) / \(viewModel.totalSkillPoint)"
+        skillInfoView.setViewContents(skillPointString: skillPointString)
+    }
 }

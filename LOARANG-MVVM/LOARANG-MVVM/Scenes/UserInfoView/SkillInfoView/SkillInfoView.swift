@@ -17,7 +17,27 @@ final class SkillInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var skillPointLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.font = .one(size: 15, family: .Bold)
+        
+        return label
+    }()
+    
     private func setLayout() {
-        self.backgroundColor = .systemRed
+        self.backgroundColor = .mainBackground
+        
+        self.addSubview(skillPointLabel)
+        
+        skillPointLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(5)
+            $0.leading.trailing.equalToSuperview().inset(10)
+            $0.height.equalTo(20)
+        }
+    }
+    
+    func setViewContents(skillPointString: String) {
+        self.skillPointLabel.text = skillPointString
     }
 }
