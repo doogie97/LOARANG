@@ -16,4 +16,17 @@ extension UIViewController {
         
         self.present(alert, animated: true)
     }
+    
+    func showExitAlert(title: String = "", message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default) { _ in
+            exit(0)
+        }
+        
+        alert.addAction(action)
+        
+        self.present(alert, animated: true)
+    }
 }
