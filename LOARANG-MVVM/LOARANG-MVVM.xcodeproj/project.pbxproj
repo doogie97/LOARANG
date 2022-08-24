@@ -38,7 +38,7 @@
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
 		AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
-		AC6CA2962893BC270049C12F /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */; };
+		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */; };
 		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
@@ -50,6 +50,8 @@
 		AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */; };
 		AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403F28B5D213004B7EBB /* SkillInfo.swift */; };
 		AC86404228B5D478004B7EBB /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404128B5D478004B7EBB /* Skill.swift */; };
+		AC86404428B5EAF8004B7EBB /* SkillInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404328B5EAF8004B7EBB /* SkillInfoView.swift */; };
+		AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
 		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
@@ -137,7 +139,7 @@
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCell.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
-		AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
+		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInfoViewController.swift; sourceTree = "<group>"; };
 		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,8 @@
 		AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJsonInfo.swift; sourceTree = "<group>"; };
 		AC86403F28B5D213004B7EBB /* SkillInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
 		AC86404128B5D478004B7EBB /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		AC86404328B5EAF8004B7EBB /* SkillInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoView.swift; sourceTree = "<group>"; };
+		AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewModel.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
 		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
@@ -400,7 +404,9 @@
 		AC6CA2902893BBD70049C12F /* SkillInfoView */ = {
 			isa = PBXGroup;
 			children = (
-				AC6CA2952893BC270049C12F /* SecondInfoViewController.swift */,
+				AC86404328B5EAF8004B7EBB /* SkillInfoView.swift */,
+				AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */,
+				AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */,
 			);
 			path = SkillInfoView;
 			sourceTree = "<group>";
@@ -792,6 +798,7 @@
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
 				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
+				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
@@ -819,6 +826,7 @@
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
 				ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */,
+				AC86404428B5EAF8004B7EBB /* SkillInfoView.swift in Sources */,
 				AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */,
 				AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
@@ -829,7 +837,7 @@
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
-				AC6CA2962893BC270049C12F /* SecondInfoViewController.swift in Sources */,
+				AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
