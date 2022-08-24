@@ -369,4 +369,13 @@ extension JsonInfoManager {
             return nil
         }.sorted()
     }
+    
+    private func getTripods(json: JSON) -> Tripod {
+        let name = json["name"].stringValue
+        let description = json["desc"].stringValue
+        let lv = json["tier"].stringValue
+        let imageURL = imageBaseURL + json["slotData"]["iconPath"].stringValue
+        
+        return Tripod(name: name, description: description, lv: lv, imageURL: imageURL)
+    }
 }
