@@ -7,4 +7,5 @@
 
 struct UserJsonInfo {
     let equips: Equips
+    let skillInfo: SkillInfo
 }

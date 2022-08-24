@@ -176,7 +176,7 @@ struct CrawlManager: CrawlManagerable {
                             kindness: propensities[safe: 3] ?? "-")
     }
     
-    //MARK: - Equips
+    //MARK: - JsonInfo
     private func getUserJsonInfo(doc: Document) throws -> UserJsonInfo {
         guard let wholeJsonString = try? doc.select("#profile-ability > script").first()?.data() else {
             throw CrawlError.jsonInfoError
@@ -190,9 +190,19 @@ struct CrawlManager: CrawlManagerable {
             throw CrawlError.jsonInfoError
         }
         
+        //장비 관련
         let equips = jsonInfoManager.getEquipmentsInfo()
+        
+        //스킬 관련
+        let usedSkillPoint = try? doc.select("#profile-skill-battle > div > div.profile-skill__point > em:nth-child(2)").text()
+        let totalSkillPoint = try? doc.select("#profile-skill-battle > div > div.profile-skill__point > em:nth-child(4)").text()
+        let skiils = jsonInfoManager.getSkills()
+        
+        let skillInfo = SkillInfo(usedSkillPoint: usedSkillPoint ?? "-",
+                                  totalSkillPoint: totalSkillPoint ?? "-",
+                                  skills: skiils)
 
-        return UserJsonInfo(equips: equips)
+        return UserJsonInfo(equips: equips, skillInfo: skillInfo)
     }
     
     //MARK: - 점검 확인
