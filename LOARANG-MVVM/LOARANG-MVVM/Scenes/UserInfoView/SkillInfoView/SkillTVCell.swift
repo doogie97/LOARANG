@@ -32,8 +32,9 @@ final class SkillTVCell: UITableViewCell {
     }()
     
     private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [basicStackView])
+        let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView])
         stackView.axis = .vertical
+        stackView.spacing = 10
         
         return stackView
     }()
@@ -80,7 +81,58 @@ final class SkillTVCell: UITableViewCell {
         
         return label
     }()
-
+    
+    //MARK: - Tripods StackView
+    
+    private lazy var tripodsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [firstTripodStackView, secondTripodStackView, thridTripodStackView])
+        stackView.distribution = .fillEqually
+        stackView.backgroundColor = .mainBackground
+        stackView.layer.cornerRadius = 10
+        
+        return stackView
+    }()
+    
+    private lazy var firstTripodStackView = makeTripodStackView(imageView: firstTripodImageView,
+                                                                nameLabe: firstTripodNameLabel)
+    
+    private lazy var firstTripodImageView = UIImageView()
+    private lazy var firstTripodNameLabel = makeTripodLabel()
+    
+    private lazy var secondTripodStackView = makeTripodStackView(imageView: secondTripodImageView,
+                                                                 nameLabe: secondTripodNameLabel)
+    
+    private lazy var secondTripodImageView = UIImageView()
+    private lazy var secondTripodNameLabel = makeTripodLabel()
+    
+    private lazy var thridTripodStackView = makeTripodStackView(imageView: thirdTripodImageView,
+                                                                nameLabe: thirdTripodNameLabel)
+    
+    private lazy var thirdTripodImageView = UIImageView()
+    private lazy var thirdTripodNameLabel = makeTripodLabel()
+    
+    private func makeTripodStackView(imageView: UIImageView, nameLabe: UILabel) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: [imageView, nameLabe])
+        stackView.spacing = 5
+        
+        imageView.snp.makeConstraints {
+            $0.height.equalTo(25)
+            $0.width.equalTo(imageView.snp.height)
+        }
+        
+        return stackView
+    }
+    
+    private func makeTripodLabel() -> UILabel {
+        let label = UILabel()
+        label.font = .one(size: 11, family: .Bold)
+        label.textColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.3882352941, alpha: 1)
+        label.numberOfLines = 2
+        label.lineBreakMode = .byCharWrapping
+        
+        return label
+    }
+    
     private func setLayout() {
         self.selectionStyle = .none
         self.backgroundColor = .cellBackgroundColor
@@ -97,5 +149,13 @@ final class SkillTVCell: UITableViewCell {
         skillImageView.setImage(urlString: skill.imageURL)
         skillNameLabel.text = skill.name
         skillLvLabel.text = skill.skillLv
+        firstTripodNameLabel.text = skill.tripods[safe: 0]?.name.htmlToString
+        firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
+        
+        secondTripodNameLabel.text = skill.tripods[safe: 1]?.name.htmlToString
+        secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
+        
+        thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name.htmlToString
+        thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
     }
 }
