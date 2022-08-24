@@ -461,6 +461,14 @@
 			path = StorageModel;
 			sourceTree = "<group>";
 		};
+		AC86403D28B5D1CF004B7EBB /* UserJsonInfos */ = {
+			isa = PBXGroup;
+			children = (
+				ACAEF34B287FF9B900AE98F1 /* Equips */,
+			);
+			path = UserJsonInfos;
+			sourceTree = "<group>";
+		};
 		AC8F11C62881025900D06AA6 /* CrawlManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,7 +538,7 @@
 				ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */,
 				ACAEF33E287FF91A00AE98F1 /* Stat.swift */,
 				AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */,
-				ACAEF34B287FF9B900AE98F1 /* Equips */,
+				AC86403D28B5D1CF004B7EBB /* UserJsonInfos */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
