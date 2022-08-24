@@ -15,6 +15,7 @@
 		AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B89F8289B81D6005BE193 /* SettingView.swift */; };
 		AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E68A128AE04C000575631 /* JsonInfoManager.swift */; };
 		AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E68A428AE0E4C00575631 /* Equips.swift */; };
+		AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */; };
 		AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */; };
 		AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5128B313CA00621753 /* EquipedEngrave.swift */; };
 		AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5428B3209B00621753 /* EquipmentEngraveCell.swift */; };
@@ -117,6 +118,7 @@
 		AC0B89F8289B81D6005BE193 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		AC0E68A128AE04C000575631 /* JsonInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonInfoManager.swift; sourceTree = "<group>"; };
 		AC0E68A428AE0E4C00575631 /* Equips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equips.swift; sourceTree = "<group>"; };
+		AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
 		AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewModel.swift; sourceTree = "<group>"; };
 		AC2C2B5128B313CA00621753 /* EquipedEngrave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipedEngrave.swift; sourceTree = "<group>"; };
 		AC2C2B5428B3209B00621753 /* EquipmentEngraveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentEngraveCell.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */,
 				ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */,
 				AC035E9E289120750068DC7E /* UIViewController + Extension.swift */,
+				AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */,
 				AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */,
 				ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */,
 				ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */,
@@ -803,6 +806,7 @@
 				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
+				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
