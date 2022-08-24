@@ -41,7 +41,7 @@ final class SkillInfoViewController: UIViewController {
     private func bindView() {
         viewModel.skills
             .bind(to: skillInfoView.skillTableView.rx.items(cellIdentifier: "\(SkillTVCell.self)", cellType: SkillTVCell.self)){ index, skill, cell in
-                
+                cell.setCellContents(skill: skill)
             }
             .disposed(by: disposeBag)
     }
