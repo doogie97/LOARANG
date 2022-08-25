@@ -408,6 +408,14 @@ extension JsonInfoManager {
                 return title
             }
             
+            for i in json {
+                if i.1["value"]["Element_000"].stringValue.contains("스킬 룬 효과") {
+                    return title
+                } else if i.1["value"]["Element_000"].stringValue.contains("보석 효과") {
+                    return title
+                }
+            }
+            
             return nil
         }.sorted()
     }
