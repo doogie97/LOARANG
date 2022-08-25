@@ -147,10 +147,6 @@ final class SkillTVCell: UITableViewCell {
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         
-//        label.snp.makeConstraints {
-//            $0.height.greaterThanOrEqualTo(30)
-//        }
-        
         return label
     }
     
