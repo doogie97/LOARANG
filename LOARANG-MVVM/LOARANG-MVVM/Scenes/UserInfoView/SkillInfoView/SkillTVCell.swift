@@ -89,6 +89,8 @@ final class SkillTVCell: UITableViewCell {
         stackView.distribution = .fillEqually
         stackView.backgroundColor = .mainBackground
         stackView.layer.cornerRadius = 10
+        stackView.layoutMargins = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+        stackView.isLayoutMarginsRelativeArrangement = true
         
         return stackView
     }()
