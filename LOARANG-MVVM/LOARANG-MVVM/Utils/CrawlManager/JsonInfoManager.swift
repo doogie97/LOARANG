@@ -360,14 +360,25 @@ extension JsonInfoManager {
             let imageURL = imageBaseURL + json["Element_001"]["value"]["slotData"]["iconPath"].stringValue
             let battleType = json["Element_002"]["value"].stringValue.replacingOccurrences(of: "|", with: "")
             let skillLv = json["Element_003"]["value"].stringValue
-            let cost = json["Element_004"]["value"].stringValue.replacingOccurrences(of: "|", with: "")
-            let skillDescription = json["Element_005"]["value"].stringValue
-            let Tripods = [getTripods(json: json["Element_006"]["value"]["Element_000"]),
-                           getTripods(json: json["Element_006"]["value"]["Element_001"]),
-                           getTripods(json: json["Element_006"]["value"]["Element_002"]),
-            ]
-            let runeEffect = json["Element_007"]["value"]["Element_001"].stringValue
-            let gemEffect = json["Element_008"]["value"]["Element_001"].stringValue
+
+            let skillDescription = json["Element_004"]["value"].stringValue.replacingOccurrences(of: "|", with: "")
+            + "<BR>" + json["Element_005"]["value"].stringValue
+            var tripods: [Tripod]?
+            
+            var runeEffect = ""
+            var gemEffect = ""
+            
+            for i in json {
+                if i.1["type"].stringValue == "TripodSkillCustom" {
+                    tripods = [getTripods(json: i.1["value"]["Element_000"]),
+                               getTripods(json: i.1["value"]["Element_001"]),
+                               getTripods(json: i.1["value"]["Element_002"])]
+                } else if i.1["value"]["Element_000"].stringValue.contains("스킬 룬 효과") {
+                    runeEffect = i.1["value"]["Element_001"].stringValue
+                } else if i.1["value"]["Element_000"].stringValue.contains("보석 효과") {
+                    gemEffect = i.1["value"]["Element_001"].stringValue
+                }
+            }
             
             
             return Skill(name: name,
@@ -377,9 +388,8 @@ extension JsonInfoManager {
                          imageURL: imageURL,
                          battleType: battleType,
                          skillLv: skillLv,
-                         cost: cost,
                          skillDescription: skillDescription,
-                         tripods: Tripods,
+                         tripods: tripods ?? [],
                          runeEffect: runeEffect.htmlToAttributedString(fontSize: 1),
                          gemEffect: gemEffect.htmlToAttributedString(fontSize: 1))
         }

@@ -13,7 +13,6 @@ struct Skill {
     let imageURL: String
     let battleType: String
     let skillLv: String
-    let cost: String
     let skillDescription: String
     let tripods: [Tripod]
     let runeEffect: NSAttributedString?
