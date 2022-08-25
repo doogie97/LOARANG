@@ -204,7 +204,7 @@ final class SkillTVCell: UITableViewCell {
         thirdTripodNameLabel.text = nil
         thirdTripodImageView.image = nil
         
-        runeLabel.attributedText = nil
-        gemLabel.attributedText = nil
+        runeLabel.isHidden = false
+        gemLabel.isHidden = false
     }
 }
