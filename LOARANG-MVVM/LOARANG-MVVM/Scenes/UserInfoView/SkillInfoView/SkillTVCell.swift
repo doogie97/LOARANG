@@ -192,4 +192,23 @@ final class SkillTVCell: UITableViewCell {
             gemLabel.attributedText = skill.gemEffect
         }
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        skillImageView.image = nil
+        skillNameLabel.text = nil
+        skillLvLabel.text = nil
+        
+        firstTripodNameLabel.text = nil
+        firstTripodImageView.image = nil
+        
+        secondTripodNameLabel.text = nil
+        secondTripodImageView.image = nil
+        
+        thirdTripodNameLabel.text = nil
+        thirdTripodImageView.image = nil
+        
+        runeLabel.attributedText = nil
+        gemLabel.attributedText = nil
+    }
 }
