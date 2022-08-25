@@ -168,14 +168,19 @@ final class SkillTVCell: UITableViewCell {
         skillNameLabel.text = skill.name
         skillLvLabel.text = skill.skillLv
         
-        firstTripodNameLabel.text = skill.tripods[safe: 0]?.name
-        firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
-        
-        secondTripodNameLabel.text = skill.tripods[safe: 1]?.name
-        secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
-        
-        thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name
-        thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
+        if (skill.tripods.first?.name ?? "").isEmpty {
+            tripodsStackView.isHidden = true
+        } else {
+            firstTripodNameLabel.text = skill.tripods[safe: 0]?.name
+            firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
+            
+            secondTripodNameLabel.text = skill.tripods[safe: 1]?.name
+            secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
+            
+            thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name
+            thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
+        }
+
         
         if (skill.runeEffect?.description ?? "").isEmpty {
             runeLabel.text = " 장착 룬 없음"
@@ -207,5 +212,7 @@ final class SkillTVCell: UITableViewCell {
         
         runeLabel.text = nil
         gemLabel.text = nil
+        
+        tripodsStackView.isHidden = false
     }
 }
