@@ -94,6 +94,7 @@
 		ACBA790428992C5100CB39D5 /* BookmarkUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */; };
 		ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA79052899424900CB39D5 /* AppStorage.swift */; };
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
+		ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE041D28B7109900FCB74D /* PaddingLabel.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */; };
@@ -199,6 +200,7 @@
 		ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserDTO.swift; sourceTree = "<group>"; };
 		ACBA79052899424900CB39D5 /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
+		ACBE041D28B7109900FCB74D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 				AC8F11C62881025900D06AA6 /* CrawlManager */,
 				ACAEF3632880075A00AE98F1 /* Font */,
 				AC3FEBFE28804E9600CDE796 /* Extesnsion */,
+				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				ACB837FB2897ED9800F75BA2 /* MainInfoTVCell.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
 				AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */,
+				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
