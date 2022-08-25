@@ -91,13 +91,15 @@ final class BasicEquipmentView: UIView {
         view.addSubview(xMarkLabel)
         
         gemNameLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(10)
+            $0.top.equalToSuperview().inset(15)
+            $0.leading.trailing.equalToSuperview().inset(10)
+            $0.height.equalTo(20)
         }
-        
+
         gemEffectLabel.snp.makeConstraints {
             $0.top.equalTo(gemNameLabel.snp.bottom).inset(-5)
             $0.leading.trailing.equalToSuperview().inset(10)
-            $0.bottom.equalToSuperview().inset(15)
+            $0.bottom.equalToSuperview().inset(10)
         }
         
         xMarkLabel.snp.makeConstraints {
