@@ -142,9 +142,14 @@ final class SkillTVCell: UITableViewCell {
     private func makePaddingLabel() -> PaddingLabel {
         let label = PaddingLabel(top: 5, bottom: 5, left: 5, right: 5)
         label.numberOfLines = 2
+        label.lineBreakMode = .byCharWrapping
         label.backgroundColor = .cellBackgroundColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
+        
+//        label.snp.makeConstraints {
+//            $0.height.greaterThanOrEqualTo(30)
+//        }
         
         return label
     }
@@ -165,25 +170,26 @@ final class SkillTVCell: UITableViewCell {
         skillImageView.setImage(urlString: skill.imageURL)
         skillNameLabel.text = skill.name
         skillLvLabel.text = skill.skillLv
-        firstTripodNameLabel.text = skill.tripods[safe: 0]?.name.htmlToString
+        
+        firstTripodNameLabel.text = skill.tripods[safe: 0]?.name
         firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
         
-        secondTripodNameLabel.text = skill.tripods[safe: 1]?.name.htmlToString
+        secondTripodNameLabel.text = skill.tripods[safe: 1]?.name
         secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
         
-        thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name.htmlToString
+        thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name
         thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
         
-        if skill.runeEffect.isEmpty {
+        if (skill.runeEffect?.description ?? "").isEmpty {
             runeLabel.isHidden = true
         } else {
-            runeLabel.attributedText = skill.runeEffect.htmlToAttributedString(fontSize: 1)
+            runeLabel.attributedText = skill.runeEffect
         }
         
-        if skill.gemEffect.isEmpty {
+        if (skill.gemEffect?.description ?? "").isEmpty {
             gemLabel.isHidden = true
         } else {
-            gemLabel.attributedText = skill.gemEffect.htmlToAttributedString(fontSize: 1)
+            gemLabel.attributedText = skill.gemEffect
         }
     }
 }

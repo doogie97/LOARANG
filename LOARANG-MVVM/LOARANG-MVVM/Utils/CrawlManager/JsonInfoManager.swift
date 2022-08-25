@@ -380,8 +380,8 @@ extension JsonInfoManager {
                          cost: cost,
                          skillDescription: skillDescription,
                          tripods: Tripods,
-                         runeEffect: runeEffect,
-                         gemEffect: gemEffect)
+                         runeEffect: runeEffect.htmlToAttributedString(fontSize: 1),
+                         gemEffect: gemEffect.htmlToAttributedString(fontSize: 1))
         }
         return skills
     }
@@ -403,7 +403,7 @@ extension JsonInfoManager {
     }
     
     private func getTripods(json: JSON) -> Tripod {
-        let name = json["name"].stringValue
+        let name = json["name"].stringValue.htmlToString
         let description = json["desc"].stringValue
         let lv = json["tier"].stringValue
         let imageURL = imageBaseURL + json["slotData"]["iconPath"].stringValue

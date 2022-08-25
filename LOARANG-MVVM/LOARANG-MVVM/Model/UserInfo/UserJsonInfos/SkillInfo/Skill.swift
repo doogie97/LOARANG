@@ -4,7 +4,7 @@
 //
 //  Created by 최최성균 on 2022/08/24.
 //
-
+import UIKit
 struct Skill {
     let name: String
     let coolTime: String
@@ -16,8 +16,8 @@ struct Skill {
     let cost: String
     let skillDescription: String
     let tripods: [Tripod]
-    let runeEffect: String
-    let gemEffect: String
+    let runeEffect: NSAttributedString?
+    let gemEffect: NSAttributedString?
 }
 
 struct Tripod {
