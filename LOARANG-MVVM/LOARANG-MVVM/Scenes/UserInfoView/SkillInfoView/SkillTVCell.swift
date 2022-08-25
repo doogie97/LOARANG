@@ -141,6 +141,7 @@ final class SkillTVCell: UITableViewCell {
     
     private func makePaddingLabel() -> PaddingLabel {
         let label = PaddingLabel(top: 5, bottom: 5, left: 5, right: 5)
+        label.font = .one(size: 12, family: .Regular)
         label.numberOfLines = 2
         label.lineBreakMode = .byCharWrapping
         label.backgroundColor = .cellBackgroundColor
@@ -177,13 +178,13 @@ final class SkillTVCell: UITableViewCell {
         thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
         
         if (skill.runeEffect?.description ?? "").isEmpty {
-            runeLabel.isHidden = true
+            runeLabel.text = " 장착 룬 없음"
         } else {
             runeLabel.attributedText = skill.runeEffect
         }
-        
+
         if (skill.gemEffect?.description ?? "").isEmpty {
-            gemLabel.isHidden = true
+            gemLabel.text = " 장착 보석 없음"
         } else {
             gemLabel.attributedText = skill.gemEffect
         }
@@ -204,7 +205,7 @@ final class SkillTVCell: UITableViewCell {
         thirdTripodNameLabel.text = nil
         thirdTripodImageView.image = nil
         
-        runeLabel.isHidden = false
-        gemLabel.isHidden = false
+        runeLabel.text = nil
+        gemLabel.text = nil
     }
 }
