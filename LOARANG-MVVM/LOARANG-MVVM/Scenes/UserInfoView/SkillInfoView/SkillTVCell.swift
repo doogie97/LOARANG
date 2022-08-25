@@ -32,7 +32,7 @@ final class SkillTVCell: UITableViewCell {
     }()
     
     private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView])
+        let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView, runeLabel, gemLabel])
         stackView.axis = .vertical
         stackView.spacing = 10
         
@@ -135,6 +135,20 @@ final class SkillTVCell: UITableViewCell {
         return label
     }
     
+    //MARK: - Rune & Gem effect
+    private lazy var runeLabel = makePaddingLabel()
+    private lazy var gemLabel = makePaddingLabel()
+    
+    private func makePaddingLabel() -> PaddingLabel {
+        let label = PaddingLabel(top: 5, bottom: 5, left: 5, right: 5)
+        label.numberOfLines = 2
+        label.backgroundColor = .cellBackgroundColor
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        
+        return label
+    }
+    
     private func setLayout() {
         self.selectionStyle = .none
         self.backgroundColor = .cellBackgroundColor
@@ -159,5 +173,17 @@ final class SkillTVCell: UITableViewCell {
         
         thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name.htmlToString
         thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
+        
+        if skill.runeEffect.isEmpty {
+            runeLabel.isHidden = true
+        } else {
+            runeLabel.attributedText = skill.runeEffect.htmlToAttributedString(fontSize: 1)
+        }
+        
+        if skill.gemEffect.isEmpty {
+            gemLabel.isHidden = true
+        } else {
+            gemLabel.attributedText = skill.gemEffect.htmlToAttributedString(fontSize: 1)
+        }
     }
 }
