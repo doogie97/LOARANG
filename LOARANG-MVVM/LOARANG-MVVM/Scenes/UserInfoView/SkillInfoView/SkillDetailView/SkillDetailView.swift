@@ -34,6 +34,10 @@ final class SkillDetailView: UIView {
         return view
     }()
     
+    private lazy var detailScrollView = UIScrollView()
+    
+    private lazy var skillContentsView = UIView()
+    
     private lazy var skillImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -73,8 +77,8 @@ final class SkillDetailView: UIView {
         return label
     }()
     
-    private(set) lazy var tripodsTableView: UITableView = {
-        let tableView = UITableView()
+    private(set) lazy var tripodsTableView: DynamicHeightTableView = {
+        let tableView = DynamicHeightTableView()
         tableView.separatorStyle = .none
         tableView.backgroundColor = .mainBackground
         tableView.isScrollEnabled = false
@@ -94,15 +98,20 @@ final class SkillDetailView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
+        
         self.addSubview(closeButton)
         self.addSubview(nameLabel)
         self.addSubview(underline)
-        self.addSubview(skillImageView)
-        self.addSubview(skillTypeStackView)
-        self.addSubview(coolTimeLabel)
-        self.addSubview(skillLvBattleTypeStackView)
-        self.addSubview(effetcLabel)
-        self.addSubview(tripodsTableView)
+        self.addSubview(detailScrollView)
+        
+        detailScrollView.addSubview(skillContentsView)
+        
+        skillContentsView.addSubview(skillImageView)
+        skillContentsView.addSubview(skillTypeStackView)
+        skillContentsView.addSubview(coolTimeLabel)
+        skillContentsView.addSubview(skillLvBattleTypeStackView)
+        skillContentsView.addSubview(effetcLabel)
+        skillContentsView.addSubview(tripodsTableView)
         
         closeButton.snp.makeConstraints {
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
@@ -120,17 +129,28 @@ final class SkillDetailView: UIView {
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
         
+        detailScrollView.snp.makeConstraints {
+            $0.top.equalTo(underline.snp.bottom).inset(-20)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        skillContentsView.snp.makeConstraints {
+            $0.top.trailing.leading.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(16)
+            $0.width.equalToSuperview()
+           }
+        
         skillImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
             $0.width.equalToSuperview().multipliedBy(0.15)
             $0.height.equalTo(skillImageView.snp.width)
-            $0.top.equalTo(underline.snp.bottom).inset(-20)
-            $0.leading.equalTo(safeAreaLayoutGuide).inset(20)
         }
         
         skillTypeStackView.snp.makeConstraints {
             $0.top.equalTo(skillImageView.snp.top)
             $0.leading.equalTo(skillImageView.snp.trailing).inset(-15)
-            $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
+            $0.trailing.equalToSuperview().inset(15)
         }
         
         coolTimeLabel.snp.makeConstraints {
@@ -141,18 +161,18 @@ final class SkillDetailView: UIView {
         skillLvBattleTypeStackView.snp.makeConstraints {
             $0.bottom.equalTo(skillImageView.snp.bottom)
             $0.leading.equalTo(skillImageView.snp.trailing).inset(-15)
-            $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
+            $0.trailing.equalToSuperview().inset(15)
         }
         
         effetcLabel.snp.makeConstraints {
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalTo(skillImageView.snp.bottom).inset(-16)
         }
         
         tripodsTableView.snp.makeConstraints {
             $0.top.equalTo(effetcLabel.snp.bottom).inset(-20)
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(15)
-            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.bottom.equalToSuperview()
         }
     }
     
