@@ -26,7 +26,6 @@ final class TripodTVCell: UITableViewCell {
     private lazy var tripodImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .cellColor
         
         imageView.image = UIImage(named: "트포기본이미지")
 
