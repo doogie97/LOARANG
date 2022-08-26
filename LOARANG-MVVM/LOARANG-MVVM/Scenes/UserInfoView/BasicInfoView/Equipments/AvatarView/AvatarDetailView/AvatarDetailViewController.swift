@@ -29,7 +29,7 @@ final class AvatarDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatarDetailView.setCellContents(viewModel.equipmentInfo)
+        avatarDetailView.setViewContents(viewModel.equipmentInfo)
         bindView()
     }
     

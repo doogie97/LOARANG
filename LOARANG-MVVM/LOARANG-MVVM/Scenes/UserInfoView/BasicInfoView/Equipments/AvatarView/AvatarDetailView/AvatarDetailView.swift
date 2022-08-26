@@ -104,7 +104,7 @@ final class AvatarDetailView: UIView {
         }
     }
     
-    func setCellContents(_ equipmentInfo: EquipmentPart) {
+    func setViewContents(_ equipmentInfo: EquipmentPart) {
         nameLabel.text = equipmentInfo.basicInfo.name?.htmlToString
         nameLabel.textColor = Equips.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
         
