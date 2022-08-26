@@ -111,7 +111,7 @@ final class SkillDetailView: UIView {
         }
      
         nameLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.top.leading.trailing.equalTo(safeAreaLayoutGuide).inset(15)
         }
         
         underline.snp.makeConstraints {
