@@ -15,12 +15,14 @@ protocol SkillDetailViewModelInput {
 
 protocol SkillDetailViewModelOutput {
     var skill: Skill { get }
+    var tripods: BehaviorRelay<[Tripod]> { get }
     var dismiss: PublishRelay<Void> { get }
 }
 
 final class SkillDetailViewModel: SkillDetailViewModelable {
     init(skill: Skill) {
         self.skill = skill
+        self.tripods = BehaviorRelay<[Tripod]>(value: skill.tripods)
     }
     
     //in
@@ -30,5 +32,6 @@ final class SkillDetailViewModel: SkillDetailViewModelable {
     
     //out
     let skill: Skill
+    let tripods: BehaviorRelay<[Tripod]>
     let dismiss = PublishRelay<Void>()
 }

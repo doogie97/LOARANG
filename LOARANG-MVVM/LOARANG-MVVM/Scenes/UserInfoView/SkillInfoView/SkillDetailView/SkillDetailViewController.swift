@@ -44,5 +44,11 @@ final class SkillDetailViewController: UIViewController {
                 self?.viewModel.touchCloseButton()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.tripods
+            .bind(to: skillDetailView.tripodsTableView.rx.items(cellIdentifier: "\(TripodTVCell.self)", cellType: TripodTVCell.self)) { index, tripod, cell in
+                cell.setCellContents(tripod: tripod)
+            }
+            .disposed(by: disposeBag)
     }
 }

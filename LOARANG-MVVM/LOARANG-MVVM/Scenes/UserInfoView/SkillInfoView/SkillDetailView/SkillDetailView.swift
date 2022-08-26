@@ -72,6 +72,15 @@ final class SkillDetailView: UIView {
         
         return label
     }()
+    
+    private(set) lazy var tripodsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .mainBackground
+        tableView.isScrollEnabled = false
+        tableView.register(TripodTVCell.self)
+        
+        return tableView
     }()
     
     private func makeLabel(alignment: NSTextAlignment, font: UIFont, color: UIColor = .label) -> UILabel {
@@ -92,8 +101,8 @@ final class SkillDetailView: UIView {
         self.addSubview(skillTypeStackView)
         self.addSubview(coolTimeLabel)
         self.addSubview(skillLvBattleTypeStackView)
-        self.addSubview(effetcTextView)
         self.addSubview(effetcLabel)
+        self.addSubview(tripodsTableView)
         
         closeButton.snp.makeConstraints {
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
@@ -138,6 +147,12 @@ final class SkillDetailView: UIView {
         effetcLabel.snp.makeConstraints {
             $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
             $0.top.equalTo(skillImageView.snp.bottom).inset(-16)
+        }
+        
+        tripodsTableView.snp.makeConstraints {
+            $0.top.equalTo(effetcLabel.snp.bottom).inset(-20)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(15)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
