@@ -36,6 +36,8 @@ final class SkillTVCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.spacing = 10
         
+        runeLabel.setContentHuggingPriority(.required, for: .vertical)
+        
         return stackView
     }()
     
