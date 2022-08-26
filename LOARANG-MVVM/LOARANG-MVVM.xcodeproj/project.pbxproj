@@ -37,6 +37,9 @@
 		AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC292880761300CDE796 /* MainUserTVCell.swift */; };
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
+		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
+		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
+		AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */; };
 		AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
@@ -141,6 +144,9 @@
 		AC3FEC292880761300CDE796 /* MainUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserTVCell.swift; sourceTree = "<group>"; };
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
+		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
+		AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewModel.swift; sourceTree = "<group>"; };
 		AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCell.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +388,16 @@
 			path = MainTableViewCells;
 			sourceTree = "<group>";
 		};
+		AC49D60028B85978002C0033 /* SkillDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				AC49D5FE28B85976002C0033 /* SkillDetailView.swift */,
+				AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */,
+				AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */,
+			);
+			path = SkillDetailView;
+			sourceTree = "<group>";
+		};
 		AC50BC9328A4EB83009F39C5 /* Equipments */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +431,7 @@
 				AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */,
 				AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */,
 				AC86404728B5F325004B7EBB /* SkillTVCell.swift */,
+				AC49D60028B85978002C0033 /* SkillDetailView */,
 			);
 			path = SkillInfoView;
 			sourceTree = "<group>";
@@ -815,6 +832,7 @@
 				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
+				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */,
@@ -845,6 +863,7 @@
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUser.swift in Sources */,
 				AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */,
+				AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
@@ -864,6 +883,7 @@
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
+				AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */,
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,
 				ACAEF349287FF9A200AE98F1 /* Gem.swift in Sources */,
 				AC2C2B5F28B354C300621753 /* AvatarViewModel.swift in Sources */,

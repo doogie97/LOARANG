@@ -72,22 +72,6 @@ final class Container {
         return BasicInfoViewModel(userInfo: userInfo)
     }
     
-    //MARK: - about SkillInfoView
-    private func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {
-        return SkillInfoViewController(viewModel: makeSkillInfoViewModel(skillInfo: skillInfo))
-    }
-    
-    private func makeSkillInfoViewModel(skillInfo: SkillInfo) -> SkillInfoViewModelable {
-        return SkillInfoViewModel(skillInfo: skillInfo)
-    }
-    
-    private func makeThirdVC() -> ThirdInfoViewController {
-        return ThirdInfoViewController()
-    }
-    
-    private func makeFourthVC() -> FourthInfoViewController {
-        return FourthInfoViewController()
-    }
     //MARK: - about Equipments
     func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
         return EquipmentsTVCellViewModel(
@@ -144,6 +128,31 @@ final class Container {
     private func makeCharacterImageViewModel(userImage: UIImage) -> CharacterImageViewModelable {
         return CharacterImageViewModel(userImage: userImage)
     }
+    //MARK: - about SkillInfoView
+    private func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {
+        return SkillInfoViewController(viewModel: makeSkillInfoViewModel(skillInfo: skillInfo))
+    }
+    
+    private func makeSkillInfoViewModel(skillInfo: SkillInfo) -> SkillInfoViewModelable {
+        return SkillInfoViewModel(skillInfo: skillInfo)
+    }
+    
+    func makeSkillDetailViewController(skill: Skill) -> SkillDetailViewController {
+        return SkillDetailViewController(viewModel: makeSkillDetailViewModel(skill: skill))
+    }
+    
+    private func makeSkillDetailViewModel(skill: Skill) -> SkillDetailViewModelable {
+        return SkillDetailViewModel(skill: skill)
+    }
+    
+    private func makeThirdVC() -> ThirdInfoViewController {
+        return ThirdInfoViewController()
+    }
+    
+    private func makeFourthVC() -> FourthInfoViewController {
+        return FourthInfoViewController()
+    }
+    
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
