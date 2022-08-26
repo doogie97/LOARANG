@@ -10,11 +10,12 @@ import RxRelay
 protocol AvatarDetailViewModelable: AvatarDetailViewModelInput, AvatarDetailViewModelOutput {}
 
 protocol AvatarDetailViewModelInput {
-    var equipmentInfo: EquipmentPart { get }
-    var dismiss: PublishRelay<Void> { get }
+    func touchCloseButton()
 }
 
 protocol AvatarDetailViewModelOutput {
+    var equipmentInfo: EquipmentPart { get }
+    var dismiss: PublishRelay<Void> { get }
 }
 
 final class AvatarDetailViewModel: AvatarDetailViewModelable {

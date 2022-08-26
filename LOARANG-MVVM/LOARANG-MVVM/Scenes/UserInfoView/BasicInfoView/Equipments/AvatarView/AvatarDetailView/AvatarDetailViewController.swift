@@ -34,9 +34,15 @@ final class AvatarDetailViewController: UIViewController {
     }
     
     private func bindView() {
-        avatarDetailView.closeButton.rx.tap
+        viewModel.dismiss
             .bind(onNext: { [weak self] in
                 self?.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        avatarDetailView.closeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchCloseButton()
             })
             .disposed(by: disposeBag)
     }

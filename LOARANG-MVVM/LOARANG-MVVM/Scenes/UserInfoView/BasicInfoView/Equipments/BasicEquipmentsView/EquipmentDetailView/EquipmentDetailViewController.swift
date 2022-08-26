@@ -45,9 +45,15 @@ final class EquipmentDetailViewController: UIViewController {
     }
     
     private func bindView() {
-        equipmentDetailView.closeButton.rx.tap
+        viewModel.dismiss
             .bind(onNext: { [weak self] in
                 self?.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        equipmentDetailView.closeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchCloseButton()
             })
             .disposed(by: disposeBag)
     }
