@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/08/26.
 //
 
-import UIKit
+import RxSwift
 
 final class SkillDetailViewController: UIViewController {
     private let viewModel: SkillDetailViewModelable
@@ -20,6 +20,7 @@ final class SkillDetailViewController: UIViewController {
     }
     
     private let skillDetailView = SkillDetailView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -28,5 +29,20 @@ final class SkillDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         skillDetailView.setViewContents(viewModel.skill)
+        bindView()
+    }
+    
+    private func bindView() {
+        viewModel.dismiss
+            .bind(onNext: { [weak self] in
+                self?.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        skillDetailView.closeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchCloseButton()
+            })
+            .disposed(by: disposeBag)
     }
 }

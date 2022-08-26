@@ -5,12 +5,17 @@
 //  Created by 최최성균 on 2022/08/26.
 //
 
+import RxRelay
+
 protocol SkillDetailViewModelable: SkillDetailViewModelInput, SkillDetailViewModelOutput {}
 
-protocol SkillDetailViewModelInput {}
+protocol SkillDetailViewModelInput {
+    func touchCloseButton()
+}
 
 protocol SkillDetailViewModelOutput {
     var skill: Skill { get }
+    var dismiss: PublishRelay<Void> { get }
 }
 
 final class SkillDetailViewModel: SkillDetailViewModelable {
@@ -18,6 +23,12 @@ final class SkillDetailViewModel: SkillDetailViewModelable {
         self.skill = skill
     }
     
+    //in
+    func touchCloseButton() {
+        dismiss.accept(())
+    }
+    
     //out
-    var skill: Skill
+    let skill: Skill
+    let dismiss = PublishRelay<Void>()
 }
