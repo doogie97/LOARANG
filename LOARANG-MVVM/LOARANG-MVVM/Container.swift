@@ -130,7 +130,8 @@ final class Container {
     }
     //MARK: - about SkillInfoView
     private func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {
-        return SkillInfoViewController(viewModel: makeSkillInfoViewModel(skillInfo: skillInfo))
+        return SkillInfoViewController(viewModel: makeSkillInfoViewModel(skillInfo: skillInfo),
+                                       container: self)
     }
     
     private func makeSkillInfoViewModel(skillInfo: SkillInfo) -> SkillInfoViewModelable {

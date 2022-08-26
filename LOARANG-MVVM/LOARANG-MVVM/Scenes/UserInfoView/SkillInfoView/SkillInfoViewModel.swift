@@ -9,11 +9,14 @@ import RxRelay
 
 protocol SkillInfoViewModelable: SkillInfoViewModelInput, SkillInfoViewModelOutput {}
 
-protocol SkillInfoViewModelInput {}
+protocol SkillInfoViewModelInput {
+    func touchSkillCell(_ index: Int)
+}
 
 protocol SkillInfoViewModelOutput {
     var usedSkillPoint: String { get }
     var totalSkillPoint: String { get }
+    var showSkillDetailView: PublishRelay<Skill> { get }
     var skills: BehaviorRelay<[Skill]> { get }
 }
 
@@ -24,8 +27,13 @@ final class SkillInfoViewModel: SkillInfoViewModelable {
         self.skills = BehaviorRelay<[Skill]>(value: skillInfo.skills)
     }
     
+    //in
+    func touchSkillCell(_ index: Int) {
+        showSkillDetailView.accept(skills.value[index])
+    }
     //out
     var usedSkillPoint: String
     var totalSkillPoint: String
+    var showSkillDetailView = PublishRelay<Skill>()
     var skills: BehaviorRelay<[Skill]>
 }

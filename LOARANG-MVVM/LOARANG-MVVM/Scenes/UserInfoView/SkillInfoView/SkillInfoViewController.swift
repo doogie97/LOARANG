@@ -9,9 +9,11 @@ import RxSwift
 
 final class SkillInfoViewController: UIViewController {
     private let viewModel: SkillInfoViewModelable
+    private let container: Container
     
-    init(viewModel: SkillInfoViewModelable) {
+    init(viewModel: SkillInfoViewModelable, container: Container) {
         self.viewModel = viewModel
+        self.container = container
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,5 +46,21 @@ final class SkillInfoViewController: UIViewController {
                     cell.setCellContents(skill: skill)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.showSkillDetailView
+            .bind(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                self.present(self.container.makeSkillDetailViewController(skill: $0), animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        skillInfoView.skillTableView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchSkillCell($0.row)
+            })
+            .disposed(by: disposeBag)
     }
+    
 }
