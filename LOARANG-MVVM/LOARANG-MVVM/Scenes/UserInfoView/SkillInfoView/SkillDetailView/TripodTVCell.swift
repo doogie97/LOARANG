@@ -100,6 +100,9 @@ final class TripodTVCell: UITableViewCell {
             tripodEffectLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 3, alignment: .LEFT)
         } else {
             tripodNameLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
+            tripodNameLabel.snp.makeConstraints {
+                $0.centerY.equalTo(tripodImageView)
+            }
         }
     }
 }
