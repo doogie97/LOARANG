@@ -41,6 +41,9 @@ final class TripodTVCell: UITableViewCell {
         label.font = .one(size: 14, family: .Bold)
         label.textColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.3882352941, alpha: 1)
         
+        label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        
         return label
     }()
     
