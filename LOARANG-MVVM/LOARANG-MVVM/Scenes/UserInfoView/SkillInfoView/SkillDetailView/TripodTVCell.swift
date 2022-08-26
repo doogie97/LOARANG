@@ -27,9 +27,6 @@ final class TripodTVCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .cellColor
-        imageView.layer.borderColor = UIColor.black.cgColor
-        imageView.layer.borderWidth = 1
-        imageView.clipsToBounds = true
         
         imageView.image = UIImage(named: "트포기본이미지")
 
