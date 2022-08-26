@@ -89,7 +89,7 @@ final class SkillTVCell: UITableViewCell {
         stackView.distribution = .fillEqually
         stackView.backgroundColor = .mainBackground
         stackView.layer.cornerRadius = 10
-        stackView.layoutMargins = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 3, right: 5)
         stackView.isLayoutMarginsRelativeArrangement = true
         
         return stackView
@@ -140,7 +140,7 @@ final class SkillTVCell: UITableViewCell {
     private lazy var gemLabel = makePaddingLabel()
     
     private func makePaddingLabel() -> PaddingLabel {
-        let label = PaddingLabel(top: 5, bottom: 5, left: 5, right: 5)
+        let label = PaddingLabel(top: 8, bottom: 8, left: 8, right: 8)
         label.font = .one(size: 12, family: .Regular)
         label.numberOfLines = 2
         label.lineBreakMode = .byCharWrapping
