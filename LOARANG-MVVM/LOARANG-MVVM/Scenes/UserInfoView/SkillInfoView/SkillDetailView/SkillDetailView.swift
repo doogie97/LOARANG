@@ -66,12 +66,12 @@ final class SkillDetailView: UIView {
     private lazy var skillLvLabel = makeLabel(alignment: .left, font: .one(size: 13, family: .Bold), color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
     private lazy var battleTypeLabel = UILabel()
     
-    private lazy var effetcTextView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = backgroundColor
-        textView.isEditable = false
+    private lazy var effetcLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
         
-        return textView
+        return label
+    }()
     }()
     
     private func makeLabel(alignment: NSTextAlignment, font: UIFont, color: UIColor = .label) -> UILabel {
@@ -93,6 +93,7 @@ final class SkillDetailView: UIView {
         self.addSubview(coolTimeLabel)
         self.addSubview(skillLvBattleTypeStackView)
         self.addSubview(effetcTextView)
+        self.addSubview(effetcLabel)
         
         closeButton.snp.makeConstraints {
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
@@ -134,8 +135,8 @@ final class SkillDetailView: UIView {
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
         }
         
-        effetcTextView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(16)
+        effetcLabel.snp.makeConstraints {
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
             $0.top.equalTo(skillImageView.snp.bottom).inset(-16)
         }
     }
@@ -148,6 +149,6 @@ final class SkillDetailView: UIView {
         coolTimeLabel.attributedText = skill.coolTime.htmlToAttributedString(fontSize: 5, alignment: .LEFT)
         skillLvLabel.text = skill.skillLv
         battleTypeLabel.attributedText = skill.battleType.htmlToAttributedString(fontSize: 4, alignment: .RIGHT)
-        effetcTextView.attributedText = skill.skillDescription.htmlToAttributedString(fontSize: 5)
+        effetcLabel.attributedText = skill.skillDescription.htmlToAttributedString(fontSize: 5)
     }
 }
