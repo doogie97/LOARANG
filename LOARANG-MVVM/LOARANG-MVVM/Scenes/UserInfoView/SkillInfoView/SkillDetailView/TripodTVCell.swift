@@ -70,7 +70,7 @@ final class TripodTVCell: UITableViewCell {
         tripodImageView.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
             $0.bottom.lessThanOrEqualToSuperview().inset(10)
-            $0.width.equalTo(self.frame.width * 0.13)
+            $0.width.equalTo(40)
             $0.height.equalTo(tripodImageView.snp.width)
         }
         
