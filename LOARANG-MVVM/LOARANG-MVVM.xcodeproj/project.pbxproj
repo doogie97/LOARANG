@@ -40,6 +40,7 @@
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
 		AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */; };
+		AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60528B8727C002C0033 /* TripodTVCell.swift */; };
 		AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
@@ -147,6 +148,7 @@
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
 		AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewModel.swift; sourceTree = "<group>"; };
+		AC49D60528B8727C002C0033 /* TripodTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripodTVCell.swift; sourceTree = "<group>"; };
 		AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCell.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				AC49D5FE28B85976002C0033 /* SkillDetailView.swift */,
 				AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */,
 				AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */,
+				AC49D60528B8727C002C0033 /* TripodTVCell.swift */,
 			);
 			path = SkillDetailView;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
+				AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */,
 				ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */,
 				AC2C2B5D28B3545900621753 /* AvatarView.swift in Sources */,
 				AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */,
