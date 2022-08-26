@@ -362,7 +362,7 @@ extension JsonInfoManager {
             let skillLv = json["Element_003"]["value"].stringValue
 
             let skillDescription = json["Element_004"]["value"].stringValue.replacingOccurrences(of: "|", with: "")
-            + "<BR>" + json["Element_005"]["value"].stringValue
+            + "<BR><BR>" + json["Element_005"]["value"].stringValue
             var tripods: [Tripod]?
             
             var runeEffect = ""
