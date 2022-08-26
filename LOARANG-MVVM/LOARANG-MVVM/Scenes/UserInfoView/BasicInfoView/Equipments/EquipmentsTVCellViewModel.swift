@@ -5,7 +5,6 @@
 //  Created by 최최성균 on 2022/08/11.
 //
 
-import UIKit
 import RxRelay
 protocol EquipmentsTVCellViewModelable: EquipmentsTVCellViewModelableInput,
                                         EquipmentsTVCellViewModelableOutput {}
@@ -37,8 +36,8 @@ final class EquipmentsTVCellViewModel: EquipmentsTVCellViewModelable {
     }
     
     //out
-    var userInfo: UserInfo
-    var pageViewList: [UIViewController]
-    var currentPage = BehaviorRelay<Int>(value: 0)
-    var previousPage = BehaviorRelay<Int>(value: 50)
+    let userInfo: UserInfo
+    let pageViewList: [UIViewController]
+    let currentPage = BehaviorRelay<Int>(value: 0)
+    let previousPage = BehaviorRelay<Int>(value: 50)
 }

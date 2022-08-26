@@ -32,8 +32,8 @@ final class SkillInfoViewModel: SkillInfoViewModelable {
         showSkillDetailView.accept(skills.value[index])
     }
     //out
-    var usedSkillPoint: String
-    var totalSkillPoint: String
-    var showSkillDetailView = PublishRelay<Skill>()
-    var skills: BehaviorRelay<[Skill]>
+    let usedSkillPoint: String
+    let totalSkillPoint: String
+    let showSkillDetailView = PublishRelay<Skill>()
+    let skills: BehaviorRelay<[Skill]>
 }
