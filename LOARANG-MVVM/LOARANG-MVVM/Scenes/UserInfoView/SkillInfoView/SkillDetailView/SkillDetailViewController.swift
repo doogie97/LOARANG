@@ -25,4 +25,8 @@ final class SkillDetailViewController: UIViewController {
         super.loadView()
         self.view = skillDetailView
     }
+    
+    override func viewDidLoad() {
+        skillDetailView.setViewContents(viewModel.skill)
+    }
 }
