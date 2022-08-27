@@ -87,8 +87,25 @@ final class SkillDetailView: UIView {
         return tableView
     }()
     
-    private func makeLabel(alignment: NSTextAlignment, font: UIFont, color: UIColor = .label) -> UILabel {
+    private lazy var runeTitleLabel = makeLabel(alignment: .left, font: .one(size: 12, family: .Bold), text: "룬 효과")
+    private lazy var runeLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private lazy var gemTitleLabel = makeLabel(alignment: .left, font: .one(size: 12, family: .Bold), text: "보석 효과")
+    private lazy var gemLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private func makeLabel(alignment: NSTextAlignment, font: UIFont, color: UIColor = .label, text: String = "") -> UILabel {
+        let label = UILabel()
+        label.text = text
         label.textAlignment = alignment
         label.font = font
         label.textColor = color
@@ -112,6 +129,10 @@ final class SkillDetailView: UIView {
         skillContentsView.addSubview(skillLvBattleTypeStackView)
         skillContentsView.addSubview(effetcLabel)
         skillContentsView.addSubview(tripodsTableView)
+        skillContentsView.addSubview(runeTitleLabel)
+        skillContentsView.addSubview(runeLabel)
+        skillContentsView.addSubview(gemTitleLabel)
+        skillContentsView.addSubview(gemLabel)
         
         closeButton.snp.makeConstraints {
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
@@ -172,6 +193,26 @@ final class SkillDetailView: UIView {
         tripodsTableView.snp.makeConstraints {
             $0.top.equalTo(effetcLabel.snp.bottom).inset(-20)
             $0.leading.trailing.equalToSuperview().inset(15)
+        }
+        
+        runeTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(tripodsTableView.snp.bottom).inset(-15)
+            $0.leading.trailing.equalToSuperview().inset(15)
+        }
+        
+        runeLabel.snp.makeConstraints {
+            $0.top.equalTo(runeTitleLabel.snp.bottom).inset(-5)
+            $0.leading.trailing.equalToSuperview().inset(15)
+        }
+        
+        gemTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(runeLabel.snp.bottom).inset(-15)
+            $0.leading.trailing.equalToSuperview().inset(15)
+        }
+        
+        gemLabel.snp.makeConstraints {
+            $0.top.equalTo(gemTitleLabel.snp.bottom).inset(-5)
+            $0.leading.trailing.equalToSuperview().inset(15)
             $0.bottom.equalToSuperview()
         }
     }
@@ -185,5 +226,17 @@ final class SkillDetailView: UIView {
         skillLvLabel.text = skill.skillLv
         battleTypeLabel.attributedText = skill.battleType.htmlToAttributedString(fontSize: 4, alignment: .RIGHT)
         effetcLabel.attributedText = skill.skillDescription.htmlToAttributedString(fontSize: 5)
+        runeLabel.attributedText = skill.runeEffect
+        gemLabel.attributedText = skill.gemEffect
+        
+        if (skill.runeEffect?.description ?? "").isEmpty {
+            runeTitleLabel.isHidden = true
+            runeLabel.isHidden = true
+        }
+        
+        if (skill.gemEffect?.description ?? "").isEmpty {
+            gemTitleLabel.isHidden = true
+            gemLabel.isHidden = true
+        }
     }
 }
