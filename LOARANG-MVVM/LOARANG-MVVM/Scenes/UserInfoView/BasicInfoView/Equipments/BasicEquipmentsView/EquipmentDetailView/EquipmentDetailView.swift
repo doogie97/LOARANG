@@ -34,6 +34,10 @@ final class EquipmentDetailView: UIView {
         return view
     }()
     
+    private lazy var detailScrollView = UIScrollView()
+    
+    private lazy var equipmentContentsView = UIView()
+    
     private lazy var equipmentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -56,10 +60,9 @@ final class EquipmentDetailView: UIView {
         
         return progressView
     }()
-    private lazy var effetcTextView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = backgroundColor
-        textView.isEditable = false
+    private lazy var effetcTextView: UILabel = {
+        let textView = UILabel()
+        textView.numberOfLines = 0
         
         return textView
     }()
@@ -74,15 +77,20 @@ final class EquipmentDetailView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
+        
         self.addSubview(closeButton)
         self.addSubview(nameLabel)
         self.addSubview(underline)
-        self.addSubview(equipmentImageView)
-        self.addSubview(partNameLabel)
-        self.addSubview(itemLvLabel)
-        self.addSubview(qualityLabel)
-        self.addSubview(qualityProgressView)
-        self.addSubview(effetcTextView)
+        self.addSubview(detailScrollView)
+        
+        detailScrollView.addSubview(equipmentContentsView)
+        
+        equipmentContentsView.addSubview(equipmentImageView)
+        equipmentContentsView.addSubview(partNameLabel)
+        equipmentContentsView.addSubview(itemLvLabel)
+        equipmentContentsView.addSubview(qualityLabel)
+        equipmentContentsView.addSubview(qualityProgressView)
+        equipmentContentsView.addSubview(effetcTextView)
         
         closeButton.snp.makeConstraints {
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(15)
@@ -100,11 +108,22 @@ final class EquipmentDetailView: UIView {
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
         
+        detailScrollView.snp.makeConstraints {
+            $0.top.equalTo(underline.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        equipmentContentsView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(16)
+            $0.trailing.leading.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
         equipmentImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
             $0.width.equalToSuperview().multipliedBy(0.15)
             $0.height.equalTo(equipmentImageView.snp.width)
-            $0.top.equalTo(underline.snp.bottom).inset(-20)
-            $0.leading.equalTo(safeAreaLayoutGuide).inset(20)
         }
         
         partNameLabel.snp.makeConstraints {
@@ -124,12 +143,12 @@ final class EquipmentDetailView: UIView {
         
         qualityProgressView.snp.makeConstraints {
             $0.top.equalTo(qualityLabel.snp.bottom).inset(-16)
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(equipmentImageView).multipliedBy(0.35)
         }
         
         effetcTextView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.leading.trailing.bottom.equalToSuperview().inset(16)
             $0.top.equalTo(qualityProgressView.snp.bottom).inset(-16)
         }
     }
