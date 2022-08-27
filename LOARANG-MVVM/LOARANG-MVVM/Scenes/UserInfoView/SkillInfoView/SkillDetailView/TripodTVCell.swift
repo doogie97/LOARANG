@@ -87,7 +87,7 @@ final class TripodTVCell: UITableViewCell {
         tripodEffectLabel.snp.makeConstraints {
             $0.top.equalTo(tripodNameLabel.snp.bottom).inset(-5)
             $0.leading.equalTo(tripodImageView.snp.trailing).inset(-10)
-            $0.trailing.equalToSuperview().inset(10)
+            $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(10)
         }
     }

@@ -151,13 +151,13 @@ final class SkillDetailView: UIView {
         }
         
         detailScrollView.snp.makeConstraints {
-            $0.top.equalTo(underline.snp.bottom).inset(-20)
+            $0.top.equalTo(underline.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
         skillContentsView.snp.makeConstraints {
-            $0.top.trailing.leading.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(16)
+            $0.top.bottom.equalToSuperview().inset(16)
+            $0.trailing.leading.equalToSuperview()
             $0.width.equalToSuperview()
            }
         
