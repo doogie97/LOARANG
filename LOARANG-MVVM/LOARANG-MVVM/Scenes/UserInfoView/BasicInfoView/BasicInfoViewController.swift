@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class BasicInfoViewController: UIViewController {
     private let container: Container
@@ -21,7 +22,9 @@ final class BasicInfoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let basicInfoView = BasicInfoView()
+    private lazy var basicInfoView = BasicInfoView(engravingsViewHeight: engravingHeight())
+    private let disposeBag = DisposeBag()
+    private let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
     override func loadView() {
         super.loadView()
@@ -30,99 +33,64 @@ final class BasicInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBasicTableView()
+        setViewContents()
+        bindView()
     }
     
-    private func setBasicTableView() {
-        basicInfoView.basicInfoTableView.dataSource = self
-        basicInfoView.basicInfoTableView.delegate = self
+    private func setViewContents() {
+        basicInfoView.mainInfoView.setViewContents(viewModel.userInfo.mainInfo)
+        basicInfoView.basicAbillityView.setViewContents(viewModel.userInfo.stat.basicAbility)
+        if viewModel.engravings.value.count == 0 {
+            basicInfoView.engravingsView.showNoEngravingLabel()
+        }
     }
-}
+    
+    private func bindView() {
+        basicInfoView.equipmentsView.segmentControllView.segmentController
+            .rx.value
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchSegmentControl($0)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.currentPage
+            .bind(onNext: { [weak self] in
+                self?.changeView(index: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.engravings.bind(to: basicInfoView.engravingsView.engravingCollectionView
+            .rx.items(cellIdentifier: "\(EngravigCVCell.self)", cellType: EngravigCVCell.self)) {index, engraving, cell in
+            cell.setCellContents(engraving: engraving)
+        }
+        .disposed(by: disposeBag)
+    }
+    
+    private func changeView(index: Int) {
+        if viewModel.previousPage.value == index {
+             return
+        }
 
-extension BasicInfoViewController: UITableViewDataSource {
-    enum CellType: Int, CaseIterable {
-        case mainInfo = 0
-        case basicAbility
-        case equipments
-        case engravings
-        
-        var cellHeight: CGFloat {
-            switch self {
-            case .mainInfo:
-                return UIScreen.main.bounds.width * 0.5
-            case .basicAbility:
-                return UIScreen.main.bounds.width * 0.4
-            case .equipments:
-                return UIScreen.main.bounds.width * 1.3
-            case .engravings:
-                return 0 // count에 따른 height가 필요해 아래 heightForRowAt에서 직접 지정
-            }
+        var direction: UIPageViewController.NavigationDirection {
+            index > viewModel.previousPage.value ? .forward : .reverse
         }
+        
+        pageVC.setViewControllers([viewModel.pageViewList[index]], direction: direction, animated: true)
+        pageVC.view.frame = CGRect(x: 0, y: 0, width: basicInfoView.equipmentsView.pageView.frame.width, height: basicInfoView.equipmentsView.pageView.frame.height)
+        basicInfoView.equipmentsView.pageView.addSubview(pageVC.view)
+        viewModel.detailViewDidShow(index)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        CellType.allCases.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == CellType.mainInfo.rawValue {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainInfoTVCell.self)") as? MainInfoTVCell else {
-                return UITableViewCell()
-            }
-            cell.setCellContents(viewModel.userInfo.mainInfo)
-            
-            return cell
+    private func engravingHeight() -> CGFloat {
+        switch viewModel.userInfo.stat.engravigs.count {
+        case 0..<3:
+            return UIScreen.main.bounds.width * 0.2
+        case 3..<5:
+            return UIScreen.main.bounds.width * 0.275
+        case 5..<7:
+            return UIScreen.main.bounds.width * 0.35
+        default:
+            return UIScreen.main.bounds.width * 0.425
         }
-        
-        if indexPath.row == CellType.basicAbility.rawValue {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BasicAbilityTVCell.self)") as? BasicAbilityTVCell else {
-                return UITableViewCell()
-            }
-            cell.setCellContents(viewModel.userInfo.stat.basicAbility)
-            
-            return cell
-        }
-        
-        if indexPath.row == CellType.equipments.rawValue {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentsTVCell.self)") as? EquipmentsTVCell else {
-                return UITableViewCell()
-            }
-            cell.setCellContents(viewModel: container.makeEquipmentsTVCellViewModel(userInfo: viewModel.userInfo))
-            
-            return cell
-        }
-        
-        if indexPath.row == CellType.engravings.rawValue {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EngravigsTVCell.self)") as? EngravigsTVCell else {
-                return UITableViewCell()
-            }
-            cell.setCellViewModel(viewModel: container.makeEngravingsTVCellViewModel(engravings: viewModel.userInfo.stat.engravigs))
-            return cell
-        }
-        
-        return UITableViewCell()
-        
-    }
-}
-
-extension BasicInfoViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == CellType.engravings.rawValue {
-            switch viewModel.userInfo.stat.engravigs.count {
-            case 0..<3:
-                return UIScreen.main.bounds.width * 0.2
-            case 3..<5:
-                return UIScreen.main.bounds.width * 0.275
-            case 5..<7:
-                return UIScreen.main.bounds.width * 0.35
-            default:
-                return UIScreen.main.bounds.width * 0.425
-            }
-        }
-        
-        guard let cell = CellType(rawValue: indexPath.row) else {
-            return 0
-        }
-        return cell.cellHeight
     }
 }

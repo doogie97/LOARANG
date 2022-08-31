@@ -1,22 +1,22 @@
 //
-//  BasicAbilityTVCell.swift
+//  BasicAbillityView.swift
 //  LOARANG-MVVM
 //
-//  Created by 최최성균 on 2022/08/11.
+//  Created by 최최성균 on 2022/08/31.
 //
 
 import SnapKit
 
-final class BasicAbilityTVCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+final class BasicAbillityView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private lazy var mainStackView: UIStackView = {
         let topEmptyView = UIView()
         let bottomEmptyView = UIView()
@@ -111,7 +111,6 @@ final class BasicAbilityTVCell: UITableViewCell {
     }
     
     private func setLayout() {
-        self.selectionStyle = .none
         self.backgroundColor = .cellBackgroundColor
         
         self.addSubview(mainStackView)
@@ -126,7 +125,7 @@ final class BasicAbilityTVCell: UITableViewCell {
         }
     }
     
-    func setCellContents(_ ability: BasicAbility) {
+    func setViewContents(_ ability: BasicAbility) {
         attackLabel.text = ability.attack
         vitalityLabel.text = ability.vitality
         critLabel.text = ability.crit

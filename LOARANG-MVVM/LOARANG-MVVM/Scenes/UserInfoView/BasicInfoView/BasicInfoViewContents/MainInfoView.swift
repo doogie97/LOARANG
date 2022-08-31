@@ -1,15 +1,15 @@
 //
-//  MainInfoTVCell.swift
+//  MainInfoView.swift
 //  LOARANG-MVVM
 //
-//  Created by 최최성균 on 2022/08/01.
+//  Created by 최최성균 on 2022/08/31.
 //
 
 import SnapKit
 
-final class MainInfoTVCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+final class MainInfoView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setLayout()
     }
     
@@ -123,7 +123,6 @@ final class MainInfoTVCell: UITableViewCell {
     private lazy var wisdomLabel = makeLabel(size: mainFontSize, alignment: .left)
     
     private func setLayout() {
-        self.selectionStyle = .none
         self.backgroundColor = .cellBackgroundColor
         
         self.addSubview(mainStackView)
@@ -156,7 +155,7 @@ final class MainInfoTVCell: UITableViewCell {
         }
     }
     
-    func setCellContents(_ mainInfo: MainInfo) {
+    func setViewContents(_ mainInfo: MainInfo) {
         classLabel.text = mainInfo.`class`
         serverNameLabel.text = "\(mainInfo.server) \(mainInfo.name)"
         itemLvLabel.text = "아이템 : \(mainInfo.itemLV)"

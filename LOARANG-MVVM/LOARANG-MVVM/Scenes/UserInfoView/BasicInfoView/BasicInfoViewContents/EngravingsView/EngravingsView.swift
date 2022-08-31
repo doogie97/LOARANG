@@ -1,19 +1,15 @@
 //
-//  EngravigsTVCell.swift
+//  EngravingsView.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/08/31.
 //
 
 import SnapKit
-import RxSwift
 
-final class EngravigsTVCell: UITableViewCell {
-    private var viewModel: EngravigsTVCellViewModelable?
-    private let disposeBag = DisposeBag()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+final class EngravingsView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setLayout()
     }
     
@@ -62,20 +58,19 @@ final class EngravigsTVCell: UITableViewCell {
     }()
     
     private func setLayout() {
-        self.selectionStyle = .none
         self.backgroundColor = .cellBackgroundColor
         
-        self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(engravingCollectionView)
-        self.contentView.addSubview(noEngravingLabel)
+        self.addSubview(titleLabel)
+        self.addSubview(engravingCollectionView)
+        self.addSubview(noEngravingLabel)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalToSuperview().inset(8)
+            $0.leading.trailing.equalToSuperview().inset(15)
         }
         
         engravingCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).inset(-5)
+            $0.top.equalTo(titleLabel.snp.bottom).inset(-8)
             $0.leading.trailing.bottom.equalToSuperview().inset(10)
         }
         
@@ -85,20 +80,7 @@ final class EngravigsTVCell: UITableViewCell {
         }
     }
     
-    func setCellViewModel(viewModel: EngravigsTVCellViewModelable) {
-        self.viewModel = viewModel
-        if viewModel.engravings.value.count == 0 {
-            noEngravingLabel.isHidden = false
-        }
-        engravingCollectionView.dataSource = nil
-
-        bindView()
-    }
-    
-    private func bindView() {
-        self.viewModel?.engravings.bind(to: engravingCollectionView.rx.items(cellIdentifier: "\(EngravigCVCell.self)", cellType: EngravigCVCell.self)) {index, engraving, cell in
-            cell.setCellContents(engraving: engraving)
-        }
-        .disposed(by: disposeBag)
+    func showNoEngravingLabel() {
+        noEngravingLabel.isHidden = false
     }
 }

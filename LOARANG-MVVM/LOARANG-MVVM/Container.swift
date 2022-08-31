@@ -65,17 +65,12 @@ final class Container {
     }
     
     private func makeBasicInfoViewModel(userInfo: UserInfo) -> BasicInfoViewModelable {
-        return BasicInfoViewModel(userInfo: userInfo)
-    }
-    
-    //MARK: - about Equipments
-    func makeEquipmentsTVCellViewModel(userInfo: UserInfo) -> EquipmentsTVCellViewModelable {
-        return EquipmentsTVCellViewModel(
-            userInfo: userInfo,
-            pageViewList: [makeBasicEquipmentViewController(equips: userInfo.userJsonInfo.equips),
-                           makeAvatarViewController(equips: userInfo.userJsonInfo.equips),
-                           makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)]
-        )
+        return BasicInfoViewModel(userInfo: userInfo,
+                                  pageViewList: [
+                                    makeBasicEquipmentViewController(equips:userInfo.userJsonInfo.equips),
+                                    makeAvatarViewController(equips: userInfo.userJsonInfo.equips),
+                                    makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)
+                                  ])
     }
     //MARK: - about BasicEquipment
     private func makeBasicEquipmentViewController(equips: Equips) -> BasicEquipmentViewController {
@@ -123,10 +118,6 @@ final class Container {
     
     private func makeCharacterImageViewModel(userImage: UIImage) -> CharacterImageViewModelable {
         return CharacterImageViewModel(userImage: userImage)
-    }
-    //MARK: - about Engravings
-    func makeEngravingsTVCellViewModel(engravings: [Engraving]) -> EngravigsTVCellViewModelable {
-        return EngravigsTVCellViewModel(engravings: engravings)
     }
     //MARK: - about SkillInfoView
     private func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {

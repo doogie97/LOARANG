@@ -40,18 +40,14 @@
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
 		AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */; };
 		AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60528B8727C002C0033 /* TripodTVCell.swift */; };
-		AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */; };
-		AC757C3828BEFAFD005B102B /* EngravigsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3728BEFAFD005B102B /* EngravigsTVCell.swift */; };
-		AC757C3A28BF0865005B102B /* EngravigsTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3928BF0865005B102B /* EngravigsTVCellViewModel.swift */; };
 		AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */; };
 		AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C4228BF2C56005B102B /* MainUserView.swift */; };
 		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
 		AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8328A50C1B008A2865 /* AvatarViewController.swift */; };
-		AC799A8628A50F07008A2865 /* EquipmentsTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */; };
 		AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */; };
 		AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */; };
 		AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */; };
@@ -87,10 +83,13 @@
 		ACAEF36A2880077C00AE98F1 /* ONE-Mobile-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3672880077C00AE98F1 /* ONE-Mobile-Light.ttf */; };
 		ACAEF36B2880077C00AE98F1 /* ONE-Mobile-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3682880077C00AE98F1 /* ONE-Mobile-Regular.ttf */; };
 		ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */; };
+		ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F15D28BF6B3200C6BB2F /* MainInfoView.swift */; };
+		ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */; };
+		ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */; };
+		ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16428BF865200C6BB2F /* EngravingsView.swift */; };
 		ACB837F228961ECE00F75BA2 /* SegmentControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
-		ACB837FB2897ED9800F75BA2 /* MainInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837FA2897ED9800F75BA2 /* MainInfoTVCell.swift */; };
 		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
 		ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */; };
 		ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */; };
@@ -104,7 +103,6 @@
 		ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
-		ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */; };
 		ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */; };
 		ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28A528B0A8E000BFD206 /* EquipmentDetailViewController.swift */; };
 		ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28A728B0A8E800BFD206 /* EquipmentDetailView.swift */; };
@@ -151,18 +149,14 @@
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
 		AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewModel.swift; sourceTree = "<group>"; };
 		AC49D60528B8727C002C0033 /* TripodTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripodTVCell.swift; sourceTree = "<group>"; };
-		AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCell.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInfoViewController.swift; sourceTree = "<group>"; };
-		AC757C3728BEFAFD005B102B /* EngravigsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigsTVCell.swift; sourceTree = "<group>"; };
-		AC757C3928BF0865005B102B /* EngravigsTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigsTVCellViewModel.swift; sourceTree = "<group>"; };
 		AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigCVCell.swift; sourceTree = "<group>"; };
 		AC757C4228BF2C56005B102B /* MainUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserView.swift; sourceTree = "<group>"; };
 		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
 		AC799A8328A50C1B008A2865 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
-		AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCellViewModel.swift; sourceTree = "<group>"; };
 		AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentView.swift; sourceTree = "<group>"; };
 		AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewController.swift; sourceTree = "<group>"; };
 		AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
@@ -200,10 +194,13 @@
 		ACAEF3672880077C00AE98F1 /* ONE-Mobile-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Light.ttf"; sourceTree = "<group>"; };
 		ACAEF3682880077C00AE98F1 /* ONE-Mobile-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Regular.ttf"; sourceTree = "<group>"; };
 		ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		ACB0F15D28BF6B3200C6BB2F /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
+		ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbillityView.swift; sourceTree = "<group>"; };
+		ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsView.swift; sourceTree = "<group>"; };
+		ACB0F16428BF865200C6BB2F /* EngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravingsView.swift; sourceTree = "<group>"; };
 		ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllerView.swift; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
-		ACB837FA2897ED9800F75BA2 /* MainInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoTVCell.swift; sourceTree = "<group>"; };
 		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
 		ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
@@ -217,7 +214,6 @@
 		ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
 		ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extension.swift"; sourceTree = "<group>"; };
 		ACDE28A528B0A8E000BFD206 /* EquipmentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailViewController.swift; sourceTree = "<group>"; };
 		ACDE28A728B0A8E800BFD206 /* EquipmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailView.swift; sourceTree = "<group>"; };
@@ -396,29 +392,13 @@
 			path = SkillDetailView;
 			sourceTree = "<group>";
 		};
-		AC50BC9328A4EB83009F39C5 /* Equipments */ = {
-			isa = PBXGroup;
-			children = (
-				AC50BC9428A4EC0E009F39C5 /* EquipmentsTVCell.swift */,
-				AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */,
-				ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */,
-				AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */,
-				AC799A8028A50B9E008A2865 /* AvatarView */,
-				AC799A8928A51A74008A2865 /* CharacterImageView */,
-			);
-			path = Equipments;
-			sourceTree = "<group>";
-		};
 		AC6CA28F2893BBCF0049C12F /* BasicInfoView */ = {
 			isa = PBXGroup;
 			children = (
 				ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */,
 				AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */,
 				ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */,
-				ACB837F92897ED6500F75BA2 /* MainInfo */,
-				ACD4B78B28A4A75700846E21 /* BasicEffect */,
-				AC50BC9328A4EB83009F39C5 /* Equipments */,
-				AC757C3628BEFA9F005B102B /* Engravings */,
+				ACB0F15C28BF6B2200C6BB2F /* BasicInfoViewContents */,
 			);
 			path = BasicInfoView;
 			sourceTree = "<group>";
@@ -449,16 +429,6 @@
 				AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */,
 			);
 			path = ForthInfoView;
-			sourceTree = "<group>";
-		};
-		AC757C3628BEFA9F005B102B /* Engravings */ = {
-			isa = PBXGroup;
-			children = (
-				AC757C3728BEFAFD005B102B /* EngravigsTVCell.swift */,
-				AC757C3928BF0865005B102B /* EngravigsTVCellViewModel.swift */,
-				AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */,
-			);
-			path = Engravings;
 			sourceTree = "<group>";
 		};
 		AC757C4128BF2C3E005B102B /* MainViewContents */ = {
@@ -666,20 +636,36 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		ACB837F92897ED6500F75BA2 /* MainInfo */ = {
+		ACB0F15C28BF6B2200C6BB2F /* BasicInfoViewContents */ = {
 			isa = PBXGroup;
 			children = (
-				ACB837FA2897ED9800F75BA2 /* MainInfoTVCell.swift */,
+				ACB0F15D28BF6B3200C6BB2F /* MainInfoView.swift */,
+				ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */,
+				ACB0F16328BF850800C6BB2F /* EquipmentsView */,
+				ACB0F16628BF8A5E00C6BB2F /* EngravingsView */,
 			);
-			path = MainInfo;
+			path = BasicInfoViewContents;
 			sourceTree = "<group>";
 		};
-		ACD4B78B28A4A75700846E21 /* BasicEffect */ = {
+		ACB0F16328BF850800C6BB2F /* EquipmentsView */ = {
 			isa = PBXGroup;
 			children = (
-				ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */,
+				ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */,
+				ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */,
+				AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */,
+				AC799A8028A50B9E008A2865 /* AvatarView */,
+				AC799A8928A51A74008A2865 /* CharacterImageView */,
 			);
-			path = BasicEffect;
+			path = EquipmentsView;
+			sourceTree = "<group>";
+		};
+		ACB0F16628BF8A5E00C6BB2F /* EngravingsView */ = {
+			isa = PBXGroup;
+			children = (
+				ACB0F16428BF865200C6BB2F /* EngravingsView.swift */,
+				AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */,
+			);
+			path = EngravingsView;
 			sourceTree = "<group>";
 		};
 		ACDE28A428B0A87A00BFD206 /* EquipmentDetailView */ = {
@@ -828,13 +814,12 @@
 				ACBA790428992C5100CB39D5 /* BookmarkUserDTO.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */,
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
+				ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */,
 				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
 				ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */,
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
-				ACB837FB2897ED9800F75BA2 /* MainInfoTVCell.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
-				AC757C3828BEFAFD005B102B /* EngravigsTVCell.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
@@ -842,7 +827,6 @@
 				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,
 				ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
-				AC799A8628A50F07008A2865 /* EquipmentsTVCellViewModel.swift in Sources */,
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
 				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
@@ -852,6 +836,7 @@
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
+				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */,
@@ -868,6 +853,7 @@
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
 				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
 				ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */,
+				ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */,
 				AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */,
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
@@ -876,14 +862,12 @@
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
-				ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */,
 				AC86404428B5EAF8004B7EBB /* SkillInfoView.swift in Sources */,
 				AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */,
 				AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUser.swift in Sources */,
-				AC50BC9528A4EC0E009F39C5 /* EquipmentsTVCell.swift in Sources */,
 				AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
@@ -896,6 +880,7 @@
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
 				AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */,
+				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
@@ -910,7 +895,6 @@
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,
 				ACAEF349287FF9A200AE98F1 /* Gem.swift in Sources */,
 				AC2C2B5F28B354C300621753 /* AvatarViewModel.swift in Sources */,
-				AC757C3A28BF0865005B102B /* EngravigsTVCellViewModel.swift in Sources */,
 				ACDE28AC28B11D2000BFD206 /* Int + Extension.swift in Sources */,
 				ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */,
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
