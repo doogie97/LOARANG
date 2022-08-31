@@ -104,6 +104,7 @@
 		ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA79052899424900CB39D5 /* AppStorage.swift */; };
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
 		ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE041D28B7109900FCB74D /* PaddingLabel.swift */; };
+		ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACD4B78D28A4A79100846E21 /* BasicAbilityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */; };
@@ -219,6 +220,7 @@
 		ACBA79052899424900CB39D5 /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		ACBE041D28B7109900FCB74D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACD4B78C28A4A79100846E21 /* BasicAbilityTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbilityTVCell.swift; sourceTree = "<group>"; };
@@ -395,7 +397,6 @@
 				AC3FEC292880761300CDE796 /* MainUserTVCell.swift */,
 				AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */,
 				AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */,
-				AC8F11D128814EB000D06AA6 /* BookmarCell */,
 			);
 			path = MainTableViewCells;
 			sourceTree = "<group>";
@@ -480,6 +481,8 @@
 			isa = PBXGroup;
 			children = (
 				AC757C4228BF2C56005B102B /* MainUserView.swift */,
+				ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */,
+				AC8F11D128814EB000D06AA6 /* BookmarCell */,
 			);
 			path = MainUserContentsViews;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
+				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
 				AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,

@@ -82,6 +82,7 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        // MainView contents
         viewModel.mainUser
             .bind(onNext: { [weak self] in
                 self?.mainView.mainUserView.setUserInfo($0)
@@ -90,9 +91,23 @@ final class MainViewController: UIViewController {
         
         mainView.mainUserView.rx.tapGesture().when(.recognized)
             .bind(onNext: { [weak self] _ in
-                self?.viewModel.touchMainUserCell()
+                self?.viewModel.touchMainUser()
             })
             .disposed(by: disposeBag)
+        
+        // BookmarkView contents
+        viewModel.bookmarkUser.bind(to: mainView.bookmarkView.bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) { [weak self] index, bookmark, cell in
+            cell.setCell(bookmark, viewModel: self?.container.makeBookmarkCVCellViewModel())
+        }
+        .disposed(by: disposeBag)
+        
+        mainView.bookmarkView.bookMarkCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchBookMarkCell($0.row)
+            })
+            .disposed(by: disposeBag)
+        
+        
     }
 
     private func setMainTableView() {
@@ -156,7 +171,7 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == CellType.mainUser.rawValue {
-            viewModel.touchMainUserCell()
+            viewModel.touchMainUser()
         }
     }
 }

@@ -1,20 +1,15 @@
 //
-//  BookmarkTVCell.swift
+//  BookmarkView.swift
 //  LOARANG-MVVM
 //
-//  Created by 최최성균 on 2022/07/15.
+//  Created by 최최성균 on 2022/08/31.
 //
 
-import RxSwift
 import SnapKit
 
-final class BookmarkTVCell: UITableViewCell {
-    private var viewModel: BookmarkTVCellViewModelable?
-    private var container: Container?
-    private let disposBag = DisposeBag()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+final class BookmarkView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setLayout()
     }
     
@@ -63,7 +58,7 @@ final class BookmarkTVCell: UITableViewCell {
         return label
     }()
     
-    private lazy var bookMarkCollectionView: UICollectionView = {
+    private(set) lazy var bookMarkCollectionView: UICollectionView = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
@@ -85,9 +80,8 @@ final class BookmarkTVCell: UITableViewCell {
     }()
 
     private func setLayout() {
-        self.selectionStyle = .none
         self.backgroundColor = .tableViewColor
-        self.contentView.addSubview(backView)
+        self.addSubview(backView)
         
         backView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
@@ -99,34 +93,35 @@ final class BookmarkTVCell: UITableViewCell {
         }
     }
     
-    private func bindView() {
-        //collectionView
-        viewModel?.bookmark
-            .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, bookmarkUser, cell in
-                guard let self = self else {
-                    return
-                }
+//    private func bindView() {
+//        //collectionView
+//        viewModel?.bookmark
+//            .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, bookmarkUser, cell in
+//                guard let self = self else {
+//                    return
+//                }
+//
 //                cell.setCell(bookmarkUser, viewModel: self.container?.makeBookmarkCVCellViewModel())
-            }
-            .disposed(by: disposBag)
-        
-        //touch collectionView cell
-        bookMarkCollectionView.rx.itemSelected
-            .bind(onNext: { [weak self] in
-                self?.viewModel?.touchBookmarkCell(index: $0.row)
-            })
-            .disposed(by: disposBag)
-        
-        //bookmark count
-        viewModel?.bookmark.map { "(\($0.count))"}
-            .drive(bookmarkCount.rx.text)
-            .disposed(by: disposBag)
-    }
+//            }
+//            .disposed(by: disposBag)
+//
+//        //touch collectionView cell
+//        bookMarkCollectionView.rx.itemSelected
+//            .bind(onNext: { [weak self] in
+//                self?.viewModel?.touchBookmarkCell(index: $0.row)
+//            })
+//            .disposed(by: disposBag)
+//
+//        //bookmark count
+//        viewModel?.bookmark.map { "(\($0.count))"}
+//            .drive(bookmarkCount.rx.text)
+//            .disposed(by: disposBag)
+//    }
     
-    func setContainer(container: Container, delegate: TouchBookmarkCellDelegate) {
-        self.container = container
-        self.viewModel = container.makeBookmarkTVCellViewModel(delegate: delegate)
-
-        bindView()
-    }
+//    func setContainer(container: Container, delegate: TouchBookmarkCellDelegate) {
+//        self.container = container
+//        self.viewModel = container.makeBookmarkTVCellViewModel(delegate: delegate)
+//
+//        bindView()
+//    }
 }

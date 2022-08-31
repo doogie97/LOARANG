@@ -7,16 +7,18 @@
 
 import RxRelay
 
-protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutPut {}
+protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutput {}
 
 protocol MainViewModelInput {
     func touchSerachButton()
-    func touchMainUserCell()
+    func touchMainUser()
+    func touchBookMarkCell(_ index: Int)
 }
-protocol MainViewModelOutPut {
+protocol MainViewModelOutput {
+    var mainUser: BehaviorRelay<MainUser?> { get }
+    var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<UserInfo> { get }
-    var mainUser: BehaviorRelay<MainUser?> { get }
     var showAlert: PublishRelay<String?> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
@@ -28,8 +30,9 @@ final class MainViewModel: MainViewModelInOut {
     
     init(storage: AppStorageable, crawlManager: CrawlManagerable) {
         self.storage = storage
-        self.mainUser = storage.mainUser
         self.crawlManager = crawlManager
+        self.mainUser = storage.mainUser
+        self.bookmarkUser = storage.bookMark
     }
     
     // in
@@ -37,7 +40,7 @@ final class MainViewModel: MainViewModelInOut {
         showSearchView.accept(())
     }
     
-    func touchMainUserCell() {
+    func touchMainUser() {
         guard let mainUser = mainUser.value else {
             return
         }
@@ -72,10 +75,42 @@ final class MainViewModel: MainViewModelInOut {
         }
     }
     
+    func touchBookMarkCell(_ index: Int) {
+        startedLoading.accept(())
+        guard let userName = storage.bookMark.value[safe: index]?.name else {
+            return
+        }
+        
+        crawlManager.getUserInfo(userName) { [weak self] result in
+            self?.finishedLoading.accept(())
+            switch result {
+            case .success(let userInfo):
+                self?.showUserInfo.accept(userInfo)
+                
+                do {
+                    try self?.storage.updateUser(BookmarkUser(name: userName,
+                                                              image: userInfo.mainInfo.userImage,
+                                                              class: userInfo.mainInfo.`class`))
+                } catch {
+                    guard let error = error as? LocalStorageError else {
+                        self?.showAlert.accept(nil)
+                        return
+                    }
+                    
+                    self?.showAlert.accept(error.errorDescrption)
+                }
+            case .failure(_):
+                self?.showAlert.accept(nil)
+                return
+            }
+        }
+    }
+    
     // out
+    let mainUser: BehaviorRelay<MainUser?>
+    let bookmarkUser: BehaviorRelay<[BookmarkUser]>
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<UserInfo>()
-    let mainUser: BehaviorRelay<MainUser?>
     let showAlert = PublishRelay<String?>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()

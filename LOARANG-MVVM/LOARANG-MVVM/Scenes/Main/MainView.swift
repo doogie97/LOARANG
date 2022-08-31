@@ -57,8 +57,9 @@ final class MainView: UIView {
     }()
     
     private(set) lazy var mainUserView = MainUserView()
+    private(set) lazy var bookmarkView = BookmarkView()
     
-    private(set) lazy var mainTableView: UITableView = {
+    private(set) lazy var mainTableView: UITableView = { //없어질 예정
         let tableView = UITableView()
         tableView.backgroundColor = .tableViewColor
         tableView.separatorStyle = .none
@@ -84,6 +85,7 @@ final class MainView: UIView {
         self.addSubview(mainScrollView)
         mainScrollView.addSubview(mainContentsView)
         mainContentsView.addSubview(mainUserView)
+        mainContentsView.addSubview(bookmarkView)
         
         self.addSubview(activityIndicator)
         
@@ -106,8 +108,15 @@ final class MainView: UIView {
         }
         
         mainUserView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(UIScreen.main.bounds.width * 0.75)
-            $0.edges.equalToSuperview()
+        }
+        
+        bookmarkView.snp.makeConstraints {
+            $0.top.equalTo(mainUserView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(UIScreen.main.bounds.width * 0.58)
+            $0.bottom.equalToSuperview()
         }
         
         activityIndicator.snp.makeConstraints {
