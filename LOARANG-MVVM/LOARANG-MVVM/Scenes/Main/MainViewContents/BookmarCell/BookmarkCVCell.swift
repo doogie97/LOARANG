@@ -66,10 +66,10 @@ final class BookmarkCVCell: UICollectionViewCell {
             $0.top.equalTo(bookmarkButton.snp.bottom).inset(10)
             $0.centerX.equalToSuperview()
             
-            let userImageViewHeight = UIScreen.main.bounds.width * 0.22
-            $0.height.equalTo(userImageViewHeight)
-            userImageView.layer.cornerRadius = userImageViewHeight / 2
+            let height = UIScreen.main.bounds.width * 0.22
+            $0.height.equalTo(height)
             $0.width.equalTo(userImageView.snp.height)
+            userImageView.layer.cornerRadius = height / 2
         }
         
         nameLabel.snp.makeConstraints {
