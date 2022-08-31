@@ -128,6 +128,10 @@ final class Container {
     private func makeCharacterImageViewModel(userImage: UIImage) -> CharacterImageViewModelable {
         return CharacterImageViewModel(userImage: userImage)
     }
+    //MARK: - about Engravings
+    func makeEngravingsTVCellViewModel(engravings: [Engraving]) -> EngravigsTVCellViewModelable {
+        return EngravigsTVCellViewModel(engravings: engravings)
+    }
     //MARK: - about SkillInfoView
     private func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {
         return SkillInfoViewController(viewModel: makeSkillInfoViewModel(skillInfo: skillInfo),
