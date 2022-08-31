@@ -461,14 +461,14 @@
 			path = Engravings;
 			sourceTree = "<group>";
 		};
-		AC757C4128BF2C3E005B102B /* MainUserContentsViews */ = {
+		AC757C4128BF2C3E005B102B /* MainViewContents */ = {
 			isa = PBXGroup;
 			children = (
 				AC757C4228BF2C56005B102B /* MainUserView.swift */,
 				ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */,
 				AC8F11D128814EB000D06AA6 /* BookmarCell */,
 			);
-			path = MainUserContentsViews;
+			path = MainViewContents;
 			sourceTree = "<group>";
 		};
 		AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */ = {
@@ -637,7 +637,7 @@
 				ACAEF35E287FFC4900AE98F1 /* MainView.swift */,
 				ACAEF326287FF0D200AE98F1 /* MainViewController.swift */,
 				AC3FEC1F2880697700CDE796 /* MainViewModel.swift */,
-				AC757C4128BF2C3E005B102B /* MainUserContentsViews */,
+				AC757C4128BF2C3E005B102B /* MainViewContents */,
 			);
 			path = Main;
 			sourceTree = "<group>";
