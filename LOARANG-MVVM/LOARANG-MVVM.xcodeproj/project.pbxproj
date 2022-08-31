@@ -34,7 +34,6 @@
 		AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */; };
 		AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1F2880697700CDE796 /* MainViewModel.swift */; };
 		AC3FEC27288071CF00CDE796 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC26288071CF00CDE796 /* Container.swift */; };
-		AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC292880761300CDE796 /* MainUserTVCell.swift */; };
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
@@ -64,8 +63,6 @@
 		AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */; };
 		AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404728B5F325004B7EBB /* SkillTVCell.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
-		AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */; };
-		AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */; };
 		AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */; };
 		AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */; };
 		AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11D228814F5800D06AA6 /* BookmarkUser.swift */; };
@@ -148,7 +145,6 @@
 		AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1F2880697700CDE796 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		AC3FEC26288071CF00CDE796 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		AC3FEC292880761300CDE796 /* MainUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserTVCell.swift; sourceTree = "<group>"; };
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
@@ -178,8 +174,6 @@
 		AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewModel.swift; sourceTree = "<group>"; };
 		AC86404728B5F325004B7EBB /* SkillTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTVCell.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
-		AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCell.swift; sourceTree = "<group>"; };
-		AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTVCellViewModel.swift; sourceTree = "<group>"; };
 		AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCell.swift; sourceTree = "<group>"; };
 		AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCellViewModel.swift; sourceTree = "<group>"; };
 		AC8F11D228814F5800D06AA6 /* BookmarkUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUser.swift; sourceTree = "<group>"; };
@@ -389,16 +383,6 @@
 				ACD4B78928A36AB800846E21 /* SettingViewModel.swift */,
 			);
 			path = SettingView;
-			sourceTree = "<group>";
-		};
-		AC3FEC28288075F000CDE796 /* MainTableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				AC3FEC292880761300CDE796 /* MainUserTVCell.swift */,
-				AC8F11C92881059800D06AA6 /* BookmarkTVCell.swift */,
-				AC8F11CB2881124200D06AA6 /* BookmarkTVCellViewModel.swift */,
-			);
-			path = MainTableViewCells;
 			sourceTree = "<group>";
 		};
 		AC49D60028B85978002C0033 /* SkillDetailView */ = {
@@ -654,7 +638,6 @@
 				ACAEF326287FF0D200AE98F1 /* MainViewController.swift */,
 				AC3FEC1F2880697700CDE796 /* MainViewModel.swift */,
 				AC757C4128BF2C3E005B102B /* MainUserContentsViews */,
-				AC3FEC28288075F000CDE796 /* MainTableViewCells */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -851,7 +834,6 @@
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				ACB837FB2897ED9800F75BA2 /* MainInfoTVCell.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
-				AC8F11CC2881124300D06AA6 /* BookmarkTVCellViewModel.swift in Sources */,
 				AC757C3828BEFAFD005B102B /* EngravigsTVCell.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
@@ -867,7 +849,6 @@
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
-				AC8F11CA2881059800D06AA6 /* BookmarkTVCell.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
@@ -891,7 +872,6 @@
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
-				AC3FEC2A2880761300CDE796 /* MainUserTVCell.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */,
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,

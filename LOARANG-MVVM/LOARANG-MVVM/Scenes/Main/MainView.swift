@@ -59,18 +59,6 @@ final class MainView: UIView {
     private(set) lazy var mainUserView = MainUserView()
     private(set) lazy var bookmarkView = BookmarkView()
     
-    private(set) lazy var mainTableView: UITableView = { //없어질 예정
-        let tableView = UITableView()
-        tableView.backgroundColor = .tableViewColor
-        tableView.separatorStyle = .none
-        
-        tableView.register(MainUserTVCell.self)
-        tableView.register(BookmarkTVCell.self)
-        
-        return tableView
-    }()
-    
-    
     //MARK: - atc
     private(set) lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)

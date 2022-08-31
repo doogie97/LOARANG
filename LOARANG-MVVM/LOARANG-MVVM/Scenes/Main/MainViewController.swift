@@ -34,7 +34,6 @@ final class MainViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         
         bindView()
-        setMainTableView()
     }
     
     private func bindView() {
@@ -108,70 +107,5 @@ final class MainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
-    }
-
-    private func setMainTableView() {
-        mainView.mainTableView.dataSource = self
-        mainView.mainTableView.delegate = self
-    }
-}
-
-//MARK: - about TableView
-extension MainViewController: UITableViewDataSource {
-    enum CellType: Int, CaseIterable {
-        case mainUser = 0
-        case bookmark = 1
-        
-        var cellHeight: CGFloat {
-            switch self {
-            case .mainUser:
-                return UIScreen.main.bounds.width * 0.75
-            case .bookmark:
-                return UIScreen.main.bounds.width * 0.58
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        CellType.allCases.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == CellType.mainUser.rawValue {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainUserTVCell.self)") as? MainUserTVCell else {
-                return MainUserTVCell()
-            }
-            
-            viewModel.mainUser
-                .bind(onNext: {
-                    cell.setUserInfo($0)
-                })
-                .disposed(by: disposeBag)
-            
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookmarkTVCell.self)") as? BookmarkTVCell else {
-                return BookmarkTVCell()
-            }
-            
-            cell.setContainer(container: container, delegate: viewModel)
-            
-            return cell
-        }
-    }
-}
-
-extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let cell = CellType(rawValue: indexPath.row) else {
-            return 0
-        }
-        return cell.cellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == CellType.mainUser.rawValue {
-            viewModel.touchMainUser()
-        }
     }
 }

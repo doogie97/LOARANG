@@ -115,35 +115,3 @@ final class MainViewModel: MainViewModelInOut {
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
 }
-
-//MARK: - about Delegate
-extension MainViewModel: TouchBookmarkCellDelegate {
-    func showBookmarkUser(index: Int) {
-        startedLoading.accept(())
-        let userName = storage.bookMark.value[index].name
-        
-        crawlManager.getUserInfo(userName) { [weak self] result in
-            self?.finishedLoading.accept(())
-            switch result {
-            case .success(let userInfo):
-                self?.showUserInfo.accept(userInfo)
-                
-                do {
-                    try self?.storage.updateUser(BookmarkUser(name: userName,
-                                                              image: userInfo.mainInfo.userImage,
-                                                              class: userInfo.mainInfo.`class`))
-                } catch {
-                    guard let error = error as? LocalStorageError else {
-                        self?.showAlert.accept(nil)
-                        return
-                    }
-                    
-                    self?.showAlert.accept(error.errorDescrption)
-                }
-            case .failure(_):
-                self?.showAlert.accept(nil)
-                return
-            }
-        }
-    }
-}

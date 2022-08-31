@@ -92,36 +92,4 @@ final class BookmarkView: UIView {
             $0.edges.equalToSuperview().inset(20)
         }
     }
-    
-//    private func bindView() {
-//        //collectionView
-//        viewModel?.bookmark
-//            .drive(bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) {[weak self] index, bookmarkUser, cell in
-//                guard let self = self else {
-//                    return
-//                }
-//
-//                cell.setCell(bookmarkUser, viewModel: self.container?.makeBookmarkCVCellViewModel())
-//            }
-//            .disposed(by: disposBag)
-//
-//        //touch collectionView cell
-//        bookMarkCollectionView.rx.itemSelected
-//            .bind(onNext: { [weak self] in
-//                self?.viewModel?.touchBookmarkCell(index: $0.row)
-//            })
-//            .disposed(by: disposBag)
-//
-//        //bookmark count
-//        viewModel?.bookmark.map { "(\($0.count))"}
-//            .drive(bookmarkCount.rx.text)
-//            .disposed(by: disposBag)
-//    }
-    
-//    func setContainer(container: Container, delegate: TouchBookmarkCellDelegate) {
-//        self.container = container
-//        self.viewModel = container.makeBookmarkTVCellViewModel(delegate: delegate)
-//
-//        bindView()
-//    }
 }

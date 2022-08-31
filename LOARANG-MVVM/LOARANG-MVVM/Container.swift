@@ -32,10 +32,6 @@ final class Container {
     private func makeMainViewModel() -> MainViewModel {
         return MainViewModel(storage: storage, crawlManager: crawlManager)
     }
-
-    func makeBookmarkTVCellViewModel(delegate: TouchBookmarkCellDelegate) -> BookmarkTVCellViewModel {
-        return BookmarkTVCellViewModel(storage: storage, delegate: delegate)
-    }
     
     func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModelable {
         return BookmarkCVCellViewModel(storage: storage)
