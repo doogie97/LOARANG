@@ -331,7 +331,7 @@ extension JsonInfoManager {
             return nil
         }
 
-        return gemsJson.map {
+        let gemInfo: [Gem] = gemsJson.map {
             let name = $0.json["Element_000"]["value"].stringValue
             let grade = $0.json["Element_001"]["value"]["slotData"]["iconGrade"].intValue
             let lvString = $0.json["Element_001"]["value"]["slotData"]["rtString"].stringValue
@@ -339,6 +339,17 @@ extension JsonInfoManager {
             let effect = $0.json["Element_004"]["value"]["Element_001"].stringValue + $0.json["Element_005"]["value"]["Element_001"].stringValue
             
             return Gem(name: name, grade: grade, lvString: lvString, effect: effect, imageURL: imageURL)
+        }
+        
+        return gemInfo.sorted {
+            let first = $0.name.htmlToString.components(separatedBy: " ")
+            let second = $1.name.htmlToString.components(separatedBy: " ")
+            
+            if first[safe: 0] == second[safe: 0] {
+                return first[safe: 1] ?? "" < second[safe: 1] ?? ""
+            } else {
+                return first[safe: 0] ?? "" > second[safe: 0] ?? ""
+            }
         }
     }
 }
