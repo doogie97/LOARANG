@@ -24,64 +24,35 @@ final class MainUserView: UIView {
         return view
     }()
     
-    private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [topStackView, lvNameLabel, bottomStackView])
-        stackView.backgroundColor = .cellColor
-        stackView.layer.cornerRadius = 10
-        stackView.axis = .vertical
-        stackView.alignment = .center
+    private lazy var contentsView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .cellColor
+        view.layer.cornerRadius = 10
         
-        lvNameLabel.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.1)
-        }
-        
-        return stackView
-    }()
-    //MARK: - top StackView
-    private lazy var topStackView: UIStackView = {
-        let spaceView = UIView()
-        
-        spaceView.snp.makeConstraints {
-            $0.height.equalTo(8)
-        }
-        
-        let stackView = UIStackView(arrangedSubviews: [spaceView, userImageView])
-        stackView.axis = .vertical
-        
-        return stackView
+        return view
     }()
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = UIScreen.main.bounds.width / 5.2
+        
         return imageView
     }()
     
     //MARK: - bottom StackView
     private lazy var bottomStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [lvNameLabel,
-                                                       makeInfoStackView(classTitle, classLabel),
+        let stackView = UIStackView(arrangedSubviews: [makeInfoStackView(classTitle, classLabel),
                                                        makeInfoStackView(itemLvTitle, itemLvLabel),
                                                        makeInfoStackView(serverTitle, serverLabel)])
 
         
         stackView.distribution = .fillEqually
-        stackView.spacing = 50
         return stackView
     }()
-    
-    private func makeTitleStackView(_ title: UILabel) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: [title])
-        stackView.alignment = .bottom
-        
-        return stackView
-    }
     
     private func makeInfoStackView(_ title: UILabel, _ info: UILabel) -> UIStackView {
         let stckaView = UIStackView(arrangedSubviews: [title, info])
         stckaView.distribution = .fillEqually
-        stckaView.spacing =  -20
         stckaView.axis = .vertical
         
         return stckaView
@@ -99,20 +70,20 @@ final class MainUserView: UIView {
     private lazy var itemLvTitle = makeLabel(16)
     private lazy var serverTitle = makeLabel(16)
     
-    private lazy var lvNameLabel = makeLabel(18)
+    private lazy var lvNameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.one(size: 18, family: .Bold)
+        label.setContentHuggingPriority(.required, for: .vertical)
+        return label
+    }()
     private lazy var classLabel = makeLabel(16)
     private lazy var itemLvLabel = makeLabel(16)
     private lazy var serverLabel = makeLabel(16)
     
     private lazy var noMainUserLabel = makeLabel(20)
     
-    private func setBackgroundColor() {
-        self.backgroundColor = .tableViewColor
-    }
-    
     private func setLayout() {
-        setBackgroundColor()
-        
         self.addSubview(backView)
         backView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).inset(8)
@@ -121,22 +92,34 @@ final class MainUserView: UIView {
     }
     
     private func setUserLayout() {
-        backView.addSubview(mainStackView)
-        
-        mainStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(10)
+        backView.addSubview(contentsView)
+        contentsView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(8)
         }
         
-        topStackView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+        contentsView.addSubview(userImageView)
+        contentsView.addSubview(lvNameLabel)
+        contentsView.addSubview(bottomStackView)
+        
+        userImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(8)
+            $0.centerX.equalToSuperview()
+            
+            let height = UIScreen.main.bounds.width * 0.4
+            $0.height.equalTo(height)
+            $0.width.equalTo(userImageView.snp.height)
+            userImageView.layer.cornerRadius = height / 2
+        }
+        
+        lvNameLabel.snp.makeConstraints {
+            $0.top.equalTo(userImageView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview()
         }
         
         bottomStackView.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.3)
-        }
-        
-        userImageView.snp.makeConstraints {
-            $0.width.equalTo(userImageView.snp.height)
+            $0.top.equalTo(lvNameLabel.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.bottom.equalToSuperview().inset(16)
         }
     }
     
