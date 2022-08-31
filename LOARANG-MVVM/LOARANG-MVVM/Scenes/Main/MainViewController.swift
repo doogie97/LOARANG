@@ -81,6 +81,18 @@ final class MainViewController: UIViewController {
                 self?.mainView.activityIndicator.stopAnimating()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.mainUser
+            .bind(onNext: { [weak self] in
+                self?.mainView.mainUserView.setUserInfo($0)
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.mainUserView.rx.tapGesture().when(.recognized)
+            .bind(onNext: { [weak self] _ in
+                self?.viewModel.touchMainUserCell()
+            })
+            .disposed(by: disposeBag)
     }
 
     private func setMainTableView() {
