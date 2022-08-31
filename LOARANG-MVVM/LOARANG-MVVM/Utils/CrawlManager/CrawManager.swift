@@ -139,7 +139,11 @@ struct CrawlManager: CrawlManagerable {
             throw CrawlError.searchError //뭐 나중에는 어떤 에러인지 상세하게
         }
         
-        return Stat(basicAbility: basicAbility, propensities: propensities, engravigs: nil)
+        guard let engravigs = try? getEngravigs(doc: doc) else {
+            throw CrawlError.searchError //뭐 나중에는 어떤 에러인지 상세하게
+        }
+        
+        return Stat(basicAbility: basicAbility, propensities: propensities, engravigs: engravigs)
     }
     
     private func getBasicAbility(doc: Document) throws -> BasicAbility {
@@ -174,6 +178,23 @@ struct CrawlManager: CrawlManagerable {
                             courage: propensities[safe: 1] ?? "-",
                             charm: propensities[safe: 2] ?? "-",
                             kindness: propensities[safe: 3] ?? "-")
+    }
+    
+    private func getEngravigs(doc: Document) throws -> [Engraving] {
+        let engravigElements = try doc.select("#profile-char > div.profile-ability-engrave > ul").first()?.children() ?? Elements()
+        
+        let engravigs: [Engraving] = engravigElements.compactMap {
+            do {
+                let name = try $0.select("span").text()
+                let description = try $0.select("p").text()
+                
+                return Engraving(title: name, describtion: description)
+            } catch {
+                return nil
+            }
+        }
+        
+        return engravigs
     }
     
     //MARK: - JsonInfo
