@@ -91,7 +91,12 @@ final class EngravigsTVCell: UITableViewCell {
             noEngravingLabel.isHidden = false
         }
         engravingCollectionView.dataSource = nil
-        viewModel.engravings.bind(to: engravingCollectionView.rx.items(cellIdentifier: "\(EngravigCVCell.self)", cellType: EngravigCVCell.self)) {index, engraving, cell in
+
+        bindView()
+    }
+    
+    private func bindView() {
+        self.viewModel?.engravings.bind(to: engravingCollectionView.rx.items(cellIdentifier: "\(EngravigCVCell.self)", cellType: EngravigCVCell.self)) {index, engraving, cell in
             cell.setCellContents(engraving: engraving)
         }
         .disposed(by: disposeBag)
