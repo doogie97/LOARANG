@@ -33,6 +33,9 @@ final class EngravigCVCell: UICollectionViewCell {
     }
     
     func setCellContents(engraving: Engraving) {
+        if engraving.title.contains("감소") {
+            titleLabel.textColor = .systemRed
+        }
         self.titleLabel.text = engraving.title
     }
 }
