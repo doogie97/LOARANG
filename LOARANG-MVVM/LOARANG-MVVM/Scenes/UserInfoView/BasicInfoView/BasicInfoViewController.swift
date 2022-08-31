@@ -116,7 +116,7 @@ extension BasicInfoViewController: UITableViewDelegate {
             case 5..<7:
                 return UIScreen.main.bounds.width * 0.35
             default:
-                return UIScreen.main.bounds.width * 0.4
+                return UIScreen.main.bounds.width * 0.425
             }
         }
         
