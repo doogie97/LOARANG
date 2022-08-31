@@ -96,7 +96,7 @@ extension BasicInfoViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EngravigsTVCell.self)") as? EngravigsTVCell else {
                 return UITableViewCell()
             }
-            
+            cell.setCellViewModel(viewModel: container.makeEngravingsTVCellViewModel(engravings: viewModel.userInfo.stat.engravigs))
             return cell
         }
         
@@ -112,11 +112,11 @@ extension BasicInfoViewController: UITableViewDelegate {
             case 0..<3:
                 return UIScreen.main.bounds.width * 0.2
             case 3..<5:
-                return UIScreen.main.bounds.width * 0.3
+                return UIScreen.main.bounds.width * 0.275
             case 5..<7:
-                return UIScreen.main.bounds.width * 0.4
+                return UIScreen.main.bounds.width * 0.35
             default:
-                return UIScreen.main.bounds.width * 0.5
+                return UIScreen.main.bounds.width * 0.4
             }
         }
         
