@@ -44,6 +44,7 @@ extension BasicInfoViewController: UITableViewDataSource {
         case mainInfo = 0
         case basicAbility
         case equipments
+        case engravings
         
         var cellHeight: CGFloat {
             switch self {
@@ -53,6 +54,8 @@ extension BasicInfoViewController: UITableViewDataSource {
                 return UIScreen.main.bounds.width * 0.4
             case .equipments:
                 return UIScreen.main.bounds.width * 1.3
+            case .engravings:
+                return 0 // count에 따른 height가 필요해 아래 heightForRowAt에서 직접 지정
             }
         }
     }
@@ -89,6 +92,14 @@ extension BasicInfoViewController: UITableViewDataSource {
             return cell
         }
         
+        if indexPath.row == CellType.engravings.rawValue {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EngravigsTVCell.self)") as? EngravigsTVCell else {
+                return UITableViewCell()
+            }
+            
+            return cell
+        }
+        
         return UITableViewCell()
         
     }
@@ -96,6 +107,19 @@ extension BasicInfoViewController: UITableViewDataSource {
 
 extension BasicInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == CellType.engravings.rawValue {
+            switch viewModel.userInfo.stat.engravigs.count {
+            case 0..<3:
+                return UIScreen.main.bounds.width * 0.2
+            case 3..<5:
+                return UIScreen.main.bounds.width * 0.3
+            case 5..<7:
+                return UIScreen.main.bounds.width * 0.4
+            default:
+                return UIScreen.main.bounds.width * 0.5
+            }
+        }
+        
         guard let cell = CellType(rawValue: indexPath.row) else {
             return 0
         }
