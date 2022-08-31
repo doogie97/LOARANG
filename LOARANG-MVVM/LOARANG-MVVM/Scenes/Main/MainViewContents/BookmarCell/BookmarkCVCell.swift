@@ -21,21 +21,6 @@ final class BookmarkCVCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [topStackView, imageStackView, nameLabel])
-        stackView.axis = .vertical
-        
-        return stackView
-    }()
-    
-    private lazy var topStackView: UIStackView = {
-        let empty1 = UILabel()
-        let stackView = UIStackView(arrangedSubviews: [empty1, bookmarkButton])
-        stackView.alignment = .bottom
-        
-        return stackView
-    }()
-    
     private(set) lazy var bookmarkButton: UIButton = {
         let button = UIButton()
         button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
@@ -45,25 +30,13 @@ final class BookmarkCVCell: UICollectionViewCell {
         return button
     }()
     
-    private lazy var imageStackView: UIStackView = {
-        let empty1 = UILabel()
-        let empty2 = UILabel()
-        let stackView = UIStackView(arrangedSubviews: [empty1, userImageView, empty2])
-        
-        empty1.snp.makeConstraints {
-            $0.width.equalTo(empty2)
-        }
-        
-        return stackView
-    }()
-    
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.setContentHuggingPriority(.required, for: .vertical)
         imageView.contentMode = .scaleAspectFill
         
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = UIScreen.main.bounds.width / 10
+        
         return imageView
     }()
     
@@ -78,26 +51,31 @@ final class BookmarkCVCell: UICollectionViewCell {
     private func setLayout() {
         self.backgroundColor = .cellColor
         self.layer.cornerRadius = 10
-        self.contentView.addSubview(mainStackView)
-        
-        mainStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(10)
-        }
-        
-        topStackView.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.15)
-        }
+        self.contentView.addSubview(bookmarkButton)
+        self.contentView.addSubview(userImageView)
+        self.contentView.addSubview(nameLabel)
         
         bookmarkButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(5)
+            $0.trailing.equalToSuperview().inset(5)
             $0.width.equalToSuperview().multipliedBy(0.2)
+            $0.height.equalTo(bookmarkButton.snp.width)
         }
         
         userImageView.snp.makeConstraints {
+            $0.top.equalTo(bookmarkButton.snp.bottom).inset(10)
+            $0.centerX.equalToSuperview()
+            
+            let userImageViewHeight = UIScreen.main.bounds.width * 0.22
+            $0.height.equalTo(userImageViewHeight)
+            userImageView.layer.cornerRadius = userImageViewHeight / 2
             $0.width.equalTo(userImageView.snp.height)
         }
         
         nameLabel.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.25)
+            $0.top.equalTo(userImageView.snp.bottom).inset(-5)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
         }
         
         bind()
