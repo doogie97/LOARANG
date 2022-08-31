@@ -18,6 +18,7 @@ final class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Navigation StackView
     private lazy var titleStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [title, searchButton])
         stackView.distribution = .equalSpacing
@@ -41,6 +42,22 @@ final class MainView: UIView {
         return button
     }()
     
+    //MARK: - Main ContentsView
+    private lazy var mainScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .tableViewColor
+        
+        return scrollView
+    }()
+    
+    private lazy var mainContentsView: UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
+    private(set) lazy var mainUserView = MainUserView()
+    
     private(set) lazy var mainTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .tableViewColor
@@ -52,6 +69,8 @@ final class MainView: UIView {
         return tableView
     }()
     
+    
+    //MARK: - atc
     private(set) lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
@@ -62,7 +81,10 @@ final class MainView: UIView {
     
     private func setLayout() {
         self.addSubview(titleStackView)
-        self.addSubview(mainTableView)
+        self.addSubview(mainScrollView)
+        mainScrollView.addSubview(mainContentsView)
+        mainContentsView.addSubview(mainUserView)
+        
         self.addSubview(activityIndicator)
         
         titleStackView.snp.makeConstraints {
@@ -73,9 +95,19 @@ final class MainView: UIView {
             $0.height.equalTo(50)
         }
         
-        mainTableView.snp.makeConstraints {
+        mainScrollView.snp.makeConstraints {
             $0.top.equalTo(titleStackView.snp.bottom)
-            $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        mainContentsView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        mainUserView.snp.makeConstraints {
+            $0.height.equalTo(UIScreen.main.bounds.width * 0.75)
+            $0.edges.equalToSuperview()
         }
         
         activityIndicator.snp.makeConstraints {
