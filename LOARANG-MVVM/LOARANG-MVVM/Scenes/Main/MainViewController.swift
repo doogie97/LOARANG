@@ -105,7 +105,5 @@ final class MainViewController: UIViewController {
                 self?.viewModel.touchBookMarkCell($0.row)
             })
             .disposed(by: disposeBag)
-        
-        
     }
 }

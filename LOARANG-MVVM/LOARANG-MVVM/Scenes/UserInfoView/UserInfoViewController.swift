@@ -32,7 +32,7 @@ final class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userInfoView.setCellContents(viewModel.userInfo)
+        userInfoView.setViewContents(viewModel.userInfo)
         bindView()
     }
     

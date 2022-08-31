@@ -101,7 +101,7 @@ final class UserInfoView: UIView {
         }
     }
     
-    func setCellContents(_ userInfo: UserInfo) {
+    func setViewContents(_ userInfo: UserInfo) {
         self.titleLabel.text = userInfo.mainInfo.name
     }
 }
