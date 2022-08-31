@@ -48,6 +48,7 @@
 		AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */; };
 		AC757C3828BEFAFD005B102B /* EngravigsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3728BEFAFD005B102B /* EngravigsTVCell.swift */; };
 		AC757C3A28BF0865005B102B /* EngravigsTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3928BF0865005B102B /* EngravigsTVCellViewModel.swift */; };
+		AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */; };
 		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
 		AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8328A50C1B008A2865 /* AvatarViewController.swift */; };
 		AC799A8628A50F07008A2865 /* EquipmentsTVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */; };
@@ -159,6 +160,7 @@
 		AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInfoViewController.swift; sourceTree = "<group>"; };
 		AC757C3728BEFAFD005B102B /* EngravigsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigsTVCell.swift; sourceTree = "<group>"; };
 		AC757C3928BF0865005B102B /* EngravigsTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigsTVCellViewModel.swift; sourceTree = "<group>"; };
+		AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigCVCell.swift; sourceTree = "<group>"; };
 		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
 		AC799A8328A50C1B008A2865 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		AC799A8528A50F07008A2865 /* EquipmentsTVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsTVCellViewModel.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 			children = (
 				AC757C3728BEFAFD005B102B /* EngravigsTVCell.swift */,
 				AC757C3928BF0865005B102B /* EngravigsTVCellViewModel.swift */,
+				AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */,
 			);
 			path = Engravings;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
 				AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */,
+				AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */,
 				ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */,
 				AC2C2B5D28B3545900621753 /* AvatarView.swift in Sources */,
 				AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */,
