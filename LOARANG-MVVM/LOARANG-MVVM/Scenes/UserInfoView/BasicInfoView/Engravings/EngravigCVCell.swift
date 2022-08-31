@@ -38,4 +38,9 @@ final class EngravigCVCell: UICollectionViewCell {
         }
         self.titleLabel.text = engraving.title
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.textColor = .label
+    }
 }
