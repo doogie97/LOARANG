@@ -91,7 +91,7 @@ final class BasicEquipmentView: UIView {
         view.addSubview(xMarkLabel)
         
         gemNameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(15)
+            $0.top.equalToSuperview().inset(12)
             $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(20)
         }
@@ -99,7 +99,7 @@ final class BasicEquipmentView: UIView {
         gemEffectLabel.snp.makeConstraints {
             $0.top.equalTo(gemNameLabel.snp.bottom).inset(-5)
             $0.leading.trailing.equalToSuperview().inset(10)
-            $0.bottom.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(12)
         }
         
         xMarkLabel.snp.makeConstraints {
@@ -117,6 +117,7 @@ final class BasicEquipmentView: UIView {
     
     private lazy var gemEffectLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         
         return label
     }()
@@ -134,13 +135,6 @@ final class BasicEquipmentView: UIView {
         self.addSubview(gemView)
         gemView.addSubview(gemTitleLabel)
         gemView.addSubview(gemCollectionView)
-        self.addSubview(gemDetailView)
-        
-        gemDetailView.snp.makeConstraints {
-            $0.trailing.leading.equalTo(safeAreaLayoutGuide).inset(5)
-            $0.bottom.equalTo(gemTitleLabel.snp.bottom)
-            $0.height.equalToSuperview().multipliedBy(0.15)
-        }
         
         mainStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
@@ -161,12 +155,20 @@ final class BasicEquipmentView: UIView {
             $0.top.equalTo(gemTitleLabel.snp.bottom)
             $0.leading.bottom.trailing.equalToSuperview().inset(5)
         }
+        
+        self.addSubview(gemDetailView)
+        
+        gemDetailView.snp.makeConstraints {
+            $0.trailing.leading.equalTo(safeAreaLayoutGuide).inset(5)
+            $0.bottom.equalTo(gemTitleLabel.snp.bottom)
+            $0.height.greaterThanOrEqualTo(15)
+        }
     }
     
     func showGemDetail(gem: Gem) {
         gemDetailView.isHidden = false
         
-        gemNameLabel.attributedText = gem.name.htmlToAttributedString(fontSize: 5, alignment: .LEFT)
+        gemNameLabel.attributedText = gem.name.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
         gemEffectLabel.attributedText = gem.effect.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
     }
 }
