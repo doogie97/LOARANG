@@ -63,6 +63,25 @@ final class BasicInfoViewController: UIViewController {
             cell.setCellContents(engraving: engraving)
         }
         .disposed(by: disposeBag)
+        
+        basicInfoView.engravingsView.engravingCollectionView
+            .rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchEngravingCell($0.row)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.showengravingDetail
+            .bind(onNext: { [weak self] in
+                self?.basicInfoView.showEngravingDetail(engraving: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        basicInfoView.engravingDetailView.rx.tapGesture()
+            .bind(onNext: { [weak self] _ in
+                self?.basicInfoView.engravingDetailView.isHidden = true
+            })
+            .disposed(by: disposeBag)
     }
     
     private func changeView(index: Int) {

@@ -35,6 +35,42 @@ final class BasicInfoView: UIView {
     private(set) lazy var equipmentsView = EquipmentsView()
     private(set) lazy var engravingsView = EngravingsView()
     
+    private(set) lazy var engravingDetailView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 10
+
+        view.addSubview(engravingEffectLabel)
+        view.addSubview(xMarkLabel)
+
+        engravingEffectLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(16)
+        }
+        
+        xMarkLabel.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(8)
+        }
+        
+        return view
+    }()
+    
+    private lazy var engravingEffectLabel: UILabel = {
+        let label = UILabel()
+        label.font = .one(size: 15, family: .Bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private lazy var xMarkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "×"
+        label.font = .one(size: 15, family: .Bold)
+        
+        return label
+    }()
+    
     private func setLayout(engravingsViewHeight: CGFloat) {
         self.addSubview(basicInfoScrollView)
         basicInfoScrollView.addSubview(basicInfoContentsView)
@@ -75,5 +111,19 @@ final class BasicInfoView: UIView {
             $0.height.equalTo(engravingsViewHeight)
             $0.bottom.equalToSuperview()
         }
+        
+        self.addSubview(engravingDetailView)
+        
+        engravingDetailView.snp.makeConstraints {
+            $0.trailing.leading.equalToSuperview().inset(5)
+            $0.bottom.equalTo(engravingsView.snp.bottom)
+            $0.height.greaterThanOrEqualTo(15)
+        }
+    }
+    
+    func showEngravingDetail(engraving: Engraving) {
+        engravingDetailView.isHidden = false
+        
+        engravingEffectLabel.text = engraving.describtion
     }
 }
