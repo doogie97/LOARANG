@@ -42,10 +42,17 @@ final class BasicInfoView: UIView {
         view.layer.cornerRadius = 10
 
         view.addSubview(engravingEffectLabel)
+        view.addSubview(engravingTitleLabel)
         view.addSubview(xMarkLabel)
+        
+        engravingTitleLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(16)
+        }
 
         engravingEffectLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(16)
+            $0.top.equalTo(engravingTitleLabel.snp.bottom).inset(-8)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
         
         xMarkLabel.snp.makeConstraints {
@@ -55,9 +62,17 @@ final class BasicInfoView: UIView {
         return view
     }()
     
-    private lazy var engravingEffectLabel: UILabel = {
+    private lazy var engravingTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .one(size: 15, family: .Bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private lazy var engravingEffectLabel: UILabel = {
+        let label = UILabel()
+        label.font = .one(size: 13, family: .Regular)
         label.numberOfLines = 0
         
         return label
@@ -116,7 +131,7 @@ final class BasicInfoView: UIView {
         
         engravingDetailView.snp.makeConstraints {
             $0.trailing.leading.equalToSuperview().inset(5)
-            $0.bottom.equalTo(engravingsView.snp.bottom)
+            $0.centerY.equalTo(engravingsView)
             $0.height.greaterThanOrEqualTo(15)
         }
     }
@@ -124,6 +139,7 @@ final class BasicInfoView: UIView {
     func showEngravingDetail(engraving: Engraving) {
         engravingDetailView.isHidden = false
         
+        engravingTitleLabel.text = engraving.title
         engravingEffectLabel.text = engraving.describtion
     }
 }
