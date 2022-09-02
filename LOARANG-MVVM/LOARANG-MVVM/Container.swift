@@ -68,8 +68,7 @@ final class Container {
         return BasicInfoViewModel(userInfo: userInfo,
                                   pageViewList: [
                                     makeBasicEquipmentViewController(equips:userInfo.userJsonInfo.equips),
-                                    makeAvatarViewController(equips: userInfo.userJsonInfo.equips),
-                                    makeCharacterImageViewController(userImage: userInfo.mainInfo.userImage)
+                                    makeAvatarViewController(equips: userInfo.userJsonInfo.equips)
                                   ])
     }
     //MARK: - about BasicEquipment
@@ -111,14 +110,7 @@ final class Container {
     private func makeAvatarDetailViewModel(equipmentInfo: EquipmentPart) -> AvatarDetailViewModelable {
         return AvatarDetailViewModel(equipments: equipmentInfo)
     }
-    //MARK: - about CharacterImage
-    private func makeCharacterImageViewController(userImage: UIImage) -> CharacterImageViewController {
-        return CharacterImageViewController(viewModel: makeCharacterImageViewModel(userImage: userImage))
-    }
     
-    private func makeCharacterImageViewModel(userImage: UIImage) -> CharacterImageViewModelable {
-        return CharacterImageViewModel(userImage: userImage)
-    }
     //MARK: - about SkillInfoView
     private func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {
         return SkillInfoViewController(viewModel: makeSkillInfoViewModel(skillInfo: skillInfo),

@@ -12,6 +12,7 @@ protocol BasicInfoViewModelable: BasicInfoViewModelInput, BasicInfoViewModelOutp
 protocol BasicInfoViewModelInput {
     func touchSegmentControl(_ index: Int)
     func touchEngravingCell(_ index: Int)
+    func touchShareButton()
     func detailViewDidShow(_ index: Int)
 }
 
@@ -22,6 +23,7 @@ protocol BasicInfoViewModelOutput {
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
     var showengravingDetail: PublishRelay<Engraving> { get }
+    var showActivityVC: PublishRelay<UIImage> { get }
 }
 
 final class BasicInfoViewModel: BasicInfoViewModelable {
@@ -40,6 +42,10 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
         showengravingDetail.accept(engravings.value[index])
     }
     
+    func touchShareButton() {
+        showActivityVC.accept(userInfo.mainInfo.userImage)
+    }
+    
     func detailViewDidShow(_ index: Int) {
         previousPage.accept(index)
     }
@@ -51,4 +57,5 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
     let showengravingDetail = PublishRelay<Engraving>()
+    let showActivityVC = PublishRelay<UIImage>()
 }

@@ -43,6 +43,7 @@ final class BasicInfoViewController: UIViewController {
         if viewModel.engravings.value.count == 0 {
             basicInfoView.engravingsView.showNoEngravingLabel()
         }
+        basicInfoView.characterImageView.setUserImageView(viewModel.userInfo.mainInfo.userImage)
     }
     
     private func bindView() {
@@ -81,6 +82,23 @@ final class BasicInfoViewController: UIViewController {
         basicInfoView.engravingDetailView.rx.tapGesture()
             .bind(onNext: { [weak self] _ in
                 self?.basicInfoView.engravingDetailView.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        
+        basicInfoView.characterImageView.shareButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchShareButton()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.showActivityVC
+            .bind(onNext: { [weak self] in
+                let activityVC = UIActivityViewController(activityItems: [$0], applicationActivities: nil)
+                activityVC.popoverPresentationController?.sourceView = self?.view
+                
+                self?.present(activityVC, animated: true)
+                //시뮬레이터에서는 오토레이아웃 오류 발생, 실 기기에서는 정상적으로 작동 됨
+                //공유 기능에 문제 있는것이 아니어서 일단 넘김
             })
             .disposed(by: disposeBag)
     }

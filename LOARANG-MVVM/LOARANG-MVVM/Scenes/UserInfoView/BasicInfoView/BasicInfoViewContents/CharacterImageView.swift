@@ -21,7 +21,6 @@ final class CharacterImageView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 10
-        imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         imageView.layer.masksToBounds = true
         
         return imageView

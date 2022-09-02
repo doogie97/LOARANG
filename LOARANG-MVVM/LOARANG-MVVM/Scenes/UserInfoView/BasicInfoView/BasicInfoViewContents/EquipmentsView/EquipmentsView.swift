@@ -33,8 +33,7 @@ final class EquipmentsView: UIView {
     
     private(set) lazy var segmentControllView = SegmentControllerView(frame: .zero,
                                                                       segmentTitles: ["장비",
-                                                                                      "아바타",
-                                                                                      "캐릭터 이미지"])
+                                                                                      "아바타"])
     
     private(set) lazy var pageView: UIView = {
         let view = UIView()

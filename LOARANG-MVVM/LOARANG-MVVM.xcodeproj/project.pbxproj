@@ -17,7 +17,6 @@
 		AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E68A128AE04C000575631 /* JsonInfoManager.swift */; };
 		AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E68A428AE0E4C00575631 /* Equips.swift */; };
 		AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */; };
-		AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */; };
 		AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5128B313CA00621753 /* EquipedEngrave.swift */; };
 		AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5428B3209B00621753 /* EquipmentEngraveCell.swift */; };
 		AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5628B33A0300621753 /* JSON + Extension.swift */; };
@@ -50,7 +49,6 @@
 		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
 		AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8328A50C1B008A2865 /* AvatarViewController.swift */; };
 		AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */; };
-		AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */; };
 		AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */; };
 		AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */; };
 		AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */; };
@@ -127,7 +125,6 @@
 		AC0E68A128AE04C000575631 /* JsonInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonInfoManager.swift; sourceTree = "<group>"; };
 		AC0E68A428AE0E4C00575631 /* Equips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equips.swift; sourceTree = "<group>"; };
 		AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
-		AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewModel.swift; sourceTree = "<group>"; };
 		AC2C2B5128B313CA00621753 /* EquipedEngrave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipedEngrave.swift; sourceTree = "<group>"; };
 		AC2C2B5428B3209B00621753 /* EquipmentEngraveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentEngraveCell.swift; sourceTree = "<group>"; };
 		AC2C2B5628B33A0300621753 /* JSON + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON + Extension.swift"; sourceTree = "<group>"; };
@@ -160,7 +157,6 @@
 		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
 		AC799A8328A50C1B008A2865 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentView.swift; sourceTree = "<group>"; };
-		AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewController.swift; sourceTree = "<group>"; };
 		AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
 		AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJsonInfo.swift; sourceTree = "<group>"; };
@@ -468,16 +464,6 @@
 			path = AvatarView;
 			sourceTree = "<group>";
 		};
-		AC799A8928A51A74008A2865 /* CharacterImageView */ = {
-			isa = PBXGroup;
-			children = (
-				AC799A8A28A51AB0008A2865 /* CharacterImageViewController.swift */,
-				AC2AD53628A9C1780091F675 /* CharacterImageViewModel.swift */,
-				AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */,
-			);
-			path = CharacterImageView;
-			sourceTree = "<group>";
-		};
 		AC86403A28B5C968004B7EBB /* StorageModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,9 +629,10 @@
 			children = (
 				ACB0F15D28BF6B3200C6BB2F /* MainInfoView.swift */,
 				ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */,
+				AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */,
 				ACB0F16328BF850800C6BB2F /* EquipmentsView */,
 				ACB0F16628BF8A5E00C6BB2F /* EngravingsView */,
-				AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */,
+				AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */,
 			);
 			path = BasicInfoViewContents;
 			sourceTree = "<group>";
@@ -657,7 +644,6 @@
 				ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */,
 				AC799A7F28A50B8D008A2865 /* BasicEquipmentsView */,
 				AC799A8028A50B9E008A2865 /* AvatarView */,
-				AC799A8928A51A74008A2865 /* CharacterImageView */,
 			);
 			path = EquipmentsView;
 			sourceTree = "<group>";
@@ -842,7 +828,6 @@
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
-				AC799A8B28A51AB0008A2865 /* CharacterImageViewController.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
@@ -883,7 +868,6 @@
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
-				AC2AD53728A9C1780091F675 /* CharacterImageViewModel.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,

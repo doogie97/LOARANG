@@ -35,6 +35,7 @@ final class BasicInfoView: UIView {
     private(set) lazy var equipmentsView = EquipmentsView()
     private(set) lazy var engravingsView = EngravingsView()
     private(set) lazy var propensitiesView = PropensitiesView()
+    private(set) lazy var characterImageView = CharacterImageView()
     
     private(set) lazy var engravingDetailView: UIView = {
         let view = UIView()
@@ -95,6 +96,7 @@ final class BasicInfoView: UIView {
         basicInfoContentsView.addSubview(propensitiesView)
         basicInfoContentsView.addSubview(equipmentsView)
         basicInfoContentsView.addSubview(engravingsView)
+        basicInfoContentsView.addSubview(characterImageView)
         
         
         basicInfoScrollView.snp.makeConstraints {
@@ -131,7 +133,13 @@ final class BasicInfoView: UIView {
             $0.top.equalTo(equipmentsView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(engravingsViewHeight)
-            $0.bottom.equalToSuperview()
+        }
+        
+        characterImageView.snp.makeConstraints {
+            $0.top.equalTo(engravingsView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(8)
+            $0.height.equalTo(UIScreen.main.bounds.width * 1.15)
+            $0.bottom.equalToSuperview().inset(16)
         }
         
         self.addSubview(engravingDetailView)
