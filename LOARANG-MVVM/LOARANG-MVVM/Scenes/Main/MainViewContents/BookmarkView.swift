@@ -21,23 +21,7 @@ final class BookmarkView: UIView {
         let view = UIView()
         view.backgroundColor = .cellBackgroundColor
         
-        view.addSubview(mainStackView)
-        
         return view
-    }()
-    
-    private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [topStackView, bookMarkCollectionView])
-        stackView.axis = .vertical
-        
-        return stackView
-    }()
-    
-    private lazy var topStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [bookmartTitle, bookmarkCount])
-        
-        
-        return stackView
     }()
     
     private lazy var bookmartTitle: UILabel = {
@@ -83,13 +67,29 @@ final class BookmarkView: UIView {
         self.backgroundColor = .tableViewColor
         self.addSubview(backView)
         
+        backView.addSubview(bookmartTitle)
+        backView.addSubview(bookmarkCountLabel)
+        backView.addSubview(bookMarkCollectionView)
         backView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
             $0.bottom.leading.trailing.equalToSuperview()
         }
         
-        mainStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(20)
+        bookmartTitle.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(16)
+        }
+        
+        bookmarkCountLabel.snp.makeConstraints {
+            $0.centerY.equalTo(bookmartTitle)
+            $0.leading.equalTo(bookmartTitle.snp.trailing).inset(-2)
+        }
+        
+        bookMarkCollectionView.snp.makeConstraints {
+            $0.top.equalTo(bookmartTitle.snp.bottom).inset(-4)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(16)
+        }
         }
     }
 }
