@@ -100,8 +100,7 @@ final class MainInfoView: UIView {
         contentsView.addSubview(userInfoStackView)
         
         contentsView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(8)
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
         userImageView.snp.makeConstraints {

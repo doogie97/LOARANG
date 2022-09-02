@@ -116,8 +116,7 @@ final class BasicAbillityView: UIView {
         self.addSubview(mainStackView)
         
         mainStackView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(8)
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
         topStackView.snp.makeConstraints {

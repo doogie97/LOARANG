@@ -107,22 +107,23 @@ final class BasicInfoView: UIView {
         }
         
         mainInfoView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview().inset(8)
+            $0.leading.trailing.equalToSuperview().inset(8)
         }
         
         basicAbillityView.snp.makeConstraints {
-            $0.top.equalTo(mainInfoView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(mainInfoView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(8)
         }
         
         propensitiesView.snp.makeConstraints {
-            $0.top.equalTo(basicAbillityView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(basicAbillityView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(8)
         }
         
         equipmentsView.snp.makeConstraints {
-            $0.top.equalTo(propensitiesView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(propensitiesView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(8)
             $0.height.equalTo(UIScreen.main.bounds.width * 1.3)
         }
         
