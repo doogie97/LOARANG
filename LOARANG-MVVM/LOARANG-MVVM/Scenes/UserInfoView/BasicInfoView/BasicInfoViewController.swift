@@ -39,6 +39,7 @@ final class BasicInfoViewController: UIViewController {
     private func setViewContents() {
         basicInfoView.mainInfoView.setViewContents(viewModel.userInfo.mainInfo)
         basicInfoView.basicAbillityView.setViewContents(viewModel.userInfo.stat.basicAbility)
+        basicInfoView.propensitiesView.setViewContents(propensities: viewModel.userInfo.stat.propensities)
         if viewModel.engravings.value.count == 0 {
             basicInfoView.engravingsView.showNoEngravingLabel()
         }
