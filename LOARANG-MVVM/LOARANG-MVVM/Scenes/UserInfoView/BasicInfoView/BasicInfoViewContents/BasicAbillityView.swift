@@ -17,26 +17,12 @@ final class BasicAbillityView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var mainStackView: UIStackView = {
-        let topEmptyView = UIView()
-        let bottomEmptyView = UIView()
+    private lazy var contentsView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .cellColor
+        view.layer.cornerRadius = 10
         
-     
-        
-        let stackView = UIStackView(arrangedSubviews: [topEmptyView, topStackView, bottomStackView, bottomEmptyView])
-        stackView.axis = .vertical
-        stackView.backgroundColor = .cellColor
-        stackView.layer.cornerRadius = 10
-        
-        topEmptyView.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.05)
-        }
-        
-        bottomEmptyView.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.05)
-        }
-        
-        return stackView
+        return view
     }()
     
     private lazy var topStackView: UIStackView = {
@@ -56,13 +42,13 @@ final class BasicAbillityView: UIView {
         let dominationStackView = equllyStackView(axis: .horizontal, arrangedSubviews: [dominationTitleLabel, dominationLabel])
         let enduranceStackView = equllyStackView(axis: .horizontal, arrangedSubviews: [enduranceTitleLabel, enduranceLabel])
         
-        let leftStackView = equllyStackView(axis: .vertical, arrangedSubviews: [critStackView, dominationStackView, enduranceStackView])
+        let leftStackView = equllyStackView(axis: .vertical, arrangedSubviews: [critStackView, dominationStackView, enduranceStackView], spacing: 10)
         
         let specializationStackView = equllyStackView(axis: .horizontal, arrangedSubviews: [specializationTitleLabel, specializationLabel])
         let swiftnessStackView = equllyStackView(axis: .horizontal, arrangedSubviews: [swiftnessTitleLabel, swiftnessLabel])
         let expertiseStackView = equllyStackView(axis: .horizontal, arrangedSubviews: [expertiseTitleLabel, expertiseLabel])
         
-        let rightStackView = equllyStackView(axis: .vertical, arrangedSubviews: [specializationStackView, swiftnessStackView, expertiseStackView])
+        let rightStackView = equllyStackView(axis: .vertical, arrangedSubviews: [specializationStackView, swiftnessStackView, expertiseStackView], spacing: 10)
         
         let stackView = UIStackView(arrangedSubviews: [leftStackView, rightStackView])
         stackView.distribution = .fillEqually
@@ -70,10 +56,11 @@ final class BasicAbillityView: UIView {
         return stackView
     }()
     
-    private func equllyStackView(axis: NSLayoutConstraint.Axis, arrangedSubviews: [UIView]) -> UIStackView {
+    private func equllyStackView(axis: NSLayoutConstraint.Axis, arrangedSubviews: [UIView], spacing: CGFloat = 0) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.axis = axis
         stackView.distribution = .fillEqually
+        stackView.spacing = spacing
         
         return stackView
     }
@@ -113,14 +100,24 @@ final class BasicAbillityView: UIView {
     private func setLayout() {
         self.backgroundColor = .cellBackgroundColor
         
-        self.addSubview(mainStackView)
+        self.addSubview(contentsView)
         
-        mainStackView.snp.makeConstraints {
+        contentsView.addSubview(topStackView)
+        contentsView.addSubview(bottomStackView)
+        
+        contentsView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
         topStackView.snp.makeConstraints {
-            $0.height.equalToSuperview().multipliedBy(0.3)
+            $0.top.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        bottomStackView.snp.makeConstraints {
+            $0.top.equalTo(topStackView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(16)
         }
     }
     
