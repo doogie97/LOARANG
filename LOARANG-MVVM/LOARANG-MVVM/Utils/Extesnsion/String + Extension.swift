@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/08/02.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     func changeToPercent() -> String {
@@ -58,5 +58,14 @@ extension String {
     
     var htmlToString: String {
         return htmlToAttributedString()?.string ?? ""
+    }
+    
+    func stringWithSpacing(_ spacing: CGFloat) -> NSMutableAttributedString {
+        let attrString = NSMutableAttributedString(string: self)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = spacing
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        
+        return attrString
     }
 }
