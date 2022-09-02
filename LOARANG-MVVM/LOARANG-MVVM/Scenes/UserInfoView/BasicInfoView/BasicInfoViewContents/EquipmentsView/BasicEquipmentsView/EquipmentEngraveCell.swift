@@ -61,12 +61,12 @@ final class EquipmentEngraveCell: UITableViewCell {
     }
     
     func setCellContents(engraves: (first: EquipedEngrave?, second: EquipedEngrave?)) {
-        firstNameLabel.text = engraves.first?.name ?? ""
+        firstNameLabel.text = engraves.first?.name ?? "각인1"
         firstNameLabel.textColor = engraves.first?.titleColor
         let firstActivation = engraves.first?.activation.description ?? ""
         firstActivationLabel.text = firstActivation == "" ? "장착 안됨" : "활성도 +\(firstActivation)"
         
-        secondNameLabel.text = engraves.second?.name
+        secondNameLabel.text = engraves.second?.name ?? "각인2"
         secondNameLabel.textColor = engraves.second?.titleColor
         let secondActivation = engraves.second?.activation.description ?? ""
         secondActivationLabel.text = secondActivation == "" ? "장착 안됨" : "활성도 +\(secondActivation)"
