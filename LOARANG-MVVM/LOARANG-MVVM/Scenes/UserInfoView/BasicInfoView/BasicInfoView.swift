@@ -147,6 +147,6 @@ final class BasicInfoView: UIView {
         engravingDetailView.isHidden = false
         
         engravingTitleLabel.text = engraving.title
-        engravingEffectLabel.text = engraving.describtion
+        engravingEffectLabel.attributedText = engraving.describtion.stringWithSpacing(4)
     }
 }
