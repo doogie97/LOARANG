@@ -104,14 +104,14 @@ final class PropensitiesView: UIView {
         }
         
         charmStackView.snp.makeConstraints {
-            $0.top.equalTo(intellectStackView.snp.bottom).inset(-16)
+            $0.top.equalTo(intellectStackView.snp.bottom).inset(-10)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview().multipliedBy(0.5)
             $0.bottom.equalToSuperview().inset(16)
         }
         
         kindnessStackView.snp.makeConstraints {
-            $0.top.equalTo(courageStackView.snp.bottom).inset(-16)
+            $0.top.equalTo(courageStackView.snp.bottom).inset(-10)
             $0.leading.equalTo(charmStackView.snp.trailing)
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
