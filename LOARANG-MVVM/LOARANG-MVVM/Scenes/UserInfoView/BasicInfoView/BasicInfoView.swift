@@ -130,8 +130,8 @@ final class BasicInfoView: UIView {
         }
         
         engravingsView.snp.makeConstraints {
-            $0.top.equalTo(equipmentsView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(equipmentsView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(8)
             $0.height.equalTo(engravingsViewHeight)
         }
         

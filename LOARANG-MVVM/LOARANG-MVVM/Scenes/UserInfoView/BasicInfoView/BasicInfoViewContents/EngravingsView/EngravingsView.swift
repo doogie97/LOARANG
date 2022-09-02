@@ -16,6 +16,14 @@ final class EngravingsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    private lazy var contentsView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .cellColor
+        view.layer.cornerRadius = 10
+        
+        return view
+    }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -60,22 +68,28 @@ final class EngravingsView: UIView {
     private func setLayout() {
         self.backgroundColor = .cellBackgroundColor
         
-        self.addSubview(titleLabel)
-        self.addSubview(engravingCollectionView)
-        self.addSubview(noEngravingLabel)
+        self.addSubview(contentsView)
+        
+        contentsView.addSubview(titleLabel)
+        contentsView.addSubview(engravingCollectionView)
+        contentsView.addSubview(noEngravingLabel)
+        
+        contentsView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
-            $0.leading.trailing.equalToSuperview().inset(15)
+            $0.leading.trailing.equalToSuperview().inset(8)
         }
         
         engravingCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).inset(-8)
-            $0.leading.trailing.bottom.equalToSuperview().inset(10)
+            $0.top.equalTo(titleLabel.snp.bottom).inset(-5)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
         noEngravingLabel.snp.makeConstraints {
-            $0.centerY.equalTo(engravingCollectionView)
+            $0.top.equalTo(engravingCollectionView.snp.top)
             $0.centerX.equalToSuperview()
         }
     }

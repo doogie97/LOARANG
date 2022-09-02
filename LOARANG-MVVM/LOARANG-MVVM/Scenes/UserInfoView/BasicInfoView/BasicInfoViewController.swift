@@ -121,13 +121,13 @@ final class BasicInfoViewController: UIViewController {
     private func engravingHeight() -> CGFloat {
         switch viewModel.userInfo.stat.engravigs.count {
         case 0..<3:
-            return UIScreen.main.bounds.width * 0.2
+            return UIScreen.main.bounds.width * 0.18
         case 3..<5:
-            return UIScreen.main.bounds.width * 0.275
+            return UIScreen.main.bounds.width * 0.25
         case 5..<7:
-            return UIScreen.main.bounds.width * 0.35
+            return UIScreen.main.bounds.width * 0.32
         default:
-            return UIScreen.main.bounds.width * 0.425
+            return UIScreen.main.bounds.width * 0.39
         }
     }
 }
