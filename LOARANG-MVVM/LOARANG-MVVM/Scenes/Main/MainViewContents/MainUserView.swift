@@ -54,6 +54,7 @@ final class MainUserView: UIView {
         let stckaView = UIStackView(arrangedSubviews: [title, info])
         stckaView.distribution = .fillEqually
         stckaView.axis = .vertical
+        stckaView.spacing = 20
         
         return stckaView
     }
@@ -117,7 +118,7 @@ final class MainUserView: UIView {
         }
         
         bottomStackView.snp.makeConstraints {
-            $0.top.equalTo(lvNameLabel.snp.bottom).inset(-8)
+            $0.top.equalTo(lvNameLabel.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().inset(16)
         }

@@ -105,13 +105,11 @@ final class BasicInfoView: UIView {
         
         mainInfoView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(UIScreen.main.bounds.width * 0.45)
         }
         
         basicAbillityView.snp.makeConstraints {
             $0.top.equalTo(mainInfoView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(UIScreen.main.bounds.width * 0.4)
         }
         
         equipmentsView.snp.makeConstraints {
