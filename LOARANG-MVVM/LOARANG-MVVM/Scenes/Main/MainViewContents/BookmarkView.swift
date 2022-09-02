@@ -34,10 +34,19 @@ final class BookmarkView: UIView {
         return label
     }()
     
-    private lazy var bookmarkCount: UILabel = {
+    private lazy var bookmarkCountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.one(size: 15, family: .Bold)
         label.textColor = .buttonColor
+        
+        return label
+    }()
+    
+    private lazy var noBookmarkUserLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.one(size: 20, family: .Bold)
+        label.text = "즐겨찾기한 유저가 없습니다"
         
         return label
     }()
@@ -70,6 +79,8 @@ final class BookmarkView: UIView {
         backView.addSubview(bookmartTitle)
         backView.addSubview(bookmarkCountLabel)
         backView.addSubview(bookMarkCollectionView)
+        backView.addSubview(noBookmarkUserLabel)
+        
         backView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
             $0.bottom.leading.trailing.equalToSuperview()
@@ -90,6 +101,18 @@ final class BookmarkView: UIView {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview().inset(16)
         }
+        
+        noBookmarkUserLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
+    }
+    
+    func setViewContents(bookmarkCount: Int) {
+        if bookmarkCount == 0 {
+            noBookmarkUserLabel.isHidden = false
+        } else {
+            noBookmarkUserLabel.isHidden = true
+        }
+        bookmarkCountLabel.text = "(\(bookmarkCount))"
     }
 }

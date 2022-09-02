@@ -100,6 +100,12 @@ final class MainViewController: UIViewController {
         }
         .disposed(by: disposeBag)
         
+        viewModel.bookmarkUser
+            .bind(onNext: { [weak self] in
+                self?.mainView.bookmarkView.setViewContents(bookmarkCount: $0.count)
+            })
+            .disposed(by: disposeBag)
+        
         mainView.bookmarkView.bookMarkCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
                 self?.viewModel.touchBookMarkCell($0.row)
