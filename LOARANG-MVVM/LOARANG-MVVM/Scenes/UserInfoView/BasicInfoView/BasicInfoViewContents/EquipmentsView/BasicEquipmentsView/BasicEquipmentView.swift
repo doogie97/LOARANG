@@ -79,6 +79,16 @@ final class BasicEquipmentView: UIView {
         return collectionView
     }()
     
+    private lazy var noGemLabel: UILabel = {
+        let label = UILabel()
+        label.font = .one(size: 13, family: .Bold)
+        label.textAlignment = .center
+        label.text = "장착된 보석이 없습니다"
+        label.isHidden = true
+        
+        return label
+    }()
+    
     //MARK: - GemDeteail
     private(set) lazy var gemDetailView: UIView = {
         let view = UIView()
@@ -135,6 +145,7 @@ final class BasicEquipmentView: UIView {
         self.addSubview(gemView)
         gemView.addSubview(gemTitleLabel)
         gemView.addSubview(gemCollectionView)
+        gemView.addSubview(noGemLabel)
         
         mainStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
@@ -156,6 +167,11 @@ final class BasicEquipmentView: UIView {
             $0.leading.bottom.trailing.equalToSuperview().inset(5)
         }
         
+        noGemLabel.snp.makeConstraints {
+            $0.bottom.equalTo(gemCollectionView.snp.centerY)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
         self.addSubview(gemDetailView)
         
         gemDetailView.snp.makeConstraints {
@@ -170,5 +186,9 @@ final class BasicEquipmentView: UIView {
         
         gemNameLabel.attributedText = gem.name.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
         gemEffectLabel.attributedText = gem.effect.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
+    }
+    
+    func showNoGemLabel() {
+        noGemLabel.isHidden = false
     }
 }

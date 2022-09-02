@@ -55,11 +55,15 @@ final class BasicEquipmentViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.gems
-            .bind(to: basicEquipmentView.gemCollectionView.rx.items(cellIdentifier: "\(GemCell.self)", cellType: GemCell.self)) { index, gem, cell in
-                cell.setCellContents(gem: gem)
-            }
-            .disposed(by: disposeBag)
+        if viewModel.gems.value.count == 0 {
+            basicEquipmentView.showNoGemLabel()
+        } else {
+            viewModel.gems
+                .bind(to: basicEquipmentView.gemCollectionView.rx.items(cellIdentifier: "\(GemCell.self)", cellType: GemCell.self)) { index, gem, cell in
+                    cell.setCellContents(gem: gem)
+                }
+                .disposed(by: disposeBag)
+        }
         
         basicEquipmentView.gemCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
