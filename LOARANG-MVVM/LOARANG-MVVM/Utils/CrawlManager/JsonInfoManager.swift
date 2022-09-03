@@ -439,3 +439,51 @@ extension JsonInfoManager {
         return Tripod(name: name, description: description, lv: lv, imageURL: imageURL)
     }
 }
+
+//MARK: - 카드 관련
+extension JsonInfoManager {
+    func getCardInfo() -> CardInfo {
+        let cards = getCards()
+        let cardSetEffects = getCardSetEffects()
+        
+        return CardInfo(cards: cards, cardSetEffects: cardSetEffects)
+    }
+    
+    private func getCards() -> [Card] {
+        let cards: [Card] = JSON(jsonInfo["Card"]).sorted {$0.0 < $1.0}.compactMap { title, json in
+            let name = json["Element_000"]["value"].stringValue
+            let awakeCount = json["Element_001"]["value"]["awakeCount"].intValue
+            let awakeTotal = json["Element_001"]["value"]["awakeTotal"].intValue
+            let imageURL = imageBaseURL + json["Element_001"]["value"]["iconData"]["iconPath"].stringValue
+            let tierGrade = json["Element_001"]["value"]["tierGrade"].intValue
+            
+            return Card(name: name,
+                        awakeCount: awakeCount,
+                        awakeTotal: awakeTotal,
+                        imageURL: imageURL,
+                        tierGrade: tierGrade)
+        }
+        
+        return cards
+    }
+    
+    private func getCardSetEffects() -> [CardSetEffect] {
+        var cardSetEffects: [CardSetEffect] = []
+        
+        for (_, json) in JSON(jsonInfo["CardSet"]).sorted(by: {$0.0 < $1.0}) {
+            let cardSetEffect: [CardSetEffect] = json.sorted {$0.0 < $1.0}.compactMap {title, json in
+                if title != "EffectIndex" {
+                    
+                    let title = json["desc"].stringValue
+                    let descrption = json["title"].stringValue
+                    
+                    return CardSetEffect(title: title, description: descrption)
+                }
+                return nil
+            }
+            cardSetEffects += cardSetEffect
+        }
+        
+        return cardSetEffects
+    }
+}

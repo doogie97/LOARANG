@@ -222,8 +222,10 @@ struct CrawlManager: CrawlManagerable {
         let skillInfo = SkillInfo(usedSkillPoint: usedSkillPoint ?? "-",
                                   totalSkillPoint: totalSkillPoint ?? "-",
                                   skills: skiils)
+        
+        let cardInfo = jsonInfoManager.getCardInfo()
 
-        return UserJsonInfo(equips: equips, skillInfo: skillInfo)
+        return UserJsonInfo(equips: equips, skillInfo: skillInfo, cardInfo: cardInfo)
     }
     
     //MARK: - 점검 확인
