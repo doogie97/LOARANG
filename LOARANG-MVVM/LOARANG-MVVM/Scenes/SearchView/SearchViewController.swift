@@ -72,12 +72,14 @@ final class SearchViewController: UIViewController {
         viewModel.startedLoading
             .bind(onNext: { [weak self] in
                 self?.searchView.activityIndicator.startAnimating()
+                self?.searchView.isUserInteractionEnabled = false
             })
             .disposed(by: disposeBag)
         
         viewModel.finishedLoading
             .bind(onNext: { [weak self] in
                 self?.searchView.activityIndicator.stopAnimating()
+                self?.searchView.isUserInteractionEnabled = true
             })
             .disposed(by: disposeBag)
     }

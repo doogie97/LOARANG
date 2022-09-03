@@ -72,12 +72,14 @@ final class MainViewController: UIViewController {
         viewModel.startedLoading
             .bind(onNext: { [weak self] in
                 self?.mainView.activityIndicator.startAnimating()
+                self?.mainView.isUserInteractionEnabled = false
             })
             .disposed(by: disposeBag)
         
         viewModel.finishedLoading
             .bind(onNext: { [weak self] in
                 self?.mainView.activityIndicator.stopAnimating()
+                self?.mainView.isUserInteractionEnabled = true
             })
             .disposed(by: disposeBag)
         
