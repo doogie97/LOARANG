@@ -42,6 +42,7 @@
 		AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60528B8727C002C0033 /* TripodTVCell.swift */; };
 		AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */; };
 		AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7528C2E515003B4B54 /* Card.swift */; };
+		AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */; };
@@ -151,6 +152,7 @@
 		AC49D60528B8727C002C0033 /* TripodTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripodTVCell.swift; sourceTree = "<group>"; };
 		AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		AC5B6D7528C2E515003B4B54 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffect.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInfoViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 			children = (
 				AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */,
 				AC5B6D7528C2E515003B4B54 /* Card.swift */,
+				AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
+				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
 				AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */,
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,

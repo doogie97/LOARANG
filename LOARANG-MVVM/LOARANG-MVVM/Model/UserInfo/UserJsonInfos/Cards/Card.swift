@@ -7,8 +7,8 @@
 
 struct Card {
     let name: String
-    let tierGrade: Int
     let awakeCount: Int
     let awakeTotal: Int
     let imageURL: String
+    let tierGrade: Int
 }
