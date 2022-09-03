@@ -40,6 +40,8 @@
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
 		AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */; };
 		AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60528B8727C002C0033 /* TripodTVCell.swift */; };
+		AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */; };
+		AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7528C2E515003B4B54 /* Card.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA2982893BC300049C12F /* ThirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */; };
@@ -71,7 +73,6 @@
 		ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */; };
 		ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF33E287FF91A00AE98F1 /* Stat.swift */; };
 		ACAEF349287FF9A200AE98F1 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF348287FF9A200AE98F1 /* Gem.swift */; };
-		ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF34F287FFA5800AE98F1 /* CardInfo.swift */; };
 		ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */; };
 		ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */; };
 		ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF35A287FFB0400AE98F1 /* Avatar.swift */; };
@@ -148,6 +149,8 @@
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
 		AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewModel.swift; sourceTree = "<group>"; };
 		AC49D60528B8727C002C0033 /* TripodTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripodTVCell.swift; sourceTree = "<group>"; };
+		AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
+		AC5B6D7528C2E515003B4B54 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2972893BC300049C12F /* ThirdInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInfoViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +184,6 @@
 		ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfo.swift; sourceTree = "<group>"; };
 		ACAEF33E287FF91A00AE98F1 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		ACAEF348287FF9A200AE98F1 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
-		ACAEF34F287FFA5800AE98F1 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEquipments.swift; sourceTree = "<group>"; };
 		ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentPart.swift; sourceTree = "<group>"; };
 		ACAEF35A287FFB0400AE98F1 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
@@ -319,14 +321,6 @@
 			path = Gems;
 			sourceTree = "<group>";
 		};
-		AC2C2B7428B38BDC00621753 /* CardInfo */ = {
-			isa = PBXGroup;
-			children = (
-				ACAEF34F287FFA5800AE98F1 /* CardInfo.swift */,
-			);
-			path = CardInfo;
-			sourceTree = "<group>";
-		};
 		AC3FEBFE28804E9600CDE796 /* Extesnsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +382,15 @@
 				AC49D60528B8727C002C0033 /* TripodTVCell.swift */,
 			);
 			path = SkillDetailView;
+			sourceTree = "<group>";
+		};
+		AC5B6D7228C2E4DC003B4B54 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */,
+				AC5B6D7528C2E515003B4B54 /* Card.swift */,
+			);
+			path = Cards;
 			sourceTree = "<group>";
 		};
 		AC6CA28F2893BBCF0049C12F /* BasicInfoView */ = {
@@ -478,6 +481,7 @@
 			children = (
 				ACAEF34B287FF9B900AE98F1 /* Equips */,
 				AC86403E28B5D1FA004B7EBB /* SkillInfo */,
+				AC5B6D7228C2E4DC003B4B54 /* Cards */,
 			);
 			path = UserJsonInfos;
 			sourceTree = "<group>";
@@ -576,7 +580,6 @@
 				ACAEF34C287FF9C500AE98F1 /* Avatar */,
 				AC2C2B6028B360AB00621753 /* SpecialEquipments */,
 				AC2C2B7328B38BC900621753 /* Gems */,
-				AC2C2B7428B38BDC00621753 /* CardInfo */,
 			);
 			path = Equips;
 			sourceTree = "<group>";
@@ -827,7 +830,6 @@
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
-				ACAEF350287FFA5800AE98F1 /* CardInfo.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
@@ -873,6 +875,7 @@
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
+				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
 				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
@@ -887,6 +890,7 @@
 				ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */,
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
+				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
 				AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */,

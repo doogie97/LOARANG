@@ -35,8 +35,7 @@ extension JsonInfoManager {
                       engrave: getEngrave(JSON(jsonInfo["Engrave"])),
                       avatar: getAvatar(json: equipmentsJson),
                       specialEquipment: getSpecialEquipments(json: equipmentsJson),
-                      gems: getGemsInfo(),
-                      card: nil)
+                      gems: getGemsInfo())
     }
     
     private func getBattleEquipments(json: [(title: String, json: JSON)]) -> BattleEquipments {

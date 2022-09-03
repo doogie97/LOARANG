@@ -14,7 +14,6 @@ struct Equips {
     let avatar: Avatar
     let specialEquipment: SpecialEquipments
     let gems: [Gem]
-    let card: [CardInfo]? //임시 옵셔널
     
     enum Grade: Int {
         case nomal
