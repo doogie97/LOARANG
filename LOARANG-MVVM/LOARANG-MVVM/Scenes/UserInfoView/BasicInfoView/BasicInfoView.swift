@@ -32,9 +32,10 @@ final class BasicInfoView: UIView {
     
     private(set) lazy var mainInfoView = MainInfoView()
     private(set) lazy var basicAbillityView = BasicAbillityView()
+    private(set) lazy var propensitiesView = PropensitiesView()
     private(set) lazy var equipmentsView = EquipmentsView()
     private(set) lazy var engravingsView = EngravingsView()
-    private(set) lazy var propensitiesView = PropensitiesView()
+    private(set) lazy var cardView = CardView()
     private(set) lazy var characterImageView = CharacterImageView()
     
     private(set) lazy var engravingDetailView: UIView = {
@@ -96,6 +97,7 @@ final class BasicInfoView: UIView {
         basicInfoContentsView.addSubview(propensitiesView)
         basicInfoContentsView.addSubview(equipmentsView)
         basicInfoContentsView.addSubview(engravingsView)
+        basicInfoContentsView.addSubview(cardView)
         basicInfoContentsView.addSubview(characterImageView)
         
         
@@ -135,8 +137,13 @@ final class BasicInfoView: UIView {
             $0.height.equalTo(engravingsViewHeight)
         }
         
-        characterImageView.snp.makeConstraints {
+        cardView.snp.makeConstraints {
             $0.top.equalTo(engravingsView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(8)
+        }
+        
+        characterImageView.snp.makeConstraints {
+            $0.top.equalTo(cardView.snp.bottom).inset(-8)
             $0.leading.trailing.equalToSuperview().inset(8)
             $0.height.equalTo(UIScreen.main.bounds.width * 1.15)
             $0.bottom.equalToSuperview().inset(16)

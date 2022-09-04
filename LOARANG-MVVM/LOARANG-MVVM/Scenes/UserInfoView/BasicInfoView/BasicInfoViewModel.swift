@@ -19,6 +19,8 @@ protocol BasicInfoViewModelInput {
 protocol BasicInfoViewModelOutput {
     var userInfo: UserInfo { get }
     var engravings: BehaviorRelay<[Engraving]> { get }
+    var cards: BehaviorRelay<[Card]> { get }
+    var cardSetEffects: BehaviorRelay<[CardSetEffect]> { get }
     var pageViewList: [UIViewController] { get }
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
@@ -30,6 +32,8 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
     init(userInfo: UserInfo, pageViewList: [UIViewController]) {
         self.userInfo = userInfo
         self.engravings = BehaviorRelay<[Engraving]>(value: userInfo.stat.engravigs)
+        self.cards = BehaviorRelay<[Card]>(value: userInfo.userJsonInfo.cardInfo.cards)
+        self.cardSetEffects = BehaviorRelay<[CardSetEffect]>(value: userInfo.userJsonInfo.cardInfo.cardSetEffects)
         self.pageViewList = pageViewList
     }
     
@@ -53,6 +57,8 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
     //out
     let userInfo: UserInfo
     let engravings: BehaviorRelay<[Engraving]>
+    let cards: BehaviorRelay<[Card]>
+    let cardSetEffects: BehaviorRelay<[CardSetEffect]>
     let pageViewList: [UIViewController]
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)

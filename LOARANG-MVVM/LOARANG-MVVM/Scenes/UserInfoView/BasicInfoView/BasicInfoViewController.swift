@@ -43,6 +43,7 @@ final class BasicInfoViewController: UIViewController {
         if viewModel.engravings.value.count == 0 {
             basicInfoView.engravingsView.showNoEngravingLabel()
         }
+        basicInfoView.cardView.setLayout(isNoCard: viewModel.cards.value.count == 0)
         basicInfoView.characterImageView.setUserImageView(viewModel.userInfo.mainInfo.userImage)
     }
     
@@ -77,13 +78,25 @@ final class BasicInfoViewController: UIViewController {
             .bind(onNext: { [weak self] in
                 self?.basicInfoView.showEngravingDetail(engraving: $0)
             })
+        if viewModel.cards.value.count != 0 {
+            viewModel.cards.bind(to: basicInfoView.cardView.cardCollectionView
+                .rx.items(cellIdentifier: "\(CardCVCell.self)", cellType: CardCVCell.self)) {index, card, cell in
+                    cell.setCellContents(card: card)
+            }
             .disposed(by: disposeBag)
+        }
         
         basicInfoView.engravingDetailView.rx.tapGesture()
             .bind(onNext: { [weak self] _ in
                 self?.basicInfoView.engravingDetailView.isHidden = true
             })
+        if viewModel.cardSetEffects.value.count != 0 {
+            viewModel.cardSetEffects.bind(to: basicInfoView.cardView.cardSetEffectTableView
+                .rx.items(cellIdentifier: "\(CardSetEffectTVCell.self)", cellType: CardSetEffectTVCell.self)) {index, cardSetEffect, cell in
+                    cell.setCellContents(cardSetEffect: cardSetEffect)
+            }
             .disposed(by: disposeBag)
+        }
         
         basicInfoView.characterImageView.shareButton.rx.tap
             .bind(onNext: { [weak self] in
