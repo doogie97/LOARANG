@@ -52,7 +52,7 @@ final class BasicEquipmentView: UIView {
     private lazy var gemTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "보석"
-        label.font = .one(size: 18, family: .Bold)
+        label.font = .one(size: 15, family: .Bold)
         
         return label
     }()

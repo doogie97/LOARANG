@@ -27,7 +27,7 @@ final class CardCVCell: UICollectionViewCell {
     
     private lazy var cardNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .one(size: 15, family: .Bold)
+        label.font = .one(size: 13, family: .Bold)
         label.textAlignment = .center
         label.backgroundColor = UIColor(white: 0.1, alpha: 0.5)
         
