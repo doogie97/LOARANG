@@ -457,11 +457,11 @@ extension JsonInfoManager {
             let imageURL = imageBaseURL + json["Element_001"]["value"]["iconData"]["iconPath"].stringValue
             let tierGrade = json["Element_001"]["value"]["tierGrade"].intValue
             
-            return Card(name: name,
+            return Card(name: name.htmlToString,
                         awakeCount: awakeCount,
                         awakeTotal: awakeTotal,
                         imageURL: imageURL,
-                        tierGrade: tierGrade)
+                        tierGrade: tierGrade - 1)
         }
         
         return cards
@@ -474,8 +474,8 @@ extension JsonInfoManager {
             let cardSetEffect: [CardSetEffect] = json.sorted {$0.0 < $1.0}.compactMap {title, json in
                 if title != "EffectIndex" {
                     
-                    let title = json["desc"].stringValue
-                    let descrption = json["title"].stringValue
+                    let title = json["title"].stringValue
+                    let descrption = json["desc"].stringValue
                     
                     return CardSetEffect(title: title, description: descrption)
                 }
