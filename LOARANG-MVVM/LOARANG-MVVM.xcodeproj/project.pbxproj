@@ -40,6 +40,7 @@
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
 		AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */; };
 		AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60528B8727C002C0033 /* TripodTVCell.swift */; };
+		AC4E19EE28C4474600542EAE /* CardCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E19ED28C4474600542EAE /* CardCVCell.swift */; };
 		AC4E19F028C4666D00542EAE /* CardSetEffectTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E19EF28C4666D00542EAE /* CardSetEffectTVCell.swift */; };
 		AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */; };
 		AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7528C2E515003B4B54 /* Card.swift */; };
@@ -151,6 +152,7 @@
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
 		AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewModel.swift; sourceTree = "<group>"; };
 		AC49D60528B8727C002C0033 /* TripodTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripodTVCell.swift; sourceTree = "<group>"; };
+		AC4E19ED28C4474600542EAE /* CardCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCVCell.swift; sourceTree = "<group>"; };
 		AC4E19EF28C4666D00542EAE /* CardSetEffectTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffectTVCell.swift; sourceTree = "<group>"; };
 		AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		AC5B6D7528C2E515003B4B54 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				AC4E19EF28C4666D00542EAE /* CardSetEffectTVCell.swift */,
+				AC4E19ED28C4474600542EAE /* CardCVCell.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				AC4E19F028C4666D00542EAE /* CardSetEffectTVCell.swift in Sources */,
 				ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */,
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
+				AC4E19EE28C4474600542EAE /* CardCVCell.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
 				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
