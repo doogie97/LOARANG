@@ -34,11 +34,26 @@ final class CardCVCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var cardPointStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        
+        return stackView
+    }()
+    
+    private func pointImageView(isAwake: Bool) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: isAwake ? "activeGem" : "inActiveGem")
+        
+        return imageView
+    }
+    
     private func setLayout() {
         self.layer.cornerRadius = 10
         
         self.contentView.addSubview(cardImageView)
         self.contentView.addSubview(cardNameLabel)
+        self.contentView.addSubview(cardPointStackView)
         
         cardImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -48,6 +63,10 @@ final class CardCVCell: UICollectionViewCell {
             $0.top.equalToSuperview().inset(2)
             $0.leading.trailing.equalToSuperview().inset(2)
             $0.height.equalToSuperview().multipliedBy(0.15)
+        }
+        
+        cardPointStackView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
@@ -60,5 +79,18 @@ final class CardCVCell: UICollectionViewCell {
         cardNameLabel.text = card.name
         cardNameLabel.textColor = gradeColor
         cardImageView.layer.borderColor = gradeColor?.cgColor
+        
+        if card.awakeCount != 0 {
+            for _ in 1...card.awakeCount {
+                cardPointStackView.addArrangedSubview(pointImageView(isAwake: true))
+            }
+        }
+        
+        if card.awakeCount != 5 {
+            for _ in 1...card.awakeTotal - card.awakeCount {
+                cardPointStackView.addArrangedSubview(pointImageView(isAwake: false))
+            }
+        }
+
     }
 }
