@@ -21,6 +21,8 @@ final class CardSetEffectTVCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = .one(size: 15, family: .Bold)
         label.textColor = #colorLiteral(red: 0.3921568627, green: 0.7529411765, blue: 0.5058823529, alpha: 1)
+        label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         
         return label
     }()
