@@ -8,9 +8,9 @@
 import SnapKit
 
 final class BasicInfoView: UIView {
-    init(engravingsViewHeight: CGFloat) {
-        super.init(frame: .zero)
-        setLayout(engravingsViewHeight: engravingsViewHeight)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -89,7 +89,7 @@ final class BasicInfoView: UIView {
         return label
     }()
     
-    private func setLayout(engravingsViewHeight: CGFloat) {
+    private func setLayout() {
         self.addSubview(basicInfoScrollView)
         basicInfoScrollView.addSubview(basicInfoContentsView)
         basicInfoContentsView.addSubview(mainInfoView)
@@ -134,7 +134,6 @@ final class BasicInfoView: UIView {
         engravingsView.snp.makeConstraints {
             $0.top.equalTo(equipmentsView.snp.bottom).inset(-8)
             $0.leading.trailing.equalToSuperview().inset(8)
-            $0.height.equalTo(engravingsViewHeight)
         }
         
         cardView.snp.makeConstraints {

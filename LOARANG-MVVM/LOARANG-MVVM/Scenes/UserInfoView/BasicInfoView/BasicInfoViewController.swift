@@ -21,7 +21,7 @@ final class BasicInfoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var basicInfoView = BasicInfoView(engravingsViewHeight: engravingHeight())
+    private let basicInfoView = BasicInfoView()
     private let disposeBag = DisposeBag()
     private let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
@@ -40,7 +40,8 @@ final class BasicInfoViewController: UIViewController {
         basicInfoView.mainInfoView.setViewContents(viewModel.userInfo.mainInfo)
         basicInfoView.basicAbillityView.setViewContents(viewModel.userInfo.stat.basicAbility)
         basicInfoView.propensitiesView.setViewContents(propensities: viewModel.userInfo.stat.propensities)
-        basicInfoView.engravingsView.setLayout(isNoEngraving: viewModel.engravings.value.count == 0)
+        basicInfoView.engravingsView.setLayout(isNoEngraving: viewModel.engravings.value.count == 0,
+                                               collectionViewHeight: engravingHeight())
         basicInfoView.cardView.setLayout(isNoCard: viewModel.cards.value.count == 0)
         basicInfoView.characterImageView.setUserImageView(viewModel.userInfo.mainInfo.userImage)
     }
@@ -137,14 +138,14 @@ final class BasicInfoViewController: UIViewController {
     
     private func engravingHeight() -> CGFloat {
         switch viewModel.userInfo.stat.engravigs.count {
-        case 0..<3:
-            return UIScreen.main.bounds.width * 0.18
-        case 3..<5:
-            return UIScreen.main.bounds.width * 0.25
-        case 5..<7:
-            return UIScreen.main.bounds.width * 0.32
+        case 0...2:
+            return UIScreen.main.bounds.width * 0.1
+        case 3...4:
+            return UIScreen.main.bounds.width * 0.17
+        case 5...6:
+            return UIScreen.main.bounds.width * 0.24
         default:
-            return UIScreen.main.bounds.width * 0.39
+            return UIScreen.main.bounds.width * 0.31
         }
     }
 }

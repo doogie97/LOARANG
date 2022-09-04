@@ -59,7 +59,7 @@ final class EngravingsView: UIView {
         return label
     }()
     
-    func setLayout(isNoEngraving: Bool) {
+    func setLayout(isNoEngraving: Bool, collectionViewHeight: CGFloat) {
         self.backgroundColor = .cellColor
         self.layer.cornerRadius = 10
         
@@ -83,6 +83,7 @@ final class EngravingsView: UIView {
             engravingCollectionView.snp.makeConstraints {
                 $0.top.equalTo(titleLabel.snp.bottom)
                 $0.leading.trailing.bottom.equalToSuperview()
+                $0.height.equalTo(collectionViewHeight)
             }
         }
     }
