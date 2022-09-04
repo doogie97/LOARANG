@@ -27,14 +27,6 @@ final class PropensitiesView: UIView {
         return label
     }()
     
-    private lazy var contentsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cellColor
-        view.layer.cornerRadius = 10
-        
-        return view
-    }()
-    
     private let largeFontSize = 15
     private let smallFontSize = 15
     private let statColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
@@ -78,18 +70,13 @@ final class PropensitiesView: UIView {
     }
     
     private func setLayout() {
-        self.backgroundColor = .cellBackgroundColor
+        self.backgroundColor = .cellColor
+        self.layer.cornerRadius = 10
         
-        self.addSubview(contentsView)
-        
-        contentsView.addSubview(intellectStackView)
-        contentsView.addSubview(courageStackView)
-        contentsView.addSubview(charmStackView)
-        contentsView.addSubview(kindnessStackView)
-        
-        contentsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        self.addSubview(intellectStackView)
+        self.addSubview(courageStackView)
+        self.addSubview(charmStackView)
+        self.addSubview(kindnessStackView)
         
         intellectStackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16)

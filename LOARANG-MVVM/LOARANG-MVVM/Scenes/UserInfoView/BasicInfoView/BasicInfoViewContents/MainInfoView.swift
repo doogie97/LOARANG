@@ -19,14 +19,6 @@ final class MainInfoView: UIView {
     
     private let mainFontSize = 13
     
-    private lazy var contentsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cellColor
-        view.layer.cornerRadius = 10
-        
-        return view
-    }()
-    
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -90,18 +82,13 @@ final class MainInfoView: UIView {
     }
     
     private func setLayout() {
-        self.backgroundColor = .cellBackgroundColor
+        self.backgroundColor = .cellColor
+        self.layer.cornerRadius = 10
         
-        self.addSubview(contentsView)
-        
-        contentsView.addSubview(userImageView)
-        contentsView.addSubview(classLabel)
-        contentsView.addSubview(serverNameLabel)
-        contentsView.addSubview(userInfoStackView)
-        
-        contentsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        self.addSubview(userImageView)
+        self.addSubview(classLabel)
+        self.addSubview(serverNameLabel)
+        self.addSubview(userInfoStackView)
         
         userImageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(8)

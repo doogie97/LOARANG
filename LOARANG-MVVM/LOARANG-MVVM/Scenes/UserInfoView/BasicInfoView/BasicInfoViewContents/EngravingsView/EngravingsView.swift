@@ -16,14 +16,6 @@ final class EngravingsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private lazy var contentsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cellColor
-        view.layer.cornerRadius = 10
-        
-        return view
-    }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -66,17 +58,12 @@ final class EngravingsView: UIView {
     }()
     
     private func setLayout() {
-        self.backgroundColor = .cellBackgroundColor
+        self.backgroundColor = .cellColor
+        self.layer.cornerRadius = 10
         
-        self.addSubview(contentsView)
-        
-        contentsView.addSubview(titleLabel)
-        contentsView.addSubview(engravingCollectionView)
-        contentsView.addSubview(noEngravingLabel)
-        
-        contentsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        self.addSubview(titleLabel)
+        self.addSubview(engravingCollectionView)
+        self.addSubview(noEngravingLabel)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)

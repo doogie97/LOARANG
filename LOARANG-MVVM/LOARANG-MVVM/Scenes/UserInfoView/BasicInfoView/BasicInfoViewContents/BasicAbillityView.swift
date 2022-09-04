@@ -17,14 +17,6 @@ final class BasicAbillityView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var contentsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cellColor
-        view.layer.cornerRadius = 10
-        
-        return view
-    }()
-    
     private lazy var topStackView: UIStackView = {
         let leftStackView = equllyStackView(axis: .vertical,
                                                     arrangedSubviews: [attackTitleLabel, attackLabel])
@@ -98,16 +90,11 @@ final class BasicAbillityView: UIView {
     }
     
     private func setLayout() {
-        self.backgroundColor = .cellBackgroundColor
+        self.backgroundColor = .cellColor
+        self.layer.cornerRadius = 10
         
-        self.addSubview(contentsView)
-        
-        contentsView.addSubview(topStackView)
-        contentsView.addSubview(bottomStackView)
-        
-        contentsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        self.addSubview(topStackView)
+        self.addSubview(bottomStackView)
         
         topStackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16)
