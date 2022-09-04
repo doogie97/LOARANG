@@ -17,10 +17,14 @@ final class EngravingsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: PaddingLabel = {
+        let label = PaddingLabel(top: 5, bottom: 5, left: 3, right: 3)
         label.font = .one(size: 18, family: .Bold)
         label.text = "각인 효과"
+        label.textAlignment = .center
+        label.backgroundColor = #colorLiteral(red: 0.1659600362, green: 0.1790002988, blue: 0.1983416486, alpha: 1)
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
         
         return label
     }()
@@ -71,13 +75,12 @@ final class EngravingsView: UIView {
         }
         
         engravingCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).inset(-5)
+            $0.top.equalTo(titleLabel.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
         noEngravingLabel.snp.makeConstraints {
-            $0.top.equalTo(engravingCollectionView.snp.top)
-            $0.centerX.equalToSuperview()
+            $0.centerX.centerY.equalTo(engravingCollectionView)
         }
     }
     
