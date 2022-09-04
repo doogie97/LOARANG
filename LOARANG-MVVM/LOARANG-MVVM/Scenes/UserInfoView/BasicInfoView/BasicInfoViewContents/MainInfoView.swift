@@ -10,7 +10,6 @@ import SnapKit
 final class MainInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -118,6 +117,8 @@ final class MainInfoView: UIView {
     }
     
     func setViewContents(_ mainInfo: MainInfo) {
+        setLayout()
+        
         classLabel.text = mainInfo.`class`
         serverNameLabel.text = "\(mainInfo.server) \(mainInfo.name)"
         itemLvLabel.text = "아이템 : \(mainInfo.itemLV)"

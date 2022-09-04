@@ -10,7 +10,6 @@ import SnapKit
 final class EngravigCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +32,8 @@ final class EngravigCVCell: UICollectionViewCell {
     }
     
     func setCellContents(engraving: Engraving) {
+        setLayout()
+        
         if engraving.title.contains("감소") {
             titleLabel.textColor = .systemRed
         }

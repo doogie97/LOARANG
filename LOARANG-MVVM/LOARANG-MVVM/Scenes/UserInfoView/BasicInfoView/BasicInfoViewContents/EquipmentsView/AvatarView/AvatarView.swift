@@ -104,6 +104,5 @@ final class AvatarView: UIView {
             $0.height.equalToSuperview().dividedBy(5)
             $0.trailing.leading.bottom.equalToSuperview()
         }
-
     }
 }

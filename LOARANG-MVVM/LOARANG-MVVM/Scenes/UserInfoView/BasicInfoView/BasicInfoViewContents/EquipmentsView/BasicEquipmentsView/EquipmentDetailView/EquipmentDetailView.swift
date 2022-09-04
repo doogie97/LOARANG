@@ -10,7 +10,6 @@ import SnapKit
 final class EquipmentDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -154,6 +153,8 @@ final class EquipmentDetailView: UIView {
     }
     
     func setViewContents(_ equipmentInfo: EquipmentPart) {
+        setLayout()
+        
         nameLabel.text = equipmentInfo.basicInfo.name?.htmlToString
         nameLabel.textColor = Equips.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
         

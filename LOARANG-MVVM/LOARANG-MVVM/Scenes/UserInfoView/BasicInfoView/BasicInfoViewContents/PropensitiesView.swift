@@ -10,7 +10,6 @@ import SnapKit
 final class PropensitiesView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -106,6 +105,8 @@ final class PropensitiesView: UIView {
     }
     
     func setViewContents(propensities: Propensities) {
+        setLayout()
+        
         intellectLabel.text = propensities.intellect
         courageLabel.text = propensities.courage
         charmLabel.text = propensities.charm

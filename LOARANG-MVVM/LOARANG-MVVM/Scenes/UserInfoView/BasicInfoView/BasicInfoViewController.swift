@@ -40,9 +40,7 @@ final class BasicInfoViewController: UIViewController {
         basicInfoView.mainInfoView.setViewContents(viewModel.userInfo.mainInfo)
         basicInfoView.basicAbillityView.setViewContents(viewModel.userInfo.stat.basicAbility)
         basicInfoView.propensitiesView.setViewContents(propensities: viewModel.userInfo.stat.propensities)
-        if viewModel.engravings.value.count == 0 {
-            basicInfoView.engravingsView.showNoEngravingLabel()
-        }
+        basicInfoView.engravingsView.setLayout(isNoEngraving: viewModel.engravings.value.count == 0)
         basicInfoView.cardView.setLayout(isNoCard: viewModel.cards.value.count == 0)
         basicInfoView.characterImageView.setUserImageView(viewModel.userInfo.mainInfo.userImage)
     }
@@ -61,23 +59,33 @@ final class BasicInfoViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.engravings.bind(to: basicInfoView.engravingsView.engravingCollectionView
-            .rx.items(cellIdentifier: "\(EngravigCVCell.self)", cellType: EngravigCVCell.self)) {index, engraving, cell in
-            cell.setCellContents(engraving: engraving)
-        }
-        .disposed(by: disposeBag)
-        
-        basicInfoView.engravingsView.engravingCollectionView
-            .rx.itemSelected
-            .bind(onNext: { [weak self] in
-                self?.viewModel.touchEngravingCell($0.row)
-            })
+        if viewModel.engravings.value.count != 0 {
+            viewModel.engravings.bind(to: basicInfoView.engravingsView.engravingCollectionView
+                .rx.items(cellIdentifier: "\(EngravigCVCell.self)", cellType: EngravigCVCell.self)) {index, engraving, cell in
+                cell.setCellContents(engraving: engraving)
+            }
             .disposed(by: disposeBag)
+            
+            basicInfoView.engravingsView.engravingCollectionView
+                .rx.itemSelected
+                .bind(onNext: { [weak self] in
+                    self?.viewModel.touchEngravingCell($0.row)
+                })
+                .disposed(by: disposeBag)
+            
+            viewModel.showengravingDetail
+                .bind(onNext: { [weak self] in
+                    self?.basicInfoView.showEngravingDetail(engraving: $0)
+                })
+                .disposed(by: disposeBag)
+            
+            basicInfoView.engravingDetailView.rx.tapGesture()
+                .bind(onNext: { [weak self] _ in
+                    self?.basicInfoView.engravingDetailView.isHidden = true
+                })
+                .disposed(by: disposeBag)
+        }
         
-        viewModel.showengravingDetail
-            .bind(onNext: { [weak self] in
-                self?.basicInfoView.showEngravingDetail(engraving: $0)
-            })
         if viewModel.cards.value.count != 0 {
             viewModel.cards.bind(to: basicInfoView.cardView.cardCollectionView
                 .rx.items(cellIdentifier: "\(CardCVCell.self)", cellType: CardCVCell.self)) {index, card, cell in
@@ -86,10 +94,6 @@ final class BasicInfoViewController: UIViewController {
             .disposed(by: disposeBag)
         }
         
-        basicInfoView.engravingDetailView.rx.tapGesture()
-            .bind(onNext: { [weak self] _ in
-                self?.basicInfoView.engravingDetailView.isHidden = true
-            })
         if viewModel.cardSetEffects.value.count != 0 {
             viewModel.cardSetEffects.bind(to: basicInfoView.cardView.cardSetEffectTableView
                 .rx.items(cellIdentifier: "\(CardSetEffectTVCell.self)", cellType: CardSetEffectTVCell.self)) {index, cardSetEffect, cell in

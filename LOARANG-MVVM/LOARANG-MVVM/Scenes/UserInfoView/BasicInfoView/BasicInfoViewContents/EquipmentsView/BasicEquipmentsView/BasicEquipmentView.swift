@@ -10,7 +10,6 @@ import SnapKit
 final class BasicEquipmentView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -84,7 +83,6 @@ final class BasicEquipmentView: UIView {
         label.font = .one(size: 13, family: .Bold)
         label.textAlignment = .center
         label.text = "장착된 보석이 없습니다"
-        label.isHidden = true
         
         return label
     }()
@@ -140,16 +138,14 @@ final class BasicEquipmentView: UIView {
         return label
     }()
     
-    private func setLayout() {
+    func setLayout(isNoGem: Bool) {
         self.addSubview(mainStackView)
         self.addSubview(gemView)
         gemView.addSubview(gemTitleLabel)
-        gemView.addSubview(gemCollectionView)
-        gemView.addSubview(noGemLabel)
         
         mainStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(5)
+            $0.leading.trailing.equalToSuperview().inset(5)
             $0.bottom.equalTo(gemView.snp.top)
         }
         
@@ -162,22 +158,28 @@ final class BasicEquipmentView: UIView {
             $0.top.leading.trailing.equalToSuperview().inset(10)
         }
         
-        gemCollectionView.snp.makeConstraints {
-            $0.top.equalTo(gemTitleLabel.snp.bottom)
-            $0.leading.bottom.trailing.equalToSuperview().inset(5)
-        }
-        
-        noGemLabel.snp.makeConstraints {
-            $0.bottom.equalTo(gemCollectionView.snp.centerY)
-            $0.leading.trailing.equalToSuperview()
-        }
-        
-        self.addSubview(gemDetailView)
-        
-        gemDetailView.snp.makeConstraints {
-            $0.trailing.leading.equalTo(safeAreaLayoutGuide).inset(5)
-            $0.bottom.equalTo(gemTitleLabel.snp.bottom)
-            $0.height.greaterThanOrEqualTo(15)
+        if isNoGem {
+            gemView.addSubview(noGemLabel)
+            
+            noGemLabel.snp.makeConstraints {
+                $0.top.equalTo(gemTitleLabel.snp.bottom)
+                $0.leading.trailing.equalToSuperview().inset(8)
+                $0.top.equalTo(gemView.snp.centerY)
+            }
+        } else {
+            gemView.addSubview(gemCollectionView)
+            self.addSubview(gemDetailView)
+            
+            gemCollectionView.snp.makeConstraints {
+                $0.top.equalTo(gemTitleLabel.snp.bottom)
+                $0.leading.bottom.trailing.equalToSuperview().inset(5)
+            }
+            
+            gemDetailView.snp.makeConstraints {
+                $0.trailing.leading.equalToSuperview().inset(5)
+                $0.bottom.equalTo(gemTitleLabel.snp.bottom)
+                $0.height.greaterThanOrEqualTo(15)
+            }
         }
     }
     
@@ -186,9 +188,5 @@ final class BasicEquipmentView: UIView {
         
         gemNameLabel.attributedText = gem.name.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
         gemEffectLabel.attributedText = gem.effect.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
-    }
-    
-    func showNoGemLabel() {
-        noGemLabel.isHidden = false
     }
 }

@@ -10,7 +10,6 @@ import SnapKit
 final class GemCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +55,8 @@ final class GemCell: UICollectionViewCell {
     }
     
     func setCellContents(gem: Gem) {
+        setLayout()
+        
         gemImageView.setImage(urlString: gem.imageURL)
         gemImageView.backgroundColor = Equips.Grade(rawValue: gem.grade)?.backgroundColor
         

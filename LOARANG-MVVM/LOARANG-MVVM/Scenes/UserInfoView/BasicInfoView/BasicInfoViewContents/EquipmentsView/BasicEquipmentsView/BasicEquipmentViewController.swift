@@ -32,7 +32,12 @@ final class BasicEquipmentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setViewContents()
         bindView()
+    }
+    
+    private func setViewContents() {
+        basicEquipmentView.setLayout(isNoGem: viewModel.gems.value.count == 0)
     }
     
     private func bindView() {
@@ -55,9 +60,7 @@ final class BasicEquipmentViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        if viewModel.gems.value.count == 0 {
-            basicEquipmentView.showNoGemLabel()
-        } else {
+        if viewModel.gems.value.count != 0 {
             viewModel.gems
                 .bind(to: basicEquipmentView.gemCollectionView.rx.items(cellIdentifier: "\(GemCell.self)", cellType: GemCell.self)) { index, gem, cell in
                     cell.setCellContents(gem: gem)

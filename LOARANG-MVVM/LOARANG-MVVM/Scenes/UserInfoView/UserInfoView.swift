@@ -10,7 +10,6 @@ import SnapKit
 final class UserInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -102,6 +101,8 @@ final class UserInfoView: UIView {
     }
     
     func setViewContents(_ userInfo: UserInfo) {
+        setLayout()
+        
         self.titleLabel.text = userInfo.mainInfo.name
     }
 }

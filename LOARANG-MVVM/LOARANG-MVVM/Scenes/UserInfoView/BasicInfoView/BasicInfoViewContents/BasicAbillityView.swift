@@ -10,7 +10,6 @@ import SnapKit
 final class BasicAbillityView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -109,6 +108,8 @@ final class BasicAbillityView: UIView {
     }
     
     func setViewContents(_ ability: BasicAbility) {
+        setLayout()
+        
         attackLabel.text = ability.attack
         vitalityLabel.text = ability.vitality
         critLabel.text = ability.crit

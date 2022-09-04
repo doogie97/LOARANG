@@ -11,7 +11,7 @@ final class SearchView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .mainBackground
-        setLayOut()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +49,7 @@ final class SearchView: UIView {
         return indicator
     }()
     
-    private func setLayOut() {
+    private func setLayout() {
         self.addSubview(mainStackView)
         self.addSubview(activityIndicator)
         

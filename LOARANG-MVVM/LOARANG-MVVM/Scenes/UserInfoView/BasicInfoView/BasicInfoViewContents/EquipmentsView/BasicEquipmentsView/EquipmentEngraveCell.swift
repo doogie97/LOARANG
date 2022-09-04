@@ -9,7 +9,6 @@ import SnapKit
 final class EquipmentEngraveCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -61,6 +60,8 @@ final class EquipmentEngraveCell: UITableViewCell {
     }
     
     func setCellContents(engraves: (first: EquipedEngrave?, second: EquipedEngrave?)) {
+        setLayout()
+        
         firstNameLabel.text = engraves.first?.name ?? "각인1"
         firstNameLabel.textColor = engraves.first?.titleColor
         let firstActivation = engraves.first?.activation.description ?? ""

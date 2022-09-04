@@ -10,7 +10,6 @@ import SnapKit
 final class CharacterImageView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +48,8 @@ final class CharacterImageView: UIView {
     }
     
     func setUserImageView(_ userImage: UIImage) {
+        setLayout()
+        
         userImageView.image = userImage
     }
 }

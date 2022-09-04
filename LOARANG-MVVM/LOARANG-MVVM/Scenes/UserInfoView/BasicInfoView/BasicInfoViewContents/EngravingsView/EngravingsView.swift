@@ -10,7 +10,6 @@ import SnapKit
 final class EngravingsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -56,35 +55,35 @@ final class EngravingsView: UIView {
         label.font = .one(size: 13, family: .Bold)
         label.textAlignment = .center
         label.text = "활성화된 각인이 없습니다"
-        label.isHidden = true
         
         return label
     }()
     
-    private func setLayout() {
+    func setLayout(isNoEngraving: Bool) {
         self.backgroundColor = .cellColor
         self.layer.cornerRadius = 10
         
         self.addSubview(titleLabel)
-        self.addSubview(engravingCollectionView)
-        self.addSubview(noEngravingLabel)
-        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
             $0.leading.trailing.equalToSuperview().inset(8)
         }
         
-        engravingCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+        if isNoEngraving {
+            self.addSubview(noEngravingLabel)
+            
+            noEngravingLabel.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom).inset(-16)
+                $0.leading.trailing.equalToSuperview().inset(8)
+                $0.bottom.equalToSuperview().inset(16)
+            }
+        } else {
+            self.addSubview(engravingCollectionView)
+            
+            engravingCollectionView.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom)
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
         }
-        
-        noEngravingLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalTo(engravingCollectionView)
-        }
-    }
-    
-    func showNoEngravingLabel() {
-        noEngravingLabel.isHidden = false
     }
 }
