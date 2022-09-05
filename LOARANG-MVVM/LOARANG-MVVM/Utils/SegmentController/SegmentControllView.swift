@@ -9,11 +9,18 @@ import SnapKit
 
 final class CustomSegmentControl: UIView {
     private let segmentTitles: [String]
-    var underLineColor: UIColor = .label {
+    var underLineColor: UIColor? = .label {
         didSet {
             underLineView.backgroundColor = underLineColor
         }
     }
+    
+    var backColor: UIColor? = .clear {
+        didSet {
+            backView.backgroundColor = backColor
+        }
+    }
+    
     var selectedFontColor: UIColor = .label
     var deselectedFontColor: UIColor = .systemGray
     var selectedFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -32,6 +39,14 @@ final class CustomSegmentControl: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private lazy var backView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 5
+        view.backgroundColor = backColor
+        
+        return view
+    }()
     
     private(set) lazy var segmentCollectionView: UICollectionView = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -62,8 +77,15 @@ final class CustomSegmentControl: UIView {
     }()
     
     private func setLayout() {
+        self.addSubview(backView)
         self.addSubview(segmentCollectionView)
         self.addSubview(underLineView)
+        
+        backView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(3)
+            $0.width.equalTo(segmentCollectionView.snp.width).dividedBy(segmentTitles.count)
+            $0.leading.equalTo(segmentCollectionView)
+        }
         
         segmentCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -131,6 +153,11 @@ extension CustomSegmentControl: UICollectionViewDelegate {
             self.underLineView.snp.updateConstraints {
                 $0.leading.equalTo(self.segmentCollectionView).inset(leadingDistance)
             }
+            
+            self.backView.snp.updateConstraints {
+                $0.leading.equalTo(self.segmentCollectionView).inset(leadingDistance)
+            }
+            
             self.layoutIfNeeded()
         })
     }
