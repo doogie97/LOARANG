@@ -51,7 +51,7 @@ final class Container {
         return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo),
                                       viewList: [makeBasicInfoVC(userInfo: userInfo),
                                                  makeSkillInfoViewController(skillInfo: userInfo.userJsonInfo.skillInfo),
-                                                 makeThirdVC(),
+                                                 makeCollectionInfoViewController(),
                                                  makeFourthVC()])
     }
     
@@ -132,8 +132,12 @@ final class Container {
         return SkillDetailViewModel(skill: skill)
     }
     
-    private func makeThirdVC() -> ThirdInfoViewController {
-        return ThirdInfoViewController()
+    private func makeCollectionInfoViewController() -> CollectionInfoViewController {
+        return CollectionInfoViewController(CollectionInfoViewModel: makeCollectionInfoViewModel())
+    }
+    
+    private func makeCollectionInfoViewModel() -> CollectionInfoViewModelable {
+        return CollectionInfoViewModel()
     }
     
     private func makeFourthVC() -> FourthInfoViewController {
