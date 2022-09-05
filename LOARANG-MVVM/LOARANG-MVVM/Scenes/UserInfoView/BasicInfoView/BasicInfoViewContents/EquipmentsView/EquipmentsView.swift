@@ -38,6 +38,7 @@ final class EquipmentsView: UIView {
         segmentControl.selectedFontColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         segmentControl.selectedFont = .one(size: 14, family: .Bold)
         segmentControl.deselectedFont = .one(size: 14, family: .Light)
+        segmentControl.underLineColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         
         return segmentControl
     }()
