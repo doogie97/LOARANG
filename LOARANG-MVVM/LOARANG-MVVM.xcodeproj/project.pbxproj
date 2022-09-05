@@ -95,7 +95,6 @@
 		ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */; };
 		ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */; };
 		ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16428BF865200C6BB2F /* EngravingsView.swift */; };
-		ACB837F228961ECE00F75BA2 /* SegmentControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
 		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
@@ -214,7 +213,6 @@
 		ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbillityView.swift; sourceTree = "<group>"; };
 		ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsView.swift; sourceTree = "<group>"; };
 		ACB0F16428BF865200C6BB2F /* EngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravingsView.swift; sourceTree = "<group>"; };
-		ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllerView.swift; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
@@ -649,7 +647,6 @@
 				AC3FEBFE28804E9600CDE796 /* Extesnsion */,
 				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
 				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
-				ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */,
 				AC7E9F7D28C5D10700859E06 /* SegmentController */,
 			);
 			path = Utils;
@@ -837,7 +834,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACB837F228961ECE00F75BA2 /* SegmentControllerView.swift in Sources */,
 				AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
