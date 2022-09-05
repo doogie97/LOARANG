@@ -9,6 +9,11 @@ import SnapKit
 
 final class CustomSegmentControl: UIView {
     private let segmentTitles: [String]
+    var underLineColor: UIColor = .label {
+        didSet {
+            underLineView.backgroundColor = underLineColor
+        }
+    }
     var selectedFontColor: UIColor = .label
     var deselectedFontColor: UIColor = .systemGray
     var selectedFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -51,7 +56,7 @@ final class CustomSegmentControl: UIView {
     
     private lazy var underLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        view.backgroundColor = underLineColor
         
         return view
     }()
