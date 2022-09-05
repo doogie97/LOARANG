@@ -47,4 +47,11 @@ final class SegmentCVCell: UICollectionViewCell {
         titleLabel.font = font
         titleLabel.textColor = color
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        titleLabel.font = nil
+        titleLabel.textColor = nil
+    }
 }
