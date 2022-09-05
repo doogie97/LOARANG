@@ -92,7 +92,7 @@ final class MainInfoView: UIView {
         userImageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(8)
             
-            let height = UIScreen.main.bounds.width * 0.3
+            let height = UIScreen.main.bounds.width * 0.25
             $0.height.equalTo(height)
             $0.width.equalTo(userImageView.snp.height)
             userImageView.layer.cornerRadius = height / 2
@@ -106,12 +106,12 @@ final class MainInfoView: UIView {
         
         serverNameLabel.snp.makeConstraints {
             $0.top.equalTo(userImageView).inset(8)
-            $0.leading.equalTo(userImageView.snp.trailing).inset(-16)
+            $0.leading.equalTo(userImageView.snp.trailing).inset(-8)
         }
         
         userInfoStackView.snp.makeConstraints {
             $0.top.equalTo(serverNameLabel.snp.bottom).inset(-8)
-            $0.leading.equalTo(userImageView.snp.trailing).inset(-16)
+            $0.leading.equalTo(userImageView.snp.trailing).inset(-8)
             $0.trailing.bottom.equalToSuperview().inset(8)
         }
     }
