@@ -49,9 +49,9 @@ final class UserInfoViewController: UIViewController {
             })
             .disposed(by: disposBag)
         
-        userInfoView.segmentController.segmentController.rx.value
+        userInfoView.segmentControl.segmentCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
-                self?.viewModel.touchSegmentControl($0)
+                self?.viewModel.touchSegmentControl($0.row)
             })
             .disposed(by: disposBag)
         

@@ -60,13 +60,19 @@ final class UserInfoView: UIView {
         return view
     }()
     
-    let segmentController = SegmentControllerView(frame: .zero,
-                                                  segmentTitles: ["기본 정보", "스킬", "수집품", "보유캐릭터"])
+    private(set) lazy var segmentControl: CustomSegmentControl = {
+        let segmentControl = CustomSegmentControl(segmentTitles: ["기본 정보", "스킬", "수집품", "보유캐릭터"])
+        segmentControl.selectedFontColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        segmentControl.selectedFont = .one(size: 14, family: .Bold)
+        segmentControl.deselectedFont = .one(size: 14, family: .Light)
+        
+        return segmentControl
+    }()
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
         self.addSubview(navigationStackView)
-        self.addSubview(segmentController)
+        self.addSubview(segmentControl)
         self.addSubview(separatorView)
         self.addSubview(pageView)
         
@@ -82,14 +88,14 @@ final class UserInfoView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.1)
         }
         
-        segmentController.snp.makeConstraints {
+        segmentControl.snp.makeConstraints {
             $0.top.equalTo(navigationStackView.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(40)
         }
         
         separatorView.snp.makeConstraints {
-            $0.top.equalTo(segmentController.snp.bottom).inset(-2)
+            $0.top.equalTo(segmentControl.snp.bottom).inset(-2)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(0.5)
         }

@@ -47,10 +47,9 @@ final class BasicInfoViewController: UIViewController {
     }
     
     private func bindView() {
-        basicInfoView.equipmentsView.segmentControllView.segmentController
-            .rx.value
+        basicInfoView.equipmentsView.segmentControl.segmentCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
-                self?.viewModel.touchSegmentControl($0)
+                self?.viewModel.touchSegmentControl($0.row)
             })
             .disposed(by: disposeBag)
         

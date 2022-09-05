@@ -18,22 +18,29 @@ final class EquipmentsView: UIView {
     }
     
     private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [segmentControllView, pageView])
+        let stackView = UIStackView(arrangedSubviews: [segmentControl, pageView])
         stackView.axis = .vertical
         stackView.spacing = 2
         stackView.layer.cornerRadius = 10
         stackView.backgroundColor = .cellColor
         
-        segmentControllView.snp.makeConstraints {
+        segmentControl.snp.makeConstraints {
             $0.height.equalToSuperview().multipliedBy(0.1)
         }
         
         return stackView
     }()
     
-    private(set) lazy var segmentControllView = SegmentControllerView(frame: .zero,
-                                                                      segmentTitles: ["장비",
-                                                                                      "아바타"])
+    private(set) lazy var segmentControl: CustomSegmentControl = {
+        let segmentControl = CustomSegmentControl(segmentTitles: ["장비",
+                                                                  "아바타"])
+        
+        segmentControl.selectedFontColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        segmentControl.selectedFont = .one(size: 14, family: .Bold)
+        segmentControl.deselectedFont = .one(size: 14, family: .Light)
+        
+        return segmentControl
+    }()
     
     private(set) lazy var pageView: UIView = {
         let view = UIView()
@@ -43,9 +50,9 @@ final class EquipmentsView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .cellBackgroundColor
-        self.segmentControllView.backgroundColor = .tableViewColor
-        self.segmentControllView.layer.cornerRadius = 10
-        self.segmentControllView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.segmentControl.backgroundColor = .tableViewColor
+        self.segmentControl.layer.cornerRadius = 10
+        self.segmentControl.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         self.addSubview(mainStackView)
         
