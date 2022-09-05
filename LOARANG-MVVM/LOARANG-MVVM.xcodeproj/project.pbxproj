@@ -256,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				AC035EA2289122160068DC7E /* UserInfoView.swift */,
-				ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */,
 				AC035EA0289121FD0068DC7E /* UserInfoViewController.swift */,
 				AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */,
 				AC6CA28F2893BBCF0049C12F /* BasicInfoView */,
@@ -631,6 +630,7 @@
 				AC3FEBFE28804E9600CDE796 /* Extesnsion */,
 				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
 				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
+				ACB837F128961ECE00F75BA2 /* SegmentControllerView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
