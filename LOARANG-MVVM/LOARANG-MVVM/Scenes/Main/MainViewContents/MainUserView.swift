@@ -131,6 +131,7 @@ final class MainUserView: UIView {
         
         noMainUserLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
+            $0.height.equalTo(UIScreen.main.bounds.width * 0.7)
         }
     }
     
