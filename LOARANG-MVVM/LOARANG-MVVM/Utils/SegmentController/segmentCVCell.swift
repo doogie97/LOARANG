@@ -7,7 +7,7 @@
 
 import SnapKit
 
-final class segCVCell: UICollectionViewCell {
+final class SegmentCVCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()

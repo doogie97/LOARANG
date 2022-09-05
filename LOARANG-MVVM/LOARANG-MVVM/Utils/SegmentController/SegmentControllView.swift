@@ -42,7 +42,7 @@ final class CustomSegmentControl: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-        collectionView.register(segCVCell.self, forCellWithReuseIdentifier: "\(segCVCell.self)")
+        collectionView.register(SegmentCVCell.self, forCellWithReuseIdentifier: "\(SegmentCVCell.self)")
         
         collectionView.isScrollEnabled = false
 
@@ -81,7 +81,7 @@ extension CustomSegmentControl: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(segCVCell.self)", for: indexPath) as? segCVCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SegmentCVCell.self)", for: indexPath) as? SegmentCVCell else {
             return UICollectionViewCell()
         }
         
@@ -99,7 +99,7 @@ extension CustomSegmentControl: UICollectionViewDataSource {
 
 extension CustomSegmentControl: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
-        guard let cell = collectionView.cellForItem(at: indexPath) as? segCVCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SegmentCVCell else {
             return
         }
         cell.selectedCell(color: selectedFontColor, font: selectedFont)
@@ -107,7 +107,7 @@ extension CustomSegmentControl: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? segCVCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SegmentCVCell else {
             return
         }
         cell.deselectedCell(color: deselectedFontColor, font: deselectedFont)

@@ -58,7 +58,7 @@
 		AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */; };
 		AC7E9F7A28C5ABB300859E06 /* CollectionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7928C5ABB300859E06 /* CollectionInfoView.swift */; };
 		AC7E9F7C28C5ABBC00859E06 /* CollectionInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7B28C5ABBC00859E06 /* CollectionInfoViewModel.swift */; };
-		AC7E9F7F28C5D13400859E06 /* segmentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7E28C5D13400859E06 /* segmentCVCell.swift */; };
+		AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */; };
 		AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */; };
 		AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */; };
 		AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */; };
@@ -175,7 +175,7 @@
 		AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		AC7E9F7928C5ABB300859E06 /* CollectionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInfoView.swift; sourceTree = "<group>"; };
 		AC7E9F7B28C5ABBC00859E06 /* CollectionInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInfoViewModel.swift; sourceTree = "<group>"; };
-		AC7E9F7E28C5D13400859E06 /* segmentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = segmentCVCell.swift; sourceTree = "<group>"; };
+		AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCVCell.swift; sourceTree = "<group>"; };
 		AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllView.swift; sourceTree = "<group>"; };
 		AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
 		AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJsonInfo.swift; sourceTree = "<group>"; };
@@ -499,7 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */,
-				AC7E9F7E28C5D13400859E06 /* segmentCVCell.swift */,
+				AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */,
 			);
 			path = SegmentController;
 			sourceTree = "<group>";
@@ -936,7 +936,7 @@
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
 				AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */,
 				AC4E19EE28C4474600542EAE /* CardCVCell.swift in Sources */,
-				AC7E9F7F28C5D13400859E06 /* segmentCVCell.swift in Sources */,
+				AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
 				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
