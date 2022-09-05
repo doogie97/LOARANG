@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/07/29.
 //
 
-import UIKit
+import RxSwift
 
 final class CollectionInfoViewController: UIViewController {
     private let viewModel: CollectionInfoViewModelable
@@ -20,10 +20,23 @@ final class CollectionInfoViewController: UIViewController {
     }
     
     private let collectionInfoView = CollectionInfoView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
         self.view = collectionInfoView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindView()
+    }
 
+    private func bindView() {
+        collectionInfoView.segmentControl.segmentCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchSegmentControl($0.row)
+            })
+            .disposed(by: disposeBag)
+    }
 }

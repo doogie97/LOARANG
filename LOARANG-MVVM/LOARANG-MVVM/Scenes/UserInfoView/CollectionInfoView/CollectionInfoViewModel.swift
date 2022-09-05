@@ -7,8 +7,16 @@
 
 protocol CollectionInfoViewModelable: CollectionInfoViewModelInput, CollectionInfoViewModelOutput {}
 
-protocol CollectionInfoViewModelInput {}
+protocol CollectionInfoViewModelInput {
+    func touchSegmentControl(_ index: Int)
+}
 
 protocol CollectionInfoViewModelOutput {}
 
-final class CollectionInfoViewModel: CollectionInfoViewModelable {}
+final class CollectionInfoViewModel: CollectionInfoViewModelable {
+    //in
+    func touchSegmentControl(_ index: Int) {
+        print(index)
+    }
+    
+}
