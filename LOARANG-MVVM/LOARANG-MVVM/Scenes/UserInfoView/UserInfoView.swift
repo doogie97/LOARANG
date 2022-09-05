@@ -61,7 +61,7 @@ final class UserInfoView: UIView {
     }()
     
     let segmentController = SegmentControllerView(frame: .zero,
-                                                  segmentTitles: ["기본 정보", "스킬", "카드", "보유캐릭터"])
+                                                  segmentTitles: ["기본 정보", "스킬", "수집품", "보유캐릭터"])
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
