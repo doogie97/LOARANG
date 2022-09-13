@@ -44,6 +44,7 @@ final class MainInfoView: UIView {
                                                        wisdomLabel])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
+        stackView.spacing = 8
         return stackView
     }()
     
@@ -112,7 +113,8 @@ final class MainInfoView: UIView {
         userInfoStackView.snp.makeConstraints {
             $0.top.equalTo(serverNameLabel.snp.bottom).inset(-8)
             $0.leading.equalTo(userImageView.snp.trailing).inset(-8)
-            $0.trailing.bottom.equalToSuperview().inset(8)
+            $0.trailing.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview().inset(16)
         }
     }
     
