@@ -16,11 +16,7 @@ final class UserInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var navigationStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [backButton, titleLabel, bookMarkButton])
-        
-        return stackView
-    }()
+    private lazy var navigationView = UIView()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -72,25 +68,37 @@ final class UserInfoView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
-        self.addSubview(navigationStackView)
+        self.addSubview(navigationView)
+        navigationView.addSubview(backButton)
+        navigationView.addSubview(titleLabel)
+        navigationView.addSubview(bookMarkButton)
+        
         self.addSubview(segmentControl)
         self.addSubview(separatorView)
         self.addSubview(pageView)
         
-        navigationStackView.snp.makeConstraints{
+        navigationView.snp.makeConstraints{
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
         }
         
         backButton.snp.makeConstraints {
-            $0.width.equalToSuperview().multipliedBy(0.1)
+            $0.top.bottom.equalToSuperview()
+            $0.leading.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
         }
         
         bookMarkButton.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.1)
         }
         
         segmentControl.snp.makeConstraints {
-            $0.top.equalTo(navigationStackView.snp.bottom).inset(-16)
+            $0.top.equalTo(navigationView.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(40)
         }
