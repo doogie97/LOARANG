@@ -43,6 +43,8 @@ final class BasicInfoView: UIView {
         view.isHidden = true
         view.backgroundColor = .black
         view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor.systemGray.cgColor
+        view.layer.borderWidth = 0.5
 
         view.addSubview(engravingEffectLabel)
         view.addSubview(engravingTitleLabel)

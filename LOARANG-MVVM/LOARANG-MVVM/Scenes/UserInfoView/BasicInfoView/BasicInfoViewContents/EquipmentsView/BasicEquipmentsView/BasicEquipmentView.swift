@@ -93,6 +93,8 @@ final class BasicEquipmentView: UIView {
         view.isHidden = true
         view.backgroundColor = .black
         view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor.systemGray.cgColor
+        view.layer.borderWidth = 0.5
         
         view.addSubview(gemNameLabel)
         view.addSubview(gemEffectLabel)
