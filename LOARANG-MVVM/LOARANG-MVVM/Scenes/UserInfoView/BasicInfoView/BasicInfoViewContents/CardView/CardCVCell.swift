@@ -80,6 +80,11 @@ final class CardCVCell: UICollectionViewCell {
         cardNameLabel.textColor = gradeColor
         cardImageView.layer.borderColor = gradeColor?.cgColor
         
+        // 카드 각성 활성화에 따른 로직
+        if card.awakeTotal == 0 {
+            return
+        }
+        
         if card.awakeCount != 0 {
             for _ in 1...card.awakeCount {
                 cardPointStackView.addArrangedSubview(pointImageView(isAwake: true))
@@ -91,6 +96,5 @@ final class CardCVCell: UICollectionViewCell {
                 cardPointStackView.addArrangedSubview(pointImageView(isAwake: false))
             }
         }
-
     }
 }
