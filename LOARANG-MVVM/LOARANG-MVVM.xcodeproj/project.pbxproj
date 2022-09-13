@@ -48,7 +48,6 @@
 		AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
-		AC6CA2982893BC300049C12F /* CollectionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2972893BC300049C12F /* CollectionInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */; };
 		AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */; };
 		AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C4228BF2C56005B102B /* MainUserView.swift */; };
@@ -56,8 +55,6 @@
 		AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8328A50C1B008A2865 /* AvatarViewController.swift */; };
 		AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */; };
 		AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */; };
-		AC7E9F7A28C5ABB300859E06 /* CollectionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7928C5ABB300859E06 /* CollectionInfoView.swift */; };
-		AC7E9F7C28C5ABBC00859E06 /* CollectionInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7B28C5ABBC00859E06 /* CollectionInfoViewModel.swift */; };
 		AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */; };
 		AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */; };
 		AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */; };
@@ -164,7 +161,6 @@
 		AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffect.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
-		AC6CA2972893BC300049C12F /* CollectionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInfoViewController.swift; sourceTree = "<group>"; };
 		AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigCVCell.swift; sourceTree = "<group>"; };
 		AC757C4228BF2C56005B102B /* MainUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserView.swift; sourceTree = "<group>"; };
@@ -172,8 +168,6 @@
 		AC799A8328A50C1B008A2865 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		AC799A8728A518F7008A2865 /* BasicEquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentView.swift; sourceTree = "<group>"; };
 		AC799A8C28A51B3E008A2865 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
-		AC7E9F7928C5ABB300859E06 /* CollectionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInfoView.swift; sourceTree = "<group>"; };
-		AC7E9F7B28C5ABBC00859E06 /* CollectionInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionInfoViewModel.swift; sourceTree = "<group>"; };
 		AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCVCell.swift; sourceTree = "<group>"; };
 		AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllView.swift; sourceTree = "<group>"; };
 		AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
@@ -266,7 +260,6 @@
 				AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */,
 				AC6CA28F2893BBCF0049C12F /* BasicInfoView */,
 				AC6CA2902893BBD70049C12F /* SkillInfoView */,
-				AC6CA2912893BBEF0049C12F /* CollectionInfoView */,
 				AC6CA2922893BBF90049C12F /* ForthInfoView */,
 			);
 			path = UserInfoView;
@@ -438,16 +431,6 @@
 				AC49D60028B85978002C0033 /* SkillDetailView */,
 			);
 			path = SkillInfoView;
-			sourceTree = "<group>";
-		};
-		AC6CA2912893BBEF0049C12F /* CollectionInfoView */ = {
-			isa = PBXGroup;
-			children = (
-				AC7E9F7928C5ABB300859E06 /* CollectionInfoView.swift */,
-				AC6CA2972893BC300049C12F /* CollectionInfoViewController.swift */,
-				AC7E9F7B28C5ABBC00859E06 /* CollectionInfoViewModel.swift */,
-			);
-			path = CollectionInfoView;
 			sourceTree = "<group>";
 		};
 		AC6CA2922893BBF90049C12F /* ForthInfoView */ = {
@@ -870,7 +853,6 @@
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
-				AC7E9F7C28C5ABBC00859E06 /* CollectionInfoViewModel.swift in Sources */,
 				AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */,
 				AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */,
 				ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */,
@@ -891,7 +873,6 @@
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
 				AC86404428B5EAF8004B7EBB /* SkillInfoView.swift in Sources */,
-				AC6CA2982893BC300049C12F /* CollectionInfoViewController.swift in Sources */,
 				AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
@@ -912,7 +893,6 @@
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
-				AC7E9F7A28C5ABB300859E06 /* CollectionInfoView.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,

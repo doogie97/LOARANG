@@ -61,7 +61,7 @@ final class UserInfoView: UIView {
     }()
     
     private(set) lazy var segmentControl: CustomSegmentControl = {
-        let segmentControl = CustomSegmentControl(segmentTitles: ["기본 정보", "스킬", "수집품", "보유캐릭터"])
+        let segmentControl = CustomSegmentControl(segmentTitles: ["기본 정보", "스킬", "보유캐릭터"])
         segmentControl.selectedFontColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         segmentControl.selectedFont = .one(size: 14, family: .Bold)
         segmentControl.deselectedFont = .one(size: 14, family: .Light)
