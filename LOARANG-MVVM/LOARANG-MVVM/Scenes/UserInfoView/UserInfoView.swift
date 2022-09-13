@@ -10,6 +10,7 @@ import SnapKit
 final class UserInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -66,6 +67,14 @@ final class UserInfoView: UIView {
         return segmentControl
     }()
     
+    private(set) var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.stopAnimating()
+        indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        
+        return indicator
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .mainBackground
         self.addSubview(navigationView)
@@ -76,6 +85,7 @@ final class UserInfoView: UIView {
         self.addSubview(segmentControl)
         self.addSubview(separatorView)
         self.addSubview(pageView)
+        self.addSubview(activityIndicator)
         
         navigationView.snp.makeConstraints{
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
@@ -113,11 +123,13 @@ final class UserInfoView: UIView {
             $0.top.equalTo(separatorView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+
+        activityIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func setViewContents(_ userInfo: UserInfo) {
-        setLayout()
-        
         self.titleLabel.text = userInfo.mainInfo.name
     }
 }

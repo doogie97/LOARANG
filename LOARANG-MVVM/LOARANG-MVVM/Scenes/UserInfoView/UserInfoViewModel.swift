@@ -10,6 +10,7 @@ import RxRelay
 protocol UserInfoViewModelable: UserInfoViewModelInput, UserInfoViewModelOutput {}
 
 protocol UserInfoViewModelInput {
+    func searchUser()
     func touchBackButton()
     func touchSegmentControl(_ index: Int)
     func detailViewDidShow(_ index: Int)
@@ -17,25 +18,45 @@ protocol UserInfoViewModelInput {
 }
 
 protocol UserInfoViewModelOutput {
-    var userInfo: UserInfo { get }
+    var userInfo: BehaviorRelay<UserInfo?> { get }
     var popView: PublishRelay<Void> { get }
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
     var isBookmarkUser: BehaviorRelay<Bool> { get }
     var showAlert: PublishRelay<String?> { get }
+    var startedLoading: PublishRelay<Void> { get }
+    var finishedLoading: PublishRelay<Void> { get }
+    var pageViewList: BehaviorRelay<[UIViewController?]> { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: AppStorageable
-    let userInfo: UserInfo
-    
-    init(storage: AppStorageable, userInfo: UserInfo) {
+    private let container: Container
+    private let userName: String
+    init(storage: AppStorageable, container: Container, userName: String) {
         self.storage = storage
-        self.userInfo = userInfo
-        self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userInfo.mainInfo.name))
+        self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userName))
+        self.userName = userName
+        self.container = container
     }
     
     //in
+    func searchUser() {
+        startedLoading.accept(())
+        CrawlManager().getUserInfo(userName) {[weak self] result in
+            switch result {
+            case .success(let userInfo):
+                self?.userInfo.accept(userInfo)
+                self?.pageViewList.accept([self?.container.makeBasicInfoVC(userInfo: userInfo),
+                                           self?.container.makeSkillInfoViewController(skillInfo: userInfo.userJsonInfo.skillInfo),
+                                           self?.container.makeFourthVC()])
+            case .failure(_):
+                self?.showAlert.accept("검색하신 유저가 없습니다")
+            }
+            self?.finishedLoading.accept(())
+        }
+    }
+    
     func touchBackButton() {
         popView.accept(())
     }
@@ -49,9 +70,13 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     func touchBookmarkButton() {
+        guard let userInfo = userInfo.value else {
+            return
+        }
+        
         do {
-            if storage.isBookmarkUser(userInfo.mainInfo.name) {
-                try storage.deleteUser(userInfo.mainInfo.name)
+            if storage.isBookmarkUser(userName) {
+                try storage.deleteUser(userName)
             } else {
                 try storage.addUser(BookmarkUser(name: userInfo.mainInfo.name,
                                                  image: userInfo.mainInfo.userImage,
@@ -69,9 +94,13 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     //out
+    let userInfo = BehaviorRelay<UserInfo?>(value: nil)
     let popView = PublishRelay<Void>()
+    let pageViewList = BehaviorRelay<[UIViewController?]>(value: [])
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
     let isBookmarkUser: BehaviorRelay<Bool>
     let showAlert = PublishRelay<String?>()
+    let startedLoading = PublishRelay<Void>()
+    let finishedLoading = PublishRelay<Void>()
 }

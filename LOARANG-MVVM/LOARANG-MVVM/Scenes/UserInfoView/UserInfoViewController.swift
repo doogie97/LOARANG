@@ -9,11 +9,9 @@ import RxSwift
 
 final class UserInfoViewController: UIViewController {
     private let viewModel: UserInfoViewModelable
-    private let pageViewList: [UIViewController]  //이건 viewModel에 있는게 맞을까 여기가 맞을까?
     
-    init(viewModel: UserInfoViewModelable, viewList: [UIViewController]) {
+    init(viewModel: UserInfoViewModelable) {
         self.viewModel = viewModel
-        self.pageViewList = viewList
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,11 +30,11 @@ final class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userInfoView.setViewContents(viewModel.userInfo)
         bindView()
+        viewModel.searchUser()
     }
     
-    func bindView() {
+    private func bindView() {
         userInfoView.backButton.rx.tap
             .bind(onNext: { [weak self] in
                 self?.viewModel.touchBackButton()
@@ -48,6 +46,46 @@ final class UserInfoViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposBag)
+
+        userInfoView.bookMarkButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchBookmarkButton()
+            })
+            .disposed(by: disposBag)
+        
+        viewModel.showAlert
+            .bind(onNext: { [weak self] in
+                self?.showAlert(title: "", message: $0)
+            })
+            .disposed(by: disposBag)
+        
+        bindLoadingView()
+        bindPageVC()
+        bindUserInfo()
+    }
+    
+    private func bindLoadingView() {
+        viewModel.startedLoading
+            .bind(onNext: { [weak self] in
+                self?.userInfoView.activityIndicator.startAnimating()
+                self?.userInfoView.isUserInteractionEnabled = false
+            })
+            .disposed(by: disposBag)
+        
+        viewModel.finishedLoading
+            .bind(onNext: { [weak self] in
+                self?.userInfoView.activityIndicator.stopAnimating()
+                self?.userInfoView.isUserInteractionEnabled = true
+            })
+            .disposed(by: disposBag)
+    }
+
+    private func bindPageVC() {
+        viewModel.pageViewList
+            .bind(onNext: { [weak self] in
+                self?.setPageView(pageViewList: $0, index: 0)
+            })
+            .disposed(by: disposBag)
         
         userInfoView.segmentControl.segmentCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
@@ -57,13 +95,18 @@ final class UserInfoViewController: UIViewController {
         
         viewModel.currentPage
              .bind(onNext: { [weak self] in
-                 self?.changeView(index: $0)
+                 self?.setPageView(pageViewList: self?.viewModel.pageViewList.value ?? [], index: $0)
              })
              .disposed(by: disposBag)
-        
-        userInfoView.bookMarkButton.rx.tap
+    }
+    
+    private func bindUserInfo() {
+        viewModel.userInfo
             .bind(onNext: { [weak self] in
-                self?.viewModel.touchBookmarkButton()
+                guard let userInfo = $0 else {
+                    return
+                }
+                self?.userInfoView.setViewContents(userInfo)
             })
             .disposed(by: disposBag)
         
@@ -72,15 +115,13 @@ final class UserInfoViewController: UIViewController {
                 self?.userInfoView.bookMarkButton.setBookmarkButtonColor($0)
             })
             .disposed(by: disposBag)
-        
-        viewModel.showAlert
-            .bind(onNext: { [weak self] in
-                self?.showAlert(title: "", message: $0)
-            })
-            .disposed(by: disposBag)
     }
-    
-    private func changeView(index: Int) {
+
+    private func setPageView(pageViewList: [UIViewController?] ,index: Int) {
+        guard let vc = pageViewList[safe: index] else {
+            return
+        }
+        
         if viewModel.previousPage.value == index {
              return
         }
@@ -89,7 +130,7 @@ final class UserInfoViewController: UIViewController {
             index > viewModel.previousPage.value ? .forward : .reverse
         }
         
-        pageVC.setViewControllers([pageViewList[index]], direction: direction, animated: true)
+        pageVC.setViewControllers([vc ?? UIViewController()], direction: direction, animated: true)
         pageVC.view.frame = CGRect(x: 0, y: 0, width: userInfoView.pageView.frame.width, height: userInfoView.pageView.frame.height)
         userInfoView.pageView.addSubview(pageVC.view)
         viewModel.detailViewDidShow(index)

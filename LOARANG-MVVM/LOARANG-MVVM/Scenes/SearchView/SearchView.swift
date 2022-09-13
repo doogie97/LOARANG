@@ -41,25 +41,12 @@ final class SearchView: UIView {
         return searchBar
     }()
     
-    private(set) var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.stopAnimating()
-        indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
-        
-        return indicator
-    }()
-    
     private func setLayout() {
         self.addSubview(mainStackView)
-        self.addSubview(activityIndicator)
         
         mainStackView.snp.makeConstraints {
             $0.top.leading.equalTo(self.safeAreaLayoutGuide).inset(15)
             $0.trailing.equalTo(self.safeAreaLayoutGuide)
-        }
-        
-        activityIndicator.snp.makeConstraints {
-            $0.center.equalToSuperview()
         }
     }
 }

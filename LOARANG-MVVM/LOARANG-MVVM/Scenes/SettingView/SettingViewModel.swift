@@ -23,17 +23,14 @@ protocol SettingViewModeOutput {
 
 final class SettingViewModel: SettingViewModelable {
     private let storage: AppStorageable
-    private let crawlManager: CrawlManagerable
     
-    init(storage: AppStorageable, crawlManger: CrawlManagerable) {
+    init(storage: AppStorageable) {
         self.storage = storage
-        self.crawlManager = crawlManger
     }
     //input
     func touchSearchButton(_ userName: String) {
         startedLoading.accept(())
-        crawlManager.getUserInfo(userName) { [weak self] result in
-            self?.finishedLoading.accept(())
+        CrawlManager().getUserInfo(userName) { [weak self] result in
             switch result {
             case .success(let userInfo):
                 self?.checkUser.accept(MainUser(image: userInfo.mainInfo.userImage,
@@ -45,6 +42,7 @@ final class SettingViewModel: SettingViewModelable {
             case .failure(_):
                 self?.showAlert.accept("검색하신 유저가 없습니다")
             }
+            self?.finishedLoading.accept(())
         }
     }
     

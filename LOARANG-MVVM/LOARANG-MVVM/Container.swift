@@ -9,16 +9,14 @@ import UIKit
 
 final class Container {
     private let storage: AppStorageable
-    private let crawlManager: CrawlManagerable
     
-    init(storage: AppStorageable, crawlManager: CrawlManagerable) {
+    init(storage: AppStorageable) {
         self.storage = storage
-        self.crawlManager = crawlManager
     }
     
     func checkInspection() throws {
         do {
-            try crawlManager.chenckInspection()
+            try CrawlManager().chenckInspection()
         } catch {
             throw CrawlError.inpection
         }
@@ -30,7 +28,7 @@ final class Container {
     }
     
     private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(storage: storage, crawlManager: crawlManager)
+        return MainViewModel(storage: storage)
     }
     
     func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModelable {
@@ -43,22 +41,19 @@ final class Container {
     }
     
     private func makeSearchViewModel() -> SearchViewModelable {
-        return SearchViewModel(crawlManager: crawlManager)
+        return SearchViewModel()
     }
     
 //MARK: - about UserInfoView
-    func makeUserInfoViewController(_ userInfo: UserInfo) -> UserInfoViewController {
-        return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo),
-                                      viewList: [makeBasicInfoVC(userInfo: userInfo),
-                                                 makeSkillInfoViewController(skillInfo: userInfo.userJsonInfo.skillInfo),
-                                                 makeFourthVC()])
+    func makeUserInfoViewController(_ userInfo: String) -> UserInfoViewController {
+        return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo))
     }
     
-    private func makeUserInfoViewModel(_ userInfo: UserInfo) -> UserInfoViewModelable {
-        return UserInfoViewModel(storage: storage, userInfo: userInfo)
+    private func makeUserInfoViewModel(_ userName: String) -> UserInfoViewModelable {
+        return UserInfoViewModel(storage: storage, container: self, userName: userName)
     }
     //MARK: - about BasicInfoView
-    private func makeBasicInfoVC(userInfo: UserInfo) -> BasicInfoViewController {
+    func makeBasicInfoVC(userInfo: UserInfo) -> BasicInfoViewController {
         return BasicInfoViewController(container: self,
                                        viewModel: makeBasicInfoViewModel(userInfo: userInfo))
     }
@@ -111,7 +106,7 @@ final class Container {
     }
     
     //MARK: - about SkillInfoView
-    private func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {
+    func makeSkillInfoViewController(skillInfo: SkillInfo) -> SkillInfoViewController {
         return SkillInfoViewController(viewModel: makeSkillInfoViewModel(skillInfo: skillInfo),
                                        container: self)
     }
@@ -131,13 +126,13 @@ final class Container {
         return SkillDetailViewModel(skill: skill)
     }
     
-    private func makeFourthVC() -> FourthInfoViewController {
+    func makeFourthVC() -> FourthInfoViewController {
         return FourthInfoViewController()
     }
     
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
-        return SettingViewModel(storage: storage, crawlManger: crawlManager)
+        return SettingViewModel(storage: storage)
     }
 }

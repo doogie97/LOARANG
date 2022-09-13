@@ -59,23 +59,12 @@ final class MainView: UIView {
     private(set) lazy var mainUserView = MainUserView()
     private(set) lazy var bookmarkView = BookmarkView()
     
-    //MARK: - atc
-    private(set) lazy var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
-        indicator.stopAnimating()
-        
-        return indicator
-    }()
-    
     private func setLayout() {
         self.addSubview(titleStackView)
         self.addSubview(mainScrollView)
         mainScrollView.addSubview(mainContentsView)
         mainContentsView.addSubview(mainUserView)
         mainContentsView.addSubview(bookmarkView)
-        
-        self.addSubview(activityIndicator)
         
         titleStackView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(20)
@@ -104,10 +93,6 @@ final class MainView: UIView {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(UIScreen.main.bounds.width * 0.58)
             $0.bottom.equalToSuperview()
-        }
-        
-        activityIndicator.snp.makeConstraints {
-            $0.center.equalToSuperview()
         }
     }
 }

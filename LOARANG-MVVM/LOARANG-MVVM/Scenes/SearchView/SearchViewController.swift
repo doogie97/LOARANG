@@ -46,10 +46,10 @@ final class SearchViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.showUserInfo.bind(onNext: { [weak self] in
-            guard let self = self else {
+            guard let userInfoVC = self?.container.makeUserInfoViewController($0) else {
                 return
             }
-            self.navigationController?.pushViewController(self.container.makeUserInfoViewController($0), animated: true)
+            self?.navigationController?.pushViewController(userInfoVC, animated: true)
         })
         .disposed(by: disposeBag)
         
@@ -63,24 +63,5 @@ final class SearchViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         })
         .disposed(by: disposeBag)
-        
-        viewModel.showAlert.bind(onNext: { [weak self] in
-            self?.showAlert(title: nil, message: $0)
-        })
-        .disposed(by: disposeBag)
-        
-        viewModel.startedLoading
-            .bind(onNext: { [weak self] in
-                self?.searchView.activityIndicator.startAnimating()
-                self?.searchView.isUserInteractionEnabled = false
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.finishedLoading
-            .bind(onNext: { [weak self] in
-                self?.searchView.activityIndicator.stopAnimating()
-                self?.searchView.isUserInteractionEnabled = true
-            })
-            .disposed(by: disposeBag)
     }
 }

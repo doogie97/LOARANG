@@ -14,8 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let realm = try? Realm() else {
             return
         }
-        let container = Container(storage: AppStorage(LocalStorage(realm: realm)),
-                                  crawlManager: CrawlManager())
+        let container = Container(storage: AppStorage(LocalStorage(realm: realm)))
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)

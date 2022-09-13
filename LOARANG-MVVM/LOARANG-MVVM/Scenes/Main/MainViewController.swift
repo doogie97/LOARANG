@@ -62,27 +62,7 @@ final class MainViewController: UIViewController {
                     .pushViewController(self.container.makeUserInfoViewController($0), animated: true)
             })
             .disposed(by: disposeBag)
-        
-        viewModel.showAlert
-            .bind(onNext: { [weak self] in
-                self?.showAlert(title: "", message: $0)
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.startedLoading
-            .bind(onNext: { [weak self] in
-                self?.mainView.activityIndicator.startAnimating()
-                self?.mainView.isUserInteractionEnabled = false
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.finishedLoading
-            .bind(onNext: { [weak self] in
-                self?.mainView.activityIndicator.stopAnimating()
-                self?.mainView.isUserInteractionEnabled = true
-            })
-            .disposed(by: disposeBag)
-        
+
         // MainView contents
         viewModel.mainUser
             .bind(onNext: { [weak self] in

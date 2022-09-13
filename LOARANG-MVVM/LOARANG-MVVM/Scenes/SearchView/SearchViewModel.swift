@@ -16,41 +16,20 @@ protocol SearchViewModelInput {
 
 protocol SearchViewModelOutput {
     var popView: PublishRelay<Void> { get }
-    var showUserInfo: PublishRelay<UserInfo> { get }
-    var showAlert: PublishRelay<String> { get }
-    var startedLoading: PublishRelay<Void> { get }
-    var finishedLoading: PublishRelay<Void> { get }
+    var showUserInfo: PublishRelay<String> { get }
 }
 
-final class SearchViewModel: SearchViewModelable {
-    private var crawlManager: CrawlManagerable
-    
-    init(crawlManager: CrawlManagerable) {
-        self.crawlManager = crawlManager
-    }
-    
+final class SearchViewModel: SearchViewModelable {    
     //in
     func touchBackButton() {
         popView.accept(())
     }
     
     func touchSearchButton(_ name: String) {
-        startedLoading.accept(())
-        crawlManager.getUserInfo(name) { [weak self] result in
-            self?.finishedLoading.accept(())
-            switch result {
-            case .success(let userInfo):
-                self?.showUserInfo.accept(userInfo)
-            case .failure(_):
-                self?.showAlert.accept("검색하신 유저가 없습니다.")
-            }
-        }
+        showUserInfo.accept(name)
     }
     
     //out
     let popView = PublishRelay<Void>()
-    let showUserInfo = PublishRelay<UserInfo>()
-    let showAlert = PublishRelay<String>()
-    let startedLoading = PublishRelay<Void>()
-    let finishedLoading = PublishRelay<Void>()
+    let showUserInfo = PublishRelay<String>()
 }
