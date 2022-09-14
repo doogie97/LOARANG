@@ -36,6 +36,14 @@ final class UserInfoView: UIView {
         return button
     }()
     
+    private(set) lazy var reloadButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.counterclockwise"), for: .normal)
+        button.imageView?.tintColor = .white
+        
+        return button
+    }()
+    
     private(set) lazy var bookMarkButton: UIButton = {
         let button = UIButton()
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
@@ -80,6 +88,7 @@ final class UserInfoView: UIView {
         self.addSubview(navigationView)
         navigationView.addSubview(backButton)
         navigationView.addSubview(titleLabel)
+        navigationView.addSubview(reloadButton)
         navigationView.addSubview(bookMarkButton)
         
         self.addSubview(segmentControl)
@@ -101,10 +110,14 @@ final class UserInfoView: UIView {
             $0.centerX.equalToSuperview()
         }
         
+        reloadButton.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.trailing.equalTo(bookMarkButton.snp.leading).inset(-8)
+        }
+        
         bookMarkButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(0.1)
         }
         
         segmentControl.snp.makeConstraints {
