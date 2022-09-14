@@ -146,19 +146,19 @@ extension CustomSegmentControl: UICollectionViewDelegate {
         let leadingDistance = segmentWidth * segmentIndex
 
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            guard let self = self else {
+            guard let segmentCollectionView = self?.segmentCollectionView else {
                 return
             }
 
-            self.underLineView.snp.updateConstraints {
-                $0.leading.equalTo(self.segmentCollectionView).inset(leadingDistance)
+            self?.underLineView.snp.updateConstraints {
+                $0.leading.equalTo(segmentCollectionView).inset(leadingDistance)
             }
             
-            self.backView.snp.updateConstraints {
-                $0.leading.equalTo(self.segmentCollectionView).inset(leadingDistance)
+            self?.backView.snp.updateConstraints {
+                $0.leading.equalTo(segmentCollectionView).inset(leadingDistance)
             }
             
-            self.layoutIfNeeded()
+            self?.layoutIfNeeded()
         })
     }
 }

@@ -48,15 +48,15 @@ final class BasicEquipmentViewController: UIViewController {
         
         viewModel.showEquipmentDetail
             .bind(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
                 guard let equipmentInfo = $0 else {
                     return
                 }
                 
-                self.present(self.container.makeEquipmentDetailViewController(equipmentInfo: equipmentInfo), animated: true)
+                guard let equipmentDetailVC = self?.container.makeEquipmentDetailViewController(equipmentInfo: equipmentInfo) else {
+                    return
+                }
+                
+                self?.present(equipmentDetailVC, animated: true)
             })
             .disposed(by: disposeBag)
         

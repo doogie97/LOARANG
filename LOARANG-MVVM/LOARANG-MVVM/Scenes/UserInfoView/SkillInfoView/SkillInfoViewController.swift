@@ -49,10 +49,11 @@ final class SkillInfoViewController: UIViewController {
         
         viewModel.showSkillDetailView
             .bind(onNext: { [weak self] in
-                guard let self = self else {
+                guard let skillDetailVC = self?.container.makeSkillDetailViewController(skill: $0) else {
                     return
                 }
-                self.present(self.container.makeSkillDetailViewController(skill: $0), animated: true)
+                
+                self?.present(skillDetailVC, animated: true)
             })
             .disposed(by: disposeBag)
         

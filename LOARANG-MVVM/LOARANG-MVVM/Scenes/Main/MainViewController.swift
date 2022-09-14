@@ -45,24 +45,24 @@ final class MainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.showSearchView.bind(onNext: { [weak self] in
-            guard let self = self else {
+            guard let searchVC = self?.container.makeSearchViewController() else {
                 return
             }
-            self.navigationController?.pushViewController(self.container.makeSearchViewController(), animated: true)
+            
+            self?.navigationController?.pushViewController(searchVC, animated: true)
         })
         .disposed(by: disposeBag)
         
         //ShowUserInfo
         viewModel.showUserInfo
             .bind(onNext: { [weak self] in
-                guard let self = self else {
+                guard let userInfoVC = self?.container.makeUserInfoViewController($0) else {
                     return
                 }
-                self.navigationController?
-                    .pushViewController(self.container.makeUserInfoViewController($0), animated: true)
+                self?.navigationController?.pushViewController(userInfoVC, animated: true)
             })
             .disposed(by: disposeBag)
-
+        
         // MainView contents
         viewModel.mainUser
             .bind(onNext: { [weak self] in
