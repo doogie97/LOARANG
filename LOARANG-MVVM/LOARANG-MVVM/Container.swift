@@ -54,8 +54,7 @@ final class Container {
     }
     //MARK: - about BasicInfoView
     func makeBasicInfoVC(userInfo: UserInfo) -> BasicInfoViewController {
-        return BasicInfoViewController(container: self,
-                                       viewModel: makeBasicInfoViewModel(userInfo: userInfo))
+        return BasicInfoViewController(viewModel: makeBasicInfoViewModel(userInfo: userInfo))
     }
     
     private func makeBasicInfoViewModel(userInfo: UserInfo) -> BasicInfoViewModelable {

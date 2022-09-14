@@ -8,11 +8,9 @@
 import RxSwift
 
 final class BasicInfoViewController: UIViewController {
-    private let container: Container
     private let viewModel: BasicInfoViewModelable
     
-    init(container: Container, viewModel: BasicInfoViewModelable) {
-        self.container = container
+    init(viewModel: BasicInfoViewModelable) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
