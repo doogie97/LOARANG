@@ -103,6 +103,7 @@ final class UserInfoView: UIView {
         backButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.leading.equalToSuperview()
+            $0.width.equalTo(40)
         }
         
         titleLabel.snp.makeConstraints {
@@ -112,12 +113,14 @@ final class UserInfoView: UIView {
         
         reloadButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.trailing.equalTo(bookMarkButton.snp.leading).inset(-8)
+            $0.trailing.equalTo(bookMarkButton.snp.leading)
+            $0.width.equalTo(40)
         }
         
         bookMarkButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.trailing.equalToSuperview()
+            $0.width.equalTo(40)
         }
         
         segmentControl.snp.makeConstraints {
