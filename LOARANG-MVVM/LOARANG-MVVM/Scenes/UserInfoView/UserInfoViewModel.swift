@@ -14,6 +14,7 @@ protocol UserInfoViewModelInput {
     func touchBackButton()
     func touchSegmentControl(_ index: Int)
     func detailViewDidShow(_ index: Int)
+    func touchReloadButton()
     func touchBookmarkButton()
 }
 
@@ -67,6 +68,10 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     func detailViewDidShow(_ index: Int) {
         previousPage.accept(index)
+    }
+    
+    func touchReloadButton() {
+        searchUser()
     }
     
     func touchBookmarkButton() {

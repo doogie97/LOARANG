@@ -62,6 +62,7 @@ final class UserInfoViewController: UIViewController {
         bindLoadingView()
         bindPageVC()
         bindUserInfo()
+        bindReload()
     }
     
     private func bindLoadingView() {
@@ -83,7 +84,7 @@ final class UserInfoViewController: UIViewController {
     private func bindPageVC() {
         viewModel.pageViewList
             .bind(onNext: { [weak self] in
-                self?.setPageView(pageViewList: $0, index: 0)
+                self?.setPageView(pageViewList: $0, index: self?.viewModel.currentPage.value ?? 0)
             })
             .disposed(by: disposBag)
         
@@ -115,6 +116,15 @@ final class UserInfoViewController: UIViewController {
                 self?.userInfoView.bookMarkButton.setBookmarkButtonColor($0)
             })
             .disposed(by: disposBag)
+    }
+    
+    private func bindReload() {
+        userInfoView.reloadButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchReloadButton()
+            })
+            .disposed(by: disposBag)
+        
     }
 
     private func setPageView(pageViewList: [UIViewController?] ,index: Int) {
