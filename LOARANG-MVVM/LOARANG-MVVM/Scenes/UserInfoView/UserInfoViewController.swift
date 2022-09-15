@@ -80,6 +80,13 @@ final class UserInfoViewController: UIViewController {
                 self?.setPageView(index: self?.viewModel.currentPage.value ?? 0)
             })
             .disposed(by: disposBag)
+        
+        viewModel.sucssesSearching
+            .bind(onNext: { [weak self] in
+                self?.userInfoView.showContentsView()
+                self?.userInfoView.setViewContents(self?.viewModel.userName)
+            })
+            .disposed(by: disposBag)
     }
 
     private func bindPageVC() {
@@ -97,8 +104,6 @@ final class UserInfoViewController: UIViewController {
     }
     
     private func bindUserInfo() {
-        userInfoView.setViewContents(viewModel.userName)
-        
         viewModel.isBookmarkUser
             .bind(onNext: { [weak self] in
                 self?.userInfoView.bookMarkButton.setBookmarkButtonColor($0)
@@ -116,10 +121,6 @@ final class UserInfoViewController: UIViewController {
     }
 
     private func setPageView(index: Int) {
-        guard let vc = viewModel.pageViewList[safe: index] else {
-            return
-        }
-        
         if viewModel.previousPage.value == index {
              return
         }
@@ -128,7 +129,7 @@ final class UserInfoViewController: UIViewController {
             index > viewModel.previousPage.value ? .forward : .reverse
         }
         
-        pageVC.setViewControllers([vc ?? UIViewController()], direction: direction, animated: true)
+        pageVC.setViewControllers([viewModel.pageViewList[index]], direction: direction, animated: true)
         pageVC.view.frame = CGRect(x: 0, y: 0, width: userInfoView.pageView.frame.width, height: userInfoView.pageView.frame.height)
         userInfoView.pageView.addSubview(pageVC.view)
         viewModel.detailViewDidShow(index)

@@ -27,6 +27,7 @@ protocol UserInfoViewModelOutput {
     var showAlert: PublishRelay<String?> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
+    var sucssesSearching: PublishRelay<Void> { get }
     var pageViewList: [UIViewController] { get }
 }
 
@@ -50,7 +51,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
             case .success(let userInfo):
                 self?.userInfo.accept(userInfo)
                 self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
-                
+                self?.sucssesSearching.accept(())
             case .failure(_):
                 self?.showAlert.accept("검색하신 유저가 없습니다")
             }
@@ -71,17 +72,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     func touchReloadButton() {
-        startedLoading.accept(())
-        CrawlManager().getUserInfo(userName) {[weak self] result in
-            switch result {
-            case .success(let userInfo):
-                self?.userInfo.accept(userInfo)
-                self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
-            case .failure(_):
-                self?.showAlert.accept("검색하신 유저가 없습니다")
-            }
-            self?.finishedLoading.accept(())
-        }
+        searchUser()
     }
     
     func touchBookmarkButton() {
@@ -118,6 +109,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     let showAlert = PublishRelay<String?>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
+    let sucssesSearching = PublishRelay<Void>()
     
     //for insideView
     private let userInfo = BehaviorRelay<UserInfo?>(value: nil)

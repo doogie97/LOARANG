@@ -17,6 +17,14 @@ final class UserInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var contentsView: UIView = {
+        let view = UIView()
+        view.layer.opacity = 0
+        view.backgroundColor = .mainBackground
+        
+        return view
+    }()
+    
     private lazy var navigationView = UIView()
     
     private lazy var titleLabel: UILabel = {
@@ -85,20 +93,27 @@ final class UserInfoView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
-        self.addSubview(navigationView)
-        navigationView.addSubview(backButton)
-        navigationView.addSubview(titleLabel)
-        navigationView.addSubview(reloadButton)
-        navigationView.addSubview(bookMarkButton)
-        
-        self.addSubview(segmentControl)
-        self.addSubview(separatorView)
-        self.addSubview(pageView)
+        self.addSubview(contentsView)
         self.addSubview(activityIndicator)
+        
+        contentsView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        activityIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        contentsView.addSubview(navigationView)
         
         navigationView.snp.makeConstraints{
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
         }
+        
+        navigationView.addSubview(backButton)
+        navigationView.addSubview(titleLabel)
+        navigationView.addSubview(reloadButton)
+        navigationView.addSubview(bookMarkButton)
         
         backButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
@@ -123,6 +138,10 @@ final class UserInfoView: UIView {
             $0.width.equalTo(40)
         }
         
+        contentsView.addSubview(segmentControl)
+        contentsView.addSubview(separatorView)
+        contentsView.addSubview(pageView)
+        
         segmentControl.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview().inset(16)
@@ -139,13 +158,15 @@ final class UserInfoView: UIView {
             $0.top.equalTo(separatorView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
-
-        activityIndicator.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
     }
     
-    func setViewContents(_ userName: String) {
+    func setViewContents(_ userName: String?) {
         self.titleLabel.text = userName
+    }
+    
+    func showContentsView() {
+        UIView.transition(with: contentsView, duration: 0.3, options: .transitionCrossDissolve) {
+            self.contentsView.layer.opacity = 1
+        }
     }
 }
