@@ -55,6 +55,7 @@ final class EngravingsView: UIView {
         label.font = .one(size: 13, family: .Bold)
         label.textAlignment = .center
         label.text = "활성화된 각인이 없습니다"
+        label.isHidden = true
         
         return label
     }()
@@ -64,27 +65,36 @@ final class EngravingsView: UIView {
         self.layer.cornerRadius = 10
         
         self.addSubview(titleLabel)
+        self.addSubview(engravingCollectionView)
+        self.addSubview(noEngravingLabel)
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
             $0.leading.trailing.equalToSuperview().inset(8)
         }
         
-        if isNoEngraving {
-            self.addSubview(noEngravingLabel)
-            
-            noEngravingLabel.snp.makeConstraints {
-                $0.top.equalTo(titleLabel.snp.bottom).inset(-16)
-                $0.leading.trailing.equalToSuperview().inset(8)
-                $0.bottom.equalToSuperview().inset(16)
-            }
-        } else {
-            self.addSubview(engravingCollectionView)
-            
+        if engravingCollectionView.constraints.isEmpty {
             engravingCollectionView.snp.makeConstraints {
                 $0.top.equalTo(titleLabel.snp.bottom)
                 $0.leading.trailing.bottom.equalToSuperview()
                 $0.height.equalTo(collectionViewHeight)
             }
+        } else {
+            engravingCollectionView.snp.updateConstraints {
+                $0.height.equalTo(collectionViewHeight)
+            }
+        }
+        
+        noEngravingLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).inset(-16)
+            $0.leading.trailing.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview().inset(16)
+        }
+        
+        if isNoEngraving {
+            noEngravingLabel.isHidden = false
+        } else {
+            noEngravingLabel.isHidden = true
         }
     }
 }
