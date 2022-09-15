@@ -59,4 +59,9 @@ final class SpecialEquipmentCell: UICollectionViewCell {
         partImageView.backgroundColor = backColor
         partLabel.text = partString
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        partImageView.image = UIImage(named: "장비기본이미지")
+    }
 }

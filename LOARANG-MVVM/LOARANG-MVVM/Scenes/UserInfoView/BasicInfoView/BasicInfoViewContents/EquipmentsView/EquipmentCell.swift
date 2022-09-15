@@ -80,4 +80,9 @@ final class EquipmentCell: UITableViewCell {
         nameLabel.text = equipmentPart?.basicInfo.name?.htmlToString
         nameLabel.textColor = Equips.Grade(rawValue: equipmentPart?.basicInfo.grade ?? 0)?.textColor
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        partImageView.image = UIImage(named: "장비기본이미지")
+    }
 }
