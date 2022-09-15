@@ -39,6 +39,13 @@ final class AvatarViewController: UIViewController {
         avatarView.rightTableView.dataSource = self
         avatarView.rightTableView.delegate = self
         
+        viewModel.equips
+            .bind(onNext: { [weak self] _ in
+                self?.avatarView.leftTableView.reloadData()
+                self?.avatarView.rightTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.showEquipmentDetail
             .bind(onNext: { [weak self] in
                 guard let equipmentInfo = $0 else {

@@ -102,14 +102,7 @@ final class UserInfoViewController: UIViewController {
     }
     
     private func bindUserInfo() {
-        viewModel.userInfo
-            .bind(onNext: { [weak self] in
-                guard let userInfo = $0 else {
-                    return
-                }
-                self?.userInfoView.setViewContents(userInfo)
-            })
-            .disposed(by: disposBag)
+        userInfoView.setViewContents(viewModel.userName)
         
         viewModel.isBookmarkUser
             .bind(onNext: { [weak self] in

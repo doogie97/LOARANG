@@ -83,6 +83,7 @@ final class BasicEquipmentView: UIView {
         label.font = .one(size: 13, family: .Bold)
         label.textAlignment = .center
         label.text = "장착된 보석이 없습니다"
+        label.isHidden = true
         
         return label
     }()
@@ -144,6 +145,9 @@ final class BasicEquipmentView: UIView {
         self.addSubview(mainStackView)
         self.addSubview(gemView)
         gemView.addSubview(gemTitleLabel)
+        gemView.addSubview(gemCollectionView)
+        self.addSubview(gemDetailView)
+        gemView.addSubview(noGemLabel)
         
         mainStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(10)
@@ -160,28 +164,25 @@ final class BasicEquipmentView: UIView {
             $0.top.leading.trailing.equalToSuperview().inset(10)
         }
         
+        gemCollectionView.snp.makeConstraints {
+            $0.top.equalTo(gemTitleLabel.snp.bottom)
+            $0.leading.bottom.trailing.equalToSuperview().inset(5)
+        }
+        
+        gemDetailView.snp.makeConstraints {
+            $0.trailing.leading.equalToSuperview().inset(5)
+            $0.bottom.equalTo(gemTitleLabel.snp.bottom)
+            $0.height.greaterThanOrEqualTo(15)
+        }
+
+        noGemLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(gemCollectionView)
+        }
+        
         if isNoGem {
-            gemView.addSubview(noGemLabel)
-            
-            noGemLabel.snp.makeConstraints {
-                $0.top.equalTo(gemTitleLabel.snp.bottom)
-                $0.leading.trailing.equalToSuperview().inset(8)
-                $0.top.equalTo(gemView.snp.centerY)
-            }
+            noGemLabel.isHidden = false
         } else {
-            gemView.addSubview(gemCollectionView)
-            self.addSubview(gemDetailView)
-            
-            gemCollectionView.snp.makeConstraints {
-                $0.top.equalTo(gemTitleLabel.snp.bottom)
-                $0.leading.bottom.trailing.equalToSuperview().inset(5)
-            }
-            
-            gemDetailView.snp.makeConstraints {
-                $0.trailing.leading.equalToSuperview().inset(5)
-                $0.bottom.equalTo(gemTitleLabel.snp.bottom)
-                $0.height.greaterThanOrEqualTo(15)
-            }
+            noGemLabel.isHidden = true
         }
     }
     

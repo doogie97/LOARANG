@@ -32,19 +32,22 @@ final class BasicEquipmentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViewContents()
         bindView()
     }
-    
-    private func setViewContents() {
-        basicEquipmentView.setLayout(isNoGem: viewModel.gems.value.count == 0)
-    }
-    
+
     private func bindView() {
         basicEquipmentView.equipmentTableView.dataSource = self
         basicEquipmentView.equipmentTableView.delegate = self
         basicEquipmentView.accessoryTableView.dataSource = self
         basicEquipmentView.accessoryTableView.delegate = self
+        
+        viewModel.equips
+            .bind(onNext: { [weak self] in
+                self?.basicEquipmentView.setLayout(isNoGem: $0?.gems.count == 0)
+                self?.basicEquipmentView.equipmentTableView.reloadData()
+                self?.basicEquipmentView.accessoryTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
         
         viewModel.showEquipmentDetail
             .bind(onNext: { [weak self] in
@@ -60,13 +63,11 @@ final class BasicEquipmentViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        if viewModel.gems.value.count != 0 {
             viewModel.gems
                 .bind(to: basicEquipmentView.gemCollectionView.rx.items(cellIdentifier: "\(GemCell.self)", cellType: GemCell.self)) { index, gem, cell in
                     cell.setCellContents(gem: gem)
                 }
                 .disposed(by: disposeBag)
-        }
         
         basicEquipmentView.gemCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in

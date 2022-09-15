@@ -61,11 +61,11 @@ final class Container {
         return BasicInfoViewModel(userInfo: asdf, container: self)
     }
     //MARK: - about BasicEquipment
-    func makeBasicEquipmentViewController(equips: Equips) -> BasicEquipmentViewController {
+    func makeBasicEquipmentViewController(equips: BehaviorRelay<Equips?>) -> BasicEquipmentViewController {
         return BasicEquipmentViewController(viewModel: makeBasicEquipmentViewModel(equips: equips), container: self)
     }
     
-    private func makeBasicEquipmentViewModel(equips: Equips) -> BasicEquipmentViewModelable {
+    private func makeBasicEquipmentViewModel(equips: BehaviorRelay<Equips?>) -> BasicEquipmentViewModelable {
         return BasicEquipmentViewModel(equips: equips)
     }
     
@@ -81,11 +81,11 @@ final class Container {
     }
 
     //MARK: - about Avatar
-    func makeAvatarViewController(equips: Equips) -> AvatarViewController {
+    func makeAvatarViewController(equips: BehaviorRelay<Equips?>) -> AvatarViewController {
         return AvatarViewController(viewModel: makeAvatarViewModel(equips: equips), container: self)
     }
     
-    private func makeAvatarViewModel(equips: Equips) -> AvatarViewModelable {
+    private func makeAvatarViewModel(equips: BehaviorRelay<Equips?>) -> AvatarViewModelable {
         return AvatarViewModel(equips: equips)
     }
     

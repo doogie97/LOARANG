@@ -145,7 +145,7 @@ final class UserInfoView: UIView {
         }
     }
     
-    func setViewContents(_ userInfo: UserInfo) {
-        self.titleLabel.text = userInfo.mainInfo.name
+    func setViewContents(_ userName: String) {
+        self.titleLabel.text = userName
     }
 }

@@ -32,26 +32,29 @@ protocol BasicInfoViewModelOutput {
 final class BasicInfoViewModel: BasicInfoViewModelable {
     private let container: Container
     private let disposeBag = DisposeBag()
+    
     init(userInfo: BehaviorRelay<UserInfo?>, container: Container) {
         self.userInfo = userInfo
         self.container = container
         self.bind()
     }
-    func bind() {
+    
+    private func bind() {
         userInfo.bind(onNext: {[weak self] in
             guard let userInfo = $0 else {
                 return
             }
-            
             self?.engravings.accept(userInfo.stat.engravigs)
             self?.cards.accept(userInfo.userJsonInfo.cardInfo.cards)
             self?.cardSetEffects.accept(userInfo.userJsonInfo.cardInfo.cardSetEffects)
-            self?.pageViewList = [
-                self?.container.makeBasicEquipmentViewController(equips:userInfo.userJsonInfo.equips),
-                self?.container.makeAvatarViewController(equips: userInfo.userJsonInfo.equips)
-            ]
+            self?.equips.accept(userInfo.userJsonInfo.equips)
         })
         .disposed(by: disposeBag)
+        
+        pageViewList = [
+            container.makeBasicEquipmentViewController(equips: equips),
+            container.makeAvatarViewController(equips: equips)
+        ]
     }
     //in
     func touchSegmentControl(_ index: Int) {
@@ -84,4 +87,7 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
     let previousPage = BehaviorRelay<Int>(value: 50)
     let showengravingDetail = PublishRelay<Engraving>()
     let showActivityVC = PublishRelay<UIImage>()
+    
+    //for insideView
+    private let equips = BehaviorRelay<Equips?>(value: nil)
 }
