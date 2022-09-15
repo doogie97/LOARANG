@@ -80,7 +80,17 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     func touchReloadButton() {
-        searchUser()
+        startedLoading.accept(())
+        CrawlManager().getUserInfo(userName) {[weak self] result in
+            switch result {
+            case .success(let userInfo):
+                self?.userInfo.accept(userInfo)
+                self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
+            case .failure(_):
+                self?.showAlert.accept("검색하신 유저가 없습니다")
+            }
+            self?.finishedLoading.accept(())
+        }
     }
     
     func touchBookmarkButton() {
