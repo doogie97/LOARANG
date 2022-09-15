@@ -134,7 +134,7 @@ extension BasicEquipmentViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == basicEquipmentView.equipmentTableView {
-            return viewModel.battleEquips.count + 1
+            return viewModel.battleEquips.count == 0 ? 0 : viewModel.battleEquips.count + 1
         }
         
         if tableView == basicEquipmentView.accessoryTableView {
