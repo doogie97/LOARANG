@@ -151,23 +151,25 @@ extension BasicEquipmentViewController: UITableViewDataSource {
             
             return cell
         }
-        var info: (equipments: [EquipmentPart?], pratString: String?) {
+        
+        var info: (equipments: EquipmentPart?, pratString: String?) {
             if tableView == basicEquipmentView.equipmentTableView {
-                return (viewModel.battleEquips,
+                return (viewModel.battleEquips[indexPath.row],
                         EquipmentPartType(rawValue: indexPath.row)?.partString)
             }
             if tableView == basicEquipmentView.accessoryTableView {
-                return (viewModel.accessories,
+                return (viewModel.accessories[indexPath.row],
                         AccessoryPartType(rawValue: indexPath.row)?.partString)
             }
             
-            return ([], nil)
+            return (nil, nil)
         }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EquipmentCell.self)", for: indexPath) as? EquipmentCell else { return UITableViewCell() }
-        cell.setCellContents(equipmentPart: info.equipments[indexPath.row],
+        
+        cell.setCellContents(equipmentPart: info.equipments,
                              partString: info.pratString,
-                             backColor: Equips.Grade(rawValue: info.equipments[indexPath.row]?.basicInfo.grade ?? 0)?.backgroundColor)
+                             backColor: Equips.Grade(rawValue: info.equipments?.basicInfo.grade ?? 0)?.backgroundColor)
         
         return cell
     }
