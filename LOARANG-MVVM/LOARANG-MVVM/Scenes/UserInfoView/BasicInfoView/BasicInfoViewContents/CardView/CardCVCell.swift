@@ -29,6 +29,7 @@ final class CardCVCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .one(size: 13, family: .Bold)
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.backgroundColor = UIColor(white: 0.1, alpha: 0.5)
         
         return label
@@ -62,7 +63,7 @@ final class CardCVCell: UICollectionViewCell {
         cardNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(2)
             $0.leading.trailing.equalToSuperview().inset(2)
-            $0.height.equalToSuperview().multipliedBy(0.15)
+            $0.height.greaterThanOrEqualToSuperview().multipliedBy(0.15)
         }
         
         cardPointStackView.snp.makeConstraints {
