@@ -24,4 +24,16 @@ extension Int {
             return #colorLiteral(red: 0.7534232736, green: 0.001419665525, blue: 0.009936906397, alpha: 1)
         }
     }
+    var engravingHeight: CGFloat {
+        switch self {
+        case 0...2:
+            return UIScreen.main.bounds.width * 0.1
+        case 3...4:
+            return UIScreen.main.bounds.width * 0.17
+        case 5...6:
+            return UIScreen.main.bounds.width * 0.24
+        default:
+            return UIScreen.main.bounds.width * 0.31
+        }
+    }
 }
