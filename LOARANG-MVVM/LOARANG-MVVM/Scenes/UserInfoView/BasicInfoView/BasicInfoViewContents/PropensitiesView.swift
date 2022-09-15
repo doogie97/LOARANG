@@ -16,12 +16,14 @@ final class PropensitiesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var propensitiesTitleLabel: PaddingLabel = {
+        let label = PaddingLabel(top: 5, bottom: 5, left: 3, right: 3)
         label.font = .one(size: 18, family: .Bold)
         label.text = "성향"
         label.textAlignment = .center
-        label.backgroundColor = .red
+        label.backgroundColor = #colorLiteral(red: 0.1659600362, green: 0.1790002988, blue: 0.1983416486, alpha: 1)
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
         
         return label
     }()
@@ -72,19 +74,24 @@ final class PropensitiesView: UIView {
         self.backgroundColor = .cellColor
         self.layer.cornerRadius = 10
         
+        self.addSubview(propensitiesTitleLabel)
         self.addSubview(intellectStackView)
         self.addSubview(courageStackView)
         self.addSubview(charmStackView)
         self.addSubview(kindnessStackView)
         
+        propensitiesTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(8)
+            $0.leading.trailing.equalToSuperview().inset(8)
+        }
         intellectStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16)
+            $0.top.equalTo(propensitiesTitleLabel.snp.bottom).inset(-8)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview().multipliedBy(0.5)
         }
         
         courageStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16)
+            $0.top.equalTo(propensitiesTitleLabel.snp.bottom).inset(-8)
             $0.leading.equalTo(intellectStackView.snp.trailing)
             $0.trailing.equalToSuperview()
         }

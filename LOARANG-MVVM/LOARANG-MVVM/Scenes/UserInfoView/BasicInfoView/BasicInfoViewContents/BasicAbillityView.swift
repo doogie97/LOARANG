@@ -16,6 +16,30 @@ final class BasicAbillityView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var topTitleLabel: PaddingLabel = {
+        let label = PaddingLabel(top: 5, bottom: 5, left: 3, right: 3)
+        label.font = .one(size: 18, family: .Bold)
+        label.text = "기본 특성"
+        label.textAlignment = .center
+        label.backgroundColor = #colorLiteral(red: 0.1659600362, green: 0.1790002988, blue: 0.1983416486, alpha: 1)
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        
+        return label
+    }()
+    
+    private lazy var bottomTitleLabel: PaddingLabel = {
+        let label = PaddingLabel(top: 5, bottom: 5, left: 3, right: 3)
+        label.font = .one(size: 18, family: .Bold)
+        label.text = "전투 특성"
+        label.textAlignment = .center
+        label.backgroundColor = #colorLiteral(red: 0.1659600362, green: 0.1790002988, blue: 0.1983416486, alpha: 1)
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        
+        return label
+    }()
+    
     private lazy var topStackView: UIStackView = {
         let leftStackView = equllyStackView(axis: .vertical,
                                                     arrangedSubviews: [attackTitleLabel, attackLabel])
@@ -92,16 +116,28 @@ final class BasicAbillityView: UIView {
         self.backgroundColor = .cellColor
         self.layer.cornerRadius = 10
         
+        self.addSubview(topTitleLabel)
         self.addSubview(topStackView)
+        self.addSubview(bottomTitleLabel)
         self.addSubview(bottomStackView)
         
+        topTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(8)
+            $0.leading.trailing.equalToSuperview().inset(8)
+        }
+        
         topStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16)
+            $0.top.equalTo(topTitleLabel.snp.bottom).inset(-8)
             $0.leading.trailing.equalToSuperview()
         }
         
-        bottomStackView.snp.makeConstraints {
+        bottomTitleLabel.snp.makeConstraints {
             $0.top.equalTo(topStackView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(8)
+        }
+        
+        bottomStackView.snp.makeConstraints {
+            $0.top.equalTo(bottomTitleLabel.snp.bottom).inset(-8)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
         }
