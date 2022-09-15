@@ -52,6 +52,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 self?.userInfo.accept(userInfo)
                 self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
                 self?.sucssesSearching.accept(())
+                
+                self?.mainUserUpdate(userInfo)
+                self?.bookmarkUpdate(userInfo)
             case .failure(_):
                 self?.showAlert.accept("검색하신 유저가 없습니다")
             }
@@ -92,6 +95,33 @@ final class UserInfoViewModel: UserInfoViewModelable {
             showAlert.accept(error.errorMessage)
         }
         isBookmarkUser.accept(storage.isBookmarkUser(userInfo.mainInfo.name))
+    }
+    
+    private func mainUserUpdate(_ userInfo: UserInfo) {
+        if storage.mainUser.value?.name == userInfo.mainInfo.name {
+            do {
+                try storage.changeMainUser(MainUser(image: userInfo.mainInfo.userImage,
+                                                    battleLV: userInfo.mainInfo.battleLV,
+                                                    name: userInfo.mainInfo.name,
+                                                    class: userInfo.mainInfo.`class`,
+                                                    itemLV: userInfo.mainInfo.itemLV,
+                                                    server: userInfo.mainInfo.server))
+            } catch {
+                showAlert.accept(error.errorMessage)
+            }
+        }
+    }
+    
+    private func bookmarkUpdate(_ userInfo: UserInfo) {
+        if isBookmarkUser.value == true {
+            do {
+                try storage.updateUser(BookmarkUser(name: userName,
+                                                    image: userInfo.mainInfo.userImage,
+                                                    class: userInfo.mainInfo.`class`))
+            } catch {
+                showAlert.accept(error.errorMessage)
+            }
+        }
     }
     
     //out
