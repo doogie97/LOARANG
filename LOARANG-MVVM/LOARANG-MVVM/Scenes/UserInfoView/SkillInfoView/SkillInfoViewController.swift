@@ -31,16 +31,17 @@ final class SkillInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViewContents()
         bindView()
     }
     
-    private func setViewContents() {
-        let skillPointString = "스킬 포인트 : \(viewModel.usedSkillPoint) / \(viewModel.totalSkillPoint)"
-        skillInfoView.setViewContents(skillPointString: skillPointString)
-    }
-    
     private func bindView() {
+        viewModel.skillInfo
+            .bind(onNext: {[weak self] in
+                let skillPointString = "스킬 포인트 : \($0?.usedSkillPoint ?? "") / \($0?.totalSkillPoint ?? "")"
+                self?.skillInfoView.setViewContents(skillPointString: skillPointString)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.skills
             .bind(to: skillInfoView.skillTableView.rx.items(cellIdentifier: "\(SkillTVCell.self)", cellType: SkillTVCell.self)){ index, skill, cell in
                     cell.setCellContents(skill: skill)
@@ -63,5 +64,4 @@ final class SkillInfoViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
-    
 }

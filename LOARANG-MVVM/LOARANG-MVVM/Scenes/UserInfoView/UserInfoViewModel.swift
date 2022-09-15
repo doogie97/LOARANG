@@ -48,13 +48,18 @@ final class UserInfoViewModel: UserInfoViewModelable {
             switch result {
             case .success(let userInfo):
                 self?.userInfo.accept(userInfo)
+                self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
                 
                 guard let userInf2o = self?.userInfo else {
                     return
                 }
                 
+                guard let skillInfo = self?.skillInfo else {
+                    return
+                }
+                
                 self?.pageViewList.accept([self?.container.makeBasicInfoVC(userInfo: userInfo, asdf: userInf2o),
-                                           self?.container.makeSkillInfoViewController(skillInfo: userInfo.userJsonInfo.skillInfo),
+                                           self?.container.makeSkillInfoViewController(skillInfo: skillInfo),
                                            self?.container.makeFourthVC()])
             case .failure(_):
                 self?.showAlert.accept("검색하신 유저가 없습니다")
@@ -105,6 +110,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     //out
     let userInfo = BehaviorRelay<UserInfo?>(value: nil)
+    let skillInfo = BehaviorRelay<SkillInfo?>(value: nil)
     let popView = PublishRelay<Void>()
     let pageViewList = BehaviorRelay<[UIViewController?]>(value: [])
     let currentPage = BehaviorRelay<Int>(value: 0)

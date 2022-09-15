@@ -6,6 +6,7 @@
 //
 
 import RxRelay
+import RxSwift
 
 protocol SkillInfoViewModelable: SkillInfoViewModelInput, SkillInfoViewModelOutput {}
 
@@ -14,17 +15,28 @@ protocol SkillInfoViewModelInput {
 }
 
 protocol SkillInfoViewModelOutput {
-    var usedSkillPoint: String { get }
-    var totalSkillPoint: String { get }
-    var showSkillDetailView: PublishRelay<Skill> { get }
+    var skillInfo: BehaviorRelay<SkillInfo?> { get }
     var skills: BehaviorRelay<[Skill]> { get }
+    var showSkillDetailView: PublishRelay<Skill> { get }
 }
 
 final class SkillInfoViewModel: SkillInfoViewModelable {
-    init(skillInfo: SkillInfo) {
-        self.usedSkillPoint = skillInfo.usedSkillPoint
-        self.totalSkillPoint = skillInfo.totalSkillPoint
-        self.skills = BehaviorRelay<[Skill]>(value: skillInfo.skills)
+    private let disposeBag = DisposeBag()
+    
+    init(skillInfo: BehaviorRelay<SkillInfo?>) {
+        self.skillInfo = skillInfo
+        bind()
+    }
+    
+    func bind() {
+        skillInfo.bind(onNext: { [weak self] in
+            guard let skillInfo = $0 else {
+                return
+            }
+            
+            self?.skills.accept(skillInfo.skills)
+        })
+        .disposed(by: disposeBag)
     }
     
     //in
@@ -32,8 +44,7 @@ final class SkillInfoViewModel: SkillInfoViewModelable {
         showSkillDetailView.accept(skills.value[index])
     }
     //out
-    let usedSkillPoint: String
-    let totalSkillPoint: String
+    let skillInfo: BehaviorRelay<SkillInfo?>
     let showSkillDetailView = PublishRelay<Skill>()
-    let skills: BehaviorRelay<[Skill]>
+    let skills = BehaviorRelay<[Skill]>(value: [])
 }
