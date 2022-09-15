@@ -55,7 +55,9 @@ final class UserInfoViewController: UIViewController {
         
         viewModel.showAlert
             .bind(onNext: { [weak self] in
-                self?.showAlert(title: "", message: $0)
+                self?.showAlert(message: $0, action: {
+                    self?.navigationController?.popViewController(animated: true)
+                })
             })
             .disposed(by: disposBag)
         
