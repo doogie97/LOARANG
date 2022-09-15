@@ -114,16 +114,12 @@ final class BasicInfoViewController: UIViewController {
         if viewModel.previousPage.value == index {
              return
         }
-        
-        guard let vc = viewModel.pageViewList[index] else {
-            return
-        }
 
         var direction: UIPageViewController.NavigationDirection {
             index > viewModel.previousPage.value ? .forward : .reverse
         }
         
-        pageVC.setViewControllers([vc], direction: direction, animated: true)
+        pageVC.setViewControllers([viewModel.pageViewList[index]], direction: direction, animated: true)
         pageVC.view.frame = CGRect(x: 0, y: 0, width: basicInfoView.equipmentsView.pageView.frame.width, height: basicInfoView.equipmentsView.pageView.frame.height)
         basicInfoView.equipmentsView.pageView.addSubview(pageVC.view)
         viewModel.detailViewDidShow(index)

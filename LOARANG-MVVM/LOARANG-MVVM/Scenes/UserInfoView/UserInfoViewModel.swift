@@ -27,17 +27,19 @@ protocol UserInfoViewModelOutput {
     var showAlert: PublishRelay<String?> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
-    var pageViewList: [UIViewController?] { get }
+    var pageViewList: [UIViewController] { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: AppStorageable
-    private let container: Container
+    
     init(storage: AppStorageable, container: Container, userName: String) {
         self.storage = storage
         self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userName))
         self.userName = userName
-        self.container = container
+        self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
+                             container.makeSkillInfoViewController(skillInfo: skillInfo),
+                             container.makeFourthVC()]
     }
     
     //in
@@ -54,9 +56,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
             }
             self?.finishedLoading.accept(())
         }
-        pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
-                        container.makeSkillInfoViewController(skillInfo: skillInfo),
-                        container.makeFourthVC()]
     }
     
     func touchBackButton() {
@@ -112,7 +111,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     //out
     let userName: String
     let popView = PublishRelay<Void>()
-    var pageViewList: [UIViewController?] = []
+    var pageViewList: [UIViewController] = []
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
     let isBookmarkUser: BehaviorRelay<Bool>
