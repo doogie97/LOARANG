@@ -27,7 +27,7 @@ protocol UserInfoViewModelOutput {
     var showAlert: PublishRelay<String?> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
-    var pageViewList: BehaviorRelay<[UIViewController?]> { get }
+    var pageViewList: [UIViewController?] { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
@@ -49,22 +49,14 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 self?.userInfo.accept(userInfo)
                 self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
                 
-                guard let userInf2o = self?.userInfo else {
-                    return
-                }
-                
-                guard let skillInfo = self?.skillInfo else {
-                    return
-                }
-                
-                self?.pageViewList.accept([self?.container.makeBasicInfoVC(userInfo: userInfo, asdf: userInf2o),
-                                           self?.container.makeSkillInfoViewController(skillInfo: skillInfo),
-                                           self?.container.makeFourthVC()])
             case .failure(_):
                 self?.showAlert.accept("검색하신 유저가 없습니다")
             }
             self?.finishedLoading.accept(())
         }
+        pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
+                        container.makeSkillInfoViewController(skillInfo: skillInfo),
+                        container.makeFourthVC()]
     }
     
     func touchBackButton() {
@@ -120,7 +112,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     //out
     let userName: String
     let popView = PublishRelay<Void>()
-    let pageViewList = BehaviorRelay<[UIViewController?]>(value: [])
+    var pageViewList: [UIViewController?] = []
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
     let isBookmarkUser: BehaviorRelay<Bool>

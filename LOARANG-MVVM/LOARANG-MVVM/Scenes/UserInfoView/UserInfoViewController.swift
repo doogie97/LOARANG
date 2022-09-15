@@ -77,17 +77,12 @@ final class UserInfoViewController: UIViewController {
             .bind(onNext: { [weak self] in
                 self?.userInfoView.activityIndicator.stopAnimating()
                 self?.userInfoView.isUserInteractionEnabled = true
+                self?.setPageView(index: self?.viewModel.currentPage.value ?? 0)
             })
             .disposed(by: disposBag)
     }
 
     private func bindPageVC() {
-        viewModel.pageViewList
-            .bind(onNext: { [weak self] in
-                self?.setPageView(pageViewList: $0, index: self?.viewModel.currentPage.value ?? 0)
-            })
-            .disposed(by: disposBag)
-        
         userInfoView.segmentControl.segmentCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
                 self?.viewModel.touchSegmentControl($0.row)
@@ -96,7 +91,7 @@ final class UserInfoViewController: UIViewController {
         
         viewModel.currentPage
              .bind(onNext: { [weak self] in
-                 self?.setPageView(pageViewList: self?.viewModel.pageViewList.value ?? [], index: $0)
+                 self?.setPageView(index: $0)
              })
              .disposed(by: disposBag)
     }
@@ -120,8 +115,8 @@ final class UserInfoViewController: UIViewController {
         
     }
 
-    private func setPageView(pageViewList: [UIViewController?] ,index: Int) {
-        guard let vc = pageViewList[safe: index] else {
+    private func setPageView(index: Int) {
+        guard let vc = viewModel.pageViewList[safe: index] else {
             return
         }
         

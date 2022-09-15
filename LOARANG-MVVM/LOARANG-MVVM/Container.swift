@@ -53,12 +53,12 @@ final class Container {
         return UserInfoViewModel(storage: storage, container: self, userName: userName)
     }
     //MARK: - about BasicInfoView
-    func makeBasicInfoVC(userInfo: UserInfo, asdf: BehaviorRelay<UserInfo?>) -> BasicInfoViewController {
-        return BasicInfoViewController(viewModel: makeBasicInfoViewModel(userInfo: userInfo, asdf: asdf))
+    func makeBasicInfoVC(userInfo: BehaviorRelay<UserInfo?>) -> BasicInfoViewController {
+        return BasicInfoViewController(viewModel: makeBasicInfoViewModel(userInfo: userInfo))
     }
     
-    private func makeBasicInfoViewModel(userInfo: UserInfo, asdf: BehaviorRelay<UserInfo?>) -> BasicInfoViewModelable {
-        return BasicInfoViewModel(userInfo: asdf, container: self)
+    private func makeBasicInfoViewModel(userInfo: BehaviorRelay<UserInfo?>) -> BasicInfoViewModelable {
+        return BasicInfoViewModel(userInfo: userInfo, container: self)
     }
     //MARK: - about BasicEquipment
     func makeBasicEquipmentViewController(equips: BehaviorRelay<Equips?>) -> BasicEquipmentViewController {
