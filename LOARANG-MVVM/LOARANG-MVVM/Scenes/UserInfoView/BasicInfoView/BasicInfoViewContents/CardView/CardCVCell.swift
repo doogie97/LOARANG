@@ -80,7 +80,11 @@ final class CardCVCell: UICollectionViewCell {
         cardNameLabel.textColor = gradeColor
         cardImageView.layer.borderColor = gradeColor?.cgColor
         
-        // 카드 각성 활성화에 따른 로직
+        // 카드 각성 활성화에 따른 로직(이 밑에 각성 활성화 포인트는 addarrangedsubiew가 아니라 이미지를 교체 할 수 있도록 처리 필요)
+        cardPointStackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+        
         if card.awakeTotal == 0 {
             return
         }
