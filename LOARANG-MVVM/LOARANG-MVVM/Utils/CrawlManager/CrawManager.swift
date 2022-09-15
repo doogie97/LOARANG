@@ -243,6 +243,6 @@ struct CrawlManager: CrawlManagerable {
             return
         }
         
-        throw CrawlError.inpection
+        throw CrawlError.inspection
     }
 }

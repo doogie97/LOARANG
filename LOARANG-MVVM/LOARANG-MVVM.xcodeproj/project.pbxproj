@@ -105,6 +105,7 @@
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
 		ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE041D28B7109900FCB74D /* PaddingLabel.swift */; };
 		ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */; };
+		ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */; };
@@ -220,6 +221,7 @@
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		ACBE041D28B7109900FCB74D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extension.swift"; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extension.swift"; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */,
 				AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */,
 				ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */,
+				ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */,
 			);
 			path = Extesnsion;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
+				ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */,
 				AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */,
 				AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */,
 				ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */,

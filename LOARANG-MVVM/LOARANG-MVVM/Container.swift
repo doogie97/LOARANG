@@ -18,7 +18,7 @@ final class Container {
         do {
             try CrawlManager().chenckInspection()
         } catch {
-            throw CrawlError.inpection
+            throw CrawlError.inspection
         }
     }
     

@@ -89,12 +89,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                                                  class: userInfo.mainInfo.`class`))
             }
         } catch {
-            guard let error = error as? LocalStorageError else {
-                showAlert.accept(nil)
-                return
-            }
-            
-            showAlert.accept(error.errorDescrption)
+            showAlert.accept(error.errorMessage)
         }
         isBookmarkUser.accept(storage.isBookmarkUser(userInfo.mainInfo.name))
     }
