@@ -165,4 +165,14 @@ final class BasicInfoView: UIView {
         engravingTitleLabel.text = engraving.title
         engravingEffectLabel.attributedText = engraving.describtion.stringWithSpacing(4)
     }
+    
+    func setViewContents(userInfo: UserInfo) {
+        mainInfoView.setViewContents(userInfo.mainInfo)
+        basicAbillityView.setViewContents(userInfo.stat.basicAbility)
+        propensitiesView.setViewContents(propensities: userInfo.stat.propensities)
+        engravingsView.setLayout(isNoEngraving: userInfo.stat.engravigs.count == 0,
+                                 collectionViewHeight: userInfo.stat.engravigs.count.engravingHeight)
+        cardView.setLayout(isNoCard: userInfo.userJsonInfo.cardInfo.cards.count == 0)
+        characterImageView.setUserImageView(userInfo.mainInfo.userImage)
+    }
 }

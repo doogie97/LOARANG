@@ -30,21 +30,19 @@ final class BasicInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViewContents()
         bindView()
     }
     
-    private func setViewContents() {
-        basicInfoView.mainInfoView.setViewContents(viewModel.userInfo.mainInfo)
-        basicInfoView.basicAbillityView.setViewContents(viewModel.userInfo.stat.basicAbility)
-        basicInfoView.propensitiesView.setViewContents(propensities: viewModel.userInfo.stat.propensities)
-        basicInfoView.engravingsView.setLayout(isNoEngraving: viewModel.engravings.value.count == 0,
-                                               collectionViewHeight: engravingHeight())
-        basicInfoView.cardView.setLayout(isNoCard: viewModel.cards.value.count == 0)
-        basicInfoView.characterImageView.setUserImageView(viewModel.userInfo.mainInfo.userImage)
-    }
-    
     private func bindView() {
+        viewModel.userInfo
+            .bind(onNext: { [weak self] in
+                guard let userInfo = $0 else {
+                    return
+                }
+                self?.basicInfoView.setViewContents(userInfo: userInfo)
+            })
+            .disposed(by: disposeBag)
+        
         basicInfoView.equipmentsView.segmentControl.segmentCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
                 self?.viewModel.touchSegmentControl($0.row)
@@ -57,7 +55,6 @@ final class BasicInfoViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        if viewModel.engravings.value.count != 0 {
             viewModel.engravings.bind(to: basicInfoView.engravingsView.engravingCollectionView
                 .rx.items(cellIdentifier: "\(EngravigCVCell.self)", cellType: EngravigCVCell.self)) {index, engraving, cell in
                 cell.setCellContents(engraving: engraving)
@@ -82,23 +79,18 @@ final class BasicInfoViewController: UIViewController {
                     self?.basicInfoView.engravingDetailView.isHidden = true
                 })
                 .disposed(by: disposeBag)
-        }
         
-        if viewModel.cards.value.count != 0 {
             viewModel.cards.bind(to: basicInfoView.cardView.cardCollectionView
                 .rx.items(cellIdentifier: "\(CardCVCell.self)", cellType: CardCVCell.self)) {index, card, cell in
                     cell.setCellContents(card: card)
             }
             .disposed(by: disposeBag)
-        }
         
-        if viewModel.cardSetEffects.value.count != 0 {
             viewModel.cardSetEffects.bind(to: basicInfoView.cardView.cardSetEffectTableView
                 .rx.items(cellIdentifier: "\(CardSetEffectTVCell.self)", cellType: CardSetEffectTVCell.self)) {index, cardSetEffect, cell in
                     cell.setCellContents(cardSetEffect: cardSetEffect)
             }
             .disposed(by: disposeBag)
-        }
         
         basicInfoView.characterImageView.shareButton.rx.tap
             .bind(onNext: { [weak self] in
@@ -131,18 +123,5 @@ final class BasicInfoViewController: UIViewController {
         pageVC.view.frame = CGRect(x: 0, y: 0, width: basicInfoView.equipmentsView.pageView.frame.width, height: basicInfoView.equipmentsView.pageView.frame.height)
         basicInfoView.equipmentsView.pageView.addSubview(pageVC.view)
         viewModel.detailViewDidShow(index)
-    }
-    
-    private func engravingHeight() -> CGFloat {
-        switch viewModel.userInfo.stat.engravigs.count {
-        case 0...2:
-            return UIScreen.main.bounds.width * 0.1
-        case 3...4:
-            return UIScreen.main.bounds.width * 0.17
-        case 5...6:
-            return UIScreen.main.bounds.width * 0.24
-        default:
-            return UIScreen.main.bounds.width * 0.31
-        }
     }
 }

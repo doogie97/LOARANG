@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/07/15.
 //
 
-import UIKit
+import RxRelay
 
 final class Container {
     private let storage: AppStorageable
@@ -53,12 +53,12 @@ final class Container {
         return UserInfoViewModel(storage: storage, container: self, userName: userName)
     }
     //MARK: - about BasicInfoView
-    func makeBasicInfoVC(userInfo: UserInfo) -> BasicInfoViewController {
-        return BasicInfoViewController(viewModel: makeBasicInfoViewModel(userInfo: userInfo))
+    func makeBasicInfoVC(userInfo: UserInfo, asdf: BehaviorRelay<UserInfo?>) -> BasicInfoViewController {
+        return BasicInfoViewController(viewModel: makeBasicInfoViewModel(userInfo: userInfo, asdf: asdf))
     }
     
-    private func makeBasicInfoViewModel(userInfo: UserInfo) -> BasicInfoViewModelable {
-        return BasicInfoViewModel(userInfo: userInfo,
+    private func makeBasicInfoViewModel(userInfo: UserInfo, asdf: BehaviorRelay<UserInfo?>) -> BasicInfoViewModelable {
+        return BasicInfoViewModel(userInfo: asdf,
                                   pageViewList: [
                                     makeBasicEquipmentViewController(equips:userInfo.userJsonInfo.equips),
                                     makeAvatarViewController(equips: userInfo.userJsonInfo.equips)

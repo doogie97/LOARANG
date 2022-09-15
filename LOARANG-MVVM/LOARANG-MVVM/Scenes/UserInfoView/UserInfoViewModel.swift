@@ -48,7 +48,12 @@ final class UserInfoViewModel: UserInfoViewModelable {
             switch result {
             case .success(let userInfo):
                 self?.userInfo.accept(userInfo)
-                self?.pageViewList.accept([self?.container.makeBasicInfoVC(userInfo: userInfo),
+                
+                guard let userInf2o = self?.userInfo else {
+                    return
+                }
+                
+                self?.pageViewList.accept([self?.container.makeBasicInfoVC(userInfo: userInfo, asdf: userInf2o),
                                            self?.container.makeSkillInfoViewController(skillInfo: userInfo.userJsonInfo.skillInfo),
                                            self?.container.makeFourthVC()])
             case .failure(_):

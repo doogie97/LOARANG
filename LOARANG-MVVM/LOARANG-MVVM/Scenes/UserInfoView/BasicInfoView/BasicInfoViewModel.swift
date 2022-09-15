@@ -6,6 +6,7 @@
 //
 
 import RxRelay
+import RxSwift
 
 protocol BasicInfoViewModelable: BasicInfoViewModelInput, BasicInfoViewModelOutput {}
 
@@ -17,7 +18,7 @@ protocol BasicInfoViewModelInput {
 }
 
 protocol BasicInfoViewModelOutput {
-    var userInfo: UserInfo { get }
+    var userInfo: BehaviorRelay<UserInfo?> { get }
     var engravings: BehaviorRelay<[Engraving]> { get }
     var cards: BehaviorRelay<[Card]> { get }
     var cardSetEffects: BehaviorRelay<[CardSetEffect]> { get }
@@ -29,14 +30,25 @@ protocol BasicInfoViewModelOutput {
 }
 
 final class BasicInfoViewModel: BasicInfoViewModelable {
-    init(userInfo: UserInfo, pageViewList: [UIViewController]) {
+
+    private let disposeBag = DisposeBag()
+    init(userInfo: BehaviorRelay<UserInfo?>, pageViewList: [UIViewController]) {
         self.userInfo = userInfo
-        self.engravings = BehaviorRelay<[Engraving]>(value: userInfo.stat.engravigs)
-        self.cards = BehaviorRelay<[Card]>(value: userInfo.userJsonInfo.cardInfo.cards)
-        self.cardSetEffects = BehaviorRelay<[CardSetEffect]>(value: userInfo.userJsonInfo.cardInfo.cardSetEffects)
-        self.pageViewList = pageViewList
+        self.pageViewList = pageViewList //얘도 옮겨야됨 UserInfoViewModel처럼
+        self.bind()
     }
-    
+    func bind() {
+        userInfo.bind(onNext: {[weak self] in
+            guard let userInfo = $0 else {
+                return
+            }
+            
+            self?.engravings.accept(userInfo.stat.engravigs)
+            self?.cards.accept(userInfo.userJsonInfo.cardInfo.cards)
+            self?.cardSetEffects.accept(userInfo.userJsonInfo.cardInfo.cardSetEffects)
+        })
+        .disposed(by: disposeBag)
+    }
     //in
     func touchSegmentControl(_ index: Int) {
         currentPage.accept(index)
@@ -47,7 +59,11 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
     }
     
     func touchShareButton() {
-        showActivityVC.accept(userInfo.mainInfo.userImage)
+        guard let userImage = userInfo.value?.mainInfo.userImage else {
+            return
+        }
+        
+        showActivityVC.accept(userImage)
     }
     
     func detailViewDidShow(_ index: Int) {
@@ -55,10 +71,10 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
     }
     
     //out
-    let userInfo: UserInfo
-    let engravings: BehaviorRelay<[Engraving]>
-    let cards: BehaviorRelay<[Card]>
-    let cardSetEffects: BehaviorRelay<[CardSetEffect]>
+    let userInfo: BehaviorRelay<UserInfo?>
+    let engravings = BehaviorRelay<[Engraving]>(value: [])
+    let cards = BehaviorRelay<[Card]>(value: [])
+    let cardSetEffects = BehaviorRelay<[CardSetEffect]>(value: [])
     let pageViewList: [UIViewController]
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
