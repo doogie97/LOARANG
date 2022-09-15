@@ -22,7 +22,7 @@ protocol BasicInfoViewModelOutput {
     var engravings: BehaviorRelay<[Engraving]> { get }
     var cards: BehaviorRelay<[Card]> { get }
     var cardSetEffects: BehaviorRelay<[CardSetEffect]> { get }
-    var pageViewList: [UIViewController] { get }
+    var pageViewList: [UIViewController?] { get }
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
     var showengravingDetail: PublishRelay<Engraving> { get }
@@ -30,11 +30,11 @@ protocol BasicInfoViewModelOutput {
 }
 
 final class BasicInfoViewModel: BasicInfoViewModelable {
-
+    private let container: Container
     private let disposeBag = DisposeBag()
-    init(userInfo: BehaviorRelay<UserInfo?>, pageViewList: [UIViewController]) {
+    init(userInfo: BehaviorRelay<UserInfo?>, container: Container) {
         self.userInfo = userInfo
-        self.pageViewList = pageViewList //얘도 옮겨야됨 UserInfoViewModel처럼
+        self.container = container
         self.bind()
     }
     func bind() {
@@ -46,6 +46,10 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
             self?.engravings.accept(userInfo.stat.engravigs)
             self?.cards.accept(userInfo.userJsonInfo.cardInfo.cards)
             self?.cardSetEffects.accept(userInfo.userJsonInfo.cardInfo.cardSetEffects)
+            self?.pageViewList = [
+                self?.container.makeBasicEquipmentViewController(equips:userInfo.userJsonInfo.equips),
+                self?.container.makeAvatarViewController(equips: userInfo.userJsonInfo.equips)
+            ]
         })
         .disposed(by: disposeBag)
     }
@@ -75,7 +79,7 @@ final class BasicInfoViewModel: BasicInfoViewModelable {
     let engravings = BehaviorRelay<[Engraving]>(value: [])
     let cards = BehaviorRelay<[Card]>(value: [])
     let cardSetEffects = BehaviorRelay<[CardSetEffect]>(value: [])
-    let pageViewList: [UIViewController]
+    var pageViewList: [UIViewController?] = []
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
     let showengravingDetail = PublishRelay<Engraving>()

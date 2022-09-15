@@ -58,14 +58,10 @@ final class Container {
     }
     
     private func makeBasicInfoViewModel(userInfo: UserInfo, asdf: BehaviorRelay<UserInfo?>) -> BasicInfoViewModelable {
-        return BasicInfoViewModel(userInfo: asdf,
-                                  pageViewList: [
-                                    makeBasicEquipmentViewController(equips:userInfo.userJsonInfo.equips),
-                                    makeAvatarViewController(equips: userInfo.userJsonInfo.equips)
-                                  ])
+        return BasicInfoViewModel(userInfo: asdf, container: self)
     }
     //MARK: - about BasicEquipment
-    private func makeBasicEquipmentViewController(equips: Equips) -> BasicEquipmentViewController {
+    func makeBasicEquipmentViewController(equips: Equips) -> BasicEquipmentViewController {
         return BasicEquipmentViewController(viewModel: makeBasicEquipmentViewModel(equips: equips), container: self)
     }
     
@@ -85,7 +81,7 @@ final class Container {
     }
 
     //MARK: - about Avatar
-    private func makeAvatarViewController(equips: Equips) -> AvatarViewController {
+    func makeAvatarViewController(equips: Equips) -> AvatarViewController {
         return AvatarViewController(viewModel: makeAvatarViewModel(equips: equips), container: self)
     }
     
