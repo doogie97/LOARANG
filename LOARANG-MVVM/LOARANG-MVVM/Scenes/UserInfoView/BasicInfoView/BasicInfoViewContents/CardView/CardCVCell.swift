@@ -68,6 +68,7 @@ final class CardCVCell: UICollectionViewCell {
         
         cardPointStackView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.2)
         }
     }
     
