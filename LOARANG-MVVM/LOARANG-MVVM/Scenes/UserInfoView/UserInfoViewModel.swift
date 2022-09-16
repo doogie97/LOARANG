@@ -41,7 +41,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
                              container.makeSkillInfoViewController(skillInfo: skillInfo),
-                             container.makeFourthVC()]
+                             container.makeOwnCharacterViewController(ownCharacterInfo: ownCharacterInfo)]
     }
     
     //in
