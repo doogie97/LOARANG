@@ -92,6 +92,7 @@
 		ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */; };
 		ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */; };
 		ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16428BF865200C6BB2F /* EngravingsView.swift */; };
+		ACB3813128D4258E0081F8A1 /* OwnCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
 		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
@@ -208,6 +209,7 @@
 		ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbillityView.swift; sourceTree = "<group>"; };
 		ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsView.swift; sourceTree = "<group>"; };
 		ACB0F16428BF865200C6BB2F /* EngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravingsView.swift; sourceTree = "<group>"; };
+		ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterInfo.swift; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 				ACAEF33E287FF91A00AE98F1 /* Stat.swift */,
 				AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */,
 				AC86403D28B5D1CF004B7EBB /* UserJsonInfos */,
+				ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
+				ACB3813128D4258E0081F8A1 /* OwnCharacterInfo.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
