@@ -245,4 +245,62 @@ struct CrawlManager: CrawlManagerable {
         
         throw CrawlError.inspection
     }
+    
+    //MARK: - 보유 캐릭터
+    func getOwnCharacterInfo(_ name: String, completion: @escaping (Result<OwnCharacterInfo, CrawlError>) -> Void) {
+        guard let mainUserUrl = makeURL(urlString: baseURL, name: name) else {
+            completion(.failure(CrawlError.ownCharacterErrror))
+            return
+        }
+        
+        DispatchQueue.global().async {
+            guard let mainUserDoc = try? makeDocument(url: mainUserUrl) else {
+                completion(.failure(CrawlError.ownCharacterErrror))
+                return
+            }
+            
+            guard let charactersElement = try? mainUserDoc.select("#myinfo__character--list2 > div > ul > li") else {
+                completion(.failure(CrawlError.ownCharacterErrror))
+                return
+            }
+            
+            guard let title = try? mainUserDoc.select("#myinfo__character--list2 > div > h3").text() else {
+                completion(.failure(CrawlError.ownCharacterErrror))
+                return
+            }
+            
+            let ownCharacters = getOwnCharacters(elements: charactersElement)
+            
+            DispatchQueue.main.async {
+                completion(.success(OwnCharacterInfo(title: title, ownCharacters: ownCharacters)))
+            }
+        }
+    }
+    
+    private func getOwnCharacters(elements: Elements) -> [OwnCharacter] {
+        return elements.compactMap {
+            guard let name = try? $0.text().components(separatedBy: " ")[safe: 1] else {
+                return nil
+            }
+            
+            guard let url = makeURL(urlString: baseURL, name: name) else {
+                return nil
+            }
+            
+            guard let subDoc = try? makeDocument(url: url) else {
+                return nil
+            }
+            do {
+                let server = try subDoc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
+                let battleLV = try subDoc.select("#myinfo__character--button2 > span").text().replacingOccurrences(of: "Lv.", with: "")
+                let itemLV = try subDoc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(2) > dl.define.item > dd").text()
+                let guild = try subDoc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(3) > dl:nth-child(1) > dd").text()
+                let `class` = try subDoc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(2) > dd").text()
+                
+                return OwnCharacter(server: server, name: name, battleLV: battleLV, itemLV: itemLV, guild: guild, class: `class`)
+            } catch {
+                return nil
+            }
+        }
+    }
 }
