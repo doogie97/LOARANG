@@ -33,6 +33,7 @@ protocol UserInfoViewModelOutput {
 
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: AppStorageable
+    private let crawlManager = CrawlManager()
     
     init(storage: AppStorageable, container: Container, userName: String) {
         self.storage = storage
@@ -46,7 +47,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     //in
     func searchUser() {
         startedLoading.accept(())
-        CrawlManager().getUserInfo(userName) {[weak self] result in
+        crawlManager.getUserInfo(userName) {[weak self] result in
             switch result {
             case .success(let userInfo):
                 self?.userInfo.accept(userInfo)
