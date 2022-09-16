@@ -61,6 +61,8 @@ final class UserInfoViewModel: UserInfoViewModelable {
             }
             self?.finishedLoading.accept(())
         }
+        
+        getOwnCharacterInfo()
     }
     
     func touchBackButton() {
@@ -125,6 +127,19 @@ final class UserInfoViewModel: UserInfoViewModelable {
         }
     }
     
+    private func getOwnCharacterInfo() {
+        print("보유 캐릭터 가져오기 시작!") // 나중에 제거 예정
+        crawlManager.getOwnCharacterInfo(userName) {[weak self] result in
+            switch result {
+            case .success(let ownCharacterInfo):
+                self?.ownCharacterInfo.accept(ownCharacterInfo)
+            case .failure(_):
+                print("에러") // 나중에 제거 예정
+            }
+            print("보유 캐릭터 가져오기 끝!") // 나중에 제거 예정
+        }
+    }
+    
     //out
     let userName: String
     let popView = PublishRelay<Void>()
@@ -140,4 +155,5 @@ final class UserInfoViewModel: UserInfoViewModelable {
     //for insideView
     private let userInfo = BehaviorRelay<UserInfo?>(value: nil)
     private let skillInfo = BehaviorRelay<SkillInfo?>(value: nil)
+    private let ownCharacterInfo = BehaviorRelay<OwnCharacterInfo?>(value: nil)
 }
