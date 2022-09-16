@@ -17,7 +17,21 @@ final class OwnCharacterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private(set) lazy var charactersTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .mainBackground
+        tableView.separatorStyle = .none
+        tableView.register(OwnCharacterCell.self)
+        
+        return tableView
+    }()
+    
     private func setLayout() {
-        self.backgroundColor = .red
+        self.addSubview(charactersTableView)
+        
+        charactersTableView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(16)
+        }
     }
 }
