@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/07/29.
 //
 
-import UIKit
+import RxSwift
 
 final class OwnCharacterViewController: UIViewController {
     private let viewModel: OwnCharacterViewModelable
@@ -20,8 +20,22 @@ final class OwnCharacterViewController: UIViewController {
     }
     
     private let ownCharacterView = OwnCharacterView()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = ownCharacterView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindView()
+    }
+    
+    private func bindView() {
+        viewModel.ownCharacters
+            .bind(to: ownCharacterView.charactersTableView.rx.items(cellIdentifier: "\(OwnCharacterCell.self)", cellType: OwnCharacterCell.self)) { index, ownCharacter, cell in
+                cell.setCellContents(ownCharacter: ownCharacter)
+            }
+            .disposed(by: disposeBag)
     }
 }
