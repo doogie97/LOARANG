@@ -581,11 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				AC86403A28B5C968004B7EBB /* StorageModel */,
-				ACAEF339287FF62000AE98F1 /* UserInfo.swift */,
-				ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */,
-				ACAEF33E287FF91A00AE98F1 /* Stat.swift */,
-				AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */,
-				AC86403D28B5D1CF004B7EBB /* UserJsonInfos */,
+				ACB3812F28D425720081F8A1 /* UserInfo */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -681,6 +677,18 @@
 				AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */,
 			);
 			path = EngravingsView;
+			sourceTree = "<group>";
+		};
+		ACB3812F28D425720081F8A1 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				ACAEF339287FF62000AE98F1 /* UserInfo.swift */,
+				ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */,
+				ACAEF33E287FF91A00AE98F1 /* Stat.swift */,
+				AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */,
+				AC86403D28B5D1CF004B7EBB /* UserJsonInfos */,
+			);
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		ACDE28A428B0A87A00BFD206 /* EquipmentDetailView */ = {
