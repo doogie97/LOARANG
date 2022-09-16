@@ -48,7 +48,7 @@
 		AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
-		AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */; };
+		AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */; };
 		AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */; };
 		AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C4228BF2C56005B102B /* MainUserView.swift */; };
 		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
@@ -93,6 +93,8 @@
 		ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */; };
 		ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16428BF865200C6BB2F /* EngravingsView.swift */; };
 		ACB3813128D4258E0081F8A1 /* OwnCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */; };
+		ACB3813328D42CF60081F8A1 /* OwnCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813228D42CF60081F8A1 /* OwnCharacterViewModel.swift */; };
+		ACB3813528D42CFB0081F8A1 /* OwnCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813428D42CFB0081F8A1 /* OwnCharacterView.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
 		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
@@ -163,7 +165,7 @@
 		AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffect.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
-		AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInfoViewController.swift; sourceTree = "<group>"; };
+		AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewController.swift; sourceTree = "<group>"; };
 		AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigCVCell.swift; sourceTree = "<group>"; };
 		AC757C4228BF2C56005B102B /* MainUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserView.swift; sourceTree = "<group>"; };
 		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,8 @@
 		ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsView.swift; sourceTree = "<group>"; };
 		ACB0F16428BF865200C6BB2F /* EngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravingsView.swift; sourceTree = "<group>"; };
 		ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterInfo.swift; sourceTree = "<group>"; };
+		ACB3813228D42CF60081F8A1 /* OwnCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewModel.swift; sourceTree = "<group>"; };
+		ACB3813428D42CFB0081F8A1 /* OwnCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterView.swift; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
@@ -441,7 +445,9 @@
 		AC6CA2922893BBF90049C12F /* ForthInfoView */ = {
 			isa = PBXGroup;
 			children = (
-				AC6CA2992893BC390049C12F /* FourthInfoViewController.swift */,
+				ACB3813428D42CFB0081F8A1 /* OwnCharacterView.swift */,
+				AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */,
+				ACB3813228D42CF60081F8A1 /* OwnCharacterViewModel.swift */,
 			);
 			path = ForthInfoView;
 			sourceTree = "<group>";
@@ -845,6 +851,7 @@
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
+				ACB3813528D42CFB0081F8A1 /* OwnCharacterView.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
@@ -884,7 +891,7 @@
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
-				AC6CA29A2893BC390049C12F /* FourthInfoViewController.swift in Sources */,
+				AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */,
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
@@ -898,6 +905,7 @@
 				AC4E19EB28C444E600542EAE /* CardView.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
+				ACB3813328D42CF60081F8A1 /* OwnCharacterViewModel.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
 				AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,

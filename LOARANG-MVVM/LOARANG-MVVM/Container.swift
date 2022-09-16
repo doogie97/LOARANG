@@ -121,8 +121,8 @@ final class Container {
         return SkillDetailViewModel(skill: skill)
     }
     
-    func makeFourthVC() -> FourthInfoViewController {
-        return FourthInfoViewController()
+    func makeOwnCharacterViewController() -> OwnCharacterViewController {
+        return OwnCharacterViewController()
     }
     
     
