@@ -32,9 +32,6 @@ final class OwnCharacterViewController: UIViewController {
     }
     
     private func bindView() {
-        viewModel.ownCharacters
-            .bind(to: ownCharacterView.charactersTableView.rx.items(cellIdentifier: "\(OwnCharacterCell.self)", cellType: OwnCharacterCell.self)) { index, ownCharacter, cell in
-                cell.setCellContents(ownCharacter: ownCharacter)
             }
             .disposed(by: disposeBag)
     }
