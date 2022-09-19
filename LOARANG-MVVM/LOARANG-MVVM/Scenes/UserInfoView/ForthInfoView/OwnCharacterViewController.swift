@@ -45,6 +45,9 @@ final class OwnCharacterViewController: UIViewController {
         dataSource.titleForHeaderInSection = { dataSource, index in
             return dataSource.sectionModels[index].header
         }
+        
+        viewModel.sections
+            .bind(to: ownCharacterView.charactersTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 }
