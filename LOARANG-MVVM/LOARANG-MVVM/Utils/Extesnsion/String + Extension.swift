@@ -8,6 +8,10 @@
 import UIKit
 
 extension String {
+    var toDouble: Double? {
+        return Double(self.replacingOccurrences(of: ",", with: ""))
+    }
+    
     func changeToPercent() -> String {
         let string = self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
