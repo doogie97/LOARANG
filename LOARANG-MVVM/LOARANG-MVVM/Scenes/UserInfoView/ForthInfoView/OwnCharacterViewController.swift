@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxDataSources
 
 final class OwnCharacterViewController: UIViewController {
     private let viewModel: OwnCharacterViewModelable
@@ -34,5 +35,19 @@ final class OwnCharacterViewController: UIViewController {
     private func bindView() {
             }
             .disposed(by: disposeBag)
+    }
+}
+
+struct OwnCharacterSection {
+    var header: String
+    var items: [Item]
+}
+
+extension OwnCharacterSection: SectionModelType {
+    typealias Item = OwnCharacter
+    
+    init(original: OwnCharacterSection, items: [OwnCharacter]) {
+        self = original
+        self.items = items
     }
 }
