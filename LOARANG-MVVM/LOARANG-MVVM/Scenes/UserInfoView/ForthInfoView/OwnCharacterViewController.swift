@@ -42,6 +42,9 @@ final class OwnCharacterViewController: UIViewController {
             return cell
         })
         
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].header
+        }
             .disposed(by: disposeBag)
     }
 }
