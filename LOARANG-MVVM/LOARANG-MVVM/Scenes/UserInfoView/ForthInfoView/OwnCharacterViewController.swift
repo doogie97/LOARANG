@@ -33,7 +33,15 @@ final class OwnCharacterViewController: UIViewController {
     }
     
     private func bindView() {
+        let dataSource = RxTableViewSectionedReloadDataSource<OwnCharacterSection>(configureCell: { dataSource, tableView, indexpath, ownCharacter in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(OwnCharacterCell.self)", for: indexpath) as? OwnCharacterCell else {
+                return UITableViewCell()
             }
+            cell.setCellContents(ownCharacter: ownCharacter)
+            
+            return cell
+        })
+        
             .disposed(by: disposeBag)
     }
 }
