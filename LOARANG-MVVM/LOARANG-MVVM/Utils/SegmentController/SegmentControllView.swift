@@ -100,6 +100,27 @@ final class CustomSegmentControl: UIView {
             $0.width.equalTo(segmentCollectionView.snp.width).dividedBy(segmentTitles.count)
         }
     }
+    
+    func changeSegment(index: Int ) {
+        guard let previewousIndexPath  = segmentCollectionView.indexPathsForSelectedItems?.first else {
+            return
+        }
+        
+        guard let previousCell = segmentCollectionView.cellForItem(at: previewousIndexPath) as? SegmentCVCell else {
+            return
+        }
+        
+        guard let selectedCell = segmentCollectionView.cellForItem(at: [0, index]) as? SegmentCVCell else {
+            return
+        }
+
+        segmentCollectionView.deselectItem(at: previewousIndexPath, animated: true)
+        segmentCollectionView.selectItem(at: [0, index], animated: true, scrollPosition: UICollectionView.ScrollPosition())
+        previousCell.deselectedCell(color: deselectedFontColor, font: deselectedFont)
+        selectedCell.selectedCell(color: selectedFontColor, font: selectedFont)
+        
+        changeUnderLinePosition(index: index)
+    }
 }
 
 extension CustomSegmentControl: UICollectionViewDataSource {
