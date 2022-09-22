@@ -148,13 +148,13 @@ final class BasicAbillityView: UIView {
     func setViewContents(_ ability: BasicAbility) {
         setLayout()
         
-        attackLabel.text = ability.attack
-        vitalityLabel.text = ability.vitality
-        critLabel.text = ability.crit
-        specializationLabel.text = ability.specialization
-        dominationLabel.text = ability.domination
-        swiftnessLabel.text = ability.swiftness
-        enduranceLabel.text = ability.endurance
-        expertiseLabel.text = ability.expertise
+        attackLabel.text = ability.attack == "" ? "0" : ability.attack
+        vitalityLabel.text = ability.vitality == "" ? "0" : ability.vitality
+        critLabel.text = ability.crit == "" ? "0" : ability.crit
+        specializationLabel.text = ability.specialization == "" ? "0" : ability.specialization
+        dominationLabel.text = ability.domination == "" ? "0" : ability.domination
+        swiftnessLabel.text = ability.swiftness == "" ? "0" : ability.swiftness
+        enduranceLabel.text = ability.endurance == "" ? "0" : ability.endurance
+        expertiseLabel.text = ability.expertise == "" ? "0" : ability.expertise
     }
 }
