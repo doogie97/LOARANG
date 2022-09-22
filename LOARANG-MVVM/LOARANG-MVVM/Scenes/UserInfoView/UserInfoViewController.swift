@@ -107,6 +107,12 @@ final class UserInfoViewController: UIViewController {
                  self?.setPageView(index: $0)
              })
              .disposed(by: disposBag)
+        
+        viewModel.changeSegment
+            .bind(onNext: { [weak self] in
+                self?.userInfoView.segmentControl.changeSegment(index: $0)
+            })
+            .disposed(by: disposBag)
     }
     
     private func bindUserInfo() {

@@ -29,6 +29,7 @@ protocol UserInfoViewModelOutput {
     var finishedLoading: PublishRelay<Void> { get }
     var sucssesSearching: PublishRelay<Void> { get }
     var pageViewList: [UIViewController] { get }
+    var changeSegment: PublishRelay<Int> { get }
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
@@ -153,6 +154,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
     let sucssesSearching = PublishRelay<Void>()
+    let changeSegment = PublishRelay<Int>()
     
     //for insideView
     private let userInfo = BehaviorRelay<UserInfo?>(value: nil)
