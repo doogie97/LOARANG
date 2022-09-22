@@ -13,7 +13,6 @@ protocol OwnCharacterViewModelable: OwnCharacterViewModelInput, OwnCharacterView
 protocol OwnCharacterViewModelInput {}
 
 protocol OwnCharacterViewModelOutput {
-    var totalCharacters: BehaviorRelay<Int> { get }
     var sections: BehaviorRelay<[OwnCharacterSection]>{ get }
 }
 
@@ -31,8 +30,6 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
             }
             
             let ownCharacters = ownCharacterInfo.ownCharacters.sorted {$0.itemLV.toDouble ?? 0 > $1.itemLV.toDouble ?? 0}
-            
-            self?.totalCharacters.accept(ownCharacters.count)
 
             var ninaveCharacters: [OwnCharacter] = []
             var loopaeonCharacters: [OwnCharacter] = []
@@ -106,6 +103,5 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
     }
     
     //out
-    let totalCharacters = BehaviorRelay<Int>(value: 0)
     let sections = BehaviorRelay<[OwnCharacterSection]>(value: [])
 }
