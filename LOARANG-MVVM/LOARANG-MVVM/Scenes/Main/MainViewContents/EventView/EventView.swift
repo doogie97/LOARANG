@@ -34,11 +34,33 @@ final class EventView: UIView {
         return label
     }()
     
+    private(set) lazy var eventCollectionView: UICollectionView = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(2), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 8, bottom: 5, trailing: 8)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: itemSize.widthDimension, heightDimension: itemSize.heightDimension)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .cellBackgroundColor
+        collectionView.register(EventCVCell.self, forCellWithReuseIdentifier: "\(EventCVCell.self)")
+        
+        collectionView.isScrollEnabled = false
+
+        return collectionView
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .tableViewColor
         self.addSubview(backView)
         
         backView.addSubview(eventTitle)
+        backView.addSubview(eventCollectionView)
         
         backView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
@@ -48,6 +70,12 @@ final class EventView: UIView {
         eventTitle.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().inset(16)
+        }
+        
+        eventCollectionView.snp.makeConstraints {
+            $0.top.equalTo(eventTitle.snp.bottom).inset(-4)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(16)
         }
     }
 }
