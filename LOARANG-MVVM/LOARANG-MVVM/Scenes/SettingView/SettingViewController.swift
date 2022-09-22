@@ -5,7 +5,6 @@
 //  Created by 최최성균 on 2022/07/14.
 //
 
-import UIKit
 import RxSwift
 
 final class SettingViewController: UIViewController {
