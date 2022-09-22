@@ -170,6 +170,8 @@ extension UserInfoViewModel {
         }
         userName = name
         searchUserInfo()
+        changeSegment.accept((0))
+        currentPage.accept(0)
     }
 }
 
