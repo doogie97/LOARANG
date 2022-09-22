@@ -31,7 +31,7 @@ final class UserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
-        viewModel.searchUser()
+        viewModel.searchWholeUserInfo()
     }
     
     private func bindView() {

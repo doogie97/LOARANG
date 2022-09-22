@@ -10,7 +10,7 @@ import RxRelay
 protocol UserInfoViewModelable: UserInfoViewModelInput, UserInfoViewModelOutput, UserInfoViewModelDelegate {}
 
 protocol UserInfoViewModelInput {
-    func searchUser()
+    func searchWholeUserInfo()
     func touchBackButton()
     func touchSegmentControl(_ index: Int)
     func detailViewDidShow(_ index: Int)
@@ -46,23 +46,8 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     //in
-    func searchUser() {
-        startedLoading.accept(())
-        crawlManager.getUserInfo(userName) {[weak self] result in
-            switch result {
-            case .success(let userInfo):
-                self?.userInfo.accept(userInfo)
-                self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
-                self?.sucssesSearching.accept(())
-                
-                self?.mainUserUpdate(userInfo)
-                self?.bookmarkUpdate(userInfo)
-            case .failure(let error):
-                self?.showAlert.accept((message: error.errorMessage, isPop: true))
-            }
-            self?.finishedLoading.accept(())
-        }
-        
+    func searchWholeUserInfo() {
+        searchUserInfo()
         getOwnCharacterInfo()
     }
     
@@ -79,7 +64,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     func touchReloadButton() {
-        searchUser()
+        searchWholeUserInfo()
     }
     
     func touchBookmarkButton() {
@@ -128,6 +113,23 @@ final class UserInfoViewModel: UserInfoViewModelable {
         }
     }
     
+    private func searchUserInfo() {
+        startedLoading.accept(())
+        crawlManager.getUserInfo(userName) {[weak self] result in
+            switch result {
+            case .success(let userInfo):
+                self?.userInfo.accept(userInfo)
+                self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
+                self?.sucssesSearching.accept(())
+                
+                self?.mainUserUpdate(userInfo)
+                self?.bookmarkUpdate(userInfo)
+            case .failure(let error):
+                self?.showAlert.accept((message: error.errorMessage, isPop: true))
+            }
+            self?.finishedLoading.accept(())
+        }
+    }
     private func getOwnCharacterInfo() {
         ownCharacterInfo.accept(nil)
         crawlManager.getOwnCharacterInfo(userName) {[weak self] result in
@@ -162,7 +164,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
 extension UserInfoViewModel {
     func searchOwnCharacter(_ name: String) {
         userName = name
-        searchUser()
+        searchUserInfo()
     }
 }
 
