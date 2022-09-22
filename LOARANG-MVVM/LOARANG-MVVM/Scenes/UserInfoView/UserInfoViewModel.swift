@@ -24,7 +24,7 @@ protocol UserInfoViewModelOutput {
     var currentPage: BehaviorRelay<Int> { get }
     var previousPage: BehaviorRelay<Int> { get }
     var isBookmarkUser: BehaviorRelay<Bool> { get }
-    var showAlert: PublishRelay<String?> { get }
+    var showAlert: PublishRelay<(message: String?, isPop: Bool)> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
     var sucssesSearching: PublishRelay<Void> { get }
@@ -56,8 +56,8 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 
                 self?.mainUserUpdate(userInfo)
                 self?.bookmarkUpdate(userInfo)
-            case .failure(_):
-                self?.showAlert.accept("검색하신 유저가 없습니다")
+            case .failure(let error):
+                self?.showAlert.accept((message: error.errorMessage, isPop: true))
             }
             self?.finishedLoading.accept(())
         }
@@ -95,7 +95,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                                                  class: userInfo.mainInfo.`class`))
             }
         } catch {
-            showAlert.accept(error.errorMessage)
+            showAlert.accept((message: error.errorMessage, isPop: false))
         }
         isBookmarkUser.accept(storage.isBookmarkUser(userInfo.mainInfo.name))
     }
@@ -110,7 +110,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                                                     itemLV: userInfo.mainInfo.itemLV,
                                                     server: userInfo.mainInfo.server))
             } catch {
-                showAlert.accept(error.errorMessage)
+                showAlert.accept((message: error.errorMessage, isPop: false))
             }
         }
     }
@@ -122,7 +122,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                                                     image: userInfo.mainInfo.userImage,
                                                     class: userInfo.mainInfo.`class`))
             } catch {
-                showAlert.accept(error.errorMessage)
+                showAlert.accept((message: error.errorMessage, isPop: false))
             }
         }
     }
@@ -147,7 +147,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
     let isBookmarkUser: BehaviorRelay<Bool>
-    let showAlert = PublishRelay<String?>()
+    let showAlert = PublishRelay<(message: String?, isPop: Bool)>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
     let sucssesSearching = PublishRelay<Void>()
