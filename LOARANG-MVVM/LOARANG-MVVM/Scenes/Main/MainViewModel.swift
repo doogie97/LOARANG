@@ -13,6 +13,7 @@ protocol MainViewModelInput {
     func touchSerachButton()
     func touchMainUser()
     func touchBookMarkCell(_ index: Int)
+    func touchEventCell(_ index: Int)
 }
 protocol MainViewModelOutput {
     var mainUser: BehaviorRelay<MainUser?> { get }
@@ -57,6 +58,14 @@ final class MainViewModel: MainViewModelInOut {
             return
         }
         showUserInfo.accept(userName)
+    }
+    
+    func touchEventCell(_ index: Int) {
+        guard let eventURL = events.value[safe: index]?.eventURL else {
+            return
+        }
+        
+        print(eventURL)
     }
     
     // out

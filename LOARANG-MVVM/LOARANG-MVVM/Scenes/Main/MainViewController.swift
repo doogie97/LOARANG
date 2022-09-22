@@ -99,5 +99,11 @@ final class MainViewController: UIViewController {
             cell.setCellContents(event)
         }
         .disposed(by: disposeBag)
+        
+        mainView.eventView.eventCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchEventCell($0.row)
+            })
+            .disposed(by: disposeBag)
     }
 }
