@@ -128,15 +128,14 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     private func getOwnCharacterInfo() {
-        print("보유 캐릭터 가져오기 시작!") // 나중에 제거 예정
+        ownCharacterInfo.accept(nil)
         crawlManager.getOwnCharacterInfo(userName) {[weak self] result in
             switch result {
             case .success(let ownCharacterInfo):
                 self?.ownCharacterInfo.accept(ownCharacterInfo)
             case .failure(_):
-                print("에러") // 나중에 제거 예정
+                self?.showAlert.accept((message: "보유 캐릭터 정보를 가져오는데 실패하였습니다", isPop: false))
             }
-            print("보유 캐릭터 가져오기 끝!") // 나중에 제거 예정
         }
     }
     
