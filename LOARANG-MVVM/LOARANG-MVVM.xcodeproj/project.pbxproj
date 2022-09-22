@@ -48,6 +48,7 @@
 		AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */; };
 		AC62F87428DC6CAC00E4A92D /* LostArkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */; };
 		AC62F87728DC6E3C00E4A92D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87628DC6E3C00E4A92D /* EventView.swift */; };
+		AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87928DC6FFE00E4A92D /* EventCVCell.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */; };
@@ -168,6 +169,7 @@
 		AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffect.swift; sourceTree = "<group>"; };
 		AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkEvent.swift; sourceTree = "<group>"; };
 		AC62F87628DC6E3C00E4A92D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		AC62F87928DC6FFE00E4A92D /* EventCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCVCell.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewController.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				AC62F87628DC6E3C00E4A92D /* EventView.swift */,
+				AC62F87928DC6FFE00E4A92D /* EventCVCell.swift */,
 			);
 			path = EventView;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
 				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
+				AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
