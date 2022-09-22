@@ -423,6 +423,16 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		AC62F87528DC6E0800E4A92D /* BookmarkView */ = {
+			isa = PBXGroup;
+			children = (
+				ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */,
+				AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */,
+				AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */,
+			);
+			path = BookmarkView;
+			sourceTree = "<group>";
+		};
 		AC6CA28F2893BBCF0049C12F /* BasicInfoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,8 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				AC757C4228BF2C56005B102B /* MainUserView.swift */,
-				ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */,
-				AC8F11D128814EB000D06AA6 /* BookmarCell */,
+				AC62F87528DC6E0800E4A92D /* BookmarkView */,
 			);
 			path = MainViewContents;
 			sourceTree = "<group>";
@@ -537,15 +546,6 @@
 				ACBA78F62898B34600CB39D5 /* CrawlError.swift */,
 			);
 			path = CrawlManager;
-			sourceTree = "<group>";
-		};
-		AC8F11D128814EB000D06AA6 /* BookmarCell */ = {
-			isa = PBXGroup;
-			children = (
-				AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */,
-				AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */,
-			);
-			path = BookmarCell;
 			sourceTree = "<group>";
 		};
 		ACAEF316287FF0D200AE98F1 = {
