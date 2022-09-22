@@ -21,6 +21,7 @@ protocol MainViewModelOutput {
     var events: BehaviorRelay<[LostArkEvent]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
+    var showEventPage: PublishRelay<String> { get }
 }
 
 final class MainViewModel: MainViewModelInOut {
@@ -65,7 +66,7 @@ final class MainViewModel: MainViewModelInOut {
             return
         }
         
-        print(eventURL)
+        showEventPage.accept(eventURL)
     }
     
     // out
@@ -74,4 +75,5 @@ final class MainViewModel: MainViewModelInOut {
     let events = BehaviorRelay<[LostArkEvent]>(value: [])
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
+    let showEventPage = PublishRelay<String>()
 }
