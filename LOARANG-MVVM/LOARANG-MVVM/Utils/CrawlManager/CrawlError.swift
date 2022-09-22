@@ -14,6 +14,11 @@ enum CrawlError: Error {
     case ownCharacterErrror
     
     var errorDescription: String {
-        return "유저 검색 중 오류가 발생했습니다\n(Error code: \(self))"
+        switch self {
+        case .searchError:
+            return "검색하신 유저가 없습니다"
+        default:
+            return "유저 검색 중 오류가 발생했습니다\n(Error code: \(self))"
+        }
     }
 }
