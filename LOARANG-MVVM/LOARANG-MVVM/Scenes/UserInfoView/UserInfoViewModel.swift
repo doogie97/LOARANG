@@ -160,12 +160,12 @@ final class UserInfoViewModel: UserInfoViewModelable {
 
 //MARK: - UserInfoViewModelDelegate
 extension UserInfoViewModel {
-    func getUserName(_ name: String) {
+    func searchOwnCharacter(_ name: String) {
         userName = name
         searchUser()
     }
 }
 
 protocol UserInfoViewModelDelegate: AnyObject {
-    func getUserName(_ name: String)
+    func searchOwnCharacter(_ name: String)
 }

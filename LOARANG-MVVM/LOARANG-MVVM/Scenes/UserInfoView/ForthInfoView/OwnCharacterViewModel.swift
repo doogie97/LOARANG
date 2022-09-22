@@ -113,7 +113,7 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
             return
         }
         
-        userInfoViewModelDelegate?.getUserName(userName)
+        userInfoViewModelDelegate?.searchOwnCharacter(userName)
     }
     
     //out
