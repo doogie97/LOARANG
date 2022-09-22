@@ -85,13 +85,13 @@ final class PropensitiesView: UIView {
             $0.leading.trailing.equalToSuperview().inset(8)
         }
         intellectStackView.snp.makeConstraints {
-            $0.top.equalTo(propensitiesTitleLabel.snp.bottom).inset(-8)
+            $0.top.equalTo(propensitiesTitleLabel.snp.bottom).inset(-16)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview().multipliedBy(0.5)
         }
         
         courageStackView.snp.makeConstraints {
-            $0.top.equalTo(propensitiesTitleLabel.snp.bottom).inset(-8)
+            $0.top.equalTo(propensitiesTitleLabel.snp.bottom).inset(-16)
             $0.leading.equalTo(intellectStackView.snp.trailing)
             $0.trailing.equalToSuperview()
         }

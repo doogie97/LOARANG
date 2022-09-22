@@ -42,9 +42,11 @@ final class BasicAbillityView: UIView {
     
     private lazy var topStackView: UIStackView = {
         let leftStackView = equllyStackView(axis: .vertical,
-                                                    arrangedSubviews: [attackTitleLabel, attackLabel])
+                                            arrangedSubviews: [attackTitleLabel, attackLabel],
+                                            spacing: 10)
         let rightStackView = equllyStackView(axis: .vertical,
-                                                     arrangedSubviews: [vitalityTitleLabel, vitalityLabel])
+                                             arrangedSubviews: [vitalityTitleLabel, vitalityLabel],
+                                             spacing: 10)
         
         let stackView = UIStackView(arrangedSubviews: [leftStackView, rightStackView])
         stackView.distribution = .fillEqually
@@ -127,17 +129,17 @@ final class BasicAbillityView: UIView {
         }
         
         topStackView.snp.makeConstraints {
-            $0.top.equalTo(topTitleLabel.snp.bottom).inset(-8)
+            $0.top.equalTo(topTitleLabel.snp.bottom).inset(-10)
             $0.leading.trailing.equalToSuperview()
         }
         
         bottomTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(topStackView.snp.bottom).inset(-8)
+            $0.top.equalTo(topStackView.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview().inset(8)
         }
         
         bottomStackView.snp.makeConstraints {
-            $0.top.equalTo(bottomTitleLabel.snp.bottom).inset(-8)
+            $0.top.equalTo(bottomTitleLabel.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
         }
