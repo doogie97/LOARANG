@@ -10,7 +10,9 @@ import RxSwift
 
 protocol OwnCharacterViewModelable: OwnCharacterViewModelInput, OwnCharacterViewModelOutput {}
 
-protocol OwnCharacterViewModelInput {}
+protocol OwnCharacterViewModelInput {
+    func touchCell(_ index: IndexPath)
+}
 
 protocol OwnCharacterViewModelOutput {
     var sections: BehaviorRelay<[OwnCharacterSection]>{ get }
@@ -18,6 +20,7 @@ protocol OwnCharacterViewModelOutput {
 
 final class OwnCharacterViewModel: OwnCharacterViewModelable {
     private let disposeBag = DisposeBag()
+    private weak var userInfoViewModelDelegate: UserInfoViewModelDelegate?
     
     init(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>) {
         bind(ownCharacterInfo: ownCharacterInfo)
@@ -101,6 +104,15 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
             self?.sections.accept(sections)
         })
         .disposed(by: disposeBag)
+    }
+    
+    //in
+    func touchCell(_ index: IndexPath) {
+        guard let userName = sections.value[safe: index.section]?.items[safe: index.row]?.name else {
+            return
+        }
+        
+        userInfoViewModelDelegate?.getUserName(userName)
     }
     
     //out

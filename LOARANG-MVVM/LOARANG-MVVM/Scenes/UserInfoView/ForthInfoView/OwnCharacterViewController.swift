@@ -50,6 +50,12 @@ final class OwnCharacterViewController: UIViewController {
             .bind(to: ownCharacterView.charactersTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+        ownCharacterView.charactersTableView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchCell($0)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.sections
             .bind(onNext: { [weak self] in
                 if $0.isEmpty {
