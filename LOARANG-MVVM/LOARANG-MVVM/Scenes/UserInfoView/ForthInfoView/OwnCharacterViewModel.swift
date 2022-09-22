@@ -29,6 +29,8 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
     private func bind(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>) {
         ownCharacterInfo.bind(onNext: { [weak self] in
             guard let ownCharacterInfo = $0 else {
+                self?.startedLoading.accept(())
+                self?.sections.accept([])
                 return
             }
             
@@ -101,6 +103,7 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
             }
             
             self?.sections.accept(sections)
+            self?.finishedLoading.accept(())
         })
         .disposed(by: disposeBag)
     }
