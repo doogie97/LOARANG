@@ -165,13 +165,15 @@ final class UserInfoViewModel: UserInfoViewModelable {
 //MARK: - UserInfoViewModelDelegate
 extension UserInfoViewModel {
     func searchOwnCharacter(_ name: String) {
+        changeSegment.accept((0))
+        currentPage.accept(0)
+        
         if self.userName == name {
             return
         }
+        
         userName = name
         searchUserInfo()
-        changeSegment.accept((0))
-        currentPage.accept(0)
     }
 }
 
