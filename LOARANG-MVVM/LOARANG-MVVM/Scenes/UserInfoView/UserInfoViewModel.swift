@@ -7,7 +7,7 @@
 
 import RxRelay
 
-protocol UserInfoViewModelable: UserInfoViewModelInput, UserInfoViewModelOutput {}
+protocol UserInfoViewModelable: UserInfoViewModelInput, UserInfoViewModelOutput, UserInfoViewModelDelegate {}
 
 protocol UserInfoViewModelInput {
     func searchUser()
@@ -140,7 +140,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     //out
-    let userName: String
+    var userName: String
     let popView = PublishRelay<Void>()
     var pageViewList: [UIViewController] = []
     let currentPage = BehaviorRelay<Int>(value: 0)
@@ -155,4 +155,16 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private let userInfo = BehaviorRelay<UserInfo?>(value: nil)
     private let skillInfo = BehaviorRelay<SkillInfo?>(value: nil)
     private let ownCharacterInfo = BehaviorRelay<OwnCharacterInfo?>(value: nil)
+}
+
+//MARK: - UserInfoViewModelDelegate
+extension UserInfoViewModel {
+    func getUserName(_ name: String) {
+        userName = name
+        searchUser()
+    }
+}
+
+protocol UserInfoViewModelDelegate: AnyObject {
+    func getUserName(_ name: String)
 }
