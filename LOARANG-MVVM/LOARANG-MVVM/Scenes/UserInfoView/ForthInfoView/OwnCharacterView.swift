@@ -26,12 +26,24 @@ final class OwnCharacterView: UIView {
         return tableView
     }()
     
+    private(set) var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.stopAnimating()
+        
+        return indicator
+    }()
+    
     private func setLayout() {
         self.addSubview(charactersTableView)
+        self.addSubview(activityIndicator)
         
         charactersTableView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
+        }
+        
+        activityIndicator.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(charactersTableView)
         }
     }
 }
