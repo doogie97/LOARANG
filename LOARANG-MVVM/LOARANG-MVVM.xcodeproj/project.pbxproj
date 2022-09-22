@@ -585,19 +585,12 @@
 		ACAEF338287FF60000AE98F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ACAEF346287FF97100AE98F1 /* UserInfo */,
+				AC86403A28B5C968004B7EBB /* StorageModel */,
+				ACB3812F28D425720081F8A1 /* UserInfo */,
+				ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */,
 				AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		ACAEF346287FF97100AE98F1 /* UserInfo */ = {
-			isa = PBXGroup;
-			children = (
-				AC86403A28B5C968004B7EBB /* StorageModel */,
-				ACB3812F28D425720081F8A1 /* UserInfo */,
-			);
-			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		ACAEF34B287FF9B900AE98F1 /* Equips */ = {
@@ -701,9 +694,9 @@
 				ACAEF33E287FF91A00AE98F1 /* Stat.swift */,
 				AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */,
 				AC86403D28B5D1CF004B7EBB /* UserJsonInfos */,
-				ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */,
 			);
-			path = UserInfo;
+			name = UserInfo;
+			path = UserInfo/UserInfo;
 			sourceTree = "<group>";
 		};
 		ACDE28A428B0A87A00BFD206 /* EquipmentDetailView */ = {
