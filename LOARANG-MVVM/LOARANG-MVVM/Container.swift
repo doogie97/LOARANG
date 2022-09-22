@@ -121,12 +121,14 @@ final class Container {
         return SkillDetailViewModel(skill: skill)
     }
     
-    func makeOwnCharacterViewController(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>) -> OwnCharacterViewController {
-        return OwnCharacterViewController(viewModel: makeOwnCharacterViewModel(ownCharacterInfo: ownCharacterInfo))
+    func makeOwnCharacterViewController(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>, userInfoViewModelDelegate: UserInfoViewModelDelegate) -> OwnCharacterViewController {
+        return OwnCharacterViewController(viewModel: makeOwnCharacterViewModel(ownCharacterInfo: ownCharacterInfo,
+                                                                               userInfoViewModelDelegate: userInfoViewModelDelegate))
     }
     
-    private func makeOwnCharacterViewModel(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>) -> OwnCharacterViewModelable {
-        return OwnCharacterViewModel(ownCharacterInfo: ownCharacterInfo)
+    private func makeOwnCharacterViewModel(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>, userInfoViewModelDelegate: UserInfoViewModelDelegate) -> OwnCharacterViewModelable {
+        return OwnCharacterViewModel(ownCharacterInfo: ownCharacterInfo,
+                                     userInfoViewModelDelegate: userInfoViewModelDelegate)
     }
     
     //MARK: - about settingVIew
