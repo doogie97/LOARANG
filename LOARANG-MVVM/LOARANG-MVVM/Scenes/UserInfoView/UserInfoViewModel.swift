@@ -137,8 +137,8 @@ final class UserInfoViewModel: UserInfoViewModelable {
             switch result {
             case .success(let ownCharacterInfo):
                 self?.ownCharacterInfo.accept(ownCharacterInfo)
-            case .failure(_):
-                self?.showAlert.accept((message: "보유 캐릭터 정보를 가져오는데 실패하였습니다", isPop: false))
+            case .failure(let error):
+                self?.showAlert.accept((message: error.errorMessage, isPop: false))
             }
         }
     }

@@ -17,6 +17,8 @@ enum CrawlError: Error {
         switch self {
         case .searchError:
             return "검색하신 유저가 없습니다"
+        case .ownCharacterErrror:
+            return "보유 캐릭터 정보를 가져오는데 실패하였습니다"
         default:
             return "유저 검색 중 오류가 발생했습니다\n(Error code: \(self))"
         }
