@@ -44,6 +44,7 @@ final class BookmarkCVCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.one(size: 15, family: .Bold)
         label.textAlignment = .center
+        label.numberOfLines = 0
         
         return label
     }()
@@ -66,7 +67,7 @@ final class BookmarkCVCell: UICollectionViewCell {
             $0.top.equalTo(bookmarkButton.snp.bottom).inset(10)
             $0.centerX.equalToSuperview()
             
-            let height = UIScreen.main.bounds.width * 0.22
+            let height = UIScreen.main.bounds.width * 0.21
             $0.height.equalTo(height)
             $0.width.equalTo(userImageView.snp.height)
             userImageView.layer.cornerRadius = height / 2
@@ -74,8 +75,8 @@ final class BookmarkCVCell: UICollectionViewCell {
         
         nameLabel.snp.makeConstraints {
             $0.top.equalTo(userImageView.snp.bottom).inset(-5)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(10)
+            $0.leading.trailing.equalToSuperview().inset(5)
+            $0.bottom.equalToSuperview()
         }
         
         bind()
