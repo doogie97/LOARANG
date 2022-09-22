@@ -69,35 +69,35 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
             var sections: [OwnCharacterSection] = []
             
             if !ninaveCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "니나브", items: ninaveCharacters))
+                sections.append(OwnCharacterSection(header: "니나브(\(ninaveCharacters.count))", items: ninaveCharacters))
             }
             
             if !loopaeonCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "루페온", items: loopaeonCharacters))
+                sections.append(OwnCharacterSection(header: "루페온(\(loopaeonCharacters.count))", items: loopaeonCharacters))
             }
             
             if !silianCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "실리안", items: silianCharacters))
+                sections.append(OwnCharacterSection(header: "실리안(\(silianCharacters.count))", items: silianCharacters))
             }
             
             if !armanCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "아만", items: armanCharacters))
+                sections.append(OwnCharacterSection(header: "아만(\(armanCharacters.count))", items: armanCharacters))
             }
             
             if !abrelshudCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "아브렐슈드", items: abrelshudCharacters))
+                sections.append(OwnCharacterSection(header: "아브렐슈드(\(abrelshudCharacters.count))", items: abrelshudCharacters))
             }
             
             if !kadanCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "카단", items: kadanCharacters))
+                sections.append(OwnCharacterSection(header: "카단(\(kadanCharacters.count))", items: kadanCharacters))
             }
             
             if !kharmineCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "카마인", items: kharmineCharacters))
+                sections.append(OwnCharacterSection(header: "카마인(\(kharmineCharacters.count))", items: kharmineCharacters))
             }
             
             if !kazerosCharacters.isEmpty {
-                sections.append(OwnCharacterSection(header: "카제로스", items: kazerosCharacters))
+                sections.append(OwnCharacterSection(header: "카제로스(\(kazerosCharacters.count))", items: kazerosCharacters))
             }
             
             self?.sections.accept(sections)
