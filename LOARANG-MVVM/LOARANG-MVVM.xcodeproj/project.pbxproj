@@ -46,6 +46,7 @@
 		AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */; };
 		AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7528C2E515003B4B54 /* Card.swift */; };
 		AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */; };
+		AC62F87428DC6CAC00E4A92D /* LostArkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */; };
@@ -164,6 +165,7 @@
 		AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		AC5B6D7528C2E515003B4B54 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffect.swift; sourceTree = "<group>"; };
+		AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkEvent.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewController.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF346287FF97100AE98F1 /* UserInfo */,
+				AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
+				AC62F87428DC6CAC00E4A92D /* LostArkEvent.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACB3813128D4258E0081F8A1 /* OwnCharacterInfo.swift in Sources */,
