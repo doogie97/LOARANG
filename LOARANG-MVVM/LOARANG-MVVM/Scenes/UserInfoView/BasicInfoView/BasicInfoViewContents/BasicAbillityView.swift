@@ -104,7 +104,7 @@ final class BasicAbillityView: UIView {
     private lazy var enduranceLabel = makeLable(size: smallFontSize, color: statColor)
     private lazy var expertiseLabel = makeLable(size: smallFontSize, color: statColor)
     
-    private func makeLable(size: Int, color: UIColor = .label, text: String = "10000") -> UILabel {
+    private func makeLable(size: Int, color: UIColor = .label, text: String = "") -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.one(size: size, family: .Bold)
