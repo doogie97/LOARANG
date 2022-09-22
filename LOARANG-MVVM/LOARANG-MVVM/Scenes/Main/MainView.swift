@@ -76,7 +76,8 @@ final class MainView: UIView {
         
         mainScrollView.snp.makeConstraints {
             $0.top.equalTo(titleStackView.snp.bottom)
-            $0.bottom.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         mainContentsView.snp.makeConstraints {
