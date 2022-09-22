@@ -26,14 +26,18 @@ extension Int {
     }
     var engravingHeight: CGFloat {
         switch self {
-        case 0...2:
+        case 0:
+            return UIScreen.main.bounds.width * 0.12
+        case 1...2:
             return UIScreen.main.bounds.width * 0.1
         case 3...4:
             return UIScreen.main.bounds.width * 0.17
         case 5...6:
             return UIScreen.main.bounds.width * 0.24
-        default:
+        case 7...8:
             return UIScreen.main.bounds.width * 0.31
+        default:
+            return UIScreen.main.bounds.width * 0.38
         }
     }
 }
