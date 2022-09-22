@@ -51,7 +51,7 @@ final class AppStorage: AppStorageable {
             try localStorage.updateUser(user)
             self.bookMark.accept(localStorage.bookmarkUsers())
         } catch {
-            throw LocalStorageError.updateError
+            throw error
         }
     }
     
