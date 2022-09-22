@@ -12,7 +12,7 @@ protocol OwnCharacterViewModelable: OwnCharacterViewModelInput, OwnCharacterView
 
 protocol OwnCharacterViewModelInput {
     var startedLoading: BehaviorRelay<Void> { get }
-    var finishedLoading: PublishRelay<Void> { get }
+    var finishedLoading: BehaviorRelay<Void> { get }
 }
 
 protocol OwnCharacterViewModelOutput {
@@ -111,5 +111,5 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
     //out
     let sections = BehaviorRelay<[OwnCharacterSection]>(value: [])
     let startedLoading = BehaviorRelay<Void>(value: ())
-    let finishedLoading = PublishRelay<Void>()
+    let finishedLoading = BehaviorRelay<Void>(value: ())
 }
