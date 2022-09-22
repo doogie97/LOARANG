@@ -49,6 +49,9 @@
 		AC62F87428DC6CAC00E4A92D /* LostArkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */; };
 		AC62F87728DC6E3C00E4A92D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87628DC6E3C00E4A92D /* EventView.swift */; };
 		AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87928DC6FFE00E4A92D /* EventCVCell.swift */; };
+		AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */; };
+		AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87E28DC7F5200E4A92D /* WebViewView.swift */; };
+		AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */; };
@@ -170,6 +173,9 @@
 		AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkEvent.swift; sourceTree = "<group>"; };
 		AC62F87628DC6E3C00E4A92D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		AC62F87928DC6FFE00E4A92D /* EventCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCVCell.swift; sourceTree = "<group>"; };
+		AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		AC62F87E28DC7F5200E4A92D /* WebViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewView.swift; sourceTree = "<group>"; };
+		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +452,16 @@
 			path = EventView;
 			sourceTree = "<group>";
 		};
+		AC62F87D28DC7F2F00E4A92D /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				AC62F87E28DC7F5200E4A92D /* WebViewView.swift */,
+				AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */,
+				AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		AC6CA28F2893BBCF0049C12F /* BasicInfoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +605,7 @@
 				ACAEF3602880039F00AE98F1 /* Utils */,
 				ACAEF338287FF60000AE98F1 /* Model */,
 				AC3FEC0B2880525E00CDE796 /* Scenes */,
+				AC62F87D28DC7F2F00E4A92D /* WebView */,
 				ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */,
 				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
@@ -873,6 +890,7 @@
 				ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
+				AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */,
 				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
@@ -887,6 +905,7 @@
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
+				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
 				ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */,
@@ -917,6 +936,7 @@
 				AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				AC4E19EB28C444E600542EAE /* CardView.swift in Sources */,
+				AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
 				ACB3813328D42CF60081F8A1 /* OwnCharacterViewModel.swift in Sources */,
