@@ -10,10 +10,7 @@ import RxSwift
 
 protocol OwnCharacterViewModelable: OwnCharacterViewModelInput, OwnCharacterViewModelOutput {}
 
-protocol OwnCharacterViewModelInput {
-    var startedLoading: BehaviorRelay<Void> { get }
-    var finishedLoading: BehaviorRelay<Void> { get }
-}
+protocol OwnCharacterViewModelInput {}
 
 protocol OwnCharacterViewModelOutput {
     var sections: BehaviorRelay<[OwnCharacterSection]>{ get }
@@ -29,7 +26,6 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
     private func bind(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>) {
         ownCharacterInfo.bind(onNext: { [weak self] in
             guard let ownCharacterInfo = $0 else {
-                self?.startedLoading.accept(())
                 self?.sections.accept([])
                 return
             }
@@ -103,13 +99,10 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
             }
             
             self?.sections.accept(sections)
-            self?.finishedLoading.accept(())
         })
         .disposed(by: disposeBag)
     }
     
     //out
     let sections = BehaviorRelay<[OwnCharacterSection]>(value: [])
-    let startedLoading = BehaviorRelay<Void>(value: ())
-    let finishedLoading = BehaviorRelay<Void>(value: ())
 }

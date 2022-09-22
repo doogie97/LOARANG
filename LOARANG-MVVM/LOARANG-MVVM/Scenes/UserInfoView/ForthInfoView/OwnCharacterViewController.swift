@@ -50,17 +50,14 @@ final class OwnCharacterViewController: UIViewController {
             .bind(to: ownCharacterView.charactersTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        viewModel.startedLoading
+        viewModel.sections
             .bind(onNext: { [weak self] in
-                self?.ownCharacterView.activityIndicator.startAnimating()
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.finishedLoading
-            .bind(onNext: { [weak self] in
-                self?.ownCharacterView.activityIndicator.stopAnimating()
-            })
-            .disposed(by: disposeBag)
+                if $0.isEmpty {
+                    self?.ownCharacterView.activityIndicator.startAnimating()
+                } else {
+                    self?.ownCharacterView.activityIndicator.stopAnimating()
+                }
+            }).disposed(by: disposeBag)
     }
 }
 
