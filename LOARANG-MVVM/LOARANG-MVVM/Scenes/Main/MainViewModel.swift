@@ -17,6 +17,7 @@ protocol MainViewModelInput {
 protocol MainViewModelOutput {
     var mainUser: BehaviorRelay<MainUser?> { get }
     var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
+    var events: BehaviorRelay<[LostArkEvent]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
 }
@@ -28,6 +29,14 @@ final class MainViewModel: MainViewModelInOut {
         self.storage = storage
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
+        CrawlManager().getEvents { [weak self] result in
+            switch result {
+            case .success(let event):
+                self?.events.accept(event)
+            case .failure(let error):
+                print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
+            }
+        }
     }
     
     // in
@@ -53,6 +62,7 @@ final class MainViewModel: MainViewModelInOut {
     // out
     let mainUser: BehaviorRelay<MainUser?>
     let bookmarkUser: BehaviorRelay<[BookmarkUser]>
+    let events = BehaviorRelay<[LostArkEvent]>(value: [])
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
 }
