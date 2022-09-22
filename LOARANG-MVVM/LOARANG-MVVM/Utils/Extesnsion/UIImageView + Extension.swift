@@ -8,9 +8,9 @@
 import UIKit
 
 extension UIImageView {
-    func setImage(urlString: String?) {
+    func setImage(urlString: String?) -> URLSessionDataTask? {
         guard let url  = URL(string: urlString ?? "") else {
-            return
+            return nil
         }
         
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -35,5 +35,7 @@ extension UIImageView {
             }
         }
         dataTask.resume()
+        
+        return dataTask
     }
 }

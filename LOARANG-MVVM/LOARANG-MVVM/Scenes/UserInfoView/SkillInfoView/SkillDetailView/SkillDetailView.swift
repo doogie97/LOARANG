@@ -219,7 +219,7 @@ final class SkillDetailView: UIView {
     
     func setViewContents(_ skill: Skill) {
         nameLabel.text = skill.name
-        skillImageView.setImage(urlString: skill.imageURL)
+        let _ = skillImageView.setImage(urlString: skill.imageURL)
         actionTypeLabel.attributedText = skill.actionType.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
         skillTypeLabel.attributedText = skill.skillType.htmlToAttributedString(fontSize: 4, alignment: .RIGHT)
         coolTimeLabel.attributedText = skill.coolTime.htmlToAttributedString(fontSize: 5, alignment: .LEFT)

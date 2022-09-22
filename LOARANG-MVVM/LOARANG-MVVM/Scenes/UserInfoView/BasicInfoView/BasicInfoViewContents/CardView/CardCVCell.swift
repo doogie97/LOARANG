@@ -75,7 +75,7 @@ final class CardCVCell: UICollectionViewCell {
     func setCellContents(card: Card) {
         setLayout()
         
-        cardImageView.setImage(urlString: card.imageURL)
+        let _ = cardImageView.setImage(urlString: card.imageURL)
         
         let gradeColor = Equips.Grade(rawValue: card.tierGrade)?.textColor
         cardNameLabel.text = card.name

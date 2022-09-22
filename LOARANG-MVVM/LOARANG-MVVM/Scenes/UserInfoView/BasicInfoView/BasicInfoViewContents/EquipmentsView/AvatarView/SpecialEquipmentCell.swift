@@ -55,7 +55,7 @@ final class SpecialEquipmentCell: UICollectionViewCell {
     }
     
     func setCellContents(equipmentPart: EquipmentPart?, partString: String?, backColor: UIColor?) {
-        partImageView.setImage(urlString: equipmentPart?.basicInfo.imageURL)
+        let _ = partImageView.setImage(urlString: equipmentPart?.basicInfo.imageURL)
         partImageView.backgroundColor = backColor
         partLabel.text = partString
     }

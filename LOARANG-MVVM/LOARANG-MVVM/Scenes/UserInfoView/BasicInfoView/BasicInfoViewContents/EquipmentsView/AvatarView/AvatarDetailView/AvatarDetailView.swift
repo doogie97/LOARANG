@@ -109,7 +109,7 @@ final class AvatarDetailView: UIView {
         nameLabel.text = equipmentInfo.basicInfo.name?.htmlToString
         nameLabel.textColor = Equips.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.textColor
         
-        equipmentImageView.setImage(urlString: equipmentInfo.basicInfo.imageURL)
+        let _ = equipmentImageView.setImage(urlString: equipmentInfo.basicInfo.imageURL)
         equipmentImageView.backgroundColor = Equips.Grade(rawValue: equipmentInfo.basicInfo.grade ?? 0)?.backgroundColor
         
         partNameLabel.text = equipmentInfo.basicInfo.part?.htmlToString

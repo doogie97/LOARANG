@@ -167,7 +167,7 @@ final class SkillTVCell: UITableViewCell {
     }
     
     func setCellContents(skill: Skill) {
-        skillImageView.setImage(urlString: skill.imageURL)
+        skillImageViewDataTask = skillImageView.setImage(urlString: skill.imageURL)
         skillNameLabel.text = skill.name
         skillLvLabel.text = skill.skillLv
         
@@ -175,13 +175,13 @@ final class SkillTVCell: UITableViewCell {
             tripodsStackView.isHidden = true
         } else {
             firstTripodNameLabel.text = skill.tripods[safe: 0]?.name
-            firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
+            firstTripodImageViewDataTask = firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
             
             secondTripodNameLabel.text = skill.tripods[safe: 1]?.name
-            secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
+            secondTripodImageViewDataTask = secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
             
             thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name
-            thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
+            thirdTripodImageViewDataTask = thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
         }
 
         
@@ -197,6 +197,11 @@ final class SkillTVCell: UITableViewCell {
             gemLabel.attributedText = skill.gemEffect
         }
     }
+    
+    private var skillImageViewDataTask: URLSessionDataTask?
+    private var firstTripodImageViewDataTask: URLSessionDataTask?
+    private var secondTripodImageViewDataTask: URLSessionDataTask?
+    private var thirdTripodImageViewDataTask: URLSessionDataTask?
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -217,5 +222,17 @@ final class SkillTVCell: UITableViewCell {
         gemLabel.text = nil
         
         tripodsStackView.isHidden = false
+        
+        skillImageViewDataTask?.suspend()
+        skillImageViewDataTask?.cancel()
+        
+        firstTripodImageViewDataTask?.suspend()
+        firstTripodImageViewDataTask?.cancel()
+        
+        secondTripodImageViewDataTask?.suspend()
+        secondTripodImageViewDataTask?.cancel()
+        
+        thirdTripodImageViewDataTask?.suspend()
+        thirdTripodImageViewDataTask?.cancel()
     }
 }

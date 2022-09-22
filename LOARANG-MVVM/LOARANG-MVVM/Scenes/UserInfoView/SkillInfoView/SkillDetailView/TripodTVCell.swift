@@ -94,7 +94,7 @@ final class TripodTVCell: UITableViewCell {
     
     func setCellContents(tripod: Tripod) {
         if !tripod.name.isEmpty {
-            tripodImageView.setImage(urlString: tripod.imageURL)
+            let _ = tripodImageView.setImage(urlString: tripod.imageURL)
             tripodNameLabel.text = tripod.name
             tripodLvLabel.attributedText = tripod.lv.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
             tripodEffectLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 3, alignment: .LEFT)

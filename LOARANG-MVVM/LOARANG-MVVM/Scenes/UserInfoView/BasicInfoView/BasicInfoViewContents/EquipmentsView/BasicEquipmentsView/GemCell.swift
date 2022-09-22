@@ -57,9 +57,22 @@ final class GemCell: UICollectionViewCell {
     func setCellContents(gem: Gem) {
         setLayout()
         
-        gemImageView.setImage(urlString: gem.imageURL)
+        gemImageDataTask = gemImageView.setImage(urlString: gem.imageURL)
         gemImageView.backgroundColor = Equips.Grade(rawValue: gem.grade)?.backgroundColor
         
         gemLvLabel.text = gem.lvString.replacingOccurrences(of: "Lv.", with: "")
+    }
+    
+    private var gemImageDataTask: URLSessionDataTask?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        gemImageView.image = nil
+        gemLvLabel.text = nil
+        gemImageView.backgroundColor = nil
+        
+        gemImageDataTask?.suspend()
+        gemImageDataTask?.cancel()
     }
 }
