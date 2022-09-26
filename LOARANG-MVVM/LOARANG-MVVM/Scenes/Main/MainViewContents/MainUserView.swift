@@ -39,6 +39,15 @@ final class MainUserView: UIView {
         return imageView
     }()
     
+    private(set) lazy var setMainUserButton: UIButton = {
+        let button = UIButton()
+        button.imageView?.tintColor = .systemGray
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 18, weight: .regular, scale: .default), forImageIn: .normal)
+
+        return button
+    }()
+    
     //MARK: - bottom StackView
     private lazy var bottomStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [makeInfoStackView(classTitle, classLabel),
@@ -93,11 +102,6 @@ final class MainUserView: UIView {
     }
     
     private func setUserLayout() {
-        backView.addSubview(contentsView)
-        contentsView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(8)
-        }
-        
         contentsView.addSubview(userImageView)
         contentsView.addSubview(lvNameLabel)
         contentsView.addSubview(bottomStackView)
@@ -136,6 +140,19 @@ final class MainUserView: UIView {
     }
     
     func setUserInfo(_ info: MainUser?) {
+        backView.addSubview(contentsView)
+        contentsView.addSubview(setMainUserButton)
+        
+        contentsView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(8)
+        }
+        
+        setMainUserButton.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(30)
+            $0.width.equalTo(30)
+        }
+        
         guard let info = info else {
             setNoMainUserLayout()
             return
