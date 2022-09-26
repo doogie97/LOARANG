@@ -22,7 +22,7 @@ final class WebViewView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.one(size: 18, family: .Bold)
+        label.font = UIFont.one(size: 15, family: .Bold)
         label.textAlignment = .center
         
         return label
