@@ -105,5 +105,15 @@ final class MainViewController: UIViewController {
                 self?.viewModel.touchEventCell($0.row)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.showWebView
+            .bind(onNext: { [weak self] in
+                guard let webViewVC = self?.container.makeWebViewViewController(url: $0) else {
+                    return
+                }
+                
+                self?.navigationController?.pushViewController(webViewVC, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
