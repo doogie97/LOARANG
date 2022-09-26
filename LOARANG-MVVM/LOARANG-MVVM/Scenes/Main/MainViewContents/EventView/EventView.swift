@@ -34,6 +34,14 @@ final class EventView: UIView {
         return label
     }()
     
+    private(set) lazy var moreEventButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("더보기", for: .normal)
+        button.titleLabel?.font = UIFont.one(size: 13, family: .Bold)
+        
+        return button
+    }()
+    
     private(set) lazy var eventCollectionView: UICollectionView = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(2), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -60,6 +68,7 @@ final class EventView: UIView {
         self.addSubview(backView)
         
         backView.addSubview(eventTitle)
+        backView.addSubview(moreEventButton)
         backView.addSubview(eventCollectionView)
         
         backView.snp.makeConstraints {
@@ -70,6 +79,11 @@ final class EventView: UIView {
         eventTitle.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().inset(16)
+        }
+        
+        moreEventButton.snp.makeConstraints {
+            $0.centerY.equalTo(eventTitle)
+            $0.trailing.equalToSuperview().inset(16)
         }
         
         eventCollectionView.snp.makeConstraints {
