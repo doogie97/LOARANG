@@ -22,6 +22,39 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
+    func showSetMainCharacterAlert(action: ((String) -> Void)? = nil) {
+        let alert = UIAlertController(title: "", message: "대표 캐릭터로 설정할 캐릭터를 입력해 주세요", preferredStyle: .alert)
+        let yesction = UIAlertAction(title: "확인", style: .default) { _ in
+            guard let action = action else {
+                return
+            }
+            action(alert.textFields?[safe: 0]?.text ?? "")
+        }
+        
+        alert.addAction(yesction)
+        alert.addTextField()
+        
+        self.present(alert, animated: true)
+    }
+    
+    func showCheckUserAlert(_ mainUser: MainUser, action: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.`class`))",
+                                      message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "확인", style: .default) { _ in
+            guard let action = action else {
+                return
+            }
+            
+            action()
+        }
+        let noAction = UIAlertAction(title: "취소", style: .destructive)
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        self.present(alert, animated: true)
+    }
+    
     func showExitAlert(title: String = "", message: String) {
         let alert = UIAlertController(title: title,
                                       message: message,

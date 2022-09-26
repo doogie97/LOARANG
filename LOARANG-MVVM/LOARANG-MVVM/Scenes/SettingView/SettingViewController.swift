@@ -32,7 +32,10 @@ final class SettingViewController: UIViewController {
     private func bindContents() {
         viewModel.checkUser
             .bind(onNext: { [weak self] in
-                self?.showCheckUserAlert($0)
+                let mainUser = $0
+                self?.showCheckUserAlert(mainUser, action: {
+                    self?.viewModel.changeMainUser(mainUser)
+                })
             })
             .disposed(by: disposeBag)
         
@@ -58,32 +61,6 @@ final class SettingViewController: UIViewController {
     private func setTableView() {
         settingView.menuTableView.dataSource = self
         settingView.menuTableView.delegate = self
-    }
-    
-    private func showTextFieldAlert() {
-        let alert = UIAlertController(title: "", message: "대표 캐릭터로 설정할 캐릭터를 입력해 주세요", preferredStyle: .alert)
-        let yesction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            self?.viewModel.touchSearchButton(alert.textFields?[0].text ?? "")
-        }
-        
-        alert.addAction(yesction)
-        alert.addTextField()
-        
-        self.present(alert, animated: true)
-    }
-    
-    private func showCheckUserAlert(_ mainUser: MainUser) {
-        let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.`class`))",
-                                      message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            self?.viewModel.changeMainUser(mainUser)
-        }
-        let noAction = UIAlertAction(title: "취소", style: .destructive)
-        
-        alert.addAction(yesAction)
-        alert.addAction(noAction)
-        
-        self.present(alert, animated: true)
     }
 }
 
@@ -125,7 +102,9 @@ extension SettingViewController: UITableViewDataSource {
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == CellType.changeMainUser.rawValue {
-            showTextFieldAlert()
+            self.showSetMainCharacterAlert {
+                self.viewModel.touchSearchButton($0)
+            }
         }
     }
 }
