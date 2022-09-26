@@ -26,7 +26,13 @@ final class WebViewViewController: UIViewController {
         super.viewDidLoad()
         self.view = webViewView
         webViewView.setViewContents(url: viewModel.url, title: viewModel.title)
+        setToolbar()
         bindView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isToolbarHidden = true
     }
     
     private func bindView() {
@@ -41,5 +47,9 @@ final class WebViewViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func setToolbar() {
+        navigationController?.isToolbarHidden = false
     }
 }
