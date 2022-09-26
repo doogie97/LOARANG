@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import WebKit
 
 final class WebViewViewController: UIViewController {
     private let viewModel: WebViewViewModelable
@@ -51,6 +52,7 @@ final class WebViewViewController: UIViewController {
     
     private func setToolbar() {
         navigationController?.isToolbarHidden = false
+        webViewView.webView.navigationDelegate = self
         toolbarItems = [spacer,
                         goBackButton, spacer, spacer, spacer,
                         goFowardButton, spacer, spacer, spacer,
@@ -91,4 +93,11 @@ final class WebViewViewController: UIViewController {
         
         return button
     }()
+}
+
+extension WebViewViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        goBackButton.isEnabled = webView.canGoBack
+        goFowardButton.isEnabled = webView.canGoForward
+    }
 }
