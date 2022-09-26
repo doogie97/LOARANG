@@ -21,7 +21,7 @@ protocol MainViewModelOutput {
     var events: BehaviorRelay<[LostArkEvent]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
-    var showWebView: PublishRelay<String> { get }
+    var showWebView: PublishRelay<URL> { get }
 }
 
 final class MainViewModel: MainViewModelInOut {
@@ -62,11 +62,15 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchEventCell(_ index: Int) {
-        guard let eventURL = events.value[safe: index]?.eventURL else {
+        guard let urlString = events.value[safe: index]?.eventURL else {
             return
         }
         
-        showWebView.accept(eventURL)
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        showWebView.accept(url)
     }
     
     // out
@@ -75,5 +79,5 @@ final class MainViewModel: MainViewModelInOut {
     let events = BehaviorRelay<[LostArkEvent]>(value: [])
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
-    let showWebView = PublishRelay<String>()
+    let showWebView = PublishRelay<URL>()
 }
