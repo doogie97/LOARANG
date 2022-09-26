@@ -68,7 +68,8 @@ final class WebViewView: UIView {
         
         webView.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.bottom).inset(-16)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
