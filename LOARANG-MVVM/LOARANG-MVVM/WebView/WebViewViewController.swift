@@ -48,6 +48,36 @@ final class WebViewViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+        
+        goBackButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.webViewView.webView.goBack()
+            })
+            .disposed(by: disposeBag)
+        
+        goFowardButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.webViewView.webView.goForward()
+            })
+            .disposed(by: disposeBag)
+        
+        reloadButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.webViewView.webView.reload()
+            })
+            .disposed(by: disposeBag)
+        
+        shareButton.rx.tap
+            .bind(onNext: { [weak self] in
+                guard let url = self?.webViewView.webView.url else {
+                    return
+                }
+                let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                activityVC.popoverPresentationController?.sourceView = self?.view
+                
+                self?.present(activityVC, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setToolbar() {
