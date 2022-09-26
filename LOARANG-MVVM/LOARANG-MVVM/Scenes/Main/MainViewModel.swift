@@ -80,6 +80,12 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func changeMainUser(_ mainUser: MainUser) {
+        do {
+            try storage.changeMainUser(mainUser)
+            showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
+        } catch {
+            showAlert.accept(error.errorMessage)
+        }
     }
     
     func touchBookMarkCell(_ index: Int) {

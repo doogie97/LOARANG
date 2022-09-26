@@ -84,6 +84,15 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.checkUser
+            .bind(onNext: { [weak self] in
+                let mainUser = $0
+                self?.showCheckUserAlert(mainUser, action: {
+                    self?.viewModel.changeMainUser(mainUser)
+                })
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.startedLoading
             .bind(onNext: { [weak self] in
                 self?.mainView.activityIndicator.startAnimating()
