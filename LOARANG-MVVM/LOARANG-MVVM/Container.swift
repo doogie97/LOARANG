@@ -36,12 +36,12 @@ final class Container {
     }
     
 //MARK: - about webView
-    func makeWebViewViewController(url: URL) -> WebViewViewController {
-        return WebViewViewController(viewModel: makeWebViewViewModel(url: url))
+    func makeWebViewViewController(url: URL, title: String) -> WebViewViewController {
+        return WebViewViewController(viewModel: makeWebViewViewModel(url: url, title: title))
     }
     
-    private func makeWebViewViewModel(url: URL) -> WebViewViewModelable {
-        return WebViewViewModel(url: url)
+    private func makeWebViewViewModel(url: URL, title: String) -> WebViewViewModelable {
+        return WebViewViewModel(url: url, title: title)
     }
     
 //MARK: - about searchView

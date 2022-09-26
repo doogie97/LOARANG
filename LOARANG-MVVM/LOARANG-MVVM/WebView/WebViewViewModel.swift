@@ -12,14 +12,17 @@ protocol WebViewViewModelable: WebViewViewModelInput, WebViewViewModelOutput {}
 protocol WebViewViewModelInput {}
 
 protocol WebViewViewModelOutput {
-    var url: URL { get }
+    var url: URLRequest { get }
+    var title: String { get }
 }
 
 final class WebViewViewModel: WebViewViewModelable {
-    init(url: URL) {
-        self.url = url
+    init(url: URL, title: String) {
+        self.url = URLRequest(url: url)
+        self.title = title
     }
     
     //out
-    let url: URL
+    let url: URLRequest
+    let title: String
 }

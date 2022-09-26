@@ -108,7 +108,7 @@ final class MainViewController: UIViewController {
         
         viewModel.showWebView
             .bind(onNext: { [weak self] in
-                guard let webViewVC = self?.container.makeWebViewViewController(url: $0) else {
+                guard let webViewVC = self?.container.makeWebViewViewController(url: $0.url, title: $0.title) else {
                     return
                 }
                 
