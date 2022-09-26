@@ -35,6 +35,15 @@ final class Container {
         return BookmarkCVCellViewModel(storage: storage)
     }
     
+//MARK: - about webView
+    func makeWebViewViewController(url: URL) -> WebViewViewController {
+        return WebViewViewController(viewModel: makeWebViewViewModel(url: url))
+    }
+    
+    private func makeWebViewViewModel(url: URL) -> WebViewViewModelable {
+        return WebViewViewModel(url: url)
+    }
+    
 //MARK: - about searchView
     func makeSearchViewController() -> SearchViewController {
         return SearchViewController(viewModel: makeSearchViewModel(), container: self)
