@@ -14,6 +14,7 @@ protocol MainViewModelInput {
     func touchMainUser()
     func touchBookMarkCell(_ index: Int)
     func touchEventCell(_ index: Int)
+    func touchMoreEventButton()
 }
 protocol MainViewModelOutput {
     var mainUser: BehaviorRelay<MainUser?> { get }
@@ -22,7 +23,6 @@ protocol MainViewModelOutput {
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
     var showWebView: PublishRelay<(url: URL, title: String)> { get }
-    func touchMoreEventButton()
 }
 
 final class MainViewModel: MainViewModelInOut {
