@@ -5,7 +5,7 @@
 //  Created by 최최성균 on 2022/09/22.
 //
 
-import UIKit
+import RxSwift
 
 final class WebViewViewController: UIViewController {
     private let viewModel: WebViewViewModelable
@@ -20,10 +20,26 @@ final class WebViewViewController: UIViewController {
     }
     
     private let webViewView = WebViewView()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = webViewView
         webViewView.setViewContents(url: viewModel.url, title: viewModel.title)
+        bindView()
+    }
+    
+    private func bindView() {
+        webViewView.backButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchBackButton()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.popView
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
