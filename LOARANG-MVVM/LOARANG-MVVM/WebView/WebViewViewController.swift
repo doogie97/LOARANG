@@ -24,5 +24,6 @@ final class WebViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = webViewView
+        webViewView.setViewContents(url: viewModel.url, title: viewModel.title)
     }
 }

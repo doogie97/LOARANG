@@ -24,7 +24,6 @@ final class WebViewView: UIView {
         let label = UILabel()
         label.font = UIFont.one(size: 18, family: .Bold)
         label.textAlignment = .center
-        label.text = "이벤트" //임시
         
         return label
     }()
@@ -71,5 +70,10 @@ final class WebViewView: UIView {
             $0.top.equalTo(navigationView.snp.bottom).inset(-16)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    func setViewContents(url: URLRequest, title: String) {
+        webView.load(url)
+        titleLabel.text = title
     }
 }
