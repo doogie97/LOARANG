@@ -39,7 +39,6 @@ final class WebViewView: UIView {
     
     private(set) lazy var webView: WKWebView = {
         let webView = WKWebView()
-        webView.backgroundColor = .mainBackground
         
         return webView
     }()
