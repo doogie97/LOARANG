@@ -51,5 +51,44 @@ final class WebViewViewController: UIViewController {
     
     private func setToolbar() {
         navigationController?.isToolbarHidden = false
+        toolbarItems = [spacer,
+                        goBackButton, spacer, spacer, spacer,
+                        goFowardButton, spacer, spacer, spacer,
+                        reloadButton, spacer, spacer, spacer,
+                        shareButton, spacer]
     }
+    
+    private lazy var spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    
+    private lazy var goBackButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "chevron.left")
+        button.tintColor = .systemGray
+        
+        return button
+    }()
+
+    private lazy var goFowardButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "chevron.right")
+        button.tintColor = .systemGray
+        
+        return button
+    }()
+    
+    private lazy var reloadButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "arrow.counterclockwise")
+        button.tintColor = .systemGray
+        
+        return button
+    }()
+    
+    private lazy var shareButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "square.and.arrow.up")
+        button.tintColor = .systemGray
+        
+        return button
+    }()
 }
