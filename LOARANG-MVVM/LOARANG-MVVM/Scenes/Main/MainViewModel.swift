@@ -22,6 +22,7 @@ protocol MainViewModelOutput {
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
     var showWebView: PublishRelay<(url: URL, title: String)> { get }
+    func touchMoreEventButton()
 }
 
 final class MainViewModel: MainViewModelInOut {
@@ -70,7 +71,15 @@ final class MainViewModel: MainViewModelInOut {
             return
         }
         
-        showWebView.accept((url, "이벤트"))
+        showWebView.accept((url: url, title: "이벤트"))
+    }
+    
+    func touchMoreEventButton() {
+        guard let url = URL(string: "https://lostark.game.onstove.com/News/Event/Now") else {
+            return
+        }
+        
+        showWebView.accept((url: url, title: "이벤트"))
     }
     
     // out
