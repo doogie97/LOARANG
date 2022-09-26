@@ -62,6 +62,21 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchMainUserSearchButton(_ userName: String) {
+        startedLoading.accept(())
+        CrawlManager().getUserInfo(userName) { [weak self] result in
+            switch result {
+            case .success(let userInfo):
+                self?.checkUser.accept(MainUser(image: userInfo.mainInfo.userImage,
+                                          battleLV: userInfo.mainInfo.battleLV,
+                                          name: userInfo.mainInfo.name,
+                                          class: userInfo.mainInfo.`class`,
+                                          itemLV: userInfo.mainInfo.itemLV,
+                                          server: userInfo.mainInfo.server))
+            case .failure(_):
+                self?.showAlert.accept("검색하신 유저가 없습니다")
+            }
+            self?.finishedLoading.accept(())
+        }
     }
     
     func changeMainUser(_ mainUser: MainUser) {

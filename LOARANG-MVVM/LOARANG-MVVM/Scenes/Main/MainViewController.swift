@@ -76,6 +76,14 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        mainView.mainUserView.setMainUserButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.showSetMainCharacterAlert(action: {
+                    self?.viewModel.touchMainUserSearchButton($0)
+                })
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.startedLoading
             .bind(onNext: { [weak self] in
                 self?.mainView.activityIndicator.startAnimating()
