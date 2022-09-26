@@ -106,6 +106,12 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        mainView.eventView.moreEventButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchMoreEventButton()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.showWebView
             .bind(onNext: { [weak self] in
                 guard let webViewVC = self?.container.makeWebViewViewController(url: $0.url, title: $0.title) else {
