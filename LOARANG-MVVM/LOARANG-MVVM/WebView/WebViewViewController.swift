@@ -129,5 +129,14 @@ extension WebViewViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         goBackButton.isEnabled = webView.canGoBack
         goFowardButton.isEnabled = webView.canGoForward
+        webViewView.activityIndicator.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webViewView.activityIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        webViewView.activityIndicator.stopAnimating()
     }
 }
