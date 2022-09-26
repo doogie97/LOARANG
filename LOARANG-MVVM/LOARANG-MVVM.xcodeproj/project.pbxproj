@@ -282,7 +282,7 @@
 				AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */,
 				AC6CA28F2893BBCF0049C12F /* BasicInfoView */,
 				AC6CA2902893BBD70049C12F /* SkillInfoView */,
-				AC6CA2922893BBF90049C12F /* ForthInfoView */,
+				AC6CA2922893BBF90049C12F /* OwnCharactersView */,
 			);
 			path = UserInfoView;
 			sourceTree = "<group>";
@@ -485,7 +485,7 @@
 			path = SkillInfoView;
 			sourceTree = "<group>";
 		};
-		AC6CA2922893BBF90049C12F /* ForthInfoView */ = {
+		AC6CA2922893BBF90049C12F /* OwnCharactersView */ = {
 			isa = PBXGroup;
 			children = (
 				ACB3813428D42CFB0081F8A1 /* OwnCharacterView.swift */,
@@ -493,7 +493,7 @@
 				ACB3813228D42CF60081F8A1 /* OwnCharacterViewModel.swift */,
 				ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */,
 			);
-			path = ForthInfoView;
+			path = OwnCharactersView;
 			sourceTree = "<group>";
 		};
 		AC757C4128BF2C3E005B102B /* MainViewContents */ = {
