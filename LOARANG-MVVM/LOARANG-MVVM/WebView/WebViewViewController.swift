@@ -18,4 +18,11 @@ final class WebViewViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private let webViewView = WebViewView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view = webViewView
+    }
 }
