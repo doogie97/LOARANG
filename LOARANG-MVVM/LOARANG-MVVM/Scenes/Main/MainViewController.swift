@@ -88,6 +88,12 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.showAlert
+            .bind(onNext: { [weak self] in
+                self?.showAlert(message: $0)
+            })
+            .disposed(by: disposeBag)
+        
         // BookmarkView contents
         viewModel.bookmarkUser.bind(to: mainView.bookmarkView.bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) { [weak self] index, bookmark, cell in
             cell.setCell(bookmark, viewModel: self?.container.makeBookmarkCVCellViewModel())

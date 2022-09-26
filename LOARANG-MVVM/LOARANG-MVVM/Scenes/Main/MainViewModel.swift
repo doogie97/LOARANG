@@ -26,6 +26,7 @@ protocol MainViewModelOutput {
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
     var showWebView: PublishRelay<(url: URL, title: String)> { get }
+    var showAlert: PublishRelay<String> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
 }
@@ -101,6 +102,7 @@ final class MainViewModel: MainViewModelInOut {
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
     let showWebView = PublishRelay<(url: URL, title: String)>()
+    let showAlert = PublishRelay<String>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
 }
