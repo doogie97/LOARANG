@@ -76,6 +76,18 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.startedLoading
+            .bind(onNext: { [weak self] in
+                self?.mainView.activityIndicator.startAnimating()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.finishedLoading
+            .bind(onNext: { [weak self] in
+                self?.mainView.activityIndicator.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+        
         // BookmarkView contents
         viewModel.bookmarkUser.bind(to: mainView.bookmarkView.bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) { [weak self] index, bookmark, cell in
             cell.setCell(bookmark, viewModel: self?.container.makeBookmarkCVCellViewModel())
