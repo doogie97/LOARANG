@@ -42,11 +42,20 @@ final class WebViewView: UIView {
         
         return webView
     }()
+    
+    private(set) var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.stopAnimating()
+        indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        
+        return indicator
+    }()
 
     private func setLayout() {
         self.backgroundColor = .mainBackground
         self.addSubview(navigationView)
         self.addSubview(webView)
+        self.addSubview(activityIndicator)
         
         navigationView.addSubview(backButton)
         navigationView.addSubview(titleLabel)
@@ -70,6 +79,10 @@ final class WebViewView: UIView {
             $0.top.equalTo(navigationView.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        activityIndicator.snp.makeConstraints {
+            $0.center.equalTo(webView)
         }
     }
     
