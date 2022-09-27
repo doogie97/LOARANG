@@ -34,12 +34,13 @@ protocol MainViewModelOutput {
 
 final class MainViewModel: MainViewModelInOut {
     private let storage: AppStorageable
+    private let crawlManager = CrawlManager()
     
     init(storage: AppStorageable) {
         self.storage = storage
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
-        CrawlManager().getEvents { [weak self] result in
+        crawlManager.getEvents { [weak self] result in
             switch result {
             case .success(let event):
                 self?.events.accept(event)
@@ -48,7 +49,7 @@ final class MainViewModel: MainViewModelInOut {
             }
         }
         
-        CrawlManager().getNotice { [weak self] result in
+        crawlManager.getNotice { [weak self] result in
             switch result {
             case .success(let notice):
                 self?.notices.accept(notice)
@@ -73,7 +74,7 @@ final class MainViewModel: MainViewModelInOut {
     
     func touchMainUserSearchButton(_ userName: String) {
         startedLoading.accept(())
-        CrawlManager().getUserInfo(userName) { [weak self] result in
+        crawlManager.getUserInfo(userName) { [weak self] result in
             switch result {
             case .success(let userInfo):
                 self?.checkUser.accept(MainUser(image: userInfo.mainInfo.userImage,
