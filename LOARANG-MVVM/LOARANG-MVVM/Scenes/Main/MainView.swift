@@ -117,8 +117,8 @@ final class MainView: UIView {
         noticeView.snp.makeConstraints {
             $0.top.equalTo(eventView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(8)
-            $0.height.equalTo(UIScreen.main.bounds.width * 1)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(UIScreen.main.bounds.width * 1.2)
         }
         
         activityIndicator.snp.makeConstraints {
