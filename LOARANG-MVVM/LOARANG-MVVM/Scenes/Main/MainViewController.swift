@@ -153,6 +153,19 @@ final class MainViewController: UIViewController {
         }
         .disposed(by: disposeBag)
         
+        mainView.noticeView.noticeTableView.rx.itemSelected
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchNoticeCell($0.row)
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.noticeView.moreNoticeButton.rx.tap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.touchMoreNoticeButton()
+            })
+            .disposed(by: disposeBag)
+        
+        //WebView
         viewModel.showWebView
             .bind(onNext: { [weak self] in
                 guard let webViewVC = self?.container.makeWebViewViewController(url: $0.url, title: $0.title) else {
