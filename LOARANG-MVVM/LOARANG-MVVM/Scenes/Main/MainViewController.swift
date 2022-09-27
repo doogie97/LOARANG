@@ -147,6 +147,12 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        // Notice contents
+        viewModel.notices.bind(to: mainView.noticeView.noticeTableView.rx.items(cellIdentifier: "\(NoticeTVCell.self)", cellType: NoticeTVCell.self)) { index, notice, cell in
+            cell.setCellContents(notice: notice)
+        }
+        .disposed(by: disposeBag)
+        
         viewModel.showWebView
             .bind(onNext: { [weak self] in
                 guard let webViewVC = self?.container.makeWebViewViewController(url: $0.url, title: $0.title) else {
