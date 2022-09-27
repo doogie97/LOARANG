@@ -44,6 +44,10 @@ final class NoticeView: UIView {
     
     private(set) lazy var noticeTableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(NoticeTVCell.self)
+        tableView.backgroundColor = .mainBackground
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
         
         return tableView
     }()
@@ -73,8 +77,8 @@ final class NoticeView: UIView {
         
         noticeTableView.snp.makeConstraints {
             $0.top.equalTo(noticeTitle.snp.bottom).inset(-16)
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview().inset(8)
         }
     }
 }
