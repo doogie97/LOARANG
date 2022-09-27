@@ -337,4 +337,34 @@ extension CrawlManager {
         
         completion(.success(events))
     }
+    
+    func getNotice(completion: @escaping (Result<[LostArkNotice], Error>) -> Void){
+        guard let url = URL(string: "https://lostark.game.onstove.com/News/Notice/List") else {
+            completion(.failure(CrawlError.noticeError))
+            return
+        }
+        
+        guard let doc = try? makeDocument(url: url) else {
+            completion(.failure(CrawlError.noticeError))
+            return
+        }
+        
+        guard let noticeElements = try? doc.select("#list > div.list.list--default > ul")[safe: 1]?.select("li") else {
+            completion(.failure(CrawlError.noticeError))
+            return
+        }
+        
+        let notices: [LostArkNotice] = noticeElements.compactMap {
+            do {
+                let title = try $0.select("a > div.list__subject > span").text()
+                let noticeURL = try "https://m-lostark.game.onstove.com" + $0.select("a").attr("href")
+                
+                return LostArkNotice(title: title, noticeURL: noticeURL)
+            } catch {
+                return nil
+            }
+        }
+        
+        completion(.success(notices))
+    }
 }
