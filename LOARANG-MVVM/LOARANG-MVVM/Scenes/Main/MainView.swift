@@ -67,6 +67,7 @@ final class MainView: UIView {
     private(set) lazy var mainUserView = MainUserView()
     private(set) lazy var bookmarkView = BookmarkView()
     private(set) lazy var eventView = EventView()
+    private(set) lazy var noticeView = NoticeView()
     
     private func setLayout() {
         self.addSubview(titleStackView)
@@ -76,6 +77,7 @@ final class MainView: UIView {
         mainContentsView.addSubview(mainUserView)
         mainContentsView.addSubview(bookmarkView)
         mainContentsView.addSubview(eventView)
+        mainContentsView.addSubview(noticeView)
         
         titleStackView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(20)
@@ -109,8 +111,14 @@ final class MainView: UIView {
         eventView.snp.makeConstraints {
             $0.top.equalTo(bookmarkView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(8)
             $0.height.equalTo(UIScreen.main.bounds.width * 0.6)
+        }
+        
+        noticeView.snp.makeConstraints {
+            $0.top.equalTo(eventView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(8)
+            $0.height.equalTo(UIScreen.main.bounds.width * 1)
         }
         
         activityIndicator.snp.makeConstraints {

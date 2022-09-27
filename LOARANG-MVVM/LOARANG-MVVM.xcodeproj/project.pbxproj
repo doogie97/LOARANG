@@ -117,6 +117,7 @@
 		ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */; };
 		ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */; };
 		ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */; };
+		ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778E928E28E58000EDA2F /* NoticeView.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */; };
@@ -244,6 +245,7 @@
 		ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extension.swift"; sourceTree = "<group>"; };
 		ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkNotice.swift; sourceTree = "<group>"; };
+		ACC778E928E28E58000EDA2F /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extension.swift"; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				AC757C4228BF2C56005B102B /* MainUserView.swift */,
 				AC62F87528DC6E0800E4A92D /* BookmarkView */,
 				AC62F87828DC6F8C00E4A92D /* EventView */,
+				ACC778E828E28E26000EDA2F /* NoticeView */,
 			);
 			path = MainViewContents;
 			sourceTree = "<group>";
@@ -733,6 +736,14 @@
 			path = UserInfo/UserInfo;
 			sourceTree = "<group>";
 		};
+		ACC778E828E28E26000EDA2F /* NoticeView */ = {
+			isa = PBXGroup;
+			children = (
+				ACC778E928E28E58000EDA2F /* NoticeView.swift */,
+			);
+			path = NoticeView;
+			sourceTree = "<group>";
+		};
 		ACDE28A428B0A87A00BFD206 /* EquipmentDetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,6 +881,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */,
 				AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
