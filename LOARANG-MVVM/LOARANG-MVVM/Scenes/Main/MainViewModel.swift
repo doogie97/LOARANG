@@ -33,7 +33,7 @@ protocol MainViewModelOutput {
 }
 
 final class MainViewModel: MainViewModelInOut {
-    private var storage: AppStorageable
+    private let storage: AppStorageable
     
     init(storage: AppStorageable) {
         self.storage = storage
