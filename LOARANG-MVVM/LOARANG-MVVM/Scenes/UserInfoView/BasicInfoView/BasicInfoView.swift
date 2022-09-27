@@ -167,6 +167,7 @@ final class BasicInfoView: UIView {
     }
     
     func setViewContents(userInfo: UserInfo) {
+        basicInfoScrollView.setContentOffset(.zero, animated: true)
         mainInfoView.setViewContents(userInfo.mainInfo)
         basicAbillityView.setViewContents(userInfo.stat.basicAbility)
         propensitiesView.setViewContents(propensities: userInfo.stat.propensities)
