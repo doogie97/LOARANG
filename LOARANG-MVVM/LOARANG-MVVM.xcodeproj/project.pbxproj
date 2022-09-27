@@ -118,6 +118,7 @@
 		ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */; };
 		ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */; };
 		ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778E928E28E58000EDA2F /* NoticeView.swift */; };
+		ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778EB28E291AA000EDA2F /* NoticeTVCell.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */; };
@@ -246,6 +247,7 @@
 		ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extension.swift"; sourceTree = "<group>"; };
 		ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkNotice.swift; sourceTree = "<group>"; };
 		ACC778E928E28E58000EDA2F /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
+		ACC778EB28E291AA000EDA2F /* NoticeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extension.swift"; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				ACC778E928E28E58000EDA2F /* NoticeView.swift */,
+				ACC778EB28E291AA000EDA2F /* NoticeTVCell.swift */,
 			);
 			path = NoticeView;
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
+				ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */,
 				AC62F87428DC6CAC00E4A92D /* LostArkEvent.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
