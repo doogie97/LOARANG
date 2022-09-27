@@ -23,6 +23,7 @@ protocol MainViewModelOutput {
     var checkUser: PublishRelay<MainUser> { get }
     var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
     var events: BehaviorRelay<[LostArkEvent]> { get }
+    var notices: BehaviorRelay<[LostArkNotice]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
     var showWebView: PublishRelay<(url: URL, title: String)> { get }
@@ -42,6 +43,15 @@ final class MainViewModel: MainViewModelInOut {
             switch result {
             case .success(let event):
                 self?.events.accept(event)
+            case .failure(let error):
+                print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
+            }
+        }
+        
+        CrawlManager().getNotice { [weak self] result in
+            switch result {
+            case .success(let notice):
+                self?.notices.accept(notice)
             case .failure(let error):
                 print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
             }
@@ -120,6 +130,7 @@ final class MainViewModel: MainViewModelInOut {
     let checkUser = PublishRelay<MainUser>()
     let bookmarkUser: BehaviorRelay<[BookmarkUser]>
     let events = BehaviorRelay<[LostArkEvent]>(value: [])
+    let notices = BehaviorRelay<[LostArkNotice]>(value: [])
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
     let showWebView = PublishRelay<(url: URL, title: String)>()
