@@ -17,6 +17,8 @@ protocol MainViewModelInput {
     func touchBookMarkCell(_ index: Int)
     func touchEventCell(_ index: Int)
     func touchMoreEventButton()
+    func touchNoticeCell(_ index: Int)
+    func touchMoreNoticeButton()
 }
 protocol MainViewModelOutput {
     var mainUser: BehaviorRelay<MainUser?> { get }
@@ -124,6 +126,26 @@ final class MainViewModel: MainViewModelInOut {
         }
         
         showWebView.accept((url: url, title: "이벤트"))
+    }
+    
+    func touchNoticeCell(_ index: Int) {
+        guard let urlString = notices.value[safe: index]?.noticeURL else {
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        showWebView.accept((url: url, title: "공지사항"))
+    }
+    
+    func touchMoreNoticeButton() {
+        guard let url = URL(string: "https://lostark.game.onstove.com/News/Notice/List") else {
+            return
+        }
+        
+        showWebView.accept((url: url, title: "공지사항"))
     }
     
     // out
