@@ -90,7 +90,7 @@ final class LocalStorage {
     
     func addRecentUser(_ user: RecentUser) throws {
         do {
-            try deleteUser(user.name)
+            try deleteRecentUser(user.name)
         } catch {}
         
         do {
