@@ -114,6 +114,16 @@ final class UserInfoViewModel: UserInfoViewModelable {
         }
     }
     
+    private func addRecentUser(_ userInfo: UserInfo) {
+        do {
+            try storage.addRecentUser(RecentUser(name: userName,
+                                                 image: userInfo.mainInfo.userImage,
+                                                 class: userInfo.mainInfo.`class`))
+        } catch {
+            showAlert.accept((message: error.errorMessage, isPop: false))
+        }
+    }
+    
     private func searchUserInfo() {
         startedLoading.accept(())
         crawlManager.getUserInfo(userName) {[weak self] result in
@@ -125,6 +135,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 
                 self?.mainUserUpdate(userInfo)
                 self?.bookmarkUpdate(userInfo)
+                self?.addRecentUser(userInfo)
             case .failure(let error):
                 self?.showAlert.accept((message: error.errorMessage, isPop: true))
             }
