@@ -32,6 +32,16 @@ final class LocalStorage {
         return bookmarkUsers
     }
     
+    func recentUsers() -> [RecentUser] {
+        let recentUserList = realm.objects(RecentUserDTO.self)
+        
+        let recentUsers: [RecentUser] = recentUserList.map {
+            return $0.convertedInfo
+        }
+        
+        return recentUsers
+    }
+    
     func addUser(_ user: BookmarkUser) throws {
         do {
             try realm.write {
