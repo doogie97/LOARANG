@@ -19,7 +19,12 @@ protocol SearchViewModelOutput {
     var showUserInfo: PublishRelay<String> { get }
 }
 
-final class SearchViewModel: SearchViewModelable {    
+final class SearchViewModel: SearchViewModelable {
+    private let storage: AppStorageable
+    init(storage: AppStorageable) {
+        self.storage = storage
+    }
+    
     //in
     func touchBackButton() {
         popView.accept(())

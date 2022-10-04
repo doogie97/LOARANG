@@ -50,7 +50,7 @@ final class Container {
     }
     
     private func makeSearchViewModel() -> SearchViewModelable {
-        return SearchViewModel()
+        return SearchViewModel(storage: storage)
     }
     
 //MARK: - about UserInfoView
