@@ -37,7 +37,10 @@ final class RecentUserView: UIView {
     
     private(set) lazy var recentUserTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemGreen //임시
+        tableView.backgroundColor = .mainBackground
+        tableView.showsVerticalScrollIndicator = false
+        
+        tableView.register(RecentUserTVCell.self)
         
         return tableView
     }()
