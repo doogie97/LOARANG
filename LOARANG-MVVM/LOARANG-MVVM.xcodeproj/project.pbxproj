@@ -110,7 +110,6 @@
 		ACBA78FD2898DDE700CB39D5 /* MainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FC2898DDE700CB39D5 /* MainUser.swift */; };
 		ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */; };
 		ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA7901289929A100CB39D5 /* LocalStorage.swift */; };
-		ACBA790428992C5100CB39D5 /* BookmarkUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */; };
 		ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA79052899424900CB39D5 /* AppStorage.swift */; };
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
 		ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE041D28B7109900FCB74D /* PaddingLabel.swift */; };
@@ -239,7 +238,6 @@
 		ACBA78FC2898DDE700CB39D5 /* MainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUser.swift; sourceTree = "<group>"; };
 		ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		ACBA7901289929A100CB39D5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
-		ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserDTO.swift; sourceTree = "<group>"; };
 		ACBA79052899424900CB39D5 /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		ACBE041D28B7109900FCB74D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 			children = (
 				ACBA79052899424900CB39D5 /* AppStorage.swift */,
 				ACBA7901289929A100CB39D5 /* LocalStorage.swift */,
-				ACBA790328992C5100CB39D5 /* BookmarkUserDTO.swift */,
 				ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */,
 			);
 			name = Storage;
@@ -890,7 +887,6 @@
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
-				ACBA790428992C5100CB39D5 /* BookmarkUserDTO.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */,
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
 				ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */,
