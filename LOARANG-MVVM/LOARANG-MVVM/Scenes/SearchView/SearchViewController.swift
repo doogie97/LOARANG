@@ -35,6 +35,12 @@ final class SearchViewController: UIViewController {
     }
     
     private func bindView() {
+        viewModel.recentUser.bind(to: searchView.recentUserView.recentUserTableView.rx
+            .items(cellIdentifier: "\(RecentUserTVCell.self)", cellType: RecentUserTVCell.self)) { index, recentUser, cell in
+                cell.setCellContents(recentUser)
+            }
+            .disposed(by: disposeBag)
+        
         searchView.userSearchBar.searchTextField.rx.controlEvent(.editingDidEndOnExit)
             .bind(onNext: { [weak self] in
                 guard let name = self?.searchView.userSearchBar.text else {
