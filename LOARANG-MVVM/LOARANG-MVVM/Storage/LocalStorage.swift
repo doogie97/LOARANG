@@ -39,7 +39,7 @@ final class LocalStorage {
             return $0.convertedInfo
         }
         
-        return recentUsers
+        return recentUsers.reversed()
     }
     
     func addUser(_ user: BookmarkUser) throws {
