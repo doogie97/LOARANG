@@ -41,12 +41,29 @@ final class SearchView: UIView {
         return searchBar
     }()
     
+    private var noRecentUserLabel: PaddingLabel = {
+        let label = PaddingLabel(top: 24, bottom: 24, left: 16, right: 16)
+        label.text = "최근 검색된 유저가 없습니다"
+        label.textAlignment = .center
+        label.backgroundColor = .cellColor
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.font = UIFont.one(size: 14, family: .Bold)
+        
+        return label
+    }()
+    
     private func setLayout() {
         self.addSubview(mainStackView)
+        self.addSubview(noRecentUserLabel)
         
         mainStackView.snp.makeConstraints {
-            $0.top.leading.equalTo(self.safeAreaLayoutGuide).inset(15)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(15)
+        }
+        
+        noRecentUserLabel.snp.makeConstraints {
+            $0.top.equalTo(mainStackView.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
 }
