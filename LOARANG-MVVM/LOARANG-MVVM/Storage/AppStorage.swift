@@ -9,6 +9,7 @@ import RxRelay
 protocol AppStorageable {
     var mainUser: BehaviorRelay<MainUser?> { get }
     var bookMark: BehaviorRelay<[BookmarkUser]> { get }
+    var recentUsers: BehaviorRelay<[RecentUser]> { get }
     func addUser(_ user: BookmarkUser) throws
     func deleteUser(_ name: String) throws
     func updateUser(_ user: BookmarkUser) throws
@@ -21,11 +22,13 @@ final class AppStorage: AppStorageable {
     
     var mainUser: BehaviorRelay<MainUser?>
     var bookMark: BehaviorRelay<[BookmarkUser]>
+    var recentUsers: BehaviorRelay<[RecentUser]>
     
     init(_ localStorage: LocalStorage) {
         self.localStorage = localStorage
         self.bookMark = BehaviorRelay<[BookmarkUser]>(value: localStorage.bookmarkUsers())
         self.mainUser = BehaviorRelay<MainUser?>(value: localStorage.mainUser())
+        self.recentUsers = BehaviorRelay<[RecentUser]>(value: localStorage.recentUsers())
     }
     
     func addUser(_ user: BookmarkUser) throws {
