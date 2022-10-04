@@ -89,6 +89,19 @@ final class LocalStorage {
     }
     
     func addRecentUser(_ user: RecentUser) throws {
+        let recentUserList = realm.objects(RecentUserDTO.self)
+        
+        if recentUserList.count > 14 {
+            guard let lastUser = recentUserList.first else {
+                return
+            }
+            do {
+                try realm.write {
+                    realm.delete(lastUser)
+                }
+            }
+        }
+        
         do {
             try deleteRecentUser(user.name)
         } catch {}
