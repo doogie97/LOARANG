@@ -88,6 +88,20 @@ final class LocalStorage {
         }
     }
     
+    func addRecentUser(_ user: RecentUser) throws {
+        do {
+            try deleteUser(user.name)
+        } catch {}
+        
+        do {
+            try realm.write {
+                realm.add(user.convertedInfo)
+            }
+        } catch {
+            throw LocalStorageError.addError
+        }
+    }
+    
     func deleteRecentUser(_ name: String) throws {
         let recentUserList = realm.objects(RecentUserDTO.self)
         
