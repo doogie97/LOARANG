@@ -15,6 +15,7 @@ protocol SearchViewModelInput {
 }
 
 protocol SearchViewModelOutput {
+    var recentUser: BehaviorRelay<[RecentUser]> { get }
     var popView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
 }
@@ -23,6 +24,7 @@ final class SearchViewModel: SearchViewModelable {
     private let storage: AppStorageable
     init(storage: AppStorageable) {
         self.storage = storage
+        self.recentUser = storage.recentUsers
     }
     
     //in
@@ -35,6 +37,7 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     //out
+    let recentUser: BehaviorRelay<[RecentUser]>
     let popView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
 }
