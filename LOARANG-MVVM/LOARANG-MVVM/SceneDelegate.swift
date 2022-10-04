@@ -15,6 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         
+        let config = Realm.Configuration(schemaVersion: 0)
+        Realm.Configuration.defaultConfiguration = config
+        
         guard let realm = try? Realm() else {
             window?.rootViewController = UIViewController()
             window?.rootViewController?.showExitAlert(message: "앱 저장소 오류가 발생했습니다.\n앱 재설치 혹은 고객센터로 문의 부탁드립니다.")
