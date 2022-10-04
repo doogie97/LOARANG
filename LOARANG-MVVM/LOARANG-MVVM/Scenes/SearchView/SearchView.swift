@@ -53,9 +53,12 @@ final class SearchView: UIView {
         return label
     }()
     
+    private(set) lazy var recentUserView = RecentUserView()
+    
     private func setLayout() {
         self.addSubview(mainStackView)
         self.addSubview(noRecentUserLabel)
+        self.addSubview(recentUserView)
         
         mainStackView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(15)
@@ -64,6 +67,11 @@ final class SearchView: UIView {
         noRecentUserLabel.snp.makeConstraints {
             $0.top.equalTo(mainStackView.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        recentUserView.snp.makeConstraints {
+            $0.top.equalTo(mainStackView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
