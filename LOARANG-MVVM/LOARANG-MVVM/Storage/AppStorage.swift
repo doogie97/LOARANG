@@ -15,6 +15,7 @@ protocol AppStorageable {
     func updateUser(_ user: BookmarkUser) throws
     func changeMainUser(_ user: MainUser) throws
     func isBookmarkUser(_ name: String) -> Bool
+    func addRecentUser(_ user: RecentUser) throws
 }
 
 final class AppStorage: AppStorageable {
@@ -76,4 +77,14 @@ final class AppStorage: AppStorageable {
         
         return true
     }
+    
+    func addRecentUser(_ user: RecentUser) throws {
+        do {
+            try localStorage.addRecentUser(user)
+            self.recentUsers.accept(localStorage.recentUsers())
+        } catch {
+            throw error
+        }
+    }
+    
 }
