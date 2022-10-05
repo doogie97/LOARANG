@@ -21,7 +21,7 @@ final class BookmarkCVCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private(set) lazy var bookmarkButton: UIButton = {
+    private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
         button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         button.setImage(UIImage(systemName: "star.fill"), for: .normal)
