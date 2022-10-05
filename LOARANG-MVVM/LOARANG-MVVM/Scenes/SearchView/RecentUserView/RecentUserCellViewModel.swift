@@ -7,15 +7,19 @@
 
 protocol RecentUserCellViewModelable {}
 
-protocol RecentUserCellViewModelInput {}
+protocol RecentUserCellViewModelable: RecentUserCellViewModelInput, RecentUserCellViewModelOutput {}
 
 protocol RecentUserCellViewModelOutput {}
 
 final class RecentUserCellViewModel: RecentUserCellViewModelable {
     private let storage: AppStorageable
+    private let name: String
     
-    init(storage: AppStorageable) {
+    init(storage: AppStorageable, name: String) {
         self.storage = storage
+        self.name = name
+    }
+    
     }
     
 }

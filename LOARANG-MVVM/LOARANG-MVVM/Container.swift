@@ -53,8 +53,8 @@ final class Container {
         return SearchViewModel(storage: storage)
     }
     
-    func makeRecentUserCellViewModel() -> RecentUserCellViewModelable {
-        return RecentUserCellViewModel(storage: storage)
+    func makeRecentUserCellViewModel(name: String) -> RecentUserCellViewModelable {
+        return RecentUserCellViewModel(storage: storage, name: name)
     }
     
 //MARK: - about UserInfoView
