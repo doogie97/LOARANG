@@ -11,22 +11,28 @@ protocol RecentUserCellViewModelable: RecentUserCellViewModelInput, RecentUserCe
 
 protocol RecentUserCellViewModelInput {
     func touchDeleteButton()
+
+protocol RecentUserCellViewModelOutput {
+    var userInfo: RecentUser { get }
 }
 
 final class RecentUserCellViewModel: RecentUserCellViewModelable {
     private let storage: AppStorageable
-    private let name: String
     
-    init(storage: AppStorageable, name: String) {
+    init(storage: AppStorageable, userInfo: RecentUser) {
         self.storage = storage
-        self.name = name
+        self.userInfo = userInfo
     }
     
     //in
     func touchDeleteButton() {
         do {
-            try storage.deleteRecentUser(name)
+            try storage.deleteRecentUser(userInfo.name)
+        } catch {}
+    }
         } catch {}
     }
     
+    //out
+    let userInfo: RecentUser
 }

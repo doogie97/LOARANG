@@ -95,14 +95,19 @@ final class RecentUserTVCell: UITableViewCell {
     private func bind() {
         deleteButton.rx.tap
             .withUnretained(self)
-            .bind(onNext: {owner, _ in
+            .bind(onNext: { owner, _ in
                 owner.viewModel?.touchDeleteButton()
             })
             .disposed(by: disposeBag)
     }
     
-    func setCellContents(viewModel:RecentUserCellViewModelable? ,user: RecentUser) {
+    func setCellContents(viewModel:RecentUserCellViewModelable?) {
         self.viewModel = viewModel
+        
+        guard let user = viewModel?.userInfo else {
+            return
+        }
+        
         self.userImageView.image = user.image.cropImage(class: user.class)
         self.nameLabel.text = user.name
     }

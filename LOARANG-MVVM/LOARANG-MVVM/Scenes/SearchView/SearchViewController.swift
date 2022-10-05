@@ -37,7 +37,7 @@ final class SearchViewController: UIViewController {
     private func bindView() {
         viewModel.recentUser.bind(to: searchView.recentUserView.recentUserTableView.rx
             .items(cellIdentifier: "\(RecentUserTVCell.self)", cellType: RecentUserTVCell.self)) { [weak self] index, recentUser, cell in
-                cell.setCellContents(viewModel: self?.container.makeRecentUserCellViewModel(name: recentUser.name), user: recentUser)
+                cell.setCellContents(viewModel: self?.container.makeRecentUserCellViewModel(userInfo: recentUser))
             }
             .disposed(by: disposeBag)
         
