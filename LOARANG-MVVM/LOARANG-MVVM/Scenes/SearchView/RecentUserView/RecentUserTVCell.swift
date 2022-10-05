@@ -8,6 +8,8 @@
 import SnapKit
 
 final class RecentUserTVCell: UITableViewCell {
+    private var viewModel: RecentUserCellViewModelable?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
@@ -85,7 +87,8 @@ final class RecentUserTVCell: UITableViewCell {
         }
     }
     
-    func setCellContents(_ user: RecentUser) {
+    func setCellContents(viewModel:RecentUserCellViewModelable? ,user: RecentUser) {
+        self.viewModel = viewModel
         self.userImageView.image = user.image.cropImage(class: user.class)
         self.nameLabel.text = user.name
     }
