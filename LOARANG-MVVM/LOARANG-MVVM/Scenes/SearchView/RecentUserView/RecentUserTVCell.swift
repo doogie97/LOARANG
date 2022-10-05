@@ -6,9 +6,11 @@
 //
 
 import SnapKit
+import RxSwift
 
 final class RecentUserTVCell: UITableViewCell {
     private var viewModel: RecentUserCellViewModelable?
+    private let disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -81,10 +83,22 @@ final class RecentUserTVCell: UITableViewCell {
             $0.top.bottom.equalToSuperview()
             $0.trailing.equalToSuperview().inset(16)
         }
+        
         bookmarkButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.trailing.equalTo(deleteButton.snp.leading).inset(-16)
         }
+        
+        bind()
+    }
+    
+    private func bind() {
+        deleteButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: {owner, _ in
+                owner.viewModel?.touchDeleteButton()
+            })
+            .disposed(by: disposeBag)
     }
     
     func setCellContents(viewModel:RecentUserCellViewModelable? ,user: RecentUser) {

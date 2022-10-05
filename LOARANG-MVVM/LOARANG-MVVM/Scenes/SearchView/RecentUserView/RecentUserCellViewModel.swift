@@ -9,7 +9,9 @@ protocol RecentUserCellViewModelable {}
 
 protocol RecentUserCellViewModelable: RecentUserCellViewModelInput, RecentUserCellViewModelOutput {}
 
-protocol RecentUserCellViewModelOutput {}
+protocol RecentUserCellViewModelInput {
+    func touchDeleteButton()
+}
 
 final class RecentUserCellViewModel: RecentUserCellViewModelable {
     private let storage: AppStorageable
@@ -20,6 +22,11 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
         self.name = name
     }
     
+    //in
+    func touchDeleteButton() {
+        do {
+            try storage.deleteRecentUser(name)
+        } catch {}
     }
     
 }
