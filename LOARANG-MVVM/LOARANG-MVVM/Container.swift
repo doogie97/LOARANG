@@ -58,12 +58,12 @@ final class Container {
     }
     
 //MARK: - about UserInfoView
-    func makeUserInfoViewController(_ userInfo: String) -> UserInfoViewController {
-        return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo))
+    func makeUserInfoViewController(_ userInfo: String, isSearching: Bool = false) -> UserInfoViewController {
+        return UserInfoViewController(viewModel: makeUserInfoViewModel(userInfo, isSearching: isSearching))
     }
     
-    private func makeUserInfoViewModel(_ userName: String) -> UserInfoViewModelable {
-        return UserInfoViewModel(storage: storage, container: self, userName: userName)
+    private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
+        return UserInfoViewModel(storage: storage, container: self, userName: userName, isSearching: isSearching)
     }
     //MARK: - about BasicInfoView
     func makeBasicInfoVC(userInfo: BehaviorRelay<UserInfo?>) -> BasicInfoViewController {

@@ -52,7 +52,7 @@ final class SearchViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.showUserInfo.bind(onNext: { [weak self] in
-            guard let userInfoVC = self?.container.makeUserInfoViewController($0) else {
+            guard let userInfoVC = self?.container.makeUserInfoViewController($0, isSearching: true) else {
                 return
             }
             self?.navigationController?.pushViewController(userInfoVC, animated: true)

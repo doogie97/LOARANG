@@ -35,9 +35,11 @@ protocol UserInfoViewModelOutput {
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: AppStorageable
     private let crawlManager = CrawlManager()
+    private var isSearching: Bool
     
-    init(storage: AppStorageable, container: Container, userName: String) {
+    init(storage: AppStorageable, container: Container, userName: String, isSearching: Bool) {
         self.storage = storage
+        self.isSearching = isSearching
         self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userName))
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
@@ -136,7 +138,10 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 
                 self?.mainUserUpdate(userInfo)
                 self?.bookmarkUpdate(userInfo)
-                self?.addRecentUser(userInfo)
+                
+                if self?.isSearching == true {
+                    self?.addRecentUser(userInfo)
+                }
             case .failure(let error):
                 self?.showAlert.accept((message: error.errorMessage, isPop: true))
             }
@@ -185,6 +190,7 @@ extension UserInfoViewModel {
         }
         
         userName = name
+        isSearching = false
         searchUserInfo()
     }
 }
