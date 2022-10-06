@@ -48,8 +48,6 @@ final class RecentUserTVCell: UITableViewCell {
     
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
-        button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
-        button.setImage(UIImage(systemName: "star.fill"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
         
         return button
@@ -118,5 +116,6 @@ final class RecentUserTVCell: UITableViewCell {
         
         self.userImageView.image = user.image.cropImage(class: user.class)
         self.nameLabel.text = user.name
+        self.bookmarkButton.setBookmarkButtonColor(viewModel?.isBookmarkUser ?? false)
     }
 }
