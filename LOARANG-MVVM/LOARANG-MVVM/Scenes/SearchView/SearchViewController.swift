@@ -41,6 +41,13 @@ final class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        searchView.recentUserView.recentUserTableView.rx.itemSelected
+            .withUnretained(self)
+            .bind(onNext: { owner, index in
+                owner.viewModel.touchRecentUserCell(index.row)
+            })
+            .disposed(by: disposeBag)
+        
         searchView.userSearchBar.searchTextField.rx.controlEvent(.editingDidEndOnExit)
             .bind(onNext: { [weak self] in
                 guard let name = self?.searchView.userSearchBar.text else {
