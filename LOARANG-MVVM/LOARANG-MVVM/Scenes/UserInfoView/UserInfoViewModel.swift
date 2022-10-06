@@ -131,6 +131,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
             case .success(let userInfo):
                 self?.userInfo.accept(userInfo)
                 self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
+                self?.isBookmarkUser.accept(self?.storage.isBookmarkUser(userInfo.mainInfo.name) ?? false)
                 self?.sucssesSearching.accept(())
                 
                 self?.mainUserUpdate(userInfo)
