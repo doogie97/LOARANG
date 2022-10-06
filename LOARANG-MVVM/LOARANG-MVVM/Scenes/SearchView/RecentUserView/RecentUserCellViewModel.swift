@@ -12,6 +12,7 @@ protocol RecentUserCellViewModelInput {
 
 protocol RecentUserCellViewModelOutput {
     var userInfo: RecentUser { get }
+    var isBookmarkUser: Bool { get }
 }
 
 final class RecentUserCellViewModel: RecentUserCellViewModelable {
@@ -20,6 +21,7 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
     init(storage: AppStorageable, userInfo: RecentUser) {
         self.storage = storage
         self.userInfo = userInfo
+        self.isBookmarkUser = storage.isBookmarkUser(userInfo.name)
     }
     
     //in
@@ -33,4 +35,5 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
     
     //out
     let userInfo: RecentUser
+    var isBookmarkUser: Bool
 }
