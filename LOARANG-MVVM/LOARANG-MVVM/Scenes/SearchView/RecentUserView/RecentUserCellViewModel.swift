@@ -9,6 +9,8 @@ protocol RecentUserCellViewModelable: RecentUserCellViewModelInput, RecentUserCe
 
 protocol RecentUserCellViewModelInput {
     func touchDeleteButton()
+    func touchBookmarkButton()
+}
 
 protocol RecentUserCellViewModelOutput {
     var userInfo: RecentUser { get }
@@ -30,7 +32,19 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
             try storage.deleteRecentUser(userInfo.name)
         } catch {}
     }
+    
+    func touchBookmarkButton() {
+        do {
+            if storage.isBookmarkUser(userInfo.name) {
+                try storage.deleteUser(userInfo.name)
+            } else {
+                try storage.addUser(BookmarkUser(name: userInfo.name,
+                                             image: userInfo.image,
+                                             class: userInfo.class))
+            }
         } catch {}
+        
+        isBookmarkUser = storage.isBookmarkUser(userInfo.name)
     }
     
     //out
