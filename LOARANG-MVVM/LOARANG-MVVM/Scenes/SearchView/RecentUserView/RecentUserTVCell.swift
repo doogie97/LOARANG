@@ -99,6 +99,14 @@ final class RecentUserTVCell: UITableViewCell {
                 owner.viewModel?.touchDeleteButton()
             })
             .disposed(by: disposeBag)
+        
+        bookmarkButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: { owner, _ in
+                owner.viewModel?.touchBookmarkButton()
+                owner.bookmarkButton.setBookmarkButtonColor(owner.viewModel?.isBookmarkUser ?? false)
+            })
+            .disposed(by: disposeBag)
     }
     
     func setCellContents(viewModel:RecentUserCellViewModelable?) {
