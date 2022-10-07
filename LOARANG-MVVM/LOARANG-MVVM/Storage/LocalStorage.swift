@@ -48,7 +48,7 @@ final class LocalStorage {
                 realm.add(user.convertedInfo)
             }
         } catch {
-            throw LocalStorageError.addError
+            throw LocalStorageError.addBookmarkError
         }
     }
     
@@ -58,7 +58,7 @@ final class LocalStorage {
                 realm.add(user.convertedInfo, update: .modified)
             }
         } catch {
-            throw LocalStorageError.updateError
+            throw LocalStorageError.updateBookmarkError
         }
     }
     
@@ -66,7 +66,7 @@ final class LocalStorage {
         let bookmarkList = realm.objects(BookmarkUserDTO.self)
         
         guard let bookmarkUserDTO = bookmarkList.filter({ $0.name == name }).first else {
-            throw LocalStorageError.deleteError
+            throw LocalStorageError.deleteBookmarkError
         }
         
         do {
@@ -74,7 +74,7 @@ final class LocalStorage {
                 realm.delete(bookmarkUserDTO)
             }
         } catch {
-            throw LocalStorageError.deleteError
+            throw LocalStorageError.deleteBookmarkError
         }
     }
     
@@ -111,7 +111,7 @@ final class LocalStorage {
                 realm.add(user.convertedInfo)
             }
         } catch {
-            throw LocalStorageError.addError
+            throw LocalStorageError.addRecentUserError
         }
     }
     
@@ -119,7 +119,7 @@ final class LocalStorage {
         let recentUserList = realm.objects(RecentUserDTO.self)
         
         guard let recentUserDTO = recentUserList.filter({ $0.name == name }).first else {
-            throw LocalStorageError.deleteError
+            throw LocalStorageError.deleteRecentUserError
         }
         
         do {
@@ -127,7 +127,7 @@ final class LocalStorage {
                 realm.delete(recentUserDTO)
             }
         } catch {
-            throw LocalStorageError.deleteError
+            throw LocalStorageError.deleteRecentUserError
         }
     }
     
@@ -139,7 +139,7 @@ final class LocalStorage {
                 realm.delete(recentUserList)
             }
         } catch {
-            throw LocalStorageError.deleteError
+            throw LocalStorageError.deleteRecentUserError
         }
     }
 }
