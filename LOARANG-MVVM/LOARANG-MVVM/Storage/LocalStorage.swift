@@ -130,4 +130,16 @@ final class LocalStorage {
             throw LocalStorageError.deleteError
         }
     }
+    
+    func clearRecentUsers() throws {
+        let recentUserList = realm.objects(RecentUserDTO.self)
+        
+        do {
+            try realm.write {
+                realm.delete(recentUserList)
+            }
+        } catch {
+            throw LocalStorageError.deleteError
+        }
+    }
 }
