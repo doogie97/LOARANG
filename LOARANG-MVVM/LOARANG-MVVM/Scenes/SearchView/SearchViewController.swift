@@ -41,6 +41,17 @@ final class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.recentUser
+            .withUnretained(self)
+            .bind(onNext: { owner, recentUsers in
+                if recentUsers.isEmpty {
+                    owner.searchView.recentUserView.isHidden = true
+                } else {
+                    owner.searchView.recentUserView.isHidden = false
+                }
+            })
+            .disposed(by: disposeBag)
+        
         searchView.recentUserView.recentUserTableView.rx.itemSelected
             .withUnretained(self)
             .bind(onNext: { owner, index in
