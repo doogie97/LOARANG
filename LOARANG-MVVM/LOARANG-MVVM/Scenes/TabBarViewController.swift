@@ -47,7 +47,7 @@ final class TabBarViewController: UITabBarController {
     }()
     
     private lazy var settingVC: UIViewController = {
-        let settingVC = SettingViewController(viewModel: container.makeSettingViewModel())
+        let settingVC = SettingViewController(viewModel: container.makeSettingViewModel(), container: container)
         settingVC.title = "설정"
         settingVC.tabBarItem.image = UIImage(systemName: "gearshape.fill")
         

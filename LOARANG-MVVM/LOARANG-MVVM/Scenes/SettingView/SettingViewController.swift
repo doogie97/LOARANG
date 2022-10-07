@@ -9,9 +9,11 @@ import RxSwift
 
 final class SettingViewController: UIViewController {
     private let viewModel: SettingViewModelable
+    private let container: Container
     
-    init(viewModel: SettingViewModelable) {
+    init(viewModel: SettingViewModelable, container: Container) {
         self.viewModel = viewModel
+        self.container = container
         super.init(nibName: nil, bundle: nil)
     }
     
