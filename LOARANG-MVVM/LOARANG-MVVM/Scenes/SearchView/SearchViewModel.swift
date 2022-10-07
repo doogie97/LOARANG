@@ -13,6 +13,7 @@ protocol SearchViewModelInput {
     func touchBackButton()
     func touchSearchButton(_ name: String)
     func touchRecentUserCell(_ index: Int)
+    func touchClearRecentUserButton()
 }
 
 protocol SearchViewModelOutput {
@@ -43,6 +44,12 @@ final class SearchViewModel: SearchViewModelable {
         }
         
         showUserInfo.accept(userName)
+    }
+    
+    func touchClearRecentUserButton() {
+        do {
+            try storage.clearRecentUsers()
+        } catch {}
     }
     
     //out
