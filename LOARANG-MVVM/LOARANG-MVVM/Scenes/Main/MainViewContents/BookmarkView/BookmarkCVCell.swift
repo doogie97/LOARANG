@@ -34,7 +34,8 @@ final class BookmarkCVCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.setContentHuggingPriority(.required, for: .vertical)
         imageView.contentMode = .scaleAspectFill
-        
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
+        imageView.layer.borderWidth = 0.1
         imageView.clipsToBounds = true
         
         return imageView

@@ -20,6 +20,8 @@ final class MainInfoView: UIView {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
+        imageView.layer.borderWidth = 0.1
         imageView.clipsToBounds = true
 
         return imageView

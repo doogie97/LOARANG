@@ -35,6 +35,8 @@ final class MainUserView: UIView {
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
+        imageView.layer.borderWidth = 0.1
         
         return imageView
     }()
