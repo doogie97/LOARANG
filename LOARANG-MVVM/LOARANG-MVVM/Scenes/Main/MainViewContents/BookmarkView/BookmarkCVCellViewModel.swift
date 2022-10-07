@@ -22,7 +22,7 @@ final class BookmarkCVCellViewModel: BookmarkCVCellViewModelable {
     
     func touchStarButton(_ name: String) {
         do {
-            try storage.deleteUser(name)
+            try storage.deleteBookmarkUser(name)
         } catch {}
     }
 }

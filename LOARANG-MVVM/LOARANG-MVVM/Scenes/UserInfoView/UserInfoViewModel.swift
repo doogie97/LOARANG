@@ -77,9 +77,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
         
         do {
             if storage.isBookmarkUser(userName) {
-                try storage.deleteUser(userName)
+                try storage.deleteBookmarkUser(userName)
             } else {
-                try storage.addUser(BookmarkUser(name: userInfo.mainInfo.name,
+                try storage.addBookmarkUser(BookmarkUser(name: userInfo.mainInfo.name,
                                                  image: userInfo.mainInfo.userImage,
                                                  class: userInfo.mainInfo.`class`))
             }
@@ -107,7 +107,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private func bookmarkUpdate(_ userInfo: UserInfo) {
         if isBookmarkUser.value == true {
             do {
-                try storage.updateUser(BookmarkUser(name: userName,
+                try storage.updateBookmarkUser(BookmarkUser(name: userName,
                                                     image: userInfo.mainInfo.userImage,
                                                     class: userInfo.mainInfo.`class`))
             } catch {

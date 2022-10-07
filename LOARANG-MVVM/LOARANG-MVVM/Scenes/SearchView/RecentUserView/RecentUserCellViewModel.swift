@@ -36,9 +36,9 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
     func touchBookmarkButton() {
         do {
             if storage.isBookmarkUser(userInfo.name) {
-                try storage.deleteUser(userInfo.name)
+                try storage.deleteBookmarkUser(userInfo.name)
             } else {
-                try storage.addUser(BookmarkUser(name: userInfo.name,
+                try storage.addBookmarkUser(BookmarkUser(name: userInfo.name,
                                              image: userInfo.image,
                                              class: userInfo.class))
             }

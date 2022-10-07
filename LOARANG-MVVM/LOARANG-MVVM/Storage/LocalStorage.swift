@@ -42,7 +42,7 @@ final class LocalStorage {
         return recentUsers.reversed()
     }
     
-    func addUser(_ user: BookmarkUser) throws {
+    func addBookmarkUser(_ user: BookmarkUser) throws {
         do {
             try realm.write {
                 realm.add(user.convertedInfo)
@@ -52,7 +52,7 @@ final class LocalStorage {
         }
     }
     
-    func updateUser(_ user: BookmarkUser) throws {
+    func updateBookmarkUser(_ user: BookmarkUser) throws {
         do {
             try realm.write {
                 realm.add(user.convertedInfo, update: .modified)
@@ -62,7 +62,7 @@ final class LocalStorage {
         }
     }
     
-    func deleteUser(_ name: String) throws {
+    func deleteBookmarkUser(_ name: String) throws {
         let bookmarkList = realm.objects(BookmarkUserDTO.self)
         
         guard let bookmarkUserDTO = bookmarkList.filter({ $0.name == name }).first else {
