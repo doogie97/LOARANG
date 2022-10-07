@@ -100,6 +100,7 @@ final class MainView: UIView {
         
         mainUserView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(UIScreen.main.bounds.width * 0.8)
         }
         
         bookmarkView.snp.makeConstraints {
