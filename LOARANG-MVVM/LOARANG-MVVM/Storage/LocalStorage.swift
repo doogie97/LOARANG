@@ -43,6 +43,12 @@ final class LocalStorage {
     }
     
     func addBookmarkUser(_ user: BookmarkUser) throws {
+        let bookmarkUsers = realm.objects(BookmarkUserDTO.self)
+        
+        guard bookmarkUsers.count < 20 else {
+            throw LocalStorageError.overBookmakr
+        }
+        
         do {
             try realm.write {
                 realm.add(user.convertedInfo)

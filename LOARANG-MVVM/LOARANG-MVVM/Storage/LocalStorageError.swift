@@ -9,6 +9,7 @@ enum LocalStorageError: Error {
     case addBookmarkError
     case updateBookmarkError
     case deleteBookmarkError
+    case overBookmakr
     case changeMainUserError
     case addRecentUserError
     case deleteRecentUserError
@@ -21,6 +22,8 @@ enum LocalStorageError: Error {
             return "유저 갱신에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
         case .deleteBookmarkError:
             return "북마크 제거에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
+        case .overBookmakr:
+            return "즐겨찾기는 최대 20명까지 가능합니다."
         case .changeMainUserError:
             return "대표캐릭터 변경에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
         default:
