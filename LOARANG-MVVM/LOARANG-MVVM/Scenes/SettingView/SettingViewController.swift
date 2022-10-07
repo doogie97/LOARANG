@@ -58,6 +58,15 @@ final class SettingViewController: UIViewController {
                 self?.settingView.activityIndicator.stopAnimating()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.showWebView
+            .withUnretained(self)
+            .bind(onNext: { owner, contents in
+                let webView = owner.container.makeWebViewViewController(url: contents.url, title: contents.title)
+                
+                owner.navigationController?.pushViewController(webView, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setTableView() {
