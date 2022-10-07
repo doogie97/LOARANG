@@ -12,6 +12,7 @@ protocol SettingViewModelable: SettingViewModeInput, SettingViewModeOutput {}
 protocol SettingViewModeInput {
     func touchSearchButton(_ userName: String)
     func changeMainUser(_ mainUser: MainUser)
+    func touchNoticeCell()
 }
 
 protocol SettingViewModeOutput {
@@ -54,6 +55,14 @@ final class SettingViewModel: SettingViewModelable {
         } catch {
             showAlert.accept(error.errorMessage)
         }
+    }
+    
+    func touchNoticeCell() {
+        guard let url = URL(string: "https://velog.io/@doogie97/%EB%A1%9C%EC%95%84%EB%9E%91LOARANG-%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD") else {
+            return
+        }
+        
+        showWebView.accept((url: url, title: "로아랑 공지사항"))
     }
     
     //output

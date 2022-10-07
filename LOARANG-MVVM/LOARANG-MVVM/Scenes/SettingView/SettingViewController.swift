@@ -116,6 +116,8 @@ extension SettingViewController: UITableViewDelegate {
             self.showSetMainCharacterAlert {
                 self.viewModel.touchSearchButton($0)
             }
+        } else if indexPath.row == CellType.notice.rawValue {
+            self.viewModel.touchNoticeCell()
         }
     }
 }
