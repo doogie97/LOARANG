@@ -21,6 +21,7 @@ protocol SettingViewModeOutput {
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
     var showWebView: PublishRelay<(url: URL, title: String)> { get }
+    var showSafari: PublishRelay<URL> { get }
 }
 
 final class SettingViewModel: SettingViewModelable {
@@ -70,5 +71,6 @@ final class SettingViewModel: SettingViewModelable {
     let showAlert = PublishRelay<String?>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
-    var showWebView = PublishRelay<(url: URL, title: String)>()
+    let showWebView = PublishRelay<(url: URL, title: String)>()
+    let showSafari = PublishRelay<URL>()
 }

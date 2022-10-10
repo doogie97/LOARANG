@@ -67,6 +67,12 @@ final class SettingViewController: UIViewController {
                 owner.navigationController?.pushViewController(webView, animated: true)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.showSafari
+            .bind(onNext: {
+                UIApplication.shared.open($0)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setTableView() {
