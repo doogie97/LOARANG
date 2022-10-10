@@ -112,12 +112,15 @@ extension SettingViewController: UITableViewDataSource {
 
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == CellType.changeMainUser.rawValue {
+        switch indexPath.row {
+        case CellType.changeMainUser.rawValue:
             self.showSetMainCharacterAlert {
                 self.viewModel.touchSearchButton($0)
             }
-        } else if indexPath.row == CellType.notice.rawValue {
+        case CellType.notice.rawValue:
             self.viewModel.touchNoticeCell()
+        default:
+            break
         }
     }
 }
