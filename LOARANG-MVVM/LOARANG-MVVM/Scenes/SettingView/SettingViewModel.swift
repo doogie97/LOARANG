@@ -13,6 +13,7 @@ protocol SettingViewModeInput {
     func touchSearchButton(_ userName: String)
     func changeMainUser(_ mainUser: MainUser)
     func touchNoticeCell()
+    func touchSuggestioinCell()
 }
 
 protocol SettingViewModeOutput {
@@ -64,6 +65,15 @@ final class SettingViewModel: SettingViewModelable {
         }
         
         showWebView.accept((url: url, title: "로아랑 공지사항"))
+    }
+    
+    func touchSuggestioinCell() {
+        guard let url = URL(string: "https://open.kakao.com/o/s5vNiUGe"),
+              UIApplication.shared.canOpenURL(url) else {
+            return
+        }
+        
+        showSafari.accept(url)
     }
     
     //output

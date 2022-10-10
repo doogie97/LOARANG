@@ -125,6 +125,8 @@ extension SettingViewController: UITableViewDelegate {
             }
         case CellType.notice.rawValue:
             self.viewModel.touchNoticeCell()
+        case CellType.suggestion.rawValue:
+            self.viewModel.touchSuggestioinCell()
         default:
             break
         }
