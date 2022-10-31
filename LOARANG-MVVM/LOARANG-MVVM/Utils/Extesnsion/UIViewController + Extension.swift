@@ -24,14 +24,14 @@ extension UIViewController {
     
     func showSetMainCharacterAlert(action: ((String) -> Void)? = nil) {
         let alert = UIAlertController(title: "", message: "대표 캐릭터로 설정할 캐릭터를 입력해 주세요", preferredStyle: .alert)
-        let yesction = UIAlertAction(title: "확인", style: .default) { _ in
+        let yesAction = UIAlertAction(title: "확인", style: .default) { _ in
             guard let action = action else {
                 return
             }
             action(alert.textFields?[safe: 0]?.text ?? "")
         }
         
-        alert.addAction(yesction)
+        alert.addAction(yesAction)
         alert.addTextField()
         
         self.present(alert, animated: true)
