@@ -31,7 +31,10 @@ extension UIViewController {
             action(alert.textFields?[safe: 0]?.text ?? "")
         }
         
+        let noAction = UIAlertAction(title: "취소", style: .destructive)
+        
         alert.addAction(yesAction)
+        alert.addAction(noAction)
         alert.addTextField()
         
         self.present(alert, animated: true)
