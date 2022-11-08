@@ -52,6 +52,7 @@
 		AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */; };
 		AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87E28DC7F5200E4A92D /* WebViewView.swift */; };
 		AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */; };
+		AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC687AB4291373E70064C92B /* GoogleService-Info.plist */; };
 		AC6B838A28EE3C25008BD901 /* RecentUserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
@@ -182,6 +183,7 @@
 		AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		AC62F87E28DC7F5200E4A92D /* WebViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewView.swift; sourceTree = "<group>"; };
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
+		AC687AB4291373E70064C92B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserCellViewModel.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 				ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */,
 				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
+				AC687AB4291373E70064C92B /* GoogleService-Info.plist */,
 			);
 			path = "LOARANG-MVVM";
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				ACAEF32F287FF0D300AE98F1 /* LaunchScreen.storyboard in Resources */,
 				ACAEF32C287FF0D300AE98F1 /* Assets.xcassets in Resources */,
 				ACAEF3652880076C00AE98F1 /* BlackHanSans-Regular.ttf in Resources */,
+				AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
