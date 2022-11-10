@@ -258,8 +258,9 @@ extension JsonInfoManager {
         let aditionalEffect = json["Element_005"]["value"]["Element_000"].stringValue
         + "<BR>" + json["Element_005"]["value"]["Element_001"].stringValue + "<BR><BR>"
         
-        let engravigs = json["Element_006"]["value"]["Element_000"].stringValue
-        + "<BR>" + json["Element_006"]["value"]["Element_001"].stringValue
+        let engravigs = json["Element_006"]["value"]["Element_000"]["contentStr"]["Element_000"]["contentStr"].stringValue +
+        json["Element_006"]["value"]["Element_000"]["contentStr"]["Element_001"]["contentStr"].stringValue +
+        json["Element_006"]["value"]["Element_000"]["contentStr"]["Element_002"]["contentStr"].stringValue
         
         return basicEffect + aditionalEffect + engravigs
     }
