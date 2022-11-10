@@ -17,7 +17,6 @@ pod 'SwiftSoup'
 
 pod 'RealmSwift'
 
-pod 'FirebaseFirestore'
 pod 'FirebaseAnalytics'
   # Pods for LOARANG-MVVM
 
