@@ -14,14 +14,6 @@ final class Container {
         self.storage = storage
     }
     
-    func checkInspection() throws {
-        do {
-            try CrawlManager().chenckInspection()
-        } catch {
-            throw CrawlError.inspection
-        }
-    }
-    
 //MARK: - about Main View
     func makeMainViewController() -> MainViewController {
         return MainViewController(viewModel: makeMainViewModel(), container: self)
