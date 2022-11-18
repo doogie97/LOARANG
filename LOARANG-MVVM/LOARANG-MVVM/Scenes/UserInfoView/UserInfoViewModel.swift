@@ -133,6 +133,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 self?.userInfo.accept(userInfo)
                 self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
                 self?.isBookmarkUser.accept(self?.storage.isBookmarkUser(userInfo.mainInfo.name) ?? false)
+                self?.userName = userInfo.mainInfo.name
                 self?.sucssesSearching.accept(())
                 
                 self?.mainUserUpdate(userInfo)
