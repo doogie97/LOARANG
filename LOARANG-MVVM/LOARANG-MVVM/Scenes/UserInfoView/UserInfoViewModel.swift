@@ -40,7 +40,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
     init(storage: AppStorageable, container: Container, userName: String, isSearching: Bool) {
         self.storage = storage
         self.isSearching = isSearching
-        self.isBookmarkUser = BehaviorRelay<Bool>(value: storage.isBookmarkUser(userName))
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
                              container.makeSkillInfoViewController(skillInfo: skillInfo),
@@ -166,7 +165,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     var pageViewList: [UIViewController] = []
     let currentPage = BehaviorRelay<Int>(value: 0)
     let previousPage = BehaviorRelay<Int>(value: 50)
-    let isBookmarkUser: BehaviorRelay<Bool>
+    let isBookmarkUser = BehaviorRelay<Bool>(value: false)
     let showAlert = PublishRelay<(message: String?, isPop: Bool)>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
