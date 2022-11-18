@@ -117,7 +117,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     private func addRecentUser(_ userInfo: UserInfo) {
         do {
-            try storage.addRecentUser(RecentUser(name: userName,
+            try storage.addRecentUser(RecentUser(name: userInfo.mainInfo.name,
                                                  image: userInfo.mainInfo.userImage,
                                                  class: userInfo.mainInfo.`class`))
         } catch {
