@@ -90,7 +90,7 @@ struct CrawlManager: CrawlManagerable {
                 throw CrawlError.searchError
             }
             
-            let name = name
+            let name = try doc.select("#myinfo__character--button2").text().components(separatedBy: " ")[safe: 1] ?? "알 수 없음"
             let battleLV = try doc.select("#myinfo__character--button2 > span").text().replacingOccurrences(of: "Lv.", with: "")
             let itemLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(2) > dl.define.item > dd").text()
             let expeditionLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(1) > dl:nth-child(1) > dd").text()
