@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="로아랑 아이콘" translatesAutoresizingMaskIntoConstraints="NO" id="lfR-Kr-BNO">
-                                <rect key="frame" x="50" y="50" width="330" height="832"/>
+                                <rect key="frame" x="100" y="100" width="230" height="732"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1134429052" green="0.1134429052" blue="0.13852727409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="lfR-Kr-BNO" secondAttribute="trailing" constant="50" id="Sap-kk-YnY"/>
-                            <constraint firstItem="lfR-Kr-BNO" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="50" id="Ymr-pK-xZA"/>
-                            <constraint firstItem="lfR-Kr-BNO" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="50" id="iX8-SA-YYM"/>
-                            <constraint firstAttribute="bottom" secondItem="lfR-Kr-BNO" secondAttribute="bottom" constant="50" id="tQ1-aQ-g0r"/>
+                            <constraint firstAttribute="trailing" secondItem="lfR-Kr-BNO" secondAttribute="trailing" constant="100" id="Sap-kk-YnY"/>
+                            <constraint firstItem="lfR-Kr-BNO" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="100" id="Ymr-pK-xZA"/>
+                            <constraint firstItem="lfR-Kr-BNO" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="100" id="iX8-SA-YYM"/>
+                            <constraint firstAttribute="bottom" secondItem="lfR-Kr-BNO" secondAttribute="bottom" constant="100" id="tQ1-aQ-g0r"/>
                         </constraints>
                     </view>
                 </viewController>
