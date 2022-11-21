@@ -27,6 +27,13 @@ final class MainView: UIView {
         return label
     }()
     
+    private lazy var leafImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "leafImg")
+        
+        return imageView
+    }()
+    
     private(set) lazy var searchButton: UIButton = {
         let button = UIButton()
         button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
@@ -66,6 +73,7 @@ final class MainView: UIView {
     
     private func setLayout() {
         self.addSubview(title)
+        self.addSubview(leafImageView)
         self.addSubview(searchButton)
         self.addSubview(mainScrollView)
         self.addSubview(activityIndicator)
@@ -77,6 +85,12 @@ final class MainView: UIView {
         
         title.snp.makeConstraints {
             $0.top.leading.equalTo(self.safeAreaLayoutGuide).inset(20)
+        }
+        
+        leafImageView.snp.makeConstraints {
+            $0.height.width.equalTo(20)
+            $0.leading.equalTo(title.snp.trailing).offset(3)
+            $0.top.equalTo(title).inset(10)
         }
         
         searchButton.snp.makeConstraints {
