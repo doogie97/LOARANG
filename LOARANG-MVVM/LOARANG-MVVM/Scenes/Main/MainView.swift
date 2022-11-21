@@ -42,14 +42,6 @@ final class MainView: UIView {
         return button
     }()
     
-    private(set) lazy var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
-        indicator.stopAnimating()
-        
-        return indicator
-    }()
-    
     //MARK: - Main ContentsView
     private lazy var mainScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -62,6 +54,15 @@ final class MainView: UIView {
         let view = UIView()
         
         return view
+    }()
+    
+    // MARK: - etc
+    private(set) lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        indicator.stopAnimating()
+        
+        return indicator
     }()
     
     private(set) lazy var mainUserView = MainUserView()
