@@ -18,13 +18,7 @@ final class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Navigation StackView
-    private lazy var titleStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [title, searchButton])
-        stackView.distribution = .equalSpacing
-        return stackView
-    }()
-    
+    //MARK: - about Navigation
     private lazy var title: UILabel = {
         let label = UILabel()
         label.text = "LOARANG"
@@ -71,7 +65,8 @@ final class MainView: UIView {
     private(set) lazy var noticeView = NoticeView()
     
     private func setLayout() {
-        self.addSubview(titleStackView)
+        self.addSubview(title)
+        self.addSubview(searchButton)
         self.addSubview(mainScrollView)
         self.addSubview(activityIndicator)
         mainScrollView.addSubview(mainContentsView)
@@ -80,8 +75,13 @@ final class MainView: UIView {
         mainContentsView.addSubview(eventView)
         mainContentsView.addSubview(noticeView)
         
-        titleStackView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(20)
+        title.snp.makeConstraints {
+            $0.top.leading.equalTo(self.safeAreaLayoutGuide).inset(20)
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(20)
+            $0.centerY.equalTo(title.snp.centerY)
         }
         
         title.snp.makeConstraints {
@@ -89,7 +89,7 @@ final class MainView: UIView {
         }
         
         mainScrollView.snp.makeConstraints {
-            $0.top.equalTo(titleStackView.snp.bottom)
+            $0.top.equalTo(title.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
