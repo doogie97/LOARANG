@@ -55,6 +55,7 @@
 		AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC687AB4291373E70064C92B /* GoogleService-Info.plist */; };
 		AC6B838A28EE3C25008BD901 /* RecentUserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */; };
 		AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC6C81942940270A00C0EEC1 /* Alamofire */; };
+		AC6C81982940277A00C0EEC1 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C81972940277A00C0EEC1 /* Characters.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */; };
@@ -186,6 +187,7 @@
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
 		AC687AB4291373E70064C92B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserCellViewModel.swift; sourceTree = "<group>"; };
+		AC6C81972940277A00C0EEC1 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewController.swift; sourceTree = "<group>"; };
@@ -478,6 +480,14 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		AC6C81962940276D00C0EEC1 /* LostarkAPI */ = {
+			isa = PBXGroup;
+			children = (
+				AC6C81972940277A00C0EEC1 /* Characters.swift */,
+			);
+			path = LostarkAPI;
+			sourceTree = "<group>";
+		};
 		AC6CA28F2893BBCF0049C12F /* BasicInfoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +691,7 @@
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AC6C81962940276D00C0EEC1 /* LostarkAPI */,
 				AC0B89F7289B8185005BE193 /* Storage */,
 				AC8F11C62881025900D06AA6 /* CrawlManager */,
 				ACAEF3632880075A00AE98F1 /* Font */,
@@ -1012,6 +1023,7 @@
 				AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
+				AC6C81982940277A00C0EEC1 /* Characters.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
 				AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */,
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,
