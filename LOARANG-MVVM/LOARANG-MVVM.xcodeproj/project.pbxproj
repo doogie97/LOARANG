@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
@@ -140,6 +141,7 @@
 /* Begin PBXFileReference section */
 		641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8547102CE468BBFF3FCD4EB5 /* Pods-LOARANG-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.release.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.release.xcconfig"; sourceTree = "<group>"; };
+		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6C81972940277A00C0EEC1 /* Characters.swift */,
+				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
 			);
 			path = LostarkAPI;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
 				ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */,
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
+				AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
 				ACB3813528D42CFB0081F8A1 /* OwnCharacterView.swift in Sources */,
