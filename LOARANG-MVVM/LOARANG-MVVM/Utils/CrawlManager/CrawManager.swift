@@ -307,37 +307,6 @@ struct CrawlManager: CrawlManagerable {
 
 // MARK: - 이벤트 정보
 extension CrawlManager {
-    func getEvents(completion: @escaping (Result<[LostArkEvent], Error>) -> Void){
-        guard let url = URL(string: "https://lostark.game.onstove.com/News/Event/Now") else {
-            completion(.failure(CrawlError.eventError))
-            return
-        }
-        
-        guard let doc = try? makeDocument(url: url) else {
-            completion(.failure(CrawlError.eventError))
-            return
-        }
-        
-        guard let eventElements = try? doc.select("#lostark-wrapper > div > main > div > div > div.list.list--event > ul > li") else {
-            completion(.failure(CrawlError.eventError))
-            return
-        }
-        
-        let events: [LostArkEvent] = eventElements.compactMap {
-            do {
-                let endDate = try $0.select("a > div.list__term").text().components(separatedBy: "- ")[safe: 1] ?? ""
-                let imageURL = try $0.select("a > div.list__thumb > img").attr("src")
-                let eventURL = try "https://m-lostark.game.onstove.com" + $0.select("a").attr("href")
-                
-                return LostArkEvent(endDate: endDate, imageURL: imageURL, eventURL: eventURL)
-            } catch {
-                return nil
-            }
-        }
-        
-        completion(.success(events))
-    }
-    
     func getNotice(completion: @escaping (Result<[LostArkNotice], Error>) -> Void){
         guard let url = URL(string: "https://lostark.game.onstove.com/News/Notice/List") else {
             completion(.failure(CrawlError.noticeError))
