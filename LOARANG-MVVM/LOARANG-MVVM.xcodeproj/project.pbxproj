@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
 		AC0341B42945883C005F4533 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B32945883C005F4533 /* Requestable.swift */; };
+		AC0341BC294588F3005F4533 /* LOARANG_MVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
@@ -139,11 +140,23 @@
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AC0341BD294588F3005F4533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACAEF317287FF0D200AE98F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACAEF31E287FF0D200AE98F1;
+			remoteInfo = "LOARANG-MVVM";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8547102CE468BBFF3FCD4EB5 /* Pods-LOARANG-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.release.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		AC0341B9294588F3005F4533 /* LOARANG-MVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LOARANG-MVVMTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOARANG_MVVMTests.swift; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -276,6 +289,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AC0341B6294588F3005F4533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAEF31C287FF0D200AE98F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,6 +322,14 @@
 				AC0341B32945883C005F4533 /* Requestable.swift */,
 			);
 			path = APIModels;
+			sourceTree = "<group>";
+		};
+		AC0341BA294588F3005F4533 /* LOARANG-MVVMTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */,
+			);
+			path = "LOARANG-MVVMTests";
 			sourceTree = "<group>";
 		};
 		AC035E9D28911CDC0068DC7E /* UserInfoView */ = {
@@ -624,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF321287FF0D200AE98F1 /* LOARANG-MVVM */,
+				AC0341BA294588F3005F4533 /* LOARANG-MVVMTests */,
 				ACAEF320287FF0D200AE98F1 /* Products */,
 				C1BE94E9D9DBB579AF2C7E5C /* Pods */,
 				1C4C2305C17C49BFC10EFF72 /* Frameworks */,
@@ -634,6 +663,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF31F287FF0D200AE98F1 /* LOARANG-MVVM.app */,
+				AC0341B9294588F3005F4533 /* LOARANG-MVVMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -816,6 +846,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AC0341B8294588F3005F4533 /* LOARANG-MVVMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC0341BF294588F3005F4533 /* Build configuration list for PBXNativeTarget "LOARANG-MVVMTests" */;
+			buildPhases = (
+				AC0341B5294588F3005F4533 /* Sources */,
+				AC0341B6294588F3005F4533 /* Frameworks */,
+				AC0341B7294588F3005F4533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC0341BE294588F3005F4533 /* PBXTargetDependency */,
+			);
+			name = "LOARANG-MVVMTests";
+			productName = "LOARANG-MVVMTests";
+			productReference = AC0341B9294588F3005F4533 /* LOARANG-MVVMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ACAEF31E287FF0D200AE98F1 /* LOARANG-MVVM */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACAEF333287FF0D300AE98F1 /* Build configuration list for PBXNativeTarget "LOARANG-MVVM" */;
@@ -845,9 +893,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					AC0341B8294588F3005F4533 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = ACAEF31E287FF0D200AE98F1;
+					};
 					ACAEF31E287FF0D200AE98F1 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -870,11 +922,19 @@
 			projectRoot = "";
 			targets = (
 				ACAEF31E287FF0D200AE98F1 /* LOARANG-MVVM */,
+				AC0341B8294588F3005F4533 /* LOARANG-MVVMTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AC0341B7294588F3005F4533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAEF31D287FF0D200AE98F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -934,6 +994,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AC0341B5294588F3005F4533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC0341BC294588F3005F4533 /* LOARANG_MVVMTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAEF31B287FF0D200AE98F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1064,6 +1132,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AC0341BE294588F3005F4533 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACAEF31E287FF0D200AE98F1 /* LOARANG-MVVM */;
+			targetProxy = AC0341BD294588F3005F4533 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1076,6 +1152,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AC0341C0294588F3005F4533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SD8J3B58T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Doogie.LOARANG-MVVMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOARANG-MVVM.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LOARANG-MVVM";
+			};
+			name = Debug;
+		};
+		AC0341C1294588F3005F4533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SD8J3B58T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Doogie.LOARANG-MVVMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOARANG-MVVM.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LOARANG-MVVM";
+			};
+			name = Release;
+		};
 		ACAEF331287FF0D300AE98F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1261,6 +1377,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AC0341BF294588F3005F4533 /* Build configuration list for PBXNativeTarget "LOARANG-MVVMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC0341C0294588F3005F4533 /* Debug */,
+				AC0341C1294588F3005F4533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ACAEF31A287FF0D200AE98F1 /* Build configuration list for PBXProject "LOARANG-MVVM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
