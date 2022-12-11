@@ -62,7 +62,7 @@ final class MainViewModel: MainViewModelInOut {
             case .success(let news):
                 self?.events.accept(news)
             case .failure(let error):
-                print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
+                self?.showAlert.accept(error.errorMessage)
             }
         }
     }
