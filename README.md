@@ -1,10 +1,12 @@
 # LOARANG(로아랑)
 
-![](https://i.imgur.com/FIerZnA.png)
+## [앱스토어에서 다운로드](https://apps.apple.com/kr/app/%EB%A1%9C%EC%95%84%EB%9E%91/id6444625201)
+![내 프로젝트](https://user-images.githubusercontent.com/82325822/206885010-0e67a6e1-3f8c-4b2e-b1f1-80ea0a2bd059.png)
 
 ## 💁🏻‍♂️ 프로젝트 소개
+![](https://i.imgur.com/FIerZnA.png)
 로스트 아크 유저들을 위한 유저 검색 및 정보 제공 어플!! 
-(은 많지만 이제 디자인이 제일 이쁘다자신 할 수 있는...!)
+(현재 로스트아크의 공식 API 출시로 어플 개편에 있으며 곧 더 원활한 서비스 제공을 하도록 하겠습니다!)
 
 ## 실행 화면
 |유저 검색|북마크 등록&해제|대표 캐릭터 설정|
