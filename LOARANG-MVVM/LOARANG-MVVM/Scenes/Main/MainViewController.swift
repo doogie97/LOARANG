@@ -130,8 +130,8 @@ final class MainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // EventView contents
-        viewModel.events.bind(to: mainView.eventView.eventCollectionView.rx.items(cellIdentifier: "\(EventCVCell.self)", cellType: EventCVCell.self)) { index, event, cell in
-            cell.setCellContents(event)
+        viewModel.events.bind(to: mainView.eventView.eventCollectionView.rx.items(cellIdentifier: "\(EventCVCell.self)", cellType: EventCVCell.self)) { index, news, cell in
+            cell.setCellContents(news)
         }
         .disposed(by: disposeBag)
         

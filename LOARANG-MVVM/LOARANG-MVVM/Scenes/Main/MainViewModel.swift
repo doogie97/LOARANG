@@ -24,7 +24,7 @@ protocol MainViewModelOutput {
     var mainUser: BehaviorRelay<MainUser?> { get }
     var checkUser: PublishRelay<MainUser> { get }
     var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
-    var events: BehaviorRelay<[LostArkEvent]> { get }
+    var events: BehaviorRelay<[News]> { get }
     var notices: BehaviorRelay<[LostArkNotice]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
@@ -36,25 +36,31 @@ protocol MainViewModelOutput {
 
 final class MainViewModel: MainViewModelInOut {
     private let storage: AppStorageable
-    private let crawlManager = CrawlManager()
+    private let crawlManager = CrawlManager() // 크롤링 -> API로 전면 수정 후 제거 필요
+    private let networkManager = NetworkManager()
     
     init(storage: AppStorageable) {
         self.storage = storage
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
-        crawlManager.getEvents { [weak self] result in
-            switch result {
-            case .success(let event):
-                self?.events.accept(event)
-            case .failure(let error):
-                print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
-            }
-        }
+        
+        getEvent()
         
         crawlManager.getNotice { [weak self] result in
             switch result {
             case .success(let notice):
                 self?.notices.accept(notice)
+            case .failure(let error):
+                print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
+            }
+        }
+    }
+    
+    private func getEvent() {
+        networkManager.request(NewsAPIModel(), resultType: [News].self) { [weak self] result in
+            switch result {
+            case .success(let news):
+                self?.events.accept(news)
             case .failure(let error):
                 print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
             }
@@ -109,7 +115,7 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchEventCell(_ index: Int) {
-        guard let urlString = events.value[safe: index]?.eventURL else {
+        guard let urlString = events.value[safe: index]?.link else {
             return
         }
         
@@ -152,7 +158,7 @@ final class MainViewModel: MainViewModelInOut {
     let mainUser: BehaviorRelay<MainUser?>
     let checkUser = PublishRelay<MainUser>()
     let bookmarkUser: BehaviorRelay<[BookmarkUser]>
-    let events = BehaviorRelay<[LostArkEvent]>(value: [])
+    let events = BehaviorRelay<[News]>(value: [])
     let notices = BehaviorRelay<[LostArkNotice]>(value: [])
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()

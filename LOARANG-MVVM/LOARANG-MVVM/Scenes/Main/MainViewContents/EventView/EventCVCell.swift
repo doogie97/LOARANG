@@ -46,9 +46,9 @@ final class EventCVCell: UICollectionViewCell {
         }
     }
     
-    func setCellContents(_ event: LostArkEvent) {
-        eventImageViewDataTask = eventImageView.setImage(urlString: event.imageURL)
-        endDataLabel.text = "~ " + event.endDate
+    func setCellContents(_ news: News) {
+        eventImageViewDataTask = eventImageView.setImage(urlString: news.thumbnail)
+        endDataLabel.text = "~ " + (news.endDate?.converDateType ?? "")
     }
     
     private var eventImageViewDataTask: URLSessionDataTask?
