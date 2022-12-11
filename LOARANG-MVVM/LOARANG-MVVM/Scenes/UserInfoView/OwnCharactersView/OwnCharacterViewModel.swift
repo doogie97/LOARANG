@@ -22,9 +22,12 @@ final class OwnCharacterViewModel: OwnCharacterViewModelable {
     private let disposeBag = DisposeBag()
     private weak var userInfoViewModelDelegate: UserInfoViewModelDelegate?
     
-    init(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>, userInfoViewModelDelegate: UserInfoViewModelDelegate) {
+    private let disposeBag = DisposeBag()
+    private let name: String
+    
+    init(userName: String, userInfoViewModelDelegate: UserInfoViewModelDelegate) {
         self.userInfoViewModelDelegate = userInfoViewModelDelegate
-        bind(ownCharacterInfo: ownCharacterInfo)
+        self.name = userName
     }
     
     private func bind(ownCharacterInfo: BehaviorRelay<OwnCharacterInfo?>) {
