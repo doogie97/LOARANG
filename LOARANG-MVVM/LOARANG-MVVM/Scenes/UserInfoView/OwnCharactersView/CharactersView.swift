@@ -1,5 +1,5 @@
 //
-//  OwnCharacterView.swift
+//  CharactersView.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/09/16.
@@ -7,7 +7,7 @@
 
 import SnapKit
 
-final class OwnCharacterView: UIView {
+final class CharactersView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()

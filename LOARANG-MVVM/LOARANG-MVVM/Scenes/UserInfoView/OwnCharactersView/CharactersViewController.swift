@@ -1,5 +1,5 @@
 //
-//  OwnCharacterViewController.swift
+//  OwnCharactersViewController.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/07/29.
@@ -8,10 +8,10 @@
 import RxSwift
 import RxDataSources
 
-final class OwnCharacterViewController: UIViewController {
-    private let viewModel: OwnCharacterViewModelable
+final class CharactersViewController: UIViewController {
+    private let viewModel: CharactersViewModelable
     
-    init(viewModel: OwnCharacterViewModelable) {
+    init(viewModel: CharactersViewModelable) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -20,11 +20,11 @@ final class OwnCharacterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let ownCharacterView = OwnCharacterView()
+    private let charactersView = CharactersView()
     private let disposeBag = DisposeBag()
     
     override func loadView() {
-        self.view = ownCharacterView
+        self.view = charactersView
     }
     
     override func viewDidLoad() {
@@ -33,11 +33,11 @@ final class OwnCharacterViewController: UIViewController {
     }
     
     private func bindView() {
-        let dataSource = RxTableViewSectionedReloadDataSource<OwnCharacterSection>(configureCell: { dataSource, tableView, indexpath, ownCharacter in
+        let dataSource = RxTableViewSectionedReloadDataSource<CharactersSection>(configureCell: { dataSource, tableView, indexpath, characterInfo in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(OwnCharacterCell.self)", for: indexpath) as? OwnCharacterCell else {
                 return UITableViewCell()
             }
-            cell.setCellContents(ownCharacter: ownCharacter)
+            cell.setCellContents(characterInfo: characterInfo)
             
             return cell
         })
@@ -47,10 +47,10 @@ final class OwnCharacterViewController: UIViewController {
         }
         
         viewModel.sections
-            .bind(to: ownCharacterView.charactersTableView.rx.items(dataSource: dataSource))
+            .bind(to: charactersView.charactersTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        ownCharacterView.charactersTableView.rx.itemSelected
+        charactersView.charactersTableView.rx.itemSelected
             .bind(onNext: { [weak self] in
                 self?.viewModel.touchCell($0)
             })
@@ -59,23 +59,23 @@ final class OwnCharacterViewController: UIViewController {
         viewModel.sections
             .bind(onNext: { [weak self] in
                 if $0.isEmpty {
-                    self?.ownCharacterView.activityIndicator.startAnimating()
+                    self?.charactersView.activityIndicator.startAnimating()
                 } else {
-                    self?.ownCharacterView.activityIndicator.stopAnimating()
+                    self?.charactersView.activityIndicator.stopAnimating()
                 }
             }).disposed(by: disposeBag)
     }
 }
 
-struct OwnCharacterSection {
+struct CharactersSection {
     var header: String
     var items: [Item]
 }
 
-extension OwnCharacterSection: SectionModelType {
-    typealias Item = OwnCharacter
+extension CharactersSection: SectionModelType {
+    typealias Item = CharacterInfo
     
-    init(original: OwnCharacterSection, items: [OwnCharacter]) {
+    init(original: CharactersSection, items: [CharacterInfo]) {
         self = original
         self.items = items
     }

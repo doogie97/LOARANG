@@ -126,12 +126,12 @@ final class Container {
         return SkillDetailViewModel(skill: skill)
     }
     
-    func makeOwnCharacterViewController(userName: String, userInfoViewModelDelegate: UserInfoViewModelDelegate) -> OwnCharacterViewController {
-        return OwnCharacterViewController(viewModel: makeOwnCharacterViewModel(userName: userName, userInfoViewModelDelegate: userInfoViewModelDelegate))
+    func makeCharactersViewController(userName: String, userInfoViewModelDelegate: UserInfoViewModelDelegate) -> CharactersViewController {
+        return CharactersViewController(viewModel: makeCharactersViewModel(userName: userName, userInfoViewModelDelegate: userInfoViewModelDelegate))
     }
     
-    private func makeOwnCharacterViewModel(userName: String,userInfoViewModelDelegate: UserInfoViewModelDelegate) -> OwnCharacterViewModelable {
-        return OwnCharacterViewModel(userName: userName,
+    private func makeCharactersViewModel(userName: String,userInfoViewModelDelegate: UserInfoViewModelDelegate) -> CharactersViewModelable {
+        return CharactersViewModel(userName: userName,
                                      userInfoViewModelDelegate: userInfoViewModelDelegate)
     }
     

@@ -155,13 +155,13 @@ final class OwnCharacterCell: UITableViewCell {
         }
     }
     
-    func setCellContents(ownCharacter: OwnCharacter) {
-        classImageView.image = ownCharacter.`class`.classImage
-        classLabel.text = ownCharacter.`class`
-        guildLabel.text = ownCharacter.guild
-        serverLabel.text = ownCharacter.server
-        userNameLabel.text = ownCharacter.name
-        battleLVLabel.text = "Lv \(ownCharacter.battleLV)"
-        itemLVLabel.text = ownCharacter.itemLV
+    func setCellContents(characterInfo: CharacterInfo) {
+        classImageView.image = characterInfo.characterClassName?.classImage
+        classLabel.text = characterInfo.characterClassName
+        guildLabel.text = "길드명이 없네"
+        serverLabel.text = characterInfo.serverName
+        userNameLabel.text = characterInfo.characterName
+        battleLVLabel.text = "Lv \(characterInfo.characterLevel ?? 0)"
+        itemLVLabel.text = characterInfo.itemAvgLevel
     }
 }
