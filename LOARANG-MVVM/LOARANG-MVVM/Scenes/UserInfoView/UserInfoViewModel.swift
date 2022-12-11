@@ -50,7 +50,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
     //in
     func searchWholeUserInfo() {
         searchUserInfo()
-        getOwnCharacterInfo()
     }
     
     func touchBackButton() {
@@ -148,18 +147,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
             self?.finishedLoading.accept(())
         }
     }
-    private func getOwnCharacterInfo() {
-        ownCharacterInfo.accept(nil)
-        crawlManager.getOwnCharacterInfo(userName) {[weak self] result in
-            switch result {
-            case .success(let ownCharacterInfo):
-                self?.ownCharacterInfo.accept(ownCharacterInfo)
-            case .failure(let error):
-                self?.showAlert.accept((message: error.errorMessage, isPop: false))
-            }
-        }
-    }
-    
+
     //out
     var userName: String
     let popView = PublishRelay<Void>()
@@ -176,7 +164,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
     //for insideView
     private let userInfo = BehaviorRelay<UserInfo?>(value: nil)
     private let skillInfo = BehaviorRelay<SkillInfo?>(value: nil)
-    private let ownCharacterInfo = BehaviorRelay<OwnCharacterInfo?>(value: nil)
 }
 
 //MARK: - UserInfoViewModelDelegate
