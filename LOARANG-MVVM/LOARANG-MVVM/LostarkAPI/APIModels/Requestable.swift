@@ -14,3 +14,14 @@ protocol Requestable {
     var params: [String : Any] { get }
     var httpMethod: HTTPMethod { get }
 }
+
+enum Host {
+    case lostarkAPI
+    
+    var baseURL: String {
+        switch self {
+        case .lostarkAPI:
+            return "https://developer-lostark.game.onstove.com"
+        }
+    }
+}
