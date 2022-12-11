@@ -32,14 +32,14 @@ final class CharactersViewModel: CharactersViewModelable {
                                resultType: [CharacterInfo].self) { [weak self] result in
             switch result {
             case .success(let characters):
-                self?.bind(characters.sorted{ $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
+                self?.categorizeCharacters(characters.sorted{ $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
             case .failure(let error):
                 print(error.errorMessage) // 추후 alert으로 대체 필요
             }
         }
     }
     
-    private func bind(_ characters: [CharacterInfo]) {
+    private func categorizeCharacters(_ characters: [CharacterInfo]) {
         var ninaveCharacters: [CharacterInfo] = []
         var loopaeonCharacters: [CharacterInfo] = []
         var silianCharacters: [CharacterInfo] = []
@@ -108,7 +108,7 @@ final class CharactersViewModel: CharactersViewModelable {
         
         self.sections.accept(sections)
     }
- 
+    
     //in
     func touchCell(_ index: IndexPath) {
         guard let userName = sections.value[safe: index.section]?.items[safe: index.row]?.characterName else {
