@@ -10,7 +10,10 @@ import Alamofire
 struct NewsAPIModel: Requestable {
     var baseURL = Host.lostarkAPI.baseURL
     var path = "/news/events"
-    var header: [String : String] = [:]
+    var header: [String : String] = [
+        "accept" : "application/json",
+        "authorization" : "Bearer \(Bundle.main.lostarkAPIKey)"
+    ]
     var params: [String : Any] = [:]
     var httpMethod = HTTPMethod.get
 }
