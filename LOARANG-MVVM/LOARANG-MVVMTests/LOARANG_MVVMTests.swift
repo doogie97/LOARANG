@@ -6,30 +6,28 @@
 //
 
 import XCTest
+@testable import LOARANG_MVVM
 
 final class LOARANG_MVVMTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func test_Requset호출시_News정보를_잘_가져오는지() {
+        //given
+        let promise = expectation(description: "News를 잘 가져오는지")
+        let networkManager = NetworkManager()
+        let api = NewsAPIModel()
+        
+        //when
+        networkManager.request(api, resultType: [News].self) { result in
+            switch result {
+                //then
+            case .success(let news):
+                //2022년 12월11일 기준 첫 번째 이벤트
+                XCTAssertEqual(news[safe: 0]?.title, "2022 3rd 네리아의 드레스룸")
+            case .failure(let error):
+                print(error)
+                XCTFail()
+            }
+            promise.fulfill()
         }
+        wait(for: [promise], timeout: 5)
     }
-
 }
