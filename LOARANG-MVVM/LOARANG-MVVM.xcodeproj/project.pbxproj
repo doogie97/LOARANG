@@ -61,7 +61,6 @@
 		AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC687AB4291373E70064C92B /* GoogleService-Info.plist */; };
 		AC6B838A28EE3C25008BD901 /* RecentUserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */; };
 		AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC6C81942940270A00C0EEC1 /* Alamofire */; };
-		AC6C81982940277A00C0EEC1 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C81972940277A00C0EEC1 /* Characters.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
 		AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */; };
@@ -140,6 +139,7 @@
 		ACDE28AC28B11D2000BFD206 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */; };
 		ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */; };
 		ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */; };
+		ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -210,7 +210,6 @@
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
 		AC687AB4291373E70064C92B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserCellViewModel.swift; sourceTree = "<group>"; };
-		AC6C81972940277A00C0EEC1 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +290,7 @@
 		ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewModel.swift; sourceTree = "<group>"; };
 		ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
+		ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIModel.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -327,6 +327,7 @@
 			children = (
 				AC0341B32945883C005F4533 /* Requestable.swift */,
 				AC0341C8294591BA005F4533 /* NewsAPIModel.swift */,
+				ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -530,7 +531,6 @@
 		AC6C81962940276D00C0EEC1 /* LostarkAPI */ = {
 			isa = PBXGroup;
 			children = (
-				AC6C81972940277A00C0EEC1 /* Characters.swift */,
 				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
 				AC0341C629458CCE005F4533 /* APIError.swift */,
 				AC0341B229458816005F4533 /* APIModels */,
@@ -1119,7 +1119,6 @@
 				AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
-				AC6C81982940277A00C0EEC1 /* Characters.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
 				AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */,
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,
@@ -1138,6 +1137,7 @@
 				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
+				ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */,
 				AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
