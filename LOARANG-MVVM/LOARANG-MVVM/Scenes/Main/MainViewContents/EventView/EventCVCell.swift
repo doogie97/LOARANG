@@ -48,7 +48,7 @@ final class EventCVCell: UICollectionViewCell {
     
     func setCellContents(_ news: News) {
         eventImageViewDataTask = eventImageView.setImage(urlString: news.thumbnail)
-        endDataLabel.text = "~ " + (news.endDate?.converDateType ?? "")
+        endDataLabel.text = "~ " + (news.endDate?.convetDateType ?? "")
     }
     
     private var eventImageViewDataTask: URLSessionDataTask?
