@@ -10,6 +10,8 @@
 		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
 		AC0341B42945883C005F4533 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B32945883C005F4533 /* Requestable.swift */; };
 		AC0341BC294588F3005F4533 /* LOARANG_MVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */; };
+		AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC0341C229458976005F4533 /* AppPrivacyInfo.plist */; };
+		AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
@@ -157,6 +159,8 @@
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANG-MVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LOARANG-MVVMTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOARANG_MVVMTests.swift; sourceTree = "<group>"; };
+		AC0341C229458976005F4533 /* AppPrivacyInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppPrivacyInfo.plist; sourceTree = "<group>"; };
+		AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LOARANG++Bundle.swift"; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -683,6 +687,8 @@
 				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
 				AC687AB4291373E70064C92B /* GoogleService-Info.plist */,
+				AC0341C229458976005F4533 /* AppPrivacyInfo.plist */,
+				AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */,
 			);
 			path = "LOARANG-MVVM";
 			sourceTree = "<group>";
@@ -940,6 +946,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACAEF36A2880077C00AE98F1 /* ONE-Mobile-Light.ttf in Resources */,
+				AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */,
 				ACAEF3692880077C00AE98F1 /* ONE-Mobile-Bold.ttf in Resources */,
 				ACAEF36B2880077C00AE98F1 /* ONE-Mobile-Regular.ttf in Resources */,
 				ACAEF32F287FF0D300AE98F1 /* LaunchScreen.storyboard in Resources */,
@@ -1036,6 +1043,7 @@
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
+				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */,
