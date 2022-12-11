@@ -1,5 +1,5 @@
 //
-//  OwnCharacterViewModel.swift
+//  CharactersViewModel.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/09/16.
@@ -8,13 +8,13 @@
 import RxRelay
 import RxSwift
 
-protocol CharactersViewModelable: OwnCharacterViewModelInput, OwnCharacterViewModelOutput {}
+protocol CharactersViewModelable: CharactersViewModelInput, CharactersViewModelOutput {}
 
-protocol OwnCharacterViewModelInput {
+protocol CharactersViewModelInput {
     func touchCell(_ index: IndexPath)
 }
 
-protocol OwnCharacterViewModelOutput {
+protocol CharactersViewModelOutput {
     var sections: BehaviorRelay<[CharactersSection]>{ get }
 }
 
