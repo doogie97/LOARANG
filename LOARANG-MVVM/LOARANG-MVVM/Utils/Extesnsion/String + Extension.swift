@@ -125,4 +125,18 @@ extension String {
             return nil
         }
     }
+    
+    
+    var convetDateType: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss"
+        
+        guard let date = dateFormatter.date(from: self) else {
+            return ""
+        }
+        
+        dateFormatter.dateFormat = "MM.dd HH:mm"
+        
+        return dateFormatter.string(from: date)
+    }
 }
