@@ -32,9 +32,10 @@ final class CharactersViewModel: CharactersViewModelable {
                                resultType: [CharacterInfo].self) { [weak self] result in
             switch result {
             case .success(let characters):
-                self?.categorizeCharacters(characters.sorted{ $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
-            case .failure(let error):
-                print(error.errorMessage) // 추후 alert으로 대체 필요
+                self?.categorizeCharacters(characters.sorted {
+                    $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
+            case .failure:
+                self?.userInfoViewModelDelegate?.showErrorAlert()
             }
         }
     }

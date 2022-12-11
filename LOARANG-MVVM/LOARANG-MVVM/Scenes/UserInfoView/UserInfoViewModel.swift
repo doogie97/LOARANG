@@ -193,8 +193,14 @@ extension UserInfoViewModel {
         isSearching = false
         searchUserInfo()
     }
+    
+    func showErrorAlert() {
+        self.showAlert.accept((message: "보유 캐릭터 정보를 받아올 수 없습니다.",
+                               isPop: false))
+    }
 }
 
 protocol UserInfoViewModelDelegate: AnyObject {
     func searchOwnCharacter(_ name: String)
+    func showErrorAlert()
 }
