@@ -18,7 +18,7 @@ final class CharactersView: UIView {
     }
     
     private(set) lazy var charactersTableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .mainBackground
         tableView.separatorStyle = .none
         tableView.register(OwnCharacterCell.self)
