@@ -40,6 +40,7 @@ final class CharactersViewModel: CharactersViewModelable {
         }
     }
     
+    //이 코드는 분명히 개선 해야함...
     private func categorizeCharacters(_ characters: [CharacterInfo]) {
         var ninaveCharacters: [CharacterInfo] = []
         var loopaeonCharacters: [CharacterInfo] = []
