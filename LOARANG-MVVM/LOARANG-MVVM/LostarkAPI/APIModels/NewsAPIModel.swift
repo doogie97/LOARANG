@@ -9,14 +9,14 @@ import Foundation
 import Alamofire
 
 struct NewsAPIModel: Requestable {
-    var baseURL = Host.lostarkAPI.baseURL
-    var path = "/news/events"
-    var header: [String : String] = [
+    let baseURL = Host.lostarkAPI.baseURL
+    let path = "/news/events"
+    let header: [String : String] = [
         "accept" : "application/json",
         "authorization" : "Bearer \(Bundle.main.lostarkAPIKey)"
     ]
-    var params: [String : Any] = [:]
-    var httpMethod = HTTPMethod.get
+    let params: [String : Any] = [:]
+    let httpMethod = HTTPMethod.get
 }
 
 struct News: Decodable {
