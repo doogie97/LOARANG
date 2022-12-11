@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
+		AC0341B42945883C005F4533 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B32945883C005F4533 /* Requestable.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
@@ -142,6 +143,7 @@
 		641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8547102CE468BBFF3FCD4EB5 /* Pods-LOARANG-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.release.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -292,6 +294,14 @@
 				641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC0341B229458816005F4533 /* APIModels */ = {
+			isa = PBXGroup;
+			children = (
+				AC0341B32945883C005F4533 /* Requestable.swift */,
+			);
+			path = APIModels;
 			sourceTree = "<group>";
 		};
 		AC035E9D28911CDC0068DC7E /* UserInfoView */ = {
@@ -487,6 +497,7 @@
 			children = (
 				AC6C81972940277A00C0EEC1 /* Characters.swift */,
 				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
+				AC0341B229458816005F4533 /* APIModels */,
 			);
 			path = LostarkAPI;
 			sourceTree = "<group>";
@@ -1013,6 +1024,7 @@
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
+				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
