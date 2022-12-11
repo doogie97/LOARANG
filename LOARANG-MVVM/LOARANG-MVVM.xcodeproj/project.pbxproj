@@ -13,6 +13,7 @@
 		AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC0341C229458976005F4533 /* AppPrivacyInfo.plist */; };
 		AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */; };
 		AC0341C729458CCE005F4533 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C629458CCE005F4533 /* APIError.swift */; };
+		AC0341C9294591BA005F4533 /* NewsAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C8294591BA005F4533 /* NewsAPIModel.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
@@ -163,6 +164,7 @@
 		AC0341C229458976005F4533 /* AppPrivacyInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppPrivacyInfo.plist; sourceTree = "<group>"; };
 		AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LOARANG++Bundle.swift"; sourceTree = "<group>"; };
 		AC0341C629458CCE005F4533 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		AC0341C8294591BA005F4533 /* NewsAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIModel.swift; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0341B32945883C005F4533 /* Requestable.swift */,
+				AC0341C8294591BA005F4533 /* NewsAPIModel.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -1021,6 +1024,7 @@
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
+				AC0341C9294591BA005F4533 /* NewsAPIModel.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */,
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
