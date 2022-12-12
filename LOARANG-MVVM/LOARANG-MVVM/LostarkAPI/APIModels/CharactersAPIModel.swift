@@ -15,7 +15,6 @@ struct CharactersAPIModel: Requestable {
         return "/characters/\(name.changeToPercent())/siblings"
     }
     let header: [String : String] = [
-        "accept" : "application/json",
         "authorization" : "Bearer \(Bundle.main.lostarkAPIKey)"
     ]
     let params: [String : Any] = [:]
