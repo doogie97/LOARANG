@@ -35,10 +35,10 @@ final class LOARANG_MVVMTests: XCTestCase {
         //given
         let promise = expectation(description: "Characters를 잘 가져오는지")
         let networkManager = NetworkManager()
-        let api = NewsAPIModel()
+        let api = CharactersAPIModel(name: "최지근")
         
         //when
-        NetworkManager().request(CharactersAPIModel(name: "최지근"), resultType: [CharacterInfo].self) { result in
+        networkManager.request(api, resultType: [CharacterInfo].self) { result in
             switch result {
             case .success(let characters):
                 guard let character = characters.first else {
