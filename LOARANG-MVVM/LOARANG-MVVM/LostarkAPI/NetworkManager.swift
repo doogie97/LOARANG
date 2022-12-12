@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/12/11.
 //
 
+import Foundation
 import Alamofire
 
 protocol NetworkManagerable {
@@ -13,9 +14,7 @@ protocol NetworkManagerable {
 
 struct NetworkManager: NetworkManagerable {
     func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type, completion: @escaping (Result<T, APIError>) -> Void) {
-        let requset = AF.request(requestable.baseURL + requestable.path,method: requestable.httpMethod, parameters: requestable.params, headers: HTTPHeaders(requestable.header))
-        
-        requset.responseDecodable(of: T.self) { result in
+        requestable.request.responseDecodable(of: T.self) { result in
             guard result.error == nil else {
                 completion(.failure(APIError.transportError))
                 return

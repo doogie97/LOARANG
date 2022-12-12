@@ -15,6 +15,23 @@ protocol Requestable {
     var httpMethod: HTTPMethod { get }
 }
 
+extension Requestable {
+    var request: DataRequest {
+        if self.httpMethod == .get {
+            return AF.request(self.baseURL + self.path,
+                              method: self.httpMethod,
+                              parameters: self.params,
+                              headers: HTTPHeaders(self.header))
+        } else {
+            return AF.request(self.baseURL + self.path,
+                              method: self.httpMethod,
+                              parameters: self.params,
+                              encoding: JSONEncoding.default,
+                              headers: HTTPHeaders(self.header))
+        }
+    }
+}
+
 enum Host {
     case lostarkAPI
     
