@@ -26,7 +26,9 @@ struct News: Decodable {
     let startDate: String?
     let endDate: String?
     let rewardDate: String?
-    
+}
+
+extension News {
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case thumbnail = "Thumbnail"

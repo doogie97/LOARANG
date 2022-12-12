@@ -29,7 +29,9 @@ struct CharacterInfo: Decodable { //이 객체는 ARMORIES를 가져올때 내�
     let characterClassName: String?
     let itemAvgLevel: String?
     let itemMaxLevel: String?
-    
+}
+
+extension CharacterInfo {
     private enum CodingKeys: String, CodingKey {
         case serverName = "ServerName"
         case characterName = "CharacterName"
