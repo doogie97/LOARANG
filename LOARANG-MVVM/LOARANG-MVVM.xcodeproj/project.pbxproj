@@ -43,6 +43,7 @@
 		AC3FEC27288071CF00CDE796 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC26288071CF00CDE796 /* Container.swift */; };
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
+		AC45C4432947801C00153F3E /* MarketOptionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */; };
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
 		AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */; };
@@ -192,6 +193,7 @@
 		AC3FEC26288071CF00CDE796 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketOptionsAPI.swift; sourceTree = "<group>"; };
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
 		AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewModel.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				AC0341B32945883C005F4533 /* Requestable.swift */,
 				AC0341C8294591BA005F4533 /* NewsAPIModel.swift */,
 				ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */,
+				AC45C444294780EF00153F3E /* MarketsAPI */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -464,6 +467,14 @@
 				ACD4B78928A36AB800846E21 /* SettingViewModel.swift */,
 			);
 			path = SettingView;
+			sourceTree = "<group>";
+		};
+		AC45C444294780EF00153F3E /* MarketsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */,
+			);
+			path = MarketsAPI;
 			sourceTree = "<group>";
 		};
 		AC49D60028B85978002C0033 /* SkillDetailView */ = {
@@ -1079,6 +1090,7 @@
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
 				AC86404428B5EAF8004B7EBB /* SkillInfoView.swift in Sources */,
+				AC45C4432947801C00153F3E /* MarketOptionsAPI.swift in Sources */,
 				AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
