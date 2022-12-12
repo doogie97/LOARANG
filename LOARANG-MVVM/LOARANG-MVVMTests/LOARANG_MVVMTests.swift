@@ -55,4 +55,26 @@ final class LOARANG_MVVMTests: XCTestCase {
         }
         wait(for: [promise], timeout: 5)
     }
+    
+    func test_Requset호출시_MarketOptions를_잘_가져오는지() {
+        //given
+        let promise = expectation(description: "MarketOptions를 잘 가져오는지")
+        let networkManager = NetworkManager()
+        let api = MarketOptionsAPI()
+        
+        //when
+        networkManager.request(api, resultType: MarketOptions.self) { result in
+            switch result {
+                //then
+            case .success(let marketOptions):
+                XCTAssertEqual(marketOptions.categories[safe: 4]?.subs[safe: 0]?.codeName, "배틀 아이템 -회복형")
+                XCTAssertEqual(marketOptions.classes[3], "홀리나이트")
+            case .failure(let error):
+                print(error)
+                XCTFail(error.localizedDescription)
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+    }
 }
