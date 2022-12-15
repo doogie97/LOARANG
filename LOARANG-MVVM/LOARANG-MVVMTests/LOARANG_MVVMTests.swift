@@ -77,4 +77,32 @@ final class LOARANG_MVVMTests: XCTestCase {
         }
         wait(for: [promise], timeout: 5)
     }
+    
+    func test_Requset호출시_검색된MarketItem들을_잘_가져오는지() {
+        //given
+        let promise = expectation(description: "MarketItem들을 잘 가져오는지")
+        let networkManager = NetworkManager()
+        let searchOption = SearchMarketItemsAPI.SearchOption(sort: .grade,
+                                                             categoryCode: 20005,
+                                                             characterClass: "블레이드",
+                                                             itemTier: 0,
+                                                             itemName: "핏빛",
+                                                             pageNo: 0,
+                                                             sortCondition: .asc)
+        let api = SearchMarketItemsAPI(searchOption: searchOption)
+        
+        //when
+        networkManager.request(api, resultType: MarketSearchResponse.self) { result in
+            switch result {
+                //then
+            case .success(let marketSearchResponse):
+                XCTAssertEqual(marketSearchResponse.items[safe:1]?.bundleCount, 1000)
+            case .failure(let error):
+                print(error)
+                XCTFail(error.localizedDescription)
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+    }
 }
