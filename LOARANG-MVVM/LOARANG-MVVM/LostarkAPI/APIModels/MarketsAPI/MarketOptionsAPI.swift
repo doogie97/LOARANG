@@ -11,11 +11,12 @@ import Alamofire
 struct MarketOptionsAPI: Requestable {
     let baseURL = Host.lostarkAPI.baseURL
     let path = "/markets/options"
-    let header: [String : String] = [
+    let headers: [String : String] = [
         "authorization" : "Bearer \(Bundle.main.lostarkAPIKey)"
     ]
     let params: [String : Any] = [:]
     let httpMethod = HTTPMethod.get
+    let encodingType = EncodingType.urlEncoding
 }
 
 struct MarketOptions: Decodable {

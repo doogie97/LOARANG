@@ -11,11 +11,12 @@ import Alamofire
 struct NewsAPIModel: Requestable {
     let baseURL = Host.lostarkAPI.baseURL
     let path = "/news/events"
-    let header: [String : String] = [
+    let headers: [String : String] = [
         "authorization" : "Bearer \(Bundle.main.lostarkAPIKey)"
     ]
     let params: [String : Any] = [:]
     let httpMethod = HTTPMethod.get
+    let encodingType = EncodingType.urlEncoding
 }
 
 struct News: Decodable {
