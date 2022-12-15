@@ -140,6 +140,7 @@
 		ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */; };
 		ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */; };
 		ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */; };
+		ACE84D00294B69910043BC03 /* SearchMarketItemsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE84CFF294B69910043BC03 /* SearchMarketItemsAPI.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -291,6 +292,7 @@
 		ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewModel.swift; sourceTree = "<group>"; };
 		ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIModel.swift; sourceTree = "<group>"; };
+		ACE84CFF294B69910043BC03 /* SearchMarketItemsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMarketItemsAPI.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -473,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */,
+				ACE84CFF294B69910043BC03 /* SearchMarketItemsAPI.swift */,
 			);
 			path = MarketsAPI;
 			sourceTree = "<group>";
@@ -1107,6 +1110,7 @@
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
+				ACE84D00294B69910043BC03 /* SearchMarketItemsAPI.swift in Sources */,
 				AC62F87728DC6E3C00E4A92D /* EventView.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
