@@ -22,11 +22,11 @@ struct MarketOptions: Decodable {
     let categories: [Category]
     
     struct Category: Decodable {
-        let subs: [CategoryItem]
+        let subs: [Sub]
         let code: Int?
         let codeName: String?
         
-        struct CategoryItem: Decodable {
+        struct Sub: Decodable {
             let code: Int?
             let codeName: String?
         }
@@ -54,7 +54,7 @@ extension MarketOptions.Category {
     }
 }
 
-extension MarketOptions.Category.CategoryItem {
+extension MarketOptions.Category.Sub {
     enum CodingKeys: String, CodingKey {
         case code = "Code"
         case codeName = "CodeName"
