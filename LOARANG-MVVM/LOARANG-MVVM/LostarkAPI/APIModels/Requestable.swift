@@ -17,6 +17,12 @@ protocol Requestable {
 }
 
 extension Requestable {
+    func dataTask<T: Decodable>(resultType: T.Type) -> DataTask<T> {
+        return request
+            .validate(statusCode: 200...299)
+            .serializingDecodable(resultType)
+    }
+    
     var request: DataRequest {
         return AF.request(self.baseURL + self.path,
                           method: self.httpMethod,
