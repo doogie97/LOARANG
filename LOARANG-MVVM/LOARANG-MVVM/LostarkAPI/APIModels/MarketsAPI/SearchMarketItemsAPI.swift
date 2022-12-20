@@ -70,21 +70,21 @@ extension SearchMarketItemsAPI { // 일단 여기 담아두고 나중에 경매�
 }
 
 struct MarketSearchResponse: Decodable {
-    let pageNo: Int
-    let itemPerPage: Int
-    let totalCount: Int
+    let pageNo: Int?
+    let itemPerPage: Int?
+    let totalCount: Int?
     let items: [Item]
 
     struct Item: Decodable {
-        let id: Int
-        let name: String
-        let grade: String
-        let imageURL: String
-        let bundleCount: Int
-        let tradeRemainCount: Int
-        let yesterDayAVGPrice: Int
-        let recentPrice: Int
-        let minimumPrice: Int
+        let id: Int?
+        let name: String?
+        let grade: String?
+        let imageURL: String?
+        let bundleCount: Int?
+        let tradeRemainCount: Int?
+        let yesterDayAVGPrice: Double?
+        let recentPrice: Double?
+        let minimumPrice: Double?
     }
 }
 
