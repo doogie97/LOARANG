@@ -64,7 +64,7 @@ final class LOARANG_MVVMTests: XCTestCase {
         let searchOption = SearchMarketItemsAPI.SearchOption(sort: .grade,
                                                              categoryCode: 20005,
                                                              characterClass: "블레이드",
-                                                             itemTier: 0,
+                                                             itemTier: .all,
                                                              itemGrade: .all,
                                                              itemName: "여름빛",
                                                              pageNo: 0,
