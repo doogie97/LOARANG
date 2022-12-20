@@ -12,7 +12,6 @@
 		AC0341BC294588F3005F4533 /* LOARANG_MVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */; };
 		AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC0341C229458976005F4533 /* AppPrivacyInfo.plist */; };
 		AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */; };
-		AC0341C729458CCE005F4533 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C629458CCE005F4533 /* APIError.swift */; };
 		AC0341C9294591BA005F4533 /* NewsAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C8294591BA005F4533 /* NewsAPIModel.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
@@ -163,7 +162,6 @@
 		AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOARANG_MVVMTests.swift; sourceTree = "<group>"; };
 		AC0341C229458976005F4533 /* AppPrivacyInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppPrivacyInfo.plist; sourceTree = "<group>"; };
 		AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LOARANG++Bundle.swift"; sourceTree = "<group>"; };
-		AC0341C629458CCE005F4533 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		AC0341C8294591BA005F4533 /* NewsAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIModel.swift; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -544,7 +542,6 @@
 			isa = PBXGroup;
 			children = (
 				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
-				AC0341C629458CCE005F4533 /* APIError.swift */,
 				AC0341B229458816005F4533 /* APIModels */,
 			);
 			path = LostarkAPI;
@@ -1054,7 +1051,6 @@
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
 				AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */,
 				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
-				AC0341C729458CCE005F4533 /* APIError.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
