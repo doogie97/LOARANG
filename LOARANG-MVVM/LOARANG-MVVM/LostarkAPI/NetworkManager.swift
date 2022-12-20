@@ -9,10 +9,22 @@ import Foundation
 import Alamofire
 
 protocol NetworkManagerable {
+    func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type) async throws -> T
     func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
 }
 
 struct NetworkManager: NetworkManagerable {
+    func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type) async throws -> T {
+        let dataTask = requestable.dataTask(resultType: resultType)
+        
+        switch await dataTask.result {
+        case .success(let response):
+            return response
+        case .failure(let error):
+            throw error
+        }
+    }
+    
     func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type, completion: @escaping (Result<T, APIError>) -> Void) {
         requestable.request.responseDecodable(of: T.self) { result in
             guard result.error == nil else {

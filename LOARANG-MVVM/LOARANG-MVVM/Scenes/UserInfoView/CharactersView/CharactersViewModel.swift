@@ -24,19 +24,18 @@ final class CharactersViewModel: CharactersViewModelable {
     
     init(userName: String, userInfoViewModelDelegate: UserInfoViewModelDelegate) {
         self.userInfoViewModelDelegate = userInfoViewModelDelegate
-        getCharacters(userName)
+        Task {
+            await getCharacters(userName)
+        }
     }
     
-    private func getCharacters(_ name: String) {
-        networkManager.request(CharactersAPIModel(name: name),
-                               resultType: [CharacterInfo].self) { [weak self] result in
-            switch result {
-            case .success(let characters):
-                self?.categorizeCharacters(characters.sorted {
-                    $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
-            case .failure:
-                self?.userInfoViewModelDelegate?.showErrorAlert()
-            }
+    private func getCharacters(_ name: String) async {
+        do {
+            let characters = try await networkManager.request(CharactersAPIModel(name: name), resultType: [CharacterInfo].self)
+            categorizeCharacters(characters.sorted {
+                $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
+        } catch {
+            userInfoViewModelDelegate?.showErrorAlert()
         }
     }
     

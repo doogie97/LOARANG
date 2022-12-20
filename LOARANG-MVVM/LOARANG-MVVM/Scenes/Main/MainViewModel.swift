@@ -43,8 +43,9 @@ final class MainViewModel: MainViewModelInOut {
         self.storage = storage
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
-        
-        getEvent()
+        Task {
+            await getEvent()
+        }
         
         crawlManager.getNotice { [weak self] result in
             switch result {
@@ -56,14 +57,12 @@ final class MainViewModel: MainViewModelInOut {
         }
     }
     
-    private func getEvent() {
-        networkManager.request(NewsAPIModel(), resultType: [News].self) { [weak self] result in
-            switch result {
-            case .success(let news):
-                self?.events.accept(news)
-            case .failure(let error):
-                self?.showAlert.accept(error.errorMessage)
-            }
+    private func getEvent() async {
+        do {
+            let news = try await networkManager.request(NewsAPIModel(), resultType: [News].self)
+            events.accept(news)
+        } catch {
+            showAlert.accept(error.errorMessage)
         }
     }
     
