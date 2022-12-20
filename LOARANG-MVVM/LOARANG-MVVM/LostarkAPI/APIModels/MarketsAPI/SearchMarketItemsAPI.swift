@@ -22,6 +22,7 @@ struct SearchMarketItemsAPI: Requestable {
         "CategoryCode" : searchOption.categoryCode,
         "CharacterClass" : searchOption.characterClass,
         "ItemTier" : searchOption.itemTier,
+        "ItemGrade" : searchOption.itemGrade.rawValue,
         "ItemName" : searchOption.itemName,
         "PageNo" : searchOption.pageNo,
         "SortCondition" : searchOption.sortCondition.rawValue
@@ -37,6 +38,7 @@ extension SearchMarketItemsAPI { // 일단 여기 담아두고 나중에 경매�
         let categoryCode: Int
         let characterClass: String
         let itemTier: Int
+        let itemGrade: ItemGrade
         let itemName: String
         let pageNo: Int
         let sortCondition: SortCondition
@@ -47,6 +49,18 @@ extension SearchMarketItemsAPI { // 일단 여기 담아두고 나중에 경매�
         case yesterDayAVGPrice = "YDAY_AVG_PRICE"
         case recentPrice = "RECENT_PRICE"
         case minimumPrice = "CURRENT_MIN_PRICE"
+    }
+    
+    enum ItemGrade: String {
+        case nomal = "일반"
+        case advanced = "고급"
+        case rare = "희귀"
+        case hero = "영웅"
+        case legendary = "전설"
+        case artifact = "유물"
+        case ancient = "고대"
+        case esther = "에스더"
+        case all = ""
     }
     
     enum SortCondition: String {
