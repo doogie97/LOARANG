@@ -19,10 +19,11 @@ protocol CharactersViewModelOutput {
 }
 
 final class CharactersViewModel: CharactersViewModelable {
-    private let networkManager = NetworkManager()
+    private let networkManager: NetworkManagerable
     private weak var userInfoViewModelDelegate: UserInfoViewModelDelegate?
     
-    init(userName: String, userInfoViewModelDelegate: UserInfoViewModelDelegate) {
+    init(userName: String, networkManager: NetworkManagerable, userInfoViewModelDelegate: UserInfoViewModelDelegate) {
+        self.networkManager = networkManager
         self.userInfoViewModelDelegate = userInfoViewModelDelegate
         Task {
             await getCharacters(userName)

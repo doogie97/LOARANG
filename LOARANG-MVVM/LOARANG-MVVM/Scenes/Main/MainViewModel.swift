@@ -37,10 +37,11 @@ protocol MainViewModelOutput {
 final class MainViewModel: MainViewModelInOut {
     private let storage: AppStorageable
     private let crawlManager = CrawlManager() // 크롤링 -> API로 전면 수정 후 제거 필요
-    private let networkManager = NetworkManager()
+    private let networkManager: NetworkManagerable
     
-    init(storage: AppStorageable) {
+    init(storage: AppStorageable, networkManager: NetworkManagerable) {
         self.storage = storage
+        self.networkManager = networkManager
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
         Task {
