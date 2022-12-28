@@ -443,9 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */,
-				ACAEF35C287FFBB600AE98F1 /* Main */,
-				AC3FEC112880566A00CDE796 /* SearchView */,
-				AC035E9D28911CDC0068DC7E /* UserInfoView */,
+				ACAEF35C287FFBB600AE98F1 /* Home */,
 				AC3FEC1828805DBD00CDE796 /* SettingView */,
 			);
 			path = Scenes;
@@ -471,6 +469,17 @@
 				ACD4B78928A36AB800846E21 /* SettingViewModel.swift */,
 			);
 			path = SettingView;
+			sourceTree = "<group>";
+		};
+		AC411647295C7DC200A76BA4 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				ACAEF35E287FFC4900AE98F1 /* MainView.swift */,
+				ACAEF326287FF0D200AE98F1 /* MainViewController.swift */,
+				AC3FEC1F2880697700CDE796 /* MainViewModel.swift */,
+				AC757C4128BF2C3E005B102B /* MainViewContents */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		AC45C444294780EF00153F3E /* MarketsAPI */ = {
@@ -745,15 +754,14 @@
 			path = Avatar;
 			sourceTree = "<group>";
 		};
-		ACAEF35C287FFBB600AE98F1 /* Main */ = {
+		ACAEF35C287FFBB600AE98F1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				ACAEF35E287FFC4900AE98F1 /* MainView.swift */,
-				ACAEF326287FF0D200AE98F1 /* MainViewController.swift */,
-				AC3FEC1F2880697700CDE796 /* MainViewModel.swift */,
-				AC757C4128BF2C3E005B102B /* MainViewContents */,
+				AC411647295C7DC200A76BA4 /* MainView */,
+				AC3FEC112880566A00CDE796 /* SearchView */,
+				AC035E9D28911CDC0068DC7E /* UserInfoView */,
 			);
-			path = Main;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
