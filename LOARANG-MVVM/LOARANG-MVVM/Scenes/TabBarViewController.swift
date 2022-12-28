@@ -41,7 +41,7 @@ final class TabBarViewController: UITabBarController {
     private lazy var mainVC: UIViewController = {
         let mainVC = container.makeMainViewController()
         mainVC.title = "홈"
-        mainVC.tabBarItem.image = UIImage(systemName: "house.fill")
+        mainVC.tabBarItem.image = UIImage(named: "home")
         
         return mainVC
     }()
