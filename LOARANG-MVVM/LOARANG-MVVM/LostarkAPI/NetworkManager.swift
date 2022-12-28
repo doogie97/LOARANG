@@ -14,13 +14,16 @@ protocol NetworkManagerable {
 
 struct NetworkManager: NetworkManagerable {
     func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type) async throws -> T {
-        let dataTask = requestable.dataTask(resultType: resultType)
+        let response = await requestable.dataTask(resultType: resultType).response
+        guard let status = response.response, (200...299).contains(status.statusCode) else {
+            throw APIError.responseError(statusCode: response.response?.statusCode ?? 0)
+        }
         
-        switch await dataTask.result {
+        switch response.result {
         case .success(let response):
             return response
-        case .failure(let error):
-            throw error
+        case .failure:
+            throw APIError.transportError
         }
     }
 }

@@ -18,9 +18,7 @@ protocol Requestable {
 
 extension Requestable {
     func dataTask<T: Decodable>(resultType: T.Type) -> DataTask<T> {
-        return request
-            .validate(statusCode: 200...299)
-            .serializingDecodable(resultType)
+        return request.serializingDecodable(resultType)
     }
     
     var request: DataRequest {
