@@ -444,7 +444,7 @@
 			children = (
 				AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */,
 				ACAEF35C287FFBB600AE98F1 /* Home */,
-				AC3FEC1828805DBD00CDE796 /* SettingView */,
+				AC3FEC1828805DBD00CDE796 /* Setting */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 			path = SearchView;
 			sourceTree = "<group>";
 		};
-		AC3FEC1828805DBD00CDE796 /* SettingView */ = {
+		AC3FEC1828805DBD00CDE796 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				AC0B89F8289B81D6005BE193 /* SettingView.swift */,
@@ -468,7 +468,7 @@
 				AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */,
 				ACD4B78928A36AB800846E21 /* SettingViewModel.swift */,
 			);
-			path = SettingView;
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		AC411647295C7DC200A76BA4 /* MainView */ = {
