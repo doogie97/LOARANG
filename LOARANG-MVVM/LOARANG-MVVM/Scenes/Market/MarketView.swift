@@ -17,7 +17,21 @@ final class MarketView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private(set) var itemSearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "아이템 명"
+        
+        return searchBar
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .mainBackground
+        
+        self.addSubview(itemSearchBar)
+        
+        itemSearchBar.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(15)
+        }
     }
 }
