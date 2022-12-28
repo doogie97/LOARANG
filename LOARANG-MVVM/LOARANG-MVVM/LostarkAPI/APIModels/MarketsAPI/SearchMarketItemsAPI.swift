@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-struct SearchMarketItemsAPI: Requestable {
+struct SearchMarketItemsAPI: Requestable { //responseType: MarketItems
     let searchOption: SearchOption
     
     let baseURL = Host.lostarkAPI.baseURL
@@ -17,15 +17,15 @@ struct SearchMarketItemsAPI: Requestable {
         "authorization" : "Bearer \(Bundle.main.lostarkAPIKey)"
     ]
     var params: [String : Any] {
-        [
-        "Sort" : searchOption.sort,
-        "CategoryCode" : searchOption.categoryCode,
-        "CharacterClass" : searchOption.characterClass,
-        "ItemTier" : searchOption.itemTier.rawValue,
-        "ItemGrade" : searchOption.itemGrade.rawValue,
-        "ItemName" : searchOption.itemName,
-        "PageNo" : searchOption.pageNo,
-        "SortCondition" : searchOption.sortCondition.rawValue
+        return [
+            "Sort" : searchOption.sort,
+            "CategoryCode" : searchOption.categoryCode,
+            "CharacterClass" : searchOption.characterClass,
+            "ItemTier" : searchOption.itemTier.rawValue,
+            "ItemGrade" : searchOption.itemGrade.rawValue,
+            "ItemName" : searchOption.itemName,
+            "PageNo" : searchOption.pageNo,
+            "SortCondition" : searchOption.sortCondition.rawValue
         ]
     }
     let httpMethod = HTTPMethod.post
@@ -43,7 +43,7 @@ extension SearchMarketItemsAPI { // 일단 여기 담아두고 나중에 경매�
         let pageNo: Int
         let sortCondition: SortCondition
     }
-
+    
     enum SortOption: String {
         case grade = "GRADE"
         case yesterDayAVGPrice = "YDAY_AVG_PRICE"
@@ -73,47 +73,5 @@ extension SearchMarketItemsAPI { // 일단 여기 담아두고 나중에 경매�
     enum SortCondition: String {
         case asc = "ASC"
         case desc = "DESC"
-    }
-}
-
-struct MarketSearchResponse: Decodable {
-    let pageNo: Int?
-    let itemPerPage: Int?
-    let totalCount: Int?
-    let items: [Item]
-
-    struct Item: Decodable {
-        let id: Int?
-        let name: String?
-        let grade: String?
-        let imageURL: String?
-        let bundleCount: Int?
-        let tradeRemainCount: Int?
-        let yesterDayAVGPrice: Double?
-        let recentPrice: Double?
-        let minimumPrice: Double?
-    }
-}
-
-extension MarketSearchResponse {
-    enum CodingKeys: String, CodingKey {
-        case pageNo = "PageNo"
-        case itemPerPage = "PageSize"
-        case totalCount = "TotalCount"
-        case items = "Items"
-    }
-}
-
-extension MarketSearchResponse.Item {
-    enum CodingKeys: String, CodingKey {
-        case id = "Id"
-        case name = "Name"
-        case grade = "Grade"
-        case imageURL = "Icon"
-        case bundleCount = "BundleCount"
-        case tradeRemainCount = "TradeRemainCount"
-        case yesterDayAVGPrice = "YDayAvgPrice"
-        case recentPrice = "RecentPrice"
-        case minimumPrice = "CurrentMinPrice"
     }
 }

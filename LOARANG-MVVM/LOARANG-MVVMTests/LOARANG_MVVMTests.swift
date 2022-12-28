@@ -73,7 +73,7 @@ final class LOARANG_MVVMTests: XCTestCase {
         
         do {
             //then
-            let marketSearchResponse = try await networkManager.request(api, resultType: MarketSearchResponse.self)
+            let marketSearchResponse = try await networkManager.request(api, resultType: MarketItems.self)
             XCTAssertEqual(marketSearchResponse.items[safe:0]?.grade, "1000")
         } catch let error {
             debugPrint(error)
