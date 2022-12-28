@@ -49,8 +49,21 @@ final class MarketView: UIView {
         return button
     }()
     
+    private(set) lazy var gradeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("전체 등급", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.cornerRadius = 5
+        
+        return button
+    }()
+    
     private lazy var categoryButtonView = makeButtonView(button: categoryButton)
     private lazy var classButtonView = makeButtonView(button: classButton)
+    private lazy var gradeButtonView = makeButtonView(button: gradeButton)
     
     private func makeButtonView(button: UIButton) -> UIView {
         let view = UIView()
@@ -82,6 +95,7 @@ final class MarketView: UIView {
         self.addSubview(itemSearchBar)
         self.addSubview(categoryButtonView)
         self.addSubview(classButtonView)
+        self.addSubview(gradeButtonView)
         
         itemSearchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
@@ -95,7 +109,13 @@ final class MarketView: UIView {
         classButtonView.snp.makeConstraints {
             $0.top.equalTo(categoryButtonView.snp.bottom).offset(16)
             $0.leading.equalToSuperview().inset(16)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide.snp.centerX).inset(16)
+            $0.trailing.equalToSuperview().inset(UIScreen.main.bounds.width / 2 + 8)
+        }
+        
+        gradeButtonView.snp.makeConstraints {
+            $0.top.equalTo(categoryButtonView.snp.bottom).offset(16)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(UIScreen.main.bounds.width / 2 + 8)
         }
     }
 }
