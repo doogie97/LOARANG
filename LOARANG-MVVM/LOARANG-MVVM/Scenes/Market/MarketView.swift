@@ -25,55 +25,37 @@ final class MarketView: UIView {
         return searchBar
     }()
     
-    private(set) lazy var categoryButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("카테고리를 선택해 주세요", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.cornerRadius = 5
-        
-        return button
-    }()
+    private(set) lazy var categoryButton: UIButton = makeButton(title: "카테고리를 선택해 주세요")
+    private(set) lazy var classButton: UIButton = makeButton(title: "전체 직업")
+    private(set) lazy var gradeButton: UIButton = makeButton(title: "전체 등급")
+    private(set) lazy var tierButton: UIButton = makeButton(title: "전체 티어")
+    
+    private lazy var categoryButtonView = makeButtonView(button: categoryButton, directionInset: 16)
+    private lazy var classButtonView = makeButtonView(button: classButton, directionInset: 8)
+    private lazy var gradeButtonView = makeButtonView(button: gradeButton, directionInset: 8)
+    private lazy var tierButtonView = makeButtonView(button: tierButton, directionInset: 8)
     
     private lazy var bottomButtonStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [classButtonView, gradeButtonView])
+        let stackView = UIStackView(arrangedSubviews: [classButtonView, gradeButtonView, tierButtonView])
         stackView.distribution = .fillEqually
-        stackView.spacing = 10
+        stackView.spacing = 5
         
         return stackView
     }()
     
-    private(set) lazy var classButton: UIButton = {
+    private func makeButton(title: String) -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle("전체 직업", for: .normal)
+        button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
+        button.titleLabel?.font = UIFont.one(size: 14, family: .Bold)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 10
         
         return button
-    }()
+    }
     
-    private(set) lazy var gradeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("전체 등급", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.cornerRadius = 5
-        
-        return button
-    }()
-    
-    private lazy var categoryButtonView = makeButtonView(button: categoryButton)
-    private lazy var classButtonView = makeButtonView(button: classButton)
-    private lazy var gradeButtonView = makeButtonView(button: gradeButton)
-    
-    private func makeButtonView(button: UIButton) -> UIView {
+    private func makeButtonView(button: UIButton, directionInset: Int) -> UIView {
         let view = UIView()
         
         let directionImageView = UIImageView()
@@ -90,8 +72,10 @@ final class MarketView: UIView {
         }
         
         directionImageView.snp.makeConstraints {
+            $0.height.equalTo(16)
+            $0.width.equalTo(12)
             $0.centerY.equalTo(button)
-            $0.trailing.equalTo(button.snp.trailing).inset(16)
+            $0.trailing.equalTo(button.snp.trailing).inset(directionInset)
         }
         
         return view
@@ -109,12 +93,12 @@ final class MarketView: UIView {
         }
         
         categoryButtonView.snp.makeConstraints {
-            $0.top.equalTo(itemSearchBar.snp.bottom).offset(16)
+            $0.top.equalTo(itemSearchBar.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         
         bottomButtonStackView.snp.makeConstraints {
-            $0.top.equalTo(categoryButton.snp.bottom).offset(16)
+            $0.top.equalTo(categoryButton.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
