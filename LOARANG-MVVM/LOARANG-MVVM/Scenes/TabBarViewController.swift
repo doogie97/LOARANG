@@ -35,7 +35,7 @@ final class TabBarViewController: UITabBarController {
     
     private func setTabBarView() {
         self.tabBar.tintColor = .buttonColor
-        self.setViewControllers([mainVC, settingVC], animated: false)
+        self.setViewControllers([mainVC, marketVC, settingVC], animated: false)
     }
     
     private lazy var mainVC: UIViewController = {
@@ -46,6 +46,14 @@ final class TabBarViewController: UITabBarController {
         return mainVC
     }()
     
+    private lazy var marketVC: UIViewController = {
+        let marketVC = container.makeMarketViewController()
+        marketVC.title = "거래소"
+        marketVC.tabBarItem.image = UIImage(named: "cart")
+        
+        return marketVC
+    }()
+    
     private lazy var settingVC: UIViewController = {
         let settingVC = SettingViewController(viewModel: container.makeSettingViewModel(), container: container)
         settingVC.title = "설정"
@@ -53,5 +61,4 @@ final class TabBarViewController: UITabBarController {
         
         return settingVC
     }()
-
 }
