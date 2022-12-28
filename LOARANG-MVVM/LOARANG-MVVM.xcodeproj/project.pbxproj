@@ -44,6 +44,9 @@
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
 		AC411644295C780F00A76BA4 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC411643295C780F00A76BA4 /* APIError.swift */; };
 		AC411646295C7A7C00A76BA4 /* MarketItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC411645295C7A7C00A76BA4 /* MarketItems.swift */; };
+		AC41164B295C7E6700A76BA4 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41164A295C7E6700A76BA4 /* MarketView.swift */; };
+		AC41164D295C7E7300A76BA4 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41164C295C7E7300A76BA4 /* MarketViewController.swift */; };
+		AC41164F295C7E7E00A76BA4 /* MarketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */; };
 		AC45C4432947801C00153F3E /* MarketOptionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */; };
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
@@ -196,6 +199,9 @@
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		AC411643295C780F00A76BA4 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		AC411645295C7A7C00A76BA4 /* MarketItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketItems.swift; sourceTree = "<group>"; };
+		AC41164A295C7E6700A76BA4 /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
+		AC41164C295C7E7300A76BA4 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewModel.swift; sourceTree = "<group>"; };
 		AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketOptionsAPI.swift; sourceTree = "<group>"; };
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +450,7 @@
 			children = (
 				AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */,
 				ACAEF35C287FFBB600AE98F1 /* Home */,
+				AC411649295C7E4F00A76BA4 /* Market */,
 				AC3FEC1828805DBD00CDE796 /* Setting */,
 			);
 			path = Scenes;
@@ -480,6 +487,16 @@
 				AC757C4128BF2C3E005B102B /* MainViewContents */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		AC411649295C7E4F00A76BA4 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				AC41164A295C7E6700A76BA4 /* MarketView.swift */,
+				AC41164C295C7E7300A76BA4 /* MarketViewController.swift */,
+				AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */,
+			);
+			path = Market;
 			sourceTree = "<group>";
 		};
 		AC45C444294780EF00153F3E /* MarketsAPI */ = {
@@ -1058,6 +1075,7 @@
 				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
+				AC41164B295C7E6700A76BA4 /* MarketView.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
 				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,
@@ -1082,6 +1100,7 @@
 				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,
 				AC411644295C780F00A76BA4 /* APIError.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
+				AC41164D295C7E7300A76BA4 /* MarketViewController.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
 				ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */,
 				AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */,
@@ -1132,6 +1151,7 @@
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
+				AC41164F295C7E7E00A76BA4 /* MarketViewModel.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
