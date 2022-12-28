@@ -42,6 +42,7 @@
 		AC3FEC27288071CF00CDE796 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC26288071CF00CDE796 /* Container.swift */; };
 		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
+		AC411644295C780F00A76BA4 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC411643295C780F00A76BA4 /* APIError.swift */; };
 		AC45C4432947801C00153F3E /* MarketOptionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */; };
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
@@ -192,6 +193,7 @@
 		AC3FEC26288071CF00CDE796 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		AC411643295C780F00A76BA4 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketOptionsAPI.swift; sourceTree = "<group>"; };
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
+				AC411643295C780F00A76BA4 /* APIError.swift */,
 				AC0341B229458816005F4533 /* APIModels */,
 			);
 			path = LostarkAPI;
@@ -1065,6 +1068,7 @@
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,
+				AC411644295C780F00A76BA4 /* APIError.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
 				ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */,
