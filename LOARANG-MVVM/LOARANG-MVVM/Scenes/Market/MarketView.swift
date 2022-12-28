@@ -37,6 +37,14 @@ final class MarketView: UIView {
         return button
     }()
     
+    private lazy var bottomButtonStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [classButtonView, gradeButtonView])
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        
+        return stackView
+    }()
+    
     private(set) lazy var classButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("전체 직업", for: .normal)
@@ -94,8 +102,7 @@ final class MarketView: UIView {
         
         self.addSubview(itemSearchBar)
         self.addSubview(categoryButtonView)
-        self.addSubview(classButtonView)
-        self.addSubview(gradeButtonView)
+        self.addSubview(bottomButtonStackView)
         
         itemSearchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
@@ -106,16 +113,9 @@ final class MarketView: UIView {
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         
-        classButtonView.snp.makeConstraints {
-            $0.top.equalTo(categoryButtonView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().inset(16)
-            $0.trailing.equalToSuperview().inset(UIScreen.main.bounds.width / 2 + 8)
-        }
-        
-        gradeButtonView.snp.makeConstraints {
-            $0.top.equalTo(categoryButtonView.snp.bottom).offset(16)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.leading.equalToSuperview().inset(UIScreen.main.bounds.width / 2 + 8)
+        bottomButtonStackView.snp.makeConstraints {
+            $0.top.equalTo(categoryButton.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
 }
