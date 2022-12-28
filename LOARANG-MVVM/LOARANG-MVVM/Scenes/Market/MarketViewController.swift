@@ -28,4 +28,18 @@ final class MarketViewController: UIViewController {
         super.loadView()
         self.view = marketView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindView()
+    }
+    
+    private func bindView() {
+        marketView.categoryButton.rx.tap
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.viewModel.touchCategoryButton()
+            }
+            .disposed(by: disposeBag)
+    }
 }
