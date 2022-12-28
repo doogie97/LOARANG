@@ -137,6 +137,16 @@ final class Container {
                                    userInfoViewModelDelegate: userInfoViewModelDelegate)
     }
     
+    //MARK: - about Market
+    func makeMarketViewController() -> MarketViewController {
+        return MarketViewController(viewModel: makeMarketViewModel(),
+                                    container: self)
+    }
+    
+    private func makeMarketViewModel() -> MarketViewModelable {
+        return MarketViewModel()
+    }
+    
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
         return SettingViewModel(storage: storage)
