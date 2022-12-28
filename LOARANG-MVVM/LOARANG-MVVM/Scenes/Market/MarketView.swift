@@ -37,8 +37,6 @@ final class MarketView: UIView {
         return button
     }()
     
-    private lazy var categoryButtonView = makeButtonView(button: categoryButton)
-    
     private(set) lazy var classButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("전체 직업", for: .normal)
@@ -50,6 +48,9 @@ final class MarketView: UIView {
         
         return button
     }()
+    
+    private lazy var categoryButtonView = makeButtonView(button: categoryButton)
+    private lazy var classButtonView = makeButtonView(button: classButton)
     
     private func makeButtonView(button: UIButton) -> UIView {
         let view = UIView()
@@ -80,6 +81,7 @@ final class MarketView: UIView {
         
         self.addSubview(itemSearchBar)
         self.addSubview(categoryButtonView)
+        self.addSubview(classButtonView)
         
         itemSearchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
@@ -88,6 +90,12 @@ final class MarketView: UIView {
         categoryButtonView.snp.makeConstraints {
             $0.top.equalTo(itemSearchBar.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        classButtonView.snp.makeConstraints {
+            $0.top.equalTo(categoryButtonView.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().inset(16)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide.snp.centerX).inset(16)
         }
     }
 }
