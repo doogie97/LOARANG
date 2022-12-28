@@ -6,6 +6,18 @@
 //
 
 extension Error {
+    var statusCode: Int? {
+        guard let error = self as? APIError else {
+            return nil
+        }
+        
+        switch error {
+        case .responseError(let statusCode):
+            return statusCode
+        default:
+            return nil
+        }
+    }
     var errorMessage: String {
         if let localStorageErro = self as? LocalStorageError {
             return localStorageErro.errorDescrption
