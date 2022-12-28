@@ -25,15 +25,6 @@ final class MarketView: UIView {
         return searchBar
     }()
     
-    private lazy var categoryTitle: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.one(size: 18, family: .Bold)
-        label.text = "카테고리"
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
     private(set) lazy var categoryButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("카테고리를 선택해 주세요", for: .normal)
@@ -46,40 +37,57 @@ final class MarketView: UIView {
         return button
     }()
     
-    private lazy var directionImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.tintColor = .label
-        imageView.image = UIImage(systemName: "chevron.down")
+    private lazy var categoryButtonView = makeButtonView(button: categoryButton)
+    
+    private(set) lazy var classButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("전체 직업", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.cornerRadius = 5
         
-        return imageView
+        return button
     }()
+    
+    private func makeButtonView(button: UIButton) -> UIView {
+        let view = UIView()
+        
+        let directionImageView = UIImageView()
+        directionImageView.tintColor = .label
+        directionImageView.image = UIImage(systemName: "chevron.down")
+        
+        view.addSubview(button)
+        view.addSubview(directionImageView)
+        
+        button.snp.makeConstraints {
+            $0.height.equalTo(40)
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        directionImageView.snp.makeConstraints {
+            $0.centerY.equalTo(button)
+            $0.trailing.equalTo(button.snp.trailing).inset(16)
+        }
+        
+        return view
+    }
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
         
         self.addSubview(itemSearchBar)
-        self.addSubview(categoryTitle)
-        self.addSubview(categoryButton)
-        self.addSubview(directionImageView)
+        self.addSubview(categoryButtonView)
         
         itemSearchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
         }
         
-        categoryTitle.snp.makeConstraints {
+        categoryButtonView.snp.makeConstraints {
             $0.top.equalTo(itemSearchBar.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        categoryButton.snp.makeConstraints {
-            $0.height.equalTo(40)
-            $0.top.equalTo(categoryTitle.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        directionImageView.snp.makeConstraints {
-            $0.centerY.equalTo(categoryButton)
-            $0.trailing.equalTo(categoryButton.snp.trailing).inset(16)
         }
     }
 }
