@@ -77,5 +77,11 @@ final class MarketViewController: UIViewController {
                 owner.marketView.hideSubOptionsTableView()
             }
             .disposed(by: disposeBag)
+        
+        viewModel.subOptionList
+            .bind(to: marketView.subOptionsTableView.rx.items(cellIdentifier: "\(SubOptionCell.self)", cellType: SubOptionCell.self)){ index, title, cell in
+                cell.setCellContents(optionTitle: title)
+            }
+            .disposed(by: disposeBag)
     }
 }
