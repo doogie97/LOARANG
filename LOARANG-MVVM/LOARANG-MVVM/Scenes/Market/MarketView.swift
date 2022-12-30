@@ -138,7 +138,7 @@ final class MarketView: UIView {
     
     func showSubOptionsTableView() {
         subOptionsTableView.snp.remakeConstraints {
-            $0.top.greaterThanOrEqualToSuperview().inset(100)
+            $0.top.greaterThanOrEqualToSuperview().inset(UIScreen.main.bounds.height / 3)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
