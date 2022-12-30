@@ -36,6 +36,7 @@ final class MarketViewController: UIViewController {
     }
     
     private func bindView() {
+        buttonTextBind()
         marketView.categoryButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
@@ -96,6 +97,36 @@ final class MarketViewController: UIViewController {
             .withUnretained(self)
             .bind { owner, indexPath in
                 owner.viewModel.selectOptionCell(indexPath.row)
+            }
+            .disposed(by: disposeBag)
+    }
+
+    private func buttonTextBind() {
+        viewModel.categoryText
+            .withUnretained(self)
+            .bind { owner, text in
+                owner.marketView.categoryButton.setTitle(text, for: .normal)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.classText
+            .withUnretained(self)
+            .bind { owner, text in
+                owner.marketView.classButton.setTitle(text, for: .normal)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.gradeText
+            .withUnretained(self)
+            .bind { owner, text in
+                owner.marketView.gradeButton.setTitle(text, for: .normal)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.tierText
+            .withUnretained(self)
+            .bind { owner, text in
+                owner.marketView.tierButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
     }
