@@ -27,10 +27,10 @@ final class MarketView: UIView {
         return searchBar
     }()
     
-    private(set) lazy var categoryButton: UIButton = makeButton(title: "카테고리를 선택해 주세요")
-    private(set) lazy var classButton: UIButton = makeButton(title: "전체 직업")
-    private(set) lazy var gradeButton: UIButton = makeButton(title: "전체 등급")
-    private(set) lazy var tierButton: UIButton = makeButton(title: "전체 티어")
+    private(set) lazy var categoryButton: UIButton = makeButton(title: "카테고리를 선택해 주세요", tag: 0)
+    private(set) lazy var classButton: UIButton = makeButton(title: "전체 직업", tag: 1)
+    private(set) lazy var gradeButton: UIButton = makeButton(title: "전체 등급", tag: 2)
+    private(set) lazy var tierButton: UIButton = makeButton(title: "전체 티어", tag: 3)
     
     private lazy var categoryButtonView = makeButtonView(button: categoryButton, directionInset: 16)
     private lazy var classButtonView = makeButtonView(button: classButton, directionInset: 8)
@@ -45,8 +45,9 @@ final class MarketView: UIView {
         return stackView
     }()
     
-    private func makeButton(title: String) -> UIButton {
+    private func makeButton(title: String, tag: Int) -> UIButton {
         let button = UIButton(type: .system)
+        button.tag = tag
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.one(size: 14, family: .Bold)
