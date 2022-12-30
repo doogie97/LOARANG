@@ -26,6 +26,7 @@ final class MarketViewModel: MarketViewModelable {
     private var classes: [String] = []
     private var itemGrades: [String] = []
     private var itemTiers: [String] = []
+    private var selectedOptionType: OptionType = .category
     
     init(networkManager: NetworkManagerable) {
         self.networkManager = networkManager
@@ -49,6 +50,8 @@ final class MarketViewModel: MarketViewModelable {
         guard let optionType = OptionType(rawValue: buttonTag) else {
             return
         }
+        
+        self.selectedOptionType = optionType
         
         switch optionType {
         case .category:
