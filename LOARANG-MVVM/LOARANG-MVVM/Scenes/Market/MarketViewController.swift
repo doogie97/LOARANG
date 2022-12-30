@@ -63,5 +63,13 @@ final class MarketViewController: UIViewController {
                 owner.viewModel.touchTierButton()
             }
             .disposed(by: disposeBag)
+        
+        viewModel.showSubOptionsView
+            .withUnretained(self)
+            .bind { owner, options in
+                owner.marketView.showSubOptionsTableView()
+            }
+            .disposed(by: disposeBag)
+        
     }
 }
