@@ -8,8 +8,6 @@
 import SnapKit
 
 final class MarketView: UIView {
-    private let modalHeight = UIScreen.main.bounds.height * 0.5
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
@@ -133,15 +131,14 @@ final class MarketView: UIView {
         }
         
         subOptionsTableView.snp.makeConstraints {
-            $0.height.equalTo(modalHeight)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(modalHeight)
+            $0.bottom.equalToSuperview()
         }
     }
     
     func showSubOptionsTableView() {
         subOptionsTableView.snp.remakeConstraints {
-            $0.height.equalTo(modalHeight)
+            $0.top.greaterThanOrEqualToSuperview().inset(100)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
@@ -157,9 +154,9 @@ final class MarketView: UIView {
     
     func hideSubOptionsTableView() {
         subOptionsTableView.snp.remakeConstraints {
-            $0.height.equalTo(modalHeight)
+            $0.height.equalTo(0)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(modalHeight)
+            $0.bottom.equalToSuperview()
         }
         
         self.blurButtonView.isHidden = true
