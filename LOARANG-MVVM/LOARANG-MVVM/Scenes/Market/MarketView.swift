@@ -83,8 +83,9 @@ final class MarketView: UIView {
         return view
     }
     
-    private lazy var subOptionsTableView: UITableView = {
+    private(set) lazy var subOptionsTableView: UITableView = {
         let tableView = UITableView()
+        tableView.layer.opacity = 0
         tableView.backgroundColor = .systemBlue
         
         return tableView
