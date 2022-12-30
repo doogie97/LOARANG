@@ -20,6 +20,7 @@ protocol MarketViewModelOutput {
     var classes: BehaviorRelay<[String]> { get }
     var itemGrades: BehaviorRelay<[String]> { get }
     var itemTiers: BehaviorRelay<[String]> { get }
+    var showSubOptionsView: PublishRelay<BehaviorRelay<[String]>> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -52,15 +53,15 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     func touchClassButton() {
-        print("touchClassButton")
+        showSubOptionsView.accept(classes)
     }
     
     func touchGradeButton() {
-        print("touchGradeButton")
+        showSubOptionsView.accept(itemGrades)
     }
     
     func touchTierButton() {
-        print("touchTierButton")
+        showSubOptionsView.accept(itemTiers)
     }
     
     //MARK: - out
@@ -68,4 +69,5 @@ final class MarketViewModel: MarketViewModelable {
     let classes = BehaviorRelay<[String]>(value: [])
     let itemGrades = BehaviorRelay<[String]>(value: [])
     let itemTiers = BehaviorRelay<[String]>(value: [])
+    let showSubOptionsView = PublishRelay<BehaviorRelay<[String]>>()
 }
