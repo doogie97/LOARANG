@@ -87,6 +87,8 @@ final class MarketView: UIView {
         let tableView = UITableView()
         tableView.layer.opacity = 0
         tableView.backgroundColor = .systemBlue
+        tableView.layer.cornerRadius = 10
+        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         return tableView
     }()
