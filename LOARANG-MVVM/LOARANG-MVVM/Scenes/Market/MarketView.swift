@@ -137,5 +137,35 @@ final class MarketView: UIView {
         }
     }
     
+    func showSubOptionsTableView() {
+        subOptionsTableView.snp.remakeConstraints {
+            $0.height.equalTo(modalHeight)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        self.blurButtonView.isHidden = false
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.blurButtonView.layer.opacity = 0.7
+            self?.subOptionsTableView.layer.opacity = 1
+            self?.layoutIfNeeded()
+        }
+    }
+    
+    func hideSubOptionsTableView() {
+        subOptionsTableView.snp.remakeConstraints {
+            $0.height.equalTo(modalHeight)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(modalHeight)
+        }
+        
+        self.blurButtonView.isHidden = true
+        
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.blurButtonView.layer.opacity = 0
+            self?.subOptionsTableView.layer.opacity = 0
+            self?.layoutIfNeeded()
+        }
     }
 }
