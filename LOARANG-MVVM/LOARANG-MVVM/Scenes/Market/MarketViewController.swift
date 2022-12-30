@@ -42,5 +42,26 @@ final class MarketViewController: UIViewController {
                 owner.viewModel.touchCategoryButton()
             }
             .disposed(by: disposeBag)
+        
+        marketView.classButton.rx.tap
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.viewModel.touchClassButton()
+            }
+            .disposed(by: disposeBag)
+        
+        marketView.gradeButton.rx.tap
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.viewModel.touchGradeButton()
+            }
+            .disposed(by: disposeBag)
+        
+        marketView.tierButton.rx.tap
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.viewModel.touchTierButton()
+            }
+            .disposed(by: disposeBag)
     }
 }

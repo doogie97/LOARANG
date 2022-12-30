@@ -10,6 +10,9 @@ import RxRelay
 protocol MarketViewModelInput {
     func getMarketOptions()
     func touchCategoryButton()
+    func touchClassButton()
+    func touchGradeButton()
+    func touchTierButton()
 }
 
 protocol MarketViewModelOutput {
@@ -45,6 +48,18 @@ final class MarketViewModel: MarketViewModelable {
     
     func touchCategoryButton() {
         print("touch category button")
+    }
+    
+    func touchClassButton() {
+        print("touchClassButton")
+    }
+    
+    func touchGradeButton() {
+        print("touchGradeButton")
+    }
+    
+    func touchTierButton() {
+        print("touchTierButton")
     }
     
     //MARK: - out
