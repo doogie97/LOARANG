@@ -14,6 +14,10 @@ protocol MarketViewModelInput {
 }
 
 protocol MarketViewModelOutput {
+    var categoryText: BehaviorRelay<String> { get }
+    var classText: BehaviorRelay<String> { get }
+    var gradeText: BehaviorRelay<String> { get }
+    var tierText: BehaviorRelay<String> { get }
     var categories: BehaviorRelay<[MarketOptions.Category]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
     var showSubOptionsView: PublishRelay<Void> { get }
@@ -71,10 +75,28 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     func selectOptionCell(_ index: Int) {
-        print(selectedOptionType)
+        guard let optionText = subOptionList.value[safe: index] else {
+            return
+        }
+        switch selectedOptionType {
+        case .category:
+            return //일단 리턴
+        case .class:
+            classText.accept(optionText)
+        case .grade:
+            gradeText.accept(optionText)
+        case .tier:
+            tierText.accept(optionText)
+        }
+        
+        hideSubOptionsTableView.accept(())
     }
     
     //MARK: - out
+    let categoryText = BehaviorRelay<String>(value: "카테고리를 선택해 주세요")//얘는 아마 다른 타입이지 않을까? 왜냐면 카테고리는 카테고리 코드가 있으니까
+    let classText = BehaviorRelay<String>(value: "전체 직업")
+    let gradeText = BehaviorRelay<String>(value: "전체 등급")
+    let tierText = BehaviorRelay<String>(value: "전체 티어")
     let categories = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
     let showSubOptionsView = PublishRelay<Void>()
