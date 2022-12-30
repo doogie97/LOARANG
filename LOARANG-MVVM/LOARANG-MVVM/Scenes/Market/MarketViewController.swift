@@ -39,28 +39,28 @@ final class MarketViewController: UIViewController {
         marketView.categoryButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.viewModel.touchCategoryButton()
+                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.categoryButton.tag)
             }
             .disposed(by: disposeBag)
         
         marketView.classButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.viewModel.touchClassButton()
+                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.classButton.tag)
             }
             .disposed(by: disposeBag)
         
         marketView.gradeButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.viewModel.touchGradeButton()
+                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.gradeButton.tag)
             }
             .disposed(by: disposeBag)
         
         marketView.tierButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.viewModel.touchTierButton()
+                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.tierButton.tag)
             }
             .disposed(by: disposeBag)
         

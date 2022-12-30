@@ -13,6 +13,7 @@ protocol MarketViewModelInput {
     func touchClassButton()
     func touchGradeButton()
     func touchTierButton()
+    func touchOptionButton(buttonTag: Int)
 }
 
 protocol MarketViewModelOutput {
@@ -62,8 +63,24 @@ final class MarketViewModel: MarketViewModelable {
     
     func touchTierButton() {
         subOptionList.accept(itemTiers)
+    func touchOptionButton(buttonTag: Int) {
+        guard let optionType = OptionType(rawValue: buttonTag) else {
+            return
+        }
+        
+        switch optionType {
+        case .category:
+            print("touch category button")
+        case .class:
+            subOptionList.accept(classes)
+        case .grade:
+            subOptionList.accept(itemGrades)
+        case .tier:
+            subOptionList.accept(itemTiers)
+        }
+        
+        showSubOptionsView.accept(())
     }
-    
     //MARK: - out
     let categories = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
