@@ -129,8 +129,7 @@ final class MarketView: UIView {
         }
         
         blurButtonView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(subOptionsTableView.snp.top).inset(10)
+            $0.edges.equalToSuperview()
         }
         
         subOptionsTableView.snp.makeConstraints {
