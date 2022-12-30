@@ -69,4 +69,12 @@ final class MarketViewModel: MarketViewModelable {
     let subOptionList = BehaviorRelay<[String]>(value: [])
     let showSubOptionsView = PublishRelay<Void>()
 }
+
+extension MarketViewModel {
+    enum OptionType: Int {
+        case category = 0
+        case `class`
+        case grade
+        case tier
+    }
 }
