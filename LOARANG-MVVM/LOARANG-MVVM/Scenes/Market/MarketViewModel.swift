@@ -19,7 +19,7 @@ protocol MarketViewModelOutput {
     var categories: BehaviorRelay<[MarketOptions.Category]> { get }
     var classes: BehaviorRelay<[String]> { get }
     var itemGrades: BehaviorRelay<[String]> { get }
-    var itemTiers: BehaviorRelay<[Int]> { get }
+    var itemTiers: BehaviorRelay<[String]> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -39,7 +39,8 @@ final class MarketViewModel: MarketViewModelable {
                 categories.accept(marketOptions.categories)
                 classes.accept(marketOptions.classes)
                 itemGrades.accept(marketOptions.itemGrades)
-                itemTiers.accept(marketOptions.itemTiers)
+                let tiersString = marketOptions.itemTiers.map { $0.description }
+                itemTiers.accept(tiersString)
             } catch {
                 print("거래소 옵션을 불러올 수 없습니다") // 추후 얼럿으로 변경
             }
@@ -66,5 +67,5 @@ final class MarketViewModel: MarketViewModelable {
     let categories = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let classes = BehaviorRelay<[String]>(value: [])
     let itemGrades = BehaviorRelay<[String]>(value: [])
-    let itemTiers = BehaviorRelay<[Int]>(value: [])
+    let itemTiers = BehaviorRelay<[String]>(value: [])
 }
