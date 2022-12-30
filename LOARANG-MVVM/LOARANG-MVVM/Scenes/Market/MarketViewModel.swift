@@ -38,7 +38,7 @@ final class MarketViewModel: MarketViewModelable {
                 categories.accept(marketOptions.categories)
                 classes = marketOptions.classes
                 itemGrades = marketOptions.itemGrades
-                itemTiers = marketOptions.itemTiers.map { $0.description }
+                itemTiers = marketOptions.itemTiers.map { "\($0) 티어" }
             } catch {
                 print("거래소 옵션을 불러올 수 없습니다") // 추후 얼럿으로 변경
             }
