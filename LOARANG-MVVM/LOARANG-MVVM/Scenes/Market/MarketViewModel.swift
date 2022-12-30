@@ -53,6 +53,7 @@ final class MarketViewModel: MarketViewModelable {
         switch optionType {
         case .category:
             print("touch category button")
+            return //일단 리턴 시키고 추 후에 기능 구현 예정
         case .class:
             subOptionList.accept(classes)
         case .grade:
