@@ -147,12 +147,12 @@ final class Container {
         return MarketViewModel(networkManager: networkManager)
     }
     
-    func makeMarketOptionsViewController() -> MarketOptionsViewController {
-        return MarketOptionsViewController(viewModel: makeMarketOptionsViewModel())
+    func makeMarketOptionsViewController(options: BehaviorRelay<[String]>) -> MarketOptionsViewController {
+        return MarketOptionsViewController(viewModel: makeMarketOptionsViewModel(options: options))
     }
     
-    private func makeMarketOptionsViewModel() -> MarketOptionsViewModelable {
-        return MarketOptionsViewModel()
+    private func makeMarketOptionsViewModel(options: BehaviorRelay<[String]>) -> MarketOptionsViewModelable {
+        return MarketOptionsViewModel(options: options)
     }
     
     //MARK: - about settingVIew
