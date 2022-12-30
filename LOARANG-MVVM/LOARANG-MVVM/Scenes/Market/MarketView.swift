@@ -93,6 +93,15 @@ final class MarketView: UIView {
         return tableView
     }()
     
+    private(set) lazy var blurButtonView: UIButton = {
+        let button = UIButton()
+        button.layer.opacity = 0
+        button.isHidden = true
+        button.backgroundColor = .black
+        
+        return button
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .mainBackground
         
@@ -100,6 +109,7 @@ final class MarketView: UIView {
         self.addSubview(categoryButtonView)
         self.addSubview(bottomButtonStackView)
         self.addSubview(subOptionsTableView)
+        self.addSubview(blurButtonView)
         
         itemSearchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
@@ -120,5 +130,12 @@ final class MarketView: UIView {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(modalHeight)
         }
+        
+        blurButtonView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(subOptionsTableView.snp.top)
+        }
+    }
+    
     }
 }
