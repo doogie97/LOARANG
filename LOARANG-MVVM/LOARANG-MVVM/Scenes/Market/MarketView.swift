@@ -47,7 +47,7 @@ final class MarketView: UIView {
         let button = UIButton(type: .system)
         button.tag = tag
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.one(size: 14, family: .Bold)
+        button.titleLabel?.font = UIFont.one(size: 12, family: .Bold)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.cornerRadius = 10
