@@ -86,8 +86,10 @@ final class MarketView: UIView {
     
     private(set) lazy var subOptionsTableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(SubOptionCell.self)
+        tableView.separatorStyle = .none
         tableView.layer.opacity = 0
-        tableView.backgroundColor = .systemBlue
+        tableView.backgroundColor = .mainBackground
         tableView.layer.cornerRadius = 10
         tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
