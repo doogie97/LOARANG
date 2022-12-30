@@ -8,7 +8,7 @@
 import SnapKit
 
 final class MarketView: UIView {
-    private let modalHeight = UIScreen.main.bounds.height * 0.6
+    private let modalHeight = UIScreen.main.bounds.height * 0.5
     
     override init(frame: CGRect) {
         super.init(frame: frame)
