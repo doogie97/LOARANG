@@ -8,6 +8,8 @@
 import SnapKit
 
 final class MarketView: UIView {
+    private let modalHeight = UIScreen.main.bounds.height * 0.6
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
@@ -81,12 +83,20 @@ final class MarketView: UIView {
         return view
     }
     
+    private lazy var subOptionsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .systemBlue
+        
+        return tableView
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .mainBackground
         
         self.addSubview(itemSearchBar)
         self.addSubview(categoryButtonView)
         self.addSubview(bottomButtonStackView)
+        self.addSubview(subOptionsTableView)
         
         itemSearchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
@@ -100,6 +110,12 @@ final class MarketView: UIView {
         bottomButtonStackView.snp.makeConstraints {
             $0.top.equalTo(categoryButton.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        subOptionsTableView.snp.makeConstraints {
+            $0.height.equalTo(modalHeight)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(modalHeight)
         }
     }
 }
