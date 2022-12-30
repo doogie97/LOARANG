@@ -18,7 +18,7 @@ protocol MarketViewModelInput {
 protocol MarketViewModelOutput {
     var categories: BehaviorRelay<[MarketOptions.Category]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
-    var showSubOptionsView: PublishRelay<BehaviorRelay<[String]>> { get }
+    var showSubOptionsView: PublishRelay<Void> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -67,5 +67,6 @@ final class MarketViewModel: MarketViewModelable {
     //MARK: - out
     let categories = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
-    let showSubOptionsView = PublishRelay<BehaviorRelay<[String]>>()
+    let showSubOptionsView = PublishRelay<Void>()
+}
 }
