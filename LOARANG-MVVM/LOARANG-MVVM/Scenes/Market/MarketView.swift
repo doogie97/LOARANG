@@ -111,9 +111,9 @@ final class MarketView: UIView {
         self.addSubview(itemSearchBar)
         self.addSubview(categoryButtonView)
         self.addSubview(bottomButtonStackView)
-        self.addSubview(subOptionsTableView)
         self.addSubview(blurButtonView)
-        
+        self.addSubview(subOptionsTableView)
+
         itemSearchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
         }
@@ -128,15 +128,15 @@ final class MarketView: UIView {
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         
+        blurButtonView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(subOptionsTableView.snp.top).inset(10)
+        }
+        
         subOptionsTableView.snp.makeConstraints {
             $0.height.equalTo(modalHeight)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().offset(modalHeight)
-        }
-        
-        blurButtonView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(subOptionsTableView.snp.top)
         }
     }
     
