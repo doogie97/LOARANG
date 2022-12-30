@@ -49,7 +49,7 @@ final class MarketView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.one(size: 12, family: .Bold)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = UIColor.systemGray2.cgColor
         button.layer.cornerRadius = 10
         
         return button
