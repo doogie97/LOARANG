@@ -14,6 +14,13 @@ protocol MarketViewModelOutput {}
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
 
 final class MarketViewModel: MarketViewModelable {
+    private let networkManager: NetworkManagerable
+    
+    init(networkManager: NetworkManagerable) {
+        self.networkManager = networkManager
+
+    }
+    
     func touchCategoryButton() {
         print("touch category button")
     }

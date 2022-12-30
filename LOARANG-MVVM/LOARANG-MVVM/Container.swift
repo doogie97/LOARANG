@@ -144,7 +144,7 @@ final class Container {
     }
     
     private func makeMarketViewModel() -> MarketViewModelable {
-        return MarketViewModel()
+        return MarketViewModel(networkManager: networkManager)
     }
     
     //MARK: - about settingVIew
