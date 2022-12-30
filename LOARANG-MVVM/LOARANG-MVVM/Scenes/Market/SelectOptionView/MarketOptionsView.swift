@@ -17,7 +17,20 @@ final class MarketOptionsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var optionsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .systemBlue
+        
+        return tableView
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .systemRed
+        
+        self.addSubview(optionsTableView)
+        
+        optionsTableView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(16)
+        }
     }
 }
