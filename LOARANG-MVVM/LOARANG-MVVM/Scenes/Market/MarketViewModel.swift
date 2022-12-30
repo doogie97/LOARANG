@@ -9,10 +9,6 @@ import RxRelay
 
 protocol MarketViewModelInput {
     func getMarketOptions()
-    func touchCategoryButton()
-    func touchClassButton()
-    func touchGradeButton()
-    func touchTierButton()
     func touchOptionButton(buttonTag: Int)
 }
 
@@ -49,20 +45,6 @@ final class MarketViewModel: MarketViewModelable {
         }
     }
     
-    func touchCategoryButton() {
-        print("touch category button")
-    }
-    
-    func touchClassButton() {
-        subOptionList.accept(classes)
-    }
-    
-    func touchGradeButton() {
-        subOptionList.accept(itemGrades)
-    }
-    
-    func touchTierButton() {
-        subOptionList.accept(itemTiers)
     func touchOptionButton(buttonTag: Int) {
         guard let optionType = OptionType(rawValue: buttonTag) else {
             return
