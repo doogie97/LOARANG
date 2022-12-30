@@ -71,6 +71,14 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.hideSubOptionsTableView
+            .withUnretained(self)
+            .bind { owner, options in
+                owner.marketView.hideSubOptionsTableView()
+            }
+            .disposed(by: disposeBag)
+        
+        
         marketView.blurButtonView.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
