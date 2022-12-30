@@ -10,6 +10,7 @@ import RxRelay
 protocol MarketViewModelInput {
     func getMarketOptions()
     func touchOptionButton(buttonTag: Int)
+    func selectOptionCell(_ index: Int)
 }
 
 protocol MarketViewModelOutput {
@@ -67,6 +68,11 @@ final class MarketViewModel: MarketViewModelable {
         
         showSubOptionsView.accept(())
     }
+    
+    func selectOptionCell(_ index: Int) {
+        print(selectedOptionType)
+    }
+    
     //MARK: - out
     let categories = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])

@@ -83,5 +83,12 @@ final class MarketViewController: UIViewController {
                 cell.setCellContents(optionTitle: title)
             }
             .disposed(by: disposeBag)
+        
+        marketView.subOptionsTableView.rx.itemSelected
+            .withUnretained(self)
+            .bind { owner, indexPath in
+                owner.viewModel.selectOptionCell(indexPath.row)
+            }
+            .disposed(by: disposeBag)
     }
 }
