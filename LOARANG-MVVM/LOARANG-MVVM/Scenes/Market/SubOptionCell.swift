@@ -19,7 +19,7 @@ final class SubOptionCell: UITableViewCell {
     
     private lazy var optionTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.one(size: 18, family: .Bold)
+        label.font = UIFont.one(size: 14, family: .Bold)
         
         return label
     }()
