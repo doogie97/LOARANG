@@ -84,8 +84,8 @@ final class MarketView: UIView {
         return view
     }
     
-    private(set) lazy var subOptionsTableView: UITableView = {
-        let tableView = UITableView()
+    private(set) lazy var subOptionsTableView: DynamicHeightTableView = {
+        let tableView = DynamicHeightTableView()
         tableView.register(SubOptionCell.self)
         tableView.separatorStyle = .none
         tableView.layer.opacity = 0
