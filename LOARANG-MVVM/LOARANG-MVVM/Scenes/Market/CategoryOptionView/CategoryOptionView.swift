@@ -17,21 +17,28 @@ final class CategoryOptionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private(set) lazy var mainOptionTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .systemBlue
+    private(set) lazy var mainOptionTableView: DynamicHeightTableView = {
+        let tableView = DynamicHeightTableView()
         tableView.register(CategoryOptionCell.self)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
         
         return tableView
     }()
     
     private func setLayout() {
-        self.backgroundColor = .systemRed
-        
+        viewShapeSetting()
         self.addSubview(mainOptionTableView)
         
         mainOptionTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(16)
+            $0.edges.equalToSuperview()
         }
+    }
+    
+    private func viewShapeSetting() {
+        self.layer.opacity = 0
+        self.layer.cornerRadius = 10
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.backgroundColor = .mainBackground
     }
 }
