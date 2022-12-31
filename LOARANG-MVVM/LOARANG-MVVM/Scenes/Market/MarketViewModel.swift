@@ -22,7 +22,7 @@ protocol MarketViewModelOutput {
     var categories: BehaviorRelay<[MarketOptions.Category]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
     var selectedOptionText: String { get }
-    var showSubOptionsView: PublishRelay<Void> { get }
+    var showSubOptionsTableView: PublishRelay<Void> { get }
     var hideSubOptionsTableView: PublishRelay<Void> { get }
 }
 
@@ -73,7 +73,7 @@ final class MarketViewModel: MarketViewModelable {
             subOptionList.accept(itemTiers)
         }
         
-        showSubOptionsView.accept(())
+        showSubOptionsTableView.accept(())
     }
     
     func selectOptionCell(_ index: Int) {
@@ -109,7 +109,7 @@ final class MarketViewModel: MarketViewModelable {
     let tierText = BehaviorRelay<String>(value: "전체 티어")
     let categories = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
-    let showSubOptionsView = PublishRelay<Void>()
+    let showSubOptionsTableView = PublishRelay<Void>()
     let hideSubOptionsTableView = PublishRelay<Void>()
     
     var selectedOptionText: String {

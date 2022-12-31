@@ -65,7 +65,7 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.showSubOptionsView
+        viewModel.showSubOptionsTableView
             .withUnretained(self)
             .bind { owner, options in
                 owner.marketView.showSubOptionsTableView()
