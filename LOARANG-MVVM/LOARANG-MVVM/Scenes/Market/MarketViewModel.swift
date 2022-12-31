@@ -43,6 +43,9 @@ final class MarketViewModel: MarketViewModelable {
     private var categoryMainOptionIndex = 0
     private var categorySubOptionIndex = 0
     
+    private var searchOption: SearchMarketItemsAPI.SearchOption?
+    private var pageNo = 1
+    
     init(networkManager: NetworkManagerable) {
         self.networkManager = networkManager
     }
