@@ -19,7 +19,7 @@ final class CategoryOptionCell: UITableViewCell {
     
     private lazy var codeNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.one(size: 16, family: .Bold)
+        label.font = UIFont.one(size: 14, family: .Bold)
         
         return label
     }()
@@ -28,11 +28,12 @@ final class CategoryOptionCell: UITableViewCell {
         self.contentView.addSubview(codeNameLabel)
         
         codeNameLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(20)
+            $0.edges.equalToSuperview().inset(16)
         }
     }
     
     func setCellContents(_ codeName: String) {
+        self.backgroundColor = .clear
         codeNameLabel.text = codeName
     }
 }
