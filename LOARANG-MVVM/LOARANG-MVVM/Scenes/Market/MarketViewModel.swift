@@ -39,6 +39,9 @@ final class MarketViewModel: MarketViewModelable {
     private var itemTiers: [String] = ["전체 티어"]
     private var selectedOptionType: OptionType = .category
     
+    private var categoryMainOptionIndex = 0
+    private var categorySubOptionIndex = 0
+    
     init(networkManager: NetworkManagerable) {
         self.networkManager = networkManager
     }
