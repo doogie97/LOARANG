@@ -102,6 +102,20 @@ final class MarketViewController: UIViewController {
                 owner.viewModel.selectOptionCell(indexPath.row)
             }
             .disposed(by: disposeBag)
+        
+        marketView.itemSearchBar.searchTextField.rx.controlEvent(.editingDidEndOnExit)
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.touchSearchButton()
+            }
+            .disposed(by: disposeBag)
+        
+        marketView.searchButton.rx.tap
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.touchSearchButton()
+            }
+            .disposed(by: disposeBag)
     }
 
     private func buttonTextBind() {
@@ -132,5 +146,13 @@ final class MarketViewController: UIViewController {
                 owner.marketView.tierButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func touchSearchButton() {
+        viewModel.touchSearchButton(itemName: marketView.itemSearchBar.text ?? "",
+                                    category: marketView.categoryButton.titleLabel?.text ?? "",
+                                    class: marketView.classButton.titleLabel?.text ?? "",
+                                    grade: marketView.gradeButton.titleLabel?.text ?? "",
+                                    tier: marketView.tierButton.titleLabel?.text ?? "")
     }
 }

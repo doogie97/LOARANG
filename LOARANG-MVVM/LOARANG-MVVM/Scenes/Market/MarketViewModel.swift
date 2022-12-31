@@ -11,6 +11,7 @@ protocol MarketViewModelInput {
     func getMarketOptions()
     func touchOptionButton(buttonTag: Int)
     func selectOptionCell(_ index: Int)
+    func touchSearchButton(itemName: String, category: String, `class`: String, grade: String, tier: String)
 }
 
 protocol MarketViewModelOutput {
@@ -91,6 +92,14 @@ final class MarketViewModel: MarketViewModelable {
         }
         
         hideSubOptionsTableView.accept(())
+    }
+    
+    func touchSearchButton(itemName: String, category: String, `class`: String, grade: String, tier: String) {
+        print(itemName)
+        print(category)
+        print(`class`)
+        print(grade)
+        print(tier)
     }
     
     //MARK: - output
