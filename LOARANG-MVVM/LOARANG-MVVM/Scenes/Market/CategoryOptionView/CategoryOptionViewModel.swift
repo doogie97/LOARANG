@@ -10,16 +10,21 @@ import RxRelay
 protocol CategoryOptionViewModelInput {}
 
 protocol CategoryOptionViewModelOutput {
-    var options: BehaviorRelay<[MarketOptions.Category]> { get }
+    var mainOptionsTitle: BehaviorRelay<[String]> { get }
 }
 
 protocol CategoryOptionViewModelable: CategoryOptionViewModelInput, CategoryOptionViewModelOutput {}
 
 final class CategoryOptionViewModel: CategoryOptionViewModelable {
+    let options: [MarketOptions.Category]
+    
     init(options: [MarketOptions.Category]) {
-        self.options = BehaviorRelay<[MarketOptions.Category]>(value: options)
+        self.options = options
+        mainOptionsTitle.accept(options.map { $0.codeName ?? "" })
     }
     
     //MARK: - out
     let options: BehaviorRelay<[MarketOptions.Category]>
+    //MARK: - output
+    let mainOptionsTitle = BehaviorRelay<[String]>(value: [])
 }
