@@ -13,7 +13,7 @@ protocol MarketViewModelInput {
     func selectOptionCell(_ index: Int)
     func selectCategorySubOption(_ index: Int)
     func touchBlurView()
-    func touchSearchButton(itemName: String, category: String, `class`: String, grade: String, tier: String)
+    func touchSearchButton(itemName: String, `class`: String, grade: String, tier: String)
 }
 
 protocol MarketViewModelOutput {
@@ -114,12 +114,19 @@ final class MarketViewModel: MarketViewModelable {
         hideOptionView.accept(self.selectedOptionType)
     }
     
-    func touchSearchButton(itemName: String, category: String, `class`: String, grade: String, tier: String) {
-        print(itemName)
-        print(category)
-        print(`class`)
-        print(grade)
-        print(tier)
+    func touchSearchButton(itemName: String, `class`: String, grade: String, tier: String) {
+        let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
+
+        searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
+                                                         categoryCode: categoryCode,
+                                                         characterClass: `class`,
+                                                         itemTier: checkItemTier(tier),
+                                                         itemGrade: grade == "전체 등급" ? "" : grade,
+                                                         itemName: itemName,
+                                                         pageNo: pageNo,
+                                                         sortCondition: .asc)
+        searchItem()
+    }
     
     private func acceptCategorySubOption() {
         let all = MarketOptions.Category.Sub(code: categories[safe: categoryMainOptionIndex]?.code,

@@ -190,7 +190,6 @@ final class MarketViewController: UIViewController {
     
     private func touchSearchButton() {
         viewModel.touchSearchButton(itemName: marketView.itemSearchBar.text ?? "",
-                                    category: marketView.categoryButton.titleLabel?.text ?? "",
                                     class: marketView.classButton.titleLabel?.text ?? "",
                                     grade: marketView.gradeButton.titleLabel?.text ?? "",
                                     tier: marketView.tierButton.titleLabel?.text ?? "")
