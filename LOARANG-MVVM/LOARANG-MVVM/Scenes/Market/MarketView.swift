@@ -25,6 +25,15 @@ final class MarketView: UIView {
         return searchBar
     }()
     
+    private(set) lazy var searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("검색", for: .normal)
+        button.setTitleColor(.systemGray, for: .normal)
+        button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
+        
+        return button
+    }()
+    
     private(set) lazy var categoryButton: UIButton = makeButton(tag: 0)
     private(set) lazy var classButton: UIButton = makeButton(tag: 1)
     private(set) lazy var gradeButton: UIButton = makeButton(tag: 2)
@@ -106,13 +115,22 @@ final class MarketView: UIView {
         self.backgroundColor = .mainBackground
         
         self.addSubview(itemSearchBar)
+        self.addSubview(searchButton)
         self.addSubview(categoryButtonView)
         self.addSubview(bottomButtonStackView)
         self.addSubview(blurButtonView)
         self.addSubview(subOptionsTableView)
 
         itemSearchBar.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).inset(8)
+            $0.top.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.trailing.equalTo(searchButton.snp.leading).inset(-8)
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.height.equalTo(30)
+            $0.centerY.equalTo(itemSearchBar)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(24)
         }
         
         categoryButtonView.snp.makeConstraints {
