@@ -150,6 +150,25 @@ final class MarketViewModel: MarketViewModelable {
             return 0
         }
     }
+    
+    private func searchItem() {
+        guard let searchOption = searchOption else {
+            print("검색 설정 다시해달라 얼럿")
+            return
+        }
+        Task {
+            do {
+                
+                let searchAPI = SearchMarketItemsAPI(searchOption: searchOption)
+                let response = try await networkManager.request(searchAPI, resultType: MarketItems.self)
+                print(response.items.first?.name)
+            } catch let error{
+                print(error.errorMessage)
+                print("검색 에러 얼럿")
+            }
+        }
+    }
+    
     //MARK: - output
     let categoryText = BehaviorRelay<String>(value: "카테고리를 선택해 주세요")
     let classText = BehaviorRelay<String>(value: "전체 직업")
