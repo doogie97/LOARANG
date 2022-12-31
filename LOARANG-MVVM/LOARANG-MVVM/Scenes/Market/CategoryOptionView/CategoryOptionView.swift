@@ -26,12 +26,27 @@ final class CategoryOptionView: UIView {
         return tableView
     }()
     
+    private lazy var separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        
+        return view
+    }()
+    
     private func setLayout() {
         viewShapeSetting()
         self.addSubview(mainOptionTableView)
+        self.addSubview(separatorView)
         
         mainOptionTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.bottom.leading.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(UIScreen.main.bounds.width * 0.7)
+        }
+        
+        separatorView.snp.makeConstraints {
+            $0.width.equalTo(1)
+            $0.leading.equalTo(mainOptionTableView.snp.trailing)
+            $0.top.bottom.equalToSuperview()
         }
     }
     
