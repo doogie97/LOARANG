@@ -19,9 +19,9 @@ protocol MarketViewModelOutput {
     var classText: BehaviorRelay<String> { get }
     var gradeText: BehaviorRelay<String> { get }
     var tierText: BehaviorRelay<String> { get }
-    var categories: BehaviorRelay<[MarketOptions.Category]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
     var selectedOptionText: String { get }
+    var showCategoryView: PublishRelay<[MarketOptions.Category]> { get }
     var showSubOptionsTableView: PublishRelay<Void> { get }
     var hideSubOptionsTableView: PublishRelay<Void> { get }
 }
@@ -31,6 +31,7 @@ protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
 final class MarketViewModel: MarketViewModelable {
     private let networkManager: NetworkManagerable
     
+    private var categories: [MarketOptions.Category] = []
     private var classes: [String] = ["전체 직업"]
     private var itemGrades: [String] = ["전체 등급"]
     private var itemTiers: [String] = ["전체 티어"]
@@ -44,7 +45,7 @@ final class MarketViewModel: MarketViewModelable {
         Task {
             do {
                 let marketOptions = try await networkManager.request(MarketOptionsAPI(), resultType: MarketOptions.self)
-                categories.accept(marketOptions.categories)
+                categories = marketOptions.categories
                 classes.append(contentsOf: marketOptions.classes)
                 itemGrades.append(contentsOf: marketOptions.itemGrades)
                 itemTiers.append(contentsOf: marketOptions.itemTiers.map { "\($0) 티어" })
@@ -63,8 +64,8 @@ final class MarketViewModel: MarketViewModelable {
         
         switch optionType {
         case .category:
-            print("touch category button")
-            return //일단 리턴 시키고 추 후에 기능 구현 예정
+            showCategoryView.accept(categories)
+            return
         case .class:
             subOptionList.accept(classes)
         case .grade:
@@ -107,8 +108,8 @@ final class MarketViewModel: MarketViewModelable {
     let classText = BehaviorRelay<String>(value: "전체 직업")
     let gradeText = BehaviorRelay<String>(value: "전체 등급")
     let tierText = BehaviorRelay<String>(value: "전체 티어")
-    let categories = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
+    let showCategoryView = PublishRelay<[MarketOptions.Category]>()
     let showSubOptionsTableView = PublishRelay<Void>()
     let hideSubOptionsTableView = PublishRelay<Void>()
     

@@ -65,6 +65,14 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.showCategoryView
+            .withUnretained(self)
+            .bind { owner, categories in
+                let categoryOptionVC = owner.container.makeCategoryOptionViewController(options: categories)
+                owner.present(categoryOptionVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.showSubOptionsTableView
             .withUnretained(self)
             .bind { owner, options in
