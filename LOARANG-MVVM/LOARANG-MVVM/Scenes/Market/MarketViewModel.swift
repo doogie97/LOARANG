@@ -138,6 +138,18 @@ final class MarketViewModel: MarketViewModelable {
         }
     }
     
+    private func checkItemTier(_ tierString: String) -> Int {
+        switch tierString {
+        case "1 티어":
+            return 1
+        case "2 티어":
+            return 2
+        case "3 티어":
+            return 3
+        default:
+            return 0
+        }
+    }
     //MARK: - output
     let categoryText = BehaviorRelay<String>(value: "카테고리를 선택해 주세요")
     let classText = BehaviorRelay<String>(value: "전체 직업")
