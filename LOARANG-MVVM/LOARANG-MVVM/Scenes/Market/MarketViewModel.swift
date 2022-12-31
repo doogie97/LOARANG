@@ -29,9 +29,9 @@ protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
 final class MarketViewModel: MarketViewModelable {
     private let networkManager: NetworkManagerable
     
-    private var classes: [String] = []
-    private var itemGrades: [String] = []
-    private var itemTiers: [String] = []
+    private var classes: [String] = ["전체 직업"]
+    private var itemGrades: [String] = ["전체 등급"]
+    private var itemTiers: [String] = ["전체 티어"]
     private var selectedOptionType: OptionType = .category
     
     init(networkManager: NetworkManagerable) {
@@ -43,9 +43,9 @@ final class MarketViewModel: MarketViewModelable {
             do {
                 let marketOptions = try await networkManager.request(MarketOptionsAPI(), resultType: MarketOptions.self)
                 categories.accept(marketOptions.categories)
-                classes = marketOptions.classes
-                itemGrades = marketOptions.itemGrades
-                itemTiers = marketOptions.itemTiers.map { "\($0) 티어" }
+                classes.append(contentsOf: marketOptions.classes)
+                itemGrades.append(contentsOf: marketOptions.itemGrades)
+                itemTiers.append(contentsOf: marketOptions.itemTiers.map { "\($0) 티어" })
             } catch {
                 print("거래소 옵션을 불러올 수 없습니다") // 추후 얼럿으로 변경
             }
