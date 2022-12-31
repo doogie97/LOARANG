@@ -20,6 +20,7 @@ protocol MarketViewModelOutput {
     var tierText: BehaviorRelay<String> { get }
     var categories: BehaviorRelay<[MarketOptions.Category]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
+    var selectedOptionText: String { get }
     var showSubOptionsView: PublishRelay<Void> { get }
     var hideSubOptionsTableView: PublishRelay<Void> { get }
 }
@@ -37,7 +38,7 @@ final class MarketViewModel: MarketViewModelable {
     init(networkManager: NetworkManagerable) {
         self.networkManager = networkManager
     }
-    
+    //MARK: - input
     func getMarketOptions() {
         Task {
             do {
@@ -92,7 +93,7 @@ final class MarketViewModel: MarketViewModelable {
         hideSubOptionsTableView.accept(())
     }
     
-    //MARK: - out
+    //MARK: - output
     let categoryText = BehaviorRelay<String>(value: "카테고리를 선택해 주세요")//얘는 아마 다른 타입이지 않을까? 왜냐면 카테고리는 카테고리 코드가 있으니까
     let classText = BehaviorRelay<String>(value: "전체 직업")
     let gradeText = BehaviorRelay<String>(value: "전체 등급")
@@ -101,6 +102,19 @@ final class MarketViewModel: MarketViewModelable {
     let subOptionList = BehaviorRelay<[String]>(value: [])
     let showSubOptionsView = PublishRelay<Void>()
     let hideSubOptionsTableView = PublishRelay<Void>()
+    
+    var selectedOptionText: String {
+        switch selectedOptionType {
+        case .category:
+            return "" //일단 리턴
+        case .class:
+            return classText.value
+        case .grade:
+            return gradeText.value
+        case .tier:
+            return tierText.value
+        }
+    }
 }
 
 extension MarketViewModel {
