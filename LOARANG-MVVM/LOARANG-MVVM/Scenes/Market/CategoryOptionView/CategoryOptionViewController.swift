@@ -1,5 +1,5 @@
 //
-//  SelectOptionViewController.swift
+//  CategoryOptionViewController.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/12/30.
@@ -7,10 +7,10 @@
 
 import RxSwift
 
-final class MarketOptionsViewController: UIViewController {
-    private let viewModel: MarketOptionsViewModelable
+final class CategoryOptionViewController: UIViewController {
+    private let viewModel: CategoryOptionViewModelable
     
-    init(viewModel: MarketOptionsViewModelable) {
+    init(viewModel: CategoryOptionViewModelable) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -19,10 +19,10 @@ final class MarketOptionsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let marketOptionsView = MarketOptionsView()
+    private let categoryOptionView = CategoryOptionView()
     
     override func loadView() {
         super.loadView()
-        self.view = marketOptionsView
+        self.view = categoryOptionView
     }
 }

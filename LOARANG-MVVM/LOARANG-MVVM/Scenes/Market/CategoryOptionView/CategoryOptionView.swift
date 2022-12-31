@@ -1,5 +1,5 @@
 //
-//  MarketOptionsView.swift
+//  CategoryOptionView.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/12/30.
@@ -7,7 +7,7 @@
 
 import SnapKit
 
-final class MarketOptionsView: UIView {
+final class CategoryOptionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
