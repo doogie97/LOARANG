@@ -120,6 +120,13 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        marketView.categoryOptionView.subOptionTableView.rx.itemSelected
+            .withUnretained(self)
+            .bind { owner, indexPath in
+                owner.viewModel.selectCategorySubOption(indexPath.row)
+            }
+            .disposed(by: disposeBag)
+        
         marketView.subOptionsTableView.rx.itemSelected
             .withUnretained(self)
             .bind { owner, indexPath in

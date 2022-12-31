@@ -11,6 +11,7 @@ protocol MarketViewModelInput {
     func getMarketOptions()
     func touchOptionButton(buttonTag: Int)
     func selectOptionCell(_ index: Int)
+    func selectCategorySubOption(_ index: Int)
     func touchBlurView()
     func touchSearchButton(itemName: String, category: String, `class`: String, grade: String, tier: String)
 }
@@ -103,6 +104,19 @@ final class MarketViewModel: MarketViewModelable {
         let all = MarketOptions.Category.Sub(code: categories[safe: categoryMainOptionIndex]?.code,
                                              codeName: "전체")
         categorySubOptionList.accept([all] + (categories[safe: categoryMainOptionIndex]?.subs ?? []))
+    }
+    
+    func selectCategorySubOption(_ index: Int) {
+        categorySubOptionIndex = index
+        let mainCategory = categories[safe: categoryMainOptionIndex]
+        if index == 0 {
+            categoryText.accept((mainCategory?.codeName ?? "") + " - 전체")
+        } else {
+            let subCategory = mainCategory?.subs[safe: categorySubOptionIndex - 1]
+            categoryText.accept((mainCategory?.codeName ?? "") + " - " + (subCategory?.codeName ?? ""))
+        }
+        
+        hideOptionView.accept(self.selectedOptionType)
     }
     
     func touchBlurView() {
