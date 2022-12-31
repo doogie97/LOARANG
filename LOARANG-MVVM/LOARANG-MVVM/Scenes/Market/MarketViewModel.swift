@@ -21,6 +21,7 @@ protocol MarketViewModelOutput {
     var gradeText: BehaviorRelay<String> { get }
     var tierText: BehaviorRelay<String> { get }
     var categoryOptionList: BehaviorRelay<[MarketOptions.Category]> { get }
+    var categorySubOptionList: BehaviorRelay<[MarketOptions.Category.Sub]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
     var selectedOptionText: String { get }
     var showOptionsView: PublishRelay<MarketViewModel.OptionType> { get }
@@ -66,6 +67,8 @@ final class MarketViewModel: MarketViewModelable {
         switch optionType {
         case .category:
             categoryOptionList.accept(categories)
+            categorySubOptionList.accept([MarketOptions.Category.Sub(code: categories[safe: 0]?.code,
+                                                                     codeName: "전체")])
         case .class:
             subOptionList.accept(classes)
         case .grade:
@@ -80,7 +83,10 @@ final class MarketViewModel: MarketViewModelable {
     func selectOptionCell(_ index: Int) {
         switch selectedOptionType {
         case .category:
-            return //일단 리턴 여기서 categoris accept 해야함 서브들은 [string]이지만 얘는 다름
+            let all = MarketOptions.Category.Sub(code: categories[safe: index]?.code,
+                                                 codeName: "전체")
+            categorySubOptionList.accept([all] + (categories[safe: index]?.subs ?? []))
+            return
         case .class:
             classText.accept(subOptionList.value[safe: index] ?? "")
         case .grade:
@@ -109,6 +115,7 @@ final class MarketViewModel: MarketViewModelable {
     let gradeText = BehaviorRelay<String>(value: "전체 등급")
     let tierText = BehaviorRelay<String>(value: "전체 티어")
     let categoryOptionList = BehaviorRelay<[MarketOptions.Category]>(value: [])
+    let categorySubOptionList = BehaviorRelay<[MarketOptions.Category.Sub]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
     let showOptionsView = PublishRelay<OptionType>()
     let hideOptionView = PublishRelay<OptionType>()
