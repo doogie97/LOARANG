@@ -17,9 +17,10 @@ final class CategoryOptionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var optionsTableView: UITableView = {
+    private(set) lazy var mainOptionTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBlue
+        tableView.register(CategoryOptionCell.self)
         
         return tableView
     }()
@@ -27,9 +28,9 @@ final class CategoryOptionView: UIView {
     private func setLayout() {
         self.backgroundColor = .systemRed
         
-        self.addSubview(optionsTableView)
+        self.addSubview(mainOptionTableView)
         
-        optionsTableView.snp.makeConstraints {
+        mainOptionTableView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }
     }
