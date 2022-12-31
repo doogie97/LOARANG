@@ -11,6 +11,7 @@ protocol MarketViewModelInput {
     func getMarketOptions()
     func touchOptionButton(buttonTag: Int)
     func selectOptionCell(_ index: Int)
+    func touchBlurView()
     func touchSearchButton(itemName: String, category: String, `class`: String, grade: String, tier: String)
 }
 
@@ -22,8 +23,8 @@ protocol MarketViewModelOutput {
     var subOptionList: BehaviorRelay<[String]> { get }
     var selectedOptionText: String { get }
     var showCategoryView: PublishRelay<[MarketOptions.Category]> { get }
-    var showSubOptionsTableView: PublishRelay<Void> { get }
-    var hideSubOptionsTableView: PublishRelay<Void> { get }
+    var showOptionsView: PublishRelay<MarketViewModel.OptionType> { get }
+    var hideOptionView: PublishRelay<MarketViewModel.OptionType> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -64,8 +65,7 @@ final class MarketViewModel: MarketViewModelable {
         
         switch optionType {
         case .category:
-            showCategoryView.accept(categories)
-            return
+            print("asdf")
         case .class:
             subOptionList.accept(classes)
         case .grade:
@@ -74,7 +74,7 @@ final class MarketViewModel: MarketViewModelable {
             subOptionList.accept(itemTiers)
         }
         
-        showSubOptionsTableView.accept(())
+        showOptionsView.accept(self.selectedOptionType)
     }
     
     func selectOptionCell(_ index: Int) {
@@ -83,7 +83,7 @@ final class MarketViewModel: MarketViewModelable {
         }
         switch selectedOptionType {
         case .category:
-            return //일단 리턴
+            return //일단 리턴 여기서 categoris accept 해야함 서브들은 [string]이지만 얘는 다름
         case .class:
             classText.accept(optionText)
         case .grade:
@@ -92,7 +92,10 @@ final class MarketViewModel: MarketViewModelable {
             tierText.accept(optionText)
         }
         
-        hideSubOptionsTableView.accept(())
+        hideOptionView.accept(self.selectedOptionType)
+    }
+    func touchBlurView() {
+        hideOptionView.accept(self.selectedOptionType)
     }
     
     func touchSearchButton(itemName: String, category: String, `class`: String, grade: String, tier: String) {
@@ -110,8 +113,8 @@ final class MarketViewModel: MarketViewModelable {
     let tierText = BehaviorRelay<String>(value: "전체 티어")
     let subOptionList = BehaviorRelay<[String]>(value: [])
     let showCategoryView = PublishRelay<[MarketOptions.Category]>()
-    let showSubOptionsTableView = PublishRelay<Void>()
-    let hideSubOptionsTableView = PublishRelay<Void>()
+    let showOptionsView = PublishRelay<OptionType>()
+    let hideOptionView = PublishRelay<OptionType>()
     
     var selectedOptionText: String {
         switch selectedOptionType {

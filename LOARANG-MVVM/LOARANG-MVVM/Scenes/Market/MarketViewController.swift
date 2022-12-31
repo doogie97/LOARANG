@@ -65,25 +65,22 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.showCategoryView
+        viewModel.showOptionsView
             .withUnretained(self)
-            .bind { owner, categories in
-                let categoryOptionVC = owner.container.makeCategoryOptionViewController(options: categories)
-                owner.present(categoryOptionVC, animated: true)
+            .bind { owner, optionType in
+                switch optionType {
+                case .category:
+                    owner.marketView.showOptionView(view: owner.marketView.categoryOptionView)
+                case .class, .grade, .tier:
+                    owner.marketView.showOptionView(view: owner.marketView.subOptionsTableView)
+                }
             }
             .disposed(by: disposeBag)
         
-        viewModel.showSubOptionsTableView
+        viewModel.hideOptionView
             .withUnretained(self)
-            .bind { owner, options in
-                owner.marketView.showSubOptionsTableView()
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.hideSubOptionsTableView
-            .withUnretained(self)
-            .bind { owner, options in
-                owner.marketView.hideSubOptionsTableView()
+            .bind { owner, optionType in
+                owner.hideOptionView(optionType)
             }
             .disposed(by: disposeBag)
         
@@ -91,7 +88,7 @@ final class MarketViewController: UIViewController {
         marketView.blurButtonView.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.marketView.hideSubOptionsTableView()
+                owner.viewModel.touchBlurView()
             }
             .disposed(by: disposeBag)
         
@@ -154,6 +151,15 @@ final class MarketViewController: UIViewController {
                 owner.marketView.tierButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func hideOptionView(_ optionType: MarketViewModel.OptionType) {
+        switch optionType {
+        case .category:
+            marketView.hideOptionView(view: marketView.categoryOptionView)
+        case .class, .grade, .tier:
+            marketView.hideOptionView(view: marketView.subOptionsTableView)
+        }
     }
     
     private func touchSearchButton() {

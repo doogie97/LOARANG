@@ -162,8 +162,8 @@ final class MarketView: UIView {
         }
     }
     
-    func showSubOptionsTableView() {
-        subOptionsTableView.snp.remakeConstraints {
+    func showOptionView(view: UIView) {
+        view.snp.remakeConstraints {
             $0.top.greaterThanOrEqualToSuperview().inset(UIScreen.main.bounds.height / 3)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
@@ -173,13 +173,13 @@ final class MarketView: UIView {
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.blurButtonView.layer.opacity = 0.7
-            self?.subOptionsTableView.layer.opacity = 1
+            view.layer.opacity = 1
             self?.layoutIfNeeded()
         }
     }
     
-    func hideSubOptionsTableView() {
-        subOptionsTableView.snp.remakeConstraints {
+    func hideOptionView(view: UIView) {
+        view.snp.remakeConstraints {
             $0.height.equalTo(0)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -189,7 +189,7 @@ final class MarketView: UIView {
         
         UIView.animate(withDuration: 0.2) { [weak self] in
             self?.blurButtonView.layer.opacity = 0
-            self?.subOptionsTableView.layer.opacity = 0
+            view.layer.opacity = 0
             self?.layoutIfNeeded()
         }
     }
