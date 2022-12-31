@@ -70,8 +70,7 @@ final class MarketViewModel: MarketViewModelable {
         
         switch optionType {
         case .category:
-            categorySubOptionList.accept([MarketOptions.Category.Sub(code: categories[safe: 0]?.code,
-                                                                     codeName: "전체")])
+            acceptCategorySubOption()
         case .class:
             subOptionList.accept(classes)
         case .grade:
@@ -86,9 +85,8 @@ final class MarketViewModel: MarketViewModelable {
     func selectOptionCell(_ index: Int) {
         switch selectedOptionType {
         case .category:
-            let all = MarketOptions.Category.Sub(code: categories[safe: index]?.code,
-                                                 codeName: "전체")
-            categorySubOptionList.accept([all] + (categories[safe: index]?.subs ?? []))
+            categoryMainOptionIndex = index
+            acceptCategorySubOption()
             return
         case .class:
             classText.accept(subOptionList.value[safe: index] ?? "")
