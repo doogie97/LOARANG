@@ -24,12 +24,28 @@ final class SubOptionCell: UITableViewCell {
         return label
     }()
     
+    private lazy var selectedIndicator: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "checkmark")
+        imageView.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        imageView.isHidden = true
+        
+        return imageView
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .clear
         self.contentView.addSubview(optionTitleLabel)
+        self.contentView.addSubview(selectedIndicator)
+        
         
         optionTitleLabel.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
+        }
+        
+        selectedIndicator.snp.makeConstraints {
+            $0.top.bottom.trailing.equalToSuperview().inset(16)
+            $0.height.width.equalTo(15)
         }
     }
     
