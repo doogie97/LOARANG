@@ -100,6 +100,13 @@ final class MarketViewModel: MarketViewModelable {
         
         hideOptionView.accept(self.selectedOptionType)
     }
+    
+    private func acceptCategorySubOption() {
+        let all = MarketOptions.Category.Sub(code: categories[safe: categoryMainOptionIndex]?.code,
+                                             codeName: "전체")
+        categorySubOptionList.accept([all] + (categories[safe: categoryMainOptionIndex]?.subs ?? []))
+    }
+    
     func touchBlurView() {
         hideOptionView.accept(self.selectedOptionType)
     }
