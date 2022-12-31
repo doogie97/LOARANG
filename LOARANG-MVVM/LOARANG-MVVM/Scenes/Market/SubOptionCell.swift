@@ -52,4 +52,15 @@ final class SubOptionCell: UITableViewCell {
     func setCellContents(optionTitle: String) {
         optionTitleLabel.text = optionTitle
     }
+    
+    func setSelectedCell() {
+        optionTitleLabel.textColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
+        selectedIndicator.isHidden = false
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        optionTitleLabel.textColor = .label
+        selectedIndicator.isHidden = true
+    }
 }
