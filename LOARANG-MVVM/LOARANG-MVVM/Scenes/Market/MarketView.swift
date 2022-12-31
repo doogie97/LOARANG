@@ -90,6 +90,8 @@ final class MarketView: UIView {
         return view
     }
     
+    private(set) lazy var categoryOptionView = CategoryOptionView()
+    
     private(set) lazy var subOptionsTableView: DynamicHeightTableView = {
         let tableView = DynamicHeightTableView()
         tableView.register(SubOptionCell.self)
@@ -119,6 +121,7 @@ final class MarketView: UIView {
         self.addSubview(categoryButtonView)
         self.addSubview(bottomButtonStackView)
         self.addSubview(blurButtonView)
+        self.addSubview(categoryOptionView)
         self.addSubview(subOptionsTableView)
 
         itemSearchBar.snp.makeConstraints {
@@ -145,6 +148,12 @@ final class MarketView: UIView {
         
         blurButtonView.snp.makeConstraints {
             $0.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        categoryOptionView.snp.makeConstraints {
+            $0.height.equalTo(0)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         subOptionsTableView.snp.makeConstraints {
