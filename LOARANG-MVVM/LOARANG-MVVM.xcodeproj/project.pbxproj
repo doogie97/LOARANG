@@ -138,7 +138,6 @@
 		ACD547B128EBF8A000D44ACA /* RecentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD547B028EBF8A000D44ACA /* RecentUser.swift */; };
 		ACD547B328EBFED500D44ACA /* RecentUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD547B228EBFED500D44ACA /* RecentUserView.swift */; };
 		ACD547B628EC2A1000D44ACA /* RecentUserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD547B528EC2A1000D44ACA /* RecentUserTVCell.swift */; };
-		ACDC346D295FE6020077560A /* CategoryOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC346C295FE6020077560A /* CategoryOptionCell.swift */; };
 		ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */; };
 		ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28A528B0A8E000BFD206 /* EquipmentDetailViewController.swift */; };
 		ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28A728B0A8E800BFD206 /* EquipmentDetailView.swift */; };
@@ -148,7 +147,7 @@
 		ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */; };
 		ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */; };
 		ACE84D00294B69910043BC03 /* SearchMarketItemsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE84CFF294B69910043BC03 /* SearchMarketItemsAPI.swift */; };
-		ACED60CF295EADDA00F5B45F /* SubOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED60CE295EADDA00F5B45F /* SubOptionCell.swift */; };
+		ACED60CF295EADDA00F5B45F /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED60CE295EADDA00F5B45F /* OptionCell.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -298,7 +297,6 @@
 		ACD547B028EBF8A000D44ACA /* RecentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUser.swift; sourceTree = "<group>"; };
 		ACD547B228EBFED500D44ACA /* RecentUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserView.swift; sourceTree = "<group>"; };
 		ACD547B528EC2A1000D44ACA /* RecentUserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserTVCell.swift; sourceTree = "<group>"; };
-		ACDC346C295FE6020077560A /* CategoryOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOptionCell.swift; sourceTree = "<group>"; };
 		ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extension.swift"; sourceTree = "<group>"; };
 		ACDE28A528B0A8E000BFD206 /* EquipmentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailViewController.swift; sourceTree = "<group>"; };
 		ACDE28A728B0A8E800BFD206 /* EquipmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailView.swift; sourceTree = "<group>"; };
@@ -308,7 +306,7 @@
 		ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIModel.swift; sourceTree = "<group>"; };
 		ACE84CFF294B69910043BC03 /* SearchMarketItemsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMarketItemsAPI.swift; sourceTree = "<group>"; };
-		ACED60CE295EADDA00F5B45F /* SubOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionCell.swift; sourceTree = "<group>"; };
+		ACED60CE295EADDA00F5B45F /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -389,15 +387,6 @@
 				ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */,
 			);
 			path = BattleEquipments;
-			sourceTree = "<group>";
-		};
-		AC0EB206295E812F00CC8043 /* CategoryOptionView */ = {
-			isa = PBXGroup;
-			children = (
-				AC0EB207295E814800CC8043 /* CategoryOptionView.swift */,
-				ACDC346C295FE6020077560A /* CategoryOptionCell.swift */,
-			);
-			path = CategoryOptionView;
 			sourceTree = "<group>";
 		};
 		AC2C2B5828B34C7400621753 /* Accessories */ = {
@@ -512,8 +501,8 @@
 				AC41164A295C7E6700A76BA4 /* MarketView.swift */,
 				AC41164C295C7E7300A76BA4 /* MarketViewController.swift */,
 				AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */,
-				ACED60CE295EADDA00F5B45F /* SubOptionCell.swift */,
-				AC0EB206295E812F00CC8043 /* CategoryOptionView */,
+				ACED60CE295EADDA00F5B45F /* OptionCell.swift */,
+				AC0EB207295E814800CC8043 /* CategoryOptionView.swift */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -1137,7 +1126,7 @@
 				AC0EB205295E7A5800CC8043 /* MarketOptions.swift in Sources */,
 				ACD547B628EC2A1000D44ACA /* RecentUserTVCell.swift in Sources */,
 				AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */,
-				ACED60CF295EADDA00F5B45F /* SubOptionCell.swift in Sources */,
+				ACED60CF295EADDA00F5B45F /* OptionCell.swift in Sources */,
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
@@ -1170,7 +1159,6 @@
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
-				ACDC346D295FE6020077560A /* CategoryOptionCell.swift in Sources */,
 				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,

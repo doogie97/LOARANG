@@ -19,7 +19,7 @@ final class CategoryOptionView: UIView {
     
     private(set) lazy var mainOptionTableView: DynamicHeightTableView = {
         let tableView = DynamicHeightTableView()
-        tableView.register(CategoryOptionCell.self)
+        tableView.register(OptionCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         
@@ -33,10 +33,20 @@ final class CategoryOptionView: UIView {
         return view
     }()
     
+    private(set) lazy var subOptionTableView: DynamicHeightTableView = {
+        let tableView = DynamicHeightTableView()
+        tableView.register(OptionCell.self)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        
+        return tableView
+    }()
+    
     private func setLayout() {
         viewShapeSetting()
         self.addSubview(mainOptionTableView)
         self.addSubview(separatorView)
+        self.addSubview(subOptionTableView)
         
         mainOptionTableView.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
@@ -47,6 +57,11 @@ final class CategoryOptionView: UIView {
             $0.width.equalTo(1)
             $0.leading.equalTo(mainOptionTableView.snp.trailing)
             $0.top.bottom.equalToSuperview()
+        }
+        
+        subOptionTableView.snp.makeConstraints {
+            $0.top.bottom.trailing.equalToSuperview()
+            $0.leading.equalTo(separatorView.snp.trailing)
         }
     }
     
