@@ -103,12 +103,6 @@ final class MarketViewModel: MarketViewModelable {
         hideOptionView.accept(self.selectedOptionType)
     }
     
-    private func acceptCategorySubOption() {
-        let all = MarketOptions.Category.Sub(code: categories[safe: categoryMainOptionIndex]?.code,
-                                             codeName: "전체")
-        categorySubOptionList.accept([all] + (categories[safe: categoryMainOptionIndex]?.subs ?? []))
-    }
-    
     func selectCategorySubOption(_ index: Int) {
         categorySubOptionIndex = index
         categoryText.accept(categoryCodeSet(index: index).codeName)
@@ -126,6 +120,13 @@ final class MarketViewModel: MarketViewModelable {
         print(`class`)
         print(grade)
         print(tier)
+    
+    private func acceptCategorySubOption() {
+        let all = MarketOptions.Category.Sub(code: categories[safe: categoryMainOptionIndex]?.code,
+                                             codeName: "전체")
+        categorySubOptionList.accept([all] + (categories[safe: categoryMainOptionIndex]?.subs ?? []))
+    }
+    
     private func categoryCodeSet(index: Int) -> (code: Int, codeName: String) {
         let mainCategory = categories[safe: categoryMainOptionIndex]
         if index == 0 {
