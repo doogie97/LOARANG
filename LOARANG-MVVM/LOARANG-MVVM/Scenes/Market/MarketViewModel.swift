@@ -20,9 +20,9 @@ protocol MarketViewModelOutput {
     var classText: BehaviorRelay<String> { get }
     var gradeText: BehaviorRelay<String> { get }
     var tierText: BehaviorRelay<String> { get }
+    var categoryOptionList: BehaviorRelay<[MarketOptions.Category]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
     var selectedOptionText: String { get }
-    var showCategoryView: PublishRelay<[MarketOptions.Category]> { get }
     var showOptionsView: PublishRelay<MarketViewModel.OptionType> { get }
     var hideOptionView: PublishRelay<MarketViewModel.OptionType> { get }
 }
@@ -65,7 +65,7 @@ final class MarketViewModel: MarketViewModelable {
         
         switch optionType {
         case .category:
-            print("asdf")
+            categoryOptionList.accept(categories)
         case .class:
             subOptionList.accept(classes)
         case .grade:
@@ -107,12 +107,12 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     //MARK: - output
-    let categoryText = BehaviorRelay<String>(value: "카테고리를 선택해 주세요")//얘는 아마 다른 타입이지 않을까? 왜냐면 카테고리는 카테고리 코드가 있으니까
+    let categoryText = BehaviorRelay<String>(value: "카테고리를 선택해 주세요")
     let classText = BehaviorRelay<String>(value: "전체 직업")
     let gradeText = BehaviorRelay<String>(value: "전체 등급")
     let tierText = BehaviorRelay<String>(value: "전체 티어")
+    let categoryOptionList = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
-    let showCategoryView = PublishRelay<[MarketOptions.Category]>()
     let showOptionsView = PublishRelay<OptionType>()
     let hideOptionView = PublishRelay<OptionType>()
     
