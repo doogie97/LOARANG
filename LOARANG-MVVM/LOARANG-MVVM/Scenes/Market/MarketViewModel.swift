@@ -51,6 +51,7 @@ final class MarketViewModel: MarketViewModelable {
             do {
                 let marketOptions = try await networkManager.request(MarketOptionsAPI(), resultType: MarketOptions.self)
                 categories = marketOptions.categories
+                categoryOptionList.accept(categories)
                 classes.append(contentsOf: marketOptions.classes)
                 itemGrades.append(contentsOf: marketOptions.itemGrades)
                 itemTiers.append(contentsOf: marketOptions.itemTiers.map { "\($0) 티어" })
@@ -69,7 +70,6 @@ final class MarketViewModel: MarketViewModelable {
         
         switch optionType {
         case .category:
-            categoryOptionList.accept(categories)
             categorySubOptionList.accept([MarketOptions.Category.Sub(code: categories[safe: 0]?.code,
                                                                      codeName: "전체")])
         case .class:
