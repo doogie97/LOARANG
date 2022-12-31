@@ -78,18 +78,15 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     func selectOptionCell(_ index: Int) {
-        guard let optionText = subOptionList.value[safe: index] else {
-            return
-        }
         switch selectedOptionType {
         case .category:
             return //일단 리턴 여기서 categoris accept 해야함 서브들은 [string]이지만 얘는 다름
         case .class:
-            classText.accept(optionText)
+            classText.accept(subOptionList.value[safe: index] ?? "")
         case .grade:
-            gradeText.accept(optionText)
+            gradeText.accept(subOptionList.value[safe: index] ?? "")
         case .tier:
-            tierText.accept(optionText)
+            tierText.accept(subOptionList.value[safe: index] ?? "")
         }
         
         hideOptionView.accept(self.selectedOptionType)
