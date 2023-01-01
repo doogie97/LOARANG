@@ -14,6 +14,7 @@ protocol MarketViewModelInput {
     func selectCategorySubOption(mainIndex: Int, subIndex: Int)
     func touchBlurView()
     func touchSearchButton(itemName: String, `class`: String, grade: String)
+    func viewDidAppear()
 }
 
 protocol MarketViewModelOutput {
@@ -50,6 +51,10 @@ final class MarketViewModel: MarketViewModelable {
         self.networkManager = networkManager
     }
     //MARK: - input
+    func viewDidAppear() {
+        getMarketOptions()
+    }
+    
     func getMarketOptions() {
         Task {
             do {

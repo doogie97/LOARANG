@@ -32,7 +32,10 @@ final class MarketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
-        viewModel.getMarketOptions()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidAppear()
     }
     
     private func bindView() {
