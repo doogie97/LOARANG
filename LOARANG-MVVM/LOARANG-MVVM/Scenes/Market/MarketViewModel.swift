@@ -54,12 +54,16 @@ final class MarketViewModel: MarketViewModelable {
         Task {
             do {
                 let marketOptions = try await networkManager.request(MarketOptionsAPI(), resultType: MarketOptions.self)
-                categories = marketOptions.categories
-                categoryOptionList.accept(categories)
-                classes.append(contentsOf: marketOptions.classes)
-                itemGrades.append(contentsOf: marketOptions.itemGrades)
+                await MainActor.run {
+                    categories = marketOptions.categories
+                    categoryOptionList.accept(categories)
+                    classes.append(contentsOf: marketOptions.classes)
+                    itemGrades.append(contentsOf: marketOptions.itemGrades)
+                }
             } catch let error {
-                showAlert.accept(error.limitErrorMessage ?? "거래소 옵션을 불러올 수 없습니다")
+                await MainActor.run {
+                    showAlert.accept(error.limitErrorMessage ?? "거래소 옵션을 불러올 수 없습니다")
+                }
             }
         }
     }
@@ -116,7 +120,7 @@ final class MarketViewModel: MarketViewModelable {
             return
         }
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
-
+        
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
                                                          categoryCode: categoryCode,
                                                          characterClass: `class` == "전체 직업" ? "" : `class`,
@@ -168,9 +172,13 @@ final class MarketViewModel: MarketViewModelable {
             do {
                 let searchAPI = SearchMarketItemsAPI(searchOption: searchOption)
                 let response = try await networkManager.request(searchAPI, resultType: MarketItems.self)
-                print(response.items.first?.name)
+                await MainActor.run {
+                    print(response)
+                }
             } catch let error {
-                showAlert.accept(error.limitErrorMessage ?? "검색 중 오류가 발생했습니다(\(error.statusCode ?? 000))")
+                await MainActor.run {
+                    showAlert.accept(error.limitErrorMessage ?? "검색 중 오류가 발생했습니다(\(error.statusCode ?? 000))")
+                }
             }
         }
     }
