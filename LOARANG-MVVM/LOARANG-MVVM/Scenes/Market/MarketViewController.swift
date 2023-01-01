@@ -58,20 +58,13 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        marketView.tierButton.rx.tap
-            .withUnretained(self)
-            .bind { owner, _ in
-                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.tierButton.tag)
-            }
-            .disposed(by: disposeBag)
-        
         viewModel.showOptionsView
             .withUnretained(self)
             .bind { owner, optionType in
                 switch optionType {
                 case .category:
                     owner.marketView.showOptionView(view: owner.marketView.categoryOptionView)
-                case .class, .grade, .tier:
+                case .class, .grade:
                     owner.marketView.showOptionView(view: owner.marketView.subOptionsTableView)
                 }
             }
@@ -178,13 +171,6 @@ final class MarketViewController: UIViewController {
                 owner.marketView.gradeButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
-        
-        viewModel.tierText
-            .withUnretained(self)
-            .bind { owner, text in
-                owner.marketView.tierButton.setTitle(text, for: .normal)
-            }
-            .disposed(by: disposeBag)
     }
     
     private func hideOptionView(_ optionType: MarketViewModel.OptionType) {
@@ -196,7 +182,7 @@ final class MarketViewController: UIViewController {
                                          section: 0), animated: false,
                            scrollPosition: .none)
 
-        case .class, .grade, .tier:
+        case .class, .grade:
             marketView.hideOptionView(view: marketView.subOptionsTableView)
         }
     }
@@ -204,7 +190,6 @@ final class MarketViewController: UIViewController {
     private func touchSearchButton() {
         viewModel.touchSearchButton(itemName: marketView.itemSearchBar.text ?? "",
                                     class: marketView.classButton.titleLabel?.text ?? "",
-                                    grade: marketView.gradeButton.titleLabel?.text ?? "",
-                                    tier: marketView.tierButton.titleLabel?.text ?? "")
+                                    grade: marketView.gradeButton.titleLabel?.text ?? "")
     }
 }

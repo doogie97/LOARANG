@@ -13,14 +13,13 @@ protocol MarketViewModelInput {
     func selectOptionCell(_ index: Int)
     func selectCategorySubOption(mainIndex: Int, subIndex: Int)
     func touchBlurView()
-    func touchSearchButton(itemName: String, `class`: String, grade: String, tier: String)
+    func touchSearchButton(itemName: String, `class`: String, grade: String)
 }
 
 protocol MarketViewModelOutput {
     var categoryText: BehaviorRelay<String> { get }
     var classText: BehaviorRelay<String> { get }
     var gradeText: BehaviorRelay<String> { get }
-    var tierText: BehaviorRelay<String> { get }
     var categoryMainOptionIndex: Int { get }
     var categoryOptionList: BehaviorRelay<[MarketOptions.Category]> { get }
     var categorySubOptionList: BehaviorRelay<[MarketOptions.Category.Sub]> { get }
@@ -38,7 +37,6 @@ final class MarketViewModel: MarketViewModelable {
     private var categories: [MarketOptions.Category] = []
     private var classes: [String] = ["전체 직업"]
     private var itemGrades: [String] = ["전체 등급"]
-    private var itemTiers: [String] = ["전체 티어"]
     private var selectedOptionType: OptionType = .category
     
     private var categorySubOptionIndex: Int?
@@ -58,7 +56,6 @@ final class MarketViewModel: MarketViewModelable {
                 categoryOptionList.accept(categories)
                 classes.append(contentsOf: marketOptions.classes)
                 itemGrades.append(contentsOf: marketOptions.itemGrades)
-                itemTiers.append(contentsOf: marketOptions.itemTiers.map { "\($0) 티어" })
             } catch {
                 print("거래소 옵션을 불러올 수 없습니다") // 추후 얼럿으로 변경
             }
@@ -79,8 +76,6 @@ final class MarketViewModel: MarketViewModelable {
             subOptionList.accept(classes)
         case .grade:
             subOptionList.accept(itemGrades)
-        case .tier:
-            subOptionList.accept(itemTiers)
         }
         
         showOptionsView.accept(self.selectedOptionType)
@@ -95,8 +90,6 @@ final class MarketViewModel: MarketViewModelable {
             classText.accept(subOptionList.value[safe: index] ?? "")
         case .grade:
             gradeText.accept(subOptionList.value[safe: index] ?? "")
-        case .tier:
-            tierText.accept(subOptionList.value[safe: index] ?? "")
         }
         
         hideOptionView.accept(self.selectedOptionType)
@@ -114,7 +107,7 @@ final class MarketViewModel: MarketViewModelable {
         hideOptionView.accept(self.selectedOptionType)
     }
     
-    func touchSearchButton(itemName: String, `class`: String, grade: String, tier: String) {
+    func touchSearchButton(itemName: String, `class`: String, grade: String) {
         guard let categorySubOptionIndex = categorySubOptionIndex else {
             print("카테고리 설정해주세요 얼럿")
             return
@@ -124,7 +117,7 @@ final class MarketViewModel: MarketViewModelable {
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
                                                          categoryCode: categoryCode,
                                                          characterClass: `class` == "전체 직업" ? "" : `class`,
-                                                         itemTier: changedItemTier(tier),
+                                                         itemTier: 0,
                                                          itemGrade: grade == "전체 등급" ? "" : grade,
                                                          itemName: itemName,
                                                          pageNo: pageNo,
@@ -146,19 +139,6 @@ final class MarketViewModel: MarketViewModelable {
             let subCategory = mainCategory?.subs[safe: index - 1]
             return (code: subCategory?.code ?? 0,
                     codeName: (mainCategory?.codeName ?? "") + " - " + (subCategory?.codeName ?? ""))
-        }
-    }
-    
-    private func changedItemTier(_ tierString: String) -> Int {
-        switch tierString {
-        case "1 티어":
-            return 1
-        case "2 티어":
-            return 2
-        case "3 티어":
-            return 3
-        default:
-            return 0
         }
     }
     
@@ -184,7 +164,6 @@ final class MarketViewModel: MarketViewModelable {
     let categoryText = BehaviorRelay<String>(value: "카테고리를 선택해 주세요")
     let classText = BehaviorRelay<String>(value: "전체 직업")
     let gradeText = BehaviorRelay<String>(value: "전체 등급")
-    let tierText = BehaviorRelay<String>(value: "전체 티어")
     let categoryOptionList = BehaviorRelay<[MarketOptions.Category]>(value: [])
     let categorySubOptionList = BehaviorRelay<[MarketOptions.Category.Sub]>(value: [])
     let subOptionList = BehaviorRelay<[String]>(value: [])
@@ -205,8 +184,6 @@ final class MarketViewModel: MarketViewModelable {
             return classText.value
         case .grade:
             return gradeText.value
-        case .tier:
-            return tierText.value
         }
     }
 }
@@ -216,6 +193,5 @@ extension MarketViewModel {
         case category = 0
         case `class`
         case grade
-        case tier
     }
 }

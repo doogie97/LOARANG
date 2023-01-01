@@ -37,15 +37,13 @@ final class MarketView: UIView {
     private(set) lazy var categoryButton: UIButton = makeButton(tag: 0)
     private(set) lazy var classButton: UIButton = makeButton(tag: 1)
     private(set) lazy var gradeButton: UIButton = makeButton(tag: 2)
-    private(set) lazy var tierButton: UIButton = makeButton(tag: 3)
     
     private lazy var categoryButtonView = makeButtonView(button: categoryButton, directionInset: 16)
     private lazy var classButtonView = makeButtonView(button: classButton, directionInset: 8)
     private lazy var gradeButtonView = makeButtonView(button: gradeButton, directionInset: 8)
-    private lazy var tierButtonView = makeButtonView(button: tierButton, directionInset: 8)
     
     private lazy var bottomButtonStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [classButtonView, gradeButtonView, tierButtonView])
+        let stackView = UIStackView(arrangedSubviews: [classButtonView, gradeButtonView])
         stackView.distribution = .fillEqually
         stackView.spacing = 5
         
