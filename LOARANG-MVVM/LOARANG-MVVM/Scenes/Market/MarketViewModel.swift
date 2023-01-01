@@ -28,6 +28,7 @@ protocol MarketViewModelOutput {
     var showOptionsView: PublishRelay<MarketViewModel.OptionType> { get }
     var hideOptionView: PublishRelay<MarketViewModel.OptionType> { get }
     var optionButtonActivation: BehaviorRelay<MarketView.ButtonType> { get }
+    var showAlert: PublishRelay<String> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -57,8 +58,8 @@ final class MarketViewModel: MarketViewModelable {
                 categoryOptionList.accept(categories)
                 classes.append(contentsOf: marketOptions.classes)
                 itemGrades.append(contentsOf: marketOptions.itemGrades)
-            } catch {
-                print("거래소 옵션을 불러올 수 없습니다") // 추후 얼럿으로 변경
+            } catch let error {
+                showAlert.accept(error.limitErrorMessage ?? "거래소 옵션을 불러올 수 없습니다")
             }
         }
     }
@@ -111,7 +112,7 @@ final class MarketViewModel: MarketViewModelable {
     
     func touchSearchButton(itemName: String, `class`: String, grade: String) {
         guard let categorySubOptionIndex = categorySubOptionIndex else {
-            print("카테고리 설정해주세요 얼럿")
+            showAlert.accept("카테고리를 선택해주세요.")
             return
         }
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
@@ -160,18 +161,16 @@ final class MarketViewModel: MarketViewModelable {
     
     private func searchItem() {
         guard let searchOption = searchOption else {
-            print("검색 설정 다시해달라 얼럿")
+            showAlert.accept("거래소 옵션을 다시 설정해 주세요")
             return
         }
         Task {
             do {
-                
                 let searchAPI = SearchMarketItemsAPI(searchOption: searchOption)
                 let response = try await networkManager.request(searchAPI, resultType: MarketItems.self)
                 print(response.items.first?.name)
-            } catch let error{
-                print(error.errorMessage)
-                print("검색 에러 얼럿")
+            } catch let error {
+                showAlert.accept(error.limitErrorMessage ?? "검색 중 오류가 발생했습니다(\(error.statusCode ?? 000))")
             }
         }
     }
@@ -187,6 +186,7 @@ final class MarketViewModel: MarketViewModelable {
     let hideOptionView = PublishRelay<OptionType>()
     var categoryMainOptionIndex = 0
     let optionButtonActivation = BehaviorRelay<MarketView.ButtonType>(value: (.allActive))
+    let showAlert = PublishRelay<String>()
     
     var selectedOptionText: String {
         switch selectedOptionType {
