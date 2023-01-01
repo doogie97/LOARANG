@@ -124,7 +124,7 @@ final class MarketViewModel: MarketViewModelable {
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
                                                          categoryCode: categoryCode,
                                                          characterClass: `class` == "전체 직업" ? "" : `class`,
-                                                         itemTier: checkItemTier(tier),
+                                                         itemTier: changedItemTier(tier),
                                                          itemGrade: grade == "전체 등급" ? "" : grade,
                                                          itemName: itemName,
                                                          pageNo: pageNo,
@@ -149,7 +149,7 @@ final class MarketViewModel: MarketViewModelable {
         }
     }
     
-    private func checkItemTier(_ tierString: String) -> Int {
+    private func changedItemTier(_ tierString: String) -> Int {
         switch tierString {
         case "1 티어":
             return 1
@@ -195,6 +195,8 @@ final class MarketViewModel: MarketViewModelable {
     var selectedOptionText: String {
         switch selectedOptionType {
         case .category:
+            print(categoryMainOptionIndex)
+            print(categorySubOptionIndex)
             guard let subOptionText = categoryText.value.components(separatedBy: " - ")[safe: 1] else {
                 return ""
             }
