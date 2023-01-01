@@ -191,8 +191,6 @@ final class MarketViewModel: MarketViewModelable {
     var selectedOptionText: String {
         switch selectedOptionType {
         case .category:
-            print(categoryMainOptionIndex)
-            print(categorySubOptionIndex)
             guard let subOptionText = categoryText.value.components(separatedBy: " - ")[safe: 1] else {
                 return ""
             }
