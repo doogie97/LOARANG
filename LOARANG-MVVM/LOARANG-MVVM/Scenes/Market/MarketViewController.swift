@@ -41,6 +41,10 @@ final class MarketViewController: UIViewController {
             .withUnretained(self)
             .bind { owner, _ in
                 owner.viewModel.touchOptionButton(buttonTag: owner.marketView.categoryButton.tag)
+                let mainIndex = owner.viewModel.categoryMainOptionIndex
+                owner.marketView.categoryOptionView.mainOptionTableView
+                    .selectRow(at: IndexPath(row: mainIndex, section: 0), animated: false,
+                               scrollPosition: .bottom)
             }
             .disposed(by: disposeBag)
         

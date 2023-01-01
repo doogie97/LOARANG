@@ -21,6 +21,7 @@ protocol MarketViewModelOutput {
     var classText: BehaviorRelay<String> { get }
     var gradeText: BehaviorRelay<String> { get }
     var tierText: BehaviorRelay<String> { get }
+    var categoryMainOptionIndex: Int { get }
     var categoryOptionList: BehaviorRelay<[MarketOptions.Category]> { get }
     var categorySubOptionList: BehaviorRelay<[MarketOptions.Category.Sub]> { get }
     var subOptionList: BehaviorRelay<[String]> { get }
@@ -40,7 +41,6 @@ final class MarketViewModel: MarketViewModelable {
     private var itemTiers: [String] = ["전체 티어"]
     private var selectedOptionType: OptionType = .category
     
-    private var categoryMainOptionIndex = 0
     private var categorySubOptionIndex: Int?
     
     private var searchOption: SearchMarketItemsAPI.SearchOption?
@@ -190,6 +190,7 @@ final class MarketViewModel: MarketViewModelable {
     let subOptionList = BehaviorRelay<[String]>(value: [])
     let showOptionsView = PublishRelay<OptionType>()
     let hideOptionView = PublishRelay<OptionType>()
+    var categoryMainOptionIndex = 0
     
     var selectedOptionText: String {
         switch selectedOptionType {
