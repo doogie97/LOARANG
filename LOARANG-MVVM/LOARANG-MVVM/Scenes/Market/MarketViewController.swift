@@ -148,6 +148,13 @@ final class MarketViewController: UIViewController {
                 owner.touchSearchButton()
             }
             .disposed(by: disposeBag)
+        
+        viewModel.showAlert
+            .withUnretained(self)
+            .bind { owner, message in
+                owner.showAlert(message: message)
+            }
+            .disposed(by: disposeBag)
     }
 
     private func buttonTextBind() {
