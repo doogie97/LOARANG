@@ -41,10 +41,6 @@ final class MarketViewController: UIViewController {
             .withUnretained(self)
             .bind { owner, _ in
                 owner.viewModel.touchOptionButton(buttonTag: owner.marketView.categoryButton.tag)
-                let mainIndex = owner.viewModel.categoryMainOptionIndex
-                owner.marketView.categoryOptionView.mainOptionTableView
-                    .selectRow(at: IndexPath(row: mainIndex, section: 0), animated: false,
-                               scrollPosition: .bottom)
             }
             .disposed(by: disposeBag)
         
@@ -104,7 +100,9 @@ final class MarketViewController: UIViewController {
         
         viewModel.categorySubOptionList
             .bind(to: marketView.categoryOptionView.subOptionTableView.rx.items(cellIdentifier: "\(OptionCell.self)", cellType: OptionCell.self)) { [weak self] index, category, cell in
-                if category.codeName == self?.viewModel.selectedOptionText ?? "" {
+                let seletedMainIndex = self?.marketView.categoryOptionView.mainOptionTableView.indexPathForSelectedRow?.row
+                if self?.viewModel.categoryMainOptionIndex == seletedMainIndex,
+                   category.codeName == self?.viewModel.selectedOptionText ?? "" {
                     cell.setSelectedCell()
                 }
                 cell.setCellContents(optionTitle: category.codeName ?? "")
@@ -193,6 +191,11 @@ final class MarketViewController: UIViewController {
         switch optionType {
         case .category:
             marketView.hideOptionView(view: marketView.categoryOptionView)
+            marketView.categoryOptionView.mainOptionTableView
+                .selectRow(at: IndexPath(row: viewModel.categoryMainOptionIndex,
+                                         section: 0), animated: false,
+                           scrollPosition: .none)
+
         case .class, .grade, .tier:
             marketView.hideOptionView(view: marketView.subOptionsTableView)
         }
