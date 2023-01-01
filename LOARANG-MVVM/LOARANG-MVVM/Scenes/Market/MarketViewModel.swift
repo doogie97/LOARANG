@@ -41,7 +41,7 @@ final class MarketViewModel: MarketViewModelable {
     private var selectedOptionType: OptionType = .category
     
     private var categoryMainOptionIndex = 0
-    private var categorySubOptionIndex = 0
+    private var categorySubOptionIndex: Int?
     
     private var searchOption: SearchMarketItemsAPI.SearchOption?
     private var pageNo = 1
@@ -115,6 +115,10 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     func touchSearchButton(itemName: String, `class`: String, grade: String, tier: String) {
+        guard let categorySubOptionIndex = categorySubOptionIndex else {
+            print("카테고리 설정해주세요 얼럿")
+            return
+        }
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
 
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
@@ -139,7 +143,7 @@ final class MarketViewModel: MarketViewModelable {
         if index == 0 {
             return (code: mainCategory?.code ?? 0, codeName: (mainCategory?.codeName ?? "") + " - 전체")
         } else {
-            let subCategory = mainCategory?.subs[safe: categorySubOptionIndex - 1]
+            let subCategory = mainCategory?.subs[safe: index - 1]
             return (code: subCategory?.code ?? 0,
                     codeName: (mainCategory?.codeName ?? "") + " - " + (subCategory?.codeName ?? ""))
         }
