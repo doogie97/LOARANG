@@ -11,7 +11,7 @@ protocol MarketViewModelInput {
     func getMarketOptions()
     func touchOptionButton(buttonTag: Int)
     func selectOptionCell(_ index: Int)
-    func selectCategorySubOption(_ index: Int)
+    func selectCategorySubOption(mainIndex: Int, subIndex: Int)
     func touchBlurView()
     func touchSearchButton(itemName: String, `class`: String, grade: String, tier: String)
 }
@@ -102,9 +102,10 @@ final class MarketViewModel: MarketViewModelable {
         hideOptionView.accept(self.selectedOptionType)
     }
     
-    func selectCategorySubOption(_ index: Int) {
-        categorySubOptionIndex = index
-        categoryText.accept(categoryCodeSet(index: index).codeName)
+    func selectCategorySubOption(mainIndex: Int, subIndex: Int) {
+        categoryMainOptionIndex = mainIndex
+        categorySubOptionIndex = subIndex
+        categoryText.accept(categoryCodeSet(index: subIndex).codeName)
         
         hideOptionView.accept(self.selectedOptionType)
     }

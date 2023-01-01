@@ -129,8 +129,11 @@ final class MarketViewController: UIViewController {
         
         marketView.categoryOptionView.subOptionTableView.rx.itemSelected
             .withUnretained(self)
-            .bind { owner, indexPath in
-                owner.viewModel.selectCategorySubOption(indexPath.row)
+            .bind { [weak self] owner, indexPath in
+                let mainIndex = self?.marketView.categoryOptionView.mainOptionTableView.indexPathForSelectedRow?.row
+                
+                owner.viewModel.selectCategorySubOption(mainIndex: mainIndex ?? 0,
+                                                        subIndex: indexPath.row)
             }
             .disposed(by: disposeBag)
         
