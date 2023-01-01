@@ -21,7 +21,7 @@ extension Error {
     
     var limitErrorMessage: String? {
         if let statusCode = statusCode, statusCode == 429 {
-            return "검색 요청 초과. 1분 뒤 다시 요청해주세요!\n지속적으로 오류 발생시 고객센터 문의 바랍니다(설정 - 버그 제보 및 건의)"
+            return "검색 요청 초과, 1분 뒤 다시 요청해주세요!\n지속적으로 오류 발생시 고객센터 문의 바랍니다\n(설정 - 버그 제보 및 건의)"
         }
         
         return nil
