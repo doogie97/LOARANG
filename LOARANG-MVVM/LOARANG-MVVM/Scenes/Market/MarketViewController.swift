@@ -99,7 +99,10 @@ final class MarketViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.categorySubOptionList
-            .bind(to: marketView.categoryOptionView.subOptionTableView.rx.items(cellIdentifier: "\(OptionCell.self)", cellType: OptionCell.self)) { index, category, cell in
+            .bind(to: marketView.categoryOptionView.subOptionTableView.rx.items(cellIdentifier: "\(OptionCell.self)", cellType: OptionCell.self)) { [weak self] index, category, cell in
+                if category.codeName == self?.viewModel.selectedOptionText ?? "" {
+                    cell.setSelectedCell()
+                }
                 cell.setCellContents(optionTitle: category.codeName ?? "")
             }
             .disposed(by: disposeBag)

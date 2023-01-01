@@ -190,7 +190,10 @@ final class MarketViewModel: MarketViewModelable {
     var selectedOptionText: String {
         switch selectedOptionType {
         case .category:
-            return "" //일단 리턴
+            guard let subOptionText = categoryText.value.components(separatedBy: " - ")[safe: 1] else {
+                return ""
+            }
+            return subOptionText
         case .class:
             return classText.value
         case .grade:
