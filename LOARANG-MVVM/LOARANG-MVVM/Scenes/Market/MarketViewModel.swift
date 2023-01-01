@@ -121,9 +121,14 @@ final class MarketViewModel: MarketViewModelable {
     
     func touchSearchButton(itemName: String, `class`: String, grade: String) {
         guard let categorySubOptionIndex = categorySubOptionIndex else {
-            showAlert.accept("카테고리를 선택해주세요.")
+            showAlert.accept("카테고리를 선택해주세요")
             return
         }
+        
+        if itemName.count < 2 {
+            showAlert.accept("두 글자 이상 입력해주세요")
+        }
+        
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
         
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
