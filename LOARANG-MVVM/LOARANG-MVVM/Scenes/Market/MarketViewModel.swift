@@ -129,10 +129,6 @@ final class MarketViewModel: MarketViewModelable {
             return
         }
         
-        if itemName.count < 2 {
-            showAlert.accept("두 글자 이상 입력해주세요")
-        }
-        
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
         
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
@@ -188,6 +184,9 @@ final class MarketViewModel: MarketViewModelable {
                 let response = try await networkManager.request(searchAPI, resultType: MarketItems.self)
                 await MainActor.run {
                     print(response)
+                    if response.totalCount == 0 {
+                        print("검색된 아이템이 없습니다") // 추 후 에러? 라벨?
+                    }
                 }
             } catch let error {
                 await MainActor.run {
