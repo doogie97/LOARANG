@@ -123,7 +123,7 @@ final class MarketViewModel: MarketViewModelable {
 
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
                                                          categoryCode: categoryCode,
-                                                         characterClass: `class`,
+                                                         characterClass: `class` == "전체 직업" ? "" : `class`,
                                                          itemTier: checkItemTier(tier),
                                                          itemGrade: grade == "전체 등급" ? "" : grade,
                                                          itemName: itemName,
