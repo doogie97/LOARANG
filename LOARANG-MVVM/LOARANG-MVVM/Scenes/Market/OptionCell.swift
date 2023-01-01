@@ -44,8 +44,9 @@ final class OptionCell: UITableViewCell {
         }
         
         selectedIndicator.snp.makeConstraints {
-            $0.top.bottom.trailing.equalToSuperview().inset(16)
-            $0.height.width.equalTo(15)
+            $0.height.width.equalTo(15.5)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalTo(optionTitleLabel)
         }
     }
     
