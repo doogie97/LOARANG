@@ -171,6 +171,13 @@ final class MarketViewController: UIViewController {
                 owner.marketView.gradeButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.optionButtonActivation
+            .withUnretained(self)
+            .bind { owner, buttonType in
+                owner.marketView.setButtonActivation(buttonType)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func hideOptionView(_ optionType: MarketViewModel.OptionType) {

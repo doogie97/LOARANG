@@ -27,6 +27,7 @@ protocol MarketViewModelOutput {
     var selectedOptionText: String { get }
     var showOptionsView: PublishRelay<MarketViewModel.OptionType> { get }
     var hideOptionView: PublishRelay<MarketViewModel.OptionType> { get }
+    var optionButtonActivation: BehaviorRelay<MarketView.ButtonType> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -99,6 +100,7 @@ final class MarketViewModel: MarketViewModelable {
         categoryMainOptionIndex = mainIndex
         categorySubOptionIndex = subIndex
         categoryText.accept(categoryCodeSet(index: subIndex).codeName)
+        setButtonActivation(mainIndex)
         
         hideOptionView.accept(self.selectedOptionType)
     }
@@ -129,6 +131,20 @@ final class MarketViewModel: MarketViewModelable {
         let all = MarketOptions.Category.Sub(code: categories[safe: index]?.code,
                                              codeName: "전체")
         categorySubOptionList.accept([all] + (categories[safe: index]?.subs ?? []))
+    }
+    
+    private func setButtonActivation(_ index: Int) {
+        switch index {
+        case 0, 9, 11, 12:
+            optionButtonActivation.accept(.allInAcitve)
+            classText.accept("전체 직업")
+            gradeText.accept("전체 등급")
+        case 1:
+            optionButtonActivation.accept(.allActive)
+        default:
+            optionButtonActivation.accept(.gradeButtonActive)
+            classText.accept("전체 직업")
+        }
     }
     
     private func categoryCodeSet(index: Int) -> (code: Int, codeName: String) {
@@ -170,6 +186,7 @@ final class MarketViewModel: MarketViewModelable {
     let showOptionsView = PublishRelay<OptionType>()
     let hideOptionView = PublishRelay<OptionType>()
     var categoryMainOptionIndex = 0
+    let optionButtonActivation = BehaviorRelay<MarketView.ButtonType>(value: (.allActive))
     
     var selectedOptionText: String {
         switch selectedOptionType {

@@ -192,36 +192,39 @@ final class MarketView: UIView {
         }
     }
     
-    func activateButton() {
-        classButton.isEnabled = true
-        gradeButton.isEnabled = true
-        
-        classButton.layer.opacity = 1
-        gradeButton.layer.opacity = 1
+    func setButtonActivation(_ buttonType: ButtonType) {
+        switch buttonType {
+        case .classButtonActive:
+            setClassButtonActivation(isActive: true)
+            setGradeButtonActivation(isActive: false)
+        case .gradeButtonActive:
+            setClassButtonActivation(isActive: false)
+            setGradeButtonActivation(isActive: true)
+        case .allActive:
+            setClassButtonActivation(isActive: true)
+            setGradeButtonActivation(isActive: true)
+        case .allInAcitve:
+            setClassButtonActivation(isActive: false)
+            setGradeButtonActivation(isActive: false)
+        }
     }
     
-    func inActivateButton(_ buttonType: ButtonType) {
-        switch buttonType {
-        case .classButton:
-            classButton.isEnabled = false
-            classButton.layer.opacity = 0.3
-        case .gradeButton:
-            gradeButton.isEnabled = false
-            gradeButton.layer.opacity = 0.3
-        case .all:
-            classButton.isEnabled = false
-            gradeButton.isEnabled = false
-            
-            classButton.layer.opacity = 0.3
-            gradeButton.layer.opacity = 0.3
-        }
+    private func setClassButtonActivation(isActive: Bool) {
+        classButton.isEnabled = isActive
+        classButtonView.layer.opacity = isActive ? 1 : 0.3
+    }
+    
+    private func setGradeButtonActivation(isActive: Bool) {
+        gradeButton.isEnabled = isActive
+        gradeButtonView.layer.opacity = isActive ? 1 : 0.3
     }
 }
 
 extension MarketView {
     enum ButtonType {
-        case classButton
-        case gradeButton
-        case all
+        case classButtonActive
+        case gradeButtonActive
+        case allActive
+        case allInAcitve
     }
 }
