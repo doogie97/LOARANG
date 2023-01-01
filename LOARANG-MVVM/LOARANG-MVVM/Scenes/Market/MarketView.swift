@@ -191,4 +191,37 @@ final class MarketView: UIView {
             self?.layoutIfNeeded()
         }
     }
+    
+    func activateButton() {
+        classButton.isEnabled = true
+        gradeButton.isEnabled = true
+        
+        classButton.layer.opacity = 1
+        gradeButton.layer.opacity = 1
+    }
+    
+    func inActivateButton(_ buttonType: ButtonType) {
+        switch buttonType {
+        case .classButton:
+            classButton.isEnabled = false
+            classButton.layer.opacity = 0.3
+        case .gradeButton:
+            gradeButton.isEnabled = false
+            gradeButton.layer.opacity = 0.3
+        case .all:
+            classButton.isEnabled = false
+            gradeButton.isEnabled = false
+            
+            classButton.layer.opacity = 0.3
+            gradeButton.layer.opacity = 0.3
+        }
+    }
+}
+
+extension MarketView {
+    enum ButtonType {
+        case classButton
+        case gradeButton
+        case all
+    }
 }
