@@ -53,6 +53,10 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     private func getEvent() {
+        guard events.value.isEmpty else {
+            return
+        }
+        
         Task {
             do {
                 let news = try await networkManager.request(NewsAPIModel(), resultType: [News].self)
@@ -68,6 +72,10 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     private func getNotice() {
+        guard notices.value.isEmpty else {
+            return
+        }
+        
         crawlManager.getNotice { [weak self] result in
             switch result {
             case .success(let notice):

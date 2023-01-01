@@ -56,6 +56,10 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     func getMarketOptions() {
+        guard categories.isEmpty else {
+            return
+        }
+        
         Task {
             do {
                 let marketOptions = try await networkManager.request(MarketOptionsAPI(), resultType: MarketOptions.self)
