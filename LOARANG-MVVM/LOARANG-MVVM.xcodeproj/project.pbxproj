@@ -36,6 +36,7 @@
 		AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6D28B3673100621753 /* AvatarDetailViewController.swift */; };
 		AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6F28B3673700621753 /* AvatarDetailViewModel.swift */; };
 		AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B7128B38A5900621753 /* GemCell.swift */; };
+		AC3578EB2973A9AA00F41B56 /* MarketItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
@@ -194,6 +195,7 @@
 		AC2C2B6D28B3673100621753 /* AvatarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewController.swift; sourceTree = "<group>"; };
 		AC2C2B6F28B3673700621753 /* AvatarDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewModel.swift; sourceTree = "<group>"; };
 		AC2C2B7128B38A5900621753 /* GemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemCell.swift; sourceTree = "<group>"; };
+		AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketItemListView.swift; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				AC41164A295C7E6700A76BA4 /* MarketView.swift */,
 				AC41164C295C7E7300A76BA4 /* MarketViewController.swift */,
 				AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */,
+				AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */,
 				ACED60CE295EADDA00F5B45F /* OptionCell.swift */,
 				AC0EB207295E814800CC8043 /* CategoryOptionView.swift */,
 			);
@@ -1101,6 +1104,7 @@
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */,
+				AC3578EB2973A9AA00F41B56 /* MarketItemListView.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,

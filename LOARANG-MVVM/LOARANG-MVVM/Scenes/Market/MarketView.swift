@@ -50,6 +50,8 @@ final class MarketView: UIView {
         return stackView
     }()
     
+    private lazy var marketItemListView = MarketItemListView()
+    
     private func makeButton(tag: Int) -> UIButton {
         let button = UIButton(type: .system)
         button.tag = tag
@@ -118,6 +120,7 @@ final class MarketView: UIView {
         self.addSubview(searchButton)
         self.addSubview(categoryButtonView)
         self.addSubview(bottomButtonStackView)
+        self.addSubview(marketItemListView)
         self.addSubview(blurButtonView)
         self.addSubview(categoryOptionView)
         self.addSubview(subOptionsTableView)
@@ -142,6 +145,11 @@ final class MarketView: UIView {
         bottomButtonStackView.snp.makeConstraints {
             $0.top.equalTo(categoryButton.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        marketItemListView.snp.makeConstraints {
+            $0.top.equalTo(bottomButtonStackView.snp.bottom).offset(16)
+            $0.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
         }
         
         blurButtonView.snp.makeConstraints {
