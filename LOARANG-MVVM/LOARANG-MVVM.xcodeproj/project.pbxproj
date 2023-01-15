@@ -437,6 +437,19 @@
 			path = Gems;
 			sourceTree = "<group>";
 		};
+		AC3578F22973F3CC00F41B56 /* MarketView */ = {
+			isa = PBXGroup;
+			children = (
+				AC41164A295C7E6700A76BA4 /* MarketView.swift */,
+				AC3578EE2973EA7100F41B56 /* MarketOptionView.swift */,
+				AC0EB207295E814800CC8043 /* CategoryOptionView.swift */,
+				AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */,
+				ACED60CE295EADDA00F5B45F /* OptionCell.swift */,
+				AC3578EC2973B3BC00F41B56 /* MarketItemCell.swift */,
+			);
+			path = MarketView;
+			sourceTree = "<group>";
+		};
 		AC3FEBFE28804E9600CDE796 /* Extesnsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,14 +517,9 @@
 		AC411649295C7E4F00A76BA4 /* Market */ = {
 			isa = PBXGroup;
 			children = (
-				AC41164A295C7E6700A76BA4 /* MarketView.swift */,
-				AC3578EE2973EA7100F41B56 /* MarketOptionView.swift */,
-				AC0EB207295E814800CC8043 /* CategoryOptionView.swift */,
+				AC3578F22973F3CC00F41B56 /* MarketView */,
 				AC41164C295C7E7300A76BA4 /* MarketViewController.swift */,
 				AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */,
-				AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */,
-				ACED60CE295EADDA00F5B45F /* OptionCell.swift */,
-				AC3578EC2973B3BC00F41B56 /* MarketItemCell.swift */,
 			);
 			path = Market;
 			sourceTree = "<group>";
