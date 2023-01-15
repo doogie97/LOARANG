@@ -41,24 +41,24 @@ final class MarketViewController: UIViewController {
     private func bindView() {
         buttonTextBind()
         bindItemTableView()
-        marketView.categoryButton.rx.tap
+        marketView.marketOptionView.categoryButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.categoryButton.tag)
+                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.marketOptionView.categoryButton.tag)
             }
             .disposed(by: disposeBag)
         
-        marketView.classButton.rx.tap
+        marketView.marketOptionView.classButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.classButton.tag)
+                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.marketOptionView.classButton.tag)
             }
             .disposed(by: disposeBag)
         
-        marketView.gradeButton.rx.tap
+        marketView.marketOptionView.gradeButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
-                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.gradeButton.tag)
+                owner.viewModel.touchOptionButton(buttonTag: owner.marketView.marketOptionView.gradeButton.tag)
             }
             .disposed(by: disposeBag)
         
@@ -139,14 +139,14 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        marketView.itemSearchBar.searchTextField.rx.controlEvent(.editingDidEndOnExit)
+        marketView.marketOptionView.itemSearchBar.searchTextField.rx.controlEvent(.editingDidEndOnExit)
             .withUnretained(self)
             .bind { owner, _ in
                 owner.touchSearchButton()
             }
             .disposed(by: disposeBag)
         
-        marketView.searchButton.rx.tap
+        marketView.marketOptionView.searchButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
                 owner.touchSearchButton()
@@ -165,28 +165,28 @@ final class MarketViewController: UIViewController {
         viewModel.categoryText
             .withUnretained(self)
             .bind { owner, text in
-                owner.marketView.categoryButton.setTitle(text, for: .normal)
+                owner.marketView.marketOptionView.categoryButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
         
         viewModel.classText
             .withUnretained(self)
             .bind { owner, text in
-                owner.marketView.classButton.setTitle(text, for: .normal)
+                owner.marketView.marketOptionView.classButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
         
         viewModel.gradeText
             .withUnretained(self)
             .bind { owner, text in
-                owner.marketView.gradeButton.setTitle(text, for: .normal)
+                owner.marketView.marketOptionView.gradeButton.setTitle(text, for: .normal)
             }
             .disposed(by: disposeBag)
         
         viewModel.optionButtonActivation
             .withUnretained(self)
             .bind { owner, buttonType in
-                owner.marketView.setButtonActivation(buttonType)
+                owner.marketView.marketOptionView.setButtonActivation(buttonType)
             }
             .disposed(by: disposeBag)
     }
@@ -206,9 +206,9 @@ final class MarketViewController: UIViewController {
     }
     
     private func touchSearchButton() {
-        viewModel.touchSearchButton(itemName: marketView.itemSearchBar.text ?? "",
-                                    class: marketView.classButton.titleLabel?.text ?? "",
-                                    grade: marketView.gradeButton.titleLabel?.text ?? "")
+        viewModel.touchSearchButton(itemName: marketView.marketOptionView.itemSearchBar.text ?? "",
+                                    class: marketView.marketOptionView.classButton.titleLabel?.text ?? "",
+                                    grade: marketView.marketOptionView.gradeButton.titleLabel?.text ?? "")
     }
     
     private func bindItemTableView() {

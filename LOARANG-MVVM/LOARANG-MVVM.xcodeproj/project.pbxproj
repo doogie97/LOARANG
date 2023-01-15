@@ -38,6 +38,7 @@
 		AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B7128B38A5900621753 /* GemCell.swift */; };
 		AC3578EB2973A9AA00F41B56 /* MarketItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */; };
 		AC3578ED2973B3BC00F41B56 /* MarketItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3578EC2973B3BC00F41B56 /* MarketItemCell.swift */; };
+		AC3578EF2973EA7100F41B56 /* MarketOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3578EE2973EA7100F41B56 /* MarketOptionView.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
@@ -198,6 +199,7 @@
 		AC2C2B7128B38A5900621753 /* GemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemCell.swift; sourceTree = "<group>"; };
 		AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketItemListView.swift; sourceTree = "<group>"; };
 		AC3578EC2973B3BC00F41B56 /* MarketItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketItemCell.swift; sourceTree = "<group>"; };
+		AC3578EE2973EA7100F41B56 /* MarketOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketOptionView.swift; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -503,12 +505,13 @@
 			isa = PBXGroup;
 			children = (
 				AC41164A295C7E6700A76BA4 /* MarketView.swift */,
+				AC3578EE2973EA7100F41B56 /* MarketOptionView.swift */,
+				AC0EB207295E814800CC8043 /* CategoryOptionView.swift */,
 				AC41164C295C7E7300A76BA4 /* MarketViewController.swift */,
 				AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */,
 				AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */,
-				AC3578EC2973B3BC00F41B56 /* MarketItemCell.swift */,
-				AC0EB207295E814800CC8043 /* CategoryOptionView.swift */,
 				ACED60CE295EADDA00F5B45F /* OptionCell.swift */,
+				AC3578EC2973B3BC00F41B56 /* MarketItemCell.swift */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				ACD547B128EBF8A000D44ACA /* RecentUser.swift in Sources */,
 				AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */,
 				AC4E19EE28C4474600542EAE /* CardCVCell.swift in Sources */,
+				AC3578EF2973EA7100F41B56 /* MarketOptionView.swift in Sources */,
 				AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
 				AC3578ED2973B3BC00F41B56 /* MarketItemCell.swift in Sources */,

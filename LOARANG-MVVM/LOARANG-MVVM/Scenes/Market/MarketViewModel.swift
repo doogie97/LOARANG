@@ -28,7 +28,7 @@ protocol MarketViewModelOutput {
     var selectedOptionText: String { get }
     var showOptionsView: PublishRelay<MarketViewModel.OptionType> { get }
     var hideOptionView: PublishRelay<MarketViewModel.OptionType> { get }
-    var optionButtonActivation: BehaviorRelay<MarketView.ButtonType> { get }
+    var optionButtonActivation: BehaviorRelay<MarketOptionView.ButtonType> { get }
     var showAlert: PublishRelay<String> { get }
     var marketItems: BehaviorRelay<[MarketItems.Item]> { get }
 }
@@ -211,7 +211,7 @@ final class MarketViewModel: MarketViewModelable {
     let showOptionsView = PublishRelay<OptionType>()
     let hideOptionView = PublishRelay<OptionType>()
     var categoryMainOptionIndex = 0
-    let optionButtonActivation = BehaviorRelay<MarketView.ButtonType>(value: (.allActive))
+    let optionButtonActivation = BehaviorRelay<MarketOptionView.ButtonType>(value: (.allActive))
     let showAlert = PublishRelay<String>()
     
     var selectedOptionText: String {

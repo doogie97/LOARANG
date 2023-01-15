@@ -17,51 +17,7 @@ final class MarketView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var marketScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        
-        return scrollView
-    }()
-    
-    private lazy var marketContentsView: UIView = {
-        let view = UIView()
-        
-        return view
-    }()
-    
-    private(set) lazy var itemSearchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = "아이템 명"
-        
-        return searchBar
-    }()
-    
-    private(set) lazy var searchButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("검색", for: .normal)
-        button.setTitleColor(.systemGray, for: .normal)
-        button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
-        
-        return button
-    }()
-    
-    private(set) lazy var categoryButton: UIButton = makeButton(tag: 0)
-    private(set) lazy var classButton: UIButton = makeButton(tag: 1)
-    private(set) lazy var gradeButton: UIButton = makeButton(tag: 2)
-    
-    private lazy var categoryButtonView = makeButtonView(button: categoryButton, directionInset: 16)
-    private lazy var classButtonView = makeButtonView(button: classButton, directionInset: 8)
-    private lazy var gradeButtonView = makeButtonView(button: gradeButton, directionInset: 8)
-    
-    private lazy var bottomButtonStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [classButtonView, gradeButtonView])
-        stackView.distribution = .fillEqually
-        stackView.spacing = 5
-        
-        return stackView
-    }()
-    
+    private(set) lazy var marketOptionView = MarketOptionView()
     private(set) lazy var marketItemListView = MarketItemListView()
     
     private(set) lazy var noItemLabel: UILabel = {
@@ -72,44 +28,6 @@ final class MarketView: UIView {
         
         return label
     }()
-    
-    private func makeButton(tag: Int) -> UIButton {
-        let button = UIButton(type: .system)
-        button.tag = tag
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.one(size: 12, family: .Bold)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.systemGray2.cgColor
-        button.layer.cornerRadius = 10
-        
-        return button
-    }
-    
-    private func makeButtonView(button: UIButton, directionInset: Int) -> UIView {
-        let view = UIView()
-        
-        let directionImageView = UIImageView()
-        directionImageView.tintColor = .label
-        directionImageView.image = UIImage(systemName: "chevron.down")
-        
-        view.addSubview(button)
-        view.addSubview(directionImageView)
-        
-        button.snp.makeConstraints {
-            $0.height.equalTo(40)
-            $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-        }
-        
-        directionImageView.snp.makeConstraints {
-            $0.height.equalTo(16)
-            $0.width.equalTo(12)
-            $0.centerY.equalTo(button)
-            $0.trailing.equalTo(button.snp.trailing).inset(directionInset)
-        }
-        
-        return view
-    }
     
     private(set) lazy var categoryOptionView = CategoryOptionView()
     
@@ -138,15 +56,9 @@ final class MarketView: UIView {
         self.backgroundColor = .mainBackground
         
         self.addSubview(noItemLabel)
-        self.addSubview(marketScrollView)
 
-        marketScrollView.addSubview(marketContentsView)
-
-        marketContentsView.addSubview(itemSearchBar)
-        marketContentsView.addSubview(searchButton)
-        marketContentsView.addSubview(categoryButtonView)
-        marketContentsView.addSubview(bottomButtonStackView)
-        marketContentsView.addSubview(marketItemListView)
+        self.addSubview(marketOptionView)
+        self.addSubview(marketItemListView)
         self.addSubview(blurButtonView)
         self.addSubview(categoryOptionView)
         self.addSubview(subOptionsTableView)
@@ -154,42 +66,15 @@ final class MarketView: UIView {
         noItemLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        marketScrollView.snp.makeConstraints {
-            $0.edges.equalTo(self.safeAreaLayoutGuide)
-        }
-        
-        marketContentsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
-        }
 
-        itemSearchBar.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(8)
-            $0.top.equalToSuperview().inset(16)
-            $0.trailing.equalTo(searchButton.snp.leading).inset(-8)
-        }
-
-        searchButton.snp.makeConstraints {
-            $0.height.equalTo(30)
-            $0.centerY.equalTo(itemSearchBar)
-            $0.trailing.equalToSuperview().inset(24)
-        }
-
-        categoryButtonView.snp.makeConstraints {
-            $0.top.equalTo(itemSearchBar.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        bottomButtonStackView.snp.makeConstraints {
-            $0.top.equalTo(categoryButton.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview().inset(16)
+        marketOptionView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
         }
 
         marketItemListView.snp.makeConstraints {
-            $0.top.equalTo(bottomButtonStackView.snp.bottom).offset(16)
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview()
+            $0.top.equalTo(marketOptionView.snp.bottom).offset(16)
+            $0.bottom.leading.trailing.equalToSuperview().inset(16)
         }
 
         blurButtonView.snp.makeConstraints {
@@ -239,40 +124,5 @@ final class MarketView: UIView {
             self?.layoutIfNeeded()
         }
     }
-    
-    func setButtonActivation(_ buttonType: ButtonType) {
-        switch buttonType {
-        case .classButtonActive:
-            setClassButtonActivation(isActive: true)
-            setGradeButtonActivation(isActive: false)
-        case .gradeButtonActive:
-            setClassButtonActivation(isActive: false)
-            setGradeButtonActivation(isActive: true)
-        case .allActive:
-            setClassButtonActivation(isActive: true)
-            setGradeButtonActivation(isActive: true)
-        case .allInAcitve:
-            setClassButtonActivation(isActive: false)
-            setGradeButtonActivation(isActive: false)
-        }
-    }
-    
-    private func setClassButtonActivation(isActive: Bool) {
-        classButton.isEnabled = isActive
-        classButtonView.layer.opacity = isActive ? 1 : 0.3
-    }
-    
-    private func setGradeButtonActivation(isActive: Bool) {
-        gradeButton.isEnabled = isActive
-        gradeButtonView.layer.opacity = isActive ? 1 : 0.3
-    }
 }
 
-extension MarketView {
-    enum ButtonType {
-        case classButtonActive
-        case gradeButtonActive
-        case allActive
-        case allInAcitve
-    }
-}

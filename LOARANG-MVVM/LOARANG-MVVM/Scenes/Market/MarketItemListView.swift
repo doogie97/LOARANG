@@ -17,10 +17,10 @@ final class MarketItemListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private(set) lazy var marketItemTableView: DynamicHeightTableView = {
-        let tableView = DynamicHeightTableView()
+    private(set) lazy var marketItemTableView: UITableView = {
+        let tableView = UITableView()
         tableView.separatorStyle = .none
-        tableView.isScrollEnabled = false
+        tableView.backgroundColor = .mainBackground
         tableView.register(MarketItemCell.self)
         
         return tableView
