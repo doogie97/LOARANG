@@ -132,6 +132,8 @@ final class MarketViewModel: MarketViewModelable {
         
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
         
+        pageNo = 1
+        
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
                                                          categoryCode: categoryCode,
                                                          characterClass: `class` == "전체 직업" ? "" : `class`,
@@ -187,7 +189,10 @@ final class MarketViewModel: MarketViewModelable {
                     if response.totalCount == 0 {
                         showAlert.accept("검색된 아이템이 없습니다")
                     }
+                    
                     marketItems.accept(response.items)
+                    pageNo += 1
+                    print(pageNo)
                 }
             } catch let error {
                 await MainActor.run {
