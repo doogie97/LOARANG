@@ -30,7 +30,7 @@ final class MarketItemListView: UIView {
         self.addSubview(marketItemTableView)
         
         marketItemTableView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.edges.equalToSuperview()
             $0.height.equalTo(2000)
         }
     }

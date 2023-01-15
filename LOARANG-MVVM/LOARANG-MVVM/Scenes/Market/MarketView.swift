@@ -17,6 +17,18 @@ final class MarketView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var marketScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        
+        return scrollView
+    }()
+    
+    private lazy var marketContentsView: UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
     private(set) lazy var itemSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = .minimal
@@ -116,27 +128,39 @@ final class MarketView: UIView {
     private func setLayout() {
         self.backgroundColor = .mainBackground
         
-        self.addSubview(itemSearchBar)
-        self.addSubview(searchButton)
-        self.addSubview(categoryButtonView)
-        self.addSubview(bottomButtonStackView)
-        self.addSubview(marketItemListView)
-        self.addSubview(blurButtonView)
-        self.addSubview(categoryOptionView)
-        self.addSubview(subOptionsTableView)
+        self.addSubview(marketScrollView)
+        marketScrollView.addSubview(marketContentsView)
+        
+        marketContentsView.addSubview(itemSearchBar)
+        marketContentsView.addSubview(searchButton)
+        marketContentsView.addSubview(categoryButtonView)
+        marketContentsView.addSubview(bottomButtonStackView)
+        marketContentsView.addSubview(marketItemListView)
+        marketScrollView.addSubview(blurButtonView)
+        marketScrollView.addSubview(categoryOptionView)
+        marketScrollView.addSubview(subOptionsTableView)
 
-        itemSearchBar.snp.makeConstraints {
-            $0.leading.equalTo(self.safeAreaLayoutGuide).inset(8)
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(16)
-            $0.trailing.equalTo(searchButton.snp.leading).inset(-8)
+        marketScrollView.snp.makeConstraints {
+            $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
+        marketContentsView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+
+        itemSearchBar.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(8)
+            $0.top.equalToSuperview().inset(16)
+            $0.trailing.equalTo(searchButton.snp.leading).inset(-8)
+        }
+
         searchButton.snp.makeConstraints {
             $0.height.equalTo(30)
             $0.centerY.equalTo(itemSearchBar)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(24)
+            $0.trailing.equalToSuperview().inset(24)
         }
-        
+
         categoryButtonView.snp.makeConstraints {
             $0.top.equalTo(itemSearchBar.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(16)
@@ -146,22 +170,23 @@ final class MarketView: UIView {
             $0.top.equalTo(categoryButton.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
-        
+
         marketItemListView.snp.makeConstraints {
             $0.top.equalTo(bottomButtonStackView.snp.bottom).offset(16)
-            $0.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview()
         }
-        
+
         blurButtonView.snp.makeConstraints {
-            $0.edges.equalTo(self.safeAreaLayoutGuide)
+            $0.edges.equalToSuperview()
         }
-        
+
         categoryOptionView.snp.makeConstraints {
             $0.height.equalTo(0)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-        
+
         subOptionsTableView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
