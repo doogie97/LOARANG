@@ -35,6 +35,7 @@ final class TabBarViewController: UITabBarController {
     
     private func setTabBarView() {
         self.tabBar.tintColor = .buttonColor
+        self.tabBar.backgroundColor = .systemGray5
         self.setViewControllers([mainVC, marketVC, settingVC], animated: false)
     }
     
