@@ -69,7 +69,8 @@ final class MarketView: UIView {
 
         marketItemListView.snp.makeConstraints {
             $0.top.equalTo(marketOptionView.snp.bottom).offset(16)
-            $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         
         noItemLabel.snp.makeConstraints {

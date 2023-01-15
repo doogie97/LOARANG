@@ -34,9 +34,25 @@ final class MarketItemCell: UITableViewCell {
         return imageView
     }()
     
+    private lazy var titleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [nameLabel, tradeRemainCountLabel])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        
+        return stackView
+    }()
+    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = .one(size: 14, family: .Bold)
+        
+        return label
+    }()
+    
+    private lazy var tradeRemainCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = .one(size: 12, family: .Bold)
+        label.textColor = .systemGray
         
         return label
     }()
@@ -48,12 +64,11 @@ final class MarketItemCell: UITableViewCell {
         contentView.addSubview(backView)
         
         backView.addSubview(itemImageView)
-        backView.addSubview(nameLabel)
+        backView.addSubview(titleStackView)
         
         backView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.bottom.equalToSuperview().inset(5)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(5)
         }
         
         itemImageView.snp.makeConstraints {
@@ -61,9 +76,9 @@ final class MarketItemCell: UITableViewCell {
             $0.width.height.equalTo(48)
         }
         
-        nameLabel.snp.makeConstraints {
+        titleStackView.snp.makeConstraints {
             $0.leading.equalTo(itemImageView.snp.trailing).offset(16)
-            $0.top.trailing.equalToSuperview().inset(16)
+            $0.top.trailing.bottom.equalToSuperview().inset(16)
         }
     }
     
@@ -71,6 +86,11 @@ final class MarketItemCell: UITableViewCell {
         _ = itemImageView.setImage(urlString: item.imageURL)
         itemImageView.backgroundColor = ItemGrade(rawValue: item.grade ?? "")?.backgroundColor
         nameLabel.text = item.name
+        if let tradeRemainCount = item.tradeRemainCount {
+            tradeRemainCountLabel.text = tradeRemainCount == 0 ? "구매시 거래 불가" : "구매시 거래 \(tradeRemainCount)회 가능"
+        } else {
+            tradeRemainCountLabel.text = "거래 제한 없음"
+        }
     }
     
     override func prepareForReuse() {
@@ -78,6 +98,7 @@ final class MarketItemCell: UITableViewCell {
         
         itemImageView.image = nil
         nameLabel.text = nil
+        tradeRemainCountLabel.text = nil
     }
     
     enum ItemGrade: String {
