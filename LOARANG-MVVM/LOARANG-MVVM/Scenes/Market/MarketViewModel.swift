@@ -30,6 +30,7 @@ protocol MarketViewModelOutput {
     var hideOptionView: PublishRelay<MarketViewModel.OptionType> { get }
     var optionButtonActivation: BehaviorRelay<MarketView.ButtonType> { get }
     var showAlert: PublishRelay<String> { get }
+    var marketItems: BehaviorRelay<[MarketItems.Item]> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -183,10 +184,10 @@ final class MarketViewModel: MarketViewModelable {
                 let searchAPI = SearchMarketItemsAPI(searchOption: searchOption)
                 let response = try await networkManager.request(searchAPI, resultType: MarketItems.self)
                 await MainActor.run {
-                    print(response)
                     if response.totalCount == 0 {
-                        print("검색된 아이템이 없습니다") // 추 후 에러? 라벨?
+                        showAlert.accept("검색된 아이템이 없습니다")
                     }
+                    marketItems.accept(response.items)
                 }
             } catch let error {
                 await MainActor.run {
@@ -222,6 +223,8 @@ final class MarketViewModel: MarketViewModelable {
             return gradeText.value
         }
     }
+    
+    let marketItems = BehaviorRelay<[MarketItems.Item]>(value: [])
 }
 
 extension MarketViewModel {
