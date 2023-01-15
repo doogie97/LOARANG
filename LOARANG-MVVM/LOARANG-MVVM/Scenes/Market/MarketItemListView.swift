@@ -20,6 +20,7 @@ final class MarketItemListView: UIView {
     private(set) lazy var marketItemTableView: DynamicHeightTableView = {
         let tableView = DynamicHeightTableView()
         tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         tableView.register(MarketItemCell.self)
         
         return tableView
