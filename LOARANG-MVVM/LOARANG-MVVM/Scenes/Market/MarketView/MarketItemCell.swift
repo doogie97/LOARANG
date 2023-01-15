@@ -59,7 +59,7 @@ final class MarketItemCell: UITableViewCell {
         
         itemImageView.snp.makeConstraints {
             $0.top.leading.bottom.equalToSuperview().inset(16)
-            $0.width.height.equalTo(64)
+            $0.width.height.equalTo(48)
         }
         
         nameLabel.snp.makeConstraints {
