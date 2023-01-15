@@ -32,6 +32,7 @@ protocol MarketViewModelOutput {
     var optionButtonActivation: BehaviorRelay<MarketOptionView.ButtonType> { get }
     var showAlert: PublishRelay<String> { get }
     var marketItems: BehaviorRelay<[MarketItems.Item]> { get }
+    var totalCount: BehaviorRelay<Int> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -47,7 +48,6 @@ final class MarketViewModel: MarketViewModelable {
     private var categorySubOptionIndex: Int?
     
     private var searchOption: SearchMarketItemsAPI.SearchOption?
-    private var pageNo = 1
     
     init(networkManager: NetworkManagerable) {
         self.networkManager = networkManager
@@ -133,7 +133,7 @@ final class MarketViewModel: MarketViewModelable {
         
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
         
-        pageNo = 1
+        totalCount.accept(0)
         marketItems.accept([])
         
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
@@ -142,7 +142,7 @@ final class MarketViewModel: MarketViewModelable {
                                                          itemTier: 0,
                                                          itemGrade: grade == "전체 등급" ? "" : grade,
                                                          itemName: itemName,
-                                                         pageNo: pageNo,
+                                                         pageNo: 1,
                                                          sortCondition: .asc)
         searchItem()
     }
@@ -183,10 +183,15 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     private func searchItem() {
+        if totalCount.value != 0, totalCount.value == marketItems.value.count {
+            return
+        }
+        
         guard let searchOption = searchOption else {
             showAlert.accept("거래소 옵션을 다시 설정해 주세요")
             return
         }
+        
         Task {
             do {
                 let searchAPI = SearchMarketItemsAPI(searchOption: searchOption)
@@ -199,7 +204,8 @@ final class MarketViewModel: MarketViewModelable {
                     let oldItems = marketItems.value
                     let newItems = response.items
                     marketItems.accept(oldItems + newItems)
-                    pageNo += 1
+                    totalCount.accept(response.totalCount ?? 0)
+                    self.searchOption?.pageNo += 1
                 }
             } catch let error {
                 await MainActor.run {
@@ -237,6 +243,7 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     let marketItems = BehaviorRelay<[MarketItems.Item]>(value: [])
+    let totalCount = BehaviorRelay<Int>(value: 0)
 }
 
 extension MarketViewModel {
