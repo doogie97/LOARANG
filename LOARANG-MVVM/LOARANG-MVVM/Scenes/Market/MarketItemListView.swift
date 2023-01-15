@@ -21,8 +21,6 @@ final class MarketItemListView: UIView {
         let tableView = DynamicHeightTableView()
         tableView.separatorStyle = .none
         
-        tableView.backgroundColor = .red
-        
         return tableView
     }()
     
@@ -31,7 +29,6 @@ final class MarketItemListView: UIView {
         
         marketItemTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-            $0.height.equalTo(2000)
         }
     }
 }
