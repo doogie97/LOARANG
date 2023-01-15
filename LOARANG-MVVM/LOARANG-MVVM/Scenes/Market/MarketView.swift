@@ -62,7 +62,7 @@ final class MarketView: UIView {
         return stackView
     }()
     
-    private lazy var marketItemListView = MarketItemListView()
+    private(set) lazy var marketItemListView = MarketItemListView()
     
     private(set) lazy var noItemLabel: UILabel = {
         let label = UILabel()
