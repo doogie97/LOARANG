@@ -64,6 +64,15 @@ final class MarketView: UIView {
     
     private lazy var marketItemListView = MarketItemListView()
     
+    private(set) lazy var noItemLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "아이템을 검색해 주세요"
+        label.font = .one(size: 20, family: .Bold)
+        
+        return label
+    }()
+    
     private func makeButton(tag: Int) -> UIButton {
         let button = UIButton(type: .system)
         button.tag = tag
@@ -128,9 +137,11 @@ final class MarketView: UIView {
     private func setLayout() {
         self.backgroundColor = .mainBackground
         
+        self.addSubview(noItemLabel)
         self.addSubview(marketScrollView)
+
         marketScrollView.addSubview(marketContentsView)
-        
+
         marketContentsView.addSubview(itemSearchBar)
         marketContentsView.addSubview(searchButton)
         marketContentsView.addSubview(categoryButtonView)
@@ -140,6 +151,10 @@ final class MarketView: UIView {
         marketScrollView.addSubview(categoryOptionView)
         marketScrollView.addSubview(subOptionsTableView)
 
+        noItemLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         marketScrollView.snp.makeConstraints {
             $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
