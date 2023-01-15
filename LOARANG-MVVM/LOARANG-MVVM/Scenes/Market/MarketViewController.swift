@@ -225,5 +225,16 @@ final class MarketViewController: UIViewController {
                 cell.setCellContents(item)
             }
             .disposed(by: disposeBag)
+        
+        marketView.marketItemListView.marketItemTableView.rx.prefetchRows
+            .withUnretained(self)
+            .bind { owner, indexPath in
+                let itemCount = owner.viewModel.marketItems.value.count
+                
+                if indexPath.last?.row == itemCount - 1 {
+                    owner.viewModel.scrolledEndPoint()
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

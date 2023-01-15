@@ -14,6 +14,7 @@ protocol MarketViewModelInput {
     func selectCategorySubOption(mainIndex: Int, subIndex: Int)
     func touchBlurView()
     func touchSearchButton(itemName: String, `class`: String, grade: String)
+    func scrolledEndPoint()
     func viewDidAppear()
 }
 
@@ -146,6 +147,10 @@ final class MarketViewModel: MarketViewModelable {
         searchItem()
     }
     
+    func scrolledEndPoint() {
+        searchItem()
+    }
+    
     private func acceptCategorySubOption(_ index: Int) {
         let all = MarketOptions.Category.Sub(code: categories[safe: index]?.code,
                                              codeName: "전체")
@@ -191,7 +196,9 @@ final class MarketViewModel: MarketViewModelable {
                         showAlert.accept("검색된 아이템이 없습니다")
                     }
                     
-                    marketItems.accept(response.items)
+                    let oldItems = marketItems.value
+                    let newItems = response.items
+                    marketItems.accept(oldItems + newItems)
                     pageNo += 1
                 }
             } catch let error {
