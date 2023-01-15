@@ -36,8 +36,7 @@ final class MarketItemCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .one(size: 16, family: .Bold)
-        label.backgroundColor = .red
+        label.font = .one(size: 14, family: .Bold)
         
         return label
     }()
@@ -63,10 +62,9 @@ final class MarketItemCell: UITableViewCell {
         }
         
         nameLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(100)
-            $0.top.trailing.bottom.equalToSuperview().inset(16)
+            $0.leading.equalTo(itemImageView.snp.trailing).offset(16)
+            $0.top.trailing.equalToSuperview().inset(16)
         }
-        
     }
     
     func setCellContents(_ item: MarketItems.Item) {
