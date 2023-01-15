@@ -31,4 +31,8 @@ final class MarketItemCell: UITableViewCell {
             $0.edges.equalToSuperview()
         }
     }
+    
+    func setCellContents(_ item: MarketItems.Item) {
+        _ = itemImageView.setImage(urlString: item.imageURL)
+    }
 }

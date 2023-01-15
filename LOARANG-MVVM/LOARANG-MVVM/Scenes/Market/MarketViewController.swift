@@ -214,7 +214,7 @@ final class MarketViewController: UIViewController {
     private func bindItemTableView() {
         viewModel.marketItems
             .bind(to: marketView.marketItemListView.marketItemTableView.rx.items(cellIdentifier: "\(MarketItemCell.self)", cellType: MarketItemCell.self)) { index, item, cell in
-                print(item.name)
+                cell.setCellContents(item)
             }
             .disposed(by: disposeBag)
     }
