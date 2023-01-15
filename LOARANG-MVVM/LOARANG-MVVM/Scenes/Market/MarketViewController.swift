@@ -40,6 +40,7 @@ final class MarketViewController: UIViewController {
     
     private func bindView() {
         buttonTextBind()
+        bindItemTableView()
         marketView.categoryButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
@@ -208,5 +209,13 @@ final class MarketViewController: UIViewController {
         viewModel.touchSearchButton(itemName: marketView.itemSearchBar.text ?? "",
                                     class: marketView.classButton.titleLabel?.text ?? "",
                                     grade: marketView.gradeButton.titleLabel?.text ?? "")
+    }
+    
+    private func bindItemTableView() {
+        viewModel.marketItems
+            .bind(to: marketView.marketItemListView.marketItemTableView.rx.items(cellIdentifier: "\(MarketItemCell.self)", cellType: MarketItemCell.self)) { index, item, cell in
+                print(item.name)
+            }
+            .disposed(by: disposeBag)
     }
 }
