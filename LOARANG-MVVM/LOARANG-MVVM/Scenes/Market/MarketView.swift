@@ -147,9 +147,9 @@ final class MarketView: UIView {
         marketContentsView.addSubview(categoryButtonView)
         marketContentsView.addSubview(bottomButtonStackView)
         marketContentsView.addSubview(marketItemListView)
-        marketScrollView.addSubview(blurButtonView)
-        marketScrollView.addSubview(categoryOptionView)
-        marketScrollView.addSubview(subOptionsTableView)
+        self.addSubview(blurButtonView)
+        self.addSubview(categoryOptionView)
+        self.addSubview(subOptionsTableView)
 
         noItemLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
