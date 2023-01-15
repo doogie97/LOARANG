@@ -12,31 +12,41 @@ protocol CharactersViewModelable: CharactersViewModelInput, CharactersViewModelO
 
 protocol CharactersViewModelInput {
     func touchCell(_ index: IndexPath)
+    func viewDidLoad()
 }
 
 protocol CharactersViewModelOutput {
     var sections: BehaviorRelay<[CharactersSection]>{ get }
+    var startedLoading: PublishRelay<Void> { get }
+    var finishedLoading: PublishRelay<Void> { get }
 }
 
 final class CharactersViewModel: CharactersViewModelable {
     private let networkManager: NetworkManagerable
     private weak var userInfoViewModelDelegate: UserInfoViewModelDelegate?
     
+    private let userName: String
+    
     init(userName: String, networkManager: NetworkManagerable, userInfoViewModelDelegate: UserInfoViewModelDelegate) {
         self.networkManager = networkManager
         self.userInfoViewModelDelegate = userInfoViewModelDelegate
-        Task {
-            await getCharacters(userName)
-        }
+        self.userName = userName
     }
     
     private func getCharacters(_ name: String) async {
+        startedLoading.accept(())
         do {
             let characters = try await networkManager.request(CharactersAPIModel(name: name), resultType: [CharacterInfo].self)
-            categorizeCharacters(characters.sorted {
-                $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
+            await MainActor.run {
+                categorizeCharacters(characters.sorted {
+                    $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
+                finishedLoading.accept(())
+            }
         } catch {
-            userInfoViewModelDelegate?.showErrorAlert()
+            await MainActor.run {
+                userInfoViewModelDelegate?.showErrorAlert()
+                finishedLoading.accept(())
+            }
         }
     }
     
@@ -112,6 +122,12 @@ final class CharactersViewModel: CharactersViewModelable {
     }
     
     //in
+    func viewDidLoad() {
+        Task {
+            await getCharacters(userName)
+        }
+    }
+    
     func touchCell(_ index: IndexPath) {
         guard let userName = sections.value[safe: index.section]?.items[safe: index.row]?.characterName else {
             return
@@ -122,4 +138,6 @@ final class CharactersViewModel: CharactersViewModelable {
     
     //out
     let sections = BehaviorRelay<[CharactersSection]>(value: [])
+    let startedLoading = PublishRelay<Void>()
+    let finishedLoading = PublishRelay<Void>()
 }

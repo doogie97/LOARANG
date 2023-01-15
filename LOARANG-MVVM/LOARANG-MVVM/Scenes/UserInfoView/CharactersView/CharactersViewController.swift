@@ -29,6 +29,7 @@ final class CharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewDidLoad()
         bindView()
     }
     
@@ -56,14 +57,19 @@ final class CharactersViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.sections
-            .bind(onNext: { [weak self] in
-                if $0.isEmpty {
-                    self?.charactersView.activityIndicator.startAnimating()
-                } else {
-                    self?.charactersView.activityIndicator.stopAnimating()
-                }
-            }).disposed(by: disposeBag)
+        viewModel.startedLoading
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.charactersView.activityIndicator.startAnimating()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.finishedLoading
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.charactersView.activityIndicator.stopAnimating()
+            }
+            .disposed(by: disposeBag)
     }
 }
 
