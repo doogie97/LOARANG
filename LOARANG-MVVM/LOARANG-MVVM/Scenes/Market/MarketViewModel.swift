@@ -192,7 +192,6 @@ final class MarketViewModel: MarketViewModelable {
                     
                     marketItems.accept(response.items)
                     pageNo += 1
-                    print(pageNo)
                 }
             } catch let error {
                 await MainActor.run {
