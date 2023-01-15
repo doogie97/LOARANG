@@ -19,6 +19,7 @@ protocol MainViewModelInput {
     func touchMoreEventButton()
     func touchNoticeCell(_ index: Int)
     func touchMoreNoticeButton()
+    func viewDidAppear()
 }
 protocol MainViewModelOutput {
     var mainUser: BehaviorRelay<MainUser?> { get }
@@ -44,8 +45,35 @@ final class MainViewModel: MainViewModelInOut {
         self.networkManager = networkManager
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
+    }
+    
+    func viewDidAppear() {
+        getEvent()
+        getNotice()
+    }
+    
+    private func getEvent() {
+        guard events.value.isEmpty else {
+            return
+        }
+        
         Task {
-            await getEvent()
+            do {
+                let news = try await networkManager.request(NewsAPIModel(), resultType: [News].self)
+                await MainActor.run {
+                    events.accept(news)
+                }
+            } catch let error {
+                await MainActor.run {
+                    showAlert.accept(error.limitErrorMessage ?? "이벤트 정보를 가져올 수 없습니다.")
+                }
+            }
+        }
+    }
+    
+    private func getNotice() {
+        guard notices.value.isEmpty else {
+            return
         }
         
         crawlManager.getNotice { [weak self] result in
@@ -53,17 +81,8 @@ final class MainViewModel: MainViewModelInOut {
             case .success(let notice):
                 self?.notices.accept(notice)
             case .failure(let error):
-                print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
+                self?.showAlert.accept(error.errorMessage)
             }
-        }
-    }
-    
-    private func getEvent() async {
-        do {
-            let news = try await networkManager.request(NewsAPIModel(), resultType: [News].self)
-            events.accept(news)
-        } catch {
-            showAlert.accept(error.errorMessage)
         }
     }
     
