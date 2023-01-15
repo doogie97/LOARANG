@@ -133,6 +133,7 @@ final class MarketViewModel: MarketViewModelable {
         let categoryCode = categoryCodeSet(index: categorySubOptionIndex).code
         
         pageNo = 1
+        marketItems.accept([])
         
         searchOption = SearchMarketItemsAPI.SearchOption(sort: .recentPrice,
                                                          categoryCode: categoryCode,
