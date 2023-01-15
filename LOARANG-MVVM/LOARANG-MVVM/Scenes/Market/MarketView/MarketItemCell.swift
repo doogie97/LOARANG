@@ -73,6 +73,13 @@ final class MarketItemCell: UITableViewCell {
         nameLabel.text = item.name
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        itemImageView.image = nil
+        nameLabel.text = nil
+    }
+    
     enum ItemGrade: String {
         case nomal = "노말"
         case advanced = "희귀"
