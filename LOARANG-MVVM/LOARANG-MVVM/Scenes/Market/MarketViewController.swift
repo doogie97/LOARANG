@@ -213,6 +213,14 @@ final class MarketViewController: UIViewController {
     
     private func bindItemTableView() {
         viewModel.marketItems
+            .withUnretained(self)
+            .bind { owner, items in
+                owner.marketView.noItemLabel.isHidden = !items.isEmpty
+            }
+            .disposed(by: disposeBag)
+        
+        
+        viewModel.marketItems
             .bind(to: marketView.marketItemListView.marketItemTableView.rx.items(cellIdentifier: "\(MarketItemCell.self)", cellType: MarketItemCell.self)) { index, item, cell in
                 cell.setCellContents(item)
             }
