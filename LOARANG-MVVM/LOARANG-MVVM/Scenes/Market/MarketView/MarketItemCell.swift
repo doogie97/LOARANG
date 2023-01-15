@@ -27,6 +27,9 @@ final class MarketItemCell: UITableViewCell {
     
     private lazy var itemImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.cornerRadius = 5
         
         return imageView
     }()
