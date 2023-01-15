@@ -54,18 +54,13 @@ final class MarketView: UIView {
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
-        
-        self.addSubview(noItemLabel)
 
         self.addSubview(marketOptionView)
         self.addSubview(marketItemListView)
+        self.addSubview(noItemLabel)
         self.addSubview(blurButtonView)
         self.addSubview(categoryOptionView)
         self.addSubview(subOptionsTableView)
-
-        noItemLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
 
         marketOptionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
@@ -75,6 +70,10 @@ final class MarketView: UIView {
         marketItemListView.snp.makeConstraints {
             $0.top.equalTo(marketOptionView.snp.bottom).offset(16)
             $0.bottom.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        noItemLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
         blurButtonView.snp.makeConstraints {
