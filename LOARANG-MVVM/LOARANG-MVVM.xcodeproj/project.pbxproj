@@ -52,6 +52,7 @@
 		AC41164B295C7E6700A76BA4 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41164A295C7E6700A76BA4 /* MarketView.swift */; };
 		AC41164D295C7E7300A76BA4 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41164C295C7E7300A76BA4 /* MarketViewController.swift */; };
 		AC41164F295C7E7E00A76BA4 /* MarketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */; };
+		AC448A44297431A80060CBD2 /* MarketItemPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC448A43297431A80060CBD2 /* MarketItemPriceView.swift */; };
 		AC45C4432947801C00153F3E /* MarketOptionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */; };
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
@@ -213,6 +214,7 @@
 		AC41164A295C7E6700A76BA4 /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
 		AC41164C295C7E7300A76BA4 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewModel.swift; sourceTree = "<group>"; };
+		AC448A43297431A80060CBD2 /* MarketItemPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketItemPriceView.swift; sourceTree = "<group>"; };
 		AC45C4422947801C00153F3E /* MarketOptionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketOptionsAPI.swift; sourceTree = "<group>"; };
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				AC3578EA2973A9AA00F41B56 /* MarketItemListView.swift */,
 				ACED60CE295EADDA00F5B45F /* OptionCell.swift */,
 				AC3578EC2973B3BC00F41B56 /* MarketItemCell.swift */,
+				AC448A43297431A80060CBD2 /* MarketItemPriceView.swift */,
 			);
 			path = MarketView;
 			sourceTree = "<group>";
@@ -1140,6 +1143,7 @@
 				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
 				AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */,
 				ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */,
+				AC448A44297431A80060CBD2 /* MarketItemPriceView.swift in Sources */,
 				ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */,
 				AC0EB205295E7A5800CC8043 /* MarketOptions.swift in Sources */,
 				ACD547B628EC2A1000D44ACA /* RecentUserTVCell.swift in Sources */,

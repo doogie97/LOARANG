@@ -57,6 +57,8 @@ final class MarketItemCell: UITableViewCell {
         return label
     }()
     
+    private lazy var priceView = MarketItemPriceView()
+    
     private func setLayout() {
         self.selectionStyle = .none
         self.backgroundColor = .mainBackground
@@ -65,6 +67,7 @@ final class MarketItemCell: UITableViewCell {
         
         backView.addSubview(itemImageView)
         backView.addSubview(titleStackView)
+        backView.addSubview(priceView)
         
         backView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(5)
@@ -72,13 +75,19 @@ final class MarketItemCell: UITableViewCell {
         }
         
         itemImageView.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview().inset(16)
+            $0.top.leading.equalToSuperview().inset(16)
             $0.width.height.equalTo(48)
         }
         
         titleStackView.snp.makeConstraints {
             $0.leading.equalTo(itemImageView.snp.trailing).offset(16)
-            $0.top.trailing.bottom.equalToSuperview().inset(16)
+            $0.top.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalTo(itemImageView.snp.centerY)
+        }
+        
+        priceView.snp.makeConstraints {
+            $0.top.equalTo(itemImageView.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalToSuperview().inset(16)
         }
     }
     
@@ -91,6 +100,10 @@ final class MarketItemCell: UITableViewCell {
         } else {
             tradeRemainCountLabel.text = "거래 제한 없음"
         }
+        
+        priceView.setPrice(minimum: item.minimumPrice,
+                           yesterday: item.yesterDayAVGPrice,
+                           recent: item.recentPrice)
     }
     
     override func prepareForReuse() {
