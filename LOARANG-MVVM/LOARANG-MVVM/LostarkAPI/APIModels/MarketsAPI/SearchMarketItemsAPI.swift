@@ -40,7 +40,7 @@ extension SearchMarketItemsAPI { // 일단 여기 담아두고 나중에 경매�
         let itemTier: Int
         let itemGrade: String
         let itemName: String
-        let pageNo: Int
+        var pageNo: Int
         let sortCondition: SortCondition
     }
     

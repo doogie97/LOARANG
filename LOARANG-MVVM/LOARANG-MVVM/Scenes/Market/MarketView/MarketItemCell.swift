@@ -27,17 +27,37 @@ final class MarketItemCell: UITableViewCell {
     
     private lazy var itemImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.cornerRadius = 5
         
         return imageView
     }()
     
+    private lazy var titleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [nameLabel, tradeRemainCountLabel])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        
+        return stackView
+    }()
+    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .one(size: 16, family: .Bold)
-        label.backgroundColor = .red
+        label.font = .one(size: 14, family: .Bold)
         
         return label
     }()
+    
+    private lazy var tradeRemainCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = .one(size: 12, family: .Bold)
+        label.textColor = .systemGray
+        
+        return label
+    }()
+    
+    private lazy var priceView = MarketItemPriceView()
     
     private func setLayout() {
         self.selectionStyle = .none
@@ -46,30 +66,52 @@ final class MarketItemCell: UITableViewCell {
         contentView.addSubview(backView)
         
         backView.addSubview(itemImageView)
-        backView.addSubview(nameLabel)
+        backView.addSubview(titleStackView)
+        backView.addSubview(priceView)
         
         backView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.bottom.equalToSuperview().inset(5)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(5)
         }
         
         itemImageView.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview().inset(16)
-            $0.width.height.equalTo(64)
+            $0.top.leading.equalToSuperview().inset(16)
+            $0.width.height.equalTo(48)
         }
         
-        nameLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(100)
-            $0.top.trailing.bottom.equalToSuperview().inset(16)
+        titleStackView.snp.makeConstraints {
+            $0.leading.equalTo(itemImageView.snp.trailing).offset(16)
+            $0.top.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalTo(itemImageView.snp.centerY)
         }
         
+        priceView.snp.makeConstraints {
+            $0.top.equalTo(itemImageView.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalToSuperview().inset(16)
+        }
     }
     
     func setCellContents(_ item: MarketItems.Item) {
         _ = itemImageView.setImage(urlString: item.imageURL)
         itemImageView.backgroundColor = ItemGrade(rawValue: item.grade ?? "")?.backgroundColor
         nameLabel.text = item.name
+        if let tradeRemainCount = item.tradeRemainCount {
+            tradeRemainCountLabel.text = tradeRemainCount == 0 ? "구매시 거래 불가" : "구매시 거래 \(tradeRemainCount)회 가능"
+        } else {
+            tradeRemainCountLabel.text = "거래 제한 없음"
+        }
+        
+        priceView.setPrice(minimum: item.minimumPrice,
+                           yesterday: item.yesterDayAVGPrice,
+                           recent: item.recentPrice)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        itemImageView.image = nil
+        nameLabel.text = nil
+        tradeRemainCountLabel.text = nil
     }
     
     enum ItemGrade: String {
