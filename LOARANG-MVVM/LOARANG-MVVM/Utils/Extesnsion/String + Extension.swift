@@ -73,59 +73,83 @@ extension String {
         return attrString
     }
     
-    var classImage: UIImage? {
+    var classImageURL: String? {
+        let baseURL = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_"
         switch self {
+            
+            //전직 후
         case "디스트로이어":
-            return UIImage(named: "emblem_destroyer")
+            return baseURL + "destroyer.png"
         case "워로드":
-            return UIImage(named: "emblem_warlord")
+            return baseURL + "warlord.png"
         case "버서커":
-            return UIImage(named: "emblem_berserker")
+            return baseURL + "berserker.png"
         case "홀리나이트":
-            return UIImage(named: "emblem_holyknight")
+            return baseURL + "holyknight.png"
         case "스트라이커":
-            return UIImage(named: "emblem_battle_master_male")
+            return baseURL + "battle_master_male.png"
         case "배틀마스터":
-            return UIImage(named: "emblem_battle_master")
+            return baseURL + "battle_master.png"
         case "인파이터":
-            return UIImage(named: "emblem_infighter")
+            return baseURL + "infighter.png"
         case "기공사":
-            return UIImage(named: "emblem_force_master")
+            return baseURL + "force_master.png"
         case "창술사":
-            return UIImage(named: "emblem_lance_master")
+            return baseURL + "lance_master.png"
         case "데빌헌터":
-            return UIImage(named: "emblem_devil_hunter")
+            return baseURL + "devil_hunter.png"
         case "블래스터":
-            return UIImage(named: "emblem_blaster")
+            return baseURL + "blaster.png"
         case "호크아이":
-            return UIImage(named: "emblem_hawk_eye")
+            return baseURL + "hawk_eye.png"
         case "스카우터":
-            return UIImage(named: "emblem_scouter")
+            return baseURL + "scouter.png"
         case "건슬링어":
-            return UIImage(named: "emblem_devil_hunter_female")
+            return baseURL + "devil_hunter_female.png"
         case "바드":
-            return UIImage(named: "emblem_bard")
+            return baseURL + "bard.png"
         case "서머너":
-            return UIImage(named: "emblem_summoner")
+            return baseURL + "summoner.png"
         case "아르카나":
-            return UIImage(named: "emblem_arcana")
+            return baseURL + "arcana.png"
         case "소서리스":
-            return UIImage(named: "emblem_elemental_master")
+            return baseURL + "elemental_master.png"
         case "블레이드":
-            return UIImage(named: "emblem_blade")
+            return baseURL + "blade.png"
         case "데모닉":
-            return UIImage(named: "emblem_demonic")
+            return baseURL + "demonic.png"
         case "리퍼":
-            return UIImage(named: "emblem_reaper")
+            return baseURL + "reaper.png"
         case "도화가":
-            return UIImage(named: "emblem_yinyangshi")
+            return baseURL + "yinyangshi.png"
         case "기상술사":
-            return UIImage(named: "emblem_weather_artist")
+            return baseURL + "weather_artist.png"
+        case "슬레이어":
+            return baseURL + "berserker_female.png"
+            
+            //전직 전
+        case "스페셜리스트":
+            return baseURL + "specialist.png"
+        case "마법사":
+            return baseURL + "magician.png"
+        case "전사(남)":
+            return baseURL + "warrior.png"
+        case "전사(여)":
+            return baseURL + "warrior_female.png"
+        case "헌터(남)":
+            return baseURL + "hunter.png"
+        case "헌터(여)":
+            return baseURL + "hunter_female.png"
+        case "암살자":
+            return baseURL + "assassin.png"
+        case "무도가(남)":
+            return baseURL + "fighter_male.png"
+        case "무도가(여)":
+            return baseURL + "fighter.png"
         default:
             return nil
         }
     }
-    
     
     var convetDateType: String {
         let dateFormatter = DateFormatter()
