@@ -43,14 +43,13 @@ final class UserInfoViewModel: UserInfoViewModelable {
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
                              container.makeSkillInfoViewController(skillInfo: skillInfo),
-                             container.makeOwnCharacterViewController(ownCharacterInfo: ownCharacterInfo,
+                             container.makeCharactersViewController(userName: userName,
                                                                       userInfoViewModelDelegate: self)]
     }
     
     //in
     func searchWholeUserInfo() {
         searchUserInfo()
-        getOwnCharacterInfo()
     }
     
     func touchBackButton() {
@@ -148,18 +147,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
             self?.finishedLoading.accept(())
         }
     }
-    private func getOwnCharacterInfo() {
-        ownCharacterInfo.accept(nil)
-        crawlManager.getOwnCharacterInfo(userName) {[weak self] result in
-            switch result {
-            case .success(let ownCharacterInfo):
-                self?.ownCharacterInfo.accept(ownCharacterInfo)
-            case .failure(let error):
-                self?.showAlert.accept((message: error.errorMessage, isPop: false))
-            }
-        }
-    }
-    
+
     //out
     var userName: String
     let popView = PublishRelay<Void>()
@@ -176,7 +164,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
     //for insideView
     private let userInfo = BehaviorRelay<UserInfo?>(value: nil)
     private let skillInfo = BehaviorRelay<SkillInfo?>(value: nil)
-    private let ownCharacterInfo = BehaviorRelay<OwnCharacterInfo?>(value: nil)
 }
 
 //MARK: - UserInfoViewModelDelegate
@@ -193,8 +180,14 @@ extension UserInfoViewModel {
         isSearching = false
         searchUserInfo()
     }
+    
+    func showErrorAlert() {
+        self.showAlert.accept((message: "보유 캐릭터 정보를 받아올 수 없습니다.",
+                               isPop: false))
+    }
 }
 
 protocol UserInfoViewModelDelegate: AnyObject {
     func searchOwnCharacter(_ name: String)
+    func showErrorAlert()
 }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
+		AC0341B42945883C005F4533 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B32945883C005F4533 /* Requestable.swift */; };
+		AC0341BC294588F3005F4533 /* LOARANG_MVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */; };
+		AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC0341C229458976005F4533 /* AppPrivacyInfo.plist */; };
+		AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */; };
+		AC0341C729458CCE005F4533 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C629458CCE005F4533 /* APIError.swift */; };
+		AC0341C9294591BA005F4533 /* NewsAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C8294591BA005F4533 /* NewsAPIModel.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
@@ -46,7 +53,6 @@
 		AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */; };
 		AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7528C2E515003B4B54 /* Card.swift */; };
 		AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */; };
-		AC62F87428DC6CAC00E4A92D /* LostArkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */; };
 		AC62F87728DC6E3C00E4A92D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87628DC6E3C00E4A92D /* EventView.swift */; };
 		AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87928DC6FFE00E4A92D /* EventCVCell.swift */; };
 		AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */; };
@@ -55,10 +61,9 @@
 		AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC687AB4291373E70064C92B /* GoogleService-Info.plist */; };
 		AC6B838A28EE3C25008BD901 /* RecentUserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */; };
 		AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC6C81942940270A00C0EEC1 /* Alamofire */; };
-		AC6C81982940277A00C0EEC1 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C81972940277A00C0EEC1 /* Characters.swift */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
 		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
-		AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */; };
+		AC6CA29A2893BC390049C12F /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* CharactersViewController.swift */; };
 		AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */; };
 		AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C4228BF2C56005B102B /* MainUserView.swift */; };
 		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
@@ -102,9 +107,8 @@
 		ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */; };
 		ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */; };
 		ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB0F16428BF865200C6BB2F /* EngravingsView.swift */; };
-		ACB3813128D4258E0081F8A1 /* OwnCharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */; };
-		ACB3813328D42CF60081F8A1 /* OwnCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813228D42CF60081F8A1 /* OwnCharacterViewModel.swift */; };
-		ACB3813528D42CFB0081F8A1 /* OwnCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813428D42CFB0081F8A1 /* OwnCharacterView.swift */; };
+		ACB3813328D42CF60081F8A1 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813228D42CF60081F8A1 /* CharactersViewModel.swift */; };
+		ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813428D42CFB0081F8A1 /* CharactersView.swift */; };
 		ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
@@ -134,12 +138,31 @@
 		ACDE28AC28B11D2000BFD206 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */; };
 		ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */; };
 		ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */; };
+		ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */; };
 		E7F72B61ABE22C7B3FFD9728 /* Pods_LOARANG_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC0341BD294588F3005F4533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACAEF317287FF0D200AE98F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACAEF31E287FF0D200AE98F1;
+			remoteInfo = "LOARANG-MVVM";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		641A77F5A938018AE3AFB702 /* Pods_LOARANG_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8547102CE468BBFF3FCD4EB5 /* Pods-LOARANG-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.release.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.release.xcconfig"; sourceTree = "<group>"; };
+		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		AC0341B9294588F3005F4533 /* LOARANG-MVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LOARANG-MVVMTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOARANG_MVVMTests.swift; sourceTree = "<group>"; };
+		AC0341C229458976005F4533 /* AppPrivacyInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppPrivacyInfo.plist; sourceTree = "<group>"; };
+		AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LOARANG++Bundle.swift"; sourceTree = "<group>"; };
+		AC0341C629458CCE005F4533 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		AC0341C8294591BA005F4533 /* NewsAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIModel.swift; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -179,7 +202,6 @@
 		AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		AC5B6D7528C2E515003B4B54 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffect.swift; sourceTree = "<group>"; };
-		AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkEvent.swift; sourceTree = "<group>"; };
 		AC62F87628DC6E3C00E4A92D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		AC62F87928DC6FFE00E4A92D /* EventCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCVCell.swift; sourceTree = "<group>"; };
 		AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
@@ -187,10 +209,9 @@
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
 		AC687AB4291373E70064C92B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC6B838928EE3C25008BD901 /* RecentUserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserCellViewModel.swift; sourceTree = "<group>"; };
-		AC6C81972940277A00C0EEC1 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
-		AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewController.swift; sourceTree = "<group>"; };
+		AC6CA2992893BC390049C12F /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigCVCell.swift; sourceTree = "<group>"; };
 		AC757C4228BF2C56005B102B /* MainUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserView.swift; sourceTree = "<group>"; };
 		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
@@ -236,9 +257,8 @@
 		ACB0F15F28BF6D7C00C6BB2F /* BasicAbillityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAbillityView.swift; sourceTree = "<group>"; };
 		ACB0F16128BF7FE700C6BB2F /* EquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsView.swift; sourceTree = "<group>"; };
 		ACB0F16428BF865200C6BB2F /* EngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravingsView.swift; sourceTree = "<group>"; };
-		ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterInfo.swift; sourceTree = "<group>"; };
-		ACB3813228D42CF60081F8A1 /* OwnCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterViewModel.swift; sourceTree = "<group>"; };
-		ACB3813428D42CFB0081F8A1 /* OwnCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharacterView.swift; sourceTree = "<group>"; };
+		ACB3813228D42CF60081F8A1 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		ACB3813428D42CFB0081F8A1 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnCharacterCell.swift; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
@@ -268,10 +288,18 @@
 		ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewModel.swift; sourceTree = "<group>"; };
 		ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
+		ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIModel.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AC0341B6294588F3005F4533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAEF31C287FF0D200AE98F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +320,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC0341B229458816005F4533 /* APIModels */ = {
+			isa = PBXGroup;
+			children = (
+				AC0341B32945883C005F4533 /* Requestable.swift */,
+				AC0341C8294591BA005F4533 /* NewsAPIModel.swift */,
+				ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */,
+			);
+			path = APIModels;
+			sourceTree = "<group>";
+		};
+		AC0341BA294588F3005F4533 /* LOARANG-MVVMTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC0341BB294588F3005F4533 /* LOARANG_MVVMTests.swift */,
+			);
+			path = "LOARANG-MVVMTests";
+			sourceTree = "<group>";
+		};
 		AC035E9D28911CDC0068DC7E /* UserInfoView */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +346,7 @@
 				AC035EA52891222C0068DC7E /* UserInfoViewModel.swift */,
 				AC6CA28F2893BBCF0049C12F /* BasicInfoView */,
 				AC6CA2902893BBD70049C12F /* SkillInfoView */,
-				AC6CA2922893BBF90049C12F /* OwnCharactersView */,
+				AC6CA2922893BBF90049C12F /* CharactersView */,
 			);
 			path = UserInfoView;
 			sourceTree = "<group>";
@@ -483,7 +529,9 @@
 		AC6C81962940276D00C0EEC1 /* LostarkAPI */ = {
 			isa = PBXGroup;
 			children = (
-				AC6C81972940277A00C0EEC1 /* Characters.swift */,
+				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
+				AC0341C629458CCE005F4533 /* APIError.swift */,
+				AC0341B229458816005F4533 /* APIModels */,
 			);
 			path = LostarkAPI;
 			sourceTree = "<group>";
@@ -511,15 +559,15 @@
 			path = SkillInfoView;
 			sourceTree = "<group>";
 		};
-		AC6CA2922893BBF90049C12F /* OwnCharactersView */ = {
+		AC6CA2922893BBF90049C12F /* CharactersView */ = {
 			isa = PBXGroup;
 			children = (
-				ACB3813428D42CFB0081F8A1 /* OwnCharacterView.swift */,
-				AC6CA2992893BC390049C12F /* OwnCharacterViewController.swift */,
-				ACB3813228D42CF60081F8A1 /* OwnCharacterViewModel.swift */,
+				ACB3813428D42CFB0081F8A1 /* CharactersView.swift */,
+				AC6CA2992893BC390049C12F /* CharactersViewController.swift */,
+				ACB3813228D42CF60081F8A1 /* CharactersViewModel.swift */,
 				ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */,
 			);
-			path = OwnCharactersView;
+			path = CharactersView;
 			sourceTree = "<group>";
 		};
 		AC757C4128BF2C3E005B102B /* MainViewContents */ = {
@@ -610,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF321287FF0D200AE98F1 /* LOARANG-MVVM */,
+				AC0341BA294588F3005F4533 /* LOARANG-MVVMTests */,
 				ACAEF320287FF0D200AE98F1 /* Products */,
 				C1BE94E9D9DBB579AF2C7E5C /* Pods */,
 				1C4C2305C17C49BFC10EFF72 /* Frameworks */,
@@ -620,6 +669,7 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF31F287FF0D200AE98F1 /* LOARANG-MVVM.app */,
+				AC0341B9294588F3005F4533 /* LOARANG-MVVMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -639,6 +689,8 @@
 				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
 				AC687AB4291373E70064C92B /* GoogleService-Info.plist */,
+				AC0341C229458976005F4533 /* AppPrivacyInfo.plist */,
+				AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */,
 			);
 			path = "LOARANG-MVVM";
 			sourceTree = "<group>";
@@ -648,8 +700,6 @@
 			children = (
 				AC86403A28B5C968004B7EBB /* StorageModel */,
 				ACB3812F28D425720081F8A1 /* UserInfo */,
-				ACB3813028D4258E0081F8A1 /* OwnCharacterInfo.swift */,
-				AC62F87328DC6CAC00E4A92D /* LostArkEvent.swift */,
 				ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */,
 			);
 			path = Model;
@@ -802,6 +852,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AC0341B8294588F3005F4533 /* LOARANG-MVVMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC0341BF294588F3005F4533 /* Build configuration list for PBXNativeTarget "LOARANG-MVVMTests" */;
+			buildPhases = (
+				AC0341B5294588F3005F4533 /* Sources */,
+				AC0341B6294588F3005F4533 /* Frameworks */,
+				AC0341B7294588F3005F4533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC0341BE294588F3005F4533 /* PBXTargetDependency */,
+			);
+			name = "LOARANG-MVVMTests";
+			productName = "LOARANG-MVVMTests";
+			productReference = AC0341B9294588F3005F4533 /* LOARANG-MVVMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ACAEF31E287FF0D200AE98F1 /* LOARANG-MVVM */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACAEF333287FF0D300AE98F1 /* Build configuration list for PBXNativeTarget "LOARANG-MVVM" */;
@@ -831,9 +899,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					AC0341B8294588F3005F4533 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = ACAEF31E287FF0D200AE98F1;
+					};
 					ACAEF31E287FF0D200AE98F1 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -856,16 +928,25 @@
 			projectRoot = "";
 			targets = (
 				ACAEF31E287FF0D200AE98F1 /* LOARANG-MVVM */,
+				AC0341B8294588F3005F4533 /* LOARANG-MVVMTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AC0341B7294588F3005F4533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAEF31D287FF0D200AE98F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ACAEF36A2880077C00AE98F1 /* ONE-Mobile-Light.ttf in Resources */,
+				AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */,
 				ACAEF3692880077C00AE98F1 /* ONE-Mobile-Bold.ttf in Resources */,
 				ACAEF36B2880077C00AE98F1 /* ONE-Mobile-Regular.ttf in Resources */,
 				ACAEF32F287FF0D300AE98F1 /* LaunchScreen.storyboard in Resources */,
@@ -920,6 +1001,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AC0341B5294588F3005F4533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC0341BC294588F3005F4533 /* LOARANG_MVVMTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACAEF31B287FF0D200AE98F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -929,6 +1018,7 @@
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
+				AC0341C9294591BA005F4533 /* NewsAPIModel.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */,
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
@@ -936,9 +1026,10 @@
 				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
 				ACAEF35F287FFC4900AE98F1 /* MainView.swift in Sources */,
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
+				AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
-				ACB3813528D42CFB0081F8A1 /* OwnCharacterView.swift in Sources */,
+				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
@@ -949,17 +1040,17 @@
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
 				AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */,
 				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
+				AC0341C729458CCE005F4533 /* APIError.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
+				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */,
-				AC62F87428DC6CAC00E4A92D /* LostArkEvent.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
-				ACB3813128D4258E0081F8A1 /* OwnCharacterInfo.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
@@ -983,7 +1074,7 @@
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
-				AC6CA29A2893BC390049C12F /* OwnCharacterViewController.swift in Sources */,
+				AC6CA29A2893BC390049C12F /* CharactersViewController.swift in Sources */,
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
@@ -998,7 +1089,7 @@
 				AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
-				ACB3813328D42CF60081F8A1 /* OwnCharacterViewModel.swift in Sources */,
+				ACB3813328D42CF60081F8A1 /* CharactersViewModel.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
 				AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
@@ -1009,6 +1100,7 @@
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
+				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
@@ -1023,7 +1115,6 @@
 				AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
-				AC6C81982940277A00C0EEC1 /* Characters.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
 				AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */,
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,
@@ -1042,11 +1133,20 @@
 				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
+				ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */,
 				AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC0341BE294588F3005F4533 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACAEF31E287FF0D200AE98F1 /* LOARANG-MVVM */;
+			targetProxy = AC0341BD294588F3005F4533 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */ = {
@@ -1060,6 +1160,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AC0341C0294588F3005F4533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SD8J3B58T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Doogie.LOARANG-MVVMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOARANG-MVVM.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LOARANG-MVVM";
+			};
+			name = Debug;
+		};
+		AC0341C1294588F3005F4533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SD8J3B58T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Doogie.LOARANG-MVVMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LOARANG-MVVM.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LOARANG-MVVM";
+			};
+			name = Release;
+		};
 		ACAEF331287FF0D300AE98F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1245,6 +1385,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AC0341BF294588F3005F4533 /* Build configuration list for PBXNativeTarget "LOARANG-MVVMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC0341C0294588F3005F4533 /* Debug */,
+				AC0341C1294588F3005F4533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ACAEF31A287FF0D200AE98F1 /* Build configuration list for PBXProject "LOARANG-MVVM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

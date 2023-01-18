@@ -35,16 +35,8 @@ final class OwnCharacterCell: UITableViewCell {
     private lazy var classLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.one(size: 12, family: .Bold)
-        
-        return label
-    }()
-    
-    private lazy var guildLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.one(size: 14, family: .Bold)
         label.textColor = #colorLiteral(red: 0.6069512736, green: 0.7301342378, blue: 1, alpha: 1)
+        label.font = UIFont.one(size: 14, family: .Bold)
         
         return label
     }()
@@ -97,9 +89,8 @@ final class OwnCharacterCell: UITableViewCell {
         self.contentView.addSubview(backView)
         
         backView.addSubview(classImageView)
-        backView.addSubview(classLabel)
-        backView.addSubview(guildLabel)
         backView.addSubview(serverLabel)
+        backView.addSubview(classLabel)
         backView.addSubview(userNameLabel)
         backView.addSubview(battleLVLabel)
         backView.addSubview(itemLVLabel)
@@ -112,40 +103,35 @@ final class OwnCharacterCell: UITableViewCell {
         }
         
         classImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(12)
+            $0.top.bottom.equalToSuperview().inset(24)
             $0.leading.equalToSuperview().inset(18)
             $0.height.equalTo(40)
             $0.width.equalTo(classImageView.snp.height)
         }
         
-        classLabel.snp.makeConstraints {
-            $0.top.equalTo(classImageView.snp.bottom).inset(-8)
-            $0.bottom.equalToSuperview().inset(10)
-            $0.centerX.equalTo(classImageView)
-        }
-        
-        guildLabel.snp.makeConstraints {
-            $0.leading.equalTo(classImageView.snp.trailing).inset(-26)
-            $0.bottom.equalTo(serverLabel.snp.top).inset(-8)
-        }
         
         serverLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.bottom.equalTo(userNameLabel.snp.top).inset(-8)
             $0.leading.equalTo(classImageView.snp.trailing).inset(-24)
+        }
+        
+        classLabel.snp.makeConstraints {
+            $0.bottom.equalTo(userNameLabel.snp.top).inset(-8)
+            $0.leading.equalTo(serverLabel.snp.trailing).inset(-4)
         }
         
         userNameLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(serverLabel.snp.trailing).inset(-4)
+            $0.leading.equalTo(classImageView.snp.trailing).inset(-24)
         }
         
         battleLVLabel.snp.makeConstraints {
-            $0.top.equalTo(serverLabel.snp.bottom).inset(-8)
+            $0.top.equalTo(userNameLabel.snp.bottom).inset(-8)
             $0.leading.equalTo(classImageView.snp.trailing).inset(-24)
         }
         
         itemLVLabel.snp.makeConstraints{
-            $0.top.equalTo(serverLabel.snp.bottom).inset(-8)
+            $0.top.equalTo(userNameLabel.snp.bottom).inset(-8)
             $0.leading.equalTo(battleLVLabel.snp.trailing).inset(-10)
         }
         
@@ -155,13 +141,12 @@ final class OwnCharacterCell: UITableViewCell {
         }
     }
     
-    func setCellContents(ownCharacter: OwnCharacter) {
-        classImageView.image = ownCharacter.`class`.classImage
-        classLabel.text = ownCharacter.`class`
-        guildLabel.text = ownCharacter.guild
-        serverLabel.text = ownCharacter.server
-        userNameLabel.text = ownCharacter.name
-        battleLVLabel.text = "Lv \(ownCharacter.battleLV)"
-        itemLVLabel.text = ownCharacter.itemLV
+    func setCellContents(characterInfo: CharacterInfo) {
+        classImageView.image = characterInfo.characterClassName?.classImage
+        classLabel.text = characterInfo.characterClassName
+        serverLabel.text = characterInfo.serverName
+        userNameLabel.text = characterInfo.characterName
+        battleLVLabel.text = "Lv \(characterInfo.characterLevel ?? 0)"
+        itemLVLabel.text = characterInfo.itemAvgLevel
     }
 }

@@ -11,18 +11,12 @@ enum CrawlError: Error {
     case documentError
     case jsonInfoError
     case inspection
-    case ownCharacterErrror
-    case eventError
     case noticeError
     
     var errorDescription: String {
         switch self {
         case .searchError:
             return "검색하신 유저가 없습니다"
-        case .ownCharacterErrror:
-            return "보유 캐릭터 정보를 가져오는데 실패하였습니다"
-        case .eventError:
-            return "이벤트 정보를 받아오는데 실패하였습니다"
         case .noticeError:
             return "공지사항을 받아오는데 실패하였습니다"
         default:
