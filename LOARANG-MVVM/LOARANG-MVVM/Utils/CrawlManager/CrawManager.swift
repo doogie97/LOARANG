@@ -11,6 +11,7 @@ import Alamofire
 protocol CrawlManagerable {
     func getUserInfo2(_ name: String) async throws -> UserInfo
     func checkInspection2() async throws
+    func getNotice() async throws -> [LostArkNotice]
 }
 
 struct CrawlManager: CrawlManagerable {
@@ -234,20 +235,17 @@ struct CrawlManager: CrawlManagerable {
 }
 // MARK: - 이벤트 정보
 extension CrawlManager {
-    func getNotice(completion: @escaping (Result<[LostArkNotice], Error>) -> Void){
+    func getNotice() async throws -> [LostArkNotice] {
         guard let url = URL(string: "https://lostark.game.onstove.com/News/Notice/List") else {
-            completion(.failure(CrawlError.noticeError))
-            return
+            throw CrawlError.noticeError
         }
         
-        guard let doc = try? makeDocument(url: url) else {
-            completion(.failure(CrawlError.noticeError))
-            return
+        guard let doc = try? await makeDocument2(url: url) else {
+            throw CrawlError.noticeError
         }
         
         guard let noticeElements = try? doc.select("#list > div.list.list--default > ul")[safe: 1]?.select("li") else {
-            completion(.failure(CrawlError.noticeError))
-            return
+            throw CrawlError.noticeError
         }
         
         let notices: [LostArkNotice] = noticeElements.compactMap {
@@ -261,6 +259,6 @@ extension CrawlManager {
             }
         }
         
-        completion(.success(notices))
+        return notices
     }
 }

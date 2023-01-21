@@ -45,15 +45,7 @@ final class MainViewModel: MainViewModelInOut {
         self.bookmarkUser = storage.bookMark
         
         getEvent()
-        
-        crawlManager.getNotice { [weak self] result in
-            switch result {
-            case .success(let notice):
-                self?.notices.accept(notice)
-            case .failure(let error):
-                print(error.errorMessage) //추후 에러 처리 필요(showAlert relay 생성해 처리 예정)
-            }
-        }
+        getNotice()
     }
     
     private func getEvent() {
@@ -63,6 +55,21 @@ final class MainViewModel: MainViewModelInOut {
                 self?.events.accept(news)
             case .failure(let error):
                 self?.showAlert.accept(error.errorMessage)
+            }
+        }
+    }
+    
+    private func getNotice() {
+        Task {
+            do {
+                let notices = try await crawlManager.getNotice()
+                await MainActor.run {
+                    self.notices.accept(notices)
+                }
+            } catch let error {
+                await MainActor.run {
+                    showAlert.accept(error.errorMessage)
+                }
             }
         }
     }
