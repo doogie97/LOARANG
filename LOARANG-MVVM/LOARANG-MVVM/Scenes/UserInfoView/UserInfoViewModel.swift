@@ -139,7 +139,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                     mainUserUpdate(searchResult)
                     bookmarkUpdate(searchResult)
                     
-                    if isSearching == true {
+                    if isSearching == true { // 검색창에서 직접 검색한 유저인지 아닌지
                         addRecentUser(searchResult)
                     }
                     finishedLoading.accept(())
