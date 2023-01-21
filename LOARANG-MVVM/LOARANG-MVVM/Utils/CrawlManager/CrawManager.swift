@@ -9,59 +9,12 @@ import SwiftSoup
 import Alamofire
 
 protocol CrawlManagerable {
-    func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void)
     func getUserInfo2(_ name: String) async throws -> UserInfo
     func checkInspection2() async throws
-    func chenckInspection() throws
 }
 
 struct CrawlManager: CrawlManagerable {
     private let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
-    
-    func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
-        DispatchQueue.global().async {
-            guard let url = makeURL(urlString: baseURL, name: name) else {
-                DispatchQueue.main.async {
-                    completion(.failure(CrawlError.urlError))
-                }
-                return
-            }
-            
-            guard let doc = try? makeDocument(url: url) else {
-                DispatchQueue.main.async {
-                    completion(.failure(CrawlError.documentError))
-                }
-                return
-            }
-            
-            guard let stat = try? getStat(doc: doc) else {
-                DispatchQueue.main.async {
-                    completion(.failure(CrawlError.searchError))
-                }
-                return
-            }
-            
-            guard let userJsonInfo = try? getUserJsonInfo(doc: doc) else {
-                DispatchQueue.main.async {
-                    completion(.failure(CrawlError.searchError))
-                }
-                return
-            }
-            
-            getMainInfo(name: name, doc: doc) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let mainInfo):
-                        completion(.success(UserInfo(mainInfo: mainInfo,
-                                                     stat: stat,
-                                                     userJsonInfo: userJsonInfo)))
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
-                }
-            }
-        }
-    }
     
     func getUserInfo2(_ name: String) async throws -> UserInfo {
         guard let url = makeURL(urlString: baseURL, name: name) else {
@@ -122,33 +75,6 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - basic info
-    private func getMainInfo(name: String, doc: Document, completion: @escaping (Result<MainInfo, Error>) -> Void) {
-        
-        do {
-            let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
-            
-            if server == "" {
-                throw CrawlError.searchError
-            }
-            
-            let name = try doc.select("#myinfo__character--button2").text().components(separatedBy: " ")[safe: 1] ?? "알 수 없음"
-            let battleLV = try doc.select("#myinfo__character--button2 > span").text().replacingOccurrences(of: "Lv.", with: "")
-            let itemLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(2) > dl.define.item > dd").text()
-            let expeditionLV = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(1) > dl:nth-child(1) > dd").text()
-            let title = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(1) > dl:nth-child(2) > dd").text()
-            let guild = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(3) > dl:nth-child(1) > dd").text()
-            let pvp = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(3) > dl:nth-child(2) > dd").text()
-            let wisdom = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(4) > dl > dd").text()
-            let `class` = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(2) > dd").text()
-            
-            getUserImage(name: name) { image in
-                completion(.success(MainInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: image)))
-            }
-        } catch {
-            completion(.failure(CrawlError.searchError))
-        }
-    }
-    
     private func getMainInfo2(name: String, doc: Document, userImage: UIImage) throws -> MainInfo {
         
         do {
@@ -188,27 +114,6 @@ struct CrawlManager: CrawlManagerable {
         }
         
         return UIImage(data: data) ?? UIImage()
-    }
-    
-    private func getUserImage(name: String, completion: @escaping (UIImage) -> Void) {
-        let urlString = "https://lostark.game.onstove.com/Profile/Character/"
-        guard let url = makeURL(urlString: urlString, name: name),
-              let doc = try? makeDocument(url: url),
-              let imageURL = try? doc.select("#profile-equipment > div.profile-equipment__character > img").attr("src"),
-              let url = URL(string: imageURL) else {
-            completion(UIImage())
-            return
-        }
-        
-        let dataTask = URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else {
-                completion(UIImage())
-                return
-            }
-            completion(UIImage(data: data) ?? UIImage())
-        }
-        dataTask.resume()
-        // 빈 이미지 리턴 하는 부분은 추후 이미지 다운 실패이미지로 변경 필요
     }
     
     //MARK: - Stat
@@ -321,21 +226,6 @@ struct CrawlManager: CrawlManagerable {
         }
         
         guard let webTitle = try? doc.select("title").text(), webTitle == "로스트아크 - 서비스 점검" else {
-            return
-        }
-        
-        throw CrawlError.inspection
-    }
-    func chenckInspection() throws {
-        guard let url = makeURL(urlString: baseURL, name: "") else {
-            return
-        }
-        
-        guard let doc = try? makeDocument(url: url) else {
-            return
-        }
-        
-        guard let a = try? doc.select("title").text(), a == "로스트아크 - 서비스 점검" else {
             return
         }
         
