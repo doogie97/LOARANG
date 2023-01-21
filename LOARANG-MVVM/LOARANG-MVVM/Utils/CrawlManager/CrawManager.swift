@@ -49,18 +49,6 @@ struct CrawlManager: CrawlManagerable {
         return url
     }
     
-    private func makeDocument(url: URL) throws -> Document {
-        guard let html = try? String(contentsOf: url, encoding: .utf8) else {
-            throw CrawlError.documentError
-        }
-        
-        guard let doc = try? SwiftSoup.parse(html) else {
-            throw CrawlError.documentError
-        }
-        
-        return doc
-    }
-    
     private func makeDocument2(url: URL) async throws -> Document {
         let response = await AF.request(url).serializingString().response
 
