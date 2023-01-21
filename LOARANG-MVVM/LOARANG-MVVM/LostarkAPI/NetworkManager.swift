@@ -15,28 +15,30 @@ protocol NetworkManagerable {
 struct NetworkManager: NetworkManagerable {
     func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type, completion: @escaping (Result<T, APIError>) -> Void) {
         requestable.request.responseDecodable(of: T.self) { result in
-            guard result.error == nil else {
-                completion(.failure(APIError.transportError))
-                return
-            }
+            DispatchQueue.main.async {
+                guard result.error == nil else {
+                    completion(.failure(APIError.transportError))
+                    return
+                }
 
-            guard let response = result.response else {
-                completion(.failure(APIError.responseError))
-                return
-            }
+                guard let response = result.response else {
+                    completion(.failure(APIError.responseError))
+                    return
+                }
 
-            guard (200...299).contains(response.statusCode) else {
-                print(response.statusCode)
-                completion(.failure(APIError.statusCodeError))
-                return
-            }
+                guard (200...299).contains(response.statusCode) else {
+                    print(response.statusCode)
+                    completion(.failure(APIError.statusCodeError))
+                    return
+                }
 
-            guard let value = result.value else {
-                completion(.failure(APIError.dataError))
-                return
+                guard let value = result.value else {
+                    completion(.failure(APIError.dataError))
+                    return
+                }
+                
+                completion(.success(value))
             }
-            
-            completion(.success(value))
         }
     }
 }
