@@ -128,7 +128,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
         startedLoading.accept(())
         Task {
             do {
-                let searchResult = try await crawlManager.getUserInfo2(userName)
+                let searchResult = try await crawlManager.getUserInfo(userName)
                 await MainActor.run {
                     userInfo.accept(searchResult)
                     skillInfo.accept(searchResult.userJsonInfo.skillInfo)

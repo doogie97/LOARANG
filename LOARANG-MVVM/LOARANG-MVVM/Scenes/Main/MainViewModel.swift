@@ -91,7 +91,7 @@ final class MainViewModel: MainViewModelInOut {
         startedLoading.accept(())
         Task {
             do {
-                let searchResult = try await crawlManager.getUserInfo2(userName)
+                let searchResult = try await crawlManager.getUserInfo(userName)
                 await MainActor.run {
                     checkUser.accept(MainUser(image: searchResult.mainInfo.userImage,
                                               battleLV: searchResult.mainInfo.battleLV,

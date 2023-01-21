@@ -9,20 +9,20 @@ import SwiftSoup
 import Alamofire
 
 protocol CrawlManagerable {
-    func getUserInfo2(_ name: String) async throws -> UserInfo
-    func checkInspection2() async throws
+    func getUserInfo(_ name: String) async throws -> UserInfo
+    func checkInspection() async throws
     func getNotice() async throws -> [LostArkNotice]
 }
 
 struct CrawlManager: CrawlManagerable {
     private let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
     
-    func getUserInfo2(_ name: String) async throws -> UserInfo {
+    func getUserInfo(_ name: String) async throws -> UserInfo {
         guard let url = makeURL(urlString: baseURL, name: name) else {
             throw CrawlError.urlError
         }
 
-        let doc = try await makeDocument2(url: url)
+        let doc = try await makeDocument(url: url)
 
         guard let stat = try? getStat(doc: doc) else {
             throw CrawlError.searchError
@@ -32,9 +32,9 @@ struct CrawlManager: CrawlManagerable {
             throw CrawlError.searchError
         }
 
-        let userImage = await getUserImage2(name: name)
+        let userImage = await getUserImage(name: name)
         
-        guard let mainInfo = try? getMainInfo2(name: name, doc: doc, userImage: userImage) else {
+        guard let mainInfo = try? getMainInfo(name: name, doc: doc, userImage: userImage) else {
             throw CrawlError.searchError
         }
         
@@ -49,7 +49,7 @@ struct CrawlManager: CrawlManagerable {
         return url
     }
     
-    private func makeDocument2(url: URL) async throws -> Document {
+    private func makeDocument(url: URL) async throws -> Document {
         let response = await AF.request(url).serializingString().response
 
         guard let html = response.value else {
@@ -64,7 +64,7 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - basic info
-    private func getMainInfo2(name: String, doc: Document, userImage: UIImage) throws -> MainInfo {
+    private func getMainInfo(name: String, doc: Document, userImage: UIImage) throws -> MainInfo {
         
         do {
             let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
@@ -87,10 +87,10 @@ struct CrawlManager: CrawlManagerable {
         }
     }
     
-    private func getUserImage2(name: String) async -> UIImage {
+    private func getUserImage(name: String) async -> UIImage {
         let urlString = "https://lostark.game.onstove.com/Profile/Character/"
         guard let url = makeURL(urlString: urlString, name: name),
-              let doc = try? await makeDocument2(url: url),
+              let doc = try? await makeDocument(url: url),
               let imageURL = try? doc.select("#profile-equipment > div.profile-equipment__character > img").attr("src"),
               let url = URL(string: imageURL) else {
             return UIImage()
@@ -205,12 +205,12 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - 점검 확인
-    func checkInspection2() async throws {
+    func checkInspection() async throws {
         guard let url = makeURL(urlString: baseURL, name: "") else {
             return
         }
         
-        guard let doc = try? await makeDocument2(url: url) else {
+        guard let doc = try? await makeDocument(url: url) else {
             return
         }
         
@@ -228,7 +228,7 @@ extension CrawlManager {
             throw CrawlError.noticeError
         }
         
-        guard let doc = try? await makeDocument2(url: url) else {
+        guard let doc = try? await makeDocument(url: url) else {
             throw CrawlError.noticeError
         }
         

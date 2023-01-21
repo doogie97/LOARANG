@@ -36,7 +36,7 @@ final class SettingViewModel: SettingViewModelable {
         startedLoading.accept(())
         Task {
             do {
-                let searchResult = try await CrawlManager().getUserInfo2(userName)
+                let searchResult = try await CrawlManager().getUserInfo(userName)
                 await MainActor.run {
                     checkUser.accept(MainUser(image: searchResult.mainInfo.userImage,
                                               battleLV: searchResult.mainInfo.battleLV,

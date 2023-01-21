@@ -26,7 +26,7 @@ final class TabBarViewController: UITabBarController {
         // 추후 런치 스크린 추가시 런치스크린 화면에서 어플 종료 할 수 있도록 수정 필요
         Task {
             do {
-                try await CrawlManager().checkInspection2()
+                try await CrawlManager().checkInspection()
             } catch {
                 await MainActor.run {
                     showExitAlert(title:"서버 점검 중" ,message: "자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요")
