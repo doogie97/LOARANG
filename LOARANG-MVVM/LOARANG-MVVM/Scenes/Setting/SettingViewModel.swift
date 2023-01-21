@@ -34,24 +34,19 @@ final class SettingViewModel: SettingViewModelable {
     //input
     func touchSearchButton(_ userName: String) {
         startedLoading.accept(())
-        Task {
-            do {
-                let searchResult = try await CrawlManager().getUserInfo(userName)
-                await MainActor.run {
-                    checkUser.accept(MainUser(image: searchResult.mainInfo.userImage,
-                                              battleLV: searchResult.mainInfo.battleLV,
-                                              name: searchResult.mainInfo.name,
-                                              class: searchResult.mainInfo.class,
-                                              itemLV: searchResult.mainInfo.itemLV,
-                                              server: searchResult.mainInfo.server))
-                    finishedLoading.accept(())
-                }
-            } catch let error {
-                await MainActor.run {
-                    showAlert.accept(error.errorMessage)
-                    finishedLoading.accept(())
-                }
+        CrawlManager().getUserInfo(userName) { [weak self] result in
+            switch result {
+            case .success(let userInfo):
+                self?.checkUser.accept(MainUser(image: userInfo.mainInfo.userImage,
+                                          battleLV: userInfo.mainInfo.battleLV,
+                                          name: userInfo.mainInfo.name,
+                                          class: userInfo.mainInfo.`class`,
+                                          itemLV: userInfo.mainInfo.itemLV,
+                                          server: userInfo.mainInfo.server))
+            case .failure(_):
+                self?.showAlert.accept("검색하신 유저가 없습니다")
             }
+            self?.finishedLoading.accept(())
         }
     }
     

@@ -126,30 +126,25 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     private func searchUserInfo() {
         startedLoading.accept(())
-        Task {
-            do {
-                let searchResult = try await crawlManager.getUserInfo(userName)
-                await MainActor.run {
-                    userInfo.accept(searchResult)
-                    skillInfo.accept(searchResult.userJsonInfo.skillInfo)
-                    isBookmarkUser.accept(storage.isBookmarkUser(searchResult.mainInfo.name))
-                    userName = searchResult.mainInfo.name
-                    sucssesSearching.accept(())
-                    
-                    mainUserUpdate(searchResult)
-                    bookmarkUpdate(searchResult)
-                    
-                    if isSearching == true { // 검색창에서 직접 검색한 유저인지 아닌지
-                        addRecentUser(searchResult)
-                    }
-                    finishedLoading.accept(())
+        crawlManager.getUserInfo(userName) {[weak self] result in
+            switch result {
+            case .success(let userInfo):
+                self?.userInfo.accept(userInfo)
+                self?.skillInfo.accept(userInfo.userJsonInfo.skillInfo)
+                self?.isBookmarkUser.accept(self?.storage.isBookmarkUser(userInfo.mainInfo.name) ?? false)
+                self?.userName = userInfo.mainInfo.name
+                self?.sucssesSearching.accept(())
+                
+                self?.mainUserUpdate(userInfo)
+                self?.bookmarkUpdate(userInfo)
+                
+                if self?.isSearching == true {
+                    self?.addRecentUser(userInfo)
                 }
-            } catch let error {
-                await MainActor.run {
-                    showAlert.accept((message: error.errorMessage, isPop: true))
-                    finishedLoading.accept(())
-                }
+            case .failure(let error):
+                self?.showAlert.accept((message: error.errorMessage, isPop: true))
             }
+            self?.finishedLoading.accept(())
         }
     }
 

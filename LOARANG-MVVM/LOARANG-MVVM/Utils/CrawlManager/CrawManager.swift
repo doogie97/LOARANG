@@ -6,39 +6,58 @@
 //
 
 import SwiftSoup
-import Alamofire
 
 protocol CrawlManagerable {
-    func getUserInfo(_ name: String) async throws -> UserInfo
-    func checkInspection() async throws
-    func getNotice() async throws -> [LostArkNotice]
+    func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void)
+    func chenckInspection() throws
 }
 
 struct CrawlManager: CrawlManagerable {
     private let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
     
-    func getUserInfo(_ name: String) async throws -> UserInfo {
-        guard let url = makeURL(urlString: baseURL, name: name) else {
-            throw CrawlError.urlError
+    func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
+        DispatchQueue.global().async {
+            guard let url = makeURL(urlString: baseURL, name: name) else {
+                DispatchQueue.main.async {
+                    completion(.failure(CrawlError.urlError))
+                }
+                return
+            }
+            
+            guard let doc = try? makeDocument(url: url) else {
+                DispatchQueue.main.async {
+                    completion(.failure(CrawlError.documentError))
+                }
+                return
+            }
+            
+            guard let stat = try? getStat(doc: doc) else {
+                DispatchQueue.main.async {
+                    completion(.failure(CrawlError.searchError))
+                }
+                return
+            }
+            
+            guard let userJsonInfo = try? getUserJsonInfo(doc: doc) else {
+                DispatchQueue.main.async {
+                    completion(.failure(CrawlError.searchError))
+                }
+                return
+            }
+            
+            getMainInfo(name: name, doc: doc) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let mainInfo):
+                        completion(.success(UserInfo(mainInfo: mainInfo,
+                                                     stat: stat,
+                                                     userJsonInfo: userJsonInfo)))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+            }
         }
-
-        let doc = try await makeDocument(url: url)
-
-        guard let stat = try? getStat(doc: doc) else {
-            throw CrawlError.searchError
-        }
-
-        guard let userJsonInfo = try? getUserJsonInfo(doc: doc) else {
-            throw CrawlError.searchError
-        }
-
-        let userImage = await getUserImage(name: name)
-        
-        guard let mainInfo = try? getMainInfo(name: name, doc: doc, userImage: userImage) else {
-            throw CrawlError.searchError
-        }
-        
-        return UserInfo(mainInfo: mainInfo, stat: stat, userJsonInfo: userJsonInfo)
     }
     
     private func makeURL(urlString: String, name: String) -> URL? {
@@ -49,10 +68,8 @@ struct CrawlManager: CrawlManagerable {
         return url
     }
     
-    private func makeDocument(url: URL) async throws -> Document {
-        let response = await AF.request(url).serializingString().response
-
-        guard let html = response.value else {
+    private func makeDocument(url: URL) throws -> Document {
+        guard let html = try? String(contentsOf: url, encoding: .utf8) else {
             throw CrawlError.documentError
         }
         
@@ -64,7 +81,7 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - basic info
-    private func getMainInfo(name: String, doc: Document, userImage: UIImage) throws -> MainInfo {
+    private func getMainInfo(name: String, doc: Document, completion: @escaping (Result<MainInfo, Error>) -> Void) {
         
         do {
             let server = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(1) > dd").text()
@@ -83,26 +100,33 @@ struct CrawlManager: CrawlManagerable {
             let wisdom = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__contents-level > div:nth-child(4) > dl > dd").text()
             let `class` = try doc.select("#lostark-wrapper > div > main > div > div > div.myinfo__contents-character > div.myinfo__user > dl.myinfo__user-names > dd > div.wrapper-define > dl:nth-child(2) > dd").text()
             
-            return MainInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: userImage)
+            getUserImage(name: name) { image in
+                completion(.success(MainInfo(server: server, name: name, battleLV: battleLV, itemLV: itemLV, expeditionLV: expeditionLV, title: title, guild: guild, pvp: pvp, wisdom: wisdom, class: `class`, userImage: image)))
+            }
+        } catch {
+            completion(.failure(CrawlError.searchError))
         }
     }
     
-    private func getUserImage(name: String) async -> UIImage {
+    private func getUserImage(name: String, completion: @escaping (UIImage) -> Void) {
         let urlString = "https://lostark.game.onstove.com/Profile/Character/"
         guard let url = makeURL(urlString: urlString, name: name),
-              let doc = try? await makeDocument(url: url),
+              let doc = try? makeDocument(url: url),
               let imageURL = try? doc.select("#profile-equipment > div.profile-equipment__character > img").attr("src"),
               let url = URL(string: imageURL) else {
-            return UIImage()
+            completion(UIImage())
+            return
         }
         
-        let response = await AF.request(url).serializingData().response
-        
-        guard let data = response.data else {
-            return UIImage()
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, _ in
+            guard let data = data else {
+                completion(UIImage())
+                return
+            }
+            completion(UIImage(data: data) ?? UIImage())
         }
-        
-        return UIImage(data: data) ?? UIImage()
+        dataTask.resume()
+        // 빈 이미지 리턴 하는 부분은 추후 이미지 다운 실패이미지로 변경 필요
     }
     
     //MARK: - Stat
@@ -205,16 +229,17 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - 점검 확인
-    func checkInspection() async throws {
+    
+    func chenckInspection() throws {
         guard let url = makeURL(urlString: baseURL, name: "") else {
             return
         }
         
-        guard let doc = try? await makeDocument(url: url) else {
+        guard let doc = try? makeDocument(url: url) else {
             return
         }
         
-        guard let webTitle = try? doc.select("title").text(), webTitle == "로스트아크 - 서비스 점검" else {
+        guard let a = try? doc.select("title").text(), a == "로스트아크 - 서비스 점검" else {
             return
         }
         
@@ -223,17 +248,20 @@ struct CrawlManager: CrawlManagerable {
 }
 // MARK: - 이벤트 정보
 extension CrawlManager {
-    func getNotice() async throws -> [LostArkNotice] {
+    func getNotice(completion: @escaping (Result<[LostArkNotice], Error>) -> Void){
         guard let url = URL(string: "https://lostark.game.onstove.com/News/Notice/List") else {
-            throw CrawlError.noticeError
+            completion(.failure(CrawlError.noticeError))
+            return
         }
         
-        guard let doc = try? await makeDocument(url: url) else {
-            throw CrawlError.noticeError
+        guard let doc = try? makeDocument(url: url) else {
+            completion(.failure(CrawlError.noticeError))
+            return
         }
         
         guard let noticeElements = try? doc.select("#list > div.list.list--default > ul")[safe: 1]?.select("li") else {
-            throw CrawlError.noticeError
+            completion(.failure(CrawlError.noticeError))
+            return
         }
         
         let notices: [LostArkNotice] = noticeElements.compactMap {
@@ -247,6 +275,6 @@ extension CrawlManager {
             }
         }
         
-        return notices
+        completion(.success(notices))
     }
 }
