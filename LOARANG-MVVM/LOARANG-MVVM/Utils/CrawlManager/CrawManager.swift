@@ -174,7 +174,7 @@ struct CrawlManager: CrawlManagerable {
     private func getUserImage2(name: String) async -> UIImage {
         let urlString = "https://lostark.game.onstove.com/Profile/Character/"
         guard let url = makeURL(urlString: urlString, name: name),
-              let doc = try? makeDocument(url: url),
+              let doc = try? await makeDocument2(url: url),
               let imageURL = try? doc.select("#profile-equipment > div.profile-equipment__character > img").attr("src"),
               let url = URL(string: imageURL) else {
             return UIImage()
