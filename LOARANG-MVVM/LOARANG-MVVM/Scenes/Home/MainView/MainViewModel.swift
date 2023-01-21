@@ -72,21 +72,6 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     private func getNotice() {
-        guard notices.value.isEmpty else {
-            return
-        }
-        
-        crawlManager.getNotice { [weak self] result in
-            switch result {
-            case .success(let notice):
-                self?.notices.accept(notice)
-            case .failure(let error):
-                self?.showAlert.accept(error.errorMessage)
-            }
-        }
-    }
-    
-    private func getNotice() {
         Task {
             do {
                 let notices = try await crawlManager.getNotice()
