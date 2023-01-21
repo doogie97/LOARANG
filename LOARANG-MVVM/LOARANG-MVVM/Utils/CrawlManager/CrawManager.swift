@@ -11,6 +11,7 @@ import Alamofire
 protocol CrawlManagerable {
     func getUserInfo(_ name: String, completion: @escaping (Result<UserInfo, Error>) -> Void)
     func getUserInfo2(_ name: String) async throws -> UserInfo
+    func checkInspection2() async throws
     func chenckInspection() throws
 }
 
@@ -310,7 +311,21 @@ struct CrawlManager: CrawlManagerable {
     }
     
     //MARK: - 점검 확인
-    
+    func checkInspection2() async throws {
+        guard let url = makeURL(urlString: baseURL, name: "") else {
+            return
+        }
+        
+        guard let doc = try? await makeDocument2(url: url) else {
+            return
+        }
+        
+        guard let webTitle = try? doc.select("title").text(), webTitle == "로스트아크 - 서비스 점검" else {
+            return
+        }
+        
+        throw CrawlError.inspection
+    }
     func chenckInspection() throws {
         guard let url = makeURL(urlString: baseURL, name: "") else {
             return
