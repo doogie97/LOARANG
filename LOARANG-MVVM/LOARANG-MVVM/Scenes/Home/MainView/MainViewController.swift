@@ -34,12 +34,7 @@ final class MainViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         bindView()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel.viewDidAppear()
-    }
-    
+
     private func bindView() {
         //SearchButton
         mainView.searchButton.rx.tap
@@ -113,6 +108,13 @@ final class MainViewController: UIViewController {
             .bind(onNext: { [weak self] in
                 self?.showAlert(message: $0)
             })
+            .disposed(by: disposeBag)
+        
+        viewModel.showExitAlert
+            .withUnretained(self)
+            .bind { owner, contents in
+                owner.showExitAlert(title:contents.title ,message: contents.message)
+            }
             .disposed(by: disposeBag)
         
         // BookmarkView contents
