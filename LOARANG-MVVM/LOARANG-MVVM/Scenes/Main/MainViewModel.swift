@@ -45,8 +45,24 @@ final class MainViewModel: MainViewModelInOut {
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
         
-        getEvent()
-        getNotice()
+        checkInspection()
+    }
+    
+    private func checkInspection() {
+        Task {
+            do {
+                try await CrawlManager().checkInspection()
+                await MainActor.run {
+                    getEvent()
+                    getNotice()
+                }
+            } catch {
+                await MainActor.run {
+                    showExitAlert.accept((title:"서버 점검 중",
+                                          message: "자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요"))
+                }
+            }
+        }
     }
     
     private func getEvent() {
