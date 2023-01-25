@@ -30,6 +30,7 @@ protocol MainViewModelOutput {
     var showUserInfo: PublishRelay<String> { get }
     var showWebView: PublishRelay<(url: URL, title: String)> { get }
     var showAlert: PublishRelay<String> { get }
+    var showExitAlert: PublishRelay<(title: String, message: String)> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
 }
@@ -44,8 +45,24 @@ final class MainViewModel: MainViewModelInOut {
         self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
         
-        getEvent()
-        getNotice()
+        checkInspection()
+    }
+    
+    private func checkInspection() {
+        Task {
+            do {
+                try await CrawlManager().checkInspection()
+                await MainActor.run {
+                    getEvent()
+                    getNotice()
+                }
+            } catch {
+                await MainActor.run {
+                    showExitAlert.accept((title:"서버 점검 중",
+                                          message: "자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요"))
+                }
+            }
+        }
     }
     
     private func getEvent() {
@@ -174,6 +191,7 @@ final class MainViewModel: MainViewModelInOut {
     let showUserInfo = PublishRelay<String>()
     let showWebView = PublishRelay<(url: URL, title: String)>()
     let showAlert = PublishRelay<String>()
+    let showExitAlert = PublishRelay<(title: String, message: String)>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
 }
