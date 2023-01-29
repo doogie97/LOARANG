@@ -240,6 +240,8 @@ final class MarketViewController: UIViewController {
     }
     
     private func bindKeyboard() {
+        marketView.marketOptionView.itemSearchBar.inputAccessoryView = closeKeyboardToolbar()
+        
         viewModel.hideKeyboard
             .withUnretained(self)
             .bind { (owner, _) in
