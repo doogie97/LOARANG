@@ -155,6 +155,16 @@ final class Container {
         return MarketDetailViewModel(item: item)
     }
     
+    //MARK: - about Auction
+    func makeAuctionViewController() -> AuctionViewController {
+        return AuctionViewController(viewModel: makeAuctionViewModel(),
+                                     container: self)
+    }
+    
+    private func makeAuctionViewModel() -> AuctionViewModelable {
+        return AuctionViewModel()
+    }
+    
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
         return SettingViewModel(storage: storage)
