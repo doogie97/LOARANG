@@ -28,7 +28,7 @@ final class MarketOptionView: UIView {
     private(set) lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("검색", for: .normal)
-        button.setTitleColor(.systemGray, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.titleLabel?.font = UIFont.one(size: 16, family: .Bold)
         
         return button
