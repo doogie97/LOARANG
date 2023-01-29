@@ -237,6 +237,13 @@ final class MarketViewController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        marketView.marketItemListView.marketItemTableView.rx.itemSelected
+            .withUnretained(self)
+            .bind { owner, indexPath in
+                owner.viewModel.touchItemCell(indexPath.row)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func bindKeyboard() {

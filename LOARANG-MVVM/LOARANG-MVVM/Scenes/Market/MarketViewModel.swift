@@ -14,6 +14,7 @@ protocol MarketViewModelInput {
     func selectCategorySubOption(mainIndex: Int, subIndex: Int)
     func touchBlurView()
     func touchSearchButton(itemName: String, `class`: String, grade: String)
+    func touchItemCell(_ index: Int)
     func scrolledEndPoint()
     func viewDidAppear()
 }
@@ -148,6 +149,13 @@ final class MarketViewModel: MarketViewModelable {
                                                          pageNo: 1,
                                                          sortCondition: .asc)
         searchItem()
+    }
+    
+    func touchItemCell(_ index: Int) {
+        guard let item = marketItems.value[safe: index] else {
+            return
+        }
+        print(item.name) //추후 itemDetailView로 넘겨주기
     }
     
     func scrolledEndPoint() {
