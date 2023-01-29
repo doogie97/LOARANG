@@ -35,6 +35,8 @@ final class SearchViewController: UIViewController {
     }
     
     private func bindView() {
+        bindKeyboard()
+        
         viewModel.recentUser.bind(to: searchView.recentUserView.recentUserTableView.rx
             .items(cellIdentifier: "\(RecentUserTVCell.self)", cellType: RecentUserTVCell.self)) { [weak self] index, recentUser, cell in
                 cell.setCellContents(viewModel: self?.container.makeRecentUserCellViewModel(userInfo: recentUser))
@@ -94,5 +96,16 @@ final class SearchViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         })
         .disposed(by: disposeBag)
+    }
+    
+    private func bindKeyboard() {
+        searchView.userSearchBar.inputAccessoryView = closeKeyboardToolbar()
+        
+        viewModel.hideKeyboard
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
     }
 }
