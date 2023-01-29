@@ -237,12 +237,13 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        marketView.marketItemListView.marketItemTableView.rx.itemSelected
-            .withUnretained(self)
-            .bind { owner, indexPath in
-                owner.viewModel.touchItemCell(indexPath.row)
-            }
-            .disposed(by: disposeBag)
+        //서버에서 내려주는 거래소 item 정보가 현재는 얼마 없어 일단 market detail view는 비활성화
+//        marketView.marketItemListView.marketItemTableView.rx.itemSelected
+//            .withUnretained(self)
+//            .bind { owner, indexPath in
+//                owner.viewModel.touchItemCell(indexPath.row)
+//            }
+//            .disposed(by: disposeBag)
         
         viewModel.showItemDetail
             .withUnretained(self)
