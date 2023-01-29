@@ -34,6 +34,7 @@ protocol MarketViewModelOutput {
     var showAlert: PublishRelay<String> { get }
     var marketItems: BehaviorRelay<[MarketItems.Item]> { get }
     var totalCount: BehaviorRelay<Int> { get }
+    var showItemDetail: PublishRelay<MarketItems.Item> { get }
     var hideKeyboard: PublishRelay<Void> { get }
 }
 
@@ -155,7 +156,8 @@ final class MarketViewModel: MarketViewModelable {
         guard let item = marketItems.value[safe: index] else {
             return
         }
-        print(item.name) //추후 itemDetailView로 넘겨주기
+        
+        showItemDetail.accept(item)
     }
     
     func scrolledEndPoint() {
@@ -255,6 +257,7 @@ final class MarketViewModel: MarketViewModelable {
     
     let marketItems = BehaviorRelay<[MarketItems.Item]>(value: [])
     let totalCount = BehaviorRelay<Int>(value: 0)
+    let showItemDetail = PublishRelay<MarketItems.Item>()
     let hideKeyboard = PublishRelay<Void>()
 }
 

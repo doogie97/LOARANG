@@ -220,7 +220,6 @@ final class MarketViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        
         viewModel.marketItems
             .bind(to: marketView.marketItemListView.marketItemTableView.rx.items(cellIdentifier: "\(MarketItemCell.self)", cellType: MarketItemCell.self)) { index, item, cell in
                 cell.setCellContents(item)
@@ -242,6 +241,17 @@ final class MarketViewController: UIViewController {
             .withUnretained(self)
             .bind { owner, indexPath in
                 owner.viewModel.touchItemCell(indexPath.row)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.showItemDetail
+            .withUnretained(self)
+            .bind { owner, item in
+                let detailViewController = owner.container.makeMarketDetailViewController(item: item)
+                detailViewController.modalTransitionStyle = .crossDissolve
+                detailViewController.modalPresentationStyle = .fullScreen
+                
+                owner.present(detailViewController, animated: true)
             }
             .disposed(by: disposeBag)
     }
