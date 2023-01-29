@@ -33,6 +33,7 @@ protocol MarketViewModelOutput {
     var showAlert: PublishRelay<String> { get }
     var marketItems: BehaviorRelay<[MarketItems.Item]> { get }
     var totalCount: BehaviorRelay<Int> { get }
+    var hideKeyboard: PublishRelay<Void> { get }
 }
 
 protocol MarketViewModelable: MarketViewModelInput, MarketViewModelOutput {}
@@ -96,6 +97,7 @@ final class MarketViewModel: MarketViewModelable {
         }
         
         showOptionsView.accept(self.selectedOptionType)
+        hideKeyboard.accept(())
     }
     
     func selectOptionCell(_ index: Int) {
@@ -126,6 +128,7 @@ final class MarketViewModel: MarketViewModelable {
     }
     
     func touchSearchButton(itemName: String, `class`: String, grade: String) {
+        hideKeyboard.accept(())
         guard let categorySubOptionIndex = categorySubOptionIndex else {
             showAlert.accept("카테고리를 선택해주세요")
             return
@@ -244,6 +247,7 @@ final class MarketViewModel: MarketViewModelable {
     
     let marketItems = BehaviorRelay<[MarketItems.Item]>(value: [])
     let totalCount = BehaviorRelay<Int>(value: 0)
+    let hideKeyboard = PublishRelay<Void>()
 }
 
 extension MarketViewModel {

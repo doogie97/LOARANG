@@ -41,6 +41,7 @@ final class MarketViewController: UIViewController {
     private func bindView() {
         buttonTextBind()
         bindItemTableView()
+        bindKeyboard()
         marketView.marketOptionView.categoryButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
@@ -234,6 +235,17 @@ final class MarketViewController: UIViewController {
                 if indexPath.last?.row == itemCount - 1 {
                     owner.viewModel.scrolledEndPoint()
                 }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindKeyboard() {
+        marketView.marketOptionView.itemSearchBar.inputAccessoryView = closeKeyboardToolbar()
+        
+        viewModel.hideKeyboard
+            .withUnretained(self)
+            .bind { (owner, _) in
+                owner.view.endEditing(true)
             }
             .disposed(by: disposeBag)
     }

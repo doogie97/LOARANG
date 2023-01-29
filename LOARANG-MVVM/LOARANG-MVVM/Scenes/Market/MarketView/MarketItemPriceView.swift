@@ -92,8 +92,8 @@ final class MarketItemPriceView: UIView {
     }
     
     func setPrice(minimum: Double?, yesterday: Double?, recent: Double?) {
-        minimumPriceLabel.text = minimum == 0 ? "-" : "\(minimum ?? 0)"
-        yesterDayAVGPriceLabel.text = yesterday == 0 ? "-" : "\(yesterday ?? 0)"
-        recentPriceLabel.text = recent == 0 ? "-" : "\(recent ?? 0)"
+        minimumPriceLabel.text = minimum == 0 ? "-" : minimum?.commaDouble
+        yesterDayAVGPriceLabel.text = yesterday == 0 ? "-" : yesterday?.commaDouble
+        recentPriceLabel.text = recent == 0 ? "-" : recent?.commaDouble
     }
 }
