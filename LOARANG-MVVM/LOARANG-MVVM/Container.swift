@@ -147,6 +147,14 @@ final class Container {
         return MarketViewModel(networkManager: networkManager)
     }
     
+    func makeMarketDetailViewController(item: MarketItems.Item) -> MarketDetailViewController {
+        return MarketDetailViewController(viewModel: makeMarketDetailViewModel(item: item))
+    }
+    
+    private func makeMarketDetailViewModel(item: MarketItems.Item) -> MarketDetailViewModelable {
+        return MarketDetailViewModel(item: item)
+    }
+    
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
         return SettingViewModel(storage: storage)

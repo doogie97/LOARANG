@@ -122,6 +122,9 @@
 		ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813428D42CFB0081F8A1 /* CharactersView.swift */; };
 		ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */; };
 		ACB749162986894E008DC7C9 /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB749152986894E008DC7C9 /* Double + Extension.swift */; };
+		ACB7491A2986AEE2008DC7C9 /* MarketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB749192986AEE2008DC7C9 /* MarketDetailView.swift */; };
+		ACB7491C2986AEEE008DC7C9 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7491B2986AEEE008DC7C9 /* MarketDetailViewController.swift */; };
+		ACB7491E2986AEF6008DC7C9 /* MarketDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7491D2986AEF6008DC7C9 /* MarketDetailViewModel.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
 		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
@@ -286,6 +289,9 @@
 		ACB3813428D42CFB0081F8A1 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnCharacterCell.swift; sourceTree = "<group>"; };
 		ACB749152986894E008DC7C9 /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
+		ACB749192986AEE2008DC7C9 /* MarketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailView.swift; sourceTree = "<group>"; };
+		ACB7491B2986AEEE008DC7C9 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
+		ACB7491D2986AEF6008DC7C9 /* MarketDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDetailViewModel.swift; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
@@ -526,6 +532,7 @@
 				AC3578F22973F3CC00F41B56 /* MarketView */,
 				AC41164C295C7E7300A76BA4 /* MarketViewController.swift */,
 				AC41164E295C7E7E00A76BA4 /* MarketViewModel.swift */,
+				ACB749182986AECF008DC7C9 /* MarketDetailView */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -885,6 +892,16 @@
 			path = UserInfo/UserInfo;
 			sourceTree = "<group>";
 		};
+		ACB749182986AECF008DC7C9 /* MarketDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				ACB749192986AEE2008DC7C9 /* MarketDetailView.swift */,
+				ACB7491B2986AEEE008DC7C9 /* MarketDetailViewController.swift */,
+				ACB7491D2986AEF6008DC7C9 /* MarketDetailViewModel.swift */,
+			);
+			path = MarketDetailView;
+			sourceTree = "<group>";
+		};
 		ACC778E828E28E26000EDA2F /* NoticeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1121,6 +1138,7 @@
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,
+				ACB7491E2986AEF6008DC7C9 /* MarketDetailViewModel.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */,
@@ -1165,6 +1183,7 @@
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUser.swift in Sources */,
+				ACB7491C2986AEEE008DC7C9 /* MarketDetailViewController.swift in Sources */,
 				AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				AC4E19EB28C444E600542EAE /* CardView.swift in Sources */,
@@ -1217,6 +1236,7 @@
 				AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
 				AC3578ED2973B3BC00F41B56 /* MarketItemCell.swift in Sources */,
+				ACB7491A2986AEE2008DC7C9 /* MarketDetailView.swift in Sources */,
 				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
