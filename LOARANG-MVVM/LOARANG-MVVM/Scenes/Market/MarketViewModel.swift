@@ -14,6 +14,7 @@ protocol MarketViewModelInput {
     func selectCategorySubOption(mainIndex: Int, subIndex: Int)
     func touchBlurView()
     func touchSearchButton(itemName: String, `class`: String, grade: String)
+    func touchItemCell(_ index: Int)
     func scrolledEndPoint()
     func viewDidAppear()
 }
@@ -33,6 +34,7 @@ protocol MarketViewModelOutput {
     var showAlert: PublishRelay<String> { get }
     var marketItems: BehaviorRelay<[MarketItems.Item]> { get }
     var totalCount: BehaviorRelay<Int> { get }
+    var showItemDetail: PublishRelay<MarketItems.Item> { get }
     var hideKeyboard: PublishRelay<Void> { get }
 }
 
@@ -150,6 +152,14 @@ final class MarketViewModel: MarketViewModelable {
         searchItem()
     }
     
+    func touchItemCell(_ index: Int) {
+        guard let item = marketItems.value[safe: index] else {
+            return
+        }
+        
+        showItemDetail.accept(item)
+    }
+    
     func scrolledEndPoint() {
         searchItem()
     }
@@ -247,6 +257,7 @@ final class MarketViewModel: MarketViewModelable {
     
     let marketItems = BehaviorRelay<[MarketItems.Item]>(value: [])
     let totalCount = BehaviorRelay<Int>(value: 0)
+    let showItemDetail = PublishRelay<MarketItems.Item>()
     let hideKeyboard = PublishRelay<Void>()
 }
 
