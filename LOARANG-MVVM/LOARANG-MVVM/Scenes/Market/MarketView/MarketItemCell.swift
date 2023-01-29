@@ -71,7 +71,7 @@ final class MarketItemCell: UITableViewCell {
         
         backView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(5)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(8)
         }
         
         itemImageView.snp.makeConstraints {
