@@ -121,6 +121,7 @@
 		ACB3813328D42CF60081F8A1 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813228D42CF60081F8A1 /* CharactersViewModel.swift */; };
 		ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813428D42CFB0081F8A1 /* CharactersView.swift */; };
 		ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */; };
+		ACB749162986894E008DC7C9 /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB749152986894E008DC7C9 /* Double + Extension.swift */; };
 		ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */; };
 		ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */; };
 		ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78F62898B34600CB39D5 /* CrawlError.swift */; };
@@ -284,6 +285,7 @@
 		ACB3813228D42CF60081F8A1 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		ACB3813428D42CFB0081F8A1 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		ACB3813828D4562E0081F8A1 /* OwnCharacterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnCharacterCell.swift; sourceTree = "<group>"; };
+		ACB749152986894E008DC7C9 /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
 		ACB837F52897DB4D00F75BA2 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		ACB837F72897DBBF00F75BA2 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		ACBA78F62898B34600CB39D5 /* CrawlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlError.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */,
 				ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */,
 				ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */,
+				ACB749152986894E008DC7C9 /* Double + Extension.swift */,
 				AC2C2B5628B33A0300621753 /* JSON + Extension.swift */,
 				ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */,
 				AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */,
@@ -1218,6 +1221,7 @@
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
 				ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */,
+				ACB749162986894E008DC7C9 /* Double + Extension.swift in Sources */,
 				AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
