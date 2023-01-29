@@ -5,11 +5,17 @@
 //  Created by 최최성균 on 2023/01/29.
 //
 
+import RxRelay
+
 protocol MarketDetailViewModelable: MarketDetailViewModelInput, MarketDetailViewModelOutput {}
 
-protocol MarketDetailViewModelInput {}
+protocol MarketDetailViewModelInput {
+    func touchCloseButton()
+}
 
-protocol MarketDetailViewModelOutput {}
+protocol MarketDetailViewModelOutput {
+    var dismissView: PublishRelay<Void> { get }
+}
 
 final class MarketDetailViewModel: MarketDetailViewModelable {
     private let item: MarketItems.Item
@@ -17,4 +23,12 @@ final class MarketDetailViewModel: MarketDetailViewModelable {
     init(item: MarketItems.Item) {
         self.item = item
     }
+    
+    //MARK: - In
+    func touchCloseButton() {
+        dismissView.accept(())
+    }
+    
+    //MARK: - Out
+    let dismissView = PublishRelay<Void>()
 }

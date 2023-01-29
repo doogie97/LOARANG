@@ -17,7 +17,19 @@ final class MarketDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private(set) lazy var closeButton: UIButton = {
+        let button = UIButton(type: .close)
+        
+        return button
+    }()
+    
     private func setLayout() {
         self.backgroundColor = .mainBackground
+        
+        self.addSubview(closeButton)
+        
+        closeButton.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
