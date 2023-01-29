@@ -27,7 +27,7 @@ final class TabBarViewController: UITabBarController {
     private func setTabBarView() {
         self.tabBar.tintColor = .buttonColor
         self.tabBar.backgroundColor = .systemGray5
-        self.setViewControllers([mainVC, marketVC, settingVC], animated: false)
+        self.setViewControllers([mainVC, marketVC, auctionVC, settingVC], animated: false)
     }
     
     private lazy var mainVC: UIViewController = {
@@ -42,6 +42,14 @@ final class TabBarViewController: UITabBarController {
         let marketVC = container.makeMarketViewController()
         marketVC.title = "거래소"
         marketVC.tabBarItem.image = UIImage(named: "cart")
+        
+        return marketVC
+    }()
+    
+    private lazy var auctionVC: UIViewController = {
+        let marketVC = container.makeAuctionViewController()
+        marketVC.title = "경매장"
+        marketVC.tabBarItem.image = UIImage(named: "auction")
         
         return marketVC
     }()
