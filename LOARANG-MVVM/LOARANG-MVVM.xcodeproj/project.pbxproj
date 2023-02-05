@@ -146,6 +146,8 @@
 		ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778EB28E291AA000EDA2F /* NoticeTVCell.swift */; };
 		ACC7A734298F445D008A642E /* AuctionOptionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC7A733298F445D008A642E /* AuctionOptionsAPI.swift */; };
 		ACC7A736298F44FE008A642E /* AuctionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC7A735298F44FE008A642E /* AuctionOptions.swift */; };
+		ACC7A738298F53EC008A642E /* SearchMarketItemIdAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC7A737298F53EC008A642E /* SearchMarketItemIdAPI.swift */; };
+		ACC7A73A298F54D6008A642E /* MarketItemIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC7A739298F54D6008A642E /* MarketItemIdResponse.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACD547B128EBF8A000D44ACA /* RecentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD547B028EBF8A000D44ACA /* RecentUser.swift */; };
@@ -318,6 +320,8 @@
 		ACC778EB28E291AA000EDA2F /* NoticeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTVCell.swift; sourceTree = "<group>"; };
 		ACC7A733298F445D008A642E /* AuctionOptionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionOptionsAPI.swift; sourceTree = "<group>"; };
 		ACC7A735298F44FE008A642E /* AuctionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionOptions.swift; sourceTree = "<group>"; };
+		ACC7A737298F53EC008A642E /* SearchMarketItemIdAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMarketItemIdAPI.swift; sourceTree = "<group>"; };
+		ACC7A739298F54D6008A642E /* MarketItemIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketItemIdResponse.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACD547B028EBF8A000D44ACA /* RecentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUser.swift; sourceTree = "<group>"; };
@@ -556,6 +560,8 @@
 				AC0EB204295E7A5800CC8043 /* MarketOptions.swift */,
 				ACE84CFF294B69910043BC03 /* SearchMarketItemsAPI.swift */,
 				AC411645295C7A7C00A76BA4 /* MarketItems.swift */,
+				ACC7A737298F53EC008A642E /* SearchMarketItemIdAPI.swift */,
+				ACC7A739298F54D6008A642E /* MarketItemIdResponse.swift */,
 			);
 			path = MarketsAPI;
 			sourceTree = "<group>";
@@ -1176,6 +1182,7 @@
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */,
 				AC3578EB2973A9AA00F41B56 /* MarketItemListView.swift in Sources */,
+				ACC7A738298F53EC008A642E /* SearchMarketItemIdAPI.swift in Sources */,
 				AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
@@ -1248,6 +1255,7 @@
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
+				ACC7A73A298F54D6008A642E /* MarketItemIdResponse.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
 				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
