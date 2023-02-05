@@ -11,7 +11,7 @@ struct MarketItems: Decodable {
     let pageNo: Int?
     let itemPerPage: Int?
     let totalCount: Int?
-    let items: [Item]
+    let items: [Item]?
     
     enum CodingKeys: String, CodingKey {
         case pageNo = "PageNo"

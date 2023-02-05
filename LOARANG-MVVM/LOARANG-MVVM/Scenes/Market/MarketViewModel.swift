@@ -69,10 +69,10 @@ final class MarketViewModel: MarketViewModelable {
             do {
                 let marketOptions = try await networkManager.request(MarketOptionsAPI(), resultType: MarketOptions.self)
                 await MainActor.run {
-                    categories = marketOptions.categories
+                    categories = marketOptions.categories ?? []
                     categoryOptionList.accept(categories)
-                    classes.append(contentsOf: marketOptions.classes)
-                    itemGrades.append(contentsOf: marketOptions.itemGrades)
+                    classes.append(contentsOf: marketOptions.classes ?? [])
+                    itemGrades.append(contentsOf: marketOptions.itemGrades ?? [])
                 }
             } catch let error {
                 await MainActor.run {
@@ -189,7 +189,7 @@ final class MarketViewModel: MarketViewModelable {
         if index == 0 {
             return (code: mainCategory?.code ?? 0, codeName: (mainCategory?.codeName ?? "") + " - 전체")
         } else {
-            let subCategory = mainCategory?.subs[safe: index - 1]
+            let subCategory = mainCategory?.subs?[safe: index - 1]
             return (code: subCategory?.code ?? 0,
                     codeName: (mainCategory?.codeName ?? "") + " - " + (subCategory?.codeName ?? ""))
         }
@@ -216,7 +216,7 @@ final class MarketViewModel: MarketViewModelable {
                     
                     let oldItems = marketItems.value
                     let newItems = response.items
-                    marketItems.accept(oldItems + newItems)
+                    marketItems.accept(oldItems + (newItems ?? []))
                     totalCount.accept(response.totalCount ?? 0)
                     self.searchOption?.pageNo += 1
                 }

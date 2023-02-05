@@ -8,10 +8,10 @@
 import Foundation
 
 struct MarketOptions: Decodable {
-    let categories: [Category]
+    let categories: [Category]?
     
     struct Category: Decodable {
-        let subs: [Sub]
+        let subs: [Sub]?
         let code: Int?
         let codeName: String?
         
@@ -21,9 +21,9 @@ struct MarketOptions: Decodable {
         }
     }
     
-    let itemGrades: [String]
-    let itemTiers: [Int]
-    let classes: [String]
+    let itemGrades: [String]?
+    let itemTiers: [Int]?
+    let classes: [String]?
 }
 
 extension MarketOptions {
