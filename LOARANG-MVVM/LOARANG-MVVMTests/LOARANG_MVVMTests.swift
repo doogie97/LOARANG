@@ -81,6 +81,21 @@ final class LOARANG_MVVMTests: XCTestCase {
         }
     }
     
+    func test_Request호출시_marketItemID로_item정보를_잘_가져오는지() async {
+        //given
+        let networkManager = NetworkManager()
+        let api = SearchMarketItemIdAPI(id: 304100279)
+        
+        do {
+            //then
+            let marketItems = try await networkManager.request(api, resultType: [MarketItem].self)
+            XCTAssertEqual(marketItems[safe: 0]?.name, "핏빛 저주의 니들 블레이드")
+        } catch let error {
+            debugPrint(error)
+            XCTFail()
+        }
+    }
+    
     func test_Requset호출시_AuctionOptions를_잘_가져오는지() async {
         //given
         let networkManager = NetworkManager()
