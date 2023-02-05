@@ -18,7 +18,7 @@ final class LOARANG_MVVMTests: XCTestCase {
         do {
             //then
             let news = try await networkManager.request(api, resultType: [News].self)
-            XCTAssertEqual(news[safe: 0]?.title, "2022 3rd 네리아의 드레스룸")
+            XCTAssertEqual(news[safe: 0]?.title, "슬레이어 오픈 아바타")
         } catch let error {
             debugPrint(error)
             XCTFail()
@@ -50,8 +50,8 @@ final class LOARANG_MVVMTests: XCTestCase {
         do {
             //then
             let marketOptions = try await networkManager.request(api, resultType: MarketOptions.self)
-            XCTAssertEqual(marketOptions.categories[safe: 4]?.subs[safe: 0]?.codeName, "배틀 아이템 -회복형")
-            XCTAssertEqual(marketOptions.classes[3], "홀리나이트")
+            XCTAssertEqual(marketOptions.categories?[safe: 4]?.subs?[safe: 0]?.codeName, "배틀 아이템 -회복형")
+            XCTAssertEqual(marketOptions.classes?[3], "홀리나이트")
         } catch let error {
             debugPrint(error)
             XCTFail()
@@ -74,7 +74,7 @@ final class LOARANG_MVVMTests: XCTestCase {
         do {
             //then
             let marketSearchResponse = try await networkManager.request(api, resultType: MarketItems.self)
-            XCTAssertEqual(marketSearchResponse.items[safe:0]?.grade, "1000")
+            XCTAssertEqual(marketSearchResponse.items?[safe:0]?.grade, "영웅")
         } catch let error {
             debugPrint(error)
             XCTFail()
