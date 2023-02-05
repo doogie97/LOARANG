@@ -80,4 +80,21 @@ final class LOARANG_MVVMTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func test_Requset호출시_AuctionOptions를_잘_가져오는지() async {
+        //given
+        let networkManager = NetworkManager()
+        let api = AuctionOptionsAPI()
+        
+        //when
+        do {
+            //then
+            let auctionOptions = try await networkManager.request(api, resultType: AuctionOptions.self)
+            XCTAssertEqual(auctionOptions.etcOptions?[safe: 2]?.type, "감소 효과" )
+            XCTAssertEqual(auctionOptions.skillOptions?[safe: 4]?.tripods?[safe: 1]?.tripodName, "스킬 쿨타임 감소")
+        } catch let error {
+            debugPrint(error)
+            XCTFail()
+        }
+    }
 }
