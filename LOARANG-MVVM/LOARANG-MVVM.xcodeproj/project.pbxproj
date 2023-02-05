@@ -144,6 +144,8 @@
 		ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */; };
 		ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778E928E28E58000EDA2F /* NoticeView.swift */; };
 		ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778EB28E291AA000EDA2F /* NoticeTVCell.swift */; };
+		ACC7A734298F445D008A642E /* AuctionOptionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC7A733298F445D008A642E /* AuctionOptionsAPI.swift */; };
+		ACC7A736298F44FE008A642E /* AuctionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC7A735298F44FE008A642E /* AuctionOptions.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACD547B128EBF8A000D44ACA /* RecentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD547B028EBF8A000D44ACA /* RecentUser.swift */; };
@@ -314,6 +316,8 @@
 		ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkNotice.swift; sourceTree = "<group>"; };
 		ACC778E928E28E58000EDA2F /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		ACC778EB28E291AA000EDA2F /* NoticeTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTVCell.swift; sourceTree = "<group>"; };
+		ACC7A733298F445D008A642E /* AuctionOptionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionOptionsAPI.swift; sourceTree = "<group>"; };
+		ACC7A735298F44FE008A642E /* AuctionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionOptions.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACD547B028EBF8A000D44ACA /* RecentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUser.swift; sourceTree = "<group>"; };
@@ -367,6 +371,7 @@
 				AC0341C8294591BA005F4533 /* NewsAPIModel.swift */,
 				ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */,
 				AC45C444294780EF00153F3E /* MarketsAPI */,
+				ACC7A732298F440D008A642E /* AuctionsAPI */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -928,6 +933,15 @@
 			path = NoticeView;
 			sourceTree = "<group>";
 		};
+		ACC7A732298F440D008A642E /* AuctionsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				ACC7A733298F445D008A642E /* AuctionOptionsAPI.swift */,
+				ACC7A735298F44FE008A642E /* AuctionOptions.swift */,
+			);
+			path = AuctionsAPI;
+			sourceTree = "<group>";
+		};
 		ACD547B428EC130700D44ACA /* RecentUserView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1122,6 +1136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */,
+				ACC7A734298F445D008A642E /* AuctionOptionsAPI.swift in Sources */,
 				AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
@@ -1182,6 +1197,7 @@
 				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
 				AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */,
 				ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */,
+				ACC7A736298F44FE008A642E /* AuctionOptions.swift in Sources */,
 				AC448A44297431A80060CBD2 /* MarketItemPriceView.swift in Sources */,
 				ACB749232986BD3F008DC7C9 /* AuctionViewController.swift in Sources */,
 				ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */,
