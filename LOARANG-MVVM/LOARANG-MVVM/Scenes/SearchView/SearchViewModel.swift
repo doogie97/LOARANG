@@ -20,6 +20,7 @@ protocol SearchViewModelOutput {
     var recentUser: BehaviorRelay<[RecentUser]> { get }
     var popView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
+    var hideKeyboard: PublishRelay<Void> { get }
 }
 
 final class SearchViewModel: SearchViewModelable {
@@ -36,9 +37,11 @@ final class SearchViewModel: SearchViewModelable {
     
     func touchSearchButton(_ name: String) {
         showUserInfo.accept(name)
+        hideKeyboard.accept(())
     }
     
     func touchRecentUserCell(_ index: Int) {
+        hideKeyboard.accept(())
         guard let userName = storage.recentUsers.value[safe: index]?.name else {
             return
         }
@@ -47,6 +50,7 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchClearRecentUserButton() {
+        hideKeyboard.accept(())
         do {
             try storage.clearRecentUsers()
         } catch {}
@@ -56,4 +60,5 @@ final class SearchViewModel: SearchViewModelable {
     let recentUser: BehaviorRelay<[RecentUser]>
     let popView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
+    let hideKeyboard = PublishRelay<Void>()
 }
