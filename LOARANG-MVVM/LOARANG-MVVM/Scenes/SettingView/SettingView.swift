@@ -40,7 +40,8 @@ final class SettingView: UIView {
     
     private(set) lazy var bannerView: GADBannerView = {
         let bannerView = adMobView
-        bannerView.delegate = self        
+        bannerView.backgroundColor = .tableViewColor
+        bannerView.delegate = self
         
         return bannerView
     }()
@@ -82,7 +83,9 @@ final class SettingView: UIView {
 }
 
 extension SettingView: GADBannerViewDelegate {
-    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        print(error)
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        UIView.transition(with: bannerView, duration: 0.3, options: .transitionCrossDissolve) { [weak self] in
+            self?.bannerView.layer.opacity = 1
+        }
     }
 }
