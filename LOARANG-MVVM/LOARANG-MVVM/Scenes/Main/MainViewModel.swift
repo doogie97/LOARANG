@@ -119,8 +119,10 @@ final class MainViewModel: MainViewModelInOut {
                     finishedLoading.accept(())
                 }
             } catch let error {
-                showAlert.accept(error.errorMessage)
-                finishedLoading.accept(())
+                await MainActor.run {
+                    showAlert.accept(error.errorMessage)
+                    finishedLoading.accept(())
+                }                
             }
         }
     }

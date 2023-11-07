@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import GoogleMobileAds
 
 final class SearchView: UIView {
     override init(frame: CGRect) {
@@ -55,10 +56,19 @@ final class SearchView: UIView {
     
     private(set) lazy var recentUserView = RecentUserView()
     
+    private(set) lazy var bannerView: GADBannerView = {
+        let bannerView = adMobView
+        bannerView.delegate = self
+        bannerView.load(GADRequest())
+        
+        return bannerView
+    }()
+    
     private func setLayout() {
         self.addSubview(mainStackView)
         self.addSubview(noRecentUserLabel)
         self.addSubview(recentUserView)
+        self.addSubview(bannerView)
         
         mainStackView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(15)
@@ -71,7 +81,22 @@ final class SearchView: UIView {
         
         recentUserView.snp.makeConstraints {
             $0.top.equalTo(mainStackView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(bannerView.snp.top).inset(-8)
+        }
+        
+        bannerView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(60)
+        }
+    }
+}
+
+extension SearchView: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        UIView.transition(with: bannerView, duration: 0.3, options: .transitionCrossDissolve) { [weak self] in
+            self?.bannerView.layer.opacity = 1
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import GoogleMobileAds
 
 final class SettingView: UIView {
     override init(frame: CGRect) {
@@ -37,6 +38,14 @@ final class SettingView: UIView {
         return tableView
     }()
     
+    private(set) lazy var bannerView: GADBannerView = {
+        let bannerView = adMobView
+        bannerView.backgroundColor = .tableViewColor
+        bannerView.delegate = self
+        
+        return bannerView
+    }()
+    
     private(set) lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.color = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
@@ -49,6 +58,7 @@ final class SettingView: UIView {
         self.backgroundColor = .mainBackground
         self.addSubview(titleLabel)
         self.addSubview(menuTableView)
+        self.addSubview(bannerView)
         self.addSubview(activityIndicator)
         
         titleLabel.snp.makeConstraints {
@@ -56,11 +66,26 @@ final class SettingView: UIView {
         }
         menuTableView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
-            $0.bottom.leading.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalTo(bannerView.snp.top)
+        }
+        
+        bannerView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(60)
         }
         
         activityIndicator.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+    }
+}
+
+extension SettingView: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        UIView.transition(with: bannerView, duration: 0.3, options: .transitionCrossDissolve) { [weak self] in
+            self?.bannerView.layer.opacity = 1
         }
     }
 }

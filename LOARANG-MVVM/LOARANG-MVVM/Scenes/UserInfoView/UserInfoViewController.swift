@@ -32,6 +32,7 @@ final class UserInfoViewController: UIViewController {
         super.viewDidLoad()
         bindView()
         viewModel.searchWholeUserInfo()
+        userInfoView.bannerView.rootViewController = self
     }
     
     private func bindView() {

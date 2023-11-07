@@ -71,3 +71,24 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
 }
+//MARK: - Keyboard toolbar
+extension UIViewController {
+    func closeKeyboardToolbar() -> UIToolbar {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let closeButton = UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .plain, target: self, action: #selector(closeKeyboard))
+        closeButton.tintColor = .systemGray
+        
+        let items = [flexSpace, closeButton]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        return doneToolbar
+    }
+    
+    @objc private func closeKeyboard(){
+        self.view.endEditing(true)
+    }
+}

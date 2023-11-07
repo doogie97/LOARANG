@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import GoogleMobileAds
 
 final class SettingViewController: UIViewController {
     private let viewModel: SettingViewModelable
@@ -29,6 +30,15 @@ final class SettingViewController: UIViewController {
         self.view = settingView
         setTableView()
         bindContents()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        settingView.bannerView.rootViewController = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingView.bannerView.load(GADRequest())
     }
     
     private func bindContents() {

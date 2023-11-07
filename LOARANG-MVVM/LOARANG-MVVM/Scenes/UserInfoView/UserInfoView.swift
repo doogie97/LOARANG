@@ -6,6 +6,7 @@
 //
 
 import SnapKit
+import GoogleMobileAds
 
 final class UserInfoView: UIView {
     override init(frame: CGRect) {
@@ -73,6 +74,15 @@ final class UserInfoView: UIView {
         return view
     }()
     
+    private(set) lazy var bannerView: GADBannerView = {
+        let bannerView = adMobView
+        bannerView.alpha = 0
+        bannerView.delegate = self
+        bannerView.load(GADRequest())
+        
+        return bannerView
+    }()
+    
     private(set) lazy var segmentControl: CustomSegmentControl = {
         let segmentControl = CustomSegmentControl(segmentTitles: ["기본 정보", "스킬", "보유캐릭터"])
         segmentControl.selectedFontColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
@@ -94,10 +104,18 @@ final class UserInfoView: UIView {
     private func setLayout() {
         self.backgroundColor = .mainBackground
         self.addSubview(contentsView)
+        self.addSubview(bannerView)
         self.addSubview(activityIndicator)
         
         contentsView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(bannerView.snp.top).inset(-8)
+        }
+        
+        bannerView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(60)
         }
         
         activityIndicator.snp.makeConstraints {
@@ -143,7 +161,7 @@ final class UserInfoView: UIView {
         contentsView.addSubview(pageView)
         
         segmentControl.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom).inset(-16)
+            $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(40)
         }
@@ -165,8 +183,18 @@ final class UserInfoView: UIView {
     }
     
     func showContentsView() {
-        UIView.transition(with: contentsView, duration: 0.3, options: .transitionCrossDissolve) {
-            self.contentsView.layer.opacity = 1
+        UIView.transition(with: contentsView, duration: 0.3, options: .transitionCrossDissolve) { [weak self] in
+            self?.contentsView.layer.opacity = 1
+            self?.bannerView.layer.opacity = 1
         }
+    }
+}
+
+extension UserInfoView: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+    }
+    
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print(error)
     }
 }
