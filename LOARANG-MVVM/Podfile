@@ -18,6 +18,8 @@ pod 'SwiftSoup'
 pod 'RealmSwift'
 
 pod 'FirebaseAnalytics'
+
+pod 'Google-Mobile-Ads-SDK'
   # Pods for LOARANG-MVVM
 
 post_install do |installer|
