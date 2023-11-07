@@ -11,7 +11,7 @@ import GoogleMobileAds
 extension UIView {
     var adMobView: GADBannerView {
         let bannerView = GADBannerView()
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-4143146215451138/3114898326"
         
         return bannerView
     }
