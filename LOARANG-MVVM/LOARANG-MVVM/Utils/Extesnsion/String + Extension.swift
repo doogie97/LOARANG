@@ -126,7 +126,8 @@ extension String {
             return baseURL + "weather_artist.png"
         case "슬레이어":
             return baseURL + "berserker_female.png"
-            
+        case "소울이터":
+            return baseURL + "soul_eater.png"
             //전직 전
         case "스페셜리스트":
             return baseURL + "specialist.png"
