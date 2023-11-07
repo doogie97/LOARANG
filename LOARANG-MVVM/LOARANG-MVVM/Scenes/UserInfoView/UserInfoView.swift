@@ -75,11 +75,11 @@ final class UserInfoView: UIView {
     }()
     
     private(set) lazy var bannerView: GADBannerView = {
-        let bannerView = GADBannerView()
-        bannerView.adUnitID = "ca-app-pub-4143146215451138/3114898326"
+        let bannerView = adMobView
         bannerView.alpha = 0
         bannerView.delegate = self
         bannerView.load(GADRequest())
+        
         return bannerView
     }()
     
