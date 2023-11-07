@@ -115,7 +115,6 @@ final class UserInfoView: UIView {
         bannerView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide)
-            
             $0.height.equalTo(60)
         }
         
