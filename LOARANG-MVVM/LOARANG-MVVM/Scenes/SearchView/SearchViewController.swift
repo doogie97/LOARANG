@@ -32,6 +32,7 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
+        searchView.bannerView.rootViewController = self
     }
     
     private func bindView() {
