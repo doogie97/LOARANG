@@ -109,12 +109,12 @@ final class UserInfoView: UIView {
         
         contentsView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(bannerView.snp.top).inset(-8)
+            $0.bottom.equalToSuperview()
         }
         
         bannerView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(contentsView.snp.bottom)
             $0.height.equalTo(60)
         }
         
@@ -191,10 +191,44 @@ final class UserInfoView: UIView {
 }
 
 extension UserInfoView: GADBannerViewDelegate {
+    func showBanner(isShow: Bool) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let contentsView = self?.contentsView,
+                  let bannerView = self?.bannerView,
+                  let safeAreaLayoutGuide = self?.safeAreaLayoutGuide else {
+                return
+            }
+            if isShow {
+                bannerView.snp.remakeConstraints {
+                    $0.leading.trailing.equalToSuperview()
+                    $0.bottom.equalTo(safeAreaLayoutGuide)
+                    $0.height.equalTo(60)
+                }
+                contentsView.snp.remakeConstraints {
+                    $0.top.leading.trailing.equalToSuperview()
+                    $0.bottom.equalTo(bannerView.snp.top).inset(-8)
+                }
+            } else {
+                bannerView.snp.remakeConstraints {
+                    $0.leading.trailing.equalToSuperview()
+                    $0.top.equalTo(contentsView.snp.bottom)
+                    $0.height.equalTo(60)
+                }
+                
+                contentsView.snp.remakeConstraints {
+                    $0.top.leading.trailing.equalToSuperview()
+                    $0.bottom.equalToSuperview()
+                }
+            }
+            
+            self?.layoutIfNeeded()
+        }
+    }
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        showBanner(isShow: true)
     }
     
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        print(error)
+        showBanner(isShow: false)
     }
 }
