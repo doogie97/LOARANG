@@ -6,6 +6,8 @@
 //
 
 import RxSwift
+import AdSupport
+import AppTrackingTransparency
 
 final class MainViewController: UIViewController {
     private let viewModel: MainViewModel
@@ -32,8 +34,27 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        
         bindView()
+        requestTraking()
+    }
+    
+    private func requestTraking() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("status= authorized")
+                case .denied:
+                    print("status= denied")
+                case .notDetermined:
+                    print("status= notDetermined")
+                case .restricted:
+                    print("status= restricted")
+                @unknown default:
+                    print("status= default")
+                }
+            }
+        }
     }
     
     private func bindView() {
