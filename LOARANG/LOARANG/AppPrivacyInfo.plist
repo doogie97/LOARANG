@@ -4,5 +4,13 @@
 <dict>
 	<key>Lostark_API_Key</key>
 	<string>Please_enter_the_API-Key</string>
+	<key>Lostark_API_Key_Array</key>
+	<array>
+		<string>Please_enter_the_API-Key</string>
+		<string>Please_enter_the_API-Key</string>
+		<string>Please_enter_the_API-Key</string>
+		<string>Please_enter_the_API-Key</string>
+		<string>Please_enter_the_API-Key</string>
+	</array>
 </dict>
 </plist>

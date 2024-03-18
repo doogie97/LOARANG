@@ -10,11 +10,11 @@ import Foundation
 extension Bundle {
     var lostarkAPIKey: String {
         guard let filePath = self.path(forResource: "AppPrivacyInfo", ofType: "plist") else {
-            return ""
+            fatalError("API Key를 확인해 주세요")
         }
         
         guard let resource = NSDictionary(contentsOfFile: filePath) else {
-            return ""
+            fatalError("API Key를 확인해 주세요")
         }
         
         guard let apiKey = resource["Lostark_API_Key"] as? String else {
@@ -26,5 +26,25 @@ extension Bundle {
         }
         
         return apiKey
+    }
+    
+    var lostarkApiKeyArray: [String] {
+        guard let filePath = self.path(forResource: "AppPrivacyInfo", ofType: "plist") else {
+            fatalError("API Key를 확인해 주세요")
+        }
+        
+        guard let resource = NSDictionary(contentsOfFile: filePath) else {
+            fatalError("API Key를 확인해 주세요")
+        }
+        
+        guard let apiKeys = resource["Lostark_API_Key_Array"] as? [String] else {
+            fatalError("API Key를 확인해 주세요")
+        }
+        
+        if apiKeys.first == "Please_enter_the_API-Key" {
+            fatalError("API Key를 확인해 주세요")
+        }
+        
+        return apiKeys
     }
 }
