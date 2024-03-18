@@ -17,7 +17,11 @@ extension Bundle {
             return ""
         }
         
-        guard let apiKey = resource["Please_enter_the_API-Key"] as? String else {
+        guard let apiKey = resource["Lostark_API_Key"] as? String else {
+            fatalError("API Key를 확인해 주세요")
+        }
+        
+        if apiKey == "Please_enter_the_API-Key" {
             fatalError("API Key를 확인해 주세요")
         }
         
