@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import LOARANG_MVVM
+@testable import LOARANG
 
 final class LOARANG_MVVMTests: XCTestCase {
     func test_Requset호출시_News정보를_잘_가져오는지() {

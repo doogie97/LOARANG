@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ACAEF31E287FF0D200AE98F1"
-               BuildableName = "LOARANG-MVVM.app"
-               BlueprintName = "LOARANG-MVVM"
-               ReferencedContainer = "container:LOARANG-MVVM.xcodeproj">
+               BuildableName = "LOARANG.app"
+               BlueprintName = "LOARANG"
+               ReferencedContainer = "container:LOARANG.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AC0341B8294588F3005F4533"
-               BuildableName = "LOARANG-MVVMTests.xctest"
-               BlueprintName = "LOARANG-MVVMTests"
-               ReferencedContainer = "container:LOARANG-MVVM.xcodeproj">
+               BuildableName = "LOARANGTests.xctest"
+               BlueprintName = "LOARANGTests"
+               ReferencedContainer = "container:LOARANG.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ACAEF31E287FF0D200AE98F1"
-            BuildableName = "LOARANG-MVVM.app"
-            BlueprintName = "LOARANG-MVVM"
-            ReferencedContainer = "container:LOARANG-MVVM.xcodeproj">
+            BuildableName = "LOARANG.app"
+            BlueprintName = "LOARANG"
+            ReferencedContainer = "container:LOARANG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ACAEF31E287FF0D200AE98F1"
-            BuildableName = "LOARANG-MVVM.app"
-            BlueprintName = "LOARANG-MVVM"
-            ReferencedContainer = "container:LOARANG-MVVM.xcodeproj">
+            BuildableName = "LOARANG.app"
+            BlueprintName = "LOARANG"
+            ReferencedContainer = "container:LOARANG.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
