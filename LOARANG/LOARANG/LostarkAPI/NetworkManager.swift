@@ -14,7 +14,7 @@ protocol NetworkManagerable {
 
 struct NetworkManager: NetworkManagerable {
     func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type) async throws -> T {
-        let response = try await requestable.dataTask(resultType: resultType).response
+        let response = await requestable.dataTask(resultType: resultType).response
         
         switch response.error {
         case .sessionTaskFailed(_):
