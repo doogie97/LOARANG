@@ -41,7 +41,7 @@ extension Bundle {
             fatalError("API Key를 확인해 주세요")
         }
         
-        guard let firstApiKey = apiKeys.first {
+        guard let _ = apiKeys.first else {
             fatalError("API Key를 확인해 주세요")
         }
         
