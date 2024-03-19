@@ -28,14 +28,17 @@ final class CharactersViewModel: CharactersViewModelable {
     }
     
     private func getCharacters(_ name: String) {
-        networkManager.request(CharactersAPIModel(name: name),
-                               resultType: [CharacterInfo].self) { [weak self] result in
-            switch result {
-            case .success(let characters):
-                self?.categorizeCharacters(characters.sorted {
+        Task {
+            do {
+                let characters = try await networkManager.request(CharactersAPIModel(name: name),
+                                                                  resultType: [CharacterInfo].self)
+                categorizeCharacters(characters.sorted {
                     $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
-            case .failure:
-                self?.userInfoViewModelDelegate?.showErrorAlert()
+            } catch let error {
+                await MainActor.run {
+                    debugPrint(error)
+                    userInfoViewModelDelegate?.showErrorAlert()
+                }
             }
         }
     }

@@ -17,18 +17,18 @@ protocol Requestable {
 }
 
 extension Requestable {
-    var request: DataRequest {
-        if self.httpMethod == .get {
-            return AF.request(self.baseURL + self.path,
-                              method: self.httpMethod,
-                              parameters: self.params,
-                              headers: HTTPHeaders(self.header))
-        } else {
-            return AF.request(self.baseURL + self.path,
-                              method: self.httpMethod,
-                              parameters: self.params,
-                              encoding: JSONEncoding.default,
-                              headers: HTTPHeaders(self.header))
+    func dataTask<T: Decodable>(resultType: T.Type) -> DataTask<T> {
+        return request.serializingDecodable(resultType)
+    }
+    
+    private var request: DataRequest {
+        return AF.request(self.baseURL + self.path,
+                          method: self.httpMethod,
+                          parameters: self.params,
+                          encoding: self.encodingType.parameterEncoding,
+                          headers: HTTPHeaders(self.header)) {
+            urlRequest in
+            urlRequest.timeoutInterval = 10
         }
     }
 }

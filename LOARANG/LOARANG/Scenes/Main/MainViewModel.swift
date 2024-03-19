@@ -66,12 +66,17 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     private func getEvent() {
-        networkManager.request(NewsAPIModel(), resultType: [News].self) { [weak self] result in
-            switch result {
-            case .success(let news):
-                self?.events.accept(news)
-            case .failure(let error):
-                self?.showAlert.accept(error.errorMessage)
+        Task {
+            do {
+                let news = try await networkManager.request(NewsAPIModel(),
+                                                            resultType: [News].self)
+                await MainActor.run {
+                    events.accept(news)
+                }
+            } catch let error {
+                await MainActor.run {
+                    showAlert.accept(error.errorMessage)
+                }
             }
         }
     }

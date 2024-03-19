@@ -9,36 +9,40 @@ import Foundation
 import Alamofire
 
 protocol NetworkManagerable {
-    func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
+    func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type) async throws -> T
 }
 
 struct NetworkManager: NetworkManagerable {
-    func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type, completion: @escaping (Result<T, APIError>) -> Void) {
-        requestable.request.responseDecodable(of: T.self) { result in
-            DispatchQueue.main.async {
-                guard result.error == nil else {
-                    completion(.failure(APIError.transportError))
-                    return
-                }
-
-                guard let response = result.response else {
-                    completion(.failure(APIError.responseError))
-                    return
-                }
-
-                guard (200...299).contains(response.statusCode) else {
-                    print(response.statusCode)
-                    completion(.failure(APIError.statusCodeError))
-                    return
-                }
-
-                guard let value = result.value else {
-                    completion(.failure(APIError.dataError))
-                    return
-                }
-                
-                completion(.success(value))
+    func request<T: Decodable>(_ requestable: Requestable, resultType: T.Type) async throws -> T {
+        let response = try await requestable.dataTask(resultType: resultType).response
+        
+        switch response.error {
+        case .sessionTaskFailed(_):
+            throw APIError.timeOut
+        default:
+            break
+        }
+        
+        guard let status = response.response else {
+            throw APIError.responseError
+        }
+        
+        guard (200...299).contains(status.statusCode) else {
+            do {
+                let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: response.data ?? Data())
+                throw APIError.statusCodeError(ErrorInfo(message: errorResponse.Message,
+                                                         statusCode: status.statusCode))
+            } catch let error {
+                throw error
             }
+        }
+        
+        switch response.result {
+        case .success(let response):
+            return response
+        case .failure(let error):
+            print(error)
+            throw error
         }
     }
 }

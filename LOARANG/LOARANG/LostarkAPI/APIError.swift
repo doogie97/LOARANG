@@ -6,11 +6,16 @@
 //
 
 enum APIError: Error {
-    case urlError
-    case httpBodyError
-    case transportError
     case responseError
-    case statusCodeError
-    case dataError
-    case unknownError
+    case statusCodeError(_ errorInfo: ErrorInfo)
+    case timeOut
+}
+
+struct ErrorInfo {
+    let message: String?
+    let statusCode: Int
+}
+
+struct ErrorResponse: Decodable {
+    let Message: String?
 }
