@@ -16,6 +16,7 @@ struct NewsAPIModel: Requestable {
     ]
     let params: [String : Any] = [:]
     let httpMethod = HTTPMethod.get
+    let encodingType = EncodingType.urlEncoding
 }
 
 struct News: Decodable {

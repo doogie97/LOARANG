@@ -13,6 +13,7 @@ protocol Requestable {
     var header: [String : String] { get }
     var params: [String : Any] { get }
     var httpMethod: HTTPMethod { get }
+    var encodingType: EncodingType { get }
 }
 
 extension Requestable {
@@ -39,6 +40,20 @@ enum Host {
         switch self {
         case .lostarkAPI:
             return "https://developer-lostark.game.onstove.com"
+        }
+    }
+}
+
+enum EncodingType {
+    case jsonEncoding
+    case urlEncoding
+    
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        case .jsonEncoding:
+            return JSONEncoding.default
+        case .urlEncoding:
+            return URLEncoding.default
         }
     }
 }

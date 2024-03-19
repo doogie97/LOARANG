@@ -19,6 +19,7 @@ struct CharactersAPIModel: Requestable {
     ]
     let params: [String : Any] = [:]
     let httpMethod = HTTPMethod.get
+    let encodingType = EncodingType.urlEncoding
 }
 
 struct CharacterInfo: Decodable { //이 객체는 ARMORIES를 가져올때 내부에서 사용가능
