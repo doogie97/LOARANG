@@ -141,6 +141,7 @@
 		ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */; };
 		ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
+		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepositoryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepositoryable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,7 @@
 		ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIModel.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepositoryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepositoryable.swift; sourceTree = "<group>"; };
 		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		E24B070FF84C1615376140BC /* Pods_LOARANG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3EB26795316489929C7101B /* Pods-LOARANG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.release.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.release.xcconfig"; sourceTree = "<group>"; };
@@ -327,7 +329,6 @@
 		AC0341B229458816005F4533 /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
-				AC0341B32945883C005F4533 /* Requestable.swift */,
 				AC0341C8294591BA005F4533 /* NewsAPIModel.swift */,
 				ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */,
 			);
@@ -362,8 +363,7 @@
 				ACBA7901289929A100CB39D5 /* LocalStorage.swift */,
 				ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */,
 			);
-			name = Storage;
-			path = ../Storage;
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		AC0E68A328AE0E1F00575631 /* BattleEquipments */ = {
@@ -437,16 +437,17 @@
 			path = Extesnsion;
 			sourceTree = "<group>";
 		};
-		AC3FEC0B2880525E00CDE796 /* Scenes */ = {
+		AC3FEC0B2880525E00CDE796 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */,
 				ACAEF35C287FFBB600AE98F1 /* Main */,
 				AC3FEC112880566A00CDE796 /* SearchView */,
 				AC035E9D28911CDC0068DC7E /* UserInfoView */,
 				AC3FEC1828805DBD00CDE796 /* SettingView */,
 			);
-			path = Scenes;
+			path = Presentaion;
 			sourceTree = "<group>";
 		};
 		AC3FEC112880566A00CDE796 /* SearchView */ = {
@@ -531,14 +532,16 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
-		AC6C81962940276D00C0EEC1 /* LostarkAPI */ = {
+		AC6C81962940276D00C0EEC1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C6EDB7D52BADA6B1004E7AC9 /* NetworkRepository */,
 				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
+				AC0341B32945883C005F4533 /* Requestable.swift */,
 				AC0341C629458CCE005F4533 /* APIError.swift */,
 				AC0341B229458816005F4533 /* APIModels */,
 			);
-			path = LostarkAPI;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		AC6CA28F2893BBCF0049C12F /* BasicInfoView */ = {
@@ -652,6 +655,7 @@
 		AC8F11C62881025900D06AA6 /* CrawlManager */ = {
 			isa = PBXGroup;
 			children = (
+				ACAEF338287FF60000AE98F1 /* Model */,
 				AC8F11C72881026600D06AA6 /* CrawManager.swift */,
 				AC0E68A128AE04C000575631 /* JsonInfoManager.swift */,
 				ACBA78F62898B34600CB39D5 /* CrawlError.swift */,
@@ -682,16 +686,11 @@
 		ACAEF321287FF0D200AE98F1 /* LOARANG */ = {
 			isa = PBXGroup;
 			children = (
-				ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */,
-				ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */,
-				AC3FEC26288071CF00CDE796 /* Container.swift */,
-				AC6C81962940276D00C0EEC1 /* LostarkAPI */,
+				C6EDB7D22BADA4F4004E7AC9 /* Application */,
+				AC3FEC0B2880525E00CDE796 /* Presentaion */,
+				C6EDB7D12BADA488004E7AC9 /* Data */,
 				ACAEF3602880039F00AE98F1 /* Utils */,
-				ACAEF338287FF60000AE98F1 /* Model */,
-				AC3FEC0B2880525E00CDE796 /* Scenes */,
-				AC62F87D28DC7F2F00E4A92D /* WebView */,
-				ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */,
-				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
+				C6EDB7D32BADA525004E7AC9 /* Resource */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
 				AC687AB4291373E70064C92B /* GoogleService-Info.plist */,
 				AC0341C229458976005F4533 /* AppPrivacyInfo.plist */,
@@ -747,13 +746,8 @@
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AC0B89F7289B8185005BE193 /* Storage */,
-				AC8F11C62881025900D06AA6 /* CrawlManager */,
-				ACAEF3632880075A00AE98F1 /* Font */,
+				C6EDB7D42BADA561004E7AC9 /* AboutView */,
 				AC3FEBFE28804E9600CDE796 /* Extesnsion */,
-				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
-				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
-				AC7E9F7D28C5D10700859E06 /* SegmentController */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -854,6 +848,54 @@
 				E3EB26795316489929C7101B /* Pods-LOARANG.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C6EDB7D12BADA488004E7AC9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AC0B89F7289B8185005BE193 /* Storage */,
+				AC8F11C62881025900D06AA6 /* CrawlManager */,
+				AC6C81962940276D00C0EEC1 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C6EDB7D22BADA4F4004E7AC9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */,
+				ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */,
+				AC3FEC26288071CF00CDE796 /* Container.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C6EDB7D32BADA525004E7AC9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				ACAEF3632880075A00AE98F1 /* Font */,
+				ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C6EDB7D42BADA561004E7AC9 /* AboutView */ = {
+			isa = PBXGroup;
+			children = (
+				AC62F87D28DC7F2F00E4A92D /* WebView */,
+				AC7E9F7D28C5D10700859E06 /* SegmentController */,
+				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
+				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
+			);
+			path = AboutView;
+			sourceTree = "<group>";
+		};
+		C6EDB7D52BADA6B1004E7AC9 /* NetworkRepository */ = {
+			isa = PBXGroup;
+			children = (
+				C6EDB7D62BADA6CC004E7AC9 /* NetworkRepositoryable.swift */,
+			);
+			path = NetworkRepository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1060,6 +1102,7 @@
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
+				C6EDB7D72BADA6CC004E7AC9 /* NetworkRepositoryable.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,
 				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
