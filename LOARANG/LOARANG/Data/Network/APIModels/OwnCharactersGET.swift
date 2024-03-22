@@ -1,5 +1,5 @@
 //
-//  CharactersAPIModel.swift
+//  OwnCharactersGET.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/12/11.
@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-struct CharactersAPIModel: Requestable {
+struct OwnCharactersGET: Requestable {
     private let name: String
     private let apiKey: String?
     init(name: String,
@@ -32,7 +32,7 @@ struct CharactersAPIModel: Requestable {
     let encodingType = EncodingType.urlEncoding
 }
 
-struct CharacterInfo: Decodable { //이 객체는 ARMORIES를 가져올때 내부에서 사용가능
+struct CharacterBasicInfoDTO: Decodable {
     let serverName: String?
     let characterName: String?
     let characterLevel: Int?
@@ -41,7 +41,7 @@ struct CharacterInfo: Decodable { //이 객체는 ARMORIES를 가져올때 내�
     let itemMaxLevel: String?
 }
 
-extension CharacterInfo {
+extension CharacterBasicInfoDTO {
     private enum CodingKeys: String, CodingKey {
         case serverName = "ServerName"
         case characterName = "CharacterName"

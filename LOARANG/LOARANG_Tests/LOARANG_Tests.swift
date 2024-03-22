@@ -38,7 +38,7 @@ final class LOARANG_MVVMTests: XCTestCase {
         let api = EventListGET()
         
         //when
-        NetworkManager().request(CharactersAPIModel(name: "최지근"), resultType: [CharacterInfo].self) { result in
+        NetworkManager().request(OwnCharactersGET(name: "최지근"), resultType: [CharacterBasicInfoDTO].self) { result in
             switch result {
             case .success(let characters):
                 guard let character = characters.first else {

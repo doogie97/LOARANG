@@ -30,8 +30,8 @@ final class CharactersViewModel: CharactersViewModelable {
     private func getCharacters(_ name: String) {
         Task {
             do {
-                let characters = try await networkManager.request(CharactersAPIModel(name: name),
-                                                                  resultType: [CharacterInfo].self)
+                let characters = try await networkManager.request(OwnCharactersGET(name: name),
+                                                                  resultType: [CharacterBasicInfoDTO].self)
                 categorizeCharacters(characters.sorted {
                     $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
             } catch let error {
@@ -44,15 +44,15 @@ final class CharactersViewModel: CharactersViewModelable {
     }
     
     //이 코드는 분명히 개선 해야함...
-    private func categorizeCharacters(_ characters: [CharacterInfo]) {
-        var ninaveCharacters: [CharacterInfo] = []
-        var loopaeonCharacters: [CharacterInfo] = []
-        var silianCharacters: [CharacterInfo] = []
-        var armanCharacters: [CharacterInfo] = []
-        var abrelshudCharacters: [CharacterInfo] = []
-        var kadanCharacters: [CharacterInfo] = []
-        var kharmineCharacters: [CharacterInfo] = []
-        var kazerosCharacters: [CharacterInfo] = []
+    private func categorizeCharacters(_ characters: [CharacterBasicInfoDTO]) {
+        var ninaveCharacters: [CharacterBasicInfoDTO] = []
+        var loopaeonCharacters: [CharacterBasicInfoDTO] = []
+        var silianCharacters: [CharacterBasicInfoDTO] = []
+        var armanCharacters: [CharacterBasicInfoDTO] = []
+        var abrelshudCharacters: [CharacterBasicInfoDTO] = []
+        var kadanCharacters: [CharacterBasicInfoDTO] = []
+        var kharmineCharacters: [CharacterBasicInfoDTO] = []
+        var kazerosCharacters: [CharacterBasicInfoDTO] = []
         
         characters.forEach {
             switch $0.serverName {

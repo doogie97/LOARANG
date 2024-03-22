@@ -139,7 +139,11 @@
 		ACDE28AC28B11D2000BFD206 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */; };
 		ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */; };
 		ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */; };
-		ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */; };
+		ACE5DC6B294613BC009BFEAC /* OwnCharactersGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* OwnCharactersGET.swift */; };
+		C63C615C2BADC3D70023D123 /* CharacterBasicInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */; };
+		C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615E2BADC42F0023D123 /* GameServer.swift */; };
+		C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */; };
+		C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61622BADC8530023D123 /* CharacterClase.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
 		C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */; };
@@ -292,7 +296,11 @@
 		ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		ACE5CEB128AF559600EFC937 /* BasicEquipmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewModel.swift; sourceTree = "<group>"; };
 		ACE5CEB328AF5C2100EFC937 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
-		ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIModel.swift; sourceTree = "<group>"; };
+		ACE5DC6A294613BC009BFEAC /* OwnCharactersGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharactersGET.swift; sourceTree = "<group>"; };
+		C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBasicInfoEntity.swift; sourceTree = "<group>"; };
+		C63C615E2BADC42F0023D123 /* GameServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServer.swift; sourceTree = "<group>"; };
+		C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnCharactersUseCase.swift; sourceTree = "<group>"; };
+		C63C61622BADC8530023D123 /* CharacterClase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClase.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoEntity.swift; sourceTree = "<group>"; };
@@ -334,7 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0341C8294591BA005F4533 /* EventListGET.swift */,
-				ACE5DC6A294613BC009BFEAC /* CharactersAPIModel.swift */,
+				ACE5DC6A294613BC009BFEAC /* OwnCharactersGET.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -691,9 +699,9 @@
 			isa = PBXGroup;
 			children = (
 				C6EDB7D22BADA4F4004E7AC9 /* Application */,
+				C6EDB7D12BADA488004E7AC9 /* Data */,
 				C6EDB7D82BADA7BA004E7AC9 /* Domain */,
 				AC3FEC0B2880525E00CDE796 /* Presentaion */,
-				C6EDB7D12BADA488004E7AC9 /* Data */,
 				ACAEF3602880039F00AE98F1 /* Utils */,
 				C6EDB7D32BADA525004E7AC9 /* Resource */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
@@ -855,6 +863,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C63C615D2BADC4130023D123 /* CommonObject */ = {
+			isa = PBXGroup;
+			children = (
+				C63C615E2BADC42F0023D123 /* GameServer.swift */,
+				C63C61622BADC8530023D123 /* CharacterClase.swift */,
+			);
+			path = CommonObject;
+			sourceTree = "<group>";
+		};
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +924,7 @@
 			isa = PBXGroup;
 			children = (
 				C6EDB7DC2BADA843004E7AC9 /* UseCase */,
+				C63C615D2BADC4130023D123 /* CommonObject */,
 				C6EDB7D92BADA7C8004E7AC9 /* Entites */,
 			);
 			path = Domain;
@@ -916,6 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */,
+				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
 			);
 			path = Entites;
 			sourceTree = "<group>";
@@ -924,6 +943,7 @@
 			isa = PBXGroup;
 			children = (
 				C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */,
+				C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1110,6 +1130,7 @@
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
 				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
+				C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
@@ -1178,6 +1199,7 @@
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				AC62F87728DC6E3C00E4A92D /* EventView.swift in Sources */,
+				C63C615C2BADC3D70023D123 /* CharacterBasicInfoEntity.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
@@ -1185,6 +1207,7 @@
 				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
+				C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
@@ -1195,6 +1218,7 @@
 				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
 				ACD547B328EBFED500D44ACA /* RecentUserView.swift in Sources */,
+				C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */,
 				AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
@@ -1216,7 +1240,7 @@
 				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				ACDE28A628B0A8E000BFD206 /* EquipmentDetailViewController.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
-				ACE5DC6B294613BC009BFEAC /* CharactersAPIModel.swift in Sources */,
+				ACE5DC6B294613BC009BFEAC /* OwnCharactersGET.swift in Sources */,
 				AC035EA62891222C0068DC7E /* UserInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

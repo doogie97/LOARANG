@@ -73,9 +73,9 @@ struct CharactersSection {
 }
 
 extension CharactersSection: SectionModelType {
-    typealias Item = CharacterInfo
+    typealias Item = CharacterBasicInfoDTO
     
-    init(original: CharactersSection, items: [CharacterInfo]) {
+    init(original: CharactersSection, items: [CharacterBasicInfoDTO]) {
         self = original
         self.items = items
     }
