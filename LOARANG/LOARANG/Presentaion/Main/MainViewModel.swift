@@ -24,7 +24,7 @@ protocol MainViewModelOutput {
     var mainUser: BehaviorRelay<MainUser?> { get }
     var checkUser: PublishRelay<MainUser> { get }
     var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
-    var events: BehaviorRelay<[News]> { get }
+    var events: BehaviorRelay<[EventDTO]> { get }
     var notices: BehaviorRelay<[LostArkNotice]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
@@ -68,8 +68,8 @@ final class MainViewModel: MainViewModelInOut {
     private func getEvent() {
         Task {
             do {
-                let news = try await networkManager.request(NewsAPIModel(),
-                                                            resultType: [News].self)
+                let news = try await networkManager.request(EventListGET(),
+                                                            resultType: [EventDTO].self)
                 await MainActor.run {
                     events.accept(news)
                 }
@@ -192,7 +192,7 @@ final class MainViewModel: MainViewModelInOut {
     let mainUser: BehaviorRelay<MainUser?>
     let checkUser = PublishRelay<MainUser>()
     let bookmarkUser: BehaviorRelay<[BookmarkUser]>
-    let events = BehaviorRelay<[News]>(value: [])
+    let events = BehaviorRelay<[EventDTO]>(value: [])
     let notices = BehaviorRelay<[LostArkNotice]>(value: [])
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()

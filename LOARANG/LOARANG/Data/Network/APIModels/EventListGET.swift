@@ -1,5 +1,5 @@
 //
-//  NewsAPIModel.swift
+//  EventListGET.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/12/11.
@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-struct NewsAPIModel: Requestable {
+struct EventListGET: Requestable {
     private let apiKey: String?
     init(apiKey: String? = Bundle.main.lostarkApiKeyArray.randomElement()) {
         self.apiKey = apiKey
@@ -27,7 +27,7 @@ struct NewsAPIModel: Requestable {
     let encodingType = EncodingType.urlEncoding
 }
 
-struct News: Decodable {
+struct EventDTO: Decodable {
     let title: String?
     let thumbnail: String?
     let link: String?
@@ -36,7 +36,7 @@ struct News: Decodable {
     let rewardDate: String?
 }
 
-extension News {
+extension EventDTO {
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case thumbnail = "Thumbnail"
