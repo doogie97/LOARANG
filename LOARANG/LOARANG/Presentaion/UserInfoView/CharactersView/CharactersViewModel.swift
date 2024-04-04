@@ -32,6 +32,7 @@ final class CharactersViewModel: CharactersViewModelable {
             do {
                 let characters = try await networkManager.request(OwnCharactersGET(name: name),
                                                                   resultType: [CharacterBasicInfoDTO].self)
+                try await GetOwnCharactersUseCase(networkRepository: NetworkRepository(networkManager: networkManager)).execute(name: name)
                 categorizeCharacters(characters.sorted {
                     $0.itemAvgLevel?.toDouble ?? 0 > $1.itemAvgLevel?.toDouble ?? 0 })
             } catch let error {

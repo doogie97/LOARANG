@@ -38,6 +38,7 @@ struct CharacterBasicInfoDTO: Decodable {
     let characterLevel: Int?
     let characterClassName: String?
     let itemAvgLevel: String?
+    ///주 사용 레벨
     let itemMaxLevel: String?
 }
 
