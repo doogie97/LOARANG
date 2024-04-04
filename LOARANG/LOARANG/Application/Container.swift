@@ -9,10 +9,14 @@ import RxRelay
 
 final class Container {
     private let storage: AppStorageable
+    private let networkManager: NetworkManagerable
     
     init(storage: AppStorageable) {
         self.storage = storage
+        self.networkManager = NetworkManager()
     }
+    
+    private lazy var networkRepository = NetworkRepository(networkManager: networkManager)
     
 //MARK: - about Main View
     func makeMainViewController() -> MainViewController {
