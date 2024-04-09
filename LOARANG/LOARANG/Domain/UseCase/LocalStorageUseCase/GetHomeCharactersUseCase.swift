@@ -6,14 +6,14 @@
 //
 
 struct GetHomeCharactersUseCase {
-    private let localStorageable: LocalStorageable
+    private let localStorage: LocalStorageable
     
-    init(localStorageable: LocalStorageable) {
-        self.localStorageable = localStorageable
+    init(localStorage: LocalStorageable) {
+        self.localStorage = localStorage
     }
     
     func execute() -> HomeCharactersEntity {
-        let mainUser = localStorageable.mainUser()
+        let mainUser = localStorage.mainUser()
         return HomeCharactersEntity(mainUser: mainUser,
                                     bookmarkUsers: []) //일단 빈 배열 Return
     }

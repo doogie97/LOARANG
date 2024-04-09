@@ -43,10 +43,13 @@ final class MainViewModel: MainViewModelInOut {
     private let networkManager = NetworkManager()
     
     private let getHomeInfoUseCase: GetHomeInfoUseCase
+    private let getHomeCharactersUseCase: GetHomeCharactersUseCase
     
     init(storage: AppStorageable,
-         getHomeInfoUseCase: GetHomeInfoUseCase) {
+         getHomeInfoUseCase: GetHomeInfoUseCase,
+         getHomeCharactersUseCase: GetHomeCharactersUseCase) {
         self.getHomeInfoUseCase = getHomeInfoUseCase
+        self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.storage = storage
         self.bookmarkUser = storage.bookMark
     }
@@ -58,11 +61,11 @@ final class MainViewModel: MainViewModelInOut {
         Task {
             do {
                 let homeEntity = try await getHomeInfoUseCase.execute()
+                
                 let news = try await networkManager.request(EventListGET(),
                                                             resultType: [EventDTO].self)
                 let notices = try await crawlManager.getNotice()
                 await MainActor.run {
-                    print(homeEntity)
                     self.notices.accept(notices)
                     self.events.accept(news)
                     finishedLoading.accept(())
@@ -74,6 +77,9 @@ final class MainViewModel: MainViewModelInOut {
                 }
             }
         }
+        
+        let homeCharactersEntity = getHomeCharactersUseCase.execute()
+        ViewChangeManager.shared.mainUser.accept(homeCharactersEntity.mainUser)
     }
     
     private func requestTraking() {
