@@ -26,10 +26,9 @@ protocol SettingViewModeOutput {
 }
 
 final class SettingViewModel: SettingViewModelable {
-    private let storage: AppStorageable
-    
-    init(storage: AppStorageable) {
-        self.storage = storage
+    private let changeMainUserUseCase: ChangeMainUserUseCase
+    init(changeMainUserUseCase: ChangeMainUserUseCase) {
+        self.changeMainUserUseCase = changeMainUserUseCase
     }
     //input
     func touchSearchButton(_ userName: String) {
@@ -57,7 +56,8 @@ final class SettingViewModel: SettingViewModelable {
     
     func changeMainUser(_ mainUser: MainUser) {
         do {
-            try storage.changeMainUser(mainUser)
+            try changeMainUserUseCase.execute(user: mainUser)
+            ViewChangeManager.shared.mainUser.accept(mainUser)
             showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
         } catch {
             showAlert.accept(error.errorMessage)
