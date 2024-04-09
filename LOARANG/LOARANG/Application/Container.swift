@@ -9,14 +9,16 @@ import RxRelay
 
 final class Container {
     private let storage: AppStorageable
-    private let networkManager: NetworkManagerable
+    private let networkManager: NetworkManagerable = NetworkManager()
     
-    init(storage: AppStorageable) {
+    init(storage: AppStorageable,
+         localStorage: LocalStorageable) {
         self.storage = storage
-        self.networkManager = NetworkManager()
+        self.localStorage = localStorage //일단 사용하는 것이 하나여야 하기에 앱 정상 작동을 위해 SceneDelegate에서 주입받음, 추후 교체 완료 후 networkManager처럼 생성으로 전환 예정
     }
     
     private lazy var networkRepository = NetworkRepository(networkManager: networkManager)
+    private let localStorage: LocalStorageable
     
 //MARK: - about Main View
     func makeMainViewController() -> MainViewController {
@@ -24,7 +26,10 @@ final class Container {
     }
     
     private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(storage: storage)
+        return MainViewModel(storage: storage, 
+                             getHomeInfoUseCase: GetHomeInfoUseCase(NetworkRepository: networkRepository), 
+                             getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorage: localStorage), 
+                             changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage))
     }
     
     func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModelable {
@@ -59,7 +64,11 @@ final class Container {
     }
     
     private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
-        return UserInfoViewModel(storage: storage, container: self, userName: userName, isSearching: isSearching)
+        return UserInfoViewModel(storage: storage, 
+                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage),
+                                 container: self,
+                                 userName: userName,
+                                 isSearching: isSearching)
     }
     //MARK: - about BasicInfoView
     func makeBasicInfoVC(userInfo: BehaviorRelay<UserInfo?>) -> BasicInfoViewController {
@@ -141,6 +150,7 @@ final class Container {
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
-        return SettingViewModel(storage: storage)
+        return SettingViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage))
     }
 }
+

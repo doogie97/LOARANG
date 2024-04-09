@@ -6,10 +6,13 @@
 //
 
 import RxRelay
+import AppTrackingTransparency
 
 protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutput {}
 
 protocol MainViewModelInput {
+    func viewDidLoad()
+    
     func touchSerachButton()
     func touchMainUser()
     func touchMainUserSearchButton(_ userName: String)
@@ -21,7 +24,6 @@ protocol MainViewModelInput {
     func touchMoreNoticeButton()
 }
 protocol MainViewModelOutput {
-    var mainUser: BehaviorRelay<MainUser?> { get }
     var checkUser: PublishRelay<MainUser> { get }
     var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
     var events: BehaviorRelay<[EventDTO]> { get }
@@ -40,72 +42,78 @@ final class MainViewModel: MainViewModelInOut {
     private let crawlManager = CrawlManager() // 크롤링 -> API로 전면 수정 후 제거 필요
     private let networkManager = NetworkManager()
     
-    init(storage: AppStorageable) {
+    private let getHomeInfoUseCase: GetHomeInfoUseCase
+    private let getHomeCharactersUseCase: GetHomeCharactersUseCase
+    private let changeMainUserUseCase: ChangeMainUserUseCase
+    
+    init(storage: AppStorageable,
+         getHomeInfoUseCase: GetHomeInfoUseCase,
+         getHomeCharactersUseCase: GetHomeCharactersUseCase,
+         changeMainUserUseCase: ChangeMainUserUseCase) {
+        self.getHomeInfoUseCase = getHomeInfoUseCase
+        self.getHomeCharactersUseCase = getHomeCharactersUseCase
+        self.changeMainUserUseCase = changeMainUserUseCase
         self.storage = storage
         self.bookmarkUser = storage.bookMark
-        
-        checkInspection()
-    }
-    
-    private func checkInspection() {
-        Task {
-            do {
-                try await CrawlManager().checkInspection()
-                await MainActor.run {
-                    getEvent()
-                    getNotice()
-                }
-            } catch {
-                await MainActor.run {
-                    showExitAlert.accept((title:"서버 점검 중",
-                                          message: "자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요"))
-                }
-            }
-        }
-    }
-    
-    private func getEvent() {
-        Task {
-            do {
-                let news = try await networkManager.request(EventListGET(),
-                                                            resultType: [EventDTO].self)
-                await MainActor.run {
-                    events.accept(news)
-                }
-            } catch let error {
-                await MainActor.run {
-                    showAlert.accept(error.errorMessage)
-                }
-            }
-        }
-    }
-    
-    private func getNotice() {
-        Task {
-            do {
-                let notices = try await crawlManager.getNotice()
-                await MainActor.run {
-                    self.notices.accept(notices)
-                }
-            } catch let error {
-                await MainActor.run {
-                    showAlert.accept(error.errorMessage)
-                }
-            }
-        }
     }
     
     // in
+    func viewDidLoad() {
+        requestTraking()
+        startedLoading.accept(())
+        Task {
+            do {
+                let homeEntity = try await getHomeInfoUseCase.execute()
+                
+                let news = try await networkManager.request(EventListGET(),
+                                                            resultType: [EventDTO].self)
+                let notices = try await crawlManager.getNotice()
+                await MainActor.run {
+                    self.notices.accept(notices)
+                    self.events.accept(news)
+                    finishedLoading.accept(())
+                }
+            } catch let error {
+                await MainActor.run {
+                    showAlert.accept(error.errorMessage)
+                    finishedLoading.accept(())
+                }
+            }
+        }
+        
+        let homeCharactersEntity = getHomeCharactersUseCase.execute()
+        ViewChangeManager.shared.mainUser.accept(homeCharactersEntity.mainUser)
+    }
+    
+    private func requestTraking() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("status= authorized")
+                case .denied:
+                    print("status= denied")
+                case .notDetermined:
+                    print("status= notDetermined")
+                case .restricted:
+                    print("status= restricted")
+                @unknown default:
+                    print("status= default")
+                }
+            }
+        }
+    }
+    
     func touchSerachButton() {
         showSearchView.accept(())
     }
     
     func touchMainUser() {
-        guard let mainUser = mainUser.value else {
+        guard let name = ViewChangeManager.shared.mainUser.value?.name else {
             return
         }
         
-        showUserInfo.accept(mainUser.name)
+        showUserInfo.accept(name)
     }
     
     func touchMainUserSearchButton(_ userName: String) {
@@ -133,7 +141,7 @@ final class MainViewModel: MainViewModelInOut {
     
     func changeMainUser(_ mainUser: MainUser) {
         do {
-            try storage.changeMainUser(mainUser)
+            try changeMainUserUseCase.execute(user: mainUser)
             showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
         } catch {
             showAlert.accept(error.errorMessage)
@@ -188,7 +196,6 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     // out
-    let mainUser = ViewChangeManager.shared.mainUser
     let checkUser = PublishRelay<MainUser>()
     let bookmarkUser: BehaviorRelay<[BookmarkUser]>
     let events = BehaviorRelay<[EventDTO]>(value: [])

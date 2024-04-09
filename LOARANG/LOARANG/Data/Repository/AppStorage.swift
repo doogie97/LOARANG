@@ -12,7 +12,6 @@ protocol AppStorageable {
     func addBookmarkUser(_ user: BookmarkUser) throws
     func deleteBookmarkUser(_ name: String) throws
     func updateBookmarkUser(_ user: BookmarkUser) throws
-    func changeMainUser(_ user: MainUser) throws
     func isBookmarkUser(_ name: String) -> Bool
     func addRecentUser(_ user: RecentUser) throws
     func deleteRecentUser(_ name: String) throws
@@ -55,15 +54,6 @@ final class AppStorage: AppStorageable {
             self.bookMark.accept(localStorage.bookmarkUsers())
         } catch {
             throw error
-        }
-    }
-    
-    func changeMainUser(_ user: MainUser) throws {
-        do {
-            try localStorage.changeMainUser(user)
-            ViewChangeManager.shared.mainUser.accept(user)
-        } catch {
-            throw LocalStorageError.changeMainUserError
         }
     }
     

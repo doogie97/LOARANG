@@ -7,7 +7,12 @@
 
 import RealmSwift
 
-final class LocalStorage {
+protocol LocalStorageable {
+    func mainUser() -> MainUser?
+    func changeMainUser(_ user: MainUser) throws
+}
+
+final class LocalStorage: LocalStorageable {
     private let realm: Realm
     
     init(realm: Realm) {
