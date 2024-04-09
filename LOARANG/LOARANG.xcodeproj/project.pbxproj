@@ -338,6 +338,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		714E8AE92BBFDF610000D90E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */,
+				ACBA79052899424900CB39D5 /* AppStorage.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		AC0341B229458816005F4533 /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,7 +380,6 @@
 		AC0B89F7289B8185005BE193 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				ACBA79052899424900CB39D5 /* AppStorage.swift */,
 				ACBA7901289929A100CB39D5 /* LocalStorage.swift */,
 				ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */,
 			);
@@ -547,7 +555,6 @@
 		AC6C81962940276D00C0EEC1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				C6EDB7D52BADA6B1004E7AC9 /* NetworkRepository */,
 				AC0341B0294587A3005F4533 /* NetworkManager.swift */,
 				AC0341B32945883C005F4533 /* Requestable.swift */,
 				AC0341C629458CCE005F4533 /* APIError.swift */,
@@ -875,9 +882,10 @@
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				714E8AE92BBFDF610000D90E /* Repository */,
 				AC0B89F7289B8185005BE193 /* Storage */,
-				AC8F11C62881025900D06AA6 /* CrawlManager */,
 				AC6C81962940276D00C0EEC1 /* Network */,
+				AC8F11C62881025900D06AA6 /* CrawlManager */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -910,14 +918,6 @@
 				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
 			);
 			path = AboutView;
-			sourceTree = "<group>";
-		};
-		C6EDB7D52BADA6B1004E7AC9 /* NetworkRepository */ = {
-			isa = PBXGroup;
-			children = (
-				C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */,
-			);
-			path = NetworkRepository;
 			sourceTree = "<group>";
 		};
 		C6EDB7D82BADA7BA004E7AC9 /* Domain */ = {
