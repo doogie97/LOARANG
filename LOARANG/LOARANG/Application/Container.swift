@@ -64,7 +64,11 @@ final class Container {
     }
     
     private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
-        return UserInfoViewModel(storage: storage, container: self, userName: userName, isSearching: isSearching)
+        return UserInfoViewModel(storage: storage, 
+                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage),
+                                 container: self,
+                                 userName: userName,
+                                 isSearching: isSearching)
     }
     //MARK: - about BasicInfoView
     func makeBasicInfoVC(userInfo: BehaviorRelay<UserInfo?>) -> BasicInfoViewController {
