@@ -27,7 +27,7 @@ struct GetOwnCharactersUseCase {
         var serverListIndex = 0
         let characters = characters(dto)
         for character in characters {
-            if let serverInfo = serverListDic[character.gameServer] {
+            if serverListDic[character.gameServer] != nil  {
                 serverListDic[character.gameServer]?.serverInfo.characters.append(character)
             } else {
                 serverListDic[character.gameServer] = (serverListIndex, OwnCharactersEntity.ServerInfo(gameServer: character.gameServer,
@@ -35,7 +35,7 @@ struct GetOwnCharactersUseCase {
                 serverListIndex += 1
             }
         }
-        var serverList: [OwnCharactersEntity.ServerInfo] = (serverListDic.sorted { $0.value.index < $1.value.index }).compactMap {
+        let serverList: [OwnCharactersEntity.ServerInfo] = (serverListDic.sorted { $0.value.index < $1.value.index }).compactMap {
             return $0.value.serverInfo
         }
         
