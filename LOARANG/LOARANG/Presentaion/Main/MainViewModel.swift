@@ -24,7 +24,6 @@ protocol MainViewModelInput {
     func touchMoreNoticeButton()
 }
 protocol MainViewModelOutput {
-    var mainUser: BehaviorRelay<MainUser?> { get }
     var checkUser: PublishRelay<MainUser> { get }
     var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
     var events: BehaviorRelay<[EventDTO]> { get }
@@ -101,11 +100,11 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchMainUser() {
-        guard let mainUser = mainUser.value else {
+        guard let name = ViewChangeManager.shared.mainUser.value?.name else {
             return
         }
         
-        showUserInfo.accept(mainUser.name)
+        showUserInfo.accept(name)
     }
     
     func touchMainUserSearchButton(_ userName: String) {
@@ -188,7 +187,6 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     // out
-    let mainUser = ViewChangeManager.shared.mainUser
     let checkUser = PublishRelay<MainUser>()
     let bookmarkUser: BehaviorRelay<[BookmarkUser]>
     let events = BehaviorRelay<[EventDTO]>(value: [])

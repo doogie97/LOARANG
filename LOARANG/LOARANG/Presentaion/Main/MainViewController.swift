@@ -64,7 +64,7 @@ final class MainViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // MainView contents
-        viewModel.mainUser
+        ViewChangeManager.shared.mainUser
             .bind(onNext: { [weak self] in
                 self?.mainView.mainUserView.setUserInfo($0)
             })
