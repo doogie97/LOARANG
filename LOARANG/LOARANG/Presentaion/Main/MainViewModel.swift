@@ -6,10 +6,13 @@
 //
 
 import RxRelay
+import AppTrackingTransparency
 
 protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutput {}
 
 protocol MainViewModelInput {
+    func viewDidLoad()
+    
     func touchSerachButton()
     func touchMainUser()
     func touchMainUserSearchButton(_ userName: String)
@@ -47,58 +50,52 @@ final class MainViewModel: MainViewModelInOut {
         self.getHomeInfoUseCase = getHomeInfoUseCase
         self.storage = storage
         self.bookmarkUser = storage.bookMark
-        checkInspection()
-    }
-    
-    private func checkInspection() {
-        Task {
-            do {
-                try await CrawlManager().checkInspection()
-                await MainActor.run {
-                    getEvent()
-                    getNotice()
-                }
-            } catch {
-                await MainActor.run {
-                    showExitAlert.accept((title:"서버 점검 중",
-                                          message: "자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요"))
-                }
-            }
-        }
-    }
-    
-    private func getEvent() {
-        Task {
-            do {
-                let news = try await networkManager.request(EventListGET(),
-                                                            resultType: [EventDTO].self)
-                await MainActor.run {
-                    events.accept(news)
-                }
-            } catch let error {
-                await MainActor.run {
-                    showAlert.accept(error.errorMessage)
-                }
-            }
-        }
-    }
-    
-    private func getNotice() {
-        Task {
-            do {
-                let notices = try await crawlManager.getNotice()
-                await MainActor.run {
-                    self.notices.accept(notices)
-                }
-            } catch let error {
-                await MainActor.run {
-                    showAlert.accept(error.errorMessage)
-                }
-            }
-        }
     }
     
     // in
+    func viewDidLoad() {
+        requestTraking()
+        startedLoading.accept(())
+        Task {
+            do {
+                let homeEntity = try await getHomeInfoUseCase.execute()
+                let news = try await networkManager.request(EventListGET(),
+                                                            resultType: [EventDTO].self)
+                let notices = try await crawlManager.getNotice()
+                await MainActor.run {
+                    print(homeEntity)
+                    self.notices.accept(notices)
+                    self.events.accept(news)
+                    finishedLoading.accept(())
+                }
+            } catch let error {
+                await MainActor.run {
+                    showAlert.accept(error.errorMessage)
+                    finishedLoading.accept(())
+                }
+            }
+        }
+    }
+    
+    private func requestTraking() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("status= authorized")
+                case .denied:
+                    print("status= denied")
+                case .notDetermined:
+                    print("status= notDetermined")
+                case .restricted:
+                    print("status= restricted")
+                @unknown default:
+                    print("status= default")
+                }
+            }
+        }
+    }
+    
     func touchSerachButton() {
         showSearchView.accept(())
     }
