@@ -88,7 +88,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     private func mainUserUpdate(_ userInfo: UserInfo) {
-        if storage.mainUser.value?.name == userInfo.mainInfo.name {
+        if ViewChangeManager.shared.mainUser.value?.name == userInfo.mainInfo.name {
             do {
                 try storage.changeMainUser(MainUser(image: userInfo.mainInfo.userImage,
                                                     battleLV: userInfo.mainInfo.battleLV,

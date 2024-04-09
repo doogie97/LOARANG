@@ -42,7 +42,6 @@ final class MainViewModel: MainViewModelInOut {
     
     init(storage: AppStorageable) {
         self.storage = storage
-        self.mainUser = storage.mainUser
         self.bookmarkUser = storage.bookMark
         
         checkInspection()
@@ -189,7 +188,7 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     // out
-    let mainUser: BehaviorRelay<MainUser?>
+    let mainUser = ViewChangeManager.shared.mainUser
     let checkUser = PublishRelay<MainUser>()
     let bookmarkUser: BehaviorRelay<[BookmarkUser]>
     let events = BehaviorRelay<[EventDTO]>(value: [])
