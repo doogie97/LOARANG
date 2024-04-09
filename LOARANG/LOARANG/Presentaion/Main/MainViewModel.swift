@@ -44,12 +44,15 @@ final class MainViewModel: MainViewModelInOut {
     
     private let getHomeInfoUseCase: GetHomeInfoUseCase
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
+    private let changeMainUserUseCase: ChangeMainUserUseCase
     
     init(storage: AppStorageable,
          getHomeInfoUseCase: GetHomeInfoUseCase,
-         getHomeCharactersUseCase: GetHomeCharactersUseCase) {
+         getHomeCharactersUseCase: GetHomeCharactersUseCase,
+         changeMainUserUseCase: ChangeMainUserUseCase) {
         self.getHomeInfoUseCase = getHomeInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
+        self.changeMainUserUseCase = changeMainUserUseCase
         self.storage = storage
         self.bookmarkUser = storage.bookMark
     }
@@ -138,7 +141,8 @@ final class MainViewModel: MainViewModelInOut {
     
     func changeMainUser(_ mainUser: MainUser) {
         do {
-            try storage.changeMainUser(mainUser)
+            try changeMainUserUseCase.execute(user: mainUser)
+            ViewChangeManager.shared.mainUser.accept(mainUser)
             showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
         } catch {
             showAlert.accept(error.errorMessage)

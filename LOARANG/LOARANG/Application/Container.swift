@@ -28,7 +28,8 @@ final class Container {
     private func makeMainViewModel() -> MainViewModel {
         return MainViewModel(storage: storage, 
                              getHomeInfoUseCase: GetHomeInfoUseCase(NetworkRepository: networkRepository), 
-                             getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorage: localStorage))
+                             getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorage: localStorage), 
+                             changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage))
     }
     
     func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModelable {
