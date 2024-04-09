@@ -15,6 +15,7 @@ struct ChangeMainUserUseCase {
     func execute(user: MainUser) throws {
         do {
             try localStorage.changeMainUser(user)
+            ViewChangeManager.shared.mainUser.accept(user)
         } catch let error {
             throw error
         }

@@ -103,7 +103,6 @@ final class UserInfoViewModel: UserInfoViewModelable {
                                         itemLV: userInfo.mainInfo.itemLV,
                                         server: userInfo.mainInfo.server)
                 try changeMainUserUseCase.execute(user: mainUser)
-                ViewChangeManager.shared.mainUser.accept(mainUser)
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))
             }
