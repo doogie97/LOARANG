@@ -9,11 +9,10 @@ import RxRelay
 
 final class Container {
     private let storage: AppStorageable
-    private let networkManager: NetworkManagerable
+    private let networkManager: NetworkManagerable = NetworkManager()
     
     init(storage: AppStorageable) {
         self.storage = storage
-        self.networkManager = NetworkManager()
     }
     
     private lazy var networkRepository = NetworkRepository(networkManager: networkManager)
@@ -24,7 +23,8 @@ final class Container {
     }
     
     private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(storage: storage)
+        return MainViewModel(storage: storage, 
+                             getHomeInfoUseCase: GetHomeInfoUseCase(NetworkRepository: networkRepository))
     }
     
     func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModelable {

@@ -40,10 +40,13 @@ final class MainViewModel: MainViewModelInOut {
     private let crawlManager = CrawlManager() // 크롤링 -> API로 전면 수정 후 제거 필요
     private let networkManager = NetworkManager()
     
-    init(storage: AppStorageable) {
+    private let getHomeInfoUseCase: GetHomeInfoUseCase
+    
+    init(storage: AppStorageable,
+         getHomeInfoUseCase: GetHomeInfoUseCase) {
+        self.getHomeInfoUseCase = getHomeInfoUseCase
         self.storage = storage
         self.bookmarkUser = storage.bookMark
-        
         checkInspection()
     }
     
