@@ -9,6 +9,7 @@ import RealmSwift
 
 protocol LocalStorageable {
     func mainUser() -> MainUser?
+    func changeMainUser(_ user: MainUser) throws
 }
 
 final class LocalStorage: LocalStorageable {

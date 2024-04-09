@@ -146,6 +146,7 @@
 		C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61622BADC8530023D123 /* CharacterClase.swift */; };
 		C64C45252BC592B200AD503D /* GetHomeCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */; };
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
+		C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */; };
 		C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
@@ -306,6 +307,7 @@
 		C63C61622BADC8530023D123 /* CharacterClase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClase.swift; sourceTree = "<group>"; };
 		C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeCharactersUseCase.swift; sourceTree = "<group>"; };
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
+		C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMainUserUseCase.swift; sourceTree = "<group>"; };
 		C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeManager.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 			isa = PBXGroup;
 			children = (
 				C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */,
+				C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */,
 			);
 			path = LocalStorageUseCase;
 			sourceTree = "<group>";
@@ -1248,6 +1251,7 @@
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
+				C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */,
 				C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
