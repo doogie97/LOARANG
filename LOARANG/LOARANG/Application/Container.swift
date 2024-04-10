@@ -53,10 +53,6 @@ final class Container {
                                deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage))
     }
     
-    func makeRecentUserCellViewModel(userInfo: RecentUser) -> RecentUserCellViewModelable {
-        return RecentUserCellViewModel(userInfo: userInfo)
-    }
-    
 //MARK: - about UserInfoView
     func makeUserInfoViewController(_ userName: String, isSearching: Bool = false) -> UserInfoViewController {
         return UserInfoViewController(viewModel: makeUserInfoViewModel(userName, isSearching: isSearching))

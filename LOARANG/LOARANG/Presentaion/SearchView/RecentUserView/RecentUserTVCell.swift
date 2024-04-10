@@ -11,8 +11,6 @@ final class RecentUserTVCell: UITableViewCell {
     private weak var viewModel: SearchViewModelable?
     private var index: Int?
     
-    private var cellViewModel: RecentUserCellViewModelable?
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
@@ -106,11 +104,9 @@ final class RecentUserTVCell: UITableViewCell {
         }
     }
     
-    func setCellContents(cellViewModel:RecentUserCellViewModelable?,
-                         recentUser: RecentUser?,
+    func setCellContents(recentUser: RecentUser?,
                          viewModel: SearchViewModelable?,
                          index: Int) {
-        self.cellViewModel = cellViewModel
         self.viewModel = viewModel
         self.index = index
         

@@ -40,8 +40,7 @@ final class SearchViewController: UIViewController {
         
         viewModel.recentUser.bind(to: searchView.recentUserView.recentUserTableView.rx
             .items(cellIdentifier: "\(RecentUserTVCell.self)", cellType: RecentUserTVCell.self)) { [weak self] index, recentUser, cell in
-                cell.setCellContents(cellViewModel: self?.container.makeRecentUserCellViewModel(userInfo: recentUser),
-                                     recentUser: self?.viewModel.recentUser.value[safe: index],
+                cell.setCellContents(recentUser: self?.viewModel.recentUser.value[safe: index],
                                      viewModel: self?.viewModel,
                                      index: index)
             }
