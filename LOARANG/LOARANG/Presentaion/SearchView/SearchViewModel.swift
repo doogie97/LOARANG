@@ -99,7 +99,7 @@ final class SearchViewModel: SearchViewModelable {
     func touchClearRecentUserButton() {
         hideKeyboard.accept(())
         do {
-            try storage.clearRecentUsers()
+            try deleteRecentUserUseCase.execute(isClear: true)
         } catch {}
     }
     

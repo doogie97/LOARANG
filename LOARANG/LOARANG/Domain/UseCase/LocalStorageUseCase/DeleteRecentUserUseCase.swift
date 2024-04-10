@@ -12,9 +12,13 @@ struct DeleteRecentUserUseCase {
         self.localStorage = localStorage
     }
     
-    func execute(name: String) throws {
+    func execute(name: String = "", isClear: Bool = false) throws {
         do {
-            try localStorage.deleteRecentUser(name)
+            if isClear {
+                try localStorage.clearRecentUsers()
+            } else {
+                try localStorage.deleteRecentUser(name)
+            }
             ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers())
         } catch let error {
             throw error
