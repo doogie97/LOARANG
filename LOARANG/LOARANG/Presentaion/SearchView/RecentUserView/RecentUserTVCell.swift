@@ -6,11 +6,10 @@
 //
 
 import SnapKit
-import RxSwift
 
 final class RecentUserTVCell: UITableViewCell {
-    private var viewModel: RecentUserCellViewModelable?
-    private let disposeBag = DisposeBag()
+    private weak var viewModel: SearchViewModelable?
+    private var index: Int?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -42,16 +41,33 @@ final class RecentUserTVCell: UITableViewCell {
         button.imageView?.tintColor = .systemGray
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 18, weight: .bold, scale: .default), forImageIn: .normal)
+        button.addTarget(self, action: #selector(touchDeleteButton), for: .touchUpInside)
         
         return button
     }()
     
+    @objc private func touchDeleteButton() {
+        guard let index = self.index else {
+            return
+        }
+        viewModel?.touchDeleteRecentUserButton(index)
+    }
+    
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
-        
+        button.addTarget(self, action: #selector(touchBookmarkButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc private func touchBookmarkButton(_ sender: UIButton) {
+        guard let index = self.index else {
+            return
+        }
+        let isNowBookmark = sender.tag == 0
+        viewModel?.touchBookmarkButton(index: index, isNowBookmark: isNowBookmark)
+        bookmarkButton.setBookmarkButtonColor(!isNowBookmark)
+    }
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
@@ -86,36 +102,26 @@ final class RecentUserTVCell: UITableViewCell {
             $0.top.bottom.equalToSuperview()
             $0.trailing.equalTo(deleteButton.snp.leading).inset(-16)
         }
-        
-        bind()
     }
     
-    private func bind() {
-        deleteButton.rx.tap
-            .withUnretained(self)
-            .bind(onNext: { owner, _ in
-                owner.viewModel?.touchDeleteButton()
-            })
-            .disposed(by: disposeBag)
-        
-        bookmarkButton.rx.tap
-            .withUnretained(self)
-            .bind(onNext: { owner, _ in
-                owner.viewModel?.touchBookmarkButton()
-                owner.bookmarkButton.setBookmarkButtonColor(owner.viewModel?.isBookmarkUser ?? false)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    func setCellContents(viewModel:RecentUserCellViewModelable?) {
+    func setCellContents(recentUser: RecentUser?,
+                         viewModel: SearchViewModelable?,
+                         index: Int) {
         self.viewModel = viewModel
+        self.index = index
         
-        guard let user = viewModel?.userInfo else {
+        guard let recentUser = recentUser else {
             return
         }
         
-        self.userImageView.image = user.image.cropImage(class: user.class)
-        self.nameLabel.text = user.name
-        self.bookmarkButton.setBookmarkButtonColor(viewModel?.isBookmarkUser ?? false)
+        self.userImageView.image = recentUser.image.cropImage(class: recentUser.class)
+        self.nameLabel.text = recentUser.name
+        self.bookmarkButton.setBookmarkButtonColor(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == recentUser.name }))
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.viewModel = nil
+        self.index = nil
     }
 }

@@ -14,7 +14,8 @@ struct GetHomeCharactersUseCase {
     
     func execute() -> HomeCharactersEntity {
         let mainUser = localStorage.mainUser()
+        let bookmarkUsers = localStorage.bookmarkUsers()
         return HomeCharactersEntity(mainUser: mainUser,
-                                    bookmarkUsers: []) //일단 빈 배열 Return
+                                    bookmarkUsers: bookmarkUsers)
     }
 }

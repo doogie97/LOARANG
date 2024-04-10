@@ -29,11 +29,8 @@ final class Container {
         return MainViewModel(storage: storage, 
                              getHomeInfoUseCase: GetHomeInfoUseCase(NetworkRepository: networkRepository), 
                              getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorage: localStorage), 
-                             changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage))
-    }
-    
-    func makeBookmarkCVCellViewModel() -> BookmarkCVCellViewModelable {
-        return BookmarkCVCellViewModel(storage: storage)
+                             changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
+                             deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage))
     }
     
 //MARK: - about webView
@@ -51,11 +48,9 @@ final class Container {
     }
     
     private func makeSearchViewModel() -> SearchViewModelable {
-        return SearchViewModel(storage: storage)
-    }
-    
-    func makeRecentUserCellViewModel(userInfo: RecentUser) -> RecentUserCellViewModelable {
-        return RecentUserCellViewModel(storage: storage, userInfo: userInfo)
+        return SearchViewModel(storage: storage,
+                               addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
+                               deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage))
     }
     
 //MARK: - about UserInfoView
@@ -65,7 +60,10 @@ final class Container {
     
     private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
         return UserInfoViewModel(storage: storage, 
-                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage),
+                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
+                                 addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
+                                 deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage), 
+                                 updateBookmarkUseCase: UpdateBookmarkUseCase(localStorage: localStorage),
                                  container: self,
                                  userName: userName,
                                  isSearching: isSearching)

@@ -9,7 +9,11 @@ import RealmSwift
 
 protocol LocalStorageable {
     func mainUser() -> MainUser?
+    func bookmarkUsers() -> [BookmarkUser]
     func changeMainUser(_ user: MainUser) throws
+    func addBookmarkUser(_ user: BookmarkUser) throws
+    func deleteBookmarkUser(_ name: String) throws
+    func updateBookmarkUser(_ user: BookmarkUser) throws
 }
 
 final class LocalStorage: LocalStorageable {

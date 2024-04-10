@@ -12,4 +12,5 @@ final class ViewChangeManager {
     private init() {}
     
     let mainUser = BehaviorRelay<MainUser?>(value: nil)
+    let bookmarkUsers = BehaviorRelay<[BookmarkUser]>(value: [])
 }

@@ -35,16 +35,25 @@ protocol UserInfoViewModelOutput {
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: AppStorageable
     private let changeMainUserUseCase: ChangeMainUserUseCase
+    private let addBookmarkUseCase: AddBookmarkUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
+    private let updateBookmarkUseCase: UpdateBookmarkUseCase
     private let crawlManager = CrawlManager()
     private var isSearching: Bool
     
     init(storage: AppStorageable,
          changeMainUserUseCase: ChangeMainUserUseCase,
+         addBookmarkUseCase: AddBookmarkUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase,
+         updateBookmarkUseCase: UpdateBookmarkUseCase,
          container: Container,
          userName: String,
          isSearching: Bool) {
         self.storage = storage
         self.changeMainUserUseCase = changeMainUserUseCase
+        self.addBookmarkUseCase = addBookmarkUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
+        self.updateBookmarkUseCase = updateBookmarkUseCase
         self.isSearching = isSearching
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
@@ -80,17 +89,17 @@ final class UserInfoViewModel: UserInfoViewModelable {
         }
         
         do {
-            if storage.isBookmarkUser(userName) {
-                try storage.deleteBookmarkUser(userName)
+            if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
+                try deleteBookmarkUseCase.execute(name: userName)
             } else {
-                try storage.addBookmarkUser(BookmarkUser(name: userInfo.mainInfo.name,
-                                                 image: userInfo.mainInfo.userImage,
-                                                 class: userInfo.mainInfo.`class`))
+                try addBookmarkUseCase.execute(user: BookmarkUser(name: userInfo.mainInfo.name,
+                                                                  image: userInfo.mainInfo.userImage,
+                                                                  class: userInfo.mainInfo.`class`))
             }
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }
-        isBookmarkUser.accept(storage.isBookmarkUser(userInfo.mainInfo.name))
+        isBookmarkUser.accept(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }))
     }
     
     private func mainUserUpdate(_ userInfo: UserInfo) {
@@ -110,11 +119,11 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     private func bookmarkUpdate(_ userInfo: UserInfo) {
-        if isBookmarkUser.value == true {
+        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
             do {
-                try storage.updateBookmarkUser(BookmarkUser(name: userName,
-                                                    image: userInfo.mainInfo.userImage,
-                                                    class: userInfo.mainInfo.`class`))
+                try updateBookmarkUseCase.execute(user: BookmarkUser(name: userName,
+                                                                     image: userInfo.mainInfo.userImage,
+                                                                     class: userInfo.mainInfo.`class`))
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))
             }
@@ -139,7 +148,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 await MainActor.run {
                     userInfo.accept(searchResult)
                     skillInfo.accept(searchResult.userJsonInfo.skillInfo)
-                    isBookmarkUser.accept(storage.isBookmarkUser(searchResult.mainInfo.name))
+                    isBookmarkUser.accept(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == searchResult.mainInfo.name }))
                     userName = searchResult.mainInfo.name
                     sucssesSearching.accept(())
                     

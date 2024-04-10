@@ -7,12 +7,14 @@
 
 import RxRelay
 
-protocol SearchViewModelable: SearchViewModelInput, SearchViewModelOutput {}
+protocol SearchViewModelable: SearchViewModelInput, SearchViewModelOutput, AnyObject {}
 
 protocol SearchViewModelInput {
     func touchBackButton()
     func touchSearchButton(_ name: String)
     func touchRecentUserCell(_ index: Int)
+    func touchBookmarkButton(index: Int, isNowBookmark: Bool)
+    func touchDeleteRecentUserButton(_ index: Int)
     func touchClearRecentUserButton()
 }
 
@@ -25,8 +27,14 @@ protocol SearchViewModelOutput {
 
 final class SearchViewModel: SearchViewModelable {
     private let storage: AppStorageable
-    init(storage: AppStorageable) {
+    private let addBookmarkUseCase: AddBookmarkUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
+    init(storage: AppStorageable,
+         addBookmarkUseCase: AddBookmarkUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase) {
         self.storage = storage
+        self.addBookmarkUseCase = addBookmarkUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.recentUser = storage.recentUsers
     }
     
@@ -47,6 +55,34 @@ final class SearchViewModel: SearchViewModelable {
         }
         
         showUserInfo.accept(userName)
+    }
+    
+    func touchBookmarkButton(index: Int, isNowBookmark: Bool) {
+        guard let recentUser = storage.recentUsers.value[safe: index] else {
+            return
+        }
+        
+        if isNowBookmark {
+            do {
+                try deleteBookmarkUseCase.execute(name: recentUser.name)
+            } catch {}
+        } else {
+            do {
+                try addBookmarkUseCase.execute(user: BookmarkUser(name: recentUser.name,
+                                                                  image: recentUser.image,
+                                                                  class: recentUser.`class`))
+            } catch {}
+        }
+    }
+    
+    func touchDeleteRecentUserButton(_ index: Int) {
+        guard let name = storage.recentUsers.value[safe: index]?.name else {
+            return
+        }
+        
+        do {
+            try storage.deleteRecentUser(name)
+        } catch {}
     }
     
     func touchClearRecentUserButton() {

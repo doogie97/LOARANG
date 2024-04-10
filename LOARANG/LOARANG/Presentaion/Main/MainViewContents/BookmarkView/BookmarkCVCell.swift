@@ -6,11 +6,10 @@
 //
 
 import SnapKit
-import RxSwift
 
 final class BookmarkCVCell: UICollectionViewCell {
-    private var viewModel: BookmarkCVCellViewModelable?
-    private let disposeBag = DisposeBag()
+    private weak var viewModel: MainViewModelInOut?
+    private var index: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,9 +25,17 @@ final class BookmarkCVCell: UICollectionViewCell {
         button.imageView?.tintColor = #colorLiteral(red: 1, green: 0.6752033234, blue: 0.5361486077, alpha: 1)
         button.setImage(UIImage(systemName: "star.fill"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
+        button.addTarget(self, action: #selector(touchStarButton), for: .touchUpInside)
         
         return button
     }()
+    
+    @objc private func touchStarButton() {
+        guard let index = self.index else {
+            return
+        }
+        viewModel?.touchBookmarkStarButton(index: index)
+    }
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
@@ -79,20 +86,22 @@ final class BookmarkCVCell: UICollectionViewCell {
             $0.leading.trailing.equalToSuperview().inset(5)
             $0.bottom.equalToSuperview()
         }
-        
-        bind()
     }
     
-    private func bind() {
-        bookmarkButton.rx.tap.bind(onNext: {
-            self.viewModel?.touchStarButton(self.nameLabel.text ?? "")
-        })
-        .disposed(by: disposeBag)
-    }
-    
-    func setCell(_ info: BookmarkUser, viewModel: BookmarkCVCellViewModelable?) {
+    func setCell(_ info: BookmarkUser,
+                 viewModel: MainViewModelInOut?,
+                 index: Int) {
         self.viewModel = viewModel
+        self.index = index
         nameLabel.text = info.name
         userImageView.image = info.image.cropImage(class: info.class)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.viewModel = nil
+        self.index = nil
+        self.nameLabel.text = nil
+        self.userImageView.image = nil
     }
 }

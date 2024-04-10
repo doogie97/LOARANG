@@ -8,7 +8,7 @@
 import RxRelay
 import AppTrackingTransparency
 
-protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutput {}
+protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutput, AnyObject {}
 
 protocol MainViewModelInput {
     func viewDidLoad()
@@ -18,6 +18,7 @@ protocol MainViewModelInput {
     func touchMainUserSearchButton(_ userName: String)
     func changeMainUser(_ mainUser: MainUser)
     func touchBookMarkCell(_ index: Int)
+    func touchBookmarkStarButton(index: Int)
     func touchEventCell(_ index: Int)
     func touchMoreEventButton()
     func touchNoticeCell(_ index: Int)
@@ -25,7 +26,6 @@ protocol MainViewModelInput {
 }
 protocol MainViewModelOutput {
     var checkUser: PublishRelay<MainUser> { get }
-    var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
     var events: BehaviorRelay<[EventDTO]> { get }
     var notices: BehaviorRelay<[LostArkNotice]> { get }
     var showSearchView: PublishRelay<Void> { get }
@@ -45,16 +45,18 @@ final class MainViewModel: MainViewModelInOut {
     private let getHomeInfoUseCase: GetHomeInfoUseCase
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
     private let changeMainUserUseCase: ChangeMainUserUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     
     init(storage: AppStorageable,
          getHomeInfoUseCase: GetHomeInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
-         changeMainUserUseCase: ChangeMainUserUseCase) {
+         changeMainUserUseCase: ChangeMainUserUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase) {
         self.getHomeInfoUseCase = getHomeInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.storage = storage
-        self.bookmarkUser = storage.bookMark
     }
     
     // in
@@ -83,6 +85,7 @@ final class MainViewModel: MainViewModelInOut {
         
         let homeCharactersEntity = getHomeCharactersUseCase.execute()
         ViewChangeManager.shared.mainUser.accept(homeCharactersEntity.mainUser)
+        ViewChangeManager.shared.bookmarkUsers.accept(homeCharactersEntity.bookmarkUsers)
     }
     
     private func requestTraking() {
@@ -149,10 +152,23 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchBookMarkCell(_ index: Int) {
-        guard let userName = storage.bookMark.value[safe: index]?.name else {
+        guard let userName = ViewChangeManager.shared.bookmarkUsers.value[safe: index]?.name else {
             return
         }
         showUserInfo.accept(userName)
+    }
+    
+    func touchBookmarkStarButton(index: Int) {
+        guard let userName = ViewChangeManager.shared.bookmarkUsers.value[safe: index]?.name else {
+            return
+        }
+        
+        do {
+            try deleteBookmarkUseCase.execute(name: userName)
+        } catch {
+            showAlert.accept(error.errorMessage)
+        }
+        
     }
     
     func touchEventCell(_ index: Int) {
@@ -197,7 +213,6 @@ final class MainViewModel: MainViewModelInOut {
     
     // out
     let checkUser = PublishRelay<MainUser>()
-    let bookmarkUser: BehaviorRelay<[BookmarkUser]>
     let events = BehaviorRelay<[EventDTO]>(value: [])
     let notices = BehaviorRelay<[LostArkNotice]>(value: [])
     let showSearchView = PublishRelay<Void>()
