@@ -120,7 +120,9 @@ final class MainViewController: UIViewController {
         
         // BookmarkView contents
         ViewChangeManager.shared.bookmarkUsers.bind(to: mainView.bookmarkView.bookMarkCollectionView.rx.items(cellIdentifier: "\(BookmarkCVCell.self)", cellType: BookmarkCVCell.self)) { [weak self] index, bookmark, cell in
-            cell.setCell(bookmark, viewModel: self?.container.makeBookmarkCVCellViewModel())
+            cell.setCell(bookmark,
+                         viewModel: self?.viewModel,
+                         index: index)
         }
         .disposed(by: disposeBag)
         

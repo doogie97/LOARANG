@@ -8,7 +8,7 @@
 import RxRelay
 import AppTrackingTransparency
 
-protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutput {}
+protocol MainViewModelInOut: MainViewModelInput, MainViewModelOutput, AnyObject {}
 
 protocol MainViewModelInput {
     func viewDidLoad()
@@ -18,6 +18,7 @@ protocol MainViewModelInput {
     func touchMainUserSearchButton(_ userName: String)
     func changeMainUser(_ mainUser: MainUser)
     func touchBookMarkCell(_ index: Int)
+    func touchBookmarkStarButton(index: Int)
     func touchEventCell(_ index: Int)
     func touchMoreEventButton()
     func touchNoticeCell(_ index: Int)
@@ -44,14 +45,17 @@ final class MainViewModel: MainViewModelInOut {
     private let getHomeInfoUseCase: GetHomeInfoUseCase
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
     private let changeMainUserUseCase: ChangeMainUserUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     
     init(storage: AppStorageable,
          getHomeInfoUseCase: GetHomeInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
-         changeMainUserUseCase: ChangeMainUserUseCase) {
+         changeMainUserUseCase: ChangeMainUserUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase) {
         self.getHomeInfoUseCase = getHomeInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.storage = storage
     }
     
@@ -152,6 +156,19 @@ final class MainViewModel: MainViewModelInOut {
             return
         }
         showUserInfo.accept(userName)
+    }
+    
+    func touchBookmarkStarButton(index: Int) {
+        guard let userName = ViewChangeManager.shared.bookmarkUsers.value[safe: index]?.name else {
+            return
+        }
+        
+        do {
+            try deleteBookmarkUseCase.execute(name: userName)
+        } catch {
+            showAlert.accept(error.errorMessage)
+        }
+        
     }
     
     func touchEventCell(_ index: Int) {

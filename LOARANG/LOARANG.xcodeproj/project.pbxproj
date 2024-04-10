@@ -82,7 +82,6 @@
 		AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404728B5F325004B7EBB /* SkillTVCell.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */; };
-		AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */; };
 		AC8F11D328814F5800D06AA6 /* BookmarkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11D228814F5800D06AA6 /* BookmarkUser.swift */; };
 		ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA27A2F28B4D1AE0080EF4F /* SpecialEquipmentCell.swift */; };
 		ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */; };
@@ -149,6 +148,7 @@
 		C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */; };
 		C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
+		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
 		C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */; };
@@ -242,7 +242,6 @@
 		AC86404728B5F325004B7EBB /* SkillTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTVCell.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCell.swift; sourceTree = "<group>"; };
-		AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCVCellViewModel.swift; sourceTree = "<group>"; };
 		AC8F11D228814F5800D06AA6 /* BookmarkUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUser.swift; sourceTree = "<group>"; };
 		ACA27A2F28B4D1AE0080EF4F /* SpecialEquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEquipmentCell.swift; sourceTree = "<group>"; };
 		ACAEF31F287FF0D200AE98F1 /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,6 +310,7 @@
 		C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMainUserUseCase.swift; sourceTree = "<group>"; };
 		C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeManager.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
+		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoEntity.swift; sourceTree = "<group>"; };
@@ -541,7 +541,6 @@
 			children = (
 				ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */,
 				AC8F11CD28811F9B00D06AA6 /* BookmarkCVCell.swift */,
-				AC8F11CF2881496A00D06AA6 /* BookmarkCVCellViewModel.swift */,
 			);
 			path = BookmarkView;
 			sourceTree = "<group>";
@@ -906,6 +905,7 @@
 				C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */,
 				C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */,
 				C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */,
+				C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */,
 			);
 			path = LocalStorageUseCase;
 			sourceTree = "<group>";
@@ -1199,7 +1199,6 @@
 				C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,
-				AC8F11D02881496A00D06AA6 /* BookmarkCVCellViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
 				ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */,
 				C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */,
@@ -1259,6 +1258,7 @@
 				C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
+				C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */,
 				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
 				ACD547B328EBFED500D44ACA /* RecentUserView.swift in Sources */,

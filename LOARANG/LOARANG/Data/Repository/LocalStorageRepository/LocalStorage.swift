@@ -12,6 +12,7 @@ protocol LocalStorageable {
     func bookmarkUsers() -> [BookmarkUser]
     func changeMainUser(_ user: MainUser) throws
     func addBookmarkUser(_ user: BookmarkUser) throws
+    func deleteBookmarkUser(_ name: String) throws
 }
 
 final class LocalStorage: LocalStorageable {

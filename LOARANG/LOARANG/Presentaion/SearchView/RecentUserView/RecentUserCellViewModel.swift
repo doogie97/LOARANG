@@ -20,12 +20,15 @@ protocol RecentUserCellViewModelOutput {
 final class RecentUserCellViewModel: RecentUserCellViewModelable {
     private let storage: AppStorageable
     private let addBookmarkUseCase: AddBookmarkUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     
     init(storage: AppStorageable,
          addBookmarkUseCase: AddBookmarkUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase,
          userInfo: RecentUser) {
         self.storage = storage
         self.addBookmarkUseCase = addBookmarkUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.userInfo = userInfo
         self.isBookmarkUser = storage.isBookmarkUser(userInfo.name)
     }
@@ -40,7 +43,7 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
     func touchBookmarkButton() {
         do {
             if storage.isBookmarkUser(userInfo.name) {
-                try storage.deleteBookmarkUser(userInfo.name)
+                try deleteBookmarkUseCase.execute(name: userInfo.name)
             } else {
                 try addBookmarkUseCase.execute(user: BookmarkUser(name: userInfo.name,
                                                                   image: userInfo.image,
