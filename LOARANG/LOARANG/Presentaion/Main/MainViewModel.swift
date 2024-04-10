@@ -81,6 +81,7 @@ final class MainViewModel: MainViewModelInOut {
         
         let homeCharactersEntity = getHomeCharactersUseCase.execute()
         ViewChangeManager.shared.mainUser.accept(homeCharactersEntity.mainUser)
+        ViewChangeManager.shared.bookmarkUsers.accept(homeCharactersEntity.bookmarkUsers)
     }
     
     private func requestTraking() {

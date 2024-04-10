@@ -9,6 +9,7 @@ import RealmSwift
 
 protocol LocalStorageable {
     func mainUser() -> MainUser?
+    func bookmarkUsers() -> [BookmarkUser]
     func changeMainUser(_ user: MainUser) throws
 }
 
