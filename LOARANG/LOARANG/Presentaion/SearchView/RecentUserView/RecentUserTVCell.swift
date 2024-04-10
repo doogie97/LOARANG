@@ -9,7 +9,10 @@ import SnapKit
 import RxSwift
 
 final class RecentUserTVCell: UITableViewCell {
-    private var viewModel: RecentUserCellViewModelable?
+    private weak var viewModel: SearchViewModelable?
+    private var index: Int?
+    
+    private var cellViewModel: RecentUserCellViewModelable?
     private let disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -49,9 +52,18 @@ final class RecentUserTVCell: UITableViewCell {
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
-        
+        button.addTarget(self, action: #selector(touchBookmarkButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc private func touchBookmarkButton(_ sender: UIButton) {
+        guard let index = self.index else {
+            return
+        }
+        let isNowBookmark = sender.tag == 0
+        viewModel?.touchBookmarkButton(index: index, isNowBookmark: isNowBookmark)
+        bookmarkButton.setBookmarkButtonColor(!isNowBookmark)
+    }
     
     private func setLayout() {
         self.backgroundColor = .mainBackground
@@ -94,28 +106,30 @@ final class RecentUserTVCell: UITableViewCell {
         deleteButton.rx.tap
             .withUnretained(self)
             .bind(onNext: { owner, _ in
-                owner.viewModel?.touchDeleteButton()
-            })
-            .disposed(by: disposeBag)
-        
-        bookmarkButton.rx.tap
-            .withUnretained(self)
-            .bind(onNext: { owner, _ in
-                owner.viewModel?.touchBookmarkButton()
-                owner.bookmarkButton.setBookmarkButtonColor(owner.viewModel?.isBookmarkUser ?? false)
+                owner.cellViewModel?.touchDeleteButton()
             })
             .disposed(by: disposeBag)
     }
     
-    func setCellContents(viewModel:RecentUserCellViewModelable?) {
+    func setCellContents(cellViewModel:RecentUserCellViewModelable?,
+                         viewModel: SearchViewModelable?,
+                         index: Int) {
+        self.cellViewModel = cellViewModel
         self.viewModel = viewModel
+        self.index = index
         
-        guard let user = viewModel?.userInfo else {
+        guard let user = cellViewModel?.userInfo else {
             return
         }
         
         self.userImageView.image = user.image.cropImage(class: user.class)
         self.nameLabel.text = user.name
-        self.bookmarkButton.setBookmarkButtonColor(viewModel?.isBookmarkUser ?? false)
+        self.bookmarkButton.setBookmarkButtonColor(cellViewModel?.isBookmarkUser ?? false)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.viewModel = nil
+        self.index = nil
     }
 }
