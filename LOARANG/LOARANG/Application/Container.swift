@@ -9,10 +9,10 @@ import RxRelay
 
 final class Container {
     private let networkRepository = NetworkRepository(networkManager: NetworkManager())
-    private let localStorage: LocalStorageable
+    private let localStorageRepository: LocalStorageRepositoryable
     
-    init(localStorage: LocalStorageable) {
-        self.localStorage = localStorage
+    init(localStorageRepository: LocalStorageRepositoryable) {
+        self.localStorageRepository = localStorageRepository
     }
     
 //MARK: - about Main View
@@ -21,10 +21,10 @@ final class Container {
     }
     
     private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(getHomeInfoUseCase: GetHomeInfoUseCase(NetworkRepository: networkRepository),
-                             getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorage: localStorage), 
-                             changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
-                             deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage))
+        return MainViewModel(getHomeInfoUseCase: GetHomeInfoUseCase(networkRepository: networkRepository),
+                             getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), 
+                             changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository), 
+                             deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository))
     }
     
 //MARK: - about webView
@@ -42,10 +42,10 @@ final class Container {
     }
     
     private func makeSearchViewModel() -> SearchViewModelable {
-        return SearchViewModel(getRecentUsersUseCase: GetRecentUsersUseCase(localStorage: localStorage),
-                               addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
-                               deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage),
-                               deleteRecentUserUseCase: DeleteRecentUserUseCase(localStorage: localStorage))
+        return SearchViewModel(getRecentUsersUseCase: GetRecentUsersUseCase(localStorageRepository: localStorageRepository),
+                               addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
+                               deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
+                               deleteRecentUserUseCase: DeleteRecentUserUseCase(localStorageRepository: localStorageRepository))
     }
     
 //MARK: - about UserInfoView
@@ -54,11 +54,11 @@ final class Container {
     }
     
     private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
-        return UserInfoViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
-                                 addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
-                                 deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage), 
-                                 updateBookmarkUseCase: UpdateBookmarkUseCase(localStorage: localStorage),
-                                 addRecentUserUseCase: AddRecentUserUseCase(localStorage: localStorage),
+        return UserInfoViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository), 
+                                 addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
+                                 deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository), 
+                                 updateBookmarkUseCase: UpdateBookmarkUseCase(localStorageRepository: localStorageRepository),
+                                 addRecentUserUseCase: AddRecentUserUseCase(localStorageRepository: localStorageRepository),
                                  container: self,
                                  userName: userName,
                                  isSearching: isSearching)
@@ -143,7 +143,7 @@ final class Container {
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
-        return SettingViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage))
+        return SettingViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository))
     }
 }
 

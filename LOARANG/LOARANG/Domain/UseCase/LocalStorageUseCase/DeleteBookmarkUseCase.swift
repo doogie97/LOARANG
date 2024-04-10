@@ -6,10 +6,10 @@
 //
 
 struct DeleteBookmarkUseCase {
-    private let localStorage: LocalStorageable
+    private let localStorage: LocalStorageRepositoryable
     
-    init(localStorage: LocalStorageable) {
-        self.localStorage = localStorage
+    init(localStorageRepository: LocalStorageRepositoryable) {
+        self.localStorage = localStorageRepository
     }
     
     func execute(name: String) throws {

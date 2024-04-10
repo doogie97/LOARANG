@@ -1,5 +1,5 @@
 //
-//  LocalStorage.swift
+//  LocalStorageRepository.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/08/02.
@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-protocol LocalStorageable {
+protocol LocalStorageRepositoryable {
     func mainUser() -> MainUserEntity?
     func bookmarkUsers() -> [BookmarkUserEntity]
     func changeMainUser(_ user: MainUserEntity) throws
@@ -20,7 +20,7 @@ protocol LocalStorageable {
     func clearRecentUsers() throws
 }
 
-final class LocalStorage: LocalStorageable {
+final class LocalStorageRepository: LocalStorageRepositoryable {
     private let realm: Realm
     
     init(realm: Realm) {

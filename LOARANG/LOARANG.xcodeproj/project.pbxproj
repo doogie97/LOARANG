@@ -116,7 +116,7 @@
 		ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */; };
 		ACBA78FD2898DDE700CB39D5 /* MainUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FC2898DDE700CB39D5 /* MainUserDTO.swift */; };
 		ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */; };
-		ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA7901289929A100CB39D5 /* LocalStorage.swift */; };
+		ACBA7902289929A100CB39D5 /* LocalStorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA7901289929A100CB39D5 /* LocalStorageRepository.swift */; };
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
 		ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE041D28B7109900FCB74D /* PaddingLabel.swift */; };
 		ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */; };
@@ -283,7 +283,7 @@
 		ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		ACBA78FC2898DDE700CB39D5 /* MainUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserDTO.swift; sourceTree = "<group>"; };
 		ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
-		ACBA7901289929A100CB39D5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		ACBA7901289929A100CB39D5 /* LocalStorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageRepository.swift; sourceTree = "<group>"; };
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		ACBE041D28B7109900FCB74D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -400,7 +400,7 @@
 		AC0B89F7289B8185005BE193 /* LocalStorageRepository */ = {
 			isa = PBXGroup;
 			children = (
-				ACBA7901289929A100CB39D5 /* LocalStorage.swift */,
+				ACBA7901289929A100CB39D5 /* LocalStorageRepository.swift */,
 				ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */,
 				AC86403A28B5C968004B7EBB /* StorageModel */,
 			);
@@ -1188,7 +1188,7 @@
 				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
 				C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
-				ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */,
+				ACBA7902289929A100CB39D5 /* LocalStorageRepository.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
 				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,

@@ -8,8 +8,8 @@
 struct GetHomeInfoUseCase {
     private let networkRepository: NetworkRepositoryable
     
-    init(NetworkRepository: NetworkRepositoryable) {
-        self.networkRepository = NetworkRepository
+    init(networkRepository: NetworkRepositoryable) {
+        self.networkRepository = networkRepository
     }
     
     func execute() async throws -> HomeInfoEntity {
