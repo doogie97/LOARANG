@@ -11,13 +11,13 @@ protocol SettingViewModelable: SettingViewModeInput, SettingViewModeOutput {}
 
 protocol SettingViewModeInput {
     func touchSearchButton(_ userName: String)
-    func changeMainUser(_ mainUser: MainUser)
+    func changeMainUser(_ mainUser: MainUserEntity)
     func touchNoticeCell()
     func touchSuggestioinCell()
 }
 
 protocol SettingViewModeOutput {
-    var checkUser: PublishRelay<MainUser> { get }
+    var checkUser: PublishRelay<MainUserEntity> { get }
     var showAlert: PublishRelay<String?> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
@@ -37,7 +37,7 @@ final class SettingViewModel: SettingViewModelable {
             do {
                 let searchResult = try await CrawlManager().getUserInfo(userName)
                 await MainActor.run {
-                    checkUser.accept(MainUser(image: searchResult.mainInfo.userImage,
+                    checkUser.accept(MainUserEntity(image: searchResult.mainInfo.userImage,
                                               battleLV: searchResult.mainInfo.battleLV,
                                               name: searchResult.mainInfo.name,
                                               class: searchResult.mainInfo.class,
@@ -54,7 +54,7 @@ final class SettingViewModel: SettingViewModelable {
         }
     }
     
-    func changeMainUser(_ mainUser: MainUser) {
+    func changeMainUser(_ mainUser: MainUserEntity) {
         do {
             try changeMainUserUseCase.execute(user: mainUser)
             showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
@@ -81,7 +81,7 @@ final class SettingViewModel: SettingViewModelable {
     }
     
     //output
-    let checkUser = PublishRelay<MainUser>()
+    let checkUser = PublishRelay<MainUserEntity>()
     let showAlert = PublishRelay<String?>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()

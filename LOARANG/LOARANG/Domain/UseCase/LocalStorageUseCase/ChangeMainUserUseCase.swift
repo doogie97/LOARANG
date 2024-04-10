@@ -12,7 +12,7 @@ struct ChangeMainUserUseCase {
         self.localStorage = localStorage
     }
     
-    func execute(user: MainUser) throws {
+    func execute(user: MainUserEntity) throws {
         do {
             try localStorage.changeMainUser(user)
             ViewChangeManager.shared.mainUser.accept(user)

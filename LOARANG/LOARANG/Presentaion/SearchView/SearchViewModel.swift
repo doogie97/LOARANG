@@ -19,7 +19,7 @@ protocol SearchViewModelInput {
 }
 
 protocol SearchViewModelOutput {
-    var recentUser: BehaviorRelay<[RecentUser]> { get }
+    var recentUser: BehaviorRelay<[RecentUserEntity]> { get }
     var popView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
     var hideKeyboard: PublishRelay<Void> { get }
@@ -68,9 +68,9 @@ final class SearchViewModel: SearchViewModelable {
             } catch {}
         } else {
             do {
-                try addBookmarkUseCase.execute(user: BookmarkUser(name: recentUser.name,
-                                                                  image: recentUser.image,
-                                                                  class: recentUser.`class`))
+                try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: recentUser.name,
+                                                                        image: recentUser.image,
+                                                                        class: recentUser.`class`))
             } catch {}
         }
     }
@@ -93,7 +93,7 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     //out
-    let recentUser: BehaviorRelay<[RecentUser]>
+    let recentUser: BehaviorRelay<[RecentUserEntity]>
     let popView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
     let hideKeyboard = PublishRelay<Void>()

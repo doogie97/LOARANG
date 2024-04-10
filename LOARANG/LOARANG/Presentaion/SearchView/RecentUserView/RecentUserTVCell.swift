@@ -104,7 +104,7 @@ final class RecentUserTVCell: UITableViewCell {
         }
     }
     
-    func setCellContents(recentUser: RecentUser?,
+    func setCellContents(recentUser: RecentUserEntity?,
                          viewModel: SearchViewModelable?,
                          index: Int) {
         self.viewModel = viewModel

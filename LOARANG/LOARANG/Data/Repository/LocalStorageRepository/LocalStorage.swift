@@ -8,12 +8,12 @@
 import RealmSwift
 
 protocol LocalStorageable {
-    func mainUser() -> MainUser?
-    func bookmarkUsers() -> [BookmarkUser]
-    func changeMainUser(_ user: MainUser) throws
-    func addBookmarkUser(_ user: BookmarkUser) throws
+    func mainUser() -> MainUserEntity?
+    func bookmarkUsers() -> [BookmarkUserEntity]
+    func changeMainUser(_ user: MainUserEntity) throws
+    func addBookmarkUser(_ user: BookmarkUserEntity) throws
     func deleteBookmarkUser(_ name: String) throws
-    func updateBookmarkUser(_ user: BookmarkUser) throws
+    func updateBookmarkUser(_ user: BookmarkUserEntity) throws
 }
 
 final class LocalStorage: LocalStorageable {
@@ -23,7 +23,7 @@ final class LocalStorage: LocalStorageable {
         self.realm = realm
     }
     
-    func mainUser() -> MainUser? {
+    func mainUser() -> MainUserEntity? {
         guard let mainUserDTO = realm.objects(MainUserDTO.self).first else {
             return nil
         }
@@ -31,27 +31,27 @@ final class LocalStorage: LocalStorageable {
         return mainUserDTO.convertedInfo
     }
     
-    func bookmarkUsers() -> [BookmarkUser] {
+    func bookmarkUsers() -> [BookmarkUserEntity] {
         let bookmarkList = realm.objects(BookmarkUserDTO.self)
         
-        let bookmarkUsers: [BookmarkUser] = bookmarkList.map {
+        let bookmarkUsers: [BookmarkUserEntity] = bookmarkList.map {
             return $0.convertedInfo
         }
         
         return bookmarkUsers
     }
     
-    func recentUsers() -> [RecentUser] {
+    func recentUsers() -> [RecentUserEntity] {
         let recentUserList = realm.objects(RecentUserDTO.self)
         
-        let recentUsers: [RecentUser] = recentUserList.map {
+        let recentUsers: [RecentUserEntity] = recentUserList.map {
             return $0.convertedInfo
         }
         
         return recentUsers.reversed()
     }
     
-    func addBookmarkUser(_ user: BookmarkUser) throws {
+    func addBookmarkUser(_ user: BookmarkUserEntity) throws {
         let bookmarkUsers = realm.objects(BookmarkUserDTO.self)
         
         guard bookmarkUsers.count < 20 else {
@@ -67,7 +67,7 @@ final class LocalStorage: LocalStorageable {
         }
     }
     
-    func updateBookmarkUser(_ user: BookmarkUser) throws {
+    func updateBookmarkUser(_ user: BookmarkUserEntity) throws {
         do {
             try realm.write {
                 realm.add(user.convertedInfo, update: .modified)
@@ -93,7 +93,7 @@ final class LocalStorage: LocalStorageable {
         }
     }
     
-    func changeMainUser(_ user: MainUser) throws {                
+    func changeMainUser(_ user: MainUserEntity) throws {                
         do {
             try realm.write {
                 realm.add(user.convertedInfo, update: .modified)
@@ -103,7 +103,7 @@ final class LocalStorage: LocalStorageable {
         }
     }
     
-    func addRecentUser(_ user: RecentUser) throws {
+    func addRecentUser(_ user: RecentUserEntity) throws {
         let recentUserList = realm.objects(RecentUserDTO.self)
         
         if recentUserList.count > 14 {

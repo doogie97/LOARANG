@@ -11,7 +11,7 @@ final class ViewChangeManager {
     static let shared = ViewChangeManager()
     private init() {}
     
-    let mainUser = BehaviorRelay<MainUser?>(value: nil)
-    let bookmarkUsers = BehaviorRelay<[BookmarkUser]>(value: [])
-    let recentUsers = BehaviorRelay<[RecentUser]>(value: [])
+    let mainUser = BehaviorRelay<MainUserEntity?>(value: nil)
+    let bookmarkUsers = BehaviorRelay<[BookmarkUserEntity]>(value: [])
+    let recentUsers = BehaviorRelay<[RecentUserEntity]>(value: [])
 }

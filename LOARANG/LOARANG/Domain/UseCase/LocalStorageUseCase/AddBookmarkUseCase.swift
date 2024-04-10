@@ -12,7 +12,7 @@ struct AddBookmarkUseCase {
         self.localStorage = localStorage
     }
     
-    func execute(user: BookmarkUser) throws {
+    func execute(user: BookmarkUserEntity) throws {
         do {
             try localStorage.addBookmarkUser(user)
             ViewChangeManager.shared.bookmarkUsers.accept(localStorage.bookmarkUsers())
