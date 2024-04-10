@@ -35,7 +35,7 @@ final class SearchViewModel: SearchViewModelable {
         self.storage = storage
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
-        self.recentUser = storage.recentUsers
+        self.recentUser = ViewChangeManager.shared.recentUsers
     }
     
     //in
@@ -50,7 +50,7 @@ final class SearchViewModel: SearchViewModelable {
     
     func touchRecentUserCell(_ index: Int) {
         hideKeyboard.accept(())
-        guard let userName = storage.recentUsers.value[safe: index]?.name else {
+        guard let userName = ViewChangeManager.shared.recentUsers.value[safe: index]?.name else {
             return
         }
         
@@ -58,7 +58,7 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchBookmarkButton(index: Int, isNowBookmark: Bool) {
-        guard let recentUser = storage.recentUsers.value[safe: index] else {
+        guard let recentUser = ViewChangeManager.shared.recentUsers.value[safe: index] else {
             return
         }
         
@@ -76,7 +76,7 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchDeleteRecentUserButton(_ index: Int) {
-        guard let name = storage.recentUsers.value[safe: index]?.name else {
+        guard let name = ViewChangeManager.shared.recentUsers.value[safe: index]?.name else {
             return
         }
         

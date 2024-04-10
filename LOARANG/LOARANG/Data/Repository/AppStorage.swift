@@ -7,7 +7,6 @@
 import RxRelay
 
 protocol AppStorageable {
-    var recentUsers: BehaviorRelay<[RecentUser]> { get }
     func addRecentUser(_ user: RecentUser) throws
     func deleteRecentUser(_ name: String) throws
     func clearRecentUsers() throws
@@ -16,17 +15,14 @@ protocol AppStorageable {
 final class AppStorage: AppStorageable {
     private let localStorage: LocalStorage
     
-    var recentUsers: BehaviorRelay<[RecentUser]>
-    
     init(_ localStorage: LocalStorage) {
         self.localStorage = localStorage
-        self.recentUsers = BehaviorRelay<[RecentUser]>(value: localStorage.recentUsers())
     }
     
     func addRecentUser(_ user: RecentUser) throws {
         do {
             try localStorage.addRecentUser(user)
-            self.recentUsers.accept(localStorage.recentUsers())
+            ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers())
         } catch {
             throw error
         }
@@ -35,7 +31,7 @@ final class AppStorage: AppStorageable {
     func deleteRecentUser(_ name: String) throws {
         do {
             try localStorage.deleteRecentUser(name)
-            self.recentUsers.accept(localStorage.recentUsers())
+            ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers())
         } catch {
             throw error
         }
@@ -44,7 +40,7 @@ final class AppStorage: AppStorageable {
     func clearRecentUsers() throws {
         do {
             try localStorage.clearRecentUsers()
-            self.recentUsers.accept([])
+            ViewChangeManager.shared.recentUsers.accept([])
         } catch {
             throw error
         }
