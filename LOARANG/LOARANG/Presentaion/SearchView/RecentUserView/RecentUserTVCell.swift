@@ -107,19 +107,20 @@ final class RecentUserTVCell: UITableViewCell {
     }
     
     func setCellContents(cellViewModel:RecentUserCellViewModelable?,
+                         recentUser: RecentUser?,
                          viewModel: SearchViewModelable?,
                          index: Int) {
         self.cellViewModel = cellViewModel
         self.viewModel = viewModel
         self.index = index
         
-        guard let user = cellViewModel?.userInfo else {
+        guard let recentUser = recentUser else {
             return
         }
         
-        self.userImageView.image = user.image.cropImage(class: user.class)
-        self.nameLabel.text = user.name
-        self.bookmarkButton.setBookmarkButtonColor(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == user.name }))
+        self.userImageView.image = recentUser.image.cropImage(class: recentUser.class)
+        self.nameLabel.text = recentUser.name
+        self.bookmarkButton.setBookmarkButtonColor(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == recentUser.name }))
     }
     
     override func prepareForReuse() {

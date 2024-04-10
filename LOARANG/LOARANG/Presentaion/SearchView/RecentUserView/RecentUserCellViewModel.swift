@@ -11,14 +11,12 @@ protocol RecentUserCellViewModelInput {
 }
 
 protocol RecentUserCellViewModelOutput {
-    var userInfo: RecentUser { get }
+    
 }
 
 final class RecentUserCellViewModel: RecentUserCellViewModelable {
     init(userInfo: RecentUser) {
-        self.userInfo = userInfo
+        
     }
     
-    //out
-    let userInfo: RecentUser
 }
