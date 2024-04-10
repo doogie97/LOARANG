@@ -25,7 +25,6 @@ protocol MainViewModelInput {
 }
 protocol MainViewModelOutput {
     var checkUser: PublishRelay<MainUser> { get }
-    var bookmarkUser: BehaviorRelay<[BookmarkUser]> { get }
     var events: BehaviorRelay<[EventDTO]> { get }
     var notices: BehaviorRelay<[LostArkNotice]> { get }
     var showSearchView: PublishRelay<Void> { get }
@@ -54,7 +53,6 @@ final class MainViewModel: MainViewModelInOut {
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
         self.storage = storage
-        self.bookmarkUser = storage.bookMark
     }
     
     // in
@@ -149,7 +147,7 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     func touchBookMarkCell(_ index: Int) {
-        guard let userName = storage.bookMark.value[safe: index]?.name else {
+        guard let userName = ViewChangeManager.shared.bookmarkUsers.value[safe: index]?.name else {
             return
         }
         showUserInfo.accept(userName)
@@ -197,7 +195,6 @@ final class MainViewModel: MainViewModelInOut {
     
     // out
     let checkUser = PublishRelay<MainUser>()
-    let bookmarkUser: BehaviorRelay<[BookmarkUser]>
     let events = BehaviorRelay<[EventDTO]>(value: [])
     let notices = BehaviorRelay<[LostArkNotice]>(value: [])
     let showSearchView = PublishRelay<Void>()
