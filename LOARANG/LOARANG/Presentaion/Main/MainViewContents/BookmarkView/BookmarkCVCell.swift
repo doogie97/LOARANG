@@ -88,7 +88,7 @@ final class BookmarkCVCell: UICollectionViewCell {
         }
     }
     
-    func setCell(_ info: BookmarkUser,
+    func setCell(_ info: BookmarkUserEntity,
                  viewModel: MainViewModelInOut?,
                  index: Int) {
         self.viewModel = viewModel

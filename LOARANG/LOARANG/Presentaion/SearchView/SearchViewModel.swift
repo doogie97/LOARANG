@@ -10,6 +10,7 @@ import RxRelay
 protocol SearchViewModelable: SearchViewModelInput, SearchViewModelOutput, AnyObject {}
 
 protocol SearchViewModelInput {
+    func viewDidLoad()
     func touchBackButton()
     func touchSearchButton(_ name: String)
     func touchRecentUserCell(_ index: Int)
@@ -19,26 +20,33 @@ protocol SearchViewModelInput {
 }
 
 protocol SearchViewModelOutput {
-    var recentUser: BehaviorRelay<[RecentUser]> { get }
     var popView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
     var hideKeyboard: PublishRelay<Void> { get }
 }
 
 final class SearchViewModel: SearchViewModelable {
-    private let storage: AppStorageable
+    private let getRecentUsersUseCase: GetRecentUsersUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
-    init(storage: AppStorageable,
+    private let deleteRecentUserUseCase: DeleteRecentUserUseCase
+    
+    init(getRecentUsersUseCase: GetRecentUsersUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
-         deleteBookmarkUseCase: DeleteBookmarkUseCase) {
-        self.storage = storage
+         deleteBookmarkUseCase: DeleteBookmarkUseCase,
+         deleteRecentUserUseCase: DeleteRecentUserUseCase) {
+        self.getRecentUsersUseCase = getRecentUsersUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
-        self.recentUser = storage.recentUsers
+        self.deleteRecentUserUseCase = deleteRecentUserUseCase
     }
     
     //in
+    func viewDidLoad() {
+        let recentUsers = getRecentUsersUseCase.execute()
+        ViewChangeManager.shared.recentUsers.accept(recentUsers)
+    }
+    
     func touchBackButton() {
         popView.accept(())
     }
@@ -50,7 +58,7 @@ final class SearchViewModel: SearchViewModelable {
     
     func touchRecentUserCell(_ index: Int) {
         hideKeyboard.accept(())
-        guard let userName = storage.recentUsers.value[safe: index]?.name else {
+        guard let userName = ViewChangeManager.shared.recentUsers.value[safe: index]?.name else {
             return
         }
         
@@ -58,7 +66,7 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchBookmarkButton(index: Int, isNowBookmark: Bool) {
-        guard let recentUser = storage.recentUsers.value[safe: index] else {
+        guard let recentUser = ViewChangeManager.shared.recentUsers.value[safe: index] else {
             return
         }
         
@@ -68,32 +76,31 @@ final class SearchViewModel: SearchViewModelable {
             } catch {}
         } else {
             do {
-                try addBookmarkUseCase.execute(user: BookmarkUser(name: recentUser.name,
-                                                                  image: recentUser.image,
-                                                                  class: recentUser.`class`))
+                try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: recentUser.name,
+                                                                        image: recentUser.image,
+                                                                        class: recentUser.`class`))
             } catch {}
         }
     }
     
     func touchDeleteRecentUserButton(_ index: Int) {
-        guard let name = storage.recentUsers.value[safe: index]?.name else {
+        guard let name = ViewChangeManager.shared.recentUsers.value[safe: index]?.name else {
             return
         }
         
         do {
-            try storage.deleteRecentUser(name)
+            try deleteRecentUserUseCase.execute(name: name)
         } catch {}
     }
     
     func touchClearRecentUserButton() {
         hideKeyboard.accept(())
         do {
-            try storage.clearRecentUsers()
+            try deleteRecentUserUseCase.execute(isClear: true)
         } catch {}
     }
     
     //out
-    let recentUser: BehaviorRelay<[RecentUser]>
     let popView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
     let hideKeyboard = PublishRelay<Void>()

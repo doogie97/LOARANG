@@ -33,27 +33,28 @@ protocol UserInfoViewModelOutput {
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
-    private let storage: AppStorageable
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     private let updateBookmarkUseCase: UpdateBookmarkUseCase
+    private let addRecentUserUseCase: AddRecentUserUseCase
     private let crawlManager = CrawlManager()
     private var isSearching: Bool
     
-    init(storage: AppStorageable,
-         changeMainUserUseCase: ChangeMainUserUseCase,
+    init(changeMainUserUseCase: ChangeMainUserUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
          updateBookmarkUseCase: UpdateBookmarkUseCase,
+         addRecentUserUseCase: AddRecentUserUseCase,
          container: Container,
          userName: String,
          isSearching: Bool) {
-        self.storage = storage
+        
         self.changeMainUserUseCase = changeMainUserUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.updateBookmarkUseCase = updateBookmarkUseCase
+        self.addRecentUserUseCase = addRecentUserUseCase
         self.isSearching = isSearching
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
@@ -92,9 +93,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
             if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
                 try deleteBookmarkUseCase.execute(name: userName)
             } else {
-                try addBookmarkUseCase.execute(user: BookmarkUser(name: userInfo.mainInfo.name,
-                                                                  image: userInfo.mainInfo.userImage,
-                                                                  class: userInfo.mainInfo.`class`))
+                try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: userInfo.mainInfo.name,
+                                                                        image: userInfo.mainInfo.userImage,
+                                                                        class: userInfo.mainInfo.`class`))
             }
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
@@ -105,7 +106,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private func mainUserUpdate(_ userInfo: UserInfo) {
         if ViewChangeManager.shared.mainUser.value?.name == userInfo.mainInfo.name {
             do {
-                let mainUser = MainUser(image: userInfo.mainInfo.userImage,
+                let mainUser = MainUserEntity(image: userInfo.mainInfo.userImage,
                                         battleLV: userInfo.mainInfo.battleLV,
                                         name: userInfo.mainInfo.name,
                                         class: userInfo.mainInfo.`class`,
@@ -121,9 +122,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private func bookmarkUpdate(_ userInfo: UserInfo) {
         if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
             do {
-                try updateBookmarkUseCase.execute(user: BookmarkUser(name: userName,
-                                                                     image: userInfo.mainInfo.userImage,
-                                                                     class: userInfo.mainInfo.`class`))
+                try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: userName,
+                                                                           image: userInfo.mainInfo.userImage,
+                                                                           class: userInfo.mainInfo.`class`))
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))
             }
@@ -132,9 +133,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     private func addRecentUser(_ userInfo: UserInfo) {
         do {
-            try storage.addRecentUser(RecentUser(name: userInfo.mainInfo.name,
-                                                 image: userInfo.mainInfo.userImage,
-                                                 class: userInfo.mainInfo.`class`))
+            try addRecentUserUseCase.execute(user: RecentUserEntity(name: userInfo.mainInfo.name,
+                                                                    image: userInfo.mainInfo.userImage,
+                                                                    class: userInfo.mainInfo.`class`))
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }

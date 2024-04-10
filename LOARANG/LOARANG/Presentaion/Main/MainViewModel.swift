@@ -16,7 +16,7 @@ protocol MainViewModelInput {
     func touchSerachButton()
     func touchMainUser()
     func touchMainUserSearchButton(_ userName: String)
-    func changeMainUser(_ mainUser: MainUser)
+    func changeMainUser(_ mainUser: MainUserEntity)
     func touchBookMarkCell(_ index: Int)
     func touchBookmarkStarButton(index: Int)
     func touchEventCell(_ index: Int)
@@ -25,7 +25,7 @@ protocol MainViewModelInput {
     func touchMoreNoticeButton()
 }
 protocol MainViewModelOutput {
-    var checkUser: PublishRelay<MainUser> { get }
+    var checkUser: PublishRelay<MainUserEntity> { get }
     var events: BehaviorRelay<[EventDTO]> { get }
     var notices: BehaviorRelay<[LostArkNotice]> { get }
     var showSearchView: PublishRelay<Void> { get }
@@ -38,7 +38,6 @@ protocol MainViewModelOutput {
 }
 
 final class MainViewModel: MainViewModelInOut {
-    private let storage: AppStorageable
     private let crawlManager = CrawlManager() // 크롤링 -> API로 전면 수정 후 제거 필요
     private let networkManager = NetworkManager()
     
@@ -47,8 +46,7 @@ final class MainViewModel: MainViewModelInOut {
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     
-    init(storage: AppStorageable,
-         getHomeInfoUseCase: GetHomeInfoUseCase,
+    init(getHomeInfoUseCase: GetHomeInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
          changeMainUserUseCase: ChangeMainUserUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase) {
@@ -56,7 +54,6 @@ final class MainViewModel: MainViewModelInOut {
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
-        self.storage = storage
     }
     
     // in
@@ -125,7 +122,7 @@ final class MainViewModel: MainViewModelInOut {
             do {
                 let searchResult = try await crawlManager.getUserInfo(userName)
                 await MainActor.run {
-                    checkUser.accept(MainUser(image: searchResult.mainInfo.userImage,
+                    checkUser.accept(MainUserEntity(image: searchResult.mainInfo.userImage,
                                               battleLV: searchResult.mainInfo.battleLV,
                                               name: searchResult.mainInfo.name,
                                               class: searchResult.mainInfo.`class`,
@@ -142,7 +139,7 @@ final class MainViewModel: MainViewModelInOut {
         }
     }
     
-    func changeMainUser(_ mainUser: MainUser) {
+    func changeMainUser(_ mainUser: MainUserEntity) {
         do {
             try changeMainUserUseCase.execute(user: mainUser)
             showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
@@ -212,7 +209,7 @@ final class MainViewModel: MainViewModelInOut {
     }
     
     // out
-    let checkUser = PublishRelay<MainUser>()
+    let checkUser = PublishRelay<MainUserEntity>()
     let events = BehaviorRelay<[EventDTO]>(value: [])
     let notices = BehaviorRelay<[LostArkNotice]>(value: [])
     let showSearchView = PublishRelay<Void>()

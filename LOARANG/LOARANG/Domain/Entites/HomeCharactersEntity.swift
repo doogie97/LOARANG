@@ -6,6 +6,6 @@
 //
 
 struct HomeCharactersEntity {
-    let mainUser: MainUser?
-    let bookmarkUsers: [BookmarkUser]
+    let mainUser: MainUserEntity?
+    let bookmarkUsers: [BookmarkUserEntity]
 }

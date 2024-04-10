@@ -40,7 +40,7 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func showCheckUserAlert(_ mainUser: MainUser, action: (() -> Void)? = nil) {
+    func showCheckUserAlert(_ mainUser: MainUserEntity, action: (() -> Void)? = nil) {
         let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.`class`))",
                                       message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "확인", style: .default) { _ in

@@ -1,21 +1,21 @@
 //
-//  AddBookmarkUseCase.swift
+//  AddRecentUserUseCase.swift
 //  LOARANG
 //
 //  Created by Doogie on 4/10/24.
 //
 
-struct AddBookmarkUseCase {
+struct AddRecentUserUseCase {
     private let localStorage: LocalStorageRepositoryable
     
     init(localStorageRepository: LocalStorageRepositoryable) {
         self.localStorage = localStorageRepository
     }
     
-    func execute(user: BookmarkUserEntity) throws {
+    func execute(user: RecentUserEntity) throws {
         do {
-            try localStorage.addBookmarkUser(user)
-            ViewChangeManager.shared.bookmarkUsers.accept(localStorage.bookmarkUsers())
+            try localStorage.addRecentUser(user)
+            ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers())
         } catch let error {
             throw error
         }

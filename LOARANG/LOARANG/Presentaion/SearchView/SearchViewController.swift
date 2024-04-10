@@ -32,21 +32,22 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
+        viewModel.viewDidLoad()
         searchView.bannerView.rootViewController = self
     }
     
     private func bindView() {
         bindKeyboard()
-        
-        viewModel.recentUser.bind(to: searchView.recentUserView.recentUserTableView.rx
+        let recentUser = ViewChangeManager.shared.recentUsers
+        recentUser.bind(to: searchView.recentUserView.recentUserTableView.rx
             .items(cellIdentifier: "\(RecentUserTVCell.self)", cellType: RecentUserTVCell.self)) { [weak self] index, recentUser, cell in
-                cell.setCellContents(recentUser: self?.viewModel.recentUser.value[safe: index],
+                cell.setCellContents(recentUser: recentUser,
                                      viewModel: self?.viewModel,
                                      index: index)
             }
             .disposed(by: disposeBag)
         
-        viewModel.recentUser
+        recentUser
             .withUnretained(self)
             .bind(onNext: { owner, recentUsers in
                 if recentUsers.isEmpty {

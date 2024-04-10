@@ -23,9 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController?.showExitAlert(message: "앱 저장소 오류가 발생했습니다.\n앱 재설치 혹은 고객센터로 문의 부탁드립니다.")
             return
         }
-        let localStorage = LocalStorage(realm: realm)
-        let container = Container(storage: AppStorage(localStorage),
-                                  localStorage: localStorage)
+        let localStorageRepository = LocalStorageRepository(realm: realm)
+        let container = Container(localStorageRepository: localStorageRepository)
         let navigationController = UINavigationController(rootViewController: TabBarViewController(container))
         navigationController.isNavigationBarHidden = true
         window?.rootViewController = navigationController

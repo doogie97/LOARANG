@@ -6,13 +6,13 @@
 //
 
 struct ChangeMainUserUseCase {
-    private let localStorage: LocalStorageable
+    private let localStorage: LocalStorageRepositoryable
     
-    init(localStorage: LocalStorageable) {
-        self.localStorage = localStorage
+    init(localStorageRepository: LocalStorageRepositoryable) {
+        self.localStorage = localStorageRepository
     }
     
-    func execute(user: MainUser) throws {
+    func execute(user: MainUserEntity) throws {
         do {
             try localStorage.changeMainUser(user)
             ViewChangeManager.shared.mainUser.accept(user)

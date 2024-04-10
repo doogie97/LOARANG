@@ -140,7 +140,7 @@ final class MainUserView: UIView {
         }
     }
     
-    func setUserInfo(_ info: MainUser?) {
+    func setUserInfo(_ info: MainUserEntity?) {
         backView.addSubview(contentsView)
         contentsView.addSubview(setMainUserButton)
         
