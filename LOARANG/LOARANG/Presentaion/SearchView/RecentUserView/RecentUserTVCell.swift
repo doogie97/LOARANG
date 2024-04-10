@@ -104,15 +104,11 @@ final class RecentUserTVCell: UITableViewCell {
         }
     }
     
-    func setCellContents(recentUser: RecentUserEntity?,
+    func setCellContents(recentUser: RecentUserEntity,
                          viewModel: SearchViewModelable?,
                          index: Int) {
         self.viewModel = viewModel
         self.index = index
-        
-        guard let recentUser = recentUser else {
-            return
-        }
         
         self.userImageView.image = recentUser.image.cropImage(class: recentUser.class)
         self.nameLabel.text = recentUser.name

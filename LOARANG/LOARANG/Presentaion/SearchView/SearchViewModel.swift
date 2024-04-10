@@ -19,7 +19,6 @@ protocol SearchViewModelInput {
 }
 
 protocol SearchViewModelOutput {
-    var recentUser: BehaviorRelay<[RecentUserEntity]> { get }
     var popView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
     var hideKeyboard: PublishRelay<Void> { get }
@@ -35,7 +34,6 @@ final class SearchViewModel: SearchViewModelable {
         self.storage = storage
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
-        self.recentUser = ViewChangeManager.shared.recentUsers
     }
     
     //in
@@ -93,7 +91,6 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     //out
-    let recentUser: BehaviorRelay<[RecentUserEntity]>
     let popView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()
     let hideKeyboard = PublishRelay<Void>()
