@@ -54,9 +54,7 @@ final class Container {
     }
     
     func makeRecentUserCellViewModel(userInfo: RecentUser) -> RecentUserCellViewModelable {
-        return RecentUserCellViewModel(storage: storage, 
-                                       addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
-                                       deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage),
+        return RecentUserCellViewModel(storage: storage,
                                        userInfo: userInfo)
     }
     
