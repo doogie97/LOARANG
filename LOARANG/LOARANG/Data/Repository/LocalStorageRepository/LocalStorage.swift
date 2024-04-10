@@ -14,6 +14,7 @@ protocol LocalStorageable {
     func addBookmarkUser(_ user: BookmarkUserEntity) throws
     func deleteBookmarkUser(_ name: String) throws
     func updateBookmarkUser(_ user: BookmarkUserEntity) throws
+    func recentUsers() -> [RecentUserEntity]
 }
 
 final class LocalStorage: LocalStorageable {
