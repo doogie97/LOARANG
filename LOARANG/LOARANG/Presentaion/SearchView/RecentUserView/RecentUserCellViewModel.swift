@@ -30,7 +30,7 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.userInfo = userInfo
-        self.isBookmarkUser = storage.isBookmarkUser(userInfo.name)
+        self.isBookmarkUser = ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.name })
     }
     
     //in
@@ -42,7 +42,7 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
     
     func touchBookmarkButton() {
         do {
-            if storage.isBookmarkUser(userInfo.name) {
+            if isBookmarkUser {
                 try deleteBookmarkUseCase.execute(name: userInfo.name)
             } else {
                 try addBookmarkUseCase.execute(user: BookmarkUser(name: userInfo.name,
@@ -51,7 +51,7 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
             }
         } catch {}
         
-        isBookmarkUser = storage.isBookmarkUser(userInfo.name)
+        isBookmarkUser = ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.name })
     }
     
     //out

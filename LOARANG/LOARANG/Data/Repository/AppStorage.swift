@@ -8,7 +8,6 @@ import RxRelay
 
 protocol AppStorageable {
     var recentUsers: BehaviorRelay<[RecentUser]> { get }
-    func isBookmarkUser(_ name: String) -> Bool
     func addRecentUser(_ user: RecentUser) throws
     func deleteRecentUser(_ name: String) throws
     func clearRecentUsers() throws
@@ -22,16 +21,6 @@ final class AppStorage: AppStorageable {
     init(_ localStorage: LocalStorage) {
         self.localStorage = localStorage
         self.recentUsers = BehaviorRelay<[RecentUser]>(value: localStorage.recentUsers())
-    }
-    
-    func isBookmarkUser(_ name: String) -> Bool {
-        let user = ViewChangeManager.shared.bookmarkUsers.value.filter { name == $0.name }
-        
-        if user.isEmpty {
-            return false
-        }
-        
-        return true
     }
     
     func addRecentUser(_ user: RecentUser) throws {
