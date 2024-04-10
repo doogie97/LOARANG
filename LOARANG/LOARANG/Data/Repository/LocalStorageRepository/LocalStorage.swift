@@ -15,6 +15,7 @@ protocol LocalStorageable {
     func deleteBookmarkUser(_ name: String) throws
     func updateBookmarkUser(_ user: BookmarkUserEntity) throws
     func recentUsers() -> [RecentUserEntity]
+    func addRecentUser(_ user: RecentUserEntity) throws
 }
 
 final class LocalStorage: LocalStorageable {
@@ -40,16 +41,6 @@ final class LocalStorage: LocalStorageable {
         }
         
         return bookmarkUsers
-    }
-    
-    func recentUsers() -> [RecentUserEntity] {
-        let recentUserList = realm.objects(RecentUserDTO.self)
-        
-        let recentUsers: [RecentUserEntity] = recentUserList.map {
-            return $0.convertedInfo
-        }
-        
-        return recentUsers.reversed()
     }
     
     func addBookmarkUser(_ user: BookmarkUserEntity) throws {
@@ -102,6 +93,16 @@ final class LocalStorage: LocalStorageable {
         } catch {
             throw LocalStorageError.changeMainUserError
         }
+    }
+    
+    func recentUsers() -> [RecentUserEntity] {
+        let recentUserList = realm.objects(RecentUserDTO.self)
+        
+        let recentUsers: [RecentUserEntity] = recentUserList.map {
+            return $0.convertedInfo
+        }
+        
+        return recentUsers.reversed()
     }
     
     func addRecentUser(_ user: RecentUserEntity) throws {

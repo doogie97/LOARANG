@@ -65,6 +65,7 @@ final class Container {
                                  addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
                                  deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage), 
                                  updateBookmarkUseCase: UpdateBookmarkUseCase(localStorage: localStorage),
+                                 addRecentUserUseCase: AddRecentUserUseCase(localStorage: localStorage),
                                  container: self,
                                  userName: userName,
                                  isSearching: isSearching)

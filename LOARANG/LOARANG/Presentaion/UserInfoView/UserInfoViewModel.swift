@@ -38,6 +38,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     private let updateBookmarkUseCase: UpdateBookmarkUseCase
+    private let addRecentUserUseCase: AddRecentUserUseCase
     private let crawlManager = CrawlManager()
     private var isSearching: Bool
     
@@ -46,6 +47,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
          updateBookmarkUseCase: UpdateBookmarkUseCase,
+         addRecentUserUseCase: AddRecentUserUseCase,
          container: Container,
          userName: String,
          isSearching: Bool) {
@@ -54,6 +56,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.updateBookmarkUseCase = updateBookmarkUseCase
+        self.addRecentUserUseCase = addRecentUserUseCase
         self.isSearching = isSearching
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
@@ -132,9 +135,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
     
     private func addRecentUser(_ userInfo: UserInfo) {
         do {
-            try storage.addRecentUser(RecentUserEntity(name: userInfo.mainInfo.name,
-                                                       image: userInfo.mainInfo.userImage,
-                                                       class: userInfo.mainInfo.`class`))
+            try addRecentUserUseCase.execute(user: RecentUserEntity(name: userInfo.mainInfo.name,
+                                                                    image: userInfo.mainInfo.userImage,
+                                                                    class: userInfo.mainInfo.`class`))
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }
