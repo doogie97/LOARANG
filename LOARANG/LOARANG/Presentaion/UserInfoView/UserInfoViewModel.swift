@@ -34,17 +34,20 @@ protocol UserInfoViewModelOutput {
 
 final class UserInfoViewModel: UserInfoViewModelable {
     private let storage: AppStorageable
+    private let addBookmarkUseCase: AddBookmarkUseCase
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let crawlManager = CrawlManager()
     private var isSearching: Bool
     
     init(storage: AppStorageable,
          changeMainUserUseCase: ChangeMainUserUseCase,
+         addBookmarkUseCase: AddBookmarkUseCase,
          container: Container,
          userName: String,
          isSearching: Bool) {
         self.storage = storage
         self.changeMainUserUseCase = changeMainUserUseCase
+        self.addBookmarkUseCase = addBookmarkUseCase
         self.isSearching = isSearching
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
@@ -83,9 +86,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
             if storage.isBookmarkUser(userName) {
                 try storage.deleteBookmarkUser(userName)
             } else {
-                try storage.addBookmarkUser(BookmarkUser(name: userInfo.mainInfo.name,
-                                                 image: userInfo.mainInfo.userImage,
-                                                 class: userInfo.mainInfo.`class`))
+                try addBookmarkUseCase.execute(user: BookmarkUser(name: userInfo.mainInfo.name,
+                                                                  image: userInfo.mainInfo.userImage,
+                                                                  class: userInfo.mainInfo.`class`))
             }
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))

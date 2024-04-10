@@ -19,9 +19,13 @@ protocol RecentUserCellViewModelOutput {
 
 final class RecentUserCellViewModel: RecentUserCellViewModelable {
     private let storage: AppStorageable
+    private let addBookmarkUseCase: AddBookmarkUseCase
     
-    init(storage: AppStorageable, userInfo: RecentUser) {
+    init(storage: AppStorageable,
+         addBookmarkUseCase: AddBookmarkUseCase,
+         userInfo: RecentUser) {
         self.storage = storage
+        self.addBookmarkUseCase = addBookmarkUseCase
         self.userInfo = userInfo
         self.isBookmarkUser = storage.isBookmarkUser(userInfo.name)
     }
@@ -38,9 +42,9 @@ final class RecentUserCellViewModel: RecentUserCellViewModelable {
             if storage.isBookmarkUser(userInfo.name) {
                 try storage.deleteBookmarkUser(userInfo.name)
             } else {
-                try storage.addBookmarkUser(BookmarkUser(name: userInfo.name,
-                                             image: userInfo.image,
-                                             class: userInfo.class))
+                try addBookmarkUseCase.execute(user: BookmarkUser(name: userInfo.name,
+                                                                  image: userInfo.image,
+                                                                  class: userInfo.class))
             }
         } catch {}
         

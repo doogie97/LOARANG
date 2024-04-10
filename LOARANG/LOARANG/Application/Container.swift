@@ -55,7 +55,9 @@ final class Container {
     }
     
     func makeRecentUserCellViewModel(userInfo: RecentUser) -> RecentUserCellViewModelable {
-        return RecentUserCellViewModel(storage: storage, userInfo: userInfo)
+        return RecentUserCellViewModel(storage: storage, 
+                                       addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
+                                       userInfo: userInfo)
     }
     
 //MARK: - about UserInfoView
@@ -65,7 +67,8 @@ final class Container {
     
     private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
         return UserInfoViewModel(storage: storage, 
-                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage),
+                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
+                                 addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
                                  container: self,
                                  userName: userName,
                                  isSearching: isSearching)
