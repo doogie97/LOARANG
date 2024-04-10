@@ -54,8 +54,7 @@ final class Container {
     }
     
     func makeRecentUserCellViewModel(userInfo: RecentUser) -> RecentUserCellViewModelable {
-        return RecentUserCellViewModel(storage: storage,
-                                       userInfo: userInfo)
+        return RecentUserCellViewModel(userInfo: userInfo)
     }
     
 //MARK: - about UserInfoView

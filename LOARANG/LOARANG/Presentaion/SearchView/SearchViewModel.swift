@@ -14,6 +14,7 @@ protocol SearchViewModelInput {
     func touchSearchButton(_ name: String)
     func touchRecentUserCell(_ index: Int)
     func touchBookmarkButton(index: Int, isNowBookmark: Bool)
+    func touchDeleteRecentUserButton(_ index: Int)
     func touchClearRecentUserButton()
 }
 
@@ -72,6 +73,16 @@ final class SearchViewModel: SearchViewModelable {
                                                                   class: recentUser.`class`))
             } catch {}
         }
+    }
+    
+    func touchDeleteRecentUserButton(_ index: Int) {
+        guard let name = storage.recentUsers.value[safe: index]?.name else {
+            return
+        }
+        
+        do {
+            try storage.deleteRecentUser(name)
+        } catch {}
     }
     
     func touchClearRecentUserButton() {

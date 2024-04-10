@@ -6,14 +6,12 @@
 //
 
 import SnapKit
-import RxSwift
 
 final class RecentUserTVCell: UITableViewCell {
     private weak var viewModel: SearchViewModelable?
     private var index: Int?
     
     private var cellViewModel: RecentUserCellViewModelable?
-    private let disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,9 +43,17 @@ final class RecentUserTVCell: UITableViewCell {
         button.imageView?.tintColor = .systemGray
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 18, weight: .bold, scale: .default), forImageIn: .normal)
+        button.addTarget(self, action: #selector(touchDeleteButton), for: .touchUpInside)
         
         return button
     }()
+    
+    @objc private func touchDeleteButton() {
+        guard let index = self.index else {
+            return
+        }
+        viewModel?.touchDeleteRecentUserButton(index)
+    }
     
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
@@ -98,17 +104,6 @@ final class RecentUserTVCell: UITableViewCell {
             $0.top.bottom.equalToSuperview()
             $0.trailing.equalTo(deleteButton.snp.leading).inset(-16)
         }
-        
-        bind()
-    }
-    
-    private func bind() {
-        deleteButton.rx.tap
-            .withUnretained(self)
-            .bind(onNext: { owner, _ in
-                owner.cellViewModel?.touchDeleteButton()
-            })
-            .disposed(by: disposeBag)
     }
     
     func setCellContents(cellViewModel:RecentUserCellViewModelable?,
