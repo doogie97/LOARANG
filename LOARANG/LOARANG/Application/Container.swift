@@ -67,7 +67,8 @@ final class Container {
         return UserInfoViewModel(storage: storage, 
                                  changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
                                  addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
-                                 deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage),
+                                 deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage), 
+                                 updateBookmarkUseCase: UpdateBookmarkUseCase(localStorage: localStorage),
                                  container: self,
                                  userName: userName,
                                  isSearching: isSearching)

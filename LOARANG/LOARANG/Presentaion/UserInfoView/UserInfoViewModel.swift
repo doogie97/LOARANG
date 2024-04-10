@@ -37,6 +37,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
+    private let updateBookmarkUseCase: UpdateBookmarkUseCase
     private let crawlManager = CrawlManager()
     private var isSearching: Bool
     
@@ -44,6 +45,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
          changeMainUserUseCase: ChangeMainUserUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
+         updateBookmarkUseCase: UpdateBookmarkUseCase,
          container: Container,
          userName: String,
          isSearching: Bool) {
@@ -51,6 +53,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
         self.changeMainUserUseCase = changeMainUserUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
+        self.updateBookmarkUseCase = updateBookmarkUseCase
         self.isSearching = isSearching
         self.userName = userName
         self.pageViewList = [container.makeBasicInfoVC(userInfo: userInfo),
@@ -116,11 +119,11 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     private func bookmarkUpdate(_ userInfo: UserInfo) {
-        if isBookmarkUser.value == true {
+        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
             do {
-                try storage.updateBookmarkUser(BookmarkUser(name: userName,
-                                                    image: userInfo.mainInfo.userImage,
-                                                    class: userInfo.mainInfo.`class`))
+                try updateBookmarkUseCase.execute(user: BookmarkUser(name: userName,
+                                                                     image: userInfo.mainInfo.userImage,
+                                                                     class: userInfo.mainInfo.`class`))
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))
             }
