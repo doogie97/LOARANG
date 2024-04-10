@@ -48,7 +48,8 @@ final class Container {
     }
     
     private func makeSearchViewModel() -> SearchViewModelable {
-        return SearchViewModel(storage: storage,
+        return SearchViewModel(storage: storage, 
+                               getRecentUsersUseCase: GetRecentUsersUseCase(localStorage: localStorage),
                                addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
                                deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage))
     }

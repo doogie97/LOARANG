@@ -10,6 +10,7 @@ import RxRelay
 protocol SearchViewModelable: SearchViewModelInput, SearchViewModelOutput, AnyObject {}
 
 protocol SearchViewModelInput {
+    func viewDidLoad()
     func touchBackButton()
     func touchSearchButton(_ name: String)
     func touchRecentUserCell(_ index: Int)
@@ -26,17 +27,25 @@ protocol SearchViewModelOutput {
 
 final class SearchViewModel: SearchViewModelable {
     private let storage: AppStorageable
+    private let getRecentUsersUseCase: GetRecentUsersUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     init(storage: AppStorageable,
+         getRecentUsersUseCase: GetRecentUsersUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase) {
         self.storage = storage
+        self.getRecentUsersUseCase = getRecentUsersUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
     }
     
     //in
+    func viewDidLoad() {
+        let recentUsers = getRecentUsersUseCase.execute()
+        ViewChangeManager.shared.recentUsers.accept(recentUsers)
+    }
+    
     func touchBackButton() {
         popView.accept(())
     }

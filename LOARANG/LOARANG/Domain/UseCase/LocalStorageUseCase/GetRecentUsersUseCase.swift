@@ -1,11 +1,11 @@
 //
-//  GetRecentUserUseCase.swift
+//  GetRecentUsersUseCase.swift
 //  LOARANG
 //
 //  Created by Doogie on 4/10/24.
 //
 
-struct GetRecentUserUseCase {
+struct GetRecentUsersUseCase {
     private let localStorage: LocalStorageable
     
     init(localStorage: LocalStorageable) {
