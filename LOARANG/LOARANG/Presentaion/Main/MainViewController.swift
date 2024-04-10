@@ -32,8 +32,8 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        viewModel.viewDidLoad()
         bindView()
+        viewModel.viewDidLoad()
     }
     
     private func bindView() {
