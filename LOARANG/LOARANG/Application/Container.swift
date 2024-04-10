@@ -8,14 +8,12 @@
 import RxRelay
 
 final class Container {
-    private let networkManager: NetworkManagerable = NetworkManager()
+    private let networkRepository = NetworkRepository(networkManager: NetworkManager())
+    private let localStorage: LocalStorageable
     
     init(localStorage: LocalStorageable) {
-        self.localStorage = localStorage //일단 사용하는 것이 하나여야 하기에 앱 정상 작동을 위해 SceneDelegate에서 주입받음, 추후 교체 완료 후 networkManager처럼 생성으로 전환 예정
+        self.localStorage = localStorage
     }
-    
-    private lazy var networkRepository = NetworkRepository(networkManager: networkManager)
-    private let localStorage: LocalStorageable
     
 //MARK: - about Main View
     func makeMainViewController() -> MainViewController {
