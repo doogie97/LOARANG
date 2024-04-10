@@ -30,14 +30,18 @@ final class SearchViewModel: SearchViewModelable {
     private let getRecentUsersUseCase: GetRecentUsersUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
+    private let deleteRecentUserUseCase: DeleteRecentUserUseCase
+    
     init(storage: AppStorageable,
          getRecentUsersUseCase: GetRecentUsersUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
-         deleteBookmarkUseCase: DeleteBookmarkUseCase) {
+         deleteBookmarkUseCase: DeleteBookmarkUseCase,
+         deleteRecentUserUseCase: DeleteRecentUserUseCase) {
         self.storage = storage
         self.getRecentUsersUseCase = getRecentUsersUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
+        self.deleteRecentUserUseCase = deleteRecentUserUseCase
     }
     
     //in
@@ -88,7 +92,7 @@ final class SearchViewModel: SearchViewModelable {
         }
         
         do {
-            try storage.deleteRecentUser(name)
+            try deleteRecentUserUseCase.execute(name: name)
         } catch {}
     }
     

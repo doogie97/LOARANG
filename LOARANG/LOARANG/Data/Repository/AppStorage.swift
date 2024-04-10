@@ -7,7 +7,6 @@
 import RxRelay
 
 protocol AppStorageable {
-    func deleteRecentUser(_ name: String) throws
     func clearRecentUsers() throws
 }
 
@@ -16,15 +15,6 @@ final class AppStorage: AppStorageable {
     
     init(_ localStorage: LocalStorage) {
         self.localStorage = localStorage
-    }
-    
-    func deleteRecentUser(_ name: String) throws {
-        do {
-            try localStorage.deleteRecentUser(name)
-            ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers())
-        } catch {
-            throw error
-        }
     }
     
     func clearRecentUsers() throws {

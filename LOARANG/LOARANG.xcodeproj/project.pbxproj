@@ -140,6 +140,7 @@
 		ACE5DC6B294613BC009BFEAC /* OwnCharactersGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5DC6A294613BC009BFEAC /* OwnCharactersGET.swift */; };
 		C6074DE92BC6D8C000FE3004 /* GetRecentUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DE82BC6D8C000FE3004 /* GetRecentUsersUseCase.swift */; };
 		C6074DEB2BC6DBE800FE3004 /* AddRecentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DEA2BC6DBE800FE3004 /* AddRecentUserUseCase.swift */; };
+		C6074DED2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DEC2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift */; };
 		C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */; };
 		C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */; };
 		C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */; };
@@ -307,6 +308,7 @@
 		ACE5DC6A294613BC009BFEAC /* OwnCharactersGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharactersGET.swift; sourceTree = "<group>"; };
 		C6074DE82BC6D8C000FE3004 /* GetRecentUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecentUsersUseCase.swift; sourceTree = "<group>"; };
 		C6074DEA2BC6DBE800FE3004 /* AddRecentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecentUserUseCase.swift; sourceTree = "<group>"; };
+		C6074DEC2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRecentUserUseCase.swift; sourceTree = "<group>"; };
 		C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserEntity.swift; sourceTree = "<group>"; };
 		C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserEntity.swift; sourceTree = "<group>"; };
 		C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserEntity.swift; sourceTree = "<group>"; };
@@ -918,6 +920,7 @@
 				C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */,
 				C6074DE82BC6D8C000FE3004 /* GetRecentUsersUseCase.swift */,
 				C6074DEA2BC6DBE800FE3004 /* AddRecentUserUseCase.swift */,
+				C6074DEC2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift */,
 			);
 			path = LocalStorageUseCase;
 			sourceTree = "<group>";
@@ -1250,6 +1253,7 @@
 				AC4E19EB28C444E600542EAE /* CardView.swift in Sources */,
 				AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
+				C6074DED2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
 				ACB3813328D42CF60081F8A1 /* CharactersViewModel.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,

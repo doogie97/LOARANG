@@ -51,7 +51,8 @@ final class Container {
         return SearchViewModel(storage: storage, 
                                getRecentUsersUseCase: GetRecentUsersUseCase(localStorage: localStorage),
                                addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
-                               deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage))
+                               deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage),
+                               deleteRecentUserUseCase: DeleteRecentUserUseCase(localStorage: localStorage))
     }
     
 //MARK: - about UserInfoView
