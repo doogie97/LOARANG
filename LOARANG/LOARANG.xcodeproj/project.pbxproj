@@ -117,7 +117,6 @@
 		ACBA78FD2898DDE700CB39D5 /* MainUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FC2898DDE700CB39D5 /* MainUserDTO.swift */; };
 		ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */; };
 		ACBA7902289929A100CB39D5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA7901289929A100CB39D5 /* LocalStorage.swift */; };
-		ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA79052899424900CB39D5 /* AppStorage.swift */; };
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
 		ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE041D28B7109900FCB74D /* PaddingLabel.swift */; };
 		ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */; };
@@ -285,7 +284,6 @@
 		ACBA78FC2898DDE700CB39D5 /* MainUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserDTO.swift; sourceTree = "<group>"; };
 		ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		ACBA7901289929A100CB39D5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
-		ACBA79052899424900CB39D5 /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		ACBE041D28B7109900FCB74D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		ACC1D89028BF52C300A19CB3 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -365,7 +363,6 @@
 			children = (
 				C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */,
 				AC0B89F7289B8185005BE193 /* LocalStorageRepository */,
-				ACBA79052899424900CB39D5 /* AppStorage.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1282,7 +1279,6 @@
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
 				C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */,
-				ACBA79062899424900CB39D5 /* AppStorage.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
 				ACD547B328EBFED500D44ACA /* RecentUserView.swift in Sources */,
 				C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */,

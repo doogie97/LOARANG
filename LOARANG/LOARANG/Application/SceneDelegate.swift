@@ -24,8 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         let localStorage = LocalStorage(realm: realm)
-        let container = Container(storage: AppStorage(localStorage),
-                                  localStorage: localStorage)
+        let container = Container(localStorage: localStorage)
         let navigationController = UINavigationController(rootViewController: TabBarViewController(container))
         navigationController.isNavigationBarHidden = true
         window?.rootViewController = navigationController

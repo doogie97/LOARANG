@@ -33,7 +33,6 @@ protocol UserInfoViewModelOutput {
 }
 
 final class UserInfoViewModel: UserInfoViewModelable {
-    private let storage: AppStorageable
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
@@ -42,8 +41,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private let crawlManager = CrawlManager()
     private var isSearching: Bool
     
-    init(storage: AppStorageable,
-         changeMainUserUseCase: ChangeMainUserUseCase,
+    init(changeMainUserUseCase: ChangeMainUserUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
          updateBookmarkUseCase: UpdateBookmarkUseCase,
@@ -51,7 +49,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
          container: Container,
          userName: String,
          isSearching: Bool) {
-        self.storage = storage
+        
         self.changeMainUserUseCase = changeMainUserUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase

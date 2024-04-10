@@ -26,18 +26,15 @@ protocol SearchViewModelOutput {
 }
 
 final class SearchViewModel: SearchViewModelable {
-    private let storage: AppStorageable
     private let getRecentUsersUseCase: GetRecentUsersUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     private let deleteRecentUserUseCase: DeleteRecentUserUseCase
     
-    init(storage: AppStorageable,
-         getRecentUsersUseCase: GetRecentUsersUseCase,
+    init(getRecentUsersUseCase: GetRecentUsersUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
          deleteRecentUserUseCase: DeleteRecentUserUseCase) {
-        self.storage = storage
         self.getRecentUsersUseCase = getRecentUsersUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase

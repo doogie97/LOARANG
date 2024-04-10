@@ -8,12 +8,9 @@
 import RxRelay
 
 final class Container {
-    private let storage: AppStorageable
     private let networkManager: NetworkManagerable = NetworkManager()
     
-    init(storage: AppStorageable,
-         localStorage: LocalStorageable) {
-        self.storage = storage
+    init(localStorage: LocalStorageable) {
         self.localStorage = localStorage //일단 사용하는 것이 하나여야 하기에 앱 정상 작동을 위해 SceneDelegate에서 주입받음, 추후 교체 완료 후 networkManager처럼 생성으로 전환 예정
     }
     
@@ -26,8 +23,7 @@ final class Container {
     }
     
     private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(storage: storage, 
-                             getHomeInfoUseCase: GetHomeInfoUseCase(NetworkRepository: networkRepository), 
+        return MainViewModel(getHomeInfoUseCase: GetHomeInfoUseCase(NetworkRepository: networkRepository),
                              getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorage: localStorage), 
                              changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
                              deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage))
@@ -48,8 +44,7 @@ final class Container {
     }
     
     private func makeSearchViewModel() -> SearchViewModelable {
-        return SearchViewModel(storage: storage, 
-                               getRecentUsersUseCase: GetRecentUsersUseCase(localStorage: localStorage),
+        return SearchViewModel(getRecentUsersUseCase: GetRecentUsersUseCase(localStorage: localStorage),
                                addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
                                deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage),
                                deleteRecentUserUseCase: DeleteRecentUserUseCase(localStorage: localStorage))
@@ -61,8 +56,7 @@ final class Container {
     }
     
     private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
-        return UserInfoViewModel(storage: storage, 
-                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
+        return UserInfoViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorage: localStorage), 
                                  addBookmarkUseCase: AddBookmarkUseCase(localStorage: localStorage),
                                  deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorage: localStorage), 
                                  updateBookmarkUseCase: UpdateBookmarkUseCase(localStorage: localStorage),

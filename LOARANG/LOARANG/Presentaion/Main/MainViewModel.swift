@@ -38,7 +38,6 @@ protocol MainViewModelOutput {
 }
 
 final class MainViewModel: MainViewModelInOut {
-    private let storage: AppStorageable
     private let crawlManager = CrawlManager() // 크롤링 -> API로 전면 수정 후 제거 필요
     private let networkManager = NetworkManager()
     
@@ -47,8 +46,7 @@ final class MainViewModel: MainViewModelInOut {
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     
-    init(storage: AppStorageable,
-         getHomeInfoUseCase: GetHomeInfoUseCase,
+    init(getHomeInfoUseCase: GetHomeInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
          changeMainUserUseCase: ChangeMainUserUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase) {
@@ -56,7 +54,6 @@ final class MainViewModel: MainViewModelInOut {
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
-        self.storage = storage
     }
     
     // in
