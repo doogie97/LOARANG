@@ -30,6 +30,24 @@ extension UIView {
         return UIScreen.main.bounds.height <= 667
     }
     
+    func oneFontLabel(size: Int = 14, family: UIFont.Family = .Bold, color: UIColor = .white, text: String = "") -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.one(size: size, family: family)
+        label.textColor = color
+        label.text = text
+        
+        return label
+    }
+    
+    func blackHanSansLabel(size: Int = 20, color: UIColor = .white, text: String = "") -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.BlackHanSans(size: size)
+        label.textColor = color
+        label.text = text
+        
+        return label
+    }
+    
     var adMobView: GADBannerView {
         let bannerView = GADBannerView()
 #if DEBUG
