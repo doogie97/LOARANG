@@ -15,20 +15,24 @@ struct GetHomeGameInfoUseCase {
     func execute() async throws -> HomeGameInfoEntity {
         do {
             let eventDTO = try await networkRepository.getEventList()
-            return HomeGameInfoEntity(eventList: eventList(eventDTO))
+            let noticeDTO = try await networkRepository.getGameNoticeList()
+            return HomeGameInfoEntity(eventList: eventList(eventDTO),
+                                      noticeList: noticeDTO.compactMap {
+                return $0.toEntity
+            })
         } catch let error {
             throw error
         }
     }
     
-    private func eventList(_ eventListDTO: [EventDTO]?) -> [HomeGameInfoEntity.Event] {
+    private func eventList(_ eventListDTO: [EventDTO]?) -> [Event] {
         return (eventListDTO ?? []).compactMap {
-            return HomeGameInfoEntity.Event(title: $0.title ?? "",
-                                        thumbnailImgUrl: $0.thumbnail ?? "",
-                                        url: $0.link ?? "",
-                                        startDate: $0.startDate ?? "",
-                                        endDate: $0.endDate ?? "",
-                                        rewardDate: $0.rewardDate ?? "")
+            return Event(title: $0.title ?? "",
+                         thumbnailImgUrl: $0.thumbnail ?? "",
+                         url: $0.link ?? "",
+                         startDate: $0.startDate ?? "",
+                         endDate: $0.endDate ?? "",
+                         rewardDate: $0.rewardDate ?? "")
         }
     }
 }

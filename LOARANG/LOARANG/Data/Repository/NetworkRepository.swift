@@ -7,6 +7,7 @@
 
 protocol NetworkRepositoryable {
     func getEventList() async throws -> [EventDTO]
+    func getGameNoticeList() async throws -> [GameNoticeDTO]
     func getOwnCharacters(name: String) async throws -> [CharacterBasicInfoDTO]
 }
 
@@ -21,6 +22,16 @@ struct NetworkRepository: NetworkRepositoryable {
         
         do {
             return try await networkManager.request(requestable, resultType: [EventDTO].self)
+        } catch let error {
+            throw error
+        }
+    }
+    
+    func getGameNoticeList() async throws -> [GameNoticeDTO] {
+        let requestable = GameNoticeListGET()
+        
+        do {
+            return try await networkManager.request(requestable, resultType: [GameNoticeDTO].self)
         } catch let error {
             throw error
         }
