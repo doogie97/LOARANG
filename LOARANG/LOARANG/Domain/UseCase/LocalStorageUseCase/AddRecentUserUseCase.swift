@@ -14,7 +14,7 @@ struct AddRecentUserUseCase {
     
     func execute(user: RecentUserEntity) throws {
         do {
-            try localStorage.addRecentUser(user)
+            try localStorage.addRecentUser(user.toDTO)
             ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers().compactMap {
                 return $0.toEntity
             })

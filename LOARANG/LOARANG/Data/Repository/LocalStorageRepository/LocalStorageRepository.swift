@@ -15,7 +15,7 @@ protocol LocalStorageRepositoryable {
     func deleteBookmarkUser(_ name: String) throws
     func updateBookmarkUser(_ user: BookmarkUserDTO) throws
     func recentUsers() -> [RecentUserDTO]
-    func addRecentUser(_ user: RecentUserEntity) throws
+    func addRecentUser(_ user: RecentUserDTO) throws
     func deleteRecentUser(_ name: String) throws
     func clearRecentUsers() throws
 }
@@ -99,7 +99,7 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         return Array(recentUserList).reversed()
     }
     
-    func addRecentUser(_ user: RecentUserEntity) throws {
+    func addRecentUser(_ user: RecentUserDTO) throws {
         let recentUserList = realm.objects(RecentUserDTO.self)
         
         if recentUserList.count > 14 {
@@ -119,7 +119,7 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         
         do {
             try realm.write {
-                realm.add(user.convertedInfo)
+                realm.add(user)
             }
         } catch {
             throw LocalStorageError.addRecentUserError
