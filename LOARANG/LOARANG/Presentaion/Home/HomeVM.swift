@@ -22,18 +22,33 @@ protocol HomeVMOutput {
 final class HomeVM: HomeVMable {
     private let getHomeGameInfoUseCase: GetHomeGameInfoUseCase
     
-//    private var homeInfo
+    private var homeGameInfo: HomeGameInfoEntity?
+    private var homeCharacterInfo: HomeCharactersEntity?
+    
     init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase) {
         self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
     }
     
     //MARK: - Input
     func viewDidLoad() {
-        setViewContents.accept(())
+        getHomeGameInfo()
     }
     
     private func getHomeGameInfo() {
-        
+        Task {
+            do {
+                self.homeGameInfo = try await getHomeGameInfoUseCase.execute()
+                await MainActor.run {
+                    if homeCharacterInfo != nil {
+                        setViewContents.accept(())
+                    }
+                }
+            } catch let error {
+                await MainActor.run {
+                    print(error.errorMessage)
+                }
+            }
+        }
     }
     
     func touchSearchButton() {
