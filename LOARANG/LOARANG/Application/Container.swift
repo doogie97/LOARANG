@@ -8,7 +8,11 @@
 import UIKit
 import RxRelay
 
-final class Container {
+protocol Containerable {
+    func homeVC() -> HomeVC
+}
+
+final class Container: Containerable {
     private let networkRepository = NetworkRepository(networkManager: NetworkManager())
     private let localStorageRepository: LocalStorageRepositoryable
     
@@ -17,6 +21,11 @@ final class Container {
     }
     
 //MARK: - about Main View
+    func homeVC() -> HomeVC {
+        let homeVM = HomeVM()
+        return HomeVC(container: self,
+                      viewModel: homeVM)
+    }
     func makeMainViewController() -> MainViewController {
         return MainViewController(viewModel: makeMainViewModel(), container: self)
     }

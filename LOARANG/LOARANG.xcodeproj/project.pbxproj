@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7162BF762BC7BB1800702530 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF752BC7BB1800702530 /* HomeView.swift */; };
+		7162BF782BC7BB1D00702530 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF772BC7BB1D00702530 /* HomeVC.swift */; };
+		7162BF7A2BC7BB2200702530 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF792BC7BB2200702530 /* HomeVM.swift */; };
 		7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA982BC78DA500B3959A /* RxCocoa */; };
 		7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9A2BC78DA500B3959A /* RxRelay */; };
 		7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9C2BC78DA500B3959A /* RxSwift */; };
@@ -181,6 +184,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7162BF752BC7BB1800702530 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7162BF772BC7BB1D00702530 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		7162BF792BC7BB2200702530 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOARANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -374,6 +380,16 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		7162BF742BC7BAEF00702530 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7162BF752BC7BB1800702530 /* HomeView.swift */,
+				7162BF772BC7BB1D00702530 /* HomeVC.swift */,
+				7162BF792BC7BB2200702530 /* HomeVM.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		AC0341B229458816005F4533 /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +507,7 @@
 				C67780502BC57BDB00E0BC42 /* ViewChangeManager */,
 				ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */,
 				AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */,
+				7162BF742BC7BAEF00702530 /* Home */,
 				ACAEF35C287FFBB600AE98F1 /* Main */,
 				AC3FEC112880566A00CDE796 /* SearchView */,
 				AC035E9D28911CDC0068DC7E /* UserInfoView */,
@@ -1162,6 +1179,7 @@
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
 				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,
 				ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */,
+				7162BF762BC7BB1800702530 /* HomeView.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
 				C64C45252BC592B200AD503D /* GetHomeCharactersUseCase.swift in Sources */,
@@ -1169,6 +1187,7 @@
 				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
 				AC0341C729458CCE005F4533 /* APIError.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
+				7162BF782BC7BB1D00702530 /* HomeVC.swift in Sources */,
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
 				C6074DE92BC6D8C000FE3004 /* GetRecentUsersUseCase.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
@@ -1266,6 +1285,7 @@
 				C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */,
 				ACD547B128EBF8A000D44ACA /* RecentUserDTO.swift in Sources */,
 				AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */,
+				7162BF7A2BC7BB2200702530 /* HomeVM.swift in Sources */,
 				AC4E19EE28C4474600542EAE /* CardCVCell.swift in Sources */,
 				AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */,
 				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
