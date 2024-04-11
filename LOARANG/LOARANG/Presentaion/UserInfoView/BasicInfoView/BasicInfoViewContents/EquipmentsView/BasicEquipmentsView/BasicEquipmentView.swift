@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/11.
 //
 
+import UIKit
 import SnapKit
 
 final class BasicEquipmentView: UIView {
@@ -91,6 +92,8 @@ final class BasicEquipmentView: UIView {
     //MARK: - GemDeteail
     private(set) lazy var gemDetailView: UIView = {
         let view = UIView()
+        let guesture = UITapGestureRecognizer(target: self, action: #selector(touchGemDetail))
+        view.addGestureRecognizer(guesture)
         view.isHidden = true
         view.backgroundColor = .black
         view.layer.cornerRadius = 10
@@ -140,6 +143,10 @@ final class BasicEquipmentView: UIView {
         
         return label
     }()
+    
+    @objc private func touchGemDetail() {
+        self.gemDetailView.isHidden = true
+    }
     
     func setLayout(isNoGem: Bool) {
         self.addSubview(mainStackView)

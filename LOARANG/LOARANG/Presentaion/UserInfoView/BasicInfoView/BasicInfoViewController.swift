@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/07/29.
 //
 
+import UIKit
 import RxSwift
 
 final class BasicInfoViewController: UIViewController {
@@ -71,12 +72,6 @@ final class BasicInfoViewController: UIViewController {
             viewModel.showengravingDetail
                 .bind(onNext: { [weak self] in
                     self?.basicInfoView.showEngravingDetail(engraving: $0)
-                })
-                .disposed(by: disposeBag)
-            
-            basicInfoView.engravingDetailView.rx.tapGesture()
-                .bind(onNext: { [weak self] _ in
-                    self?.basicInfoView.engravingDetailView.isHidden = true
                 })
                 .disposed(by: disposeBag)
         

@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/26.
 //
 
+import UIKit
 import RxSwift
 
 final class SkillDetailViewController: UIViewController {

@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/10.
 //
 
+import UIKit
 import SnapKit
 
 final class SettingTVCell: UITableViewCell {

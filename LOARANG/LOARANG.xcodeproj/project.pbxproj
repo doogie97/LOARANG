@@ -7,7 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12B477EAD769FD31FD7F7BD9 /* Pods_LOARANG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24B070FF84C1615376140BC /* Pods_LOARANG.framework */; };
+		7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA982BC78DA500B3959A /* RxCocoa */; };
+		7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9A2BC78DA500B3959A /* RxRelay */; };
+		7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9C2BC78DA500B3959A /* RxSwift */; };
+		7199CC642BC78C700071E126 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 7199CC632BC78C700071E126 /* SwiftyJSON */; };
+		7199CC672BC78CFD0071E126 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 7199CC662BC78CFD0071E126 /* SwiftSoup */; };
+		71CE75C62BC79E610048B257 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 71CE75C52BC79E610048B257 /* RxDataSources */; };
+		71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCE92BC778B60080ECC1 /* SnapKit */; };
+		71E9CCED2BC77AB70080ECC1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */; };
+		71E9CCF02BC78A600080ECC1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */; };
+		71E9CCF32BC78B740080ECC1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCF22BC78B740080ECC1 /* Realm */; };
+		71E9CCF52BC78B740080ECC1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCF42BC78B740080ECC1 /* RealmSwift */; };
 		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
 		AC0341B42945883C005F4533 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B32945883C005F4533 /* Requestable.swift */; };
 		AC0341BC294588F3005F4533 /* LOARANG_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341BB294588F3005F4533 /* LOARANG_Tests.swift */; };
@@ -171,8 +181,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		143D779DE1343970E46CE6F1 /* Pods-LOARANG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.debug.xcconfig"; sourceTree = "<group>"; };
-		8547102CE468BBFF3FCD4EB5 /* Pods-LOARANG-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.release.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOARANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,9 +333,6 @@
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoEntity.swift; sourceTree = "<group>"; };
 		C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeInfoUseCase.swift; sourceTree = "<group>"; };
-		D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-LOARANG-MVVM/Pods-LOARANG-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
-		E24B070FF84C1615376140BC /* Pods_LOARANG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOARANG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3EB26795316489929C7101B /* Pods-LOARANG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOARANG.release.xcconfig"; path = "Target Support Files/Pods-LOARANG/Pods-LOARANG.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,22 +347,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E9CCF32BC78B740080ECC1 /* Realm in Frameworks */,
+				71CE75C62BC79E610048B257 /* RxDataSources in Frameworks */,
+				71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */,
+				7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */,
+				7199CC642BC78C700071E126 /* SwiftyJSON in Frameworks */,
+				71E9CCF52BC78B740080ECC1 /* RealmSwift in Frameworks */,
 				AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */,
-				12B477EAD769FD31FD7F7BD9 /* Pods_LOARANG.framework in Frameworks */,
+				7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */,
+				71E9CCF02BC78A600080ECC1 /* GoogleMobileAds in Frameworks */,
+				71E9CCED2BC77AB70080ECC1 /* FirebaseAnalytics in Frameworks */,
+				7199CC672BC78CFD0071E126 /* SwiftSoup in Frameworks */,
+				7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C4C2305C17C49BFC10EFF72 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E24B070FF84C1615376140BC /* Pods_LOARANG.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		714E8AE92BBFDF610000D90E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,8 +716,6 @@
 				ACAEF321287FF0D200AE98F1 /* LOARANG */,
 				AC0341BA294588F3005F4533 /* LOARANG_Tests */,
 				ACAEF320287FF0D200AE98F1 /* Products */,
-				C1BE94E9D9DBB579AF2C7E5C /* Pods */,
-				1C4C2305C17C49BFC10EFF72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -878,17 +883,6 @@
 			path = EquipmentDetailView;
 			sourceTree = "<group>";
 		};
-		C1BE94E9D9DBB579AF2C7E5C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D81085EAF2C0C2DCAF9844E4 /* Pods-LOARANG-MVVM.debug.xcconfig */,
-				8547102CE468BBFF3FCD4EB5 /* Pods-LOARANG-MVVM.release.xcconfig */,
-				143D779DE1343970E46CE6F1 /* Pods-LOARANG.debug.xcconfig */,
-				E3EB26795316489929C7101B /* Pods-LOARANG.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		C63C615D2BADC4130023D123 /* CommonObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -1027,11 +1021,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACAEF333287FF0D300AE98F1 /* Build configuration list for PBXNativeTarget "LOARANG" */;
 			buildPhases = (
-				499F8D0056DDA603B7E7887B /* [CP] Check Pods Manifest.lock */,
 				ACAEF31B287FF0D200AE98F1 /* Sources */,
 				ACAEF31C287FF0D200AE98F1 /* Frameworks */,
 				ACAEF31D287FF0D200AE98F1 /* Resources */,
-				8D404FE977936A768B2B33C0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1040,6 +1032,17 @@
 			name = LOARANG;
 			packageProductDependencies = (
 				AC6C81942940270A00C0EEC1 /* Alamofire */,
+				71E9CCE92BC778B60080ECC1 /* SnapKit */,
+				71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */,
+				71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */,
+				71E9CCF22BC78B740080ECC1 /* Realm */,
+				71E9CCF42BC78B740080ECC1 /* RealmSwift */,
+				7199CC632BC78C700071E126 /* SwiftyJSON */,
+				7199CC662BC78CFD0071E126 /* SwiftSoup */,
+				7192BA982BC78DA500B3959A /* RxCocoa */,
+				7192BA9A2BC78DA500B3959A /* RxRelay */,
+				7192BA9C2BC78DA500B3959A /* RxSwift */,
+				71CE75C52BC79E610048B257 /* RxDataSources */,
 			);
 			productName = "LOARANG-MVVM";
 			productReference = ACAEF31F287FF0D200AE98F1 /* LOARANG.app */;
@@ -1074,7 +1077,15 @@
 			);
 			mainGroup = ACAEF316287FF0D200AE98F1;
 			packageReferences = (
-				AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
+				71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */,
+				71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */,
+				7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */,
+				7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup.git" */,
+				7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */,
+				71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources.git" */,
 			);
 			productRefGroup = ACAEF320287FF0D200AE98F1 /* Products */;
 			projectDirPath = "";
@@ -1110,48 +1121,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		499F8D0056DDA603B7E7887B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LOARANG-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D404FE977936A768B2B33C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LOARANG/Pods-LOARANG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LOARANG/Pods-LOARANG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LOARANG/Pods-LOARANG-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AC0341B5294588F3005F4533 /* Sources */ = {
@@ -1487,7 +1456,6 @@
 		};
 		ACAEF334287FF0D300AE98F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 143D779DE1343970E46CE6F1 /* Pods-LOARANG.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1522,7 +1490,6 @@
 		};
 		ACAEF335287FF0D300AE98F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3EB26795316489929C7101B /* Pods-LOARANG.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1588,7 +1555,71 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+		7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.2;
+			};
+		};
+		71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
+		71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.0;
+			};
+		};
+		71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -1599,9 +1630,64 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7192BA982BC78DA500B3959A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			productName = RxCocoa;
+		};
+		7192BA9A2BC78DA500B3959A /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			productName = RxRelay;
+		};
+		7192BA9C2BC78DA500B3959A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			productName = RxSwift;
+		};
+		7199CC632BC78C700071E126 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
+			productName = SwiftyJSON;
+		};
+		7199CC662BC78CFD0071E126 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup.git" */;
+			productName = SwiftSoup;
+		};
+		71CE75C52BC79E610048B257 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources.git" */;
+			productName = RxDataSources;
+		};
+		71E9CCE92BC778B60080ECC1 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			productName = SnapKit;
+		};
+		71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			productName = FirebaseAnalytics;
+		};
+		71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */;
+			productName = GoogleMobileAds;
+		};
+		71E9CCF22BC78B740080ECC1 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			productName = Realm;
+		};
+		71E9CCF42BC78B740080ECC1 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			productName = RealmSwift;
+		};
 		AC6C81942940270A00C0EEC1 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

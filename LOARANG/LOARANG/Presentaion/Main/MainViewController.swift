@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/07/14.
 //
 
+import UIKit
 import RxSwift
 
 final class MainViewController: UIViewController {
@@ -34,6 +35,7 @@ final class MainViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         bindView()
         viewModel.viewDidLoad()
+        mainView.viewModel = self.viewModel
     }
     
     private func bindView() {
@@ -67,12 +69,6 @@ final class MainViewController: UIViewController {
         ViewChangeManager.shared.mainUser
             .bind(onNext: { [weak self] in
                 self?.mainView.mainUserView.setUserInfo($0)
-            })
-            .disposed(by: disposeBag)
-        
-        mainView.mainUserView.rx.tapGesture().when(.recognized)
-            .bind(onNext: { [weak self] _ in
-                self?.viewModel.touchMainUser()
             })
             .disposed(by: disposeBag)
         

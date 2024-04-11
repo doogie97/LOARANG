@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/01.
 //
 
+import UIKit
 import SnapKit
 
 final class BasicInfoView: UIView {
@@ -40,6 +41,8 @@ final class BasicInfoView: UIView {
     
     private(set) lazy var engravingDetailView: UIView = {
         let view = UIView()
+        let guesture = UITapGestureRecognizer(target: self, action: #selector(engravingDetail))
+        view.addGestureRecognizer(guesture)
         view.isHidden = true
         view.backgroundColor = .black
         view.layer.cornerRadius = 10
@@ -90,6 +93,10 @@ final class BasicInfoView: UIView {
         
         return label
     }()
+    
+    @objc private func engravingDetail() {
+        self.engravingDetailView.isHidden = true
+    }
     
     private func setLayout() {
         self.addSubview(basicInfoScrollView)

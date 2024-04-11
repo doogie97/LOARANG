@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/31.
 //
 
+import UIKit
 import SnapKit
 
 final class EngravigCVCell: UICollectionViewCell {

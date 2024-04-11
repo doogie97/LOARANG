@@ -5,9 +5,11 @@
 //  Created by 최최성균 on 2022/07/14.
 //
 
+import UIKit
 import SnapKit
 
 final class MainView: UIView {
+    weak var viewModel: MainViewModelInOut?
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .mainBackground
@@ -66,7 +68,17 @@ final class MainView: UIView {
         return indicator
     }()
     
-    private(set) lazy var mainUserView = MainUserView()
+    private(set) lazy var mainUserView = {
+        let mainUserView = MainUserView()
+        let guesture = UITapGestureRecognizer(target: self, action: #selector(touchMainUser))
+        mainUserView.addGestureRecognizer(guesture)
+        
+        return mainUserView
+    }()
+    @objc private func touchMainUser() {
+        viewModel?.touchMainUser()
+    }
+    
     private(set) lazy var bookmarkView = BookmarkView()
     private(set) lazy var eventView = EventView()
     private(set) lazy var noticeView = NoticeView()

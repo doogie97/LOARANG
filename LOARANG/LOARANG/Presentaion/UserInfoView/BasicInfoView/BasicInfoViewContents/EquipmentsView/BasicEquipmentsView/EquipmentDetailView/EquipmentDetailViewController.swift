@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/20.
 //
 
+import UIKit
 import RxSwift
 
 final class EquipmentDetailViewController: UIViewController {
