@@ -1077,15 +1077,15 @@
 			);
 			mainGroup = ACAEF316287FF0D200AE98F1;
 			packageReferences = (
-				AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
-				71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit.git" */,
-				71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
-				71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */,
-				71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */,
-				7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */,
-				7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup.git" */,
-				7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */,
-				71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources.git" */,
+				AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = ACAEF320287FF0D200AE98F1 /* Products */;
 			projectDirPath = "";
@@ -1555,7 +1555,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
+		7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -1563,7 +1563,7 @@
 				minimumVersion = 6.6.0;
 			};
 		};
-		7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */ = {
+		7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -1571,7 +1571,7 @@
 				minimumVersion = 5.0.2;
 			};
 		};
-		7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup.git" */ = {
+		7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
 			requirement = {
@@ -1579,7 +1579,7 @@
 				minimumVersion = 2.7.2;
 			};
 		};
-		71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources.git" */ = {
+		71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
 			requirement = {
@@ -1587,7 +1587,7 @@
 				minimumVersion = 5.0.2;
 			};
 		};
-		71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1595,7 +1595,7 @@
 				minimumVersion = 5.6.0;
 			};
 		};
-		71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
+		71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1603,7 +1603,7 @@
 				minimumVersion = 10.24.0;
 			};
 		};
-		71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */ = {
+		71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
 			requirement = {
@@ -1611,7 +1611,7 @@
 				minimumVersion = 11.2.0;
 			};
 		};
-		71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
+		71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -1619,7 +1619,7 @@
 				kind = branch;
 			};
 		};
-		AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -1632,62 +1632,62 @@
 /* Begin XCSwiftPackageProductDependency section */
 		7192BA982BC78DA500B3959A /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
 		7192BA9A2BC78DA500B3959A /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
 		};
 		7192BA9C2BC78DA500B3959A /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = 7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 		7199CC632BC78C700071E126 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON.git" */;
+			package = 7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
 		7199CC662BC78CFD0071E126 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup.git" */;
+			package = 7199CC652BC78CFD0071E126 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
 		71CE75C52BC79E610048B257 /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources.git" */;
+			package = 71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
 		};
 		71E9CCE92BC778B60080ECC1 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = 71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
 		71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */;
+			package = 71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
 		};
 		71E9CCF22BC78B740080ECC1 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
 		71E9CCF42BC78B740080ECC1 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 		AC6C81942940270A00C0EEC1 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
