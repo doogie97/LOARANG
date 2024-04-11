@@ -35,6 +35,7 @@ final class MainViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         bindView()
         viewModel.viewDidLoad()
+        mainView.viewModel = self.viewModel
     }
     
     private func bindView() {

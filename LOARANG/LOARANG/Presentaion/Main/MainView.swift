@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class MainView: UIView {
+    weak var viewModel: MainViewModelInOut?
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .mainBackground
@@ -75,7 +76,7 @@ final class MainView: UIView {
         return mainUserView
     }()
     @objc private func touchMainUser() {
-        print("touchMainUser")
+        viewModel?.touchMainUser()
     }
     
     private(set) lazy var bookmarkView = BookmarkView()
