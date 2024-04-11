@@ -140,13 +140,21 @@ extension HomeSectionView {
     }
     
     func bookmarkSectionLayout() -> NSCollectionLayoutSection {
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
-        let item = NSCollectionLayoutItem(layoutSize: size)
+        let itemWidthInset = margin(.width, 8)
+        let cellHeight = margin(.width, 155)
+        let cellWidth = itemWidthInset * 2 + cellHeight
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
+        let size = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth),
+                                          heightDimension: .absolute(cellHeight))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        item.contentInsets = .init(top: 0, leading: itemWidthInset, bottom: 0, trailing: itemWidthInset)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth),
+                                               heightDimension: .fractionalWidth(235 / 393))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 0)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: 0, leading: margin(.width, 12), bottom: 10, trailing: margin(.width, 12))
         
         return section
     }
