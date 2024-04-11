@@ -97,20 +97,28 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         }
         
         if kind == UICollectionView.elementKindSectionHeader {
-            switch section {
-            case .mainUser:
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeSectionHeader.self)", for: indexPath) as? HomeSectionHeader else {
                 return UICollectionReusableView()
-            case .bookmark:
-                guard let bookmarkHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeBookmarkSectionHeader.self)", for: indexPath) as? HomeBookmarkSectionHeader else {
-                    return UICollectionReusableView()
-                }
-                bookmarkHeader.setViewContents(bookmarkCount: 6) //viewModel의 bookmarkCount만큼
-                return bookmarkHeader
-            case .event:
-                return UICollectionReusableView() //임시 리턴
-            case .notice:
-                return UICollectionReusableView() //임시 리턴
             }
+            
+            var headerCase: HomeSectionHeader.HeaderCase? {
+                switch section {
+                case .bookmark:
+                    return .bookmark(count: 6) //viewModel의 bookmarkCount만큼
+                case .event:
+                    return .event
+                case .notice:
+                    return .notice
+                case .mainUser:
+                    return nil
+                }
+            }
+            guard let headerCase = headerCase else {
+                return UICollectionReusableView()
+            }
+            
+            header.setViewContents(headerCase: headerCase)
+            return header
         }
         
         return UICollectionReusableView()
@@ -131,7 +139,7 @@ extension HomeSectionView {
         collectionView.register(HomeEventCVCell.self, forCellWithReuseIdentifier: "\(HomeEventCVCell.self)")
         collectionView.register(HomeNoticeCVCell.self, forCellWithReuseIdentifier: "\(HomeNoticeCVCell.self)")
         
-        collectionView.register(HomeBookmarkSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeBookmarkSectionHeader.self)")
+        collectionView.register(HomeSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeSectionHeader.self)")
         
         return collectionView
     }
@@ -199,7 +207,12 @@ extension HomeSectionView {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
+        
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
+                                                    elementKind: UICollectionView.elementKindSectionHeader,
+                                                    alignment: .topLeading)]
         
         return section
     }
@@ -211,7 +224,12 @@ extension HomeSectionView {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
+        
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
+                                                    elementKind: UICollectionView.elementKindSectionHeader,
+                                                    alignment: .topLeading)]
         
         return section
     }
