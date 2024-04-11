@@ -13,6 +13,7 @@ final class HomeSectionView: UIView {
         case mainUser
         case bookmark
         case challengeAbyssDungeons
+        case challengeGuardianRaids
         case event
         case notice
     }
@@ -50,6 +51,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return 10 //viewModel의 bookmarkCount만큼
         case .challengeAbyssDungeons:
             return 2
+        case .challengeGuardianRaids:
+            return 3
         case .event:
             return 6 //viewModel의 event수 만큼
         case .notice:
@@ -77,7 +80,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             
             bookmarkUserCell.setCellContents()
             return bookmarkUserCell
-        case .challengeAbyssDungeons:
+        case .challengeAbyssDungeons, .challengeGuardianRaids:
             guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeImageCVCell.self)", for: indexPath) as? HomeImageCVCell else {
                 return UICollectionViewCell()
             }
@@ -117,6 +120,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                     return .bookmark(count: 6) //viewModel의 bookmarkCount만큼
                 case .challengeAbyssDungeons:
                     return .challengeAbyssDungeons
+                case .challengeGuardianRaids:
+                    return .challengeGuardianRaids
                 case .event:
                     return .event
                 case .notice:
@@ -170,7 +175,9 @@ extension HomeSectionView {
             case .bookmark:
                 return self?.bookmarkSectionLayout()
             case .challengeAbyssDungeons:
-                return self?.challengeAbyssDungeonsSectionLayout()
+                return self?.imageSectionLayout(imageSectionCase: .challengeAbyssDungeons)
+            case .challengeGuardianRaids:
+                return self?.imageSectionLayout(imageSectionCase: .challengeGuardianRaids)
             case .event:
                 return self?.eventSectionLayout()
             case .notice:
@@ -216,8 +223,20 @@ extension HomeSectionView {
         return section
     }
     
-    func challengeAbyssDungeonsSectionLayout() -> NSCollectionLayoutSection {
-        let height = margin(.width, 157.5) + 10
+    enum ImageSectionCase {
+        case challengeAbyssDungeons
+        case challengeGuardianRaids
+    }
+    
+    func imageSectionLayout(imageSectionCase: ImageSectionCase) -> NSCollectionLayoutSection? {
+        var height: CGFloat {
+            switch imageSectionCase {
+            case .challengeAbyssDungeons:
+                return margin(.width, 157.5) + 10
+            case .challengeGuardianRaids:
+                return margin(.width, 120) + 10
+            }
+        }
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                           heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: size)

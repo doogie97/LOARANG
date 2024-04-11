@@ -14,6 +14,7 @@ final class HomeSectionHeader: UICollectionReusableView {
     enum HeaderCase {
         case bookmark(count: Int)
         case challengeAbyssDungeons
+        case challengeGuardianRaids
         case event
         case notice
     }
@@ -40,7 +41,7 @@ final class HomeSectionHeader: UICollectionReusableView {
             print("이벤트 더 보기")
         case .notice:
             print("공지사항 더 보기")
-        case .bookmark(_), .challengeAbyssDungeons:
+        case .bookmark(_), .challengeAbyssDungeons, .challengeGuardianRaids:
             return
         }
     }
@@ -58,6 +59,9 @@ final class HomeSectionHeader: UICollectionReusableView {
         case .challengeAbyssDungeons:
             moreButton.isHidden = true
             titleLabel.text = "도전 어비스 던전"
+        case .challengeGuardianRaids:
+            moreButton.isHidden = true
+            titleLabel.text = "도전 가디언 토벌"
         case .event:
             titleLabel.text = "이벤트"
         case .notice:
