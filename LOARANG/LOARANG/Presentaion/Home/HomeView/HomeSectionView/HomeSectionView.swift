@@ -20,6 +20,7 @@ final class HomeSectionView: UIView {
                                                   collectionViewLayout: UICollectionViewLayout())
     
     func setViewContents() {
+        self.sectionCV = createSectionCV()
         setLayout()
     }
     
@@ -54,7 +55,40 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell() //cell 생성 전 임시 return
+        guard let section = SectionCase(rawValue: indexPath.section) else {
+            return UICollectionViewCell()
+        }
+        
+        switch section {
+        case .mainUser:
+            guard let mainUserCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeMainUserCVCell.self)", for: indexPath) as? HomeMainUserCVCell else {
+                return UICollectionViewCell()
+            }
+            
+            mainUserCell.setCellContents()
+            return mainUserCell
+        case .bookmark:
+            guard let bookmarkUserCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeBookmarkUserCVCell.self)", for: indexPath) as? HomeBookmarkUserCVCell else {
+                return UICollectionViewCell()
+            }
+            
+            bookmarkUserCell.setCellContents()
+            return bookmarkUserCell
+        case .event:
+            guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeEventCVCell.self)", for: indexPath) as? HomeEventCVCell else {
+                return UICollectionViewCell()
+            }
+            
+            eventCell.setCellContents()
+            return eventCell
+        case .notice:
+            guard let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeNoticeCVCell.self)", for: indexPath) as? HomeNoticeCVCell else {
+                return UICollectionViewCell()
+            }
+            
+            noticeCell.setCellContents()
+            return noticeCell
+        }
     }
 }
 
@@ -65,6 +99,12 @@ extension HomeSectionView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        collectionView.register(HomeMainUserCVCell.self, forCellWithReuseIdentifier: "\(HomeMainUserCVCell.self)")
+        collectionView.register(HomeBookmarkUserCVCell.self, forCellWithReuseIdentifier: "\(HomeBookmarkUserCVCell.self)")
+        collectionView.register(HomeEventCVCell.self, forCellWithReuseIdentifier: "\(HomeEventCVCell.self)")
+        collectionView.register(HomeNoticeCVCell.self, forCellWithReuseIdentifier: "\(HomeNoticeCVCell.self)")
+        
         return collectionView
     }
     

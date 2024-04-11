@@ -12,6 +12,10 @@
 		7162BF7A2BC7BB2200702530 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF792BC7BB2200702530 /* HomeVM.swift */; };
 		7162BF7D2BC7BD8300702530 /* HomeNavigationbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF7C2BC7BD8300702530 /* HomeNavigationbar.swift */; };
 		7162BF802BC7C50300702530 /* HomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF7F2BC7C50300702530 /* HomeSectionView.swift */; };
+		7162BF832BC7CF8A00702530 /* HomeMainUserCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF822BC7CF8A00702530 /* HomeMainUserCVCell.swift */; };
+		7162BF852BC7CFD300702530 /* HomeBookmarkUserCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */; };
+		7162BF872BC7D09000702530 /* HomeEventCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF862BC7D09000702530 /* HomeEventCVCell.swift */; };
+		7162BF892BC7D0A100702530 /* HomeNoticeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */; };
 		7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA982BC78DA500B3959A /* RxCocoa */; };
 		7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9A2BC78DA500B3959A /* RxRelay */; };
 		7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9C2BC78DA500B3959A /* RxSwift */; };
@@ -191,6 +195,10 @@
 		7162BF792BC7BB2200702530 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		7162BF7C2BC7BD8300702530 /* HomeNavigationbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationbar.swift; sourceTree = "<group>"; };
 		7162BF7F2BC7C50300702530 /* HomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionView.swift; sourceTree = "<group>"; };
+		7162BF822BC7CF8A00702530 /* HomeMainUserCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainUserCVCell.swift; sourceTree = "<group>"; };
+		7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBookmarkUserCVCell.swift; sourceTree = "<group>"; };
+		7162BF862BC7D09000702530 /* HomeEventCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventCVCell.swift; sourceTree = "<group>"; };
+		7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeCVCell.swift; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOARANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,8 +416,20 @@
 			isa = PBXGroup;
 			children = (
 				7162BF7F2BC7C50300702530 /* HomeSectionView.swift */,
+				7162BF812BC7CF7400702530 /* HomeSectionCVCell */,
 			);
 			path = HomeSectionView;
+			sourceTree = "<group>";
+		};
+		7162BF812BC7CF7400702530 /* HomeSectionCVCell */ = {
+			isa = PBXGroup;
+			children = (
+				7162BF822BC7CF8A00702530 /* HomeMainUserCVCell.swift */,
+				7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */,
+				7162BF862BC7D09000702530 /* HomeEventCVCell.swift */,
+				7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */,
+			);
+			path = HomeSectionCVCell;
 			sourceTree = "<group>";
 		};
 		AC0341B229458816005F4533 /* APIModels */ = {
@@ -1217,6 +1237,7 @@
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */,
 				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,
+				7162BF852BC7CFD300702530 /* HomeBookmarkUserCVCell.swift in Sources */,
 				ACE5CEB428AF5C2100EFC937 /* EquipmentCell.swift in Sources */,
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACC778EC28E291AA000EDA2F /* NoticeTVCell.swift in Sources */,
@@ -1234,6 +1255,7 @@
 				AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */,
 				AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */,
 				ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */,
+				7162BF892BC7D0A100702530 /* HomeNoticeCVCell.swift in Sources */,
 				AC2C2B5D28B3545900621753 /* AvatarView.swift in Sources */,
 				AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */,
 				ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */,
@@ -1257,6 +1279,7 @@
 				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUserDTO.swift in Sources */,
 				AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */,
+				7162BF832BC7CF8A00702530 /* HomeMainUserCVCell.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				AC4E19EB28C444E600542EAE /* CardView.swift in Sources */,
 				AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */,
@@ -1288,6 +1311,7 @@
 				C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */,
 				C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
+				7162BF872BC7D09000702530 /* HomeEventCVCell.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
 				C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
