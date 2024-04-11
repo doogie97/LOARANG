@@ -13,6 +13,8 @@ struct GetRecentUsersUseCase {
     }
     
     func execute() -> [RecentUserEntity] {
-        return localStorage.recentUsers()
+        return localStorage.recentUsers().compactMap {
+            return $0.toEntity
+        }
     }
 }
