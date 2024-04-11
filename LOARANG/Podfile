@@ -14,8 +14,6 @@ pod 'SwiftyJSON'
 pod 'SwiftSoup'
 
 pod 'RealmSwift'
-
-pod 'Google-Mobile-Ads-SDK'
   # Pods for LOARANG
 
 post_install do |installer|
