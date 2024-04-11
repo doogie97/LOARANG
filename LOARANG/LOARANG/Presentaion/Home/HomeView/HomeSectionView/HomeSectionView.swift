@@ -192,7 +192,7 @@ extension HomeSectionView {
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
         
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(52))
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(55))
         section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
                                                     elementKind: UICollectionView.elementKindSectionHeader,
                                                     alignment: .topLeading)]
@@ -215,7 +215,7 @@ extension HomeSectionView {
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
         section.orthogonalScrollingBehavior = .groupPagingCentered
         
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(52))
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(55))
         section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
                                                     elementKind: UICollectionView.elementKindSectionHeader,
                                                     alignment: .topLeading)]
@@ -232,7 +232,7 @@ extension HomeSectionView {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
         
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(52))
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(55))
         section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
                                                     elementKind: UICollectionView.elementKindSectionHeader,
                                                     alignment: .topLeading)]
