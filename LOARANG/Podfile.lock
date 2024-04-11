@@ -14,7 +14,6 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SwiftSoup (2.6.1)
-  - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - RxCocoa (= 6.5.0)
@@ -22,7 +21,6 @@ DEPENDENCIES:
   - RxGesture
   - RxSwift (= 6.5.0)
   - SwiftSoup
-  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
@@ -33,7 +31,6 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SwiftSoup
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
@@ -43,8 +40,7 @@ SPEC CHECKSUMS:
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SwiftSoup: 5dd2c1b06afc964f30d99894af6ede22ede627aa
-  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: d25f177f4584dc488d356353303e4f18f39c2d6e
+PODFILE CHECKSUM: 3bb862ed41c44149cb4f71e31b15e743cebfa0c4
 
 COCOAPODS: 1.12.1
