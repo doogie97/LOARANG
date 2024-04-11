@@ -17,29 +17,9 @@ struct GetHomeCharactersUseCase {
     func execute() -> HomeCharactersEntity {
         let mainUserDto = localStorage.mainUser()
         let bookmarkUsersDto = localStorage.bookmarkUsers()
-        return HomeCharactersEntity(mainUser: mainUser(mainUserDto),
-                                    bookmarkUsers: bookmarkUsers(bookmarkUsersDto))
-    }
-    
-    private func mainUser(_ dto: MainUserDTO?) -> MainUserEntity? {
-        guard let dto = dto else {
-            return nil
-        }
-        let image = UIImage(data: dto.imageData) ?? UIImage()
-        return MainUserEntity(image: image,
-                              battleLV: dto.battleLV,
-                              name: dto.name,
-                              class: dto.`class`,
-                              itemLV: dto.itemLV,
-                              server: dto.server)
-    }
-    
-    private func bookmarkUsers(_ dto: [BookmarkUserDTO]) -> [BookmarkUserEntity] {
-        return dto.compactMap {
-            let image = UIImage(data: $0.imageData) ?? UIImage()
-            return BookmarkUserEntity(name: $0.name,
-                                      image: image,
-                                      class: $0.`class`)
-        }
+        return HomeCharactersEntity(mainUser: mainUserDto?.toEntity,
+                                    bookmarkUsers: bookmarkUsersDto.compactMap {
+            return $0.toEntity
+        })
     }
 }

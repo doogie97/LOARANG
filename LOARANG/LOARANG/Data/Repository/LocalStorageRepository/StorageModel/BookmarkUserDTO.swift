@@ -12,7 +12,7 @@ final class BookmarkUserDTO: Object {
     @Persisted var imageData: Data
     @Persisted var `class`: String
     
-    var convertedInfo: BookmarkUserEntity {
+    var toEntity: BookmarkUserEntity {
         return BookmarkUserEntity(name: self.name,
                                   image: UIImage(data: imageData) ?? UIImage(),
                                   class: self.`class`)

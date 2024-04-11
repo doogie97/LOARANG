@@ -10,7 +10,7 @@ import RealmSwift
 protocol LocalStorageRepositoryable {
     func mainUser() -> MainUserDTO?
     func bookmarkUsers() -> [BookmarkUserDTO]
-    func changeMainUser(_ user: MainUserEntity) throws
+    func changeMainUser(_ user: MainUserDTO) throws
     func addBookmarkUser(_ user: BookmarkUserEntity) throws
     func deleteBookmarkUser(_ name: String) throws
     func updateBookmarkUser(_ user: BookmarkUserEntity) throws
@@ -50,7 +50,7 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         
         do {
             try realm.write {
-                realm.add(user.convertedInfo)
+                realm.add(user.toEntity)
             }
         } catch {
             throw LocalStorageError.addBookmarkError
@@ -60,7 +60,7 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
     func updateBookmarkUser(_ user: BookmarkUserEntity) throws {
         do {
             try realm.write {
-                realm.add(user.convertedInfo, update: .modified)
+                realm.add(user.toEntity, update: .modified)
             }
         } catch {
             throw LocalStorageError.updateBookmarkError
@@ -83,10 +83,10 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         }
     }
     
-    func changeMainUser(_ user: MainUserEntity) throws {                
+    func changeMainUser(_ user: MainUserDTO) throws {
         do {
             try realm.write {
-                realm.add(user.convertedInfo, update: .modified)
+                realm.add(user, update: .modified)
             }
         } catch {
             throw LocalStorageError.changeMainUserError

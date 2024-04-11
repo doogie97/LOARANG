@@ -12,7 +12,7 @@ struct BookmarkUserEntity {
     let image: UIImage
     let `class`: String
     
-    var convertedInfo: BookmarkUserDTO {
+    var toEntity: BookmarkUserDTO {
         let bookmarkUser = BookmarkUserDTO()
         bookmarkUser.name = self.name
         bookmarkUser.imageData = self.image.pngData() ?? Data()

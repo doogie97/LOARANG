@@ -15,7 +15,7 @@ struct MainUserEntity {
     let itemLV: String
     let server: String
     
-    var convertedInfo: MainUserDTO {
+    var toDTO: MainUserDTO {
         let mainUser = MainUserDTO()
         mainUser.imageData = self.image.pngData() ?? Data()
         mainUser.battleLV = self.battleLV
