@@ -43,6 +43,12 @@ final class HomeVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.isLoading.withUnretained(self)
+            .subscribe { owner, isLoading in
+                owner.homeView.loadingView.isLoading(isLoading)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.showNextView.withUnretained(self)
             .subscribe { owner, nextViewCase in
                 var nextVC: UIViewController? {

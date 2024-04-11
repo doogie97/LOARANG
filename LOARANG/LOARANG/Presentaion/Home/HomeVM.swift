@@ -16,6 +16,7 @@ protocol HomeVMInput {
 
 protocol HomeVMOutput {
     var setViewContents: PublishRelay<Void> { get }
+    var isLoading: PublishRelay<Bool> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
 }
 
@@ -39,6 +40,7 @@ final class HomeVM: HomeVMable {
     }
     
     private func getHomeGameInfo() {
+        isLoading.accept(true)
         Task {
             do {
                 self.homeGameInfo = try await getHomeGameInfoUseCase.execute()
@@ -46,10 +48,12 @@ final class HomeVM: HomeVMable {
                     if homeCharacters != nil {
                         setViewContents.accept(())
                     }
+                    isLoading.accept(false)
                 }
             } catch let error {
                 await MainActor.run {
                     print(error.errorMessage)
+                    isLoading.accept(false)
                 }
             }
         }
@@ -72,5 +76,6 @@ final class HomeVM: HomeVMable {
     }
     
     let setViewContents = PublishRelay<Void>()
+    let isLoading = PublishRelay<Bool>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()
 }
