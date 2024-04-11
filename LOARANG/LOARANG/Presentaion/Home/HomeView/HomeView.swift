@@ -18,7 +18,7 @@ final class HomeView: UIView {
     private func setLayout() {
         self.addSubview(navigationbar)
         navigationbar.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(self.safeAreaLayoutGuide).inset(margin(.height, 20))
             $0.leading.trailing.equalToSuperview()
         }
     }

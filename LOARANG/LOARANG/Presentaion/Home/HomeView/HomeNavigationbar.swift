@@ -48,13 +48,13 @@ final class HomeNavigationbar: UIView {
         
         title.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.leading.equalToSuperview().inset(20)
+            $0.leading.equalToSuperview().inset(margin(.width, 20))
             $0.height.equalTo(50)
         }
         
         leafImageView.snp.makeConstraints {
             $0.height.width.equalTo(20)
-            $0.leading.equalTo(title.snp.trailing).offset(3)
+            $0.leading.equalTo(title.snp.trailing).inset(-3)
             $0.top.equalTo(title).inset(10)
         }
         
