@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class HomeNavigationbar: UIView {
     private lazy var title: UILabel = {
