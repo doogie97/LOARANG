@@ -11,6 +11,8 @@
 		71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCE92BC778B60080ECC1 /* SnapKit */; };
 		71E9CCED2BC77AB70080ECC1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */; };
 		71E9CCF02BC78A600080ECC1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */; };
+		71E9CCF32BC78B740080ECC1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCF22BC78B740080ECC1 /* Realm */; };
+		71E9CCF52BC78B740080ECC1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCF42BC78B740080ECC1 /* RealmSwift */; };
 		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
 		AC0341B42945883C005F4533 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B32945883C005F4533 /* Requestable.swift */; };
 		AC0341BC294588F3005F4533 /* LOARANG_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341BB294588F3005F4533 /* LOARANG_Tests.swift */; };
@@ -345,7 +347,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E9CCF32BC78B740080ECC1 /* Realm in Frameworks */,
 				71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */,
+				71E9CCF52BC78B740080ECC1 /* RealmSwift in Frameworks */,
 				AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */,
 				71E9CCF02BC78A600080ECC1 /* GoogleMobileAds in Frameworks */,
 				71E9CCED2BC77AB70080ECC1 /* FirebaseAnalytics in Frameworks */,
@@ -1049,6 +1053,8 @@
 				71E9CCE92BC778B60080ECC1 /* SnapKit */,
 				71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */,
 				71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */,
+				71E9CCF22BC78B740080ECC1 /* Realm */,
+				71E9CCF42BC78B740080ECC1 /* RealmSwift */,
 			);
 			productName = "LOARANG-MVVM";
 			productReference = ACAEF31F287FF0D200AE98F1 /* LOARANG.app */;
@@ -1087,6 +1093,7 @@
 				71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = ACAEF320287FF0D200AE98F1 /* Products */;
 			projectDirPath = "";
@@ -1624,6 +1631,14 @@
 				minimumVersion = 11.2.0;
 			};
 		};
+		71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1649,6 +1664,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		71E9CCF22BC78B740080ECC1 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		71E9CCF42BC78B740080ECC1 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		AC6C81942940270A00C0EEC1 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

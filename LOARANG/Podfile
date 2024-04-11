@@ -13,7 +13,6 @@ pod 'SwiftyJSON'
 
 pod 'SwiftSoup'
 
-pod 'RealmSwift'
   # Pods for LOARANG
 
 post_install do |installer|

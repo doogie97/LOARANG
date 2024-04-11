@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/02.
 //
 
+import UIKit
 import RealmSwift
 
 final class MainUserDTO: Object {

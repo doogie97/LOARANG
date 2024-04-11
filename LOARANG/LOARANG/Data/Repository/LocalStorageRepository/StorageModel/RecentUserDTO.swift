@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/10/04.
 //
 
+import UIKit
 import RealmSwift
 
 final class RecentUserDTO: Object {
