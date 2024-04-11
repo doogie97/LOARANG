@@ -13,9 +13,11 @@ final class HomeSectionHeader: UICollectionReusableView {
     
     enum HeaderCase {
         case bookmark(count: Int)
+        case challengeAbyssDungeons
         case event
         case notice
     }
+    
     private lazy var topSeparator = UIView()
     private lazy var titleLabel = blackHanSansLabel()
     private lazy var bookmarkCountLabel = oneFontLabel(size: 15, color: .white)
@@ -38,7 +40,7 @@ final class HomeSectionHeader: UICollectionReusableView {
             print("이벤트 더 보기")
         case .notice:
             print("공지사항 더 보기")
-        case .bookmark(_):
+        case .bookmark(_), .challengeAbyssDungeons:
             return
         }
     }
@@ -53,6 +55,9 @@ final class HomeSectionHeader: UICollectionReusableView {
             moreButton.isHidden = true
             titleLabel.text = "즐겨찾기"
             bookmarkCountLabel.text = "(\(count))"
+        case .challengeAbyssDungeons:
+            moreButton.isHidden = true
+            titleLabel.text = "도전 어비스 던전"
         case .event:
             titleLabel.text = "이벤트"
         case .notice:

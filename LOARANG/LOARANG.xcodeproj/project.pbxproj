@@ -160,6 +160,7 @@
 		C6074DE92BC6D8C000FE3004 /* GetRecentUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DE82BC6D8C000FE3004 /* GetRecentUsersUseCase.swift */; };
 		C6074DEB2BC6DBE800FE3004 /* AddRecentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DEA2BC6DBE800FE3004 /* AddRecentUserUseCase.swift */; };
 		C6074DED2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DEC2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift */; };
+		C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F732BC8367900CABA30 /* HomeImageCVCell.swift */; };
 		C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */; };
 		C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */; };
 		C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */; };
@@ -335,6 +336,7 @@
 		C6074DE82BC6D8C000FE3004 /* GetRecentUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecentUsersUseCase.swift; sourceTree = "<group>"; };
 		C6074DEA2BC6DBE800FE3004 /* AddRecentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecentUserUseCase.swift; sourceTree = "<group>"; };
 		C6074DEC2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRecentUserUseCase.swift; sourceTree = "<group>"; };
+		C6224F732BC8367900CABA30 /* HomeImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageCVCell.swift; sourceTree = "<group>"; };
 		C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserEntity.swift; sourceTree = "<group>"; };
 		C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserEntity.swift; sourceTree = "<group>"; };
 		C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserEntity.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */,
 				7162BF862BC7D09000702530 /* HomeEventCVCell.swift */,
 				7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */,
+				C6224F732BC8367900CABA30 /* HomeImageCVCell.swift */,
 			);
 			path = HomeSectionCVCell;
 			sourceTree = "<group>";
@@ -1321,6 +1324,7 @@
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
 				C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */,
+				C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */,
 				C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
 				7162BF872BC7D09000702530 /* HomeEventCVCell.swift in Sources */,
