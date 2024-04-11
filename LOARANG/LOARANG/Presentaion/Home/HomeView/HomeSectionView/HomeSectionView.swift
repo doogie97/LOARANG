@@ -90,6 +90,31 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return noticeCell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let section = SectionCase(rawValue: indexPath.section) else {
+            return UICollectionReusableView()
+        }
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            switch section {
+            case .mainUser:
+                return UICollectionReusableView()
+            case .bookmark:
+                guard let bookmarkHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeBookmarkSectionHeader.self)", for: indexPath) as? HomeBookmarkSectionHeader else {
+                    return UICollectionReusableView()
+                }
+                bookmarkHeader.setViewContents(bookmarkCount: 6) //viewModel의 bookmarkCount만큼
+                return bookmarkHeader
+            case .event:
+                return UICollectionReusableView() //임시 리턴
+            case .notice:
+                return UICollectionReusableView() //임시 리턴
+            }
+        }
+        
+        return UICollectionReusableView()
+    }
 }
 
 //MARK: - Make CollectionView Layout
@@ -97,6 +122,7 @@ extension HomeSectionView {
     private func createSectionCV() -> UICollectionView {
         let layout = createSectionCVLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .mainBackground
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -104,6 +130,8 @@ extension HomeSectionView {
         collectionView.register(HomeBookmarkUserCVCell.self, forCellWithReuseIdentifier: "\(HomeBookmarkUserCVCell.self)")
         collectionView.register(HomeEventCVCell.self, forCellWithReuseIdentifier: "\(HomeEventCVCell.self)")
         collectionView.register(HomeNoticeCVCell.self, forCellWithReuseIdentifier: "\(HomeNoticeCVCell.self)")
+        
+        collectionView.register(HomeBookmarkSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeBookmarkSectionHeader.self)")
         
         return collectionView
     }
@@ -140,7 +168,7 @@ extension HomeSectionView {
     }
     
     func bookmarkSectionLayout() -> NSCollectionLayoutSection {
-        let itemWidthInset = margin(.width, 8)
+        let itemWidthInset = margin(.width, 5)
         let cellHeight = margin(.width, 155)
         let cellWidth = itemWidthInset * 2 + cellHeight
         
@@ -150,11 +178,16 @@ extension HomeSectionView {
         item.contentInsets = .init(top: 0, leading: itemWidthInset, bottom: 0, trailing: itemWidthInset)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth),
-                                               heightDimension: .fractionalWidth(235 / 393))
+                                               heightDimension: .absolute(cellHeight))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: 0, leading: margin(.width, 12), bottom: 10, trailing: margin(.width, 12))
+        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
+        
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
+                                                    elementKind: UICollectionView.elementKindSectionHeader,
+                                                    alignment: .topLeading)]
         
         return section
     }
