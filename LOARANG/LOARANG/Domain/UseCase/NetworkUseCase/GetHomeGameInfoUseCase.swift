@@ -16,8 +16,12 @@ struct GetHomeGameInfoUseCase {
         do {
             let eventDTO = try await networkRepository.getEventList()
             let noticeDTO = try await networkRepository.getGameNoticeList()
+            let challengeAbyssDungeonsDTO = try await networkRepository.getChallengeAbyssDungeons()
             return HomeGameInfoEntity(eventList: eventList(eventDTO),
                                       noticeList: noticeDTO.compactMap {
+                return $0.toEntity
+            },
+                                      challengeAbyssDungeonEntity: challengeAbyssDungeonsDTO.compactMap {
                 return $0.toEntity
             })
         } catch let error {

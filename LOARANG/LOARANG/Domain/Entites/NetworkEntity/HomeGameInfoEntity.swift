@@ -8,4 +8,5 @@
 struct HomeGameInfoEntity {
     let eventList: [GmaeEventEntity]
     let noticeList: [GameNoticeEntity]
+    let challengeAbyssDungeonEntity: [ChallengeAbyssDungeonEntity]
 }

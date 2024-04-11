@@ -167,6 +167,9 @@
 		C6224F802BC847C300CABA30 /* GameNoticeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */; };
 		C6224F822BC847D800CABA30 /* GameEventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F812BC847D800CABA30 /* GameEventEntity.swift */; };
 		C6224F852BC8480D00CABA30 /* GameEventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F842BC8480D00CABA30 /* GameEventDTO.swift */; };
+		C6224F892BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F882BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift */; };
+		C6224F8B2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F8A2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift */; };
+		C6224F8D2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */; };
 		C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */; };
 		C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */; };
 		C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */; };
@@ -349,6 +352,9 @@
 		C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNoticeEntity.swift; sourceTree = "<group>"; };
 		C6224F812BC847D800CABA30 /* GameEventEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventEntity.swift; sourceTree = "<group>"; };
 		C6224F842BC8480D00CABA30 /* GameEventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventDTO.swift; sourceTree = "<group>"; };
+		C6224F882BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAbyssDungeonsGET.swift; sourceTree = "<group>"; };
+		C6224F8A2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAbyssDungeonDTO.swift; sourceTree = "<group>"; };
+		C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAbyssDungeonEntity.swift; sourceTree = "<group>"; };
 		C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserEntity.swift; sourceTree = "<group>"; };
 		C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserEntity.swift; sourceTree = "<group>"; };
 		C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserEntity.swift; sourceTree = "<group>"; };
@@ -464,6 +470,7 @@
 				C6224F862BC8489B00CABA30 /* GameEventListGET */,
 				C6224F792BC8449B00CABA30 /* GameNoticeListGET */,
 				ACE5DC6A294613BC009BFEAC /* OwnCharactersGET.swift */,
+				C6224F872BC8492200CABA30 /* ChallengeAbyssDungeonsGET */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -995,6 +1002,7 @@
 				C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */,
 				C6224F812BC847D800CABA30 /* GameEventEntity.swift */,
 				C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */,
+				C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */,
 				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
 			);
 			path = NetworkEntity;
@@ -1007,6 +1015,15 @@
 				C6224F842BC8480D00CABA30 /* GameEventDTO.swift */,
 			);
 			path = GameEventListGET;
+			sourceTree = "<group>";
+		};
+		C6224F872BC8492200CABA30 /* ChallengeAbyssDungeonsGET */ = {
+			isa = PBXGroup;
+			children = (
+				C6224F882BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift */,
+				C6224F8A2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift */,
+			);
+			path = ChallengeAbyssDungeonsGET;
 			sourceTree = "<group>";
 		};
 		C63C615D2BADC4130023D123 /* CommonObject */ = {
@@ -1262,6 +1279,7 @@
 				ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */,
 				AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
+				C6224F8B2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
 				AC0341C9294591BA005F4533 /* GameEventListGET.swift in Sources */,
@@ -1310,6 +1328,7 @@
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */,
+				C6224F892BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift in Sources */,
 				C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,
@@ -1330,6 +1349,7 @@
 				ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */,
 				ACD547B628EC2A1000D44ACA /* RecentUserTVCell.swift in Sources */,
 				AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */,
+				C6224F8D2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift in Sources */,
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
