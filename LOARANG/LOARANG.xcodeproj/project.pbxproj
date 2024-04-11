@@ -177,8 +177,8 @@
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
-		C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */; };
-		C6EDB7DE2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */; };
+		C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */; };
+		C6EDB7DE2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -353,8 +353,8 @@
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
-		C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoEntity.swift; sourceTree = "<group>"; };
-		C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeInfoUseCase.swift; sourceTree = "<group>"; };
+		C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGameInfoEntity.swift; sourceTree = "<group>"; };
+		C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeGameInfoUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -968,7 +968,7 @@
 		C64C45222BC5928A00AD503D /* NetworkUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */,
+				C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */,
 				C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */,
 			);
 			path = NetworkUseCase;
@@ -1050,7 +1050,7 @@
 		C6EDB7D92BADA7C8004E7AC9 /* Entites */ = {
 			isa = PBXGroup;
 			children = (
-				C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */,
+				C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */,
 				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
 				C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */,
 				C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */,
@@ -1224,7 +1224,7 @@
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				7162BF802BC7C50300702530 /* HomeSectionView.swift in Sources */,
 				C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */,
-				C6EDB7DE2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift in Sources */,
+				C6EDB7DE2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift in Sources */,
 				AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
@@ -1325,7 +1325,7 @@
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
 				C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */,
 				C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */,
-				C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */,
+				C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
 				7162BF872BC7D09000702530 /* HomeEventCVCell.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,

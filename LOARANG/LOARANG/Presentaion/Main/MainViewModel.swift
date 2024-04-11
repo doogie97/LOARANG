@@ -41,16 +41,16 @@ final class MainViewModel: MainViewModelInOut {
     private let crawlManager = CrawlManager() // 크롤링 -> API로 전면 수정 후 제거 필요
     private let networkManager = NetworkManager()
     
-    private let getHomeInfoUseCase: GetHomeInfoUseCase
+    private let getHomeGameInfoUseCase: GetHomeGameInfoUseCase
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     
-    init(getHomeInfoUseCase: GetHomeInfoUseCase,
+    init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
          changeMainUserUseCase: ChangeMainUserUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase) {
-        self.getHomeInfoUseCase = getHomeInfoUseCase
+        self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
@@ -62,7 +62,7 @@ final class MainViewModel: MainViewModelInOut {
         startedLoading.accept(())
         Task {
             do {
-                let homeEntity = try await getHomeInfoUseCase.execute()
+                let homeGameInfoEntity = try await getHomeGameInfoUseCase.execute()
                 
                 let news = try await networkManager.request(EventListGET(),
                                                             resultType: [EventDTO].self)

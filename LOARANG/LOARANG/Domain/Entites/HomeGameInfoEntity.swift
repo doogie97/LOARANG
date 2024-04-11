@@ -1,11 +1,11 @@
 //
-//  HomeInfoEntity.swift
+//  HomeGameInfoEntity.swift
 //  LOARANG
 //
 //  Created by Doogie on 3/22/24.
 //
 
-struct HomeInfoEntity {
+struct HomeGameInfoEntity {
     let eventList: [Event]
     
     struct Event {

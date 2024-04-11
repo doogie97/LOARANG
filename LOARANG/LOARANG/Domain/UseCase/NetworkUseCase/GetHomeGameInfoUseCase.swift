@@ -1,29 +1,29 @@
 //
-//  GetHomeInfoUseCase.swift
+//  GetHomeGameInfoUseCase.swift
 //  LOARANG
 //
 //  Created by Doogie on 3/22/24.
 //
 
-struct GetHomeInfoUseCase {
+struct GetHomeGameInfoUseCase {
     private let networkRepository: NetworkRepositoryable
     
     init(networkRepository: NetworkRepositoryable) {
         self.networkRepository = networkRepository
     }
     
-    func execute() async throws -> HomeInfoEntity {
+    func execute() async throws -> HomeGameInfoEntity {
         do {
             let eventDTO = try await networkRepository.getEventList()
-            return HomeInfoEntity(eventList: eventList(eventDTO))
+            return HomeGameInfoEntity(eventList: eventList(eventDTO))
         } catch let error {
             throw error
         }
     }
     
-    private func eventList(_ eventListDTO: [EventDTO]?) -> [HomeInfoEntity.Event] {
+    private func eventList(_ eventListDTO: [EventDTO]?) -> [HomeGameInfoEntity.Event] {
         return (eventListDTO ?? []).compactMap {
-            return HomeInfoEntity.Event(title: $0.title ?? "",
+            return HomeGameInfoEntity.Event(title: $0.title ?? "",
                                         thumbnailImgUrl: $0.thumbnail ?? "",
                                         url: $0.link ?? "",
                                         startDate: $0.startDate ?? "",

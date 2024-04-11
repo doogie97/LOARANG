@@ -20,9 +20,20 @@ protocol HomeVMOutput {
 }
 
 final class HomeVM: HomeVMable {
+    private let getHomeGameInfoUseCase: GetHomeGameInfoUseCase
+    
+//    private var homeInfo
+    init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase) {
+        self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
+    }
+    
     //MARK: - Input
     func viewDidLoad() {
         setViewContents.accept(())
+    }
+    
+    private func getHomeGameInfo() {
+        
     }
     
     func touchSearchButton() {
