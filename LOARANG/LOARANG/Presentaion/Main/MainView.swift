@@ -67,7 +67,17 @@ final class MainView: UIView {
         return indicator
     }()
     
-    private(set) lazy var mainUserView = MainUserView()
+    private(set) lazy var mainUserView = {
+        let mainUserView = MainUserView()
+        let guesture = UITapGestureRecognizer(target: self, action: #selector(touchMainUser))
+        mainUserView.addGestureRecognizer(guesture)
+        
+        return mainUserView
+    }()
+    @objc private func touchMainUser() {
+        print("touchMainUser")
+    }
+    
     private(set) lazy var bookmarkView = BookmarkView()
     private(set) lazy var eventView = EventView()
     private(set) lazy var noticeView = NoticeView()

@@ -71,12 +71,6 @@ final class MainViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        mainView.mainUserView.rx.tapGesture().when(.recognized)
-            .bind(onNext: { [weak self] _ in
-                self?.viewModel.touchMainUser()
-            })
-            .disposed(by: disposeBag)
-        
         mainView.mainUserView.setMainUserButton.rx.tap
             .bind(onNext: { [weak self] in
                 self?.showSetMainCharacterAlert(action: {

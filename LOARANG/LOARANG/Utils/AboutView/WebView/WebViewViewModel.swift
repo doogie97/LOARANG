@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/09/22.
 //
 
+import Foundation
 import RxRelay
 
 protocol WebViewViewModelable: WebViewViewModelInput, WebViewViewModelOutput {}

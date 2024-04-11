@@ -5,6 +5,7 @@
 //  Created by 최최성균 on 2022/08/22.
 //
 
+import UIKit
 import RxSwift
 
 final class AvatarDetailViewController: UIViewController {
