@@ -26,7 +26,7 @@ protocol MainViewModelInput {
 }
 protocol MainViewModelOutput {
     var checkUser: PublishRelay<MainUserEntity> { get }
-    var events: BehaviorRelay<[EventDTO]> { get }
+    var events: BehaviorRelay<[GameEventDTO]> { get }
     var notices: BehaviorRelay<[LostArkNotice]> { get }
     var showSearchView: PublishRelay<Void> { get }
     var showUserInfo: PublishRelay<String> { get }
@@ -64,8 +64,8 @@ final class MainViewModel: MainViewModelInOut {
             do {
                 let homeGameInfoEntity = try await getHomeGameInfoUseCase.execute()
                 
-                let news = try await networkManager.request(EventListGET(),
-                                                            resultType: [EventDTO].self)
+                let news = try await networkManager.request(GameEventListGET(),
+                                                            resultType: [GameEventDTO].self)
                 let notices = try await crawlManager.getNotice()
                 await MainActor.run {
                     self.notices.accept(notices)
@@ -210,7 +210,7 @@ final class MainViewModel: MainViewModelInOut {
     
     // out
     let checkUser = PublishRelay<MainUserEntity>()
-    let events = BehaviorRelay<[EventDTO]>(value: [])
+    let events = BehaviorRelay<[GameEventDTO]>(value: [])
     let notices = BehaviorRelay<[LostArkNotice]>(value: [])
     let showSearchView = PublishRelay<Void>()
     let showUserInfo = PublishRelay<String>()

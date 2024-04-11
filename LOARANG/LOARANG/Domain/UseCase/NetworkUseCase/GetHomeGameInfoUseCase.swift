@@ -25,9 +25,9 @@ struct GetHomeGameInfoUseCase {
         }
     }
     
-    private func eventList(_ eventListDTO: [EventDTO]?) -> [Event] {
+    private func eventList(_ eventListDTO: [GameEventDTO]?) -> [GmaeEventEntity] {
         return (eventListDTO ?? []).compactMap {
-            return Event(title: $0.title ?? "",
+            return GmaeEventEntity(title: $0.title ?? "",
                          thumbnailImgUrl: $0.thumbnail ?? "",
                          url: $0.link ?? "",
                          startDate: $0.startDate ?? "",

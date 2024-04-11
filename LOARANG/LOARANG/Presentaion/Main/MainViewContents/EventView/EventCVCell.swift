@@ -47,7 +47,7 @@ final class EventCVCell: UICollectionViewCell {
         }
     }
     
-    func setCellContents(_ news: EventDTO) {
+    func setCellContents(_ news: GameEventDTO) {
         eventImageViewDataTask = eventImageView.setImage(urlString: news.thumbnail)
         endDataLabel.text = "~ " + (news.endDate?.convetDateType ?? "")
     }
