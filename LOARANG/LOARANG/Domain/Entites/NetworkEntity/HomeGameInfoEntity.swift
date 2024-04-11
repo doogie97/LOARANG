@@ -9,4 +9,5 @@ struct HomeGameInfoEntity {
     let eventList: [GameEventEntity]
     let noticeList: [GameNoticeEntity]
     let challengeAbyssDungeonEntity: [ChallengeAbyssDungeonEntity]
+    let challengeGuardianRaidsEntity: [ChallengeGuardianRaidEntity]
 }
