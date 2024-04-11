@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12B477EAD769FD31FD7F7BD9 /* Pods_LOARANG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24B070FF84C1615376140BC /* Pods_LOARANG.framework */; };
+		71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCE92BC778B60080ECC1 /* SnapKit */; };
 		AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B0294587A3005F4533 /* NetworkManager.swift */; };
 		AC0341B42945883C005F4533 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341B32945883C005F4533 /* Requestable.swift */; };
 		AC0341BC294588F3005F4533 /* LOARANG_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341BB294588F3005F4533 /* LOARANG_Tests.swift */; };
@@ -342,6 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */,
 				AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */,
 				12B477EAD769FD31FD7F7BD9 /* Pods_LOARANG.framework in Frameworks */,
 			);
@@ -1040,6 +1042,7 @@
 			name = LOARANG;
 			packageProductDependencies = (
 				AC6C81942940270A00C0EEC1 /* Alamofire */,
+				71E9CCE92BC778B60080ECC1 /* SnapKit */,
 			);
 			productName = "LOARANG-MVVM";
 			productReference = ACAEF31F287FF0D200AE98F1 /* LOARANG.app */;
@@ -1075,6 +1078,7 @@
 			mainGroup = ACAEF316287FF0D200AE98F1;
 			packageReferences = (
 				AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = ACAEF320287FF0D200AE98F1 /* Products */;
 			projectDirPath = "";
@@ -1588,6 +1592,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 		AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1599,6 +1611,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		71E9CCE92BC778B60080ECC1 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		AC6C81942940270A00C0EEC1 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */;
