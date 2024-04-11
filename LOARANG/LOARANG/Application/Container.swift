@@ -23,7 +23,8 @@ final class Container: Containerable {
     
 //MARK: - about Main View
     func homeVC() -> HomeVC {
-        let homeVM = HomeVM()
+        let homeVM = HomeVM(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
+                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository))
         return HomeVC(container: self,
                       viewModel: homeVM)
     }
@@ -32,7 +33,7 @@ final class Container: Containerable {
     }
     
     private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(getHomeInfoUseCase: GetHomeInfoUseCase(networkRepository: networkRepository),
+        return MainViewModel(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
                              getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), 
                              changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository), 
                              deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository))

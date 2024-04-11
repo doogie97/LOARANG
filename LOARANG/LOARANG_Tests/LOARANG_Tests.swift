@@ -13,7 +13,7 @@ final class LOARANG_MVVMTests: XCTestCase {
         //given
         let promise = expectation(description: "News를 잘 가져오는지")
         let networkManager = NetworkManager()
-        let api = EventListGET()
+        let api = GameEventListGET()
         
         //when
         networkManager.request(api, resultType: [EventDTO].self) { result in
@@ -35,7 +35,7 @@ final class LOARANG_MVVMTests: XCTestCase {
         //given
         let promise = expectation(description: "Characters를 잘 가져오는지")
         let networkManager = NetworkManager()
-        let api = EventListGET()
+        let api = GameEventListGET()
         
         //when
         NetworkManager().request(OwnCharactersGET(name: "최지근"), resultType: [CharacterBasicInfoDTO].self) { result in

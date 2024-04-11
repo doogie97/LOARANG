@@ -33,10 +33,22 @@ final class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
-        homeView.setViewContents(viewModel: viewModel) //임시 호출
+        viewModel.viewDidLoad()
     }
     
     private func bindViewModel() {
+        viewModel.setViewContents.withUnretained(self)
+            .subscribe { owner, viewContents in
+                owner.homeView.setViewContents(viewContents: viewContents)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.isLoading.withUnretained(self)
+            .subscribe { owner, isLoading in
+                owner.homeView.loadingView.isLoading(isLoading)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.showNextView.withUnretained(self)
             .subscribe { owner, nextViewCase in
                 var nextVC: UIViewController? {

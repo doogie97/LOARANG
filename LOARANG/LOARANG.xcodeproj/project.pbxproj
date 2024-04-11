@@ -34,7 +34,7 @@
 		AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC0341C229458976005F4533 /* AppPrivacyInfo.plist */; };
 		AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */; };
 		AC0341C729458CCE005F4533 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C629458CCE005F4533 /* APIError.swift */; };
-		AC0341C9294591BA005F4533 /* EventListGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C8294591BA005F4533 /* EventListGET.swift */; };
+		AC0341C9294591BA005F4533 /* GameEventListGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341C8294591BA005F4533 /* GameEventListGET.swift */; };
 		AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */; };
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
@@ -161,6 +161,18 @@
 		C6074DEB2BC6DBE800FE3004 /* AddRecentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DEA2BC6DBE800FE3004 /* AddRecentUserUseCase.swift */; };
 		C6074DED2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6074DEC2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift */; };
 		C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F732BC8367900CABA30 /* HomeImageCVCell.swift */; };
+		C6224F762BC840D400CABA30 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F752BC840D400CABA30 /* LoadingView.swift */; };
+		C6224F782BC8443800CABA30 /* GameNoticeListGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F772BC8443800CABA30 /* GameNoticeListGET.swift */; };
+		C6224F7B2BC844A600CABA30 /* GameNoticeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F7A2BC844A600CABA30 /* GameNoticeDTO.swift */; };
+		C6224F802BC847C300CABA30 /* GameNoticeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */; };
+		C6224F822BC847D800CABA30 /* GameEventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F812BC847D800CABA30 /* GameEventEntity.swift */; };
+		C6224F852BC8480D00CABA30 /* GameEventDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F842BC8480D00CABA30 /* GameEventDTO.swift */; };
+		C6224F892BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F882BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift */; };
+		C6224F8B2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F8A2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift */; };
+		C6224F8D2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */; };
+		C6224F902BC84B3300CABA30 /* ChallengeGuardianRaidsGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F8F2BC84B3300CABA30 /* ChallengeGuardianRaidsGET.swift */; };
+		C6224F922BC84B3A00CABA30 /* ChallengeGuardianRaidsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F912BC84B3A00CABA30 /* ChallengeGuardianRaidsDTO.swift */; };
+		C6224F942BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6224F932BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift */; };
 		C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */; };
 		C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */; };
 		C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */; };
@@ -177,8 +189,8 @@
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
-		C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */; };
-		C6EDB7DE2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */; };
+		C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */; };
+		C6EDB7DE2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,7 +221,7 @@
 		AC0341C229458976005F4533 /* AppPrivacyInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppPrivacyInfo.plist; sourceTree = "<group>"; };
 		AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LOARANG++Bundle.swift"; sourceTree = "<group>"; };
 		AC0341C629458CCE005F4533 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		AC0341C8294591BA005F4533 /* EventListGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListGET.swift; sourceTree = "<group>"; };
+		AC0341C8294591BA005F4533 /* GameEventListGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventListGET.swift; sourceTree = "<group>"; };
 		AC035C1D28C20BB800DD8BA4 /* PropensitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropensitiesView.swift; sourceTree = "<group>"; };
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -337,6 +349,18 @@
 		C6074DEA2BC6DBE800FE3004 /* AddRecentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecentUserUseCase.swift; sourceTree = "<group>"; };
 		C6074DEC2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRecentUserUseCase.swift; sourceTree = "<group>"; };
 		C6224F732BC8367900CABA30 /* HomeImageCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageCVCell.swift; sourceTree = "<group>"; };
+		C6224F752BC840D400CABA30 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C6224F772BC8443800CABA30 /* GameNoticeListGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNoticeListGET.swift; sourceTree = "<group>"; };
+		C6224F7A2BC844A600CABA30 /* GameNoticeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNoticeDTO.swift; sourceTree = "<group>"; };
+		C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNoticeEntity.swift; sourceTree = "<group>"; };
+		C6224F812BC847D800CABA30 /* GameEventEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventEntity.swift; sourceTree = "<group>"; };
+		C6224F842BC8480D00CABA30 /* GameEventDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEventDTO.swift; sourceTree = "<group>"; };
+		C6224F882BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAbyssDungeonsGET.swift; sourceTree = "<group>"; };
+		C6224F8A2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAbyssDungeonDTO.swift; sourceTree = "<group>"; };
+		C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeAbyssDungeonEntity.swift; sourceTree = "<group>"; };
+		C6224F8F2BC84B3300CABA30 /* ChallengeGuardianRaidsGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGuardianRaidsGET.swift; sourceTree = "<group>"; };
+		C6224F912BC84B3A00CABA30 /* ChallengeGuardianRaidsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGuardianRaidsDTO.swift; sourceTree = "<group>"; };
+		C6224F932BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGuardianRaidEntity.swift; sourceTree = "<group>"; };
 		C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserEntity.swift; sourceTree = "<group>"; };
 		C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserEntity.swift; sourceTree = "<group>"; };
 		C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserEntity.swift; sourceTree = "<group>"; };
@@ -353,8 +377,8 @@
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
-		C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoEntity.swift; sourceTree = "<group>"; };
-		C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeInfoUseCase.swift; sourceTree = "<group>"; };
+		C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGameInfoEntity.swift; sourceTree = "<group>"; };
+		C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeGameInfoUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,7 +473,10 @@
 		AC0341B229458816005F4533 /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
-				AC0341C8294591BA005F4533 /* EventListGET.swift */,
+				C6224F862BC8489B00CABA30 /* GameEventListGET */,
+				C6224F792BC8449B00CABA30 /* GameNoticeListGET */,
+				C6224F872BC8492200CABA30 /* ChallengeAbyssDungeonsGET */,
+				C6224F8E2BC84B0E00CABA30 /* ChallengeGuardianRaidsGET */,
 				ACE5DC6A294613BC009BFEAC /* OwnCharactersGET.swift */,
 			);
 			path = APIModels;
@@ -956,6 +983,66 @@
 			path = EquipmentDetailView;
 			sourceTree = "<group>";
 		};
+		C6224F792BC8449B00CABA30 /* GameNoticeListGET */ = {
+			isa = PBXGroup;
+			children = (
+				C6224F772BC8443800CABA30 /* GameNoticeListGET.swift */,
+				C6224F7A2BC844A600CABA30 /* GameNoticeDTO.swift */,
+			);
+			path = GameNoticeListGET;
+			sourceTree = "<group>";
+		};
+		C6224F7E2BC847A600CABA30 /* LocalStoragetEntity */ = {
+			isa = PBXGroup;
+			children = (
+				C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */,
+				C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */,
+				C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */,
+				C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */,
+			);
+			path = LocalStoragetEntity;
+			sourceTree = "<group>";
+		};
+		C6224F832BC847EB00CABA30 /* NetworkEntity */ = {
+			isa = PBXGroup;
+			children = (
+				C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */,
+				C6224F812BC847D800CABA30 /* GameEventEntity.swift */,
+				C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */,
+				C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */,
+				C6224F932BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift */,
+				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
+			);
+			path = NetworkEntity;
+			sourceTree = "<group>";
+		};
+		C6224F862BC8489B00CABA30 /* GameEventListGET */ = {
+			isa = PBXGroup;
+			children = (
+				AC0341C8294591BA005F4533 /* GameEventListGET.swift */,
+				C6224F842BC8480D00CABA30 /* GameEventDTO.swift */,
+			);
+			path = GameEventListGET;
+			sourceTree = "<group>";
+		};
+		C6224F872BC8492200CABA30 /* ChallengeAbyssDungeonsGET */ = {
+			isa = PBXGroup;
+			children = (
+				C6224F882BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift */,
+				C6224F8A2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift */,
+			);
+			path = ChallengeAbyssDungeonsGET;
+			sourceTree = "<group>";
+		};
+		C6224F8E2BC84B0E00CABA30 /* ChallengeGuardianRaidsGET */ = {
+			isa = PBXGroup;
+			children = (
+				C6224F8F2BC84B3300CABA30 /* ChallengeGuardianRaidsGET.swift */,
+				C6224F912BC84B3A00CABA30 /* ChallengeGuardianRaidsDTO.swift */,
+			);
+			path = ChallengeGuardianRaidsGET;
+			sourceTree = "<group>";
+		};
 		C63C615D2BADC4130023D123 /* CommonObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,7 +1055,7 @@
 		C64C45222BC5928A00AD503D /* NetworkUseCase */ = {
 			isa = PBXGroup;
 			children = (
-				C6EDB7DD2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift */,
+				C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */,
 				C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */,
 			);
 			path = NetworkUseCase;
@@ -1033,6 +1120,7 @@
 				AC7E9F7D28C5D10700859E06 /* SegmentController */,
 				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
 				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
+				C6224F752BC840D400CABA30 /* LoadingView.swift */,
 			);
 			path = AboutView;
 			sourceTree = "<group>";
@@ -1050,12 +1138,8 @@
 		C6EDB7D92BADA7C8004E7AC9 /* Entites */ = {
 			isa = PBXGroup;
 			children = (
-				C6EDB7DA2BADA7D6004E7AC9 /* HomeInfoEntity.swift */,
-				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
-				C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */,
-				C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */,
-				C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */,
-				C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */,
+				C6224F832BC847EB00CABA30 /* NetworkEntity */,
+				C6224F7E2BC847A600CABA30 /* LocalStoragetEntity */,
 			);
 			path = Entites;
 			sourceTree = "<group>";
@@ -1208,13 +1292,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6224F902BC84B3300CABA30 /* ChallengeGuardianRaidsGET.swift in Sources */,
 				C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */,
 				ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */,
 				AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
+				C6224F8B2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
-				AC0341C9294591BA005F4533 /* EventListGET.swift in Sources */,
+				AC0341C9294591BA005F4533 /* GameEventListGET.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUserDTO.swift in Sources */,
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
@@ -1224,7 +1310,7 @@
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				7162BF802BC7C50300702530 /* HomeSectionView.swift in Sources */,
 				C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */,
-				C6EDB7DE2BADA84F004E7AC9 /* GetHomeInfoUseCase.swift in Sources */,
+				C6EDB7DE2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift in Sources */,
 				AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
@@ -1260,7 +1346,9 @@
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
 				AC8F11CE28811F9B00D06AA6 /* BookmarkCVCell.swift in Sources */,
 				C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */,
+				C6224F892BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift in Sources */,
 				C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */,
+				C6224F922BC84B3A00CABA30 /* ChallengeGuardianRaidsDTO.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,
 				ACBA790028990B6D00CB39D5 /* UIButton + Extension.swift in Sources */,
@@ -1280,11 +1368,13 @@
 				ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */,
 				ACD547B628EC2A1000D44ACA /* RecentUserTVCell.swift in Sources */,
 				AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */,
+				C6224F8D2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift in Sources */,
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
 				7162BF8C2BC7D65D00702530 /* HomeSectionHeader.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* CharactersViewController.swift in Sources */,
+				C6224F782BC8443800CABA30 /* GameNoticeListGET.swift in Sources */,
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
@@ -1298,9 +1388,11 @@
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				AC4E19EB28C444E600542EAE /* CardView.swift in Sources */,
 				AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */,
+				C6224F942BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift in Sources */,
 				ACE5CEB228AF559600EFC937 /* BasicEquipmentViewModel.swift in Sources */,
 				C6074DED2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
+				C6224F762BC840D400CABA30 /* LoadingView.swift in Sources */,
 				ACB3813328D42CF60081F8A1 /* CharactersViewModel.swift in Sources */,
 				AC3FEC202880697700CDE796 /* MainViewModel.swift in Sources */,
 				AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */,
@@ -1314,6 +1406,7 @@
 				C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
+				C6224F802BC847C300CABA30 /* GameNoticeEntity.swift in Sources */,
 				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */,
@@ -1325,7 +1418,7 @@
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
 				C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */,
 				C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */,
-				C6EDB7DB2BADA7D6004E7AC9 /* HomeInfoEntity.swift in Sources */,
+				C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
 				7162BF872BC7D09000702530 /* HomeEventCVCell.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
@@ -1334,6 +1427,8 @@
 				ACD547B328EBFED500D44ACA /* RecentUserView.swift in Sources */,
 				C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */,
 				AC62F87A28DC6FFE00E4A92D /* EventCVCell.swift in Sources */,
+				C6224F852BC8480D00CABA30 /* GameEventDTO.swift in Sources */,
+				C6224F822BC847D800CABA30 /* GameEventEntity.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
@@ -1345,6 +1440,7 @@
 				AC4E19F028C4666D00542EAE /* CardSetEffectTVCell.swift in Sources */,
 				ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */,
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
+				C6224F7B2BC844A600CABA30 /* GameNoticeDTO.swift in Sources */,
 				C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */,
 				ACD547B128EBF8A000D44ACA /* RecentUserDTO.swift in Sources */,
 				AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */,
