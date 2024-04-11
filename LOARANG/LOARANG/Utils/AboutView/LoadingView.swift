@@ -11,6 +11,7 @@ import SnapKit
 final class LoadingView: UIView {
     init() {
         super.init(frame: .zero)
+        self.isHidden = true
         setLayout()
     }
     
@@ -28,8 +29,10 @@ final class LoadingView: UIView {
     
     func isLoading(_ isLoading: Bool) {
         if isLoading {
+            self.isHidden = false
             activityIndicator.startAnimating()
         } else {
+            self.isHidden = true
             activityIndicator.stopAnimating()
         }
     }
