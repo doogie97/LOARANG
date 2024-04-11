@@ -6,7 +6,7 @@
 //
 
 struct HomeGameInfoEntity {
-    let eventList: [GmaeEventEntity]
+    let eventList: [GameEventEntity]
     let noticeList: [GameNoticeEntity]
     let challengeAbyssDungeonEntity: [ChallengeAbyssDungeonEntity]
 }

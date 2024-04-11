@@ -11,16 +11,24 @@ struct GameEventDTO: Decodable {
     let link: String?
     let startDate: String?
     let endDate: String?
-    let rewardDate: String?
-}
-
-extension GameEventDTO {
+    
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case thumbnail = "Thumbnail"
         case link = "Link"
         case startDate = "StartDate"
         case endDate = "EndDate"
-        case rewardDate = "RewardDate"
     }
+    
+    var toEntity: GameEventEntity {
+        return GameEventEntity(title: self.title ?? "",
+                               thumbnailImgUrl: self.thumbnail ?? "",
+                               url: self.link ?? "",
+                               startDate: self.startDate ?? "",
+                               endDate: self.endDate ?? "")
+    }
+}
+
+extension GameEventDTO {
+
 }
