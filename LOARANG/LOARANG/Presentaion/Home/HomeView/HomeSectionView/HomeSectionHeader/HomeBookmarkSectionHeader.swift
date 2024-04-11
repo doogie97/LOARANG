@@ -27,8 +27,9 @@ final class HomeBookmarkSectionHeader: UICollectionReusableView {
         topSeparator.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(-10)
-            $0.height.equalTo(6)
+            $0.height.equalTo(8)
         }
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(topSeparator.snp.bottom)
             $0.leading.bottom.equalToSuperview()
