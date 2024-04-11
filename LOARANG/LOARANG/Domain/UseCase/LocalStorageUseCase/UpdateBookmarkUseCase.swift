@@ -15,7 +15,7 @@ struct UpdateBookmarkUseCase {
     func execute(user: BookmarkUserEntity) throws {
         let oldValue = ViewChangeManager.shared.bookmarkUsers.value
         do {
-            try localStorage.updateBookmarkUser(user)
+            try localStorage.updateBookmarkUser(user.toDTO)
             let newValue = oldValue.compactMap {
                 if user.name == $0.name {
                     return user

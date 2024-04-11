@@ -11,9 +11,9 @@ protocol LocalStorageRepositoryable {
     func mainUser() -> MainUserDTO?
     func bookmarkUsers() -> [BookmarkUserDTO]
     func changeMainUser(_ user: MainUserDTO) throws
-    func addBookmarkUser(_ user: BookmarkUserEntity) throws
+    func addBookmarkUser(_ user: BookmarkUserDTO) throws
     func deleteBookmarkUser(_ name: String) throws
-    func updateBookmarkUser(_ user: BookmarkUserEntity) throws
+    func updateBookmarkUser(_ user: BookmarkUserDTO) throws
     func recentUsers() -> [RecentUserEntity]
     func addRecentUser(_ user: RecentUserEntity) throws
     func deleteRecentUser(_ name: String) throws
@@ -41,7 +41,7 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         return Array(bookmarkList)
     }
     
-    func addBookmarkUser(_ user: BookmarkUserEntity) throws {
+    func addBookmarkUser(_ user: BookmarkUserDTO) throws {
         let bookmarkUsers = realm.objects(BookmarkUserDTO.self)
         
         guard bookmarkUsers.count < 20 else {
@@ -50,17 +50,17 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         
         do {
             try realm.write {
-                realm.add(user.toEntity)
+                realm.add(user)
             }
         } catch {
             throw LocalStorageError.addBookmarkError
         }
     }
     
-    func updateBookmarkUser(_ user: BookmarkUserEntity) throws {
+    func updateBookmarkUser(_ user: BookmarkUserDTO) throws {
         do {
             try realm.write {
-                realm.add(user.toEntity, update: .modified)
+                realm.add(user, update: .modified)
             }
         } catch {
             throw LocalStorageError.updateBookmarkError
