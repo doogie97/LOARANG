@@ -10,6 +10,7 @@ import RxRelay
 
 protocol Containerable {
     func homeVC() -> HomeVC
+    func makeSearchViewController() -> SearchViewController
 }
 
 final class Container: Containerable {

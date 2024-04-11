@@ -5,17 +5,28 @@
 //  Created by Doogie on 4/11/24.
 //
 
+import RxRelay
+
 protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 
 protocol HomeVMInput {
     func touchSearchButton()
 }
 
-protocol HomeVMOutput {}
+protocol HomeVMOutput {
+    var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
+}
 
 final class HomeVM: HomeVMable {
     //MARK: - Input
     func touchSearchButton() {
-        print("검색 버튼")
+        showNextView.accept(.searchView)
     }
+    
+    //MARK: - Output
+    enum NextViewCase {
+        case searchView
+    }
+    
+    let showNextView = PublishRelay<HomeVM.NextViewCase>()
 }

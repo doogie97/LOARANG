@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RxSwift
 
 final class HomeVC: UIViewController {
     private let container: Containerable
     private let viewModel: HomeVMable
     private let homeView = HomeView()
+    private let disposeBag = DisposeBag()
     
     init(container: Containerable,
          viewModel: HomeVMable) {
@@ -30,6 +32,26 @@ final class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModel()
         homeView.setViewContents(viewModel: viewModel) //임시 호출
+    }
+    
+    private func bindViewModel() {
+        viewModel.showNextView.withUnretained(self)
+            .subscribe { owner, nextViewCase in
+                var nextVC: UIViewController? {
+                    switch nextViewCase {
+                    case .searchView:
+                        return owner.container.makeSearchViewController()
+                    }
+                }
+                
+                guard let nextVC = nextVC else {
+                    return
+                }
+                
+                owner.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
