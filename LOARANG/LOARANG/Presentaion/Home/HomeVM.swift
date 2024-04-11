@@ -21,17 +21,21 @@ protocol HomeVMOutput {
 
 final class HomeVM: HomeVMable {
     private let getHomeGameInfoUseCase: GetHomeGameInfoUseCase
+    private let getHomeCharactersUseCase: GetHomeCharactersUseCase
     
     private var homeGameInfo: HomeGameInfoEntity?
-    private var homeCharacterInfo: HomeCharactersEntity?
+    private var homeCharacters: HomeCharactersEntity?
     
-    init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase) {
+    init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
+         getHomeCharactersUseCase: GetHomeCharactersUseCase) {
         self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
+        self.getHomeCharactersUseCase = getHomeCharactersUseCase
     }
     
     //MARK: - Input
     func viewDidLoad() {
         getHomeGameInfo()
+        getHomeCharacters()
     }
     
     private func getHomeGameInfo() {
@@ -39,7 +43,7 @@ final class HomeVM: HomeVMable {
             do {
                 self.homeGameInfo = try await getHomeGameInfoUseCase.execute()
                 await MainActor.run {
-                    if homeCharacterInfo != nil {
+                    if homeCharacters != nil {
                         setViewContents.accept(())
                     }
                 }
@@ -48,6 +52,13 @@ final class HomeVM: HomeVMable {
                     print(error.errorMessage)
                 }
             }
+        }
+    }
+    
+    private func getHomeCharacters() {
+        self.homeCharacters = getHomeCharactersUseCase.execute()
+        if homeGameInfo != nil {
+            setViewContents.accept(())
         }
     }
     
