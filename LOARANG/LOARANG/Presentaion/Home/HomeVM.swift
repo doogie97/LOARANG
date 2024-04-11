@@ -15,7 +15,7 @@ protocol HomeVMInput {
 }
 
 protocol HomeVMOutput {
-    var setViewContents: PublishRelay<Void> { get }
+    var setViewContents: PublishRelay<HomeVM.ViewContents> { get }
     var isLoading: PublishRelay<Bool> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
 }
@@ -45,9 +45,7 @@ final class HomeVM: HomeVMable {
             do {
                 self.homeGameInfo = try await getHomeGameInfoUseCase.execute()
                 await MainActor.run {
-                    if homeCharacters != nil {
-                        setViewContents.accept(())
-                    }
+                    checkViewContents()
                     isLoading.accept(false)
                 }
             } catch let error {
@@ -61,9 +59,18 @@ final class HomeVM: HomeVMable {
     
     private func getHomeCharacters() {
         self.homeCharacters = getHomeCharactersUseCase.execute()
-        if homeGameInfo != nil {
-            setViewContents.accept(())
+        checkViewContents()
+    }
+    
+    private func checkViewContents() {
+        guard let homeGameInfo = self.homeGameInfo,
+              let homeCharacters = self.homeCharacters else {
+            return
         }
+        
+        setViewContents.accept(ViewContents(viewModel: self,
+                                            homeGameInfo: homeGameInfo,
+                                            homeCharacters: homeCharacters))
     }
     
     func touchSearchButton() {
@@ -75,7 +82,13 @@ final class HomeVM: HomeVMable {
         case searchView
     }
     
-    let setViewContents = PublishRelay<Void>()
+    struct ViewContents {
+        weak var viewModel: HomeVMable?
+        let homeGameInfo: HomeGameInfoEntity
+        let homeCharacters: HomeCharactersEntity
+    }
+    
+    let setViewContents = PublishRelay<ViewContents>()
     let isLoading = PublishRelay<Bool>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()
 }

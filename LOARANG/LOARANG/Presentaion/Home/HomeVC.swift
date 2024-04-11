@@ -38,8 +38,8 @@ final class HomeVC: UIViewController {
     
     private func bindViewModel() {
         viewModel.setViewContents.withUnretained(self)
-            .subscribe { owner, _ in
-                owner.homeView.setViewContents(viewModel: owner.viewModel)
+            .subscribe { owner, viewContents in
+                owner.homeView.setViewContents(viewContents: viewContents)
             }
             .disposed(by: disposeBag)
         

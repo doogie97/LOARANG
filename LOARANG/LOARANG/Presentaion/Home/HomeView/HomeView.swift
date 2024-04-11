@@ -26,8 +26,8 @@ final class HomeView: UIView {
     private let navigationbar = HomeNavigationbar()
     private let homeSectionView = HomeSectionView()
     
-    func setViewContents(viewModel: HomeVMable) {
-        navigationbar.setViewContents(viewModel: viewModel)
+    func setViewContents(viewContents: HomeVM.ViewContents) {
+        navigationbar.setViewContents(viewModel: viewContents.viewModel)
         homeSectionView.layer.opacity = 0
         homeSectionView.setViewContents()
         setLayout()
