@@ -12,7 +12,7 @@ struct RecentUserEntity {
     let image: UIImage
     let `class`: String
     
-    var convertedInfo: RecentUserDTO {
+    var toDTO: RecentUserDTO {
         let recentUser = RecentUserDTO()
         recentUser.name = self.name
         recentUser.imageData = self.image.pngData() ?? Data()

@@ -12,7 +12,7 @@ final class RecentUserDTO: Object {
     @Persisted var imageData: Data
     @Persisted var `class`: String
     
-    var convertedInfo: RecentUserEntity {
+    var toEntity: RecentUserEntity {
         return RecentUserEntity(name: self.name,
                                 image: UIImage(data: imageData) ?? UIImage(),
                                 class: self.`class`)

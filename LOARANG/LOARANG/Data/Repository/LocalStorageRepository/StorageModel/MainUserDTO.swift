@@ -16,7 +16,7 @@ final class MainUserDTO: Object {
     @Persisted var server: String
     @Persisted(primaryKey: true) var type = "main"
     
-    var convertedInfo: MainUserEntity {
+    var toEntity: MainUserEntity {
         return MainUserEntity(image: UIImage(data: self.imageData) ?? UIImage(),
                               battleLV: self.battleLV,
                               name: self.name,

@@ -8,14 +8,14 @@
 import RealmSwift
 
 protocol LocalStorageRepositoryable {
-    func mainUser() -> MainUserEntity?
-    func bookmarkUsers() -> [BookmarkUserEntity]
-    func changeMainUser(_ user: MainUserEntity) throws
-    func addBookmarkUser(_ user: BookmarkUserEntity) throws
+    func mainUser() -> MainUserDTO?
+    func bookmarkUsers() -> [BookmarkUserDTO]
+    func changeMainUser(_ user: MainUserDTO) throws
+    func addBookmarkUser(_ user: BookmarkUserDTO) throws
     func deleteBookmarkUser(_ name: String) throws
-    func updateBookmarkUser(_ user: BookmarkUserEntity) throws
-    func recentUsers() -> [RecentUserEntity]
-    func addRecentUser(_ user: RecentUserEntity) throws
+    func updateBookmarkUser(_ user: BookmarkUserDTO) throws
+    func recentUsers() -> [RecentUserDTO]
+    func addRecentUser(_ user: RecentUserDTO) throws
     func deleteRecentUser(_ name: String) throws
     func clearRecentUsers() throws
 }
@@ -27,25 +27,21 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         self.realm = realm
     }
     
-    func mainUser() -> MainUserEntity? {
+    func mainUser() -> MainUserDTO? {
         guard let mainUserDTO = realm.objects(MainUserDTO.self).first else {
             return nil
         }
         
-        return mainUserDTO.convertedInfo
+        return mainUserDTO
     }
     
-    func bookmarkUsers() -> [BookmarkUserEntity] {
+    func bookmarkUsers() -> [BookmarkUserDTO] {
         let bookmarkList = realm.objects(BookmarkUserDTO.self)
         
-        let bookmarkUsers: [BookmarkUserEntity] = bookmarkList.map {
-            return $0.convertedInfo
-        }
-        
-        return bookmarkUsers
+        return Array(bookmarkList)
     }
     
-    func addBookmarkUser(_ user: BookmarkUserEntity) throws {
+    func addBookmarkUser(_ user: BookmarkUserDTO) throws {
         let bookmarkUsers = realm.objects(BookmarkUserDTO.self)
         
         guard bookmarkUsers.count < 20 else {
@@ -54,17 +50,17 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         
         do {
             try realm.write {
-                realm.add(user.convertedInfo)
+                realm.add(user)
             }
         } catch {
             throw LocalStorageError.addBookmarkError
         }
     }
     
-    func updateBookmarkUser(_ user: BookmarkUserEntity) throws {
+    func updateBookmarkUser(_ user: BookmarkUserDTO) throws {
         do {
             try realm.write {
-                realm.add(user.convertedInfo, update: .modified)
+                realm.add(user, update: .modified)
             }
         } catch {
             throw LocalStorageError.updateBookmarkError
@@ -87,27 +83,23 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         }
     }
     
-    func changeMainUser(_ user: MainUserEntity) throws {                
+    func changeMainUser(_ user: MainUserDTO) throws {
         do {
             try realm.write {
-                realm.add(user.convertedInfo, update: .modified)
+                realm.add(user, update: .modified)
             }
         } catch {
             throw LocalStorageError.changeMainUserError
         }
     }
     
-    func recentUsers() -> [RecentUserEntity] {
+    func recentUsers() -> [RecentUserDTO] {
         let recentUserList = realm.objects(RecentUserDTO.self)
         
-        let recentUsers: [RecentUserEntity] = recentUserList.map {
-            return $0.convertedInfo
-        }
-        
-        return recentUsers.reversed()
+        return Array(recentUserList).reversed()
     }
     
-    func addRecentUser(_ user: RecentUserEntity) throws {
+    func addRecentUser(_ user: RecentUserDTO) throws {
         let recentUserList = realm.objects(RecentUserDTO.self)
         
         if recentUserList.count > 14 {
@@ -127,7 +119,7 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         
         do {
             try realm.write {
-                realm.add(user.convertedInfo)
+                realm.add(user)
             }
         } catch {
             throw LocalStorageError.addRecentUserError

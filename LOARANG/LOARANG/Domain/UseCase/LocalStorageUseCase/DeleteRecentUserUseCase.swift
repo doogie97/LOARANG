@@ -19,7 +19,9 @@ struct DeleteRecentUserUseCase {
             } else {
                 try localStorage.deleteRecentUser(name)
             }
-            ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers())
+            ViewChangeManager.shared.recentUsers.accept(localStorage.recentUsers().compactMap {
+                return $0.toEntity
+            })
         } catch let error {
             throw error
         }

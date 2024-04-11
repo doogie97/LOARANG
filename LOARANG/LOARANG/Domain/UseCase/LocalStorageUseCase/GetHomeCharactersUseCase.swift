@@ -5,6 +5,8 @@
 //  Created by Doogie on 4/10/24.
 //
 
+import UIKit
+
 struct GetHomeCharactersUseCase {
     private let localStorage: LocalStorageRepositoryable
     
@@ -13,9 +15,11 @@ struct GetHomeCharactersUseCase {
     }
     
     func execute() -> HomeCharactersEntity {
-        let mainUser = localStorage.mainUser()
-        let bookmarkUsers = localStorage.bookmarkUsers()
-        return HomeCharactersEntity(mainUser: mainUser,
-                                    bookmarkUsers: bookmarkUsers)
+        let mainUserDto = localStorage.mainUser()
+        let bookmarkUsersDto = localStorage.bookmarkUsers()
+        return HomeCharactersEntity(mainUser: mainUserDto?.toEntity,
+                                    bookmarkUsers: bookmarkUsersDto.compactMap {
+            return $0.toEntity
+        })
     }
 }
