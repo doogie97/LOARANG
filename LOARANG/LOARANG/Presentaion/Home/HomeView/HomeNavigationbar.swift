@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class HomeNavigationbar: UIView {
+    private weak var viewModel: HomeVMable?
     private lazy var title: UILabel = {
         let label = UILabel()
         label.text = "LOARANG"
@@ -35,10 +36,11 @@ final class HomeNavigationbar: UIView {
     }()
     
     @objc private func touchSearchButton() {
-        print("touchSearchButton")
+        viewModel?.touchSearchButton()
     }
     
-    func setViewContents() {
+    func setViewContents(viewModel: HomeVMable?) {
+        self.viewModel = viewModel
         setLayout()
     }
     

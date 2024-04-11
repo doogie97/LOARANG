@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 final class HomeView: UIView {
     private let navigationbar = HomeNavigationbar()
-    func setViewContents() {
+    func setViewContents(viewModel: HomeVMable) {
         self.backgroundColor = .mainBackground
-        navigationbar.setViewContents()
+        navigationbar.setViewContents(viewModel: viewModel)
         setLayout()
     }
     

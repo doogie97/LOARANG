@@ -30,6 +30,6 @@ final class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeView.setViewContents() //임시 호출
+        homeView.setViewContents(viewModel: viewModel) //임시 호출
     }
 }
