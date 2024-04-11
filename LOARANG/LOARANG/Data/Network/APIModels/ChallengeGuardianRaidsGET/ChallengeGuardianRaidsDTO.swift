@@ -9,7 +9,7 @@ struct ChallengeGuardianRaidsDTO: Decodable {
     let raids: [Raid]?
     
     enum CodingKeys: String, CodingKey {
-        case raids = "Raid"
+        case raids = "Raids"
     }
     
     struct Raid: Decodable {
