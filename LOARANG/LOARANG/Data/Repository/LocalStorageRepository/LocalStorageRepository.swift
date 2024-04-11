@@ -8,8 +8,8 @@
 import RealmSwift
 
 protocol LocalStorageRepositoryable {
-    func mainUser() -> MainUserEntity?
-    func bookmarkUsers() -> [BookmarkUserEntity]
+    func mainUser() -> MainUserDTO?
+    func bookmarkUsers() -> [BookmarkUserDTO]
     func changeMainUser(_ user: MainUserEntity) throws
     func addBookmarkUser(_ user: BookmarkUserEntity) throws
     func deleteBookmarkUser(_ name: String) throws
@@ -27,22 +27,18 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         self.realm = realm
     }
     
-    func mainUser() -> MainUserEntity? {
+    func mainUser() -> MainUserDTO? {
         guard let mainUserDTO = realm.objects(MainUserDTO.self).first else {
             return nil
         }
         
-        return mainUserDTO.convertedInfo
+        return mainUserDTO
     }
     
-    func bookmarkUsers() -> [BookmarkUserEntity] {
+    func bookmarkUsers() -> [BookmarkUserDTO] {
         let bookmarkList = realm.objects(BookmarkUserDTO.self)
         
-        let bookmarkUsers: [BookmarkUserEntity] = bookmarkList.map {
-            return $0.convertedInfo
-        }
-        
-        return bookmarkUsers
+        return Array(bookmarkList)
     }
     
     func addBookmarkUser(_ user: BookmarkUserEntity) throws {

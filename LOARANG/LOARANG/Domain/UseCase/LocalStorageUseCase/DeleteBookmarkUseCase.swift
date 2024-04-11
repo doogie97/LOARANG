@@ -13,9 +13,11 @@ struct DeleteBookmarkUseCase {
     }
     
     func execute(name: String) throws {
+        let oldValue = ViewChangeManager.shared.bookmarkUsers.value
         do {
             try localStorage.deleteBookmarkUser(name)
-            ViewChangeManager.shared.bookmarkUsers.accept(localStorage.bookmarkUsers())
+            let newValue = oldValue.filter { $0.name != name }
+            ViewChangeManager.shared.bookmarkUsers.accept(newValue)
         } catch let error {
             throw error
         }
