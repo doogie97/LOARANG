@@ -192,7 +192,7 @@ extension HomeSectionView {
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
         
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(52))
         section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
                                                     elementKind: UICollectionView.elementKindSectionHeader,
                                                     alignment: .topLeading)]
@@ -201,15 +201,21 @@ extension HomeSectionView {
     }
     
     func eventSectionLayout() -> NSCollectionLayoutSection {
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
+        let width = margin(.width, 343) + margin(.width, 8) * 2
+        let height = margin(.width, 178)
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                          heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: size)
+        item.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 0, trailing: margin(.width, 8))
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(width),
+                                               heightDimension: .absolute(height))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
+        section.orthogonalScrollingBehavior = .groupPagingCentered
         
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(52))
         section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
                                                     elementKind: UICollectionView.elementKindSectionHeader,
                                                     alignment: .topLeading)]
@@ -226,7 +232,7 @@ extension HomeSectionView {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
         
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(52))
         section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
                                                     elementKind: UICollectionView.elementKindSectionHeader,
                                                     alignment: .topLeading)]

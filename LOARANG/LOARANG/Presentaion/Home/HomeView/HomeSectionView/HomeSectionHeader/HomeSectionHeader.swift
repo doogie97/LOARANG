@@ -71,7 +71,7 @@ final class HomeSectionHeader: UICollectionReusableView {
         topSeparator.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(-10)
-            $0.height.equalTo(8)
+            $0.height.equalTo(10)
         }
         
         titleLabel.snp.makeConstraints {
