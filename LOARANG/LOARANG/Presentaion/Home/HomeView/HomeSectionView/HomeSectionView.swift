@@ -275,9 +275,9 @@ extension HomeSectionView {
     
     func bookmarkSectionLayout() -> NSCollectionLayoutSection {
         let hasBookmark = !ViewChangeManager.shared.bookmarkUsers.value.isEmpty
-        let itemWidthInset = hasBookmark ? margin(.width, 5) : 0
+        let itemWidthInset = hasBookmark ? margin(.width, 5) : 0.01
         let cellHeight = margin(.width, 155)
-        let cellWidth = hasBookmark ? (itemWidthInset * 2 + cellHeight) : 0
+        let cellWidth = hasBookmark ? (itemWidthInset * 2 + cellHeight) : 0.01
         
         let size = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth),
                                           heightDimension: .absolute(cellHeight))
