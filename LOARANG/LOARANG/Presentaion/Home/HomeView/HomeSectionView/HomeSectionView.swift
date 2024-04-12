@@ -96,17 +96,19 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
     
     //MARK: - Make Cell
     private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
-        var cellData: (imageUrl: String, imageTitle: String?)? {
+        var cellData: (imageUrl: String, imageTitle: String?, textColor: UIColor)? {
             switch section {
             case .challengeAbyssDungeons:
                 let abyssDungeonInfo = self.viewContents?.homeGameInfo.challengeAbyssDungeonEntity[safe: indexPath.row]
-                return (abyssDungeonInfo?.imageUrl ?? "", abyssDungeonInfo?.name)
+                let color = #colorLiteral(red: 0.919945538, green: 0.8131091595, blue: 0.5661830306, alpha: 1)
+                return (abyssDungeonInfo?.imageUrl ?? "", abyssDungeonInfo?.name, color)
             case .challengeGuardianRaids:
                 let guardianRaidInfo = self.viewContents?.homeGameInfo.challengeGuardianRaidsEntity[safe: indexPath.row]
-                return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.name)
+                let color = #colorLiteral(red: 0.919945538, green: 0.8131091595, blue: 0.5661830306, alpha: 1)
+                return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.name, color)
             case .event:
                 let guardianRaidInfo = self.viewContents?.homeGameInfo.eventList[safe: indexPath.row]
-                return (guardianRaidInfo?.thumbnailImgUrl ?? "", guardianRaidInfo?.endDate)
+                return (guardianRaidInfo?.thumbnailImgUrl ?? "", guardianRaidInfo?.endDate, .white)
             case .notice, .mainUser, .bookmark:
                 return nil
             }
@@ -117,8 +119,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return UICollectionViewCell()
         }
         
-        imageCell.setCellContents(imageUrl: cellData.imageUrl,
-                                  imageTitle: cellData.imageTitle)
+        imageCell.setCellContents(cellData)
         return imageCell
     }
     

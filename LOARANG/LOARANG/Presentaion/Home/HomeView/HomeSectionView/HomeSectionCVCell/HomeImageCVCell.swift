@@ -41,11 +41,12 @@ final class HomeImageCVCell: UICollectionViewCell {
         return view
     }()
     
-    func setCellContents(imageUrl: String, imageTitle: String?) {
-        imageTitleLabel.text = imageTitle
-        self.titleLabelView.isHidden = imageTitle == nil
+    func setCellContents(_ cellData: (imageUrl: String, imageTitle: String?, textColor: UIColor)) {
+        imageTitleLabel.text = cellData.imageTitle
+        imageTitleLabel.textColor = cellData.textColor
+        self.titleLabelView.isHidden = cellData.imageTitle == nil
         setLayout()
-        imageView.setImage(imageUrl)
+        imageView.setImage(cellData.imageUrl)
     }
     
     private func setLayout() {
