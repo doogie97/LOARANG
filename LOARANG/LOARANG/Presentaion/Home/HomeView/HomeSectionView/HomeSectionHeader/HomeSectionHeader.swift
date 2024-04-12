@@ -20,12 +20,12 @@ final class HomeSectionHeader: UICollectionReusableView {
     }
     
     private lazy var topSeparator = UIView()
-    private lazy var titleLabel = blackHanSansLabel()
-    private lazy var bookmarkCountLabel = oneFontLabel(size: 15, color: .white)
+    private lazy var titleLabel = pretendardLabel(size: 18, family: .Bold)
+    private lazy var bookmarkCountLabel = pretendardLabel(size: 16, family: .Regular)
     private lazy var moreButton = {
         let button = UIButton()
         button.setTitle("더보기", for: .normal)
-        button.titleLabel?.font = UIFont.one(size: 13, family: .Bold)
+        button.titleLabel?.font = .pretendard(size: 14, family: .Regular)
         button.addTarget(self, action: #selector(touchMoreButton), for: .touchUpInside)
         
         return button

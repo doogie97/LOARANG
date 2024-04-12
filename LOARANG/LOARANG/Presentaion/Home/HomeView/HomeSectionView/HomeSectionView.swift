@@ -172,7 +172,7 @@ extension HomeSectionView {
                                                                leading: UIView().margin(.width, 8),
                                                                bottom: 20,
                                                                trailing: UIView().margin(.width, 8))
-        static let sectionBasicHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)),
+        static let sectionBasicHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(65)),
                                                                                     elementKind: UICollectionView.elementKindSectionHeader,
                                                                                     alignment: .topLeading)
     }
