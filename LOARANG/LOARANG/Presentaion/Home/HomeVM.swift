@@ -47,12 +47,6 @@ final class HomeVM: HomeVMable {
     }
     
     private func bindViewChangeManager() {
-        ViewChangeManager.shared.mainUser.withUnretained(self)
-            .subscribe { owner, mainUser in
-                print("\(mainUser?.name)으로 대표 캐릭터 수정")
-            }
-            .disposed(by: disposeBag)
-        
         ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
             .subscribe { owner, _ in
                 if !owner.isViewOnTop {
