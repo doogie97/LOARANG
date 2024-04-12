@@ -5,6 +5,8 @@
 //  Created by Doogie on 4/12/24.
 //
 
+import Foundation
+
 struct GameEventDTO: Decodable {
     let title: String?
     let thumbnail: String?
@@ -22,13 +24,8 @@ struct GameEventDTO: Decodable {
     
     var toEntity: GameEventEntity {
         return GameEventEntity(title: self.title ?? "",
-                               thumbnailImgUrl: self.thumbnail ?? "",
-                               url: self.link ?? "",
-                               startDate: self.startDate ?? "",
-                               endDate: self.endDate ?? "")
+                               imageUrl: self.thumbnail ?? "",
+                               eventUrl: self.link ?? "",
+                               endDate: "~ " + (self.endDate ?? "").convetDateType)
     }
-}
-
-extension GameEventDTO {
-
 }

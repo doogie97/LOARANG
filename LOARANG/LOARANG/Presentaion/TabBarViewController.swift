@@ -25,8 +25,18 @@ final class TabBarViewController: UITabBarController {
     }
     
     private func setTabBarView() {
+        setTopLine()
         self.tabBar.tintColor = .buttonColor
         self.setViewControllers([mainVC, settingVC], animated: false)
+    }
+    
+    private func setTopLine() {
+        let topLineLayer = CALayer()
+        let lineHeight: CGFloat = 0.5
+        topLineLayer.frame = CGRect(x: 0, y: 0, width: self.tabBar.frame.width, height: lineHeight)
+        topLineLayer.backgroundColor = UIColor.systemGray.cgColor
+
+        self.tabBar.layer.addSublayer(topLineLayer)
     }
     
     private lazy var mainVC: UIViewController = {

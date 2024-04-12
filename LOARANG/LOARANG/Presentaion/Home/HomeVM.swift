@@ -6,6 +6,7 @@
 //
 
 import RxRelay
+import RxSwift
 
 protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 
@@ -23,14 +24,31 @@ protocol HomeVMOutput {
 final class HomeVM: HomeVMable {
     private let getHomeGameInfoUseCase: GetHomeGameInfoUseCase
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
+    private let disposeBag = DisposeBag()
     
     private var homeGameInfo: HomeGameInfoEntity?
-    private var homeCharacters: HomeCharactersEntity?
+    private var bookmarkUsers = [BookmarkUserEntity]()
     
     init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase) {
         self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
+        bindViewChangeManager()
+    }
+    
+    private func bindViewChangeManager() {
+        ViewChangeManager.shared.mainUser.withUnretained(self)
+            .subscribe { owner, mainUser in
+                print("\(mainUser?.name)으로 대표 캐릭터 수정")
+            }
+            .disposed(by: disposeBag)
+        
+        ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
+            .subscribe { owner, bookmarkUsers in
+                self.bookmarkUsers = bookmarkUsers
+                print("VM의 BookmarkUsers와 비교해 해당 인덱스만 리로드")
+            }
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Input
@@ -43,9 +61,11 @@ final class HomeVM: HomeVMable {
         isLoading.accept(true)
         Task {
             do {
-                self.homeGameInfo = try await getHomeGameInfoUseCase.execute()
+                let homeGameInfo = try await getHomeGameInfoUseCase.execute()
+                self.homeGameInfo = homeGameInfo
                 await MainActor.run {
-                    checkViewContents()
+                    setViewContents.accept(ViewContents(viewModel: self,
+                                                        homeGameInfo: homeGameInfo))
                     isLoading.accept(false)
                 }
             } catch let error {
@@ -58,19 +78,9 @@ final class HomeVM: HomeVMable {
     }
     
     private func getHomeCharacters() {
-        self.homeCharacters = getHomeCharactersUseCase.execute()
-        checkViewContents()
-    }
-    
-    private func checkViewContents() {
-        guard let homeGameInfo = self.homeGameInfo,
-              let homeCharacters = self.homeCharacters else {
-            return
-        }
-        
-        setViewContents.accept(ViewContents(viewModel: self,
-                                            homeGameInfo: homeGameInfo,
-                                            homeCharacters: homeCharacters))
+        let homeCharacters = getHomeCharactersUseCase.execute()
+        ViewChangeManager.shared.mainUser.accept(homeCharacters.mainUser)
+        ViewChangeManager.shared.bookmarkUsers.accept(homeCharacters.bookmarkUsers)
     }
     
     func touchSearchButton() {
@@ -85,7 +95,6 @@ final class HomeVM: HomeVMable {
     struct ViewContents {
         weak var viewModel: HomeVMable?
         let homeGameInfo: HomeGameInfoEntity
-        let homeCharacters: HomeCharactersEntity
     }
     
     let setViewContents = PublishRelay<ViewContents>()

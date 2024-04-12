@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class HomeSectionView: UIView {
+    private var viewContents: HomeVM.ViewContents?
     enum SectionCase: Int, CaseIterable {
         case mainUser
         case bookmark
@@ -21,7 +22,8 @@ final class HomeSectionView: UIView {
     private lazy var sectionCV = UICollectionView(frame: .zero,
                                                   collectionViewLayout: UICollectionViewLayout())
     
-    func setViewContents() {
+    func setViewContents(viewContents: HomeVM.ViewContents) {
+        self.viewContents = viewContents
         self.sectionCV = createSectionCV()
         setLayout()
     }
@@ -80,28 +82,49 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             
             bookmarkUserCell.setCellContents()
             return bookmarkUserCell
-        case .challengeAbyssDungeons, .challengeGuardianRaids:
-            guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeImageCVCell.self)", for: indexPath) as? HomeImageCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            eventCell.setCellContents()
-            return eventCell
-        case .event:
-            guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeEventCVCell.self)", for: indexPath) as? HomeEventCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            eventCell.setCellContents()
-            return eventCell
+        case .challengeAbyssDungeons, .challengeGuardianRaids, .event:
+            return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
         case .notice:
-            guard let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeNoticeCVCell.self)", for: indexPath) as? HomeNoticeCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            noticeCell.setCellContents()
-            return noticeCell
+            return noticeCell(collectionView: collectionView, indexPath: indexPath)
         }
+    }
+    
+    //MARK: - Make Cell
+    private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
+        var cellData: (imageUrl: String, imageTitle: String?, textColor: UIColor)? {
+            switch section {
+            case .challengeAbyssDungeons:
+                let abyssDungeonInfo = self.viewContents?.homeGameInfo.challengeAbyssDungeonEntity[safe: indexPath.row]
+                let color = #colorLiteral(red: 0.919945538, green: 0.8131091595, blue: 0.5661830306, alpha: 1)
+                return (abyssDungeonInfo?.imageUrl ?? "", abyssDungeonInfo?.name, color)
+            case .challengeGuardianRaids:
+                let guardianRaidInfo = self.viewContents?.homeGameInfo.challengeGuardianRaidsEntity[safe: indexPath.row]
+                let color = #colorLiteral(red: 0.919945538, green: 0.8131091595, blue: 0.5661830306, alpha: 1)
+                return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.name, color)
+            case .event:
+                let guardianRaidInfo = self.viewContents?.homeGameInfo.eventList[safe: indexPath.row]
+                return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.endDate, .white)
+            case .notice, .mainUser, .bookmark:
+                return nil
+            }
+        }
+        
+        guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeImageCVCell.self)", for: indexPath) as? HomeImageCVCell,
+              let cellData = cellData else {
+            return UICollectionViewCell()
+        }
+        
+        imageCell.setCellContents(cellData)
+        return imageCell
+    }
+    
+    private func noticeCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeNoticeCVCell.self)", for: indexPath) as? HomeNoticeCVCell else {
+            return UICollectionViewCell()
+        }
+        
+        noticeCell.setCellContents(noticeInfo: self.viewContents?.homeGameInfo.noticeList[safe: indexPath.row])
+        return noticeCell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -144,6 +167,15 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
 
 //MARK: - Make CollectionView Layout
 extension HomeSectionView {
+    enum SectionInsetInfo {
+        static let sectionBasicInset = NSDirectionalEdgeInsets(top: 0,
+                                                               leading: UIView().margin(.width, 8),
+                                                               bottom: 20,
+                                                               trailing: UIView().margin(.width, 8))
+        static let sectionBasicHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(65)),
+                                                                                    elementKind: UICollectionView.elementKindSectionHeader,
+                                                                                    alignment: .topLeading)
+    }
     private func createSectionCV() -> UICollectionView {
         let layout = createSectionCVLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -154,7 +186,6 @@ extension HomeSectionView {
         
         collectionView.register(HomeMainUserCVCell.self, forCellWithReuseIdentifier: "\(HomeMainUserCVCell.self)")
         collectionView.register(HomeBookmarkUserCVCell.self, forCellWithReuseIdentifier: "\(HomeBookmarkUserCVCell.self)")
-        collectionView.register(HomeEventCVCell.self, forCellWithReuseIdentifier: "\(HomeEventCVCell.self)")
         collectionView.register(HomeNoticeCVCell.self, forCellWithReuseIdentifier: "\(HomeNoticeCVCell.self)")
         collectionView.register(HomeImageCVCell.self, forCellWithReuseIdentifier: "\(HomeImageCVCell.self)")
         
@@ -213,12 +244,8 @@ extension HomeSectionView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
@@ -246,12 +273,8 @@ extension HomeSectionView {
                                                heightDimension: .absolute(height))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
@@ -268,31 +291,23 @@ extension HomeSectionView {
                                                heightDimension: .absolute(height))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
         section.orthogonalScrollingBehavior = .groupPagingCentered
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
     
     func noticeSectionLayout() -> NSCollectionLayoutSection {
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(55))
         let item = NSCollectionLayoutItem(layoutSize: size)
-        item.contentInsets = .init(top: 0, leading: margin(.width, 12), bottom: 10, trailing: margin(.width, 12))
+        item.contentInsets = .init(top: 0, leading: margin(.width, 12), bottom: 8, trailing: margin(.width, 12))
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(55))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
