@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class HomeSectionView: UIView {
+    private var viewContents: HomeVM.ViewContents?
     enum SectionCase: Int, CaseIterable {
         case mainUser
         case bookmark
@@ -21,7 +22,8 @@ final class HomeSectionView: UIView {
     private lazy var sectionCV = UICollectionView(frame: .zero,
                                                   collectionViewLayout: UICollectionViewLayout())
     
-    func setViewContents() {
+    func setViewContents(viewContents: HomeVM.ViewContents) {
+        self.viewContents = viewContents
         self.sectionCV = createSectionCV()
         setLayout()
     }
@@ -81,12 +83,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             bookmarkUserCell.setCellContents()
             return bookmarkUserCell
         case .challengeAbyssDungeons, .challengeGuardianRaids:
-            guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeImageCVCell.self)", for: indexPath) as? HomeImageCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            eventCell.setCellContents()
-            return eventCell
+            return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
         case .event:
             guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeEventCVCell.self)", for: indexPath) as? HomeEventCVCell else {
                 return UICollectionViewCell()
@@ -102,6 +99,32 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             noticeCell.setCellContents()
             return noticeCell
         }
+    }
+    
+    private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
+        var cellData: (imageUrl: String, imageTitle: String?)? {
+            if section == .challengeAbyssDungeons {
+                let abyssDungeonInfo = self.viewContents?.homeGameInfo.challengeAbyssDungeonEntity[safe: indexPath.row]
+                return (abyssDungeonInfo?.imageUrl ?? "", abyssDungeonInfo?.name)
+            }
+            
+            if section == .challengeGuardianRaids {
+                let guardianRaidInfo = self.viewContents?.homeGameInfo.challengeGuardianRaidsEntity[safe: indexPath.row]
+                return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.name)
+            }
+            
+            return nil
+        }
+        
+        guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeImageCVCell.self)", for: indexPath) as? HomeImageCVCell,
+              let cellData = cellData else {
+            return UICollectionViewCell()
+        }
+
+        
+        imageCell.setCellContents(imageUrl: cellData.imageUrl,
+                                  imageTitle: cellData.imageTitle)
+        return imageCell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

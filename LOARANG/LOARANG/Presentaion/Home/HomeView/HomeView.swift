@@ -29,7 +29,7 @@ final class HomeView: UIView {
     func setViewContents(viewContents: HomeVM.ViewContents) {
         navigationbar.setViewContents(viewModel: viewContents.viewModel)
         homeSectionView.layer.opacity = 0
-        homeSectionView.setViewContents()
+        homeSectionView.setViewContents(viewContents: viewContents)
         setLayout()
     }
     
