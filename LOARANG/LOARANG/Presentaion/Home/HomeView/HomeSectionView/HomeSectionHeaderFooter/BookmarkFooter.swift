@@ -17,8 +17,8 @@ final class BookmarkFooter: UICollectionReusableView {
         let button = UIButton(type: .system)
         button.setTitle("캐릭터 검색하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .pretendard(size: 16, family: .Bold)
-        button.backgroundColor = .systemBlue
+        button.titleLabel?.font = .pretendard(size: 14, family: .Bold)
+        button.backgroundColor = #colorLiteral(red: 0.3933520469, green: 0.4040421268, blue: 0.9664957529, alpha: 1)
         button.clipsToBounds = true
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(touchSearchButton), for: .touchUpInside)
@@ -57,7 +57,7 @@ final class BookmarkFooter: UICollectionReusableView {
         searchButton.snp.makeConstraints {
             $0.top.equalTo(emptyLabel.snp.bottom).inset(-16)
             $0.leading.trailing.equalToSuperview().inset(margin(.width, 48))
-            $0.height.equalTo(36)
+            $0.height.equalTo(40)
         }
     }
 }
