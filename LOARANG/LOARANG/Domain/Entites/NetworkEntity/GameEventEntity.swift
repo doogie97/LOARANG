@@ -7,8 +7,7 @@
 
 struct GameEventEntity {
     let title: String
-    let thumbnailImgUrl: String
-    let url: String
-    let startDate: String
+    let imageUrl: String
+    let eventUrl: String
     let endDate: String
 }

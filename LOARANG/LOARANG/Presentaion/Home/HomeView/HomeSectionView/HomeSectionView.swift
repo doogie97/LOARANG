@@ -108,7 +108,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                 return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.name, color)
             case .event:
                 let guardianRaidInfo = self.viewContents?.homeGameInfo.eventList[safe: indexPath.row]
-                return (guardianRaidInfo?.thumbnailImgUrl ?? "", guardianRaidInfo?.endDate, .white)
+                return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.endDate, .white)
             case .notice, .mainUser, .bookmark:
                 return nil
             }
