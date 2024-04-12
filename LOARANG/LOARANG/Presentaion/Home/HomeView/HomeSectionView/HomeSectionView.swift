@@ -82,10 +82,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             
             bookmarkUserCell.setCellContents()
             return bookmarkUserCell
-        case .challengeAbyssDungeons, .challengeGuardianRaids:
+        case .challengeAbyssDungeons, .challengeGuardianRaids, .event:
             return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
-        case .event:
-            return eventCVCell(collectionView: collectionView, indexPath: indexPath)
         case .notice:
             guard let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeNoticeCVCell.self)", for: indexPath) as? HomeNoticeCVCell else {
                 return UICollectionViewCell()
@@ -97,35 +95,27 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     //MARK: - Make Cell
-    private func eventCVCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let event = self.viewContents?.homeGameInfo.eventList[safe: indexPath.row],
-              let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeEventCVCell.self)", for: indexPath) as? HomeEventCVCell else {
-            return UICollectionViewCell()
-        }
-        eventCell.setCellContents(event: event)
-        return eventCell
-    }
-    
     private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
         var cellData: (imageUrl: String, imageTitle: String?)? {
-            if section == .challengeAbyssDungeons {
+            switch section {
+            case .challengeAbyssDungeons:
                 let abyssDungeonInfo = self.viewContents?.homeGameInfo.challengeAbyssDungeonEntity[safe: indexPath.row]
                 return (abyssDungeonInfo?.imageUrl ?? "", abyssDungeonInfo?.name)
-            }
-            
-            if section == .challengeGuardianRaids {
+            case .challengeGuardianRaids:
                 let guardianRaidInfo = self.viewContents?.homeGameInfo.challengeGuardianRaidsEntity[safe: indexPath.row]
                 return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.name)
+            case .event:
+                let guardianRaidInfo = self.viewContents?.homeGameInfo.eventList[safe: indexPath.row]
+                return (guardianRaidInfo?.thumbnailImgUrl ?? "", guardianRaidInfo?.endDate)
+            case .notice, .mainUser, .bookmark:
+                return nil
             }
-            
-            return nil
         }
         
         guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeImageCVCell.self)", for: indexPath) as? HomeImageCVCell,
               let cellData = cellData else {
             return UICollectionViewCell()
         }
-
         
         imageCell.setCellContents(imageUrl: cellData.imageUrl,
                                   imageTitle: cellData.imageTitle)
@@ -191,7 +181,6 @@ extension HomeSectionView {
         
         collectionView.register(HomeMainUserCVCell.self, forCellWithReuseIdentifier: "\(HomeMainUserCVCell.self)")
         collectionView.register(HomeBookmarkUserCVCell.self, forCellWithReuseIdentifier: "\(HomeBookmarkUserCVCell.self)")
-        collectionView.register(HomeEventCVCell.self, forCellWithReuseIdentifier: "\(HomeEventCVCell.self)")
         collectionView.register(HomeNoticeCVCell.self, forCellWithReuseIdentifier: "\(HomeNoticeCVCell.self)")
         collectionView.register(HomeImageCVCell.self, forCellWithReuseIdentifier: "\(HomeImageCVCell.self)")
         

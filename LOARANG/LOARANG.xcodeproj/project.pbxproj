@@ -14,7 +14,6 @@
 		7162BF802BC7C50300702530 /* HomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF7F2BC7C50300702530 /* HomeSectionView.swift */; };
 		7162BF832BC7CF8A00702530 /* HomeMainUserCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF822BC7CF8A00702530 /* HomeMainUserCVCell.swift */; };
 		7162BF852BC7CFD300702530 /* HomeBookmarkUserCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */; };
-		7162BF872BC7D09000702530 /* HomeEventCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF862BC7D09000702530 /* HomeEventCVCell.swift */; };
 		7162BF892BC7D0A100702530 /* HomeNoticeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */; };
 		7162BF8C2BC7D65D00702530 /* HomeSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF8B2BC7D65D00702530 /* HomeSectionHeader.swift */; };
 		717713272BC8E1FD0040C602 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */; };
@@ -216,7 +215,6 @@
 		7162BF7F2BC7C50300702530 /* HomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionView.swift; sourceTree = "<group>"; };
 		7162BF822BC7CF8A00702530 /* HomeMainUserCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainUserCVCell.swift; sourceTree = "<group>"; };
 		7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBookmarkUserCVCell.swift; sourceTree = "<group>"; };
-		7162BF862BC7D09000702530 /* HomeEventCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventCVCell.swift; sourceTree = "<group>"; };
 		7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeCVCell.swift; sourceTree = "<group>"; };
 		7162BF8B2BC7D65D00702530 /* HomeSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionHeader.swift; sourceTree = "<group>"; };
 		717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
@@ -465,7 +463,6 @@
 			children = (
 				7162BF822BC7CF8A00702530 /* HomeMainUserCVCell.swift */,
 				7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */,
-				7162BF862BC7D09000702530 /* HomeEventCVCell.swift */,
 				7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */,
 				C6224F732BC8367900CABA30 /* HomeImageCVCell.swift */,
 			);
@@ -1440,7 +1437,6 @@
 				C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */,
 				C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */,
 				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
-				7162BF872BC7D09000702530 /* HomeEventCVCell.swift in Sources */,
 				ACB3813928D4562E0081F8A1 /* OwnCharacterCell.swift in Sources */,
 				C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */,
 				ACDE28A828B0A8E800BFD206 /* EquipmentDetailView.swift in Sources */,
