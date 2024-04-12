@@ -15,8 +15,7 @@ protocol HomeVMInput {
     func viewDidLoad()
     func viewDidAppear()
     func viewDidDisAppear()
-    func touchSearchButton()
-    func touchCell(_ touchCase: HomeVM.TouchCellCase)
+    func touchViewAction(_ touchCase: HomeVM.ActionCase)
 }
 
 protocol HomeVMOutput {
@@ -103,30 +102,35 @@ final class HomeVM: HomeVMable {
         ViewChangeManager.shared.bookmarkUsers.accept(homeCharacters.bookmarkUsers)
     }
     
-    func touchSearchButton() {
-        showNextView.accept(.searchView)
-    }
-    
-    enum TouchCellCase {
+    enum ActionCase {
         case mainUser
         case bookmarkUser(rowIndex: Int)
         case bookmarkStarButton(rowIndex: Int)
+        case search
         case event(rowIndex: Int)
         case notice(rowIndex: Int)
+        case moreEvent
+        case moreNotice
     }
     
-    func touchCell(_ touchCase: TouchCellCase) {
-        switch touchCase {
+    func touchViewAction(_ actionCase: ActionCase) {
+        switch actionCase {
         case .mainUser:
             print("메인 유저 검색")
         case .bookmarkUser(let rowIndex):
             print("\(rowIndex) 북마크 유저 검색")
         case .bookmarkStarButton(let rowIndex):
             deleteBookmarkUser(rowIndex)
+        case .search:
+            showNextView.accept(.searchView)
         case .event(let rowIndex):
             showNextView.accept(.webView(url: homeGameInfo?.eventList[safe: rowIndex]?.eventUrl, title: "이벤트"))
         case .notice(let rowIndex):
             showNextView.accept(.webView(url: homeGameInfo?.noticeList[safe: rowIndex]?.url, title: "공지사항"))
+        case .moreEvent:
+            showNextView.accept(.webView(url: "https://lostark.game.onstove.com/News/Event/Now", title: "이벤트"))
+        case .moreNotice:
+            showNextView.accept(.webView(url: "https://lostark.game.onstove.com/News/Notice/List", title: "공지사항"))
         }
     }
     

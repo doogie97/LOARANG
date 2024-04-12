@@ -39,7 +39,7 @@ final class HomeBookmarkUserCVCell: UICollectionViewCell {
         guard let indexPath = self.indexPath else {
             return
         }
-        viewModel?.touchCell(.bookmarkStarButton(rowIndex: indexPath.row))
+        viewModel?.touchViewAction(.bookmarkStarButton(rowIndex: indexPath.row))
     }
     
     private lazy var characterNameLabel = pretendardLabel(size: 16, alignment: .center)

@@ -194,13 +194,13 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         
         switch section {
         case .mainUser:
-            viewModel?.touchCell(.mainUser)
+            viewModel?.touchViewAction(.mainUser)
         case .bookmark:
-            viewModel?.touchCell(.bookmarkUser(rowIndex: indexPath.row))
+            viewModel?.touchViewAction(.bookmarkUser(rowIndex: indexPath.row))
         case .event:
-            viewModel?.touchCell(.event(rowIndex: indexPath.row))
+            viewModel?.touchViewAction(.event(rowIndex: indexPath.row))
         case .notice:
-            viewModel?.touchCell(.notice(rowIndex: indexPath.row))
+            viewModel?.touchViewAction(.notice(rowIndex: indexPath.row))
         case .challengeAbyssDungeons, .challengeGuardianRaids:
             return
         }

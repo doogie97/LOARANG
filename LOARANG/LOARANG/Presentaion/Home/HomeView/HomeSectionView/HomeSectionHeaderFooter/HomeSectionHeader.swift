@@ -41,9 +41,9 @@ final class HomeSectionHeader: UICollectionReusableView {
         
         switch headerCase {
         case .event:
-            print("이벤트 더 보기")
+            viewModel?.touchViewAction(.moreEvent)
         case .notice:
-            print("공지사항 더 보기")
+            viewModel?.touchViewAction(.moreNotice)
         case .bookmark(_), .challengeAbyssDungeons, .challengeGuardianRaids:
             return
         }
