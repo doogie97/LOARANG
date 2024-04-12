@@ -6,8 +6,18 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIImageView {
+    func setImage(_ imageUrl: String?) {
+        guard let url = URL(string: imageUrl ?? "") else {
+            return
+        }
+        let options: KingfisherOptionsInfo = [.cacheMemoryOnly]
+        self.kf.setImage(with: url,
+                         options: options)
+    }
+    
     func setImage(urlString: String?) -> URLSessionDataTask? {
         guard let url  = URL(string: urlString ?? "") else {
             return nil
