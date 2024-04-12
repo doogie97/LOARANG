@@ -20,6 +20,7 @@ protocol HomeVMInput {
 protocol HomeVMOutput {
     var setViewContents: PublishRelay<HomeVM.ViewContents> { get }
     var isLoading: PublishRelay<Bool> { get }
+    var showAlert: PublishRelay<String> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
 }
 
@@ -72,7 +73,7 @@ final class HomeVM: HomeVMable {
                 }
             } catch let error {
                 await MainActor.run {
-                    print(error.errorMessage)
+                    showAlert.accept(error.errorMessage)
                     isLoading.accept(false)
                 }
             }
@@ -105,14 +106,14 @@ final class HomeVM: HomeVMable {
         case .event(let rowIndex):
             guard let eventUrl = homeGameInfo?.eventList[safe: rowIndex]?.eventUrl,
                   let url = URL(string: eventUrl) else {
-                print("해당 이벤트를 찾을 수 없습니다.")
+                showAlert.accept("해당 이벤트를 찾을 수 없습니다.")
                 return
             }
             showNextView.accept(.webView(url: url, title: "이벤트"))
         case .notice(let rowIndex):
             guard let eventUrl = homeGameInfo?.noticeList[safe: rowIndex]?.url,
                   let url = URL(string: eventUrl) else {
-                print("해당 공지사항을 찾을 수 없습니다.")
+                showAlert.accept("해당 공지사항을 찾을 수 없습니다.")
                 return
             }
             showNextView.accept(.webView(url: url, title: "공지사항"))
@@ -132,5 +133,6 @@ final class HomeVM: HomeVMable {
     
     let setViewContents = PublishRelay<ViewContents>()
     let isLoading = PublishRelay<Bool>()
+    let showAlert = PublishRelay<String>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()
 }

@@ -67,5 +67,11 @@ final class HomeVC: UIViewController {
                 owner.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.showAlert.withUnretained(self)
+            .subscribe { owner, message in
+                owner.showAlert(message: message)
+            }
+            .disposed(by: disposeBag)
     }
 }
