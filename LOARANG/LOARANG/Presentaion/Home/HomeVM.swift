@@ -108,6 +108,7 @@ final class HomeVM: HomeVMable {
     enum TouchCellCase {
         case mainUser
         case bookmarkUser(rowIndex: Int)
+        case bookmarkStarButton(rowIndex: Int)
         case event(rowIndex: Int)
         case notice(rowIndex: Int)
     }
@@ -118,6 +119,8 @@ final class HomeVM: HomeVMable {
             print("메인 유저 검색")
         case .bookmarkUser(let rowIndex):
             print("\(rowIndex) 북마크 유저 검색")
+        case .bookmarkStarButton(let rowIndex):
+            print("\(rowIndex) 북마크 유저 삭제")
         case .event(let rowIndex):
             guard let eventUrl = homeGameInfo?.eventList[safe: rowIndex]?.eventUrl,
                   let url = URL(string: eventUrl) else {

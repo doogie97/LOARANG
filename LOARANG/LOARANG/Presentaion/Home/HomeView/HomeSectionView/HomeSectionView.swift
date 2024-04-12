@@ -93,7 +93,9 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return UICollectionViewCell()
         }
         
-        bookmarkUserCell.setCellContents(userInfo: userInfo)
+        bookmarkUserCell.setCellContents(indexPath: indexPath,
+                                         viewModel: viewModel,
+                                         userInfo: userInfo)
         return bookmarkUserCell
     }
     private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
