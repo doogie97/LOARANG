@@ -167,6 +167,15 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
 
 //MARK: - Make CollectionView Layout
 extension HomeSectionView {
+    enum SectionInsetInfo {
+        static let sectionBasicInset = NSDirectionalEdgeInsets(top: 0,
+                                                               leading: UIView().margin(.width, 8),
+                                                               bottom: 20,
+                                                               trailing: UIView().margin(.width, 8))
+        static let sectionBasicHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)),
+                                                                                    elementKind: UICollectionView.elementKindSectionHeader,
+                                                                                    alignment: .topLeading)
+    }
     private func createSectionCV() -> UICollectionView {
         let layout = createSectionCVLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -236,12 +245,8 @@ extension HomeSectionView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
@@ -269,12 +274,8 @@ extension HomeSectionView {
                                                heightDimension: .absolute(height))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
@@ -291,13 +292,9 @@ extension HomeSectionView {
                                                heightDimension: .absolute(height))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
         section.orthogonalScrollingBehavior = .groupPagingCentered
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
@@ -310,12 +307,8 @@ extension HomeSectionView {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: margin(.height, 20), trailing: margin(.width, 8))
-        
-        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
-        section.boundarySupplementaryItems = [.init(layoutSize: sectionHeaderSize,
-                                                    elementKind: UICollectionView.elementKindSectionHeader,
-                                                    alignment: .topLeading)]
+        section.contentInsets = SectionInsetInfo.sectionBasicInset
+        section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         
         return section
     }
