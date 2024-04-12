@@ -85,12 +85,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         case .challengeAbyssDungeons, .challengeGuardianRaids:
             return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
         case .event:
-            guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeEventCVCell.self)", for: indexPath) as? HomeEventCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            eventCell.setCellContents()
-            return eventCell
+            return eventCVCell(collectionView: collectionView, indexPath: indexPath)
         case .notice:
             guard let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeNoticeCVCell.self)", for: indexPath) as? HomeNoticeCVCell else {
                 return UICollectionViewCell()
@@ -99,6 +94,16 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             noticeCell.setCellContents()
             return noticeCell
         }
+    }
+    
+    //MARK: - Make Cell
+    private func eventCVCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let event = self.viewContents?.homeGameInfo.eventList[safe: indexPath.row],
+              let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeEventCVCell.self)", for: indexPath) as? HomeEventCVCell else {
+            return UICollectionViewCell()
+        }
+        eventCell.setCellContents(event: event)
+        return eventCell
     }
     
     private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
