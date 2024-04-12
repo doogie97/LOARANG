@@ -292,7 +292,11 @@ extension HomeSectionView {
         section.contentInsets = SectionInsetInfo.sectionBasicInset
         section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
         if !hasBookmark {
-            let sectionFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(cellHeight))
+            let sectionBottomInset = section.contentInsets.bottom
+            let footerHeight = cellHeight + sectionBottomInset
+            section.contentInsets.bottom = 0
+            let sectionFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                           heightDimension: .absolute(footerHeight))
             section.boundarySupplementaryItems.append(.init(layoutSize: sectionFooterSize,
                                                             elementKind: UICollectionView.elementKindSectionFooter,
                                                             alignment: .bottomLeading))
