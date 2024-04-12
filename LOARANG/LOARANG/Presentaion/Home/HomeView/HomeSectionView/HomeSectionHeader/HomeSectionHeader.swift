@@ -7,9 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class HomeSectionHeader: UICollectionReusableView {
+    private weak var viewModel: HomeVMable?
     private var headerCase: HeaderCase?
+    private var disposeBag = DisposeBag()
     
     enum HeaderCase {
         case bookmark(count: Int)
@@ -46,8 +49,10 @@ final class HomeSectionHeader: UICollectionReusableView {
         }
     }
     
-    func setViewContents(headerCase: HeaderCase) {
+    func setViewContents(viewModel: HomeVMable?,
+                         headerCase: HeaderCase) {
         topSeparator.backgroundColor = .tableViewColor
+        self.viewModel = viewModel
         self.headerCase = headerCase
         switch headerCase {
         case .bookmark(let count):
@@ -67,8 +72,18 @@ final class HomeSectionHeader: UICollectionReusableView {
         case .notice:
             titleLabel.text = "공지사항"
         }
-        
+        bindViewChangeManager()
         setLayout()
+    }
+    
+    private func bindViewChangeManager() {
+        ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
+            .subscribe { owner, bookmarkUsers in
+                if case .bookmark = owner.headerCase {
+                    owner.bookmarkCountLabel.text = "(\(bookmarkUsers.count))"
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setLayout() {
@@ -106,5 +121,6 @@ final class HomeSectionHeader: UICollectionReusableView {
         self.headerCase = nil
         self.bookmarkCountLabel.isHidden = true
         self.moreButton.isHidden = false
+        self.disposeBag = DisposeBag()
     }
 }

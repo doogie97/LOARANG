@@ -166,7 +166,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                 return UICollectionReusableView()
             }
             
-            header.setViewContents(headerCase: headerCase)
+            header.setViewContents(viewModel: viewModel,
+                                   headerCase: headerCase)
             return header
         }
         
