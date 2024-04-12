@@ -14,6 +14,7 @@ final class MainUserDTO: Object {
     @Persisted var name: String
     @Persisted var `class`: String
     @Persisted var itemLV: String
+    @Persisted var expeditionLV: String
     @Persisted var server: String
     @Persisted(primaryKey: true) var type = "main"
     
@@ -22,7 +23,8 @@ final class MainUserDTO: Object {
                               battleLV: self.battleLV,
                               name: self.name,
                               class: self.`class`,
-                              itemLV: self.itemLV,
+                              itemLV: self.itemLV, 
+                              expeditionLV: self.expeditionLV,
                               server: self.server)
     }
 }

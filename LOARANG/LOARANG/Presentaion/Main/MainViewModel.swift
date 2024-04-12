@@ -123,11 +123,12 @@ final class MainViewModel: MainViewModelInOut {
                 let searchResult = try await crawlManager.getUserInfo(userName)
                 await MainActor.run {
                     checkUser.accept(MainUserEntity(image: searchResult.mainInfo.userImage,
-                                              battleLV: searchResult.mainInfo.battleLV,
-                                              name: searchResult.mainInfo.name,
-                                              class: searchResult.mainInfo.`class`,
-                                              itemLV: searchResult.mainInfo.itemLV,
-                                              server: searchResult.mainInfo.server))
+                                                    battleLV: searchResult.mainInfo.battleLV,
+                                                    name: searchResult.mainInfo.name,
+                                                    class: searchResult.mainInfo.`class`,
+                                                    itemLV: searchResult.mainInfo.itemLV,
+                                                    expeditionLV: searchResult.mainInfo.expeditionLV,
+                                                    server: searchResult.mainInfo.server))
                     finishedLoading.accept(())
                 }
             } catch let error {

@@ -13,6 +13,7 @@ struct MainUserEntity {
     let name: String
     let `class`: String
     let itemLV: String
+    let expeditionLV: String
     let server: String
     
     var toDTO: MainUserDTO {
@@ -22,6 +23,7 @@ struct MainUserEntity {
         mainUser.name = self.name
         mainUser.class = self.`class`
         mainUser.itemLV = self.itemLV
+        mainUser.expeditionLV = self.expeditionLV
         mainUser.server = self.server
         
         return mainUser
