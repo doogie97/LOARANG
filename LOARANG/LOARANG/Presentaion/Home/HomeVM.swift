@@ -53,10 +53,9 @@ final class HomeVM: HomeVMable {
         
         ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
             .subscribe { owner, bookmarkUsers in
-                let isFirst = self.bookmarkUsers.isEmpty
                 self.bookmarkUsers = bookmarkUsers
-                if isFirst || !owner.isViewOnTop {
-                    owner.setBookmark.accept(.first)
+                if !owner.isViewOnTop {
+                    owner.setBookmark.accept(.reload)
                 }
             }
             .disposed(by: disposeBag)
@@ -148,7 +147,7 @@ final class HomeVM: HomeVMable {
     }
     
     enum SetBookmarkCase {
-        case first
+        case reload
         case append
         case delete
     }

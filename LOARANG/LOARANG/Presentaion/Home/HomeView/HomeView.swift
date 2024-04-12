@@ -62,8 +62,8 @@ final class HomeView: UIView {
 extension HomeView {
     func changedBookmarkUsers(setCase: HomeVM.SetBookmarkCase) {
         switch setCase {
-        case .first:
-            print("리로드")
+        case .reload:
+            homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.bookmark.rawValue))
         case .append:
             print("유저 정보 받고 마지막에 추가")
         case .delete:

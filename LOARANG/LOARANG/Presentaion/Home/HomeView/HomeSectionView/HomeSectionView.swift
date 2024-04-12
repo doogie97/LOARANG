@@ -20,7 +20,7 @@ final class HomeSectionView: UIView {
         case notice
     }
     
-    private lazy var sectionCV = UICollectionView(frame: .zero,
+    private(set) lazy var sectionCV = UICollectionView(frame: .zero,
                                                   collectionViewLayout: UICollectionViewLayout())
     
     func setViewContents(viewContents: HomeVM.ViewContents) {
@@ -52,7 +52,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         case .mainUser:
             return 1
         case .bookmark:
-            return 10 //viewModel의 bookmarkCount만큼
+            return ViewChangeManager.shared.bookmarkUsers.value.count
         case .challengeAbyssDungeons:
             return 2
         case .challengeGuardianRaids:
