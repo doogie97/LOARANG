@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 
 final class HomeImageCVCell: UICollectionViewCell {
-    private var imageViewSessionTask: URLSessionTask?
-    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -44,10 +42,10 @@ final class HomeImageCVCell: UICollectionViewCell {
     }()
     
     func setCellContents(imageUrl: String, imageTitle: String?) {
-        self.imageViewSessionTask = imageView.setImage(urlString: imageUrl)
         imageTitleLabel.text = imageTitle
         self.titleLabelView.isHidden = imageTitle == nil
         setLayout()
+        imageView.setImage(imageUrl)
     }
     
     private func setLayout() {
@@ -65,8 +63,7 @@ final class HomeImageCVCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.imageViewSessionTask?.suspend()
-        self.imageViewSessionTask?.cancel()
+        self.imageView.kf.cancelDownloadTask()
         self.imageView.image = nil
     }
 }
