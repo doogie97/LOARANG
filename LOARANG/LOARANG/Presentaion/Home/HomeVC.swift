@@ -78,6 +78,9 @@ final class HomeVC: UIViewController {
                     case .searchView:
                         return owner.container.makeSearchViewController()
                     case .webView(let url, let title):
+                        guard let url = URL(string: url ?? "") else {
+                            return nil
+                        }
                         return owner.container.makeWebViewViewController(url: url, title: title)
                     }
                 }

@@ -124,19 +124,9 @@ final class HomeVM: HomeVMable {
         case .bookmarkStarButton(let rowIndex):
             deleteBookmarkUser(rowIndex)
         case .event(let rowIndex):
-            guard let eventUrl = homeGameInfo?.eventList[safe: rowIndex]?.eventUrl,
-                  let url = URL(string: eventUrl) else {
-                showAlert.accept("해당 이벤트를 찾을 수 없습니다.")
-                return
-            }
-            showNextView.accept(.webView(url: url, title: "이벤트"))
+            showNextView.accept(.webView(url: homeGameInfo?.eventList[safe: rowIndex]?.eventUrl, title: "이벤트"))
         case .notice(let rowIndex):
-            guard let eventUrl = homeGameInfo?.noticeList[safe: rowIndex]?.url,
-                  let url = URL(string: eventUrl) else {
-                showAlert.accept("해당 공지사항을 찾을 수 없습니다.")
-                return
-            }
-            showNextView.accept(.webView(url: url, title: "공지사항"))
+            showNextView.accept(.webView(url: homeGameInfo?.noticeList[safe: rowIndex]?.url, title: "공지사항"))
         }
     }
     
@@ -147,7 +137,6 @@ final class HomeVM: HomeVMable {
         }
         
         do {
-            //유저 삭제시 usecase에서 accept되기에 상단 bindViewChangeManger에서 변경 반영
             try deleteBookmarkUseCase.execute(name: userName)
             deleteBookmarkCell.accept(IndexPath(item: rowIndex,
                                                 section: HomeSectionView.SectionCase.bookmark.rawValue))
@@ -159,7 +148,7 @@ final class HomeVM: HomeVMable {
     //MARK: - Output
     enum NextViewCase {
         case searchView
-        case webView(url: URL, title: String)
+        case webView(url: String?, title: String)
     }
     
     struct ViewContents {
