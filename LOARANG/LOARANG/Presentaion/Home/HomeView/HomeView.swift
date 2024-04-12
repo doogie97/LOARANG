@@ -60,13 +60,8 @@ final class HomeView: UIView {
 
 //MARK: - Manage Home Characters
 extension HomeView {
-    func changedBookmarkUsers(setCase: HomeVM.SetBookmarkCase) {
-        switch setCase {
-        case .reload:
-            homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.bookmark.rawValue))
-        case .append:
-            print("유저 정보 받고 마지막에 추가")
-        }
+    func reloadBookmark() {
+        homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.bookmark.rawValue))
     }
     
     func deleteCell(_ indexPath: IndexPath) {

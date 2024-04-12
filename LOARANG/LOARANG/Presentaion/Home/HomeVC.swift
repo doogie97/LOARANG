@@ -53,9 +53,9 @@ final class HomeVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.setBookmark.withUnretained(self)
+        viewModel.reloadBookmark.withUnretained(self)
             .subscribe { owner, setCase in
-                owner.homeView.changedBookmarkUsers(setCase: setCase)
+                owner.homeView.reloadBookmark()
             }
             .disposed(by: disposeBag)
         

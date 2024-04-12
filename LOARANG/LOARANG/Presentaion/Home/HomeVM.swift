@@ -21,7 +21,7 @@ protocol HomeVMInput {
 
 protocol HomeVMOutput {
     var setViewContents: PublishRelay<HomeVM.ViewContents> { get }
-    var setBookmark: PublishRelay<HomeVM.SetBookmarkCase> { get }
+    var reloadBookmark: PublishRelay<Void> { get }
     var deleteBookmarkCell: PublishRelay<IndexPath> { get }
     var isLoading: PublishRelay<Bool> { get }
     var showAlert: PublishRelay<String> { get }
@@ -57,7 +57,7 @@ final class HomeVM: HomeVMable {
         ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
             .subscribe { owner, _ in
                 if !owner.isViewOnTop {
-                    owner.setBookmark.accept(.reload)
+                    owner.reloadBookmark.accept(())
                 }
             }
             .disposed(by: disposeBag)
@@ -167,13 +167,8 @@ final class HomeVM: HomeVMable {
         let homeGameInfo: HomeGameInfoEntity
     }
     
-    enum SetBookmarkCase {
-        case reload
-        case append
-    }
-    
     let setViewContents = PublishRelay<ViewContents>()
-    let setBookmark = PublishRelay<SetBookmarkCase>()
+    let reloadBookmark = PublishRelay<Void>()
     let deleteBookmarkCell = PublishRelay<IndexPath>()
     let isLoading = PublishRelay<Bool>()
     let showAlert = PublishRelay<String>()
