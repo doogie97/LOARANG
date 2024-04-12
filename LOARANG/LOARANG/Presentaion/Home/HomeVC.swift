@@ -55,6 +55,8 @@ final class HomeVC: UIViewController {
                     switch nextViewCase {
                     case .searchView:
                         return owner.container.makeSearchViewController()
+                    case .webView(let url, let title):
+                        return owner.container.makeWebViewViewController(url: url, title: title)
                     }
                 }
                 

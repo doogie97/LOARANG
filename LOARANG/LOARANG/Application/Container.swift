@@ -11,6 +11,7 @@ import RxRelay
 protocol Containerable {
     func homeVC() -> HomeVC
     func makeSearchViewController() -> SearchViewController
+    func makeWebViewViewController(url: URL, title: String) -> WebViewViewController
 }
 
 final class Container: Containerable {

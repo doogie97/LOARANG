@@ -5,6 +5,7 @@
 //  Created by Doogie on 4/11/24.
 //
 
+import Foundation
 import RxRelay
 import RxSwift
 
@@ -102,15 +103,26 @@ final class HomeVM: HomeVMable {
         case .bookmarkUser(let rowIndex):
             print("\(rowIndex) 북마크 유저 검색")
         case .event(let rowIndex):
-            print("\(rowIndex) 이벤트")
+            guard let eventUrl = homeGameInfo?.eventList[safe: rowIndex]?.eventUrl,
+                  let url = URL(string: eventUrl) else {
+                print("해당 이벤트를 찾을 수 없습니다.")
+                return
+            }
+            showNextView.accept(.webView(url: url, title: "이벤트"))
         case .notice(let rowIndex):
-            print("\(rowIndex) 공지")
+            guard let eventUrl = homeGameInfo?.noticeList[safe: rowIndex]?.url,
+                  let url = URL(string: eventUrl) else {
+                print("해당 공지사항을 찾을 수 없습니다.")
+                return
+            }
+            showNextView.accept(.webView(url: url, title: "공지사항"))
         }
     }
     
     //MARK: - Output
     enum NextViewCase {
         case searchView
+        case webView(url: URL, title: String)
     }
     
     struct ViewContents {
