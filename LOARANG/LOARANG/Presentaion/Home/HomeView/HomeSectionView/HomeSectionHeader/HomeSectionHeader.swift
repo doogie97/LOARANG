@@ -85,7 +85,8 @@ final class HomeSectionHeader: UICollectionReusableView {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(topSeparator.snp.bottom)
-            $0.leading.bottom.equalToSuperview()
+            $0.leading.equalToSuperview().inset(margin(.width, 8))
+            $0.bottom.equalToSuperview()
         }
         
         bookmarkCountLabel.snp.makeConstraints {
