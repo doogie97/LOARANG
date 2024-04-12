@@ -11,6 +11,7 @@ import RxRelay
 protocol Containerable {
     func homeVC() -> HomeVC
     func makeSearchViewController() -> SearchViewController
+    func makeWebViewViewController(url: URL, title: String) -> WebViewViewController
 }
 
 final class Container: Containerable {
@@ -24,7 +25,7 @@ final class Container: Containerable {
 //MARK: - about Main View
     func homeVC() -> HomeVC {
         let homeVM = HomeVM(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
-                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository))
+                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository))
         return HomeVC(container: self,
                       viewModel: homeVM)
     }

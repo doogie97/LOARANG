@@ -30,6 +30,16 @@ final class HomeVC: UIViewController {
         self.view = homeView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.viewDidAppear()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.viewDidDisAppear()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -40,6 +50,18 @@ final class HomeVC: UIViewController {
         viewModel.setViewContents.withUnretained(self)
             .subscribe { owner, viewContents in
                 owner.homeView.setViewContents(viewContents: viewContents)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.reloadBookmark.withUnretained(self)
+            .subscribe { owner, setCase in
+                owner.homeView.reloadBookmark()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.deleteBookmarkCell.withUnretained(self)
+            .subscribe { owner, indexPath in
+                owner.homeView.deleteCell(indexPath)
             }
             .disposed(by: disposeBag)
         
@@ -55,6 +77,8 @@ final class HomeVC: UIViewController {
                     switch nextViewCase {
                     case .searchView:
                         return owner.container.makeSearchViewController()
+                    case .webView(let url, let title):
+                        return owner.container.makeWebViewViewController(url: url, title: title)
                     }
                 }
                 
@@ -63,6 +87,12 @@ final class HomeVC: UIViewController {
                 }
                 
                 owner.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.showAlert.withUnretained(self)
+            .subscribe { owner, message in
+                owner.showAlert(message: message)
             }
             .disposed(by: disposeBag)
     }

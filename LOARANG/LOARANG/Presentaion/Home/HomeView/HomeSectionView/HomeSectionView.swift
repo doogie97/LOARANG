@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class HomeSectionView: UIView {
+    private weak var viewModel: HomeVMable?
     private var viewContents: HomeVM.ViewContents?
     enum SectionCase: Int, CaseIterable {
         case mainUser
@@ -19,10 +20,11 @@ final class HomeSectionView: UIView {
         case notice
     }
     
-    private lazy var sectionCV = UICollectionView(frame: .zero,
+    private(set) lazy var sectionCV = UICollectionView(frame: .zero,
                                                   collectionViewLayout: UICollectionViewLayout())
     
     func setViewContents(viewContents: HomeVM.ViewContents) {
+        self.viewModel = viewContents.viewModel
         self.viewContents = viewContents
         self.sectionCV = createSectionCV()
         setLayout()
@@ -50,7 +52,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         case .mainUser:
             return 1
         case .bookmark:
-            return 10 //viewModel의 bookmarkCount만큼
+            return ViewChangeManager.shared.bookmarkUsers.value.count
         case .challengeAbyssDungeons:
             return 2
         case .challengeGuardianRaids:
@@ -76,12 +78,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             mainUserCell.setCellContents()
             return mainUserCell
         case .bookmark:
-            guard let bookmarkUserCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeBookmarkUserCVCell.self)", for: indexPath) as? HomeBookmarkUserCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            bookmarkUserCell.setCellContents()
-            return bookmarkUserCell
+            return bookmarkCell(collectionView: collectionView, indexPath: indexPath)
         case .challengeAbyssDungeons, .challengeGuardianRaids, .event:
             return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
         case .notice:
@@ -90,6 +87,17 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     //MARK: - Make Cell
+    private func bookmarkCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let bookmarkUserCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeBookmarkUserCVCell.self)", for: indexPath) as? HomeBookmarkUserCVCell,
+              let userInfo = ViewChangeManager.shared.bookmarkUsers.value[safe: indexPath.row] else {
+            return UICollectionViewCell()
+        }
+        
+        bookmarkUserCell.setCellContents(indexPath: indexPath,
+                                         viewModel: viewModel,
+                                         userInfo: userInfo)
+        return bookmarkUserCell
+    }
     private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
         var cellData: (imageUrl: String, imageTitle: String?, textColor: UIColor)? {
             switch section {
@@ -140,7 +148,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             var headerCase: HomeSectionHeader.HeaderCase? {
                 switch section {
                 case .bookmark:
-                    return .bookmark(count: 6) //viewModel의 bookmarkCount만큼
+                    let count = ViewChangeManager.shared.bookmarkUsers.value.count
+                    return .bookmark(count: count)
                 case .challengeAbyssDungeons:
                     return .challengeAbyssDungeons
                 case .challengeGuardianRaids:
@@ -157,11 +166,44 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                 return UICollectionReusableView()
             }
             
-            header.setViewContents(headerCase: headerCase)
+            header.setViewContents(viewModel: viewModel,
+                                   headerCase: headerCase)
             return header
         }
         
+        if kind == UICollectionView.elementKindSectionFooter {
+            switch section {
+            case .bookmark:
+                guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "\(BookmarkFooter.self)", for: indexPath) as? BookmarkFooter else {
+                    return UICollectionReusableView()
+                }
+                footer.setViewContents(viewModel: self.viewModel)
+                return footer
+            case .mainUser, .challengeAbyssDungeons, .challengeGuardianRaids, .event, .notice:
+                return UICollectionReusableView()
+            }
+        }
+        
         return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = SectionCase(rawValue: indexPath.section) else {
+            return
+        }
+        
+        switch section {
+        case .mainUser:
+            viewModel?.touchCell(.mainUser)
+        case .bookmark:
+            viewModel?.touchCell(.bookmarkUser(rowIndex: indexPath.row))
+        case .event:
+            viewModel?.touchCell(.event(rowIndex: indexPath.row))
+        case .notice:
+            viewModel?.touchCell(.notice(rowIndex: indexPath.row))
+        case .challengeAbyssDungeons, .challengeGuardianRaids:
+            return
+        }
     }
 }
 
@@ -190,6 +232,8 @@ extension HomeSectionView {
         collectionView.register(HomeImageCVCell.self, forCellWithReuseIdentifier: "\(HomeImageCVCell.self)")
         
         collectionView.register(HomeSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeSectionHeader.self)")
+        
+        collectionView.register(BookmarkFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "\(BookmarkFooter.self)")
         
         return collectionView
     }
@@ -230,9 +274,10 @@ extension HomeSectionView {
     }
     
     func bookmarkSectionLayout() -> NSCollectionLayoutSection {
-        let itemWidthInset = margin(.width, 5)
+        let hasBookmark = !ViewChangeManager.shared.bookmarkUsers.value.isEmpty
+        let itemWidthInset = hasBookmark ? margin(.width, 5) : 0
         let cellHeight = margin(.width, 155)
-        let cellWidth = itemWidthInset * 2 + cellHeight
+        let cellWidth = hasBookmark ? (itemWidthInset * 2 + cellHeight) : 0
         
         let size = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth),
                                           heightDimension: .absolute(cellHeight))
@@ -246,7 +291,16 @@ extension HomeSectionView {
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = SectionInsetInfo.sectionBasicInset
         section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
-        
+        if !hasBookmark {
+            let sectionBottomInset = section.contentInsets.bottom
+            let footerHeight = cellHeight + sectionBottomInset
+            section.contentInsets.bottom = 0
+            let sectionFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                           heightDimension: .absolute(footerHeight))
+            section.boundarySupplementaryItems.append(.init(layoutSize: sectionFooterSize,
+                                                            elementKind: UICollectionView.elementKindSectionFooter,
+                                                            alignment: .bottomLeading))
+        }
         return section
     }
     

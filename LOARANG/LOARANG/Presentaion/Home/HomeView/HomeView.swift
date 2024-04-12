@@ -57,3 +57,14 @@ final class HomeView: UIView {
         }
     }
 }
+
+//MARK: - Manage Home Characters
+extension HomeView {
+    func reloadBookmark() {
+        homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.bookmark.rawValue))
+    }
+    
+    func deleteCell(_ indexPath: IndexPath) {
+        homeSectionView.sectionCV.deleteItems(at: [indexPath])
+    }
+}
