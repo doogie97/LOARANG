@@ -13,6 +13,7 @@ protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 protocol HomeVMInput {
     func viewDidLoad()
     func touchSearchButton()
+    func touchCell(_ touchCase: HomeVM.TouchCellCase)
 }
 
 protocol HomeVMOutput {
@@ -85,6 +86,26 @@ final class HomeVM: HomeVMable {
     
     func touchSearchButton() {
         showNextView.accept(.searchView)
+    }
+    
+    enum TouchCellCase {
+        case mainUser
+        case bookmarkUser(rowIndex: Int)
+        case event(rowIndex: Int)
+        case notice(rowIndex: Int)
+    }
+    
+    func touchCell(_ touchCase: TouchCellCase) {
+        switch touchCase {
+        case .mainUser:
+            print("메인 유저 검색")
+        case .bookmarkUser(let rowIndex):
+            print("\(rowIndex) 북마크 유저 검색")
+        case .event(let rowIndex):
+            print("\(rowIndex) 이벤트")
+        case .notice(let rowIndex):
+            print("\(rowIndex) 공지")
+        }
     }
     
     //MARK: - Output

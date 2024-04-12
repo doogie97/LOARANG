@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class HomeSectionView: UIView {
+    private weak var viewModel: HomeVMable?
     private var viewContents: HomeVM.ViewContents?
     enum SectionCase: Int, CaseIterable {
         case mainUser
@@ -23,6 +24,7 @@ final class HomeSectionView: UIView {
                                                   collectionViewLayout: UICollectionViewLayout())
     
     func setViewContents(viewContents: HomeVM.ViewContents) {
+        self.viewModel = viewContents.viewModel
         self.viewContents = viewContents
         self.sectionCV = createSectionCV()
         setLayout()
@@ -162,6 +164,25 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         }
         
         return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = SectionCase(rawValue: indexPath.section) else {
+            return
+        }
+        
+        switch section {
+        case .mainUser:
+            viewModel?.touchCell(.mainUser)
+        case .bookmark:
+            viewModel?.touchCell(.bookmarkUser(rowIndex: indexPath.row))
+        case .event:
+            viewModel?.touchCell(.event(rowIndex: indexPath.row))
+        case .notice:
+            viewModel?.touchCell(.notice(rowIndex: indexPath.row))
+        case .challengeAbyssDungeons, .challengeGuardianRaids:
+            return
+        }
     }
 }
 
