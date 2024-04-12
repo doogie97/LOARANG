@@ -30,6 +30,16 @@ final class HomeVC: UIViewController {
         self.view = homeView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.viewDidAppear()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.viewDidDisAppear()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -40,6 +50,12 @@ final class HomeVC: UIViewController {
         viewModel.setViewContents.withUnretained(self)
             .subscribe { owner, viewContents in
                 owner.homeView.setViewContents(viewContents: viewContents)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.setBookmark.withUnretained(self)
+            .subscribe { owner, setCase in
+                owner.homeView.changedBookmarkUsers(setCase: setCase)
             }
             .disposed(by: disposeBag)
         

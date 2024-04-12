@@ -57,3 +57,17 @@ final class HomeView: UIView {
         }
     }
 }
+
+//MARK: - Manage Home Characters
+extension HomeView {
+    func changedBookmarkUsers(setCase: HomeVM.SetBookmarkCase) {
+        switch setCase {
+        case .first:
+            print("리로드")
+        case .append:
+            print("유저 정보 받고 마지막에 추가")
+        case .delete:
+            print("해당 index 삭제")
+        }
+    }
+}

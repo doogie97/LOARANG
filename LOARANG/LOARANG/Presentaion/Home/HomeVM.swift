@@ -21,6 +21,7 @@ protocol HomeVMInput {
 
 protocol HomeVMOutput {
     var setViewContents: PublishRelay<HomeVM.ViewContents> { get }
+    var setBookmark: PublishRelay<HomeVM.SetBookmarkCase> { get }
     var isLoading: PublishRelay<Bool> { get }
     var showAlert: PublishRelay<String> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
@@ -52,8 +53,11 @@ final class HomeVM: HomeVMable {
         
         ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
             .subscribe { owner, bookmarkUsers in
+                let isFirst = self.bookmarkUsers.isEmpty
                 self.bookmarkUsers = bookmarkUsers
-                print("VM의 BookmarkUsers와 비교해 해당 인덱스만 리로드")
+                if isFirst || !owner.isViewOnTop {
+                    owner.setBookmark.accept(.first)
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -143,7 +147,14 @@ final class HomeVM: HomeVMable {
         let homeGameInfo: HomeGameInfoEntity
     }
     
+    enum SetBookmarkCase {
+        case first
+        case append
+        case delete
+    }
+    
     let setViewContents = PublishRelay<ViewContents>()
+    let setBookmark = PublishRelay<SetBookmarkCase>()
     let isLoading = PublishRelay<Bool>()
     let showAlert = PublishRelay<String>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()
