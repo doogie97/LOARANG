@@ -78,12 +78,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             mainUserCell.setCellContents()
             return mainUserCell
         case .bookmark:
-            guard let bookmarkUserCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeBookmarkUserCVCell.self)", for: indexPath) as? HomeBookmarkUserCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            bookmarkUserCell.setCellContents()
-            return bookmarkUserCell
+            return bookmarkCell(collectionView: collectionView, indexPath: indexPath)
         case .challengeAbyssDungeons, .challengeGuardianRaids, .event:
             return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
         case .notice:
@@ -92,6 +87,15 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     //MARK: - Make Cell
+    private func bookmarkCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let bookmarkUserCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeBookmarkUserCVCell.self)", for: indexPath) as? HomeBookmarkUserCVCell,
+              let userInfo = ViewChangeManager.shared.bookmarkUsers.value[safe: indexPath.row] else {
+            return UICollectionViewCell()
+        }
+        
+        bookmarkUserCell.setCellContents(userInfo: userInfo)
+        return bookmarkUserCell
+    }
     private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
         var cellData: (imageUrl: String, imageTitle: String?, textColor: UIColor)? {
             switch section {
@@ -142,7 +146,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             var headerCase: HomeSectionHeader.HeaderCase? {
                 switch section {
                 case .bookmark:
-                    return .bookmark(count: 6) //viewModel의 bookmarkCount만큼
+                    let count = ViewChangeManager.shared.bookmarkUsers.value.count
+                    return .bookmark(count: count)
                 case .challengeAbyssDungeons:
                     return .challengeAbyssDungeons
                 case .challengeGuardianRaids:
