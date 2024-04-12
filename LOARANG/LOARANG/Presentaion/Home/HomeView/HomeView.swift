@@ -66,8 +66,10 @@ extension HomeView {
             homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.bookmark.rawValue))
         case .append:
             print("유저 정보 받고 마지막에 추가")
-        case .delete:
-            print("해당 index 삭제")
         }
+    }
+    
+    func deleteCell(_ indexPath: IndexPath) {
+        homeSectionView.sectionCV.deleteItems(at: [indexPath])
     }
 }

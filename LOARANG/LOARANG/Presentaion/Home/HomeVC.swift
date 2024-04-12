@@ -59,6 +59,12 @@ final class HomeVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.deleteBookmarkCell.withUnretained(self)
+            .subscribe { owner, indexPath in
+                owner.homeView.deleteCell(indexPath)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.isLoading.withUnretained(self)
             .subscribe { owner, isLoading in
                 owner.homeView.loadingView.isLoading(isLoading)

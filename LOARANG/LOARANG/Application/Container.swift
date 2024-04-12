@@ -25,7 +25,7 @@ final class Container: Containerable {
 //MARK: - about Main View
     func homeVC() -> HomeVC {
         let homeVM = HomeVM(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
-                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository))
+                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository))
         return HomeVC(container: self,
                       viewModel: homeVM)
     }

@@ -22,6 +22,7 @@ protocol HomeVMInput {
 protocol HomeVMOutput {
     var setViewContents: PublishRelay<HomeVM.ViewContents> { get }
     var setBookmark: PublishRelay<HomeVM.SetBookmarkCase> { get }
+    var deleteBookmarkCell: PublishRelay<IndexPath> { get }
     var isLoading: PublishRelay<Bool> { get }
     var showAlert: PublishRelay<String> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
@@ -30,17 +31,19 @@ protocol HomeVMOutput {
 final class HomeVM: HomeVMable {
     private let getHomeGameInfoUseCase: GetHomeGameInfoUseCase
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     private let disposeBag = DisposeBag()
     
     private var homeGameInfo: HomeGameInfoEntity?
-    private var bookmarkUsers = [BookmarkUserEntity]()
     
     private var isViewOnTop = true
     
     init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
-         getHomeCharactersUseCase: GetHomeCharactersUseCase) {
+         getHomeCharactersUseCase: GetHomeCharactersUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase) {
         self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
         bindViewChangeManager()
     }
     
@@ -52,8 +55,7 @@ final class HomeVM: HomeVMable {
             .disposed(by: disposeBag)
         
         ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
-            .subscribe { owner, bookmarkUsers in
-                self.bookmarkUsers = bookmarkUsers
+            .subscribe { owner, _ in
                 if !owner.isViewOnTop {
                     owner.setBookmark.accept(.reload)
                 }
@@ -120,7 +122,7 @@ final class HomeVM: HomeVMable {
         case .bookmarkUser(let rowIndex):
             print("\(rowIndex) 북마크 유저 검색")
         case .bookmarkStarButton(let rowIndex):
-            print("\(rowIndex) 북마크 유저 삭제")
+            deleteBookmarkUser(rowIndex)
         case .event(let rowIndex):
             guard let eventUrl = homeGameInfo?.eventList[safe: rowIndex]?.eventUrl,
                   let url = URL(string: eventUrl) else {
@@ -138,6 +140,22 @@ final class HomeVM: HomeVMable {
         }
     }
     
+    private func deleteBookmarkUser(_ rowIndex: Int) {
+        guard let userName = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
+            showAlert.accept("해당 유저를 찾을 수 없습니다.")
+            return
+        }
+        
+        do {
+            //유저 삭제시 usecase에서 accept되기에 상단 bindViewChangeManger에서 변경 반영
+            try deleteBookmarkUseCase.execute(name: userName)
+            deleteBookmarkCell.accept(IndexPath(item: rowIndex,
+                                                section: HomeSectionView.SectionCase.bookmark.rawValue))
+        } catch let error {
+            showAlert.accept(error.errorMessage)
+        }
+    }
+    
     //MARK: - Output
     enum NextViewCase {
         case searchView
@@ -152,11 +170,11 @@ final class HomeVM: HomeVMable {
     enum SetBookmarkCase {
         case reload
         case append
-        case delete
     }
     
     let setViewContents = PublishRelay<ViewContents>()
     let setBookmark = PublishRelay<SetBookmarkCase>()
+    let deleteBookmarkCell = PublishRelay<IndexPath>()
     let isLoading = PublishRelay<Bool>()
     let showAlert = PublishRelay<String>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()

@@ -7,10 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class HomeBookmarkUserCVCell: UICollectionViewCell {
     private var indexPath: IndexPath?
     private weak var viewModel: HomeVMable?
+    private var disposeBag = DisposeBag()
     
     private lazy var imageWidth = margin(.width, 85)
     private lazy var characterImageView = {
@@ -51,7 +53,21 @@ final class HomeBookmarkUserCVCell: UICollectionViewCell {
         self.characterImageView.image = userInfo.image.cropImage(class: userInfo.class)
         self.characterNameLabel.text = userInfo.name
         self.contentView.layer.cornerRadius = 6
+        bindViewModel()
         setLayout()
+    }
+    
+    private func bindViewModel() {
+        viewModel?.deleteBookmarkCell.withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                guard let oldIndexPath = self.indexPath else {
+                    return
+                }
+                if indexPath.row < oldIndexPath.row {
+                    self.indexPath = IndexPath(item: oldIndexPath.row - 1, section: oldIndexPath.section)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setLayout() {
@@ -76,5 +92,10 @@ final class HomeBookmarkUserCVCell: UICollectionViewCell {
             $0.top.equalTo(characterImageView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.disposeBag = DisposeBag()
     }
 }
