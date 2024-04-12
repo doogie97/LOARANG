@@ -171,6 +171,19 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return header
         }
         
+        if kind == UICollectionView.elementKindSectionFooter {
+            switch section {
+            case .bookmark:
+                guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "\(BookmarkFooter.self)", for: indexPath) as? BookmarkFooter else {
+                    return UICollectionReusableView()
+                }
+                footer.setViewContents()
+                return footer
+            case .mainUser, .challengeAbyssDungeons, .challengeGuardianRaids, .event, .notice:
+                return UICollectionReusableView()
+            }
+        }
+        
         return UICollectionReusableView()
     }
     
@@ -220,6 +233,8 @@ extension HomeSectionView {
         
         collectionView.register(HomeSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeSectionHeader.self)")
         
+        collectionView.register(BookmarkFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "\(BookmarkFooter.self)")
+        
         return collectionView
     }
     
@@ -259,9 +274,10 @@ extension HomeSectionView {
     }
     
     func bookmarkSectionLayout() -> NSCollectionLayoutSection {
-        let itemWidthInset = margin(.width, 5)
+        let hasBookmark = !ViewChangeManager.shared.bookmarkUsers.value.isEmpty
+        let itemWidthInset = hasBookmark ? margin(.width, 5) : 0
         let cellHeight = margin(.width, 155)
-        let cellWidth = itemWidthInset * 2 + cellHeight
+        let cellWidth = hasBookmark ? (itemWidthInset * 2 + cellHeight) : 0
         
         let size = NSCollectionLayoutSize(widthDimension: .absolute(cellWidth),
                                           heightDimension: .absolute(cellHeight))
@@ -275,7 +291,12 @@ extension HomeSectionView {
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = SectionInsetInfo.sectionBasicInset
         section.boundarySupplementaryItems = [SectionInsetInfo.sectionBasicHeader]
-        
+        if !hasBookmark {
+            let sectionFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(cellHeight))
+            section.boundarySupplementaryItems.append(.init(layoutSize: sectionFooterSize,
+                                                            elementKind: UICollectionView.elementKindSectionFooter,
+                                                            alignment: .bottomLeading))
+        }
         return section
     }
     
