@@ -13,6 +13,8 @@ protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 
 protocol HomeVMInput {
     func viewDidLoad()
+    func viewDidAppear()
+    func viewDidDisAppear()
     func touchSearchButton()
     func touchCell(_ touchCase: HomeVM.TouchCellCase)
 }
@@ -31,6 +33,8 @@ final class HomeVM: HomeVMable {
     
     private var homeGameInfo: HomeGameInfoEntity?
     private var bookmarkUsers = [BookmarkUserEntity]()
+    
+    private var isViewOnTop = true
     
     init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase) {
@@ -58,6 +62,14 @@ final class HomeVM: HomeVMable {
     func viewDidLoad() {
         getHomeGameInfo()
         getHomeCharacters()
+    }
+    
+    func viewDidAppear() {
+        isViewOnTop = true
+    }
+    
+    func viewDidDisAppear() {
+        isViewOnTop = false
     }
     
     private func getHomeGameInfo() {
