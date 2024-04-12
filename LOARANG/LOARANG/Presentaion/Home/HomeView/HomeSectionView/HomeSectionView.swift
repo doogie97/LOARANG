@@ -177,7 +177,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                 guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "\(BookmarkFooter.self)", for: indexPath) as? BookmarkFooter else {
                     return UICollectionReusableView()
                 }
-                footer.setViewContents()
+                footer.setViewContents(viewModel: self.viewModel)
                 return footer
             case .mainUser, .challengeAbyssDungeons, .challengeGuardianRaids, .event, .notice:
                 return UICollectionReusableView()
