@@ -85,12 +85,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         case .challengeAbyssDungeons, .challengeGuardianRaids, .event:
             return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
         case .notice:
-            guard let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeNoticeCVCell.self)", for: indexPath) as? HomeNoticeCVCell else {
-                return UICollectionViewCell()
-            }
-            
-            noticeCell.setCellContents()
-            return noticeCell
+            return noticeCell(collectionView: collectionView, indexPath: indexPath)
         }
     }
     
@@ -121,6 +116,15 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         
         imageCell.setCellContents(cellData)
         return imageCell
+    }
+    
+    private func noticeCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let noticeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeNoticeCVCell.self)", for: indexPath) as? HomeNoticeCVCell else {
+            return UICollectionViewCell()
+        }
+        
+        noticeCell.setCellContents(noticeInfo: self.viewContents?.homeGameInfo.noticeList[safe: indexPath.row])
+        return noticeCell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -295,11 +299,11 @@ extension HomeSectionView {
     }
     
     func noticeSectionLayout() -> NSCollectionLayoutSection {
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(55))
         let item = NSCollectionLayoutItem(layoutSize: size)
-        item.contentInsets = .init(top: 0, leading: margin(.width, 12), bottom: 10, trailing: margin(.width, 12))
+        item.contentInsets = .init(top: 0, leading: margin(.width, 12), bottom: 8, trailing: margin(.width, 12))
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(55))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = SectionInsetInfo.sectionBasicInset
