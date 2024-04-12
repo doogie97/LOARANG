@@ -34,7 +34,7 @@ final class TabBarViewController: UITabBarController {
         let topLineLayer = CALayer()
         let lineHeight: CGFloat = 0.5
         topLineLayer.frame = CGRect(x: 0, y: 0, width: self.tabBar.frame.width, height: lineHeight)
-        topLineLayer.backgroundColor = UIColor.systemGray.cgColor
+        topLineLayer.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
 
         self.tabBar.layer.addSublayer(topLineLayer)
     }
