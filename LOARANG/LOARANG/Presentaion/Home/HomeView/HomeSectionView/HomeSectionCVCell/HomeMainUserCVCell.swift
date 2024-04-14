@@ -137,15 +137,73 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         return view
     }
     
+    private lazy var detailInfoButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("자세히 보기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .pretendard(size: 14, family: .Bold)
+        button.backgroundColor = #colorLiteral(red: 0.3933520469, green: 0.4040421268, blue: 0.9664957529, alpha: 1)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 6
+        button.addTarget(self, action: #selector(touchDetailInfoButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc private func touchDetailInfoButton() {
+        viewModel?.touchViewAction(.mainUser)
+    }
+    
     //MARK: - Empty View
     private lazy var emptyView = {
+        let innerView = UIView()
+        innerView.addSubview(emptyLabel)
+        innerView.addSubview(searchButton)
+
+        emptyLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.top.equalTo(emptyLabel.snp.bottom).inset(-16)
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 48))
+            $0.height.equalTo(40)
+            $0.bottom.equalToSuperview()
+        }
+        
         let view = UIView()
         view.layer.cornerRadius = 6
         view.isHidden = true
         view.backgroundColor = .cellColor
         
+        view.addSubview(innerView)
+        
+        innerView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+        }
         return view
     }()
+    
+    private lazy var emptyLabel = pretendardLabel(size: 16, family: .Regular, text: "대표 캐릭터를 설정하고\n빠르게 내 캐릭터를 확인해 보세요! 😁", alignment: .center, lineCount: 2)
+    
+    private lazy var searchButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("대표 캐릭터 등록하기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .pretendard(size: 14, family: .Bold)
+        button.backgroundColor = #colorLiteral(red: 0.3933520469, green: 0.4040421268, blue: 0.9664957529, alpha: 1)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 6
+        button.addTarget(self, action: #selector(touchRegistMainUserButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc private func touchRegistMainUserButton() {
+        viewModel?.touchViewAction(.registMainUser)
+    }
     
     func setCellContents(viewModel: HomeVMable?) {
         self.viewModel = viewModel
@@ -176,23 +234,6 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         } else {
             emptyView.isHidden = false
         }
-    }
-    
-    private lazy var detailInfoButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("자세히 보기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .pretendard(size: 14, family: .Bold)
-        button.backgroundColor = #colorLiteral(red: 0.3933520469, green: 0.4040421268, blue: 0.9664957529, alpha: 1)
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 6
-        button.addTarget(self, action: #selector(touchDetailInfoButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    @objc private func touchDetailInfoButton() {
-        viewModel?.touchViewAction(.mainUser)
     }
     
     private func setLayout() {

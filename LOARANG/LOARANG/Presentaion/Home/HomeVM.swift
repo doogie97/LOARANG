@@ -126,6 +126,7 @@ final class HomeVM: HomeVMable {
     
     enum ActionCase {
         case mainUser
+        case registMainUser
         case bookmarkUser(rowIndex: Int)
         case bookmarkStarButton(rowIndex: Int)
         case search
@@ -142,6 +143,8 @@ final class HomeVM: HomeVMable {
                 return
             }
             showNextView.accept(.charterDetail(name: name))
+        case .registMainUser:
+            print("대표 캐릭터 등록을 위한 검색")
         case .bookmarkUser(let rowIndex):
             guard let name = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
                 return
