@@ -30,7 +30,7 @@ final class BookmarkFooter: UICollectionReusableView {
         return view
     }()
     
-    private lazy var emptyLabel = pretendardLabel(size: 16, family: .Regular, text: "즐겨찾기에 등록된 캐릭터가 없습니다🧐\n캐릭터 검색 후 등록해 보세요!", alignment: .center, lineCount: 2)
+    private lazy var emptyLabel = pretendardLabel(size: 16, family: .Regular, text: "즐겨찾기에 등록된 캐릭터가 없습니다. 🧐\n캐릭터 검색 후 등록해 보세요!", alignment: .center, lineCount: 2)
     
     private lazy var searchButton = {
         let button = UIButton(type: .system)
