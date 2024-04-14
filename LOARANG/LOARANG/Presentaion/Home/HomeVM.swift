@@ -25,7 +25,7 @@ protocol HomeVMOutput {
     var reloadBookmark: PublishRelay<Void> { get }
     var deleteBookmarkCell: PublishRelay<IndexPath> { get }
     var isLoading: PublishRelay<Bool> { get }
-    var showAlert: PublishRelay<String> { get }
+    var showAlert: PublishRelay<HomeVM.AlertCase> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
 }
 
@@ -111,7 +111,7 @@ final class HomeVM: HomeVMable {
                 }
             } catch let error {
                 await MainActor.run {
-                    showAlert.accept(error.errorMessage)
+                    showAlert.accept(.pop(messege: error.errorMessage))
                     isLoading.accept(false)
                 }
             }
@@ -167,7 +167,7 @@ final class HomeVM: HomeVMable {
     
     private func deleteBookmarkUser(_ rowIndex: Int) {
         guard let userName = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
-            showAlert.accept("해당 유저를 찾을 수 없습니다.")
+            showAlert.accept(.basic(message: "해당 유저를 찾을 수 없습니다."))
             return
         }
         
@@ -176,7 +176,7 @@ final class HomeVM: HomeVMable {
             deleteBookmarkCell.accept(IndexPath(item: rowIndex,
                                                 section: HomeSectionView.SectionCase.bookmark.rawValue))
         } catch let error {
-            showAlert.accept(error.errorMessage)
+            showAlert.accept(.basic(message: error.errorMessage))
         }
     }
     
@@ -185,6 +185,11 @@ final class HomeVM: HomeVMable {
         case searchView
         case webView(url: String?, title: String)
         case charterDetail(name: String)
+    }
+    
+    enum AlertCase {
+        case pop(messege: String)
+        case basic(message: String)
     }
     
     struct ViewContents {
@@ -197,6 +202,6 @@ final class HomeVM: HomeVMable {
     let reloadBookmark = PublishRelay<Void>()
     let deleteBookmarkCell = PublishRelay<IndexPath>()
     let isLoading = PublishRelay<Bool>()
-    let showAlert = PublishRelay<String>()
+    let showAlert = PublishRelay<AlertCase>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()
 }

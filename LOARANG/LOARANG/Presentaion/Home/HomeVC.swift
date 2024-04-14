@@ -103,8 +103,15 @@ final class HomeVC: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.showAlert.withUnretained(self)
-            .subscribe { owner, message in
-                owner.showAlert(message: message)
+            .subscribe { owner, alertCase in
+                switch alertCase {
+                case .pop(let message):
+                    owner.showAlert(message: message) {
+                        exit(0)
+                    }
+                case .basic(let message):
+                    owner.showAlert(message: message)
+                }
             }
             .disposed(by: disposeBag)
     }
