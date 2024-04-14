@@ -33,6 +33,7 @@ final class HomeVM: HomeVMable {
     private let getHomeGameInfoUseCase: GetHomeGameInfoUseCase
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
+    private let getCharacterDetailUseCase: GetCharacterDetailUseCase
     private let disposeBag = DisposeBag()
     
     private var homeGameInfo: HomeGameInfoEntity?
@@ -41,10 +42,12 @@ final class HomeVM: HomeVMable {
     
     init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
-         deleteBookmarkUseCase: DeleteBookmarkUseCase) {
+         deleteBookmarkUseCase: DeleteBookmarkUseCase,
+         getCharacterDetailUseCase: GetCharacterDetailUseCase) {
         self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
+        self.getCharacterDetailUseCase = getCharacterDetailUseCase
         bindViewChangeManager()
     }
     
@@ -147,7 +150,7 @@ final class HomeVM: HomeVMable {
         case .touchRegistMainUserButton:
             showAlert.accept(.searchMainUser)
         case .searchMainUser(let name):
-            print(name)
+            getCharacterDetail(name)
         case .bookmarkUser(let rowIndex):
             guard let name = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
                 return
@@ -180,6 +183,23 @@ final class HomeVM: HomeVMable {
                                                 section: HomeSectionView.SectionCase.bookmark.rawValue))
         } catch let error {
             showAlert.accept(.basic(message: error.errorMessage))
+        }
+    }
+    
+    private func getCharacterDetail(_ name: String) {
+        isLoading.accept(true)
+        Task {
+            do {
+                let userInfo = try await getCharacterDetailUseCase.excute(name: name)
+                await MainActor.run {
+                    isLoading.accept(false)
+                }
+            } catch let error {
+                await MainActor.run {
+                    showAlert.accept(.basic(message: error.errorMessage))
+                    isLoading.accept(false)
+                }
+            }
         }
     }
     

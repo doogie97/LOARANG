@@ -18,6 +18,7 @@ protocol Containerable {
 final class Container: Containerable {
     private let networkRepository = NetworkRepository(networkManager: NetworkManager())
     private let localStorageRepository: LocalStorageRepositoryable
+    private let crawlManager = CrawlManager() //추후 제거 예정
     
     init(localStorageRepository: LocalStorageRepositoryable) {
         self.localStorageRepository = localStorageRepository
@@ -26,7 +27,8 @@ final class Container: Containerable {
 //MARK: - about Main View
     func homeVC() -> HomeVC {
         let homeVM = HomeVM(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
-                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository))
+                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
+                            getCharacterDetailUseCase: GetCharacterDetailUseCase(crawlManagerable: crawlManager))
         return HomeVC(container: self,
                       viewModel: homeVM)
     }

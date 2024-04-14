@@ -188,6 +188,8 @@
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
 		C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */; };
 		C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */; };
+		C683F41E2BCC286400A5E699 /* GetCharacterDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */; };
+		C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */; };
 		C685D9D82BC97E1C009C815B /* BookmarkFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */; };
 		C685D9DA2BC997D3009C815B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D92BC997D3009C815B /* UILabel + Extension.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
@@ -381,6 +383,8 @@
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
 		C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMainUserUseCase.swift; sourceTree = "<group>"; };
 		C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeManager.swift; sourceTree = "<group>"; };
+		C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterDetailUseCase.swift; sourceTree = "<group>"; };
+		C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEntity.swift; sourceTree = "<group>"; };
 		C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFooter.swift; sourceTree = "<group>"; };
 		C685D9D92BC997D3009C815B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1028,6 +1032,7 @@
 				C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */,
 				C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */,
 				C6224F932BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift */,
+				C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */,
 				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
 			);
 			path = NetworkEntity;
@@ -1074,6 +1079,7 @@
 			children = (
 				C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */,
 				C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */,
+				C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */,
 			);
 			path = NetworkUseCase;
 			sourceTree = "<group>";
@@ -1431,12 +1437,14 @@
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				C685D9D82BC97E1C009C815B /* BookmarkFooter.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
+				C683F41E2BCC286400A5E699 /* GetCharacterDetailUseCase.swift in Sources */,
 				C6224F802BC847C300CABA30 /* GameNoticeEntity.swift in Sources */,
 				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
 				C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */,
+				C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,

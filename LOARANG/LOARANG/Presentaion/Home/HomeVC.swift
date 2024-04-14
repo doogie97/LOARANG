@@ -44,6 +44,7 @@ final class HomeVC: UIViewController {
         super.viewDidLoad()
         bindViewModel()
         viewModel.viewDidLoad()
+        ViewChangeManager.shared.mainUser.accept(nil) //임시 코드 푸쉬 x
     }
     
     private func bindViewModel() {
