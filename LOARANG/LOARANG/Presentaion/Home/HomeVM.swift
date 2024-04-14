@@ -34,6 +34,7 @@ final class HomeVM: HomeVMable {
     private let getHomeCharactersUseCase: GetHomeCharactersUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
+    private let changeMainUserUseCase: ChangeMainUserUseCase
     private let disposeBag = DisposeBag()
     
     private var homeGameInfo: HomeGameInfoEntity?
@@ -43,11 +44,13 @@ final class HomeVM: HomeVMable {
     init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
-         getCharacterDetailUseCase: GetCharacterDetailUseCase) {
+         getCharacterDetailUseCase: GetCharacterDetailUseCase,
+         changeMainUserUseCase: ChangeMainUserUseCase) {
         self.getHomeGameInfoUseCase = getHomeGameInfoUseCase
         self.getHomeCharactersUseCase = getHomeCharactersUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.getCharacterDetailUseCase = getCharacterDetailUseCase
+        self.changeMainUserUseCase = changeMainUserUseCase
         bindViewChangeManager()
     }
     
