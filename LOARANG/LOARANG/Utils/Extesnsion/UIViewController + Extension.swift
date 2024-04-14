@@ -40,6 +40,25 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
+    func showCheckUserAlert(_ character: CharacterDetailEntity, action: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: "\(character.characterName) Lv.\(character.itemLevel)(\(character.characterClass.rawValue))",
+                                      message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "확인", style: .default) { _ in
+            guard let action = action else {
+                return
+            }
+            
+            action()
+        }
+        let noAction = UIAlertAction(title: "취소", style: .destructive)
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        self.present(alert, animated: true)
+    }
+    
+    //추 후 삭제 필요
     func showCheckUserAlert(_ mainUser: MainUserEntity, action: (() -> Void)? = nil) {
         let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.`class`))",
                                       message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
