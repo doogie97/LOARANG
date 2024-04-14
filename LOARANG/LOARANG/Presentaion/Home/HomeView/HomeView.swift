@@ -60,6 +60,9 @@ final class HomeView: UIView {
 
 //MARK: - Manage Home Characters
 extension HomeView {
+    func reloadMainUserSection() {
+        homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.mainUser.rawValue))
+    }
     func reloadBookmark() {
         homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.bookmark.rawValue))
     }

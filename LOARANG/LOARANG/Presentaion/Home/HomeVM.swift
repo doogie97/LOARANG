@@ -20,6 +20,7 @@ protocol HomeVMInput {
 
 protocol HomeVMOutput {
     var setViewContents: PublishRelay<HomeVM.ViewContents> { get }
+    var reloadMainUserSection: PublishRelay<Void> { get }
     var reloadBookmark: PublishRelay<Void> { get }
     var deleteBookmarkCell: PublishRelay<IndexPath> { get }
     var isLoading: PublishRelay<Bool> { get }
@@ -52,6 +53,12 @@ final class HomeVM: HomeVMable {
                 if !owner.isViewOnTop {
                     owner.reloadBookmark.accept(())
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        ViewChangeManager.shared.mainUser.withUnretained(self)
+            .subscribe { owner, mainUser in
+                owner.reloadMainUserSection.accept(())
             }
             .disposed(by: disposeBag)
     }
@@ -162,6 +169,7 @@ final class HomeVM: HomeVMable {
     }
     
     let setViewContents = PublishRelay<ViewContents>()
+    let reloadMainUserSection = PublishRelay<Void>()
     let reloadBookmark = PublishRelay<Void>()
     let deleteBookmarkCell = PublishRelay<IndexPath>()
     let isLoading = PublishRelay<Bool>()
