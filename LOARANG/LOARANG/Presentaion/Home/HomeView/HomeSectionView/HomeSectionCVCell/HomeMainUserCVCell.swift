@@ -202,7 +202,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
     }()
     
     @objc private func touchRegistMainUserButton() {
-        viewModel?.touchViewAction(.registMainUser)
+        viewModel?.touchViewAction(.touchRegistMainUserButton)
     }
     
     func setCellContents(viewModel: HomeVMable?) {
