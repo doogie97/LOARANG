@@ -257,7 +257,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         
         emptyView.snp.makeConstraints {
             $0.top.equalTo(topSeparator.snp.bottom).inset(margin(.width, -10))
-            $0.leading.trailing.equalToSuperview().inset(margin(.width, 10))
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 16))
             $0.bottom.equalToSuperview()
         }
     }

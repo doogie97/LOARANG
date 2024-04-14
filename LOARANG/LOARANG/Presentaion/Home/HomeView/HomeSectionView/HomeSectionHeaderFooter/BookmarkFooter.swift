@@ -11,6 +11,25 @@ import SnapKit
 final class BookmarkFooter: UICollectionReusableView {
     private weak var viewModel: HomeVMable?
     
+    private lazy var emptyView = {
+        let view = UIView()
+        view.addSubview(emptyLabel)
+        view.addSubview(searchButton)
+        
+        emptyLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.top.equalTo(emptyLabel.snp.bottom).inset(-16)
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 48))
+            $0.height.equalTo(40)
+            $0.bottom.equalToSuperview()
+        }
+        return view
+    }()
+    
     private lazy var emptyLabel = pretendardLabel(size: 16, family: .Regular, text: "즐겨찾기에 등록된 캐릭터가 없습니다🧐\n캐릭터 검색 후 등록해 보세요!", alignment: .center, lineCount: 2)
     
     private lazy var searchButton = {
@@ -41,23 +60,17 @@ final class BookmarkFooter: UICollectionReusableView {
         backView.backgroundColor = .cellColor
         
         self.addSubview(backView)
-        backView.addSubview(emptyLabel)
-        backView.addSubview(searchButton)
+        backView.addSubview(emptyView)
         
         backView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(margin(.width, 8))
             $0.bottom.equalToSuperview().inset(margin(.width, 20))
         }
-        emptyLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(32)
-            $0.leading.trailing.equalToSuperview()
-        }
         
-        searchButton.snp.makeConstraints {
-            $0.top.equalTo(emptyLabel.snp.bottom).inset(-16)
-            $0.leading.trailing.equalToSuperview().inset(margin(.width, 48))
-            $0.height.equalTo(40)
+        emptyView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
         }
     }
 }
