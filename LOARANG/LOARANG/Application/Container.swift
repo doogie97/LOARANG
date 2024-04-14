@@ -12,6 +12,7 @@ protocol Containerable {
     func homeVC() -> HomeVC
     func makeSearchViewController() -> SearchViewController
     func makeWebViewViewController(url: URL, title: String) -> WebViewViewController
+    func makeUserInfoViewController(_ userName: String, isSearching: Bool) -> UserInfoViewController
 }
 
 final class Container: Containerable {

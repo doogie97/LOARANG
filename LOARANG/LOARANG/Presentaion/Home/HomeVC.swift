@@ -75,6 +75,9 @@ final class HomeVC: UIViewController {
             .subscribe { owner, nextViewCase in
                 var nextVC: UIViewController? {
                     switch nextViewCase {
+                    case .charterDetail(let name):
+                        return owner.container.makeUserInfoViewController(name,
+                                                                          isSearching: false)
                     case .searchView:
                         return owner.container.makeSearchViewController()
                     case .webView(let url, let title):

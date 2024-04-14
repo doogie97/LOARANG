@@ -110,9 +110,15 @@ final class HomeVM: HomeVMable {
     func touchViewAction(_ actionCase: ActionCase) {
         switch actionCase {
         case .mainUser:
-            print("메인 유저 검색")
+            guard let name = ViewChangeManager.shared.mainUser.value?.name else {
+                return
+            }
+            showNextView.accept(.charterDetail(name: name))
         case .bookmarkUser(let rowIndex):
-            print("\(rowIndex) 북마크 유저 검색")
+            guard let name = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
+                return
+            }
+            showNextView.accept(.charterDetail(name: name))
         case .bookmarkStarButton(let rowIndex):
             deleteBookmarkUser(rowIndex)
         case .search:
@@ -147,6 +153,7 @@ final class HomeVM: HomeVMable {
     enum NextViewCase {
         case searchView
         case webView(url: String?, title: String)
+        case charterDetail(name: String)
     }
     
     struct ViewContents {
