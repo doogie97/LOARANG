@@ -13,6 +13,50 @@ final class HomeMainUserCVCell: UICollectionViewCell {
     private weak var viewModel: HomeVMable?
     private var disposeBag = DisposeBag()
     
+    //MARK: - UserInfoView
+    private lazy var userInfoView = {
+        let view = UIView()
+        view.isHidden = true
+        view.backgroundColor = .cellColor
+        view.layer.cornerRadius = 6
+        view.addSubview(classLabelView)
+        view.addSubview(characterImageView)
+        view.addSubview(characterNameLabel)
+        view.addSubview(bottomInfoView)
+        view.addSubview(detailInfoButton)
+        
+        classLabelView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(margin(.width, 16))
+        }
+        
+        characterImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(margin(.width, 8))
+            $0.centerX.equalToSuperview()
+            $0.height.width.equalTo(imageWidth)
+        }
+        
+        characterNameLabel.setContentHuggingPriority(.required, for: .vertical)
+        characterNameLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+        characterNameLabel.snp.makeConstraints {
+            $0.top.equalTo(characterImageView.snp.bottom).inset(margin(.width, -8))
+            $0.centerX.equalToSuperview()
+        }
+        
+        bottomInfoView.snp.makeConstraints {
+            $0.top.equalTo(characterNameLabel.snp.bottom).inset(margin(.width, -10))
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 16))
+            $0.height.equalTo(73)
+        }
+        
+        detailInfoButton.snp.makeConstraints {
+            $0.top.equalTo(bottomInfoView.snp.bottom).inset(margin(.width, -16))
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 16))
+            $0.height.equalTo(40)
+        }
+        
+        return view
+    }()
+    
     private lazy var classLabel = {
         let label = PaddingLabel(top: 8, bottom: 8, left: 8, right: 8)
         label.font = .pretendard(size: 12, family: .Bold)
@@ -20,6 +64,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         
         return label
     }()
+    
     private lazy var classLabelView = {
         let view = UIView()
         let backView = UIView()
@@ -92,6 +137,16 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         return view
     }
     
+    //MARK: - Empty View
+    private lazy var emptyView = {
+        let view = UIView()
+        view.layer.cornerRadius = 6
+        view.isHidden = true
+        view.backgroundColor = .cellColor
+        
+        return view
+    }()
+    
     func setCellContents(viewModel: HomeVMable?) {
         self.viewModel = viewModel
         bindViewChangeManager()
@@ -117,8 +172,9 @@ final class HomeMainUserCVCell: UICollectionViewCell {
             itemLvLabel.text = userInfo.itemLV.replacingOccurrences(of: ",", with: "")
             battleLvLabel.text = "Lv." + userInfo.battleLV
             expeditionLvLabel.text = "Lv." + userInfo.expeditionLV
+            userInfoView.isHidden = false
         } else {
-            print("없다")
+            emptyView.isHidden = false
         }
     }
     
@@ -142,61 +198,33 @@ final class HomeMainUserCVCell: UICollectionViewCell {
     private func setLayout() {
         let topSeparator = UIView()
         topSeparator.backgroundColor = .tableViewColor
-        let backView = UIView()
-        backView.backgroundColor = .cellColor
-        backView.layer.cornerRadius = 6
         
         self.contentView.addSubview(topSeparator)
-        self.contentView.addSubview(backView)
-        backView.addSubview(classLabelView)
-        backView.addSubview(characterImageView)
-        backView.addSubview(characterNameLabel)
-        backView.addSubview(bottomInfoView)
-        backView.addSubview(detailInfoButton)
-        
-        classLabelView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(margin(.width, 16))
-        }
+        self.contentView.addSubview(userInfoView)
+        self.addSubview(emptyView)
         
         topSeparator.snp.makeConstraints {
             $0.top.left.trailing.equalToSuperview()
             $0.height.equalTo(10)
         }
         
-        backView.snp.makeConstraints {
+        userInfoView.snp.makeConstraints {
             $0.top.equalTo(topSeparator.snp.bottom).inset(margin(.width, -10))
             $0.leading.trailing.equalToSuperview().inset(margin(.width, 10))
             $0.bottom.equalToSuperview()
         }
         
-        characterImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(margin(.width, 8))
-            $0.centerX.equalToSuperview()
-            $0.height.width.equalTo(imageWidth)
-        }
-        
-        characterNameLabel.setContentHuggingPriority(.required, for: .vertical)
-        characterNameLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        characterNameLabel.snp.makeConstraints {
-            $0.top.equalTo(characterImageView.snp.bottom).inset(margin(.width, -8))
-            $0.centerX.equalToSuperview()
-        }
-        
-        bottomInfoView.snp.makeConstraints {
-            $0.top.equalTo(characterNameLabel.snp.bottom).inset(margin(.width, -10))
-            $0.leading.trailing.equalToSuperview().inset(margin(.width, 16))
-            $0.height.equalTo(73)
-        }
-        
-        detailInfoButton.snp.makeConstraints {
-            $0.top.equalTo(bottomInfoView.snp.bottom).inset(margin(.width, -16))
-            $0.leading.trailing.equalToSuperview().inset(margin(.width, 16))
-            $0.height.equalTo(40)
+        emptyView.snp.makeConstraints {
+            $0.top.equalTo(topSeparator.snp.bottom).inset(margin(.width, -10))
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 10))
+            $0.bottom.equalToSuperview()
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
+        userInfoView.isHidden = true
+        emptyView.isHidden = true
     }
 }
