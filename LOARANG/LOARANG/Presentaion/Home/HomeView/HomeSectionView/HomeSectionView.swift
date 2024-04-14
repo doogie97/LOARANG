@@ -262,10 +262,12 @@ extension HomeSectionView {
     }
     
     func mainUserSectionLayout() -> NSCollectionLayoutSection {
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(370 / 393))
+        let hasMainUser = ViewChangeManager.shared.mainUser.value != nil
+        let height = hasMainUser ? NSCollectionLayoutDimension.fractionalWidth(370 / 393) : NSCollectionLayoutDimension.fractionalWidth(200 / 393)
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: height)
         let item = NSCollectionLayoutItem(layoutSize: size)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(370 / 393))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: height)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 0)
