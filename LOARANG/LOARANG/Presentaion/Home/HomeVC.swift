@@ -115,6 +115,10 @@ final class HomeVC: UIViewController {
                     owner.showSetMainCharacterAlert { name in
                         owner.viewModel.touchViewAction(.searchMainUser(name: name))
                     }
+                case .checkMainUer(let userInfo):
+                    owner.showCheckUserAlert(userInfo) {
+                        owner.viewModel.touchViewAction(.changeMainUser(userInfo: userInfo))
+                    }
                 }
             }
             .disposed(by: disposeBag)

@@ -9,6 +9,7 @@ import Foundation
 import RxRelay
 import RxSwift
 import AppTrackingTransparency
+import UIKit
 
 protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 
@@ -134,6 +135,7 @@ final class HomeVM: HomeVMable {
         case mainUser
         case touchRegistMainUserButton
         case searchMainUser(name: String)
+        case changeMainUser(userInfo: CharacterDetailEntity)
         case bookmarkUser(rowIndex: Int)
         case bookmarkStarButton(rowIndex: Int)
         case search
@@ -154,6 +156,8 @@ final class HomeVM: HomeVMable {
             showAlert.accept(.searchMainUser)
         case .searchMainUser(let name):
             getCharacterDetail(name)
+        case .changeMainUser(let userInfo):
+            changeMainUser(userInfo)
         case .bookmarkUser(let rowIndex):
             guard let name = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
                 return
@@ -195,6 +199,7 @@ final class HomeVM: HomeVMable {
             do {
                 let userInfo = try await getCharacterDetailUseCase.excute(name: name)
                 await MainActor.run {
+                    showAlert.accept(.checkMainUer(userInfo: userInfo))
                     isLoading.accept(false)
                 }
             } catch let error {
@@ -204,6 +209,18 @@ final class HomeVM: HomeVMable {
                 }
             }
         }
+    }
+    
+    private func changeMainUser(_ userInfo: CharacterDetailEntity) {
+        ViewChangeManager.shared.mainUser.accept(MainUserEntity(
+            image: UIImage(),
+            battleLV: userInfo.battleLevel,
+            name: userInfo.characterName,
+            class: userInfo.characterClass.rawValue,
+            itemLV: userInfo.itemLevel,
+            expeditionLV: userInfo.expeditionLevel,
+            server: userInfo.gameServer.rawValue)
+        )
     }
     
     //MARK: - Output
@@ -217,6 +234,7 @@ final class HomeVM: HomeVMable {
         case pop(messege: String)
         case basic(message: String)
         case searchMainUser
+        case checkMainUer(userInfo: CharacterDetailEntity)
     }
     
     struct ViewContents {
