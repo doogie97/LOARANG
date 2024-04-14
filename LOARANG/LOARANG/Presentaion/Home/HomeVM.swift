@@ -8,6 +8,7 @@
 import Foundation
 import RxRelay
 import RxSwift
+import AppTrackingTransparency
 
 protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 
@@ -67,6 +68,7 @@ final class HomeVM: HomeVMable {
     func viewDidLoad() {
         getHomeGameInfo()
         getHomeCharacters()
+        requestTraking()
     }
     
     func viewDidAppear() {
@@ -75,6 +77,25 @@ final class HomeVM: HomeVMable {
     
     func viewDidDisAppear() {
         isViewOnTop = false
+    }
+    
+    private func requestTraking() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("status= authorized")
+                case .denied:
+                    print("status= denied")
+                case .notDetermined:
+                    print("status= notDetermined")
+                case .restricted:
+                    print("status= restricted")
+                @unknown default:
+                    print("status= default")
+                }
+            }
+        }
     }
     
     private func getHomeGameInfo() {
