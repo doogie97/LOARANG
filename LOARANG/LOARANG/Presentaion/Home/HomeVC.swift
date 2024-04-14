@@ -44,7 +44,6 @@ final class HomeVC: UIViewController {
         super.viewDidLoad()
         bindViewModel()
         viewModel.viewDidLoad()
-        ViewChangeManager.shared.mainUser.accept(nil) //임시 코드 푸쉬 x
     }
     
     private func bindViewModel() {
@@ -82,7 +81,7 @@ final class HomeVC: UIViewController {
             .subscribe { owner, nextViewCase in
                 var nextVC: UIViewController? {
                     switch nextViewCase {
-                    case .charterDetail(let name):
+                    case .characterDetail(let name):
                         return owner.container.makeUserInfoViewController(name,
                                                                           isSearching: false)
                     case .searchView:

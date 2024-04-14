@@ -149,7 +149,7 @@ final class HomeVM: HomeVMable {
             guard let name = ViewChangeManager.shared.mainUser.value?.name else {
                 return
             }
-            showNextView.accept(.charterDetail(name: name))
+            showNextView.accept(.characterDetail(name: name))
         case .touchRegistMainUserButton:
             showAlert.accept(.searchMainUser)
         case .searchMainUser(let name):
@@ -158,7 +158,7 @@ final class HomeVM: HomeVMable {
             guard let name = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
                 return
             }
-            showNextView.accept(.charterDetail(name: name))
+            showNextView.accept(.characterDetail(name: name))
         case .bookmarkStarButton(let rowIndex):
             deleteBookmarkUser(rowIndex)
         case .search:
@@ -210,7 +210,7 @@ final class HomeVM: HomeVMable {
     enum NextViewCase {
         case searchView
         case webView(url: String?, title: String)
-        case charterDetail(name: String)
+        case characterDetail(name: String)
     }
     
     enum AlertCase {
