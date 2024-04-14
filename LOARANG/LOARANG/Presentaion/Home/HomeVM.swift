@@ -127,6 +127,7 @@ final class HomeVM: HomeVMable {
     enum ActionCase {
         case mainUser
         case touchRegistMainUserButton
+        case searchMainUser(name: String)
         case bookmarkUser(rowIndex: Int)
         case bookmarkStarButton(rowIndex: Int)
         case search
@@ -143,8 +144,10 @@ final class HomeVM: HomeVMable {
                 return
             }
             showNextView.accept(.charterDetail(name: name))
-            print("대표 캐릭터 등록을 위한 검색")
         case .touchRegistMainUserButton:
+            showAlert.accept(.searchMainUser)
+        case .searchMainUser(let name):
+            print(name)
         case .bookmarkUser(let rowIndex):
             guard let name = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
                 return
@@ -190,6 +193,7 @@ final class HomeVM: HomeVMable {
     enum AlertCase {
         case pop(messege: String)
         case basic(message: String)
+        case searchMainUser
     }
     
     struct ViewContents {
