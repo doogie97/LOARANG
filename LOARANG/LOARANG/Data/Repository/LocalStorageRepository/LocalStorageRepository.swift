@@ -11,6 +11,7 @@ protocol LocalStorageRepositoryable {
     func mainUser() -> MainUserDTO?
     func bookmarkUsers() -> [BookmarkUserDTO]
     func changeMainUser(_ user: MainUserDTO) throws
+    func deleteMainUser() throws
     func addBookmarkUser(_ user: BookmarkUserDTO) throws
     func deleteBookmarkUser(_ name: String) throws
     func updateBookmarkUser(_ user: BookmarkUserDTO) throws
@@ -33,6 +34,20 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         }
         
         return mainUserDTO
+    }
+    
+    func deleteMainUser() throws {
+        guard let mainUserDTO = realm.objects(MainUserDTO.self).first else {
+            throw LocalStorageError.noMainUser
+        }
+        
+        do {
+            try realm.write {
+                realm.delete(mainUserDTO)
+            }
+        } catch let error {
+            throw error
+        }
     }
     
     func bookmarkUsers() -> [BookmarkUserDTO] {
