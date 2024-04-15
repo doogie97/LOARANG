@@ -39,6 +39,8 @@ final class HomeVM: HomeVMable {
     private let disposeBag = DisposeBag()
     
     private var homeGameInfo: HomeGameInfoEntity?
+    ///유저 삭제시 false로 변경 필요
+    private var hasMainUser = false
     
     private var isViewOnTop = true
     
@@ -66,7 +68,17 @@ final class HomeVM: HomeVMable {
         
         ViewChangeManager.shared.mainUser.withUnretained(self)
             .subscribe { owner, mainUser in
-                owner.reloadMainUserSection.accept(())
+                    //기존에 유저가 없음 -> 유저가 추가됨 => reload
+                if let mainUser = mainUser {
+                    if !owner.hasMainUser {
+                        owner.reloadMainUserSection.accept(())
+                    }
+                } else {
+                    //기존에 유저가 있음 -> 유저가 삭제됨 => reload
+                    if owner.hasMainUser {
+                        owner.reloadMainUserSection.accept(())
+                    }
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -129,6 +141,9 @@ final class HomeVM: HomeVMable {
         let homeCharacters = getHomeCharactersUseCase.execute()
         ViewChangeManager.shared.mainUser.accept(homeCharacters.mainUser)
         ViewChangeManager.shared.bookmarkUsers.accept(homeCharacters.bookmarkUsers)
+        if homeCharacters.mainUser != nil {
+            self.hasMainUser = true
+        }
     }
     
     enum ActionCase {
