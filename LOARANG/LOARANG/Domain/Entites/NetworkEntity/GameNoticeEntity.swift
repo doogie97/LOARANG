@@ -14,6 +14,6 @@ struct GameNoticeEntity {
         case 점검
         case 상점
         case 이벤트
-        case unknown
+        case unknown = "알 수 없음"
     }
 }
