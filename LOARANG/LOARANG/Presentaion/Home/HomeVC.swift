@@ -55,6 +55,12 @@ final class HomeVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.appendBookmarkCell.withUnretained(self)
+            .subscribe { owner, count in
+                owner.homeView.appendCell(count: count)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.deleteBookmarkCell.withUnretained(self)
             .subscribe { owner, indexPath in
                 owner.homeView.deleteCell(indexPath)

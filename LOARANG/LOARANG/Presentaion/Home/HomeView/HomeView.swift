@@ -67,6 +67,11 @@ extension HomeView {
         homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.bookmark.rawValue))
     }
     
+    func appendCell(count: Int) {
+        homeSectionView.sectionCV.insertItems(at: [IndexPath(item: count - 1,
+                                                             section: HomeSectionView.SectionCase.bookmark.rawValue)])
+    }
+    
     func deleteCell(_ indexPath: IndexPath) {
         homeSectionView.sectionCV.deleteItems(at: [indexPath])
     }

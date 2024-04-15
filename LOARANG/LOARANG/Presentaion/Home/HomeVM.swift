@@ -22,6 +22,7 @@ protocol HomeVMOutput {
     var setViewContents: PublishRelay<HomeVM.ViewContents> { get }
     var reloadMainUserSection: PublishRelay<Void> { get }
     var reloadBookmark: PublishRelay<Void> { get }
+    var appendBookmarkCell: PublishRelay<Int> { get }
     var deleteBookmarkCell: PublishRelay<IndexPath> { get }
     var isLoading: PublishRelay<Bool> { get }
     var showAlert: PublishRelay<HomeVM.AlertCase> { get }
@@ -64,14 +65,13 @@ final class HomeVM: HomeVMable {
                 if owner.isViewDidLoad {
                     //기존 즐겨찾기 유저가 0명일 때 -> reload
                     if oldBookmarkUsers.count == 0 {
-                        print("리로드")
                         owner.reloadBookmark.accept(())
                         return
                     }
                     
                     //기존 즐겨찾기 유저가 새로 accept된 즐겨찾기 유저 보다 적을 경우 => 추가된 경우
                     if oldBookmarkUsers.count < bookmarkUsers.count {
-                        print("추가")
+                        owner.appendBookmarkCell.accept(bookmarkUsers.count)
                         return
                     }
                     
@@ -281,6 +281,7 @@ final class HomeVM: HomeVMable {
     let setViewContents = PublishRelay<ViewContents>()
     let reloadMainUserSection = PublishRelay<Void>()
     let reloadBookmark = PublishRelay<Void>()
+    let appendBookmarkCell = PublishRelay<Int>()
     let deleteBookmarkCell = PublishRelay<IndexPath>()
     let isLoading = PublishRelay<Bool>()
     let showAlert = PublishRelay<AlertCase>()
