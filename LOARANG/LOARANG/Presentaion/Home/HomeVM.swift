@@ -204,7 +204,7 @@ final class HomeVM: HomeVMable {
             guard let name = ViewChangeManager.shared.mainUser.value?.name else {
                 return
             }
-            showNextView.accept(.characterDetail(name: name))
+            showNextView.accept(.characterDetailV2(name: name))
         case .touchRegistMainUserButton:
             showAlert.accept(.searchMainUser)
         case .searchMainUser(let name):
@@ -281,6 +281,7 @@ final class HomeVM: HomeVMable {
         case searchView
         case webView(url: String?, title: String)
         case characterDetail(name: String)
+        case characterDetailV2(name: String)
     }
     
     enum AlertCase {

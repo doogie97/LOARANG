@@ -83,6 +83,8 @@ final class HomeVC: UIViewController {
             .subscribe { owner, nextViewCase in
                 var nextVC: UIViewController? {
                     switch nextViewCase {
+                    case .characterDetailV2(let name):
+                        return owner.container.characterDetailVC(name: name)
                     case .characterDetail(let name):
                         return owner.container.makeUserInfoViewController(name,
                                                                           isSearching: false)
