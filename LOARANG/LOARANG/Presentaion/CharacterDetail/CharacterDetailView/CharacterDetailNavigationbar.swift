@@ -37,7 +37,7 @@ final class CharacterDetailNavigationbar: UIView {
     
     @objc private func touchButton(_ sender: UIButton) {
         if sender.tag == 0 {
-            print("뒤로가기")
+            viewModel?.touchBackButton()
         }
         
         if sender.tag == 1 {

@@ -54,5 +54,11 @@ final class CharacterDetailVC: UIViewController {
                 owner.charcterDetailView.setViewContents(viewContents: viewContents)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.popView.withUnretained(self)
+            .subscribe { owner, _ in
+                owner.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
