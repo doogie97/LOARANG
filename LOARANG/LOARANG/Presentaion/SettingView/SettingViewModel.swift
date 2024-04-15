@@ -44,7 +44,7 @@ final class SettingViewModel: SettingViewModelable {
                                                     name: searchResult.mainInfo.name,
                                                     class: searchResult.mainInfo.class,
                                                     itemLV: searchResult.mainInfo.itemLV,
-                                                    expeditionLV: searchResult.mainInfo.expeditionLV,
+                                                    expeditionLV: Int(searchResult.mainInfo.expeditionLV) ?? 0,
                                                     server: searchResult.mainInfo.server))
                     finishedLoading.accept(())
                 }

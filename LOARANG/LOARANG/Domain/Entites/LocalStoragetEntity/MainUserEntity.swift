@@ -14,7 +14,7 @@ struct MainUserEntity {
     let name: String
     let `class`: String
     let itemLV: String
-    let expeditionLV: String
+    let expeditionLV: Int
     let server: String
     
     var toDTO: MainUserDTO {

@@ -15,7 +15,7 @@ final class MainUserDTO: Object {
     @Persisted var name: String
     @Persisted var `class`: String
     @Persisted var itemLV: String
-    @Persisted var expeditionLV: String
+    @Persisted var expeditionLV: Int
     @Persisted var server: String
     @Persisted(primaryKey: true) var type = "main"
     

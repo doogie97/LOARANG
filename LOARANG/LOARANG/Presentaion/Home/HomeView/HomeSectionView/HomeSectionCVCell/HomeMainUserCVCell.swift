@@ -229,7 +229,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
                                            color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
             itemLvLabel.text = userInfo.itemLV.replacingOccurrences(of: ",", with: "")
             battleLvLabel.text = "Lv." + userInfo.battleLV.description
-            expeditionLvLabel.text = "Lv." + userInfo.expeditionLV
+            expeditionLvLabel.text = "Lv." + userInfo.expeditionLV.description
             userInfoView.isHidden = false
         } else {
             emptyView.isHidden = false

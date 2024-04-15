@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 if oldSchemaVersion < 1 {
                     migration.enumerateObjects(ofType: MainUserDTO.className()) { oldObject, newObject in
                         newObject?["imageUrl"] = ""
-                        newObject?["expeditionLV"] = "???"
+                        newObject?["expeditionLV"] = 0
                     }
                 }
             }

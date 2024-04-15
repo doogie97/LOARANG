@@ -113,7 +113,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                                               name: userInfo.mainInfo.name,
                                               class: userInfo.mainInfo.`class`,
                                               itemLV: userInfo.mainInfo.itemLV,
-                                              expeditionLV: userInfo.mainInfo.expeditionLV,
+                                              expeditionLV: Int(userInfo.mainInfo.expeditionLV) ?? 0,
                                               server: userInfo.mainInfo.server)
                 try changeMainUserUseCase.execute(user: mainUser)
             } catch {
