@@ -235,6 +235,7 @@ final class HomeVM: HomeVMable {
     private func changeMainUser(_ userInfo: CharacterDetailEntity) {
         do {
             try changeMainUserUseCase.execute(user: userInfo.toLocalStorageEntity)
+            showAlert.accept(.basic(message: "대표 캐릭터 설정이 완료되었습니다!"))
         } catch let error {
             showAlert.accept(.basic(message: error.errorMessage))
         }

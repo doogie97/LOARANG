@@ -67,7 +67,7 @@ final class SettingViewModel: SettingViewModelable {
     func changeMainUser(_ mainUser: MainUserEntity) {
         do {
             try changeMainUserUseCase.execute(user: mainUser)
-            showAlert.accept(.basic(message: "대표 캐릭터 설정이 완료되었습니다."))
+            showAlert.accept(.basic(message: "대표 캐릭터 설정이 완료되었습니다!"))
         } catch {
             showAlert.accept(.basic(message: error.errorMessage))
         }
