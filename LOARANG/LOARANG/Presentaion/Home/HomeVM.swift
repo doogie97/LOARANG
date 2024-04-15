@@ -77,7 +77,12 @@ final class HomeVM: HomeVMable {
                     
                     //기존 즐겨찾기 유저가 새로 accept된 즐겨찾기 유저 보다 많을 경우 => 삭제된 경우
                     if oldBookmarkUsers.count > bookmarkUsers.count {
-                        print("삭제")
+                        for (index, userInfo) in oldBookmarkUsers.enumerated() {
+                            if !bookmarkUsers.contains(where: { $0.name == userInfo.name }) {
+                                owner.deleteBookmarkCell.accept(IndexPath(item: index,
+                                                                          section: HomeSectionView.SectionCase.bookmark.rawValue))
+                            }
+                        }
                         return
                     }
                     
@@ -221,8 +226,7 @@ final class HomeVM: HomeVMable {
         
         do {
             try deleteBookmarkUseCase.execute(name: userName)
-            deleteBookmarkCell.accept(IndexPath(item: rowIndex,
-                                                section: HomeSectionView.SectionCase.bookmark.rawValue))
+            //bindViewChangeManager에서 뷰 반영 할 것이기 때문에 삭제까지만 진행
         } catch let error {
             showAlert.accept(.basic(message: error.errorMessage))
         }
