@@ -41,7 +41,7 @@ extension UIViewController {
     }
     
     func showCheckUserAlert(_ character: CharacterDetailEntity, action: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: "\(character.characterName) Lv.\(character.itemLevel)(\(character.characterClass.rawValue))",
+        let alert = UIAlertController(title: "\(character.profile.characterName) Lv.\(character.profile.itemLevel)(\(character.profile.characterClass.rawValue))",
                                       message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "확인", style: .default) { _ in
             guard let action = action else {

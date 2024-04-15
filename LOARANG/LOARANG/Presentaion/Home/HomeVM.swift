@@ -212,15 +212,15 @@ final class HomeVM: HomeVMable {
     }
     
     private func changeMainUser(_ userInfo: CharacterDetailEntity) {
-        ViewChangeManager.shared.mainUser.accept(MainUserEntity(
-            image: UIImage(),
-            battleLV: userInfo.battleLevel,
-            name: userInfo.characterName,
-            class: userInfo.characterClass.rawValue,
-            itemLV: userInfo.itemLevel,
-            expeditionLV: userInfo.expeditionLevel,
-            server: userInfo.gameServer.rawValue)
-        )
+//        ViewChangeManager.shared.mainUser.accept(MainUserEntity(
+//            image: UIImage(),
+//            battleLV: userInfo.battleLevel,
+//            name: userInfo.characterName,
+//            class: userInfo.characterClass.rawValue,
+//            itemLV: userInfo.itemLevel,
+//            expeditionLV: userInfo.expeditionLevel,
+//            server: userInfo.gameServer.rawValue)
+//        )
     }
     
     //MARK: - Output

@@ -6,22 +6,25 @@
 //
 
 struct GetCharacterDetailUseCase {
-    private let crawlManagerable: CrawlManagerable //추후 networkmanager로 구현 예정
-    init(crawlManagerable: CrawlManagerable) {
-        self.crawlManagerable = crawlManagerable
+    private let networkRepository: NetworkRepositoryable
+    init(networkRepository: NetworkRepositoryable) {
+        self.networkRepository = networkRepository
     }
     
     func excute(name: String) async throws -> CharacterDetailEntity {
-        let characterDTO = try await crawlManagerable.getUserInfo(name)
-        let charterEntity = CharacterDetailEntity(
-            gameServer: GameServer(rawValue: characterDTO.mainInfo.server.replacingOccurrences(of: "@", with: "")) ?? .unknown,
-            battleLevel: characterDTO.mainInfo.battleLV,
-            itemLevel: characterDTO.mainInfo.itemLV,
-            expeditionLevel: characterDTO.mainInfo.expeditionLV,
-            characterName: characterDTO.mainInfo.name,
-            characterClass: CharacterClass(rawValue: characterDTO.mainInfo.class) ?? .unknown, 
-            imageUrl: characterDTO.mainInfo.imageUrl
+        let dto = try await networkRepository.getCharacterDetail(name: name)
+        return CharacterDetailEntity(profile: profile(dto.ArmoryProfile))
+    }
+    
+    private func profile(_ dto: CharactersDetailDTO.ArmoryProfile?) -> CharacterDetailEntity.Profile {
+        return CharacterDetailEntity.Profile(
+            gameServer: GameServer(rawValue: dto?.ServerName ?? "") ?? .unknown,
+            battleLevel: dto?.CharacterLevel ?? 0,
+            itemLevel: dto?.ItemMaxLevel ?? "",
+            expeditionLevel: dto?.ExpeditionLevel ?? 0,
+            characterName: dto?.CharacterName ?? "",
+            characterClass: CharacterClass(rawValue: dto?.CharacterClassName ?? "") ?? .unknown,
+            imageUrl: dto?.CharacterImage ?? ""
         )
-        return charterEntity
     }
 }
