@@ -30,16 +30,6 @@ final class HomeVC: UIViewController {
         self.view = homeView
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel.viewDidAppear()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        viewModel.viewDidDisAppear()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()

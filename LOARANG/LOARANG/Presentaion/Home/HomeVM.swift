@@ -15,8 +15,6 @@ protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 
 protocol HomeVMInput {
     func viewDidLoad()
-    func viewDidAppear()
-    func viewDidDisAppear()
     func touchViewAction(_ touchCase: HomeVM.ActionCase)
 }
 
@@ -41,8 +39,9 @@ final class HomeVM: HomeVMable {
     private var homeGameInfo: HomeGameInfoEntity?
     ///유저 삭제시 false로 변경 필요
     private var hasMainUser = false
+    private var bookmarkUsers = [BookmarkUserEntity]()
     
-    private var isViewOnTop = true
+    private var isViewDidLoad = false
     
     init(getHomeGameInfoUseCase: GetHomeGameInfoUseCase,
          getHomeCharactersUseCase: GetHomeCharactersUseCase,
@@ -59,9 +58,34 @@ final class HomeVM: HomeVMable {
     
     private func bindViewChangeManager() {
         ViewChangeManager.shared.bookmarkUsers.withUnretained(self)
-            .subscribe { owner, _ in
-                if !owner.isViewOnTop {
-                    owner.reloadBookmark.accept(())
+            .subscribe { owner, bookmarkUsers in
+                let oldBookmarkUsers = owner.bookmarkUsers
+                owner.bookmarkUsers = bookmarkUsers
+                if owner.isViewDidLoad {
+                    //기존 즐겨찾기 유저가 0명일 때 -> reload
+                    if oldBookmarkUsers.count == 0 {
+                        print("리로드")
+                        owner.reloadBookmark.accept(())
+                        return
+                    }
+                    
+                    //기존 즐겨찾기 유저가 새로 accept된 즐겨찾기 유저 보다 적을 경우 => 추가된 경우
+                    if oldBookmarkUsers.count < bookmarkUsers.count {
+                        print("추가")
+                        return
+                    }
+                    
+                    //기존 즐겨찾기 유저가 새로 accept된 즐겨찾기 유저 보다 많을 경우 => 삭제된 경우
+                    if oldBookmarkUsers.count > bookmarkUsers.count {
+                        print("삭제")
+                        return
+                    }
+                    
+                    //기존 즐겨찾기 유저와 새로 accept된 즐겨찾기 유저와 같을 경우 => update
+                    if oldBookmarkUsers.count == bookmarkUsers.count {
+                        print("업뎃")
+                        return
+                    }
                 }
             }
             .disposed(by: disposeBag)
@@ -69,7 +93,7 @@ final class HomeVM: HomeVMable {
         ViewChangeManager.shared.mainUser.withUnretained(self)
             .subscribe { owner, mainUser in
                     //기존에 유저가 없음 -> 유저가 추가됨 => reload
-                if let mainUser = mainUser {
+                if let _ = mainUser {
                     if !owner.hasMainUser {
                         owner.reloadMainUserSection.accept(())
                         owner.hasMainUser = true
@@ -90,14 +114,7 @@ final class HomeVM: HomeVMable {
         getHomeGameInfo()
         getHomeCharacters()
         requestTraking()
-    }
-    
-    func viewDidAppear() {
-        isViewOnTop = true
-    }
-    
-    func viewDidDisAppear() {
-        isViewOnTop = false
+        isViewDidLoad = true
     }
     
     private func requestTraking() {
@@ -146,6 +163,7 @@ final class HomeVM: HomeVMable {
         if homeCharacters.mainUser != nil {
             self.hasMainUser = true
         }
+        self.bookmarkUsers = homeCharacters.bookmarkUsers
     }
     
     enum ActionCase {
