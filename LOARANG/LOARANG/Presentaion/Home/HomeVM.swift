@@ -72,11 +72,13 @@ final class HomeVM: HomeVMable {
                 if let mainUser = mainUser {
                     if !owner.hasMainUser {
                         owner.reloadMainUserSection.accept(())
+                        owner.hasMainUser = true
                     }
                 } else {
                     //기존에 유저가 있음 -> 유저가 삭제됨 => reload
                     if owner.hasMainUser {
                         owner.reloadMainUserSection.accept(())
+                        owner.hasMainUser = false
                     }
                 }
             }
