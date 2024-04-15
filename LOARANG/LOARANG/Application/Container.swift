@@ -33,16 +33,6 @@ final class Container: Containerable {
         return HomeVC(container: self,
                       viewModel: homeVM)
     }
-    func makeMainViewController() -> MainViewController {
-        return MainViewController(viewModel: makeMainViewModel(), container: self)
-    }
-    
-    private func makeMainViewModel() -> MainViewModel {
-        return MainViewModel(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
-                             getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), 
-                             changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository), 
-                             deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository))
-    }
     
 //MARK: - about webView
     func makeWebViewViewController(url: URL, title: String) -> WebViewViewController {
