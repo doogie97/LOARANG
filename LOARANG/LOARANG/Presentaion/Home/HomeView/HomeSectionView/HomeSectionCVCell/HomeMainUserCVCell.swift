@@ -243,8 +243,12 @@ final class HomeMainUserCVCell: UICollectionViewCell {
     private func setUserInfo(_ userInfo: MainUserEntity?) {
         if let userInfo = userInfo {
             classLabel.text = userInfo.`class`
-            characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
-                self?.characterImageView.image = image.cropImage(class: userInfo.`class`)
+            if userInfo.imageUrl.replacingOccurrences(of: " ", with: "").isEmpty {
+                self.characterImageView.image = UIImage(named: "unknownCharacterImg.png")
+            } else {
+                characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
+                    self?.characterImageView.image = image.cropImage(class: userInfo.`class`)
+                }
             }
             
             characterNameLabel.text = userInfo.name + " " + userInfo.server
