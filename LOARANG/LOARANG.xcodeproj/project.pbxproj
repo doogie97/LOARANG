@@ -186,6 +186,7 @@
 		C683F4232BCD703600A5E699 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F4222BCD703600A5E699 /* CharacterDetailView.swift */; };
 		C683F4252BCD703D00A5E699 /* CharacterDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F4242BCD703D00A5E699 /* CharacterDetailVC.swift */; };
 		C683F4272BCD704200A5E699 /* CharacterDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F4262BCD704200A5E699 /* CharacterDetailVM.swift */; };
+		C683F42A2BCD77E900A5E699 /* CharacterDetailNavigationbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */; };
 		C685D9D82BC97E1C009C815B /* BookmarkFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */; };
 		C685D9DA2BC997D3009C815B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D92BC997D3009C815B /* UILabel + Extension.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
@@ -377,6 +378,7 @@
 		C683F4222BCD703600A5E699 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		C683F4242BCD703D00A5E699 /* CharacterDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailVC.swift; sourceTree = "<group>"; };
 		C683F4262BCD704200A5E699 /* CharacterDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailVM.swift; sourceTree = "<group>"; };
+		C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailNavigationbar.swift; sourceTree = "<group>"; };
 		C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFooter.swift; sourceTree = "<group>"; };
 		C685D9D92BC997D3009C815B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1064,11 +1066,20 @@
 		C683F4212BCD701000A5E699 /* CharacterDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C683F4222BCD703600A5E699 /* CharacterDetailView.swift */,
+				C683F4282BCD77CC00A5E699 /* CharacterDetailView */,
 				C683F4242BCD703D00A5E699 /* CharacterDetailVC.swift */,
 				C683F4262BCD704200A5E699 /* CharacterDetailVM.swift */,
 			);
 			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
+		C683F4282BCD77CC00A5E699 /* CharacterDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				C683F4222BCD703600A5E699 /* CharacterDetailView.swift */,
+				C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */,
+			);
+			path = CharacterDetailView;
 			sourceTree = "<group>";
 		};
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
@@ -1421,6 +1432,7 @@
 				C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */,
 				C6224F852BC8480D00CABA30 /* GameEventDTO.swift in Sources */,
 				C6224F822BC847D800CABA30 /* GameEventEntity.swift in Sources */,
+				C683F42A2BCD77E900A5E699 /* CharacterDetailNavigationbar.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,

@@ -23,12 +23,18 @@ final class CharacterDetailView: UIView {
     }
     
     private(set) lazy var loadingView = LoadingView()
+    private lazy var navigationbar = CharacterDetailNavigationbar()
     func setViewContents(viewContents: CharacterDetailVM.ViewContents) {
+        navigationbar.setViewContents(viewModel: viewContents.viewModel,
+                                      name: viewContents.name)
         setLayout()
     }
     
     private func setLayout() {
-        
+        self.addSubview(navigationbar)
+        navigationbar.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
+        }
         bringSubviewToFront(loadingView)
     }
 }
