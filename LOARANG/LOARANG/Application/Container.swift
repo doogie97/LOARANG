@@ -160,7 +160,8 @@ final class Container: Containerable {
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
-        return SettingViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository))
+        return SettingViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository),
+                                deleteMainUserUseCase: DeleteMainUserUseCase(localStorageRepository: localStorageRepository))
     }
 }
 

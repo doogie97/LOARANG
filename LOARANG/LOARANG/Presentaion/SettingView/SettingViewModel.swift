@@ -12,6 +12,7 @@ protocol SettingViewModelable: SettingViewModeInput, SettingViewModeOutput {}
 
 protocol SettingViewModeInput {
     func touchSearchButton(_ userName: String)
+    func touchDeleteMainUserCell()
     func changeMainUser(_ mainUser: MainUserEntity)
     func touchNoticeCell()
     func touchSuggestioinCell()
@@ -28,8 +29,11 @@ protocol SettingViewModeOutput {
 
 final class SettingViewModel: SettingViewModelable {
     private let changeMainUserUseCase: ChangeMainUserUseCase
-    init(changeMainUserUseCase: ChangeMainUserUseCase) {
+    private let deleteMainUserUseCase: DeleteMainUserUseCase
+    init(changeMainUserUseCase: ChangeMainUserUseCase,
+         deleteMainUserUseCase: DeleteMainUserUseCase) {
         self.changeMainUserUseCase = changeMainUserUseCase
+        self.deleteMainUserUseCase = deleteMainUserUseCase
     }
     //input
     func touchSearchButton(_ userName: String) {
@@ -62,6 +66,14 @@ final class SettingViewModel: SettingViewModelable {
             try changeMainUserUseCase.execute(user: mainUser)
             showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
         } catch {
+            showAlert.accept(error.errorMessage)
+        }
+    }
+    
+    func touchDeleteMainUserCell() {
+        do {
+            try deleteMainUserUseCase.execute()
+        } catch let error {
             showAlert.accept(error.errorMessage)
         }
     }

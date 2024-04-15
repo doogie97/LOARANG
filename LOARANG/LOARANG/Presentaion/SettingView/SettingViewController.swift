@@ -94,13 +94,16 @@ final class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDataSource {
     enum CellType: Int, CaseIterable {
         case changeMainUser = 0
-        case notice = 1
-        case suggestion = 2
+        case deleteMainUser
+        case notice
+        case suggestion
         
         var title: String {
             switch self {
             case .changeMainUser:
                 return "대표 캐릭터 변경"
+            case .deleteMainUser:
+                return "대표 캐릭터 삭제"
             case .notice:
                 return "공지 사항"
             case .suggestion:
@@ -128,17 +131,21 @@ extension SettingViewController: UITableViewDataSource {
 
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case CellType.changeMainUser.rawValue:
+        guard let cellType = CellType(rawValue: indexPath.row) else {
+            return
+        }
+        
+        switch cellType {
+        case .changeMainUser:
             self.showSetMainCharacterAlert {
                 self.viewModel.touchSearchButton($0)
             }
-        case CellType.notice.rawValue:
+        case .deleteMainUser:
+            self.viewModel.touchDeleteMainUserCell()
+        case .notice:
             self.viewModel.touchNoticeCell()
-        case CellType.suggestion.rawValue:
+        case .suggestion:
             self.viewModel.touchSuggestioinCell()
-        default:
-            break
         }
     }
 }
