@@ -67,6 +67,12 @@ final class HomeVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.updateBookmarkCell.withUnretained(self)
+            .subscribe { owner, indexPath in
+                owner.homeView.updateCell(indexPath)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.isLoading.withUnretained(self)
             .subscribe { owner, isLoading in
                 owner.homeView.loadingView.isLoading(isLoading)

@@ -75,4 +75,8 @@ extension HomeView {
     func deleteCell(_ indexPath: IndexPath) {
         homeSectionView.sectionCV.deleteItems(at: [indexPath])
     }
+    
+    func updateCell(_ indexPath: IndexPath) {
+        homeSectionView.sectionCV.reloadItems(at: [indexPath])
+    }
 }

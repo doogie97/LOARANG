@@ -24,6 +24,7 @@ protocol HomeVMOutput {
     var reloadBookmark: PublishRelay<Void> { get }
     var appendBookmarkCell: PublishRelay<Int> { get }
     var deleteBookmarkCell: PublishRelay<IndexPath> { get }
+    var updateBookmarkCell: PublishRelay<IndexPath> { get }
     var isLoading: PublishRelay<Bool> { get }
     var showAlert: PublishRelay<HomeVM.AlertCase> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
@@ -88,7 +89,19 @@ final class HomeVM: HomeVMable {
                     
                     //기존 즐겨찾기 유저와 새로 accept된 즐겨찾기 유저와 같을 경우 => update
                     if oldBookmarkUsers.count == bookmarkUsers.count {
-                        print("업뎃")
+                        var changedIndex: Int?
+                        for index in 0..<bookmarkUsers.count {
+                            let oldUserInfo = oldBookmarkUsers[index]
+                            let newUserInfo = bookmarkUsers[index]
+                            if oldUserInfo.name != newUserInfo.name || oldUserInfo.class != newUserInfo.class || oldUserInfo.image != newUserInfo.image {
+                                changedIndex = index
+                            }
+                        }
+                        guard let changedIndex = changedIndex else {
+                            return
+                        }
+                        owner.updateBookmarkCell.accept(IndexPath(item: changedIndex,
+                                                            section: HomeSectionView.SectionCase.bookmark.rawValue))
                         return
                     }
                 }
@@ -287,6 +300,7 @@ final class HomeVM: HomeVMable {
     let reloadBookmark = PublishRelay<Void>()
     let appendBookmarkCell = PublishRelay<Int>()
     let deleteBookmarkCell = PublishRelay<IndexPath>()
+    let updateBookmarkCell = PublishRelay<IndexPath>()
     let isLoading = PublishRelay<Bool>()
     let showAlert = PublishRelay<AlertCase>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()
