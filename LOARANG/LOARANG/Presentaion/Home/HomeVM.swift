@@ -212,15 +212,11 @@ final class HomeVM: HomeVMable {
     }
     
     private func changeMainUser(_ userInfo: CharacterDetailEntity) {
-//        ViewChangeManager.shared.mainUser.accept(MainUserEntity(
-//            image: UIImage(),
-//            battleLV: userInfo.battleLevel,
-//            name: userInfo.characterName,
-//            class: userInfo.characterClass.rawValue,
-//            itemLV: userInfo.itemLevel,
-//            expeditionLV: userInfo.expeditionLevel,
-//            server: userInfo.gameServer.rawValue)
-//        )
+        do {
+            try changeMainUserUseCase.execute(user: userInfo.toLocalStorageEntity)
+        } catch let error {
+            showAlert.accept(.basic(message: error.errorMessage))
+        }
     }
     
     //MARK: - Output

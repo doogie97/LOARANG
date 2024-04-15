@@ -222,7 +222,10 @@ final class HomeMainUserCVCell: UICollectionViewCell {
     private func setUserInfo(_ userInfo: MainUserEntity?) {
         if let userInfo = userInfo {
             classLabel.text = userInfo.`class`
-            characterImageView.image = userInfo.image.cropImage(class: userInfo.`class`)
+            characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
+                self?.characterImageView.image = image.cropImage(class: userInfo.`class`)
+            }
+            
             characterNameLabel.text = userInfo.name + " " + userInfo.server
             characterNameLabel.asFontColor(targetString: userInfo.server,
                                            font: .pretendard(size: 14, family: .Regular),
@@ -267,5 +270,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         disposeBag = DisposeBag()
         userInfoView.isHidden = true
         emptyView.isHidden = true
+        characterImageView.kf.cancelDownloadTask()
+        characterImageView.image = nil
     }
 }
