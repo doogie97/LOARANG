@@ -42,19 +42,26 @@ final class SettingViewController: UIViewController {
     }
     
     private func bindContents() {
-        viewModel.checkUser
-            .bind(onNext: { [weak self] in
-                let mainUser = $0
-                self?.showCheckUserAlert(mainUser, action: {
-                    self?.viewModel.changeMainUser(mainUser)
-                })
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.showAlert
-            .bind(onNext: { [weak self] in
-                self?.showAlert(message: $0)
-            })
+        viewModel.showAlert.withUnretained(self)
+            .subscribe { owner, alert in
+                switch alert {
+                case .basic(let message):
+                    owner.showAlert(message: message)
+                case .checkUser(let userInfo):
+                    owner.showCheckUserAlert(userInfo) {
+                        owner.viewModel.changeMainUser(userInfo)
+                    }
+                case .deleteMainUser:
+                    let alert = UIAlertController(title: nil, message: "대표 캐릭터를 삭제할까요?", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+                    let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
+                        owner.viewModel.deleteMainUser()
+                    }
+                    alert.addAction(cancelAction)
+                    alert.addAction(deleteAction)
+                    owner.present(alert, animated: true)
+                }
+            }
             .disposed(by: disposeBag)
         
         viewModel.startedLoading
