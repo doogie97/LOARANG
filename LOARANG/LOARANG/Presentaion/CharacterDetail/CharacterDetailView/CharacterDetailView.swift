@@ -26,7 +26,7 @@ final class CharacterDetailView: UIView {
     private lazy var navigationbar = CharacterDetailNavigationbar()
     func setViewContents(viewContents: CharacterDetailVM.ViewContents) {
         navigationbar.setViewContents(viewModel: viewContents.viewModel,
-                                      name: viewContents.name)
+                                      name: viewContents.character.profile.characterName)
         setLayout()
     }
     

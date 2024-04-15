@@ -25,12 +25,32 @@ final class CharacterDetailVM: CharacterDetailVMable {
     }
     //MARK: - Input
     func viewDidLoad() {
-        setViewContents.accept(ViewContents(viewModel: self))
+        getCharacterDetail()
+    }
+    
+    private func getCharacterDetail() {
+        isLoading.accept(true)
+        Task {
+            do {
+                let character = try await getCharacterDetailUseCase.excute(name: characterName)
+                await MainActor.run {
+                    setViewContents.accept(ViewContents(viewModel: self,
+                                                        character: character))
+                    isLoading.accept(false)
+                }
+            } catch let error {
+                await MainActor.run {
+                    print(error.errorMessage)
+                    isLoading.accept(false)
+                }
+            }
+        }
     }
     
     //MARK: - Output
     struct ViewContents {
         weak var viewModel: CharacterDetailVMable?
+        let character: CharacterDetailEntity
     }
     
     let isLoading = PublishRelay<Bool>()

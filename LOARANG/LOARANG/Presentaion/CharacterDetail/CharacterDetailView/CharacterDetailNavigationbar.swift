@@ -23,7 +23,6 @@ final class CharacterDetailNavigationbar: UIView {
         button.imageView?.tintColor = .buttonColor
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
-        button.tag = 0
         button.addTarget(self, action: #selector(touchButton), for: .touchUpInside)
         return button
     }()
@@ -31,7 +30,6 @@ final class CharacterDetailNavigationbar: UIView {
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
-        button.tag = 1
         button.addTarget(self, action: #selector(touchButton), for: .touchUpInside)
         return button
     }()
@@ -51,6 +49,8 @@ final class CharacterDetailNavigationbar: UIView {
         self.viewModel = viewModel
         titleLabel.text = name
         bookmarkButton.setBookmarkButtonColor(true)//임시로 true전달
+        backButton.tag = 0
+        bookmarkButton.tag = 1
         setLayout()
     }
     
