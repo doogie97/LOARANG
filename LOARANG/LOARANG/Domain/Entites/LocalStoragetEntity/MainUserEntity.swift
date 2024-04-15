@@ -8,8 +8,9 @@
 import UIKit
 
 struct MainUserEntity {
+    let imageUrl: String
     let image: UIImage
-    let battleLV: String
+    let battleLV: Int
     let name: String
     let `class`: String
     let itemLV: String
@@ -18,6 +19,7 @@ struct MainUserEntity {
     
     var toDTO: MainUserDTO {
         let mainUser = MainUserDTO()
+        mainUser.imageUrl = self.imageUrl
         mainUser.imageData = self.image.pngData() ?? Data()
         mainUser.battleLV = self.battleLV
         mainUser.name = self.name

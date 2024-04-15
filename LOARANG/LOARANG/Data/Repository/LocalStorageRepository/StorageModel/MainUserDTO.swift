@@ -10,7 +10,8 @@ import RealmSwift
 
 final class MainUserDTO: Object {
     @Persisted var imageData: Data
-    @Persisted var battleLV: String
+    @Persisted var imageUrl: String
+    @Persisted var battleLV: Int
     @Persisted var name: String
     @Persisted var `class`: String
     @Persisted var itemLV: String
@@ -19,7 +20,8 @@ final class MainUserDTO: Object {
     @Persisted(primaryKey: true) var type = "main"
     
     var toEntity: MainUserEntity {
-        return MainUserEntity(image: UIImage(data: self.imageData) ?? UIImage(),
+        return MainUserEntity(imageUrl: self.imageUrl, 
+                              image: UIImage(data: self.imageData) ?? UIImage(),
                               battleLV: self.battleLV,
                               name: self.name,
                               class: self.`class`,

@@ -107,8 +107,9 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private func mainUserUpdate(_ userInfo: UserInfo) {
         if ViewChangeManager.shared.mainUser.value?.name == userInfo.mainInfo.name {
             do {
-                let mainUser = MainUserEntity(image: userInfo.mainInfo.userImage,
-                                              battleLV: userInfo.mainInfo.battleLV,
+                let mainUser = MainUserEntity(imageUrl: "",
+                                              image: userInfo.mainInfo.userImage,
+                                              battleLV: Int(userInfo.mainInfo.battleLV) ?? 0,
                                               name: userInfo.mainInfo.name,
                                               class: userInfo.mainInfo.`class`,
                                               itemLV: userInfo.mainInfo.itemLV,
