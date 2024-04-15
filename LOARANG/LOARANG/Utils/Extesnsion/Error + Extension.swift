@@ -9,8 +9,8 @@ extension Error {
     var errorMessage: String {
         if let apiError = self as? APIError {
             switch apiError {
-            case .responseError:
-                return "서버 통신 중 오류가 발생했습니다\n고객 센터를 통해 문의 부탁드립니다 (responseError)"
+            case .responseError, .DecodingError:
+                return "서버 통신 중 오류가 발생했습니다\n고객 센터를 통해 문의 부탁드립니다 (\(self))"
             case .statusCodeError(let errorInfo):
                 if errorInfo.statusCode == 503 {
                     return "서버 점검 중 입니다.\n자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요"

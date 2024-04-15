@@ -42,5 +42,5 @@ enum CharacterClass: String {
     case artist = "도화가"
     case aeromancer = "기상술사"
     
-    case unknown
+    case unknown = "알 수 없음"
 }

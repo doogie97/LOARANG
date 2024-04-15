@@ -75,7 +75,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                 return UICollectionViewCell()
             }
             
-            mainUserCell.setCellContents()
+            mainUserCell.setCellContents(viewModel: viewModel)
             return mainUserCell
         case .bookmark:
             return bookmarkCell(collectionView: collectionView, indexPath: indexPath)
@@ -194,13 +194,13 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
         
         switch section {
         case .mainUser:
-            viewModel?.touchCell(.mainUser)
+            viewModel?.touchViewAction(.mainUser)
         case .bookmark:
-            viewModel?.touchCell(.bookmarkUser(rowIndex: indexPath.row))
+            viewModel?.touchViewAction(.bookmarkUser(rowIndex: indexPath.row))
         case .event:
-            viewModel?.touchCell(.event(rowIndex: indexPath.row))
+            viewModel?.touchViewAction(.event(rowIndex: indexPath.row))
         case .notice:
-            viewModel?.touchCell(.notice(rowIndex: indexPath.row))
+            viewModel?.touchViewAction(.notice(rowIndex: indexPath.row))
         case .challengeAbyssDungeons, .challengeGuardianRaids:
             return
         }
@@ -262,10 +262,12 @@ extension HomeSectionView {
     }
     
     func mainUserSectionLayout() -> NSCollectionLayoutSection {
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
+        let hasMainUser = ViewChangeManager.shared.mainUser.value != nil
+        let height = hasMainUser ? NSCollectionLayoutDimension.fractionalWidth(370 / 393) : NSCollectionLayoutDimension.fractionalWidth(200 / 393)
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: height)
         let item = NSCollectionLayoutItem(layoutSize: size)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(315 / 393))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: height)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 0)

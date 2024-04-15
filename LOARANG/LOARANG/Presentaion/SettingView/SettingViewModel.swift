@@ -12,14 +12,15 @@ protocol SettingViewModelable: SettingViewModeInput, SettingViewModeOutput {}
 
 protocol SettingViewModeInput {
     func touchSearchButton(_ userName: String)
+    func touchDeleteMainUserCell()
+    func deleteMainUser()
     func changeMainUser(_ mainUser: MainUserEntity)
     func touchNoticeCell()
     func touchSuggestioinCell()
 }
 
 protocol SettingViewModeOutput {
-    var checkUser: PublishRelay<MainUserEntity> { get }
-    var showAlert: PublishRelay<String?> { get }
+    var showAlert: PublishRelay<SettingViewModel.AlertCase> { get }
     var startedLoading: PublishRelay<Void> { get }
     var finishedLoading: PublishRelay<Void> { get }
     var showWebView: PublishRelay<(url: URL, title: String)> { get }
@@ -27,28 +28,36 @@ protocol SettingViewModeOutput {
 }
 
 final class SettingViewModel: SettingViewModelable {
+    private let getCharacterDetailUseCase: GetCharacterDetailUseCase
     private let changeMainUserUseCase: ChangeMainUserUseCase
-    init(changeMainUserUseCase: ChangeMainUserUseCase) {
+    private let deleteMainUserUseCase: DeleteMainUserUseCase
+    init(getCharacterDetailUseCase: GetCharacterDetailUseCase,
+         changeMainUserUseCase: ChangeMainUserUseCase,
+         deleteMainUserUseCase: DeleteMainUserUseCase) {
+        self.getCharacterDetailUseCase = getCharacterDetailUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
+        self.deleteMainUserUseCase = deleteMainUserUseCase
     }
     //input
     func touchSearchButton(_ userName: String) {
         startedLoading.accept(())
         Task {
             do {
-                let searchResult = try await CrawlManager().getUserInfo(userName)
+                let searchResult = try await getCharacterDetailUseCase.excute(name: userName)
                 await MainActor.run {
-                    checkUser.accept(MainUserEntity(image: searchResult.mainInfo.userImage,
-                                              battleLV: searchResult.mainInfo.battleLV,
-                                              name: searchResult.mainInfo.name,
-                                              class: searchResult.mainInfo.class,
-                                              itemLV: searchResult.mainInfo.itemLV,
-                                              server: searchResult.mainInfo.server))
+                    showAlert.accept(.checkUser(userInfo: MainUserEntity(imageUrl: searchResult.profile.imageUrl,
+                                                                         image: UIImage(),
+                                                                         battleLV: searchResult.profile.battleLevel,
+                                                                         name: searchResult.profile.characterName,
+                                                                         class: searchResult.profile.characterClass.rawValue,
+                                                                         itemLV: searchResult.profile.itemLevel,
+                                                                         expeditionLV: searchResult.profile.expeditionLevel,
+                                                                         server: searchResult.profile.gameServer.rawValue)))
                     finishedLoading.accept(())
                 }
             } catch let error {
                 await MainActor.run {
-                    showAlert.accept(error.errorMessage)
+                    showAlert.accept(.basic(message: error.errorMessage))
                     finishedLoading.accept(())
                 }
             }
@@ -58,9 +67,22 @@ final class SettingViewModel: SettingViewModelable {
     func changeMainUser(_ mainUser: MainUserEntity) {
         do {
             try changeMainUserUseCase.execute(user: mainUser)
-            showAlert.accept("대표 캐릭터 설정이 완료되었습니다")
+            showAlert.accept(.basic(message: "대표 캐릭터 설정이 완료되었습니다!"))
         } catch {
-            showAlert.accept(error.errorMessage)
+            showAlert.accept(.basic(message: error.errorMessage))
+        }
+    }
+    
+    func touchDeleteMainUserCell() {
+        showAlert.accept(.deleteMainUser)
+    }
+    
+    func deleteMainUser() {
+        do {
+            try deleteMainUserUseCase.execute()
+            showAlert.accept(.basic(message: "대표 캐릭터 삭제가 완료되었습니다."))
+        } catch let error {
+            showAlert.accept(.basic(message: error.errorMessage))
         }
     }
     
@@ -81,9 +103,14 @@ final class SettingViewModel: SettingViewModelable {
         showSafari.accept(url)
     }
     
-    //output
-    let checkUser = PublishRelay<MainUserEntity>()
-    let showAlert = PublishRelay<String?>()
+    //MARK: - Output
+    enum AlertCase {
+        case basic(message: String)
+        case checkUser(userInfo: MainUserEntity)
+        case deleteMainUser
+    }
+    
+    let showAlert = PublishRelay<AlertCase>()
     let startedLoading = PublishRelay<Void>()
     let finishedLoading = PublishRelay<Void>()
     let showWebView = PublishRelay<(url: URL, title: String)>()

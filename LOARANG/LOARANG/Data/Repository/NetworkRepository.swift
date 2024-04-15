@@ -10,6 +10,7 @@ protocol NetworkRepositoryable {
     func getGameNoticeList() async throws -> [GameNoticeDTO]
     func getChallengeAbyssDungeons() async throws -> [ChallengeAbyssDungeonDTO]
     func getChallengeGuardianRaids() async throws -> ChallengeGuardianRaidsDTO
+    func getCharacterDetail(name: String) async throws -> CharactersDetailDTO
     func getOwnCharacters(name: String) async throws -> [CharacterBasicInfoDTO]
 }
 
@@ -54,6 +55,16 @@ struct NetworkRepository: NetworkRepositoryable {
         
         do {
             return try await networkManager.request(requestable, resultType: ChallengeGuardianRaidsDTO.self)
+        } catch let error {
+            throw error
+        }
+    }
+    
+    func getCharacterDetail(name: String) async throws -> CharactersDetailDTO {
+        let requestable = CharacterDetailGET(name: name)
+        
+        do {
+            return try await networkManager.request(requestable, resultType: CharactersDetailDTO.self)
         } catch let error {
             throw error
         }

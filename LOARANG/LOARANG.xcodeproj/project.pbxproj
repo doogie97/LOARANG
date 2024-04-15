@@ -16,6 +16,9 @@
 		7162BF852BC7CFD300702530 /* HomeBookmarkUserCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */; };
 		7162BF892BC7D0A100702530 /* HomeNoticeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */; };
 		7162BF8C2BC7D65D00702530 /* HomeSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162BF8B2BC7D65D00702530 /* HomeSectionHeader.swift */; };
+		7168675E2BCCA3DD0008C28F /* CharacterDetailGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168675D2BCCA3DD0008C28F /* CharacterDetailGET.swift */; };
+		716867602BCCA4790008C28F /* CharactersDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168675F2BCCA4790008C28F /* CharactersDetailDTO.swift */; };
+		716867622BCCE0730008C28F /* DeleteMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716867612BCCE0730008C28F /* DeleteMainUserUseCase.swift */; };
 		717713272BC8E1FD0040C602 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */; };
 		717713282BC8E1FF0040C602 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713262BC8D9CD0040C602 /* Pretendard-Light.otf */; };
 		717713292BC8E2020040C602 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713242BC8D9CC0040C602 /* Pretendard-Bold.otf */; };
@@ -188,7 +191,10 @@
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
 		C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */; };
 		C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */; };
+		C683F41E2BCC286400A5E699 /* GetCharacterDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */; };
+		C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */; };
 		C685D9D82BC97E1C009C815B /* BookmarkFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */; };
+		C685D9DA2BC997D3009C815B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D92BC997D3009C815B /* UILabel + Extension.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -218,6 +224,9 @@
 		7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBookmarkUserCVCell.swift; sourceTree = "<group>"; };
 		7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeCVCell.swift; sourceTree = "<group>"; };
 		7162BF8B2BC7D65D00702530 /* HomeSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionHeader.swift; sourceTree = "<group>"; };
+		7168675D2BCCA3DD0008C28F /* CharacterDetailGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGET.swift; sourceTree = "<group>"; };
+		7168675F2BCCA4790008C28F /* CharactersDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDetailDTO.swift; sourceTree = "<group>"; };
+		716867612BCCE0730008C28F /* DeleteMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMainUserUseCase.swift; sourceTree = "<group>"; };
 		717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		717713242BC8D9CC0040C602 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		717713252BC8D9CD0040C602 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -380,7 +389,10 @@
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
 		C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMainUserUseCase.swift; sourceTree = "<group>"; };
 		C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeManager.swift; sourceTree = "<group>"; };
+		C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterDetailUseCase.swift; sourceTree = "<group>"; };
+		C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEntity.swift; sourceTree = "<group>"; };
 		C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFooter.swift; sourceTree = "<group>"; };
+		C685D9D92BC997D3009C815B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -480,9 +492,19 @@
 			path = HomeSectionHeaderFooter;
 			sourceTree = "<group>";
 		};
+		7168675C2BCCA3CD0008C28F /* CharacterDetailGET */ = {
+			isa = PBXGroup;
+			children = (
+				7168675D2BCCA3DD0008C28F /* CharacterDetailGET.swift */,
+				7168675F2BCCA4790008C28F /* CharactersDetailDTO.swift */,
+			);
+			path = CharacterDetailGET;
+			sourceTree = "<group>";
+		};
 		AC0341B229458816005F4533 /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
+				7168675C2BCCA3CD0008C28F /* CharacterDetailGET */,
 				C6224F862BC8489B00CABA30 /* GameEventListGET */,
 				C6224F792BC8449B00CABA30 /* GameNoticeListGET */,
 				C6224F872BC8492200CABA30 /* ChallengeAbyssDungeonsGET */,
@@ -578,6 +600,7 @@
 			children = (
 				ACAEF36E288007FE00AE98F1 /* UIFont + Extension.swift */,
 				C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */,
+				C685D9D92BC997D3009C815B /* UILabel + Extension.swift */,
 				ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */,
 				AC035E9E289120750068DC7E /* UIViewController + Extension.swift */,
 				AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */,
@@ -1025,6 +1048,7 @@
 				C6224F7F2BC847C300CABA30 /* GameNoticeEntity.swift */,
 				C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */,
 				C6224F932BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift */,
+				C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */,
 				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
 			);
 			path = NetworkEntity;
@@ -1071,6 +1095,7 @@
 			children = (
 				C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */,
 				C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */,
+				C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */,
 			);
 			path = NetworkUseCase;
 			sourceTree = "<group>";
@@ -1080,6 +1105,7 @@
 			children = (
 				C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */,
 				C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */,
+				716867612BCCE0730008C28F /* DeleteMainUserUseCase.swift */,
 				C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */,
 				C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */,
 				C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */,
@@ -1314,6 +1340,7 @@
 			files = (
 				C6224F902BC84B3300CABA30 /* ChallengeGuardianRaidsGET.swift in Sources */,
 				C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */,
+				7168675E2BCCA3DD0008C28F /* CharacterDetailGET.swift in Sources */,
 				ACC778EA28E28E58000EDA2F /* NoticeView.swift in Sources */,
 				AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
@@ -1342,6 +1369,7 @@
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
 				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,
 				ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */,
+				C685D9DA2BC997D3009C815B /* UILabel + Extension.swift in Sources */,
 				7162BF762BC7BB1800702530 /* HomeView.swift in Sources */,
 				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
 				ACAEF327287FF0D200AE98F1 /* MainViewController.swift in Sources */,
@@ -1386,6 +1414,7 @@
 				AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */,
 				ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */,
 				ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */,
+				716867622BCCE0730008C28F /* DeleteMainUserUseCase.swift in Sources */,
 				ACD547B628EC2A1000D44ACA /* RecentUserTVCell.swift in Sources */,
 				AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */,
 				C6224F8D2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift in Sources */,
@@ -1420,6 +1449,7 @@
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				AC62F87728DC6E3C00E4A92D /* EventView.swift in Sources */,
+				716867602BCCA4790008C28F /* CharactersDetailDTO.swift in Sources */,
 				C63C615C2BADC3D70023D123 /* CharacterBasicInfoEntity.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				ACC1D89128BF52C300A19CB3 /* BookmarkView.swift in Sources */,
@@ -1427,12 +1457,14 @@
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
 				C685D9D82BC97E1C009C815B /* BookmarkFooter.swift in Sources */,
 				AC035EA3289122160068DC7E /* UserInfoView.swift in Sources */,
+				C683F41E2BCC286400A5E699 /* GetCharacterDetailUseCase.swift in Sources */,
 				C6224F802BC847C300CABA30 /* GameNoticeEntity.swift in Sources */,
 				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */,
 				AC757C4328BF2C56005B102B /* MainUserView.swift in Sources */,
 				C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */,
+				C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,

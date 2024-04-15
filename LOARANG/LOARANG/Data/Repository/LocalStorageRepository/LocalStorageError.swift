@@ -13,6 +13,7 @@ enum LocalStorageError: Error {
     case changeMainUserError
     case addRecentUserError
     case deleteRecentUserError
+    case noMainUser
     
     var errorDescrption: String {
         switch self {
@@ -26,8 +27,10 @@ enum LocalStorageError: Error {
             return "즐겨찾기는 최대 20명까지 가능합니다."
         case .changeMainUserError:
             return "대표캐릭터 변경에 실패하였습니다.\n잠시 후 다시 시도해 주세요"
-        default:
+        case .deleteRecentUserError, .addRecentUserError:
             return "최근 검색 목록을 불러오는데 실패하였습니다.\n잠시 후 다시 시도해 주세요"
+        case .noMainUser:
+            return "등록된 대표 캐릭터가 없습니다."
         }
     }
 }

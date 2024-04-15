@@ -14,5 +14,5 @@ enum GameServer: String {
     case abrelshud = "아브렐슈드"
     case kadan = "카단"
     case ninave = "니나브"
-    case unknown
+    case unknown = "알 수 없음"
 }

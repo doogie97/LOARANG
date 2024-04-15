@@ -36,7 +36,7 @@ final class HomeNavigationbar: UIView {
     }()
     
     @objc private func touchSearchButton() {
-        viewModel?.touchSearchButton()
+        viewModel?.touchViewAction(.search)
     }
     
     func setViewContents(viewModel: HomeVMable?) {

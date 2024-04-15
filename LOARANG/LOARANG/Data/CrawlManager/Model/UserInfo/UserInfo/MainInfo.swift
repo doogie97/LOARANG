@@ -19,4 +19,5 @@ struct MainInfo {
     let wisdom: String
     let `class`: String
     let userImage: UIImage
+    let imageUrl: String
 }

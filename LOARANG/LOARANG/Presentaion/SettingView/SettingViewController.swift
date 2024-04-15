@@ -42,19 +42,26 @@ final class SettingViewController: UIViewController {
     }
     
     private func bindContents() {
-        viewModel.checkUser
-            .bind(onNext: { [weak self] in
-                let mainUser = $0
-                self?.showCheckUserAlert(mainUser, action: {
-                    self?.viewModel.changeMainUser(mainUser)
-                })
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.showAlert
-            .bind(onNext: { [weak self] in
-                self?.showAlert(message: $0)
-            })
+        viewModel.showAlert.withUnretained(self)
+            .subscribe { owner, alert in
+                switch alert {
+                case .basic(let message):
+                    owner.showAlert(message: message)
+                case .checkUser(let userInfo):
+                    owner.showCheckUserAlert(userInfo) {
+                        owner.viewModel.changeMainUser(userInfo)
+                    }
+                case .deleteMainUser:
+                    let alert = UIAlertController(title: nil, message: "대표 캐릭터를 삭제할까요?", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+                    let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
+                        owner.viewModel.deleteMainUser()
+                    }
+                    alert.addAction(cancelAction)
+                    alert.addAction(deleteAction)
+                    owner.present(alert, animated: true)
+                }
+            }
             .disposed(by: disposeBag)
         
         viewModel.startedLoading
@@ -94,13 +101,16 @@ final class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDataSource {
     enum CellType: Int, CaseIterable {
         case changeMainUser = 0
-        case notice = 1
-        case suggestion = 2
+        case deleteMainUser
+        case notice
+        case suggestion
         
         var title: String {
             switch self {
             case .changeMainUser:
                 return "대표 캐릭터 변경"
+            case .deleteMainUser:
+                return "대표 캐릭터 삭제"
             case .notice:
                 return "공지 사항"
             case .suggestion:
@@ -128,17 +138,21 @@ extension SettingViewController: UITableViewDataSource {
 
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case CellType.changeMainUser.rawValue:
+        guard let cellType = CellType(rawValue: indexPath.row) else {
+            return
+        }
+        
+        switch cellType {
+        case .changeMainUser:
             self.showSetMainCharacterAlert {
                 self.viewModel.touchSearchButton($0)
             }
-        case CellType.notice.rawValue:
+        case .deleteMainUser:
+            self.viewModel.touchDeleteMainUserCell()
+        case .notice:
             self.viewModel.touchNoticeCell()
-        case CellType.suggestion.rawValue:
+        case .suggestion:
             self.viewModel.touchSuggestioinCell()
-        default:
-            break
         }
     }
 }

@@ -30,16 +30,6 @@ final class HomeVC: UIViewController {
         self.view = homeView
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel.viewDidAppear()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        viewModel.viewDidDisAppear()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -53,15 +43,33 @@ final class HomeVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.reloadMainUserSection.withUnretained(self)
+            .subscribe { owner, _ in
+                owner.homeView.reloadMainUserSection()
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.reloadBookmark.withUnretained(self)
             .subscribe { owner, setCase in
                 owner.homeView.reloadBookmark()
             }
             .disposed(by: disposeBag)
         
+        viewModel.appendBookmarkCell.withUnretained(self)
+            .subscribe { owner, count in
+                owner.homeView.appendCell(count: count)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.deleteBookmarkCell.withUnretained(self)
             .subscribe { owner, indexPath in
                 owner.homeView.deleteCell(indexPath)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.updateBookmarkCell.withUnretained(self)
+            .subscribe { owner, indexPath in
+                owner.homeView.updateCell(indexPath)
             }
             .disposed(by: disposeBag)
         
@@ -75,9 +83,15 @@ final class HomeVC: UIViewController {
             .subscribe { owner, nextViewCase in
                 var nextVC: UIViewController? {
                     switch nextViewCase {
+                    case .characterDetail(let name):
+                        return owner.container.makeUserInfoViewController(name,
+                                                                          isSearching: false)
                     case .searchView:
                         return owner.container.makeSearchViewController()
                     case .webView(let url, let title):
+                        guard let url = URL(string: url ?? "") else {
+                            return nil
+                        }
                         return owner.container.makeWebViewViewController(url: url, title: title)
                     }
                 }
@@ -91,8 +105,23 @@ final class HomeVC: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.showAlert.withUnretained(self)
-            .subscribe { owner, message in
-                owner.showAlert(message: message)
+            .subscribe { owner, alertCase in
+                switch alertCase {
+                case .pop(let message):
+                    owner.showAlert(message: message) {
+                        exit(0)
+                    }
+                case .basic(let message):
+                    owner.showAlert(message: message)
+                case .searchMainUser:
+                    owner.showSetMainCharacterAlert { name in
+                        owner.viewModel.touchViewAction(.searchMainUser(name: name))
+                    }
+                case .checkMainUer(let userInfo):
+                    owner.showCheckUserAlert(userInfo) {
+                        owner.viewModel.touchViewAction(.changeMainUser(userInfo: userInfo))
+                    }
+                }
             }
             .disposed(by: disposeBag)
     }

@@ -16,8 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         
-        let config = Realm.Configuration(schemaVersion: 0)
-        Realm.Configuration.defaultConfiguration = config
+        setRealmConfig()
         
         guard let realm = try? Realm() else {
             window?.rootViewController = UIViewController()
@@ -29,6 +28,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController(rootViewController: TabBarViewController(container))
         navigationController.isNavigationBarHidden = true
         window?.rootViewController = navigationController
+    }
+    
+    private func setRealmConfig() {
+        let config = Realm.Configuration(
+            schemaVersion: 1) { migration, oldSchemaVersion in
+                if oldSchemaVersion < 1 {
+                    migration.enumerateObjects(ofType: MainUserDTO.className()) { oldObject, newObject in
+                        newObject?["imageUrl"] = ""
+                        newObject?["expeditionLV"] = 0
+                    }
+                }
+            }
+        Realm.Configuration.defaultConfiguration = config
     }
 }
 

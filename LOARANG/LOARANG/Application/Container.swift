@@ -12,11 +12,13 @@ protocol Containerable {
     func homeVC() -> HomeVC
     func makeSearchViewController() -> SearchViewController
     func makeWebViewViewController(url: URL, title: String) -> WebViewViewController
+    func makeUserInfoViewController(_ userName: String, isSearching: Bool) -> UserInfoViewController
 }
 
 final class Container: Containerable {
     private let networkRepository = NetworkRepository(networkManager: NetworkManager())
     private let localStorageRepository: LocalStorageRepositoryable
+    private let crawlManager = CrawlManager() //추후 제거 예정
     
     init(localStorageRepository: LocalStorageRepositoryable) {
         self.localStorageRepository = localStorageRepository
@@ -25,7 +27,9 @@ final class Container: Containerable {
 //MARK: - about Main View
     func homeVC() -> HomeVC {
         let homeVM = HomeVM(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
-                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository))
+                            getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
+                            getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository),
+                            changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository))
         return HomeVC(container: self,
                       viewModel: homeVM)
     }
@@ -156,7 +160,9 @@ final class Container: Containerable {
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
-        return SettingViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository))
+        return SettingViewModel(getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository),
+                                changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository),
+                                deleteMainUserUseCase: DeleteMainUserUseCase(localStorageRepository: localStorageRepository))
     }
 }
 
