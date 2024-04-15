@@ -204,7 +204,11 @@ final class HomeVM: HomeVMable {
                 }
             } catch let error {
                 await MainActor.run {
-                    showAlert.accept(.basic(message: error.errorMessage))
+                    if let apiError = error as? APIError, apiError == .DecodingError {
+                        showAlert.accept(.basic(message: "해당 캐릭터를 찾을 수 없습니다."))
+                    } else {
+                        showAlert.accept(.basic(message: error.errorMessage))
+                    }
                     isLoading.accept(false)
                 }
             }

@@ -20,6 +20,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         view.backgroundColor = .cellColor
         view.layer.cornerRadius = 6
         view.addSubview(classLabelView)
+        view.addSubview(editMainUserButton)
         view.addSubview(characterImageView)
         view.addSubview(characterNameLabel)
         view.addSubview(bottomInfoView)
@@ -27,6 +28,12 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         
         classLabelView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(margin(.width, 16))
+        }
+        
+        editMainUserButton.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(margin(.width, 16))
+            $0.height.equalTo(35)
+            $0.width.equalTo(35)
         }
         
         characterImageView.snp.makeConstraints {
@@ -83,6 +90,20 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         
         return view
     }()
+    
+    private lazy var editMainUserButton = {
+        let button = UIButton()
+        button.imageView?.tintColor = .systemGray
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 18, weight: .regular, scale: .default), forImageIn: .normal)
+        button.addTarget(self, action: #selector(touchEditMainUserButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc private func touchEditMainUserButton() {
+        viewModel?.touchViewAction(.touchRegistMainUserButton)
+    }
     
     private lazy var imageWidth = margin(.width, 150)
     private lazy var characterImageView = {
