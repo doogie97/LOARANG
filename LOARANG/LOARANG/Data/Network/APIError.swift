@@ -10,6 +10,7 @@ enum APIError: Error {
     case statusCodeError(_ errorInfo: ErrorInfo)
     case timeOut
     case RateLimitExceeded
+    case DecodingError
 }
 
 struct ErrorInfo {

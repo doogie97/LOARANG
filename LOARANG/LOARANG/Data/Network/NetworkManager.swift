@@ -34,6 +34,8 @@ struct NetworkManager: NetworkManagerable {
         switch response.error {
         case .sessionTaskFailed(_):
             throw APIError.timeOut
+        case .responseSerializationFailed(_):
+            throw APIError.DecodingError
         default:
             break
         }
@@ -82,7 +84,7 @@ struct NetworkManager: NetworkManagerable {
                 } else {
                     return error
                 }
-            case .timeOut, .responseError, .RateLimitExceeded:
+            case .timeOut, .responseError, .RateLimitExceeded, .DecodingError:
                 return error
             }
         }
