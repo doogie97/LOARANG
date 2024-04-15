@@ -28,10 +28,13 @@ protocol SettingViewModeOutput {
 }
 
 final class SettingViewModel: SettingViewModelable {
+    private let getCharacterDetailUseCase: GetCharacterDetailUseCase
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let deleteMainUserUseCase: DeleteMainUserUseCase
-    init(changeMainUserUseCase: ChangeMainUserUseCase,
+    init(getCharacterDetailUseCase: GetCharacterDetailUseCase,
+         changeMainUserUseCase: ChangeMainUserUseCase,
          deleteMainUserUseCase: DeleteMainUserUseCase) {
+        self.getCharacterDetailUseCase = getCharacterDetailUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
         self.deleteMainUserUseCase = deleteMainUserUseCase
     }
@@ -40,16 +43,16 @@ final class SettingViewModel: SettingViewModelable {
         startedLoading.accept(())
         Task {
             do {
-                let searchResult = try await CrawlManager().getUserInfo(userName)
+                let searchResult = try await getCharacterDetailUseCase.excute(name: userName)
                 await MainActor.run {
-                    checkUser.accept(MainUserEntity(imageUrl: "",
-                                                    image: searchResult.mainInfo.userImage,
-                                                    battleLV: Int(searchResult.mainInfo.battleLV) ?? 0,
-                                                    name: searchResult.mainInfo.name,
-                                                    class: searchResult.mainInfo.class,
-                                                    itemLV: searchResult.mainInfo.itemLV,
-                                                    expeditionLV: Int(searchResult.mainInfo.expeditionLV) ?? 0,
-                                                    server: searchResult.mainInfo.server))
+                    checkUser.accept(MainUserEntity(imageUrl: searchResult.profile.imageUrl,
+                                                    image: UIImage(),
+                                                    battleLV: searchResult.profile.battleLevel,
+                                                    name: searchResult.profile.characterName,
+                                                    class: searchResult.profile.characterClass.rawValue,
+                                                    itemLV: searchResult.profile.itemLevel,
+                                                    expeditionLV: searchResult.profile.expeditionLevel,
+                                                    server: searchResult.profile.gameServer.rawValue))
                     finishedLoading.accept(())
                 }
             } catch let error {
