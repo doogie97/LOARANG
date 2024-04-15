@@ -12,6 +12,7 @@ protocol CharacterDetailVMInput {
     func viewDidLoad()
 }
 protocol CharacterDetailVMOutput {
+    var isLoading: PublishRelay<Bool> { get }
     var setViewContents: PublishRelay<CharacterDetailVM.ViewContents> { get }
 }
 
@@ -32,5 +33,6 @@ final class CharacterDetailVM: CharacterDetailVMable {
         weak var viewModel: CharacterDetailVMable?
     }
     
+    let isLoading = PublishRelay<Bool>()
     let setViewContents = PublishRelay<ViewContents>()
 }

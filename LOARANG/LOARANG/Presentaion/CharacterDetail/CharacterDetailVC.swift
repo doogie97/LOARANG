@@ -37,6 +37,12 @@ final class CharacterDetailVC: UIViewController {
     }
     
     private func bindViewModel() {
+        viewModel.isLoading.withUnretained(self)
+            .subscribe { owner, isLoading in
+                owner.charcterDetailView.loadingView.isLoading(isLoading)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.setViewContents.withUnretained(self)
             .subscribe { owner, viewContents in
                 owner.charcterDetailView.setViewContents(viewContents: viewContents)
