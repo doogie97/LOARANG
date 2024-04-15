@@ -24,6 +24,9 @@ final class CharacterDetailView: UIView {
     
     private(set) lazy var loadingView = LoadingView()
     private lazy var navigationbar = CharacterDetailNavigationbar()
+    func changeBookmark(isBookmark: Bool) {
+        navigationbar.bookmarkButton.changeBookmarkButtonColor(isBookmark)
+    }
     func setViewContents(viewContents: CharacterDetailVM.ViewContents) {
         navigationbar.setViewContents(viewModel: viewContents.viewModel,
                                       name: viewContents.character.profile.characterName)

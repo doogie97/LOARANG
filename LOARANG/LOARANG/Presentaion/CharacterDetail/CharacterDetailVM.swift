@@ -10,14 +10,22 @@ import RxRelay
 protocol CharacterDetailVMable: CharacterDetailVMInput, CharacterDetailVMOutput, AnyObject {}
 protocol CharacterDetailVMInput {
     func viewDidLoad()
+    func touchBookmarkButton()
 }
 protocol CharacterDetailVMOutput {
     var isLoading: PublishRelay<Bool> { get }
     var setViewContents: PublishRelay<CharacterDetailVM.ViewContents> { get }
+    var changeBookmarkButton: PublishRelay<Bool> { get }
 }
 
 final class CharacterDetailVM: CharacterDetailVMable {
     private let characterName: String
+    private var isBookmark = false {
+        didSet {
+            changeBookmarkButton.accept(isBookmark)
+        }
+    }
+    
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
     init(characterName: String, getCharacterDetailUseCase: GetCharacterDetailUseCase) {
         self.characterName = characterName
@@ -26,6 +34,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
     //MARK: - Input
     func viewDidLoad() {
         getCharacterDetail()
+    }
+    
+    func touchBookmarkButton() {
+        isBookmark = !self.isBookmark
     }
     
     private func getCharacterDetail() {
@@ -55,4 +67,5 @@ final class CharacterDetailVM: CharacterDetailVMable {
     
     let isLoading = PublishRelay<Bool>()
     let setViewContents = PublishRelay<ViewContents>()
+    let changeBookmarkButton = PublishRelay<Bool>()
 }

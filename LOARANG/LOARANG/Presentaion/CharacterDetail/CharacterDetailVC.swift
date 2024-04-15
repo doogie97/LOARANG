@@ -43,6 +43,12 @@ final class CharacterDetailVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.changeBookmarkButton.withUnretained(self)
+            .subscribe { owner, isBookmark in
+                owner.charcterDetailView.changeBookmark(isBookmark: isBookmark)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.setViewContents.withUnretained(self)
             .subscribe { owner, viewContents in
                 owner.charcterDetailView.setViewContents(viewContents: viewContents)
