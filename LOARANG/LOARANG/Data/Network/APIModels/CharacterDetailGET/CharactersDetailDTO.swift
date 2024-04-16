@@ -7,6 +7,7 @@
 
 struct CharactersDetailDTO: Decodable {
     let ArmoryProfile: ArmoryProfile?
+    let ArmorySkills: [ArmorySkill]?
 }
 
 //MARK: - ArmoryProfile
@@ -53,3 +54,31 @@ extension CharactersDetailDTO {
         }
     }
 }
+
+//MARK: - ArmorySkills
+extension CharactersDetailDTO {
+    struct ArmorySkill: Decodable {
+        let Name: String?
+        let Icon: String?
+        let Level: Int?
+        let Tripods: [Tripod]?
+        let Rune: Rune?
+        let Tooltip: String?
+    }
+    
+    struct Tripod: Decodable {
+        let Name: String?
+        let Icon: String?
+        let Level: Int?
+        let IsSelected: Bool?
+        let Tooltip: String?
+    }
+    
+    struct Rune: Decodable {
+        let Name: String?
+        let Icon: String?
+        let Grade: String?
+        let Tooltip: String?
+    }
+}
+
