@@ -62,14 +62,14 @@ final class CharacterDetailView: UIView {
         navigationbar.bookmarkButton.changeBookmarkButtonColor(isBookmark)
     }
     
-    func setViewContents(viewContents: CharacterDetailVM.ViewContents) {
-        self.viewModel = viewContents.viewModel
+    func setViewContents(viewModel: CharacterDetailVMable?) {
+        self.viewModel = viewModel
         pageVC.dataSource = self
         pageVC.delegate = self
-        navigationbar.setViewContents(viewModel: viewContents.viewModel,
-                                      name: viewContents.character.profile.characterName)
+        navigationbar.setViewContents(viewModel: viewModel,
+                                      name: viewModel?.characterInfoData?.profile.characterName)
         for vc in self.pageVCList {
-            (vc as? PageViewInnerVCDelegate)?.setViewContents(viewContents: viewContents)
+            (vc as? PageViewInnerVCDelegate)?.setViewContents(viewModel: viewModel)
         }
         
         setPageView(0, isFirst: true)

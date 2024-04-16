@@ -50,8 +50,8 @@ final class CharacterDetailVC: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.setViewContents.withUnretained(self)
-            .subscribe { owner, viewContents in
-                owner.charcterDetailView.setViewContents(viewContents: viewContents)
+            .subscribe { owner, _ in
+                owner.charcterDetailView.setViewContents(viewModel: owner.viewModel)
             }
             .disposed(by: disposeBag)
         

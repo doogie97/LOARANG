@@ -15,8 +15,9 @@ protocol CharacterDetailVMInput {
     func touchSegment(_ index: Int)
 }
 protocol CharacterDetailVMOutput {
+    var characterInfoData: CharacterDetailEntity? { get }
     var isLoading: PublishRelay<Bool> { get }
-    var setViewContents: PublishRelay<CharacterDetailVM.ViewContents> { get }
+    var setViewContents: PublishRelay<Void> { get }
     var changeBookmarkButton: PublishRelay<Bool> { get }
     var popView: PublishRelay<Void> { get }
 }
@@ -28,6 +29,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
             changeBookmarkButton.accept(isBookmark)
         }
     }
+    private var characterInfo: CharacterDetailEntity? 
     
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
     init(characterName: String, getCharacterDetailUseCase: GetCharacterDetailUseCase) {
@@ -53,8 +55,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
             do {
                 let character = try await getCharacterDetailUseCase.excute(name: characterName)
                 await MainActor.run {
-                    setViewContents.accept(ViewContents(viewModel: self,
-                                                        character: character))
+                    setViewContents.accept(())
                     isLoading.accept(false)
                 }
             } catch let error {
@@ -71,13 +72,11 @@ final class CharacterDetailVM: CharacterDetailVMable {
     }
     
     //MARK: - Output
-    struct ViewContents {
-        weak var viewModel: CharacterDetailVMable?
-        let character: CharacterDetailEntity
+    var characterInfoData: CharacterDetailEntity? {
+        return self.characterInfo
     }
-    
     let isLoading = PublishRelay<Bool>()
-    let setViewContents = PublishRelay<ViewContents>()
+    let setViewContents = PublishRelay<Void>()
     let changeBookmarkButton = PublishRelay<Bool>()
     let popView = PublishRelay<Void>()
 }

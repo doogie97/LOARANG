@@ -6,5 +6,5 @@
 //
 
 protocol PageViewInnerVCDelegate {
-    func setViewContents(viewContents: CharacterDetailVM.ViewContents)
+    func setViewContents(viewModel: CharacterDetailVMable?)
 }

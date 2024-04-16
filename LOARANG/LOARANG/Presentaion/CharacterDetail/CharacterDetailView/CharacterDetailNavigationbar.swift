@@ -46,7 +46,7 @@ final class CharacterDetailNavigationbar: UIView {
     }
     
     func setViewContents(viewModel: CharacterDetailVMable?,
-                         name: String) {
+                         name: String?) {
         self.viewModel = viewModel
         titleLabel.text = name
         backButton.tag = 0

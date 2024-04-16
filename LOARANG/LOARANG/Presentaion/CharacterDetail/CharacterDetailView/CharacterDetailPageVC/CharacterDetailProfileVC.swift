@@ -10,7 +10,6 @@ import SnapKit
 
 final class CharacterDetailProfileVC: UIViewController, PageViewInnerVCDelegate {
     private weak var viewModel: CharacterDetailVMable?
-    private var character: CharacterDetailEntity?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -25,15 +24,11 @@ final class CharacterDetailProfileVC: UIViewController, PageViewInnerVCDelegate 
         setLayout()
     }
     
-    func setViewContents(viewContents: CharacterDetailVM.ViewContents) {
-        self.viewModel = viewContents.viewModel
-        self.character = viewContents.character
+    func setViewContents(viewModel: CharacterDetailVMable?) {
+        self.viewModel = viewModel
     }
     
     private func setLayout() {
-        self.view.backgroundColor = .systemRed
-        guard let character = self.character else {
-            return
-        }
+        self.view.backgroundColor = .systemYellow
     }
 }

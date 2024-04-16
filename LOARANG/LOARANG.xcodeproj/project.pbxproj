@@ -517,7 +517,7 @@
 			children = (
 				71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */,
 				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
-				71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */,
+				C683F42B2BCEB2CC00A5E699 /* CharacterDetailSkills */,
 				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
 			);
 			path = CharacterDetailPageVC;
@@ -1116,6 +1116,14 @@
 				71892D4F2BCE707B0008CD8C /* CharacterDetailPageVC */,
 			);
 			path = CharacterDetailView;
+			sourceTree = "<group>";
+		};
+		C683F42B2BCEB2CC00A5E699 /* CharacterDetailSkills */ = {
+			isa = PBXGroup;
+			children = (
+				71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */,
+			);
+			path = CharacterDetailSkills;
 			sourceTree = "<group>";
 		};
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
