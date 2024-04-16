@@ -1,5 +1,5 @@
 //
-//  CharacterDetailOwnCharctersVC.swift
+//  CharacterDetailSkillsVC.swift
 //  LOARANG
 //
 //  Created by Doogie on 4/16/24.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CharacterDetailOwnCharctersVC: UIViewController {
+final class CharacterDetailSkillsVC: UIViewController, PageViewInnerVCDelegate {
     private weak var viewModel: CharacterDetailVMable?
     private var character: CharacterDetailEntity?
     
@@ -31,7 +31,7 @@ final class CharacterDetailOwnCharctersVC: UIViewController {
     }
     
     private func setLayout() {
-        self.view.backgroundColor = .systemYellow
+        self.view.backgroundColor = .systemOrange
         guard let character = self.character else {
             return
         }

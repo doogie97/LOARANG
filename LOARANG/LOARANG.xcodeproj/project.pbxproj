@@ -30,6 +30,7 @@
 		71892D4A2BCE6D800008CD8C /* CharacterDetailProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */; };
 		71892D4C2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */; };
 		71892D4E2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */; };
+		71892D512BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */; };
 		7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA982BC78DA500B3959A /* RxCocoa */; };
 		7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9A2BC78DA500B3959A /* RxRelay */; };
 		7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9C2BC78DA500B3959A /* RxSwift */; };
@@ -237,6 +238,7 @@
 		71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailProfileVC.swift; sourceTree = "<group>"; };
 		71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSkillsVC.swift; sourceTree = "<group>"; };
 		71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailOwnCharctersVC.swift; sourceTree = "<group>"; };
+		71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPageVCDelegate.swift; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOARANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -508,6 +510,17 @@
 				71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */,
 			);
 			path = ScrollableSegement;
+			sourceTree = "<group>";
+		};
+		71892D4F2BCE707B0008CD8C /* CharacterDetailPageVC */ = {
+			isa = PBXGroup;
+			children = (
+				71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */,
+				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
+				71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */,
+				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
+			);
+			path = CharacterDetailPageVC;
 			sourceTree = "<group>";
 		};
 		AC0341B229458816005F4533 /* APIModels */ = {
@@ -1100,9 +1113,7 @@
 			children = (
 				C683F4222BCD703600A5E699 /* CharacterDetailView.swift */,
 				C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */,
-				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
-				71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */,
-				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
+				71892D4F2BCE707B0008CD8C /* CharacterDetailPageVC */,
 			);
 			path = CharacterDetailView;
 			sourceTree = "<group>";
@@ -1477,6 +1488,7 @@
 				ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */,
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
 				C6224F7B2BC844A600CABA30 /* GameNoticeDTO.swift in Sources */,
+				71892D512BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift in Sources */,
 				C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */,
 				ACD547B128EBF8A000D44ACA /* RecentUserDTO.swift in Sources */,
 				AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */,

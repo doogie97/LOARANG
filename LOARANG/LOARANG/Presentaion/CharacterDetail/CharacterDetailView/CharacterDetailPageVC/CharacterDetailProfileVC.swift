@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CharacterDetailProfileVC: UIViewController {
+final class CharacterDetailProfileVC: UIViewController, PageViewInnerVCDelegate {
     private weak var viewModel: CharacterDetailVMable?
     private var character: CharacterDetailEntity?
     
