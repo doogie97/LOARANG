@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class CharacterDetailView: UIView {
+    private weak var viewModel: CharacterDetailVMable?
     private let segmentHeight = 43.0
     private lazy var scrollableSegment = {
         let segment = ScrollableSegement(segmentTitles: ["기본 정보", "스킬", "보유캐릭터"],
@@ -42,6 +43,7 @@ final class CharacterDetailView: UIView {
         navigationbar.bookmarkButton.changeBookmarkButtonColor(isBookmark)
     }
     func setViewContents(viewContents: CharacterDetailVM.ViewContents) {
+        self.viewModel = viewContents.viewModel
         navigationbar.setViewContents(viewModel: viewContents.viewModel,
                                       name: viewContents.character.profile.characterName)
         setLayout()
@@ -65,6 +67,6 @@ final class CharacterDetailView: UIView {
 
 extension CharacterDetailView: ScrollableSegementDelegate {
     func didSelected(_ segment: ScrollableSegement, index: Int) {
-        print(index)
+        viewModel?.touchSegment(index)
     }
 }

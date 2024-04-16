@@ -12,6 +12,7 @@ protocol CharacterDetailVMInput {
     func viewDidLoad()
     func touchBackButton()
     func touchBookmarkButton()
+    func touchSegment(_ index: Int)
 }
 protocol CharacterDetailVMOutput {
     var isLoading: PublishRelay<Bool> { get }
@@ -63,6 +64,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
                 }
             }
         }
+    }
+    
+    func touchSegment(_ index: Int) {
+        print(index)
     }
     
     //MARK: - Output
