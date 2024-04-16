@@ -53,7 +53,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
         isLoading.accept(true)
         Task {
             do {
-                let character = try await getCharacterDetailUseCase.excute(name: characterName)
+                self.characterInfo = try await getCharacterDetailUseCase.excute(name: characterName)
                 await MainActor.run {
                     setViewContents.accept(())
                     isLoading.accept(false)

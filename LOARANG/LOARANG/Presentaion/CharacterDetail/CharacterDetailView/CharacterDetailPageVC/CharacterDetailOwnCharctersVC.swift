@@ -29,6 +29,6 @@ final class CharacterDetailOwnCharctersVC: UIViewController, PageViewInnerVCDele
     }
     
     private func setLayout() {
-        self.view.backgroundColor = .systemYellow
+        self.view.backgroundColor = .systemGreen
     }
 }

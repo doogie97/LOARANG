@@ -29,6 +29,8 @@ final class CharacterDetailSkillsVC: UIViewController, PageViewInnerVCDelegate {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .mainBackground
+        tableView.register(CharacterDetailSkillCell.self)
         
         return tableView
     }()
@@ -38,7 +40,11 @@ final class CharacterDetailSkillsVC: UIViewController, PageViewInnerVCDelegate {
     }
     
     private func setLayout() {
-        self.view.backgroundColor = .systemYellow
+        self.view.backgroundColor = .mainBackground
+        self.view.addSubview(skillsTV)
+        skillsTV.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -48,8 +54,11 @@ extension CharacterDetailSkillsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharacterDetailSkillCell.self)") as? CharacterDetailSkillCell else {
+            return UITableViewCell()
+        }
+        cell.setCellContents()
+        
+        return cell
     }
-    
-    
 }
