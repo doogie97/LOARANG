@@ -16,6 +16,7 @@ enum Grade: String {
     case artifact = "유물"
     case ancient = "고대"
     case esther = "에스더"
+    case unknown = "알 수 없음"
     
     var backgroundColor: UIColor {
         switch self {
@@ -35,6 +36,8 @@ enum Grade: String {
             return #colorLiteral(red: 0.7324138284, green: 0.6683282852, blue: 0.5068081021, alpha: 1)
         case .esther:
             return #colorLiteral(red: 0.1580955684, green: 0.5807852149, blue: 0.567861557, alpha: 1)
+        case .unknown:
+            return .clear
         }
     }
     
@@ -56,6 +59,8 @@ enum Grade: String {
             return #colorLiteral(red: 0.8901960784, green: 0.7803921569, blue: 0.631372549, alpha: 1)
         case .esther:
             return #colorLiteral(red: 0.2352941176, green: 0.9490196078, blue: 0.9019607843, alpha: 1)
+        case .unknown:
+            return .clear
         }
     }
 }
