@@ -75,7 +75,7 @@
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
 		AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */; };
 		AC3FEC27288071CF00CDE796 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC26288071CF00CDE796 /* Container.swift */; };
-		AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */; };
+		AC3FEC2C288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
 		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
@@ -273,7 +273,7 @@
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1928805DDC00CDE796 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AC3FEC26288071CF00CDE796 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extenstion.swift"; sourceTree = "<group>"; };
+		AC3FEC2B288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView_UICollectionView + Extenstion.swift.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
@@ -626,7 +626,7 @@
 				ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */,
 				AC035E9E289120750068DC7E /* UIViewController + Extension.swift */,
 				AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */,
-				AC3FEC2B288079BC00CDE796 /* UITableView + Extenstion.swift */,
+				AC3FEC2B288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift */,
 				ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */,
 				ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */,
 				ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */,
@@ -1434,7 +1434,7 @@
 				AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				C683F4252BCD703D00A5E699 /* CharacterDetailVC.swift in Sources */,
-				AC3FEC2C288079BC00CDE796 /* UITableView + Extenstion.swift in Sources */,
+				AC3FEC2C288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUserDTO.swift in Sources */,
 				AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */,
 				7162BF832BC7CF8A00702530 /* HomeMainUserCVCell.swift in Sources */,
