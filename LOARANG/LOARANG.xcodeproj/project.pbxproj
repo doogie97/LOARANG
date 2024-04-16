@@ -24,6 +24,8 @@
 		717713292BC8E2020040C602 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713242BC8D9CC0040C602 /* Pretendard-Bold.otf */; };
 		7177132A2BC8E2040040C602 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713252BC8D9CD0040C602 /* Pretendard-Black.otf */; };
 		7177132D2BC8E6960040C602 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7177132C2BC8E6960040C602 /* Kingfisher */; };
+		71892D3F2BCDF9400008CD8C /* ScrollableSegement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */; };
+		71892D412BCDFA0E0008CD8C /* ScrollableSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */; };
 		7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA982BC78DA500B3959A /* RxCocoa */; };
 		7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9A2BC78DA500B3959A /* RxRelay */; };
 		7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9C2BC78DA500B3959A /* RxSwift */; };
@@ -225,6 +227,8 @@
 		717713242BC8D9CC0040C602 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		717713252BC8D9CD0040C602 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		717713262BC8D9CD0040C602 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegement.swift; sourceTree = "<group>"; };
+		71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentCell.swift; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOARANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -487,6 +491,15 @@
 				7168675F2BCCA4790008C28F /* CharactersDetailDTO.swift */,
 			);
 			path = CharacterDetailGET;
+			sourceTree = "<group>";
+		};
+		71892D3D2BCDF8ED0008CD8C /* ScrollableSegement */ = {
+			isa = PBXGroup;
+			children = (
+				71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */,
+				71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */,
+			);
+			path = ScrollableSegement;
 			sourceTree = "<group>";
 		};
 		AC0341B229458816005F4533 /* APIModels */ = {
@@ -1116,6 +1129,7 @@
 			children = (
 				AC62F87D28DC7F2F00E4A92D /* WebView */,
 				AC7E9F7D28C5D10700859E06 /* SegmentController */,
+				71892D3D2BCDF8ED0008CD8C /* ScrollableSegement */,
 				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
 				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
 				C6224F752BC840D400CABA30 /* LoadingView.swift */,
@@ -1362,6 +1376,7 @@
 				ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */,
 				7162BF892BC7D0A100702530 /* HomeNoticeCVCell.swift in Sources */,
 				AC2C2B5D28B3545900621753 /* AvatarView.swift in Sources */,
+				71892D412BCDFA0E0008CD8C /* ScrollableSegmentCell.swift in Sources */,
 				AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */,
 				ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,
@@ -1398,6 +1413,7 @@
 				C6074DED2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift in Sources */,
 				AC86404228B5D478004B7EBB /* Skill.swift in Sources */,
 				C6224F762BC840D400CABA30 /* LoadingView.swift in Sources */,
+				71892D3F2BCDF9400008CD8C /* ScrollableSegement.swift in Sources */,
 				ACB3813328D42CF60081F8A1 /* CharactersViewModel.swift in Sources */,
 				AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
