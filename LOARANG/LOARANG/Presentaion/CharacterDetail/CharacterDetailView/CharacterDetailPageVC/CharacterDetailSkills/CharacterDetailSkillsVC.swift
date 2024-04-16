@@ -54,10 +54,11 @@ extension CharacterDetailSkillsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharacterDetailSkillCell.self)") as? CharacterDetailSkillCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharacterDetailSkillCell.self)") as? CharacterDetailSkillCell,
+              let skill = viewModel?.characterInfoData?.skills[safe: indexPath.row] else {
             return UITableViewCell()
         }
-        cell.setCellContents()
+        cell.setCellContents(skill: skill)
         
         return cell
     }
