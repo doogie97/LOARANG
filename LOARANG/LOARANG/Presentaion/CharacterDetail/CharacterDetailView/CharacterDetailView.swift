@@ -11,7 +11,7 @@ import SnapKit
 final class CharacterDetailView: UIView {
     private weak var viewModel: CharacterDetailVMable?
     
-    private var currentPageIndex: Int?
+    private var currentPageIndex = 0
     ///빠르게 탭을 오래동안 바꾸면 앱 죽는현상 방지
     private var canChangeTab = true {
         didSet {
@@ -64,13 +64,15 @@ final class CharacterDetailView: UIView {
     
     func setViewContents(viewContents: CharacterDetailVM.ViewContents) {
         self.viewModel = viewContents.viewModel
+        pageVC.dataSource = self
+        pageVC.delegate = self
         navigationbar.setViewContents(viewModel: viewContents.viewModel,
                                       name: viewContents.character.profile.characterName)
         for vc in self.pageVCList {
             (vc as? PageViewInnerVCDelegate)?.setViewContents(viewContents: viewContents)
         }
         
-        setPageView(0)
+        setPageView(0, isFirst: true)
         
         setLayout()
     }
@@ -104,12 +106,12 @@ extension CharacterDetailView: ScrollableSegementDelegate {
         setPageView(index)
     }
     
-    private func setPageView(_ index: Int) {
+    private func setPageView(_ index: Int, isFirst: Bool = false) {
         if canChangeTab == false {
             return
         }
         
-        if currentPageIndex == index {
+        if currentPageIndex == index && !isFirst {
              return
         }
         
@@ -119,7 +121,7 @@ extension CharacterDetailView: ScrollableSegementDelegate {
         
         canChangeTab = false
         var direction: UIPageViewController.NavigationDirection {
-            index > currentPageIndex ?? -1 ? .forward : .reverse
+            index > currentPageIndex ? .forward : .reverse
         }
         
         pageVC.setViewControllers([innerVC], direction: direction, animated: true)
@@ -128,6 +130,41 @@ extension CharacterDetailView: ScrollableSegementDelegate {
         currentPageIndex = index
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
             self?.canChangeTab = true
+        }
+    }
+}
+
+extension CharacterDetailView: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pageVCList.firstIndex(of: viewController) else { return nil }
+        guard currentIndex > 0 else { return nil }
+        
+        return pageVCList[currentIndex - 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pageVCList.firstIndex(of: viewController) else { return nil }
+        guard currentIndex < (pageVCList.count - 1) else { return nil }
+        
+        return pageVCList[currentIndex + 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            let previousIndex = self.currentPageIndex
+            
+            if let currentVC = pageVC.viewControllers?.first,
+               let currentIndex = pageVCList.firstIndex(of: currentVC) {
+                self.currentPageIndex = currentIndex
+                
+                scrollableSegment.scrollToSelecteCell(index: currentIndex)
+                
+                let segmentCV = scrollableSegment.segmentCV
+                segmentCV.delegate?.collectionView?(segmentCV,
+                                                    didSelectItemAt: IndexPath(item: currentIndex, section: 0))
+                segmentCV.delegate?.collectionView?(segmentCV,
+                                                    didDeselectItemAt: IndexPath(item: previousIndex, section: 0))
+            }
         }
     }
 }
