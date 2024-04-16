@@ -88,6 +88,8 @@ extension String {
             return baseURL + "holyknight.png"
         case "스트라이커":
             return baseURL + "battle_master_male.png"
+        case "브레이커":
+            return baseURL + "infighter_male.png"
         case "배틀마스터":
             return baseURL + "battle_master.png"
         case "인파이터":
