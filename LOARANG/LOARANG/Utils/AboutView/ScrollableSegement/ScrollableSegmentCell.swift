@@ -33,8 +33,6 @@ final class ScrollableSegmentCell: UICollectionViewCell {
         let deselectedFontColor: UIColor
         let selectedFont: UIFont
         let deselectedFont: UIFont
-        let underLineColor: UIColor
-        let underLineHeight: CGFloat
     }
     
     override init(frame: CGRect) {

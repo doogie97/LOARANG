@@ -140,9 +140,7 @@ extension ScrollableSegement: UICollectionViewDataSource, UICollectionViewDelega
                                                                       selectedFontColor: self.selectedFontColor,
                                                                       deselectedFontColor: self.deselectedFontColor,
                                                                       selectedFont: self.selectedFont,
-                                                                      deselectedFont: self.deselectedFont,
-                                                                      underLineColor: self.underLineColor,
-                                                                      underLineHeight: self.underLineHeight))
+                                                                      deselectedFont: self.deselectedFont))
         if segmentIndex == indexPath.row {
             collectionView.selectItem(at: indexPath, animated: false , scrollPosition: .init())
         }
