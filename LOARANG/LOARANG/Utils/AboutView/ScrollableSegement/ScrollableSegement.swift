@@ -27,7 +27,11 @@ final class ScrollableSegement: UIView {
     var selectedFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .bold)
     var deselectedFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .light)
     var segmentTextAlignment: NSTextAlignment = .center
-    var underLineColor: UIColor = .black
+    var underLineColor: UIColor = .black {
+        didSet {
+            self.underLineView.backgroundColor = underLineColor
+        }
+    }
     var underLineHeight: CGFloat = 1
     
     init(segmentTitles: [String], itemHight: CGFloat, itemInset: CGFloat = 10.0) {
@@ -50,7 +54,33 @@ final class ScrollableSegement: UIView {
     
     func scrollToSelecteCell(index: Int) {
         segmentCV.selectItem(at: IndexPath(item: index, section: 0), animated: true , scrollPosition: .centeredHorizontally)
+        setUnderlinePosition()
     }
+    
+    private func setUnderlinePosition(animated: Bool = true) {
+        let cell = segmentCV.cellForItem(at: IndexPath(item: self.segmentIndex, section: 0)) ?? self
+        
+        underLineView.snp.remakeConstraints {
+            $0.leading.trailing.equalTo(cell)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(underLineHeight)
+        }
+        
+        if animated {
+            UIView.animate(withDuration: 0.3) {
+                self.layoutIfNeeded()
+            }
+        } else {
+            self.layoutIfNeeded()
+        }
+        
+    }
+    
+    private lazy var underLineView = {
+        let view = UIView()
+        view.backgroundColor = .systemBlue
+        return view
+    }()
     
     private(set) lazy var segmentCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -74,10 +104,16 @@ final class ScrollableSegement: UIView {
     
     private func setLayout() {
         self.addSubview(segmentCV)
+        self.addSubview(underLineView)
         self.addSubview(bottomSeparator)
         
         segmentCV.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        underLineView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(underLineHeight)
         }
         
         bottomSeparator.snp.makeConstraints {
@@ -120,7 +156,7 @@ extension ScrollableSegement: UICollectionViewDataSource, UICollectionViewDelega
             return
         }
         
-        cell.showUnderLine(segmentIndex < indexPath.row ? .right : .left)
+        cell.selectCell()
         self.segmentIndex = indexPath.row
         scrollToSelecteCell(index: indexPath.row)
         delegate?.didSelected(self, index: indexPath.row)
@@ -131,7 +167,7 @@ extension ScrollableSegement: UICollectionViewDataSource, UICollectionViewDelega
             return
         }
         
-        cell.hideUnderLine(segmentIndex < indexPath.row ? .right : .left)
+        cell.deselectCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

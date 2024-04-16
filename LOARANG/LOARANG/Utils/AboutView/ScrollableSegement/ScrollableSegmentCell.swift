@@ -22,8 +22,6 @@ final class ScrollableSegmentCell: UICollectionViewCell {
                 titleLabel.textColor = cellInfo.deselectedFontColor
                 titleLabel.font = cellInfo.deselectedFont
             }
-            
-            underLine.isHidden = !cellInfo.isSelected
         }
     }
     
@@ -54,14 +52,6 @@ final class ScrollableSegmentCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var underLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = cellInfo?.underLineColor ?? .black
-        view.isHidden = true
-        
-        return view
-    }()
-    
     func setCellContents(cellInfo: CellInfo) {
         titleLabel.text = cellInfo.title
         titleLabel.textAlignment = cellInfo.textAlignment
@@ -76,32 +66,19 @@ final class ScrollableSegmentCell: UICollectionViewCell {
     
     private func setLayout() {
         self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(underLine)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10)
+            $0.top.bottom.equalToSuperview().inset(10)
             $0.leading.trailing.equalToSuperview()
-        }
-        
-        underLine.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(cellInfo?.underLineHeight ?? 1)
         }
     }
     
-    func showUnderLine(_ direction: Direction) {
+    func selectCell() {
         self.cellInfo?.isSelected = true
     }
     
-    func hideUnderLine(_ direction: Direction) {
+    func deselectCell() {
         self.cellInfo?.isSelected = false
-    }
-    
-    enum Direction {
-        case right
-        case left
     }
     
     override func prepareForReuse() {
