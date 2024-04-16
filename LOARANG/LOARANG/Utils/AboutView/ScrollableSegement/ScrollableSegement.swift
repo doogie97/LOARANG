@@ -57,7 +57,7 @@ final class ScrollableSegement: UIView {
         setUnderlinePosition()
     }
     
-    private func setUnderlinePosition(animated: Bool = true) {
+    private func setUnderlinePosition() {
         let cell = segmentCV.cellForItem(at: IndexPath(item: self.segmentIndex, section: 0)) ?? self
         
         underLineView.snp.remakeConstraints {
@@ -66,14 +66,9 @@ final class ScrollableSegement: UIView {
             $0.height.equalTo(underLineHeight)
         }
         
-        if animated {
-            UIView.animate(withDuration: 0.3) {
-                self.layoutIfNeeded()
-            }
-        } else {
+        UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
-        
     }
     
     private lazy var underLineView = {
