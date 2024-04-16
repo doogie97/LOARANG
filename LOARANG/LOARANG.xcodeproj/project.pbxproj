@@ -26,6 +26,7 @@
 		7177132D2BC8E6960040C602 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7177132C2BC8E6960040C602 /* Kingfisher */; };
 		71892D3F2BCDF9400008CD8C /* ScrollableSegement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */; };
 		71892D412BCDFA0E0008CD8C /* ScrollableSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */; };
+		71892D452BCE5EF60008CD8C /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D442BCE5EF60008CD8C /* Grade.swift */; };
 		7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA982BC78DA500B3959A /* RxCocoa */; };
 		7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9A2BC78DA500B3959A /* RxRelay */; };
 		7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9C2BC78DA500B3959A /* RxSwift */; };
@@ -229,6 +230,7 @@
 		717713262BC8D9CD0040C602 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegement.swift; sourceTree = "<group>"; };
 		71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentCell.swift; sourceTree = "<group>"; };
+		71892D442BCE5EF60008CD8C /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOARANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1038,6 +1040,7 @@
 			children = (
 				C63C615E2BADC42F0023D123 /* GameServer.swift */,
 				C63C61622BADC8530023D123 /* CharacterClase.swift */,
+				71892D442BCE5EF60008CD8C /* Grade.swift */,
 			);
 			path = CommonObject;
 			sourceTree = "<group>";
@@ -1449,6 +1452,7 @@
 				C6224F852BC8480D00CABA30 /* GameEventDTO.swift in Sources */,
 				C6224F822BC847D800CABA30 /* GameEventEntity.swift in Sources */,
 				C683F42A2BCD77E900A5E699 /* CharacterDetailNavigationbar.swift in Sources */,
+				71892D452BCE5EF60008CD8C /* Grade.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
 				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
