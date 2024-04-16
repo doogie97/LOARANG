@@ -27,6 +27,9 @@
 		71892D3F2BCDF9400008CD8C /* ScrollableSegement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */; };
 		71892D412BCDFA0E0008CD8C /* ScrollableSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */; };
 		71892D452BCE5EF60008CD8C /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D442BCE5EF60008CD8C /* Grade.swift */; };
+		71892D4A2BCE6D800008CD8C /* CharacterDetailProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */; };
+		71892D4C2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */; };
+		71892D4E2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */; };
 		7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA982BC78DA500B3959A /* RxCocoa */; };
 		7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9A2BC78DA500B3959A /* RxRelay */; };
 		7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7192BA9C2BC78DA500B3959A /* RxSwift */; };
@@ -231,6 +234,9 @@
 		71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegement.swift; sourceTree = "<group>"; };
 		71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentCell.swift; sourceTree = "<group>"; };
 		71892D442BCE5EF60008CD8C /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailProfileVC.swift; sourceTree = "<group>"; };
+		71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSkillsVC.swift; sourceTree = "<group>"; };
+		71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailOwnCharctersVC.swift; sourceTree = "<group>"; };
 		AC0341B0294587A3005F4533 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AC0341B32945883C005F4533 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		AC0341B9294588F3005F4533 /* LOARANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOARANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1094,6 +1100,9 @@
 			children = (
 				C683F4222BCD703600A5E699 /* CharacterDetailView.swift */,
 				C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */,
+				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
+				71892D4B2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift */,
+				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
 			);
 			path = CharacterDetailView;
 			sourceTree = "<group>";
@@ -1354,9 +1363,11 @@
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				7162BF782BC7BB1D00702530 /* HomeVC.swift in Sources */,
 				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
+				71892D4C2BCE6D880008CD8C /* CharacterDetailSkillsVC.swift in Sources */,
 				C6074DE92BC6D8C000FE3004 /* GetRecentUsersUseCase.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
+				71892D4E2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift in Sources */,
 				C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */,
 				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,
 				7162BF852BC7CFD300702530 /* HomeBookmarkUserCVCell.swift in Sources */,
@@ -1439,6 +1450,7 @@
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
+				71892D4A2BCE6D800008CD8C /* CharacterDetailProfileVC.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,
 				C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */,
 				C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */,
