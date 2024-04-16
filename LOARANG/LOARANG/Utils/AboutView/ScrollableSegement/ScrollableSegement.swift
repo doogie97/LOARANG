@@ -73,12 +73,10 @@ final class ScrollableSegement: UIView {
         } else {
             self.layoutIfNeeded()
         }
-        
     }
     
     private lazy var underLineView = {
         let view = UIView()
-        view.backgroundColor = .systemBlue
         return view
     }()
     
