@@ -24,42 +24,42 @@ final class CharacterDetailSkillsVC: UIViewController, PageViewInnerVCDelegate {
         super.viewDidLoad()
         setLayout()
     }
-    
-    private lazy var skillsTV = {
-        let tableView = UITableView()
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .mainBackground
-        tableView.register(CharacterDetailSkillCell.self)
-        
-        return tableView
-    }()
-    
+//    
+//    private lazy var skillsTV = {
+//        let tableView = UITableView()
+//        tableView.dataSource = self
+//        tableView.separatorStyle = .none
+//        tableView.backgroundColor = .mainBackground
+//        tableView.register(CharacterDetailSkillCell.self)
+//        
+//        return tableView
+//    }()
+//    
     func setViewContents(viewModel: CharacterDetailVMable?) {
         self.viewModel = viewModel
     }
     
     private func setLayout() {
-        self.view.backgroundColor = .mainBackground
-        self.view.addSubview(skillsTV)
-        skillsTV.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        self.view.backgroundColor = .systemPurple
+//        self.view.addSubview(skillsTV)
+//        skillsTV.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
+//        }
     }
 }
-
-extension CharacterDetailSkillsVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.characterInfoData?.skills.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharacterDetailSkillCell.self)") as? CharacterDetailSkillCell,
-              let skill = viewModel?.characterInfoData?.skills[safe: indexPath.row] else {
-            return UITableViewCell()
-        }
-        cell.setCellContents(skill: skill)
-        
-        return cell
-    }
-}
+//
+//extension CharacterDetailSkillsVC: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return viewModel?.characterInfoData?.skills.count ?? 0
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharacterDetailSkillCell.self)") as? CharacterDetailSkillCell,
+//              let skill = viewModel?.characterInfoData?.skills[safe: indexPath.row] else {
+//            return UITableViewCell()
+//        }
+//        cell.setCellContents(skill: skill)
+//        
+//        return cell
+//    }
+//}

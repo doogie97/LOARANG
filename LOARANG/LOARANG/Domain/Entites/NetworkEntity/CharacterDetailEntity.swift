@@ -9,7 +9,7 @@ import UIKit
 
 struct CharacterDetailEntity { //일단 지금 당장 필요한 정보만 전달, 추후 추가할 예정
     let profile: Profile
-    let skills: [Skill]
+    let skills: SkillInfo
 }
 
 //MARK: - Profile
@@ -24,34 +24,6 @@ extension CharacterDetailEntity {
         let imageUrl: String
     }
 }
-
-//MARK: - Skill
-extension CharacterDetailEntity {
-    struct Skill {
-        let name: String
-        let imageUrl: String
-        let level: Int
-        let tripods: [Tripod]
-        let rune: Rune?
-        let tooltip: String
-    }
-    
-    struct Tripod {
-        let name: String
-        let imageUrl: String
-        let level: Int
-        let isSelected: Bool
-        let tooltip: String
-    }
-    
-    struct Rune {
-        let name: String
-        let imageUrl: String
-        let grade: Grade
-        let tooltip: String
-    }
-}
-
 
 extension CharacterDetailEntity {
     var toLocalStorageEntity: MainUserEntity {

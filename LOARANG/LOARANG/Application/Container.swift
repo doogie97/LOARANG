@@ -19,7 +19,9 @@ protocol Containerable {
 final class Container: Containerable {
     private let networkRepository = NetworkRepository(networkManager: NetworkManager())
     private let localStorageRepository: LocalStorageRepositoryable
-    private let crawlManager = CrawlManager() //추후 제거 예정
+    private let crawlManager: NewCrawlManagerable = NewCrawlManager()
+    
+    private let oldCrawlManager = CrawlManager() //추후 제거 예정
     
     init(localStorageRepository: LocalStorageRepositoryable) {
         self.localStorageRepository = localStorageRepository
@@ -29,7 +31,8 @@ final class Container: Containerable {
     func homeVC() -> HomeVC {
         let homeVM = HomeVM(getHomeGameInfoUseCase: GetHomeGameInfoUseCase(networkRepository: networkRepository),
                             getHomeCharactersUseCase: GetHomeCharactersUseCase(localStorageRepository: localStorageRepository), deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
-                            getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository),
+                            getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository,
+                                                                                 crawlManagerable: crawlManager),
                             changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository))
         return HomeVC(container: self,
                       viewModel: homeVM)
@@ -37,7 +40,8 @@ final class Container: Containerable {
     
     func characterDetailVC(name: String) -> CharacterDetailVC {
         let viewModel = CharacterDetailVM(characterName: name,
-                                          getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository))
+                                          getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository,
+                                                                                               crawlManagerable: crawlManager))
         return CharacterDetailVC(container: self,
                                  viewModel: viewModel)
     }
@@ -158,7 +162,8 @@ final class Container: Containerable {
     
     //MARK: - about settingVIew
     func makeSettingViewModel() -> SettingViewModelable {
-        return SettingViewModel(getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository),
+        return SettingViewModel(getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository,
+                                                                                     crawlManagerable: crawlManager),
                                 changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository),
                                 deleteMainUserUseCase: DeleteMainUserUseCase(localStorageRepository: localStorageRepository))
     }
