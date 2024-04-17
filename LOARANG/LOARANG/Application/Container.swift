@@ -44,6 +44,7 @@ final class Container: Containerable {
             isSearch: isSearch,
             getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository,
                                                                  crawlManagerable: crawlManager),
+            changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository),
             addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
             deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
             updateBookmarkUseCase: UpdateBookmarkUseCase(localStorageRepository: localStorageRepository)

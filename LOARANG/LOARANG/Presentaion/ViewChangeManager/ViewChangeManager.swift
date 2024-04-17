@@ -20,4 +20,8 @@ extension String {
     var isBookmark: Bool {
         ViewChangeManager.shared.bookmarkUsers.value.contains { $0.name == self }
     }
+    
+    var isMainUser: Bool {
+        ViewChangeManager.shared.mainUser.value?.name == self
+    }
 }

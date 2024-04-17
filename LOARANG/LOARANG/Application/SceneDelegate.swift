@@ -37,6 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     migration.enumerateObjects(ofType: MainUserDTO.className()) { oldObject, newObject in
                         newObject?["imageUrl"] = ""
                         newObject?["expeditionLV"] = 0
+                        newObject?["characterClass"] = oldObject?["class"]
+                        newObject?["gameServer"] = oldObject?["server"]
                     }
                     
                     migration.enumerateObjects(ofType: BookmarkUserDTO.className()) { oldObject, newObject in

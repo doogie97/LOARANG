@@ -108,13 +108,11 @@ final class UserInfoViewModel: UserInfoViewModelable {
         if ViewChangeManager.shared.mainUser.value?.name == userInfo.mainInfo.name {
             do {
                 let mainUser = MainUserEntity(imageUrl: ViewChangeManager.shared.mainUser.value?.imageUrl ?? "",
-                                              image: userInfo.mainInfo.userImage,
-                                              battleLV: Int(userInfo.mainInfo.battleLV) ?? 0,
-                                              name: userInfo.mainInfo.name,
-                                              class: userInfo.mainInfo.`class`,
+                                              battleLV: Int(userInfo.mainInfo.battleLV) ?? 0, 
+                                              name: userInfo.mainInfo.name, characterClass: CharacterClass(rawValue: userInfo.mainInfo.`class`) ?? .unknown,
                                               itemLV: userInfo.mainInfo.itemLV,
                                               expeditionLV: Int(userInfo.mainInfo.expeditionLV) ?? 0,
-                                              server: userInfo.mainInfo.server)
+                                              gameServer: GameServer(rawValue: userInfo.mainInfo.server) ?? .unknown)
                 try changeMainUserUseCase.execute(user: mainUser)
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))

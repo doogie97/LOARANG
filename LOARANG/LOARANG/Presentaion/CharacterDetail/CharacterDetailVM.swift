@@ -36,6 +36,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     private var characterInfo: CharacterDetailEntity? 
     
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
+    private let changeMainUserUseCase: ChangeMainUserUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     private let updateBookmarkUseCase: UpdateBookmarkUseCase
@@ -43,6 +44,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     init(characterName: String,
          isSearch: Bool,
          getCharacterDetailUseCase: GetCharacterDetailUseCase,
+         changeMainUserUseCase: ChangeMainUserUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
          updateBookmarkUseCase: UpdateBookmarkUseCase) {
@@ -50,6 +52,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
         self.isSearch = isSearch
         self.isBookmark = characterName.isBookmark
         self.getCharacterDetailUseCase = getCharacterDetailUseCase
+        self.changeMainUserUseCase = changeMainUserUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.updateBookmarkUseCase = updateBookmarkUseCase
@@ -90,7 +93,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
                 self.characterInfo = characterEntity
                 await MainActor.run {
                     setViewContents.accept(())
-                    bookmarkUpdate(characterEntity)
+                    localStorageUpdate(characterEntity)
                     isLoading.accept(false)
                 }
             } catch let error {
@@ -102,15 +105,26 @@ final class CharacterDetailVM: CharacterDetailVMable {
         }
     }
     
-    private func bookmarkUpdate(_ character: CharacterDetailEntity) {
-        if character.profile.characterName.isBookmark {
-            do {
+    private func localStorageUpdate(_ character: CharacterDetailEntity) {
+        do {
+            if character.profile.characterName.isBookmark {
                 try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: character.profile.characterName,
                                                                            imageUrl: character.profile.imageUrl,
                                                                            characterClass: character.profile.characterClass))
-            } catch let error {
-                showAlert.accept((message: error.errorMessage, isPop: false))
             }
+            if character.profile.characterName.isMainUser {
+                try changeMainUserUseCase.execute(user: MainUserEntity(
+                    imageUrl: character.profile.imageUrl,
+                    battleLV: character.profile.battleLevel,
+                    name: character.profile.characterName,
+                    characterClass: character.profile.characterClass,
+                    itemLV: character.profile.itemLevel,
+                    expeditionLV: character.profile.expeditionLevel,
+                    gameServer: character.profile.gameServer
+                ))
+            }
+        } catch let error {
+            showAlert.accept((message: error.errorMessage, isPop: false))
         }
     }
     

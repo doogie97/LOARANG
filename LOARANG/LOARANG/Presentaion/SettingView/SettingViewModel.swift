@@ -46,13 +46,12 @@ final class SettingViewModel: SettingViewModelable {
                 let searchResult = try await getCharacterDetailUseCase.excute(name: userName)
                 await MainActor.run {
                     showAlert.accept(.checkUser(userInfo: MainUserEntity(imageUrl: searchResult.profile.imageUrl,
-                                                                         image: UIImage(),
                                                                          battleLV: searchResult.profile.battleLevel,
                                                                          name: searchResult.profile.characterName,
-                                                                         class: searchResult.profile.characterClass.rawValue,
+                                                                         characterClass: searchResult.profile.characterClass,
                                                                          itemLV: searchResult.profile.itemLevel,
                                                                          expeditionLV: searchResult.profile.expeditionLevel,
-                                                                         server: searchResult.profile.gameServer.rawValue)))
+                                                                         gameServer: searchResult.profile.gameServer)))
                     finishedLoading.accept(())
                 }
             } catch let error {

@@ -28,12 +28,11 @@ extension CharacterDetailEntity {
 extension CharacterDetailEntity {
     var toLocalStorageEntity: MainUserEntity {
         return MainUserEntity(imageUrl: self.profile.imageUrl,
-                              image: UIImage(),
                               battleLV: self.profile.battleLevel,
                               name: self.profile.characterName,
-                              class: self.profile.characterClass.rawValue,
+                              characterClass: CharacterClass(rawValue: self.profile.characterClass.rawValue) ?? .unknown,
                               itemLV: self.profile.itemLevel,
                               expeditionLV: self.profile.expeditionLevel,
-                              server: self.profile.gameServer.rawValue)
+                              gameServer: GameServer(rawValue: self.profile.gameServer.rawValue) ?? .unknown)
     }
 }
