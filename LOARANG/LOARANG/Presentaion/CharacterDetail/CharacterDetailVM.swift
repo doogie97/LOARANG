@@ -27,7 +27,7 @@ protocol CharacterDetailVMOutput {
 final class CharacterDetailVM: CharacterDetailVMable {
     private let characterName: String
     private let isSearch: Bool
-    private var isBookmark = false {
+    private var isBookmark: Bool {
         didSet {
             changeBookmarkButton.accept(isBookmark)
         }
@@ -47,6 +47,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
          updateBookmarkUseCase: UpdateBookmarkUseCase) {
         self.characterName = characterName
         self.isSearch = isSearch
+        self.isBookmark = characterName.isBookmark
         self.getCharacterDetailUseCase = getCharacterDetailUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
@@ -63,7 +64,21 @@ final class CharacterDetailVM: CharacterDetailVMable {
     }
     
     func touchBookmarkButton() {
-        isBookmark = !self.isBookmark
+        do {
+            if isBookmark {
+                try deleteBookmarkUseCase.execute(name: characterName)
+            } else {
+                try addBookmarkUseCase.execute(
+                    user: BookmarkUserEntity(name: characterName,
+                                             imageUrl: characterInfoData?.profile.imageUrl ?? "",
+                                             characterClass: characterInfoData?.profile.characterClass ?? .unknown)
+                )
+            }
+            
+            isBookmark = !self.isBookmark
+        } catch let error {
+            print(error)
+        }
     }
     
     private func getCharacterDetail() {

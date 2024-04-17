@@ -29,7 +29,6 @@ final class CharacterDetailNavigationbar: UIView {
     
     private(set) lazy var bookmarkButton: UIButton = {
         let button = UIButton()
-        button.changeBookmarkButtonColor(false)
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
         button.addTarget(self, action: #selector(touchButton), for: .touchUpInside)
         return button
@@ -45,10 +44,11 @@ final class CharacterDetailNavigationbar: UIView {
         }
     }
     
-    func setViewContents(viewModel: CharacterDetailVMable?,
-                         name: String?) {
+    func setViewContents(viewModel: CharacterDetailVMable?) {
         self.viewModel = viewModel
+        let name = viewModel?.characterInfoData?.profile.characterName ?? ""
         titleLabel.text = name
+        bookmarkButton.changeBookmarkButtonColor(name.isBookmark)
         backButton.tag = 0
         bookmarkButton.tag = 1
         setLayout()
