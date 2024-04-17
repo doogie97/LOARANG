@@ -17,7 +17,7 @@ final class HomeImageCVCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var imageTitleLabel = pretendardLabel(size: 16, family: .Bold, color: #colorLiteral(red: 0.919945538, green: 0.8131091595, blue: 0.5661830306, alpha: 1))
+    private lazy var imageTitleLabel = pretendardLabel(size: 16, family: .SemiBold, color: #colorLiteral(red: 0.919945538, green: 0.8131091595, blue: 0.5661830306, alpha: 1))
     private lazy var titleLabelView = {
         let view = UIView()
         view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]

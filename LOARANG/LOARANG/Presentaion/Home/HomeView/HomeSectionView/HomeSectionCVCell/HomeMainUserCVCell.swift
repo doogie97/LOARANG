@@ -141,9 +141,9 @@ final class HomeMainUserCVCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var itemLvLabel = pretendardLabel(size: 16, alignment: .center)
-    private lazy var battleLvLabel = pretendardLabel(size: 16, alignment: .center)
-    private lazy var expeditionLvLabel = pretendardLabel(size: 16, alignment: .center)
+    private lazy var itemLvLabel = pretendardLabel(size: 16, family: .SemiBold, alignment: .center)
+    private lazy var battleLvLabel = pretendardLabel(size: 16, family: .SemiBold, alignment: .center)
+    private lazy var expeditionLvLabel = pretendardLabel(size: 16, family: .SemiBold, alignment: .center)
     
     private func bottomInfoItemView(title: String, label: UILabel) -> UIView {
         let titleLabel = pretendardLabel(size: 14, family: .Regular, color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), alignment: .center)
