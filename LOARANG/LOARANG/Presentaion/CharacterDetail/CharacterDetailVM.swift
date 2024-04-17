@@ -35,12 +35,23 @@ final class CharacterDetailVM: CharacterDetailVMable {
     private var characterInfo: CharacterDetailEntity? 
     
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
-    init(characterName: String, 
+    private let addBookmarkUseCase: AddBookmarkUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
+    private let updateBookmarkUseCase: UpdateBookmarkUseCase
+    
+    init(characterName: String,
+         isSearch: Bool,
          getCharacterDetailUseCase: GetCharacterDetailUseCase,
-         isSearch: Bool) {
+         addBookmarkUseCase: AddBookmarkUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase,
+         updateBookmarkUseCase: UpdateBookmarkUseCase) {
         self.characterName = characterName
         self.isSearch = isSearch
         self.getCharacterDetailUseCase = getCharacterDetailUseCase
+        self.addBookmarkUseCase = addBookmarkUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
+        self.updateBookmarkUseCase = updateBookmarkUseCase
+        
     }
     //MARK: - Input
     func viewDidLoad() {

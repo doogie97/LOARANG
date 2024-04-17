@@ -39,10 +39,15 @@ final class Container: Containerable {
     }
     
     func characterDetailVC(name: String, isSearch: Bool) -> CharacterDetailVC {
-        let viewModel = CharacterDetailVM(characterName: name,
-                                          getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository,
-                                                                                               crawlManagerable: crawlManager),
-                                          isSearch: isSearch)
+        let viewModel = CharacterDetailVM(
+            characterName: name,
+            isSearch: isSearch,
+            getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository,
+                                                                 crawlManagerable: crawlManager),
+            addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
+            deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
+            updateBookmarkUseCase: UpdateBookmarkUseCase(localStorageRepository: localStorageRepository)
+        )
         return CharacterDetailVC(container: self,
                                  viewModel: viewModel)
     }
