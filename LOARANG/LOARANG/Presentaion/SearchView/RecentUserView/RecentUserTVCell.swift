@@ -113,7 +113,7 @@ final class RecentUserTVCell: UITableViewCell {
         
         self.userImageView.image = recentUser.image.cropImage(class: recentUser.class)
         self.nameLabel.text = recentUser.name
-        self.bookmarkButton.setBookmarkButtonColor(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == recentUser.name }))
+        self.bookmarkButton.setBookmarkButtonColor(recentUser.name.isBookmark)
     }
     
     override func prepareForReuse() {

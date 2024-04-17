@@ -91,7 +91,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
         }
         
         do {
-            if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
+            if userInfo.mainInfo.name.isBookmark {
                 try deleteBookmarkUseCase.execute(name: userName)
             } else {
                 try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: userInfo.mainInfo.name,
@@ -101,7 +101,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }
-        isBookmarkUser.accept(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }))
+        isBookmarkUser.accept(userInfo.mainInfo.name.isBookmark)
     }
     
     private func mainUserUpdate(_ userInfo: UserInfo) {
@@ -123,7 +123,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     private func bookmarkUpdate(_ userInfo: UserInfo) {
-        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
+        if userInfo.mainInfo.name.isBookmark {
             do {
                 try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: userName,
                                                                            imageUrl: "",
@@ -152,7 +152,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 await MainActor.run {
                     userInfo.accept(searchResult)
                     skillInfo.accept(searchResult.userJsonInfo.skillInfo)
-                    isBookmarkUser.accept(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == searchResult.mainInfo.name }))
+                    isBookmarkUser.accept(searchResult.mainInfo.name.isBookmark)
                     userName = searchResult.mainInfo.name
                     sucssesSearching.accept(())
                     

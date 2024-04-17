@@ -103,7 +103,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     }
     
     private func bookmarkUpdate(_ character: CharacterDetailEntity) {
-        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == character.profile.characterName }) {
+        if character.profile.characterName.isBookmark {
             do {
                 try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: character.profile.characterName,
                                                                            imageUrl: character.profile.imageUrl,
