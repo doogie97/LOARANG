@@ -1,5 +1,5 @@
 //
-//  SkillTVCell.swift
+//  CharcterDetailSkillCell.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/08/24.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SkillTVCell: UITableViewCell {
+final class CharcterDetailSkillCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()

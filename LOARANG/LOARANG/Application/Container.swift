@@ -131,8 +131,8 @@ final class Container: Containerable {
     }
     
     //MARK: - about SkillInfoView
-    func makeSkillInfoViewController(skillInfo: BehaviorRelay<SkillInfo?>) -> SkillInfoViewController {
-        return SkillInfoViewController()
+    func makeSkillInfoViewController(skillInfo: BehaviorRelay<SkillInfo?>) -> CharcterDetailSkillVC {
+        return CharcterDetailSkillVC()
     }
     
     func makeSkillDetailViewController(skill: Skill) -> SkillDetailViewController {

@@ -1,5 +1,5 @@
 //
-//  SkillInfoView.swift
+//  CharacterDetailSkillView.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/08/24.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SkillInfoView: UIView {
+final class CharacterDetailSkillView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
@@ -30,7 +30,7 @@ final class SkillInfoView: UIView {
         let tableView = UITableView()
         tableView.backgroundColor = .mainBackground
         tableView.separatorStyle = .none
-        tableView.register(SkillTVCell.self)
+        tableView.register(CharcterDetailSkillCell.self)
         
         return tableView
     }()

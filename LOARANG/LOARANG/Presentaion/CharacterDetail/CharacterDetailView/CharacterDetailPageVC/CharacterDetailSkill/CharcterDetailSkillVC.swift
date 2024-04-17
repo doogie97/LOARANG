@@ -1,5 +1,5 @@
 //
-//  SkillInfoViewController.swift
+//  CharcterDetailSkillVC.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/07/29.
@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-final class SkillInfoViewController: UIViewController, PageViewInnerVCDelegate {
+final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
     private let viewModel: SkillInfoViewModelable = SkillInfoViewModel()
     
     init() {
@@ -19,12 +19,12 @@ final class SkillInfoViewController: UIViewController, PageViewInnerVCDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let skillInfoView = SkillInfoView()
+    private let characterDetailSkillView = CharacterDetailSkillView()
     private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
-        self.view = skillInfoView
+        self.view = characterDetailSkillView
     }
     
     override func viewDidLoad() {
@@ -43,12 +43,12 @@ final class SkillInfoViewController: UIViewController, PageViewInnerVCDelegate {
         viewModel.skillInfo
             .bind(onNext: {[weak self] in
                 let skillPointString = "스킬 포인트 : \($0?.usedSkillPoint ?? "") / \($0?.totalSkillPoint ?? "")"
-                self?.skillInfoView.setViewContents(skillPointString: skillPointString)
+                self?.characterDetailSkillView.setViewContents(skillPointString: skillPointString)
             })
             .disposed(by: disposeBag)
         
         viewModel.skills
-            .bind(to: skillInfoView.skillTableView.rx.items(cellIdentifier: "\(SkillTVCell.self)", cellType: SkillTVCell.self)){ index, skill, cell in
+            .bind(to: characterDetailSkillView.skillTableView.rx.items(cellIdentifier: "\(CharcterDetailSkillCell.self)", cellType: CharcterDetailSkillCell.self)){ index, skill, cell in
                     cell.setCellContents(skill: skill)
             }
             .disposed(by: disposeBag)
@@ -65,7 +65,7 @@ final class SkillInfoViewController: UIViewController, PageViewInnerVCDelegate {
             })
             .disposed(by: disposeBag)
         
-        skillInfoView.skillTableView.rx.itemSelected
+        characterDetailSkillView.skillTableView.rx.itemSelected
             .bind(onNext: { [weak self] in
                 self?.viewModel.touchSkillCell($0.row)
             })

@@ -92,7 +92,7 @@
 		AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC687AB4291373E70064C92B /* GoogleService-Info.plist */; };
 		AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC6C81942940270A00C0EEC1 /* Alamofire */; };
 		AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */; };
-		AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */; };
+		AC6CA2962893BC270049C12F /* CharcterDetailSkillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* CharcterDetailSkillVC.swift */; };
 		AC6CA29A2893BC390049C12F /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2992893BC390049C12F /* CharactersViewController.swift */; };
 		AC757C3C28BF0EBE005B102B /* EngravigCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */; };
 		AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */; };
@@ -105,9 +105,9 @@
 		AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */; };
 		AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403F28B5D213004B7EBB /* SkillInfo.swift */; };
 		AC86404228B5D478004B7EBB /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404128B5D478004B7EBB /* Skill.swift */; };
-		AC86404428B5EAF8004B7EBB /* SkillInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404328B5EAF8004B7EBB /* SkillInfoView.swift */; };
+		AC86404428B5EAF8004B7EBB /* CharacterDetailSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404328B5EAF8004B7EBB /* CharacterDetailSkillView.swift */; };
 		AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */; };
-		AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404728B5F325004B7EBB /* SkillTVCell.swift */; };
+		AC86404828B5F325004B7EBB /* CharcterDetailSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11D328814F5800D06AA6 /* BookmarkUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11D228814F5800D06AA6 /* BookmarkUserDTO.swift */; };
 		ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA27A2F28B4D1AE0080EF4F /* SpecialEquipmentCell.swift */; };
@@ -291,7 +291,7 @@
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
 		AC687AB4291373E70064C92B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC6CA2932893BC1D0049C12F /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
-		AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewController.swift; sourceTree = "<group>"; };
+		AC6CA2952893BC270049C12F /* CharcterDetailSkillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharcterDetailSkillVC.swift; sourceTree = "<group>"; };
 		AC6CA2992893BC390049C12F /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		AC757C3B28BF0EBE005B102B /* EngravigCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravigCVCell.swift; sourceTree = "<group>"; };
 		AC799A8128A50C0D008A2865 /* BasicEquipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEquipmentViewController.swift; sourceTree = "<group>"; };
@@ -304,9 +304,9 @@
 		AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJsonInfo.swift; sourceTree = "<group>"; };
 		AC86403F28B5D213004B7EBB /* SkillInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
 		AC86404128B5D478004B7EBB /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
-		AC86404328B5EAF8004B7EBB /* SkillInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoView.swift; sourceTree = "<group>"; };
+		AC86404328B5EAF8004B7EBB /* CharacterDetailSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSkillView.swift; sourceTree = "<group>"; };
 		AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewModel.swift; sourceTree = "<group>"; };
-		AC86404728B5F325004B7EBB /* SkillTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTVCell.swift; sourceTree = "<group>"; };
+		AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharcterDetailSkillCell.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11D228814F5800D06AA6 /* BookmarkUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserDTO.swift; sourceTree = "<group>"; };
 		ACA27A2F28B4D1AE0080EF4F /* SpecialEquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEquipmentCell.swift; sourceTree = "<group>"; };
@@ -745,10 +745,10 @@
 		AC6CA2902893BBD70049C12F /* CharacterDetailSkill */ = {
 			isa = PBXGroup;
 			children = (
-				AC86404328B5EAF8004B7EBB /* SkillInfoView.swift */,
-				AC6CA2952893BC270049C12F /* SkillInfoViewController.swift */,
+				AC86404328B5EAF8004B7EBB /* CharacterDetailSkillView.swift */,
+				AC6CA2952893BC270049C12F /* CharcterDetailSkillVC.swift */,
 				AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */,
-				AC86404728B5F325004B7EBB /* SkillTVCell.swift */,
+				AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */,
 				AC49D60028B85978002C0033 /* SkillDetailView */,
 			);
 			path = CharacterDetailSkill;
@@ -1360,7 +1360,7 @@
 				C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */,
 				7168675E2BCCA3DD0008C28F /* CharacterDetailGET.swift in Sources */,
 				C683F4272BCD704200A5E699 /* CharacterDetailVM.swift in Sources */,
-				AC86404828B5F325004B7EBB /* SkillTVCell.swift in Sources */,
+				AC86404828B5F325004B7EBB /* CharcterDetailSkillCell.swift in Sources */,
 				AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */,
 				C6224F8B2BC8494B00CABA30 /* ChallengeAbyssDungeonDTO.swift in Sources */,
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
@@ -1445,7 +1445,7 @@
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
-				AC86404428B5EAF8004B7EBB /* SkillInfoView.swift in Sources */,
+				AC86404428B5EAF8004B7EBB /* CharacterDetailSkillView.swift in Sources */,
 				AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */,
 				AC035EA1289121FD0068DC7E /* UserInfoViewController.swift in Sources */,
 				C683F4252BCD703D00A5E699 /* CharacterDetailVC.swift in Sources */,
@@ -1463,7 +1463,7 @@
 				C6224F762BC840D400CABA30 /* LoadingView.swift in Sources */,
 				71892D3F2BCDF9400008CD8C /* ScrollableSegement.swift in Sources */,
 				ACB3813328D42CF60081F8A1 /* CharactersViewModel.swift in Sources */,
-				AC6CA2962893BC270049C12F /* SkillInfoViewController.swift in Sources */,
+				AC6CA2962893BC270049C12F /* CharcterDetailSkillVC.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
