@@ -26,6 +26,7 @@ protocol CharacterDetailVMOutput {
 
 final class CharacterDetailVM: CharacterDetailVMable {
     private let characterName: String
+    private let isSearch: Bool
     private var isBookmark = false {
         didSet {
             changeBookmarkButton.accept(isBookmark)
@@ -34,8 +35,11 @@ final class CharacterDetailVM: CharacterDetailVMable {
     private var characterInfo: CharacterDetailEntity? 
     
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
-    init(characterName: String, getCharacterDetailUseCase: GetCharacterDetailUseCase) {
+    init(characterName: String, 
+         getCharacterDetailUseCase: GetCharacterDetailUseCase,
+         isSearch: Bool) {
         self.characterName = characterName
+        self.isSearch = isSearch
         self.getCharacterDetailUseCase = getCharacterDetailUseCase
     }
     //MARK: - Input

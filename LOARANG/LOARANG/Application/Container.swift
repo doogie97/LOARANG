@@ -10,7 +10,7 @@ import RxRelay
 
 protocol Containerable {
     func homeVC() -> HomeVC
-    func characterDetailVC(name: String) -> CharacterDetailVC
+    func characterDetailVC(name: String, isSearch: Bool) -> CharacterDetailVC
     func makeSearchViewController() -> SearchViewController
     func makeWebViewViewController(url: URL, title: String) -> WebViewViewController
     func makeUserInfoViewController(_ userName: String, isSearching: Bool) -> UserInfoViewController
@@ -38,10 +38,11 @@ final class Container: Containerable {
                       viewModel: homeVM)
     }
     
-    func characterDetailVC(name: String) -> CharacterDetailVC {
+    func characterDetailVC(name: String, isSearch: Bool) -> CharacterDetailVC {
         let viewModel = CharacterDetailVM(characterName: name,
                                           getCharacterDetailUseCase: GetCharacterDetailUseCase(networkRepository: networkRepository,
-                                                                                               crawlManagerable: crawlManager))
+                                                                                               crawlManagerable: crawlManager),
+                                          isSearch: isSearch)
         return CharacterDetailVC(container: self,
                                  viewModel: viewModel)
     }

@@ -84,7 +84,8 @@ final class HomeVC: UIViewController {
                 var nextVC: UIViewController? {
                     switch nextViewCase {
                     case .characterDetail(let name):
-                        return owner.container.characterDetailVC(name: name)
+                        return owner.container.characterDetailVC(name: name, 
+                                                                 isSearch: false)
                     case .searchView:
                         return owner.container.makeSearchViewController()
                     case .webView(let url, let title):
