@@ -31,6 +31,14 @@ struct NetworkManager: NetworkManagerable {
     private func innerRequest<T: Decodable>(_ requestable: Requestable, resultType: T.Type) async throws -> T {
         let response = await requestable.dataTask(resultType: resultType).response
         
+        guard let status = response.response else {
+            throw APIError.responseError
+        }
+        
+        guard (200...299).contains(status.statusCode) else {
+            throw APIError.statusCodeError(status.statusCode)
+        }
+        
         switch response.error {
         case .sessionTaskFailed(_):
             throw APIError.timeOut
@@ -38,21 +46,6 @@ struct NetworkManager: NetworkManagerable {
             throw APIError.DecodingError
         default:
             break
-        }
-        
-        guard let status = response.response else {
-            throw APIError.responseError
-        }
-        
-        guard (200...299).contains(status.statusCode) else {
-            
-            do {
-                let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: response.data ?? Data())
-                throw APIError.statusCodeError(ErrorInfo(message: errorResponse.Message,
-                                                         statusCode: status.statusCode))
-            } catch let error {
-                throw error
-            }
         }
         
         switch response.result {
@@ -78,8 +71,8 @@ struct NetworkManager: NetworkManagerable {
     private func processError(_ error: Error) -> Error? {
         if let apiError = error as? APIError {
             switch apiError {
-            case .statusCodeError(let errorInfo):
-                if errorInfo.statusCode == 429 {
+            case .statusCodeError(let statusCode):
+                if statusCode == 429 {
                     return nil
                 } else {
                     return error

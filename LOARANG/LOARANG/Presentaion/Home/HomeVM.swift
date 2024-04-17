@@ -167,7 +167,12 @@ final class HomeVM: HomeVMable {
                 }
             } catch let error {
                 await MainActor.run {
-                    showAlert.accept(.pop(messege: error.errorMessage))
+                    if let error = (error as? APIError),
+                       error == .statusCodeError(503) {
+                        showAlert.accept(.inspection(message: error.errorMessage))
+                    } else {
+                        showAlert.accept(.pop(messege: error.errorMessage))
+                    }
                     isLoading.accept(false)
                 }
             }
@@ -204,7 +209,7 @@ final class HomeVM: HomeVMable {
             guard let name = ViewChangeManager.shared.mainUser.value?.name else {
                 return
             }
-            showNextView.accept(.characterDetail(name: name))
+            showNextView.accept(.characterDetailV2(name: name))
         case .touchRegistMainUserButton:
             showAlert.accept(.searchMainUser)
         case .searchMainUser(let name):
@@ -281,9 +286,11 @@ final class HomeVM: HomeVMable {
         case searchView
         case webView(url: String?, title: String)
         case characterDetail(name: String)
+        case characterDetailV2(name: String)
     }
     
     enum AlertCase {
+        case inspection(message: String)
         case pop(messege: String)
         case basic(message: String)
         case searchMainUser

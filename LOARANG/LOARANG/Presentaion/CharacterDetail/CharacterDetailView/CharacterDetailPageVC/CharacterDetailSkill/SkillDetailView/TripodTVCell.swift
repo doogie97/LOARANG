@@ -98,9 +98,9 @@ final class TripodTVCell: UITableViewCell {
             let _ = tripodImageView.setImage(urlString: tripod.imageURL)
             tripodNameLabel.text = tripod.name
             tripodLvLabel.attributedText = tripod.lv.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
-            tripodEffectLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 3, alignment: .LEFT)
+            tripodEffectLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
         } else {
-            tripodNameLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
+            tripodNameLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
             tripodNameLabel.snp.makeConstraints {
                 $0.centerY.equalTo(tripodImageView)
             }

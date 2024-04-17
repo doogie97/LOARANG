@@ -24,17 +24,8 @@ enum APIError: Error {
     }
     
     case responseError
-    case statusCodeError(_ errorInfo: ErrorInfo)
+    case statusCodeError(_ code: Int)
     case timeOut
     case RateLimitExceeded
     case DecodingError
-}
-
-struct ErrorInfo {
-    let message: String?
-    let statusCode: Int
-}
-
-struct ErrorResponse: Decodable {
-    let Message: String?
 }

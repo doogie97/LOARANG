@@ -8,11 +8,10 @@
 import UIKit
 import SwiftSoup
 import Alamofire
+import SwiftyJSON
 
 protocol CrawlManagerable {
     func getUserInfo(_ name: String) async throws -> UserInfo
-    func checkInspection() async throws
-    func getNotice() async throws -> [LostArkNotice]
 }
 
 struct CrawlManager: CrawlManagerable {
@@ -204,51 +203,5 @@ struct CrawlManager: CrawlManagerable {
         let cardInfo = jsonInfoManager.getCardInfo()
         
         return UserJsonInfo(equips: equips, skillInfo: skillInfo, cardInfo: cardInfo)
-    }
-    
-    //MARK: - 점검 확인
-    func checkInspection() async throws {
-        guard let url = makeURL(urlString: baseURL, name: "") else {
-            return
-        }
-        
-        guard let doc = try? await makeDocument(url: url) else {
-            return
-        }
-        
-        guard let webTitle = try? doc.select("title").text(), webTitle == "로스트아크 - 서비스 점검" else {
-            return
-        }
-        
-        throw CrawlError.inspection
-    }
-}
-// MARK: - 이벤트 정보
-extension CrawlManager {
-    func getNotice() async throws -> [LostArkNotice] {
-        guard let url = URL(string: "https://lostark.game.onstove.com/News/Notice/List") else {
-            throw CrawlError.noticeError
-        }
-        
-        guard let doc = try? await makeDocument(url: url) else {
-            throw CrawlError.noticeError
-        }
-        
-        guard let noticeElements = try? doc.select("#list > div.list.list--default > ul")[safe: 1]?.select("li") else {
-            throw CrawlError.noticeError
-        }
-        
-        let notices: [LostArkNotice] = noticeElements.compactMap {
-            do {
-                let title = try $0.select("a > div.list__subject > span").text()
-                let noticeURL = try "https://m-lostark.game.onstove.com" + $0.select("a").attr("href")
-                
-                return LostArkNotice(title: title, noticeURL: noticeURL)
-            } catch {
-                return nil
-            }
-        }
-        
-        return notices
     }
 }
