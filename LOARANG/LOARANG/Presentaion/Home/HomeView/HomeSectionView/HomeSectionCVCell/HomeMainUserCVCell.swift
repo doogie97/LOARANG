@@ -247,7 +247,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
                 self.characterImageView.image = UIImage(named: "unknownCharacterImg.png")
             } else {
                 characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
-                    self?.characterImageView.image = image.cropImage(class: userInfo.characterClass.rawValue)
+                    self?.characterImageView.image = image.cropImage(characterClass: userInfo.characterClass)
                 }
             }
             

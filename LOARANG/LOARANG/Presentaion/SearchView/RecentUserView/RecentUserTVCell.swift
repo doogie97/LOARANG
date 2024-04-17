@@ -111,7 +111,7 @@ final class RecentUserTVCell: UITableViewCell {
         self.viewModel = viewModel
         self.index = index
         
-        self.userImageView.image = recentUser.image.cropImage(class: recentUser.class)
+        self.userImageView.image = recentUser.image.cropImage(characterClass: CharacterClass(rawValue: recentUser.class) ?? .unknown)
         self.nameLabel.text = recentUser.name
         self.bookmarkButton.setBookmarkButtonColor(recentUser.name.isBookmark)
     }

@@ -54,7 +54,7 @@ final class HomeBookmarkUserCVCell: UICollectionViewCell {
             self.characterImageView.image = UIImage(named: "unknownCharacterImg.png")
         } else {
             self.characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
-                self?.characterImageView.image = image.cropImage(class: userInfo.characterClass.rawValue)
+                self?.characterImageView.image = image.cropImage(characterClass: userInfo.characterClass)
             }
         }
         self.characterNameLabel.text = userInfo.name
