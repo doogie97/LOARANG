@@ -35,45 +35,51 @@ struct GetCharacterDetailUseCase {
     
     private func skills(_ dto: [CharactersDetailDTO.ArmorySkill]?) -> [CharacterDetailEntity.Skill] {
         return (dto ?? []).compactMap {
-            var rune: CharacterDetailEntity.Rune?
-            if let runeDTO = $0.Rune {
-                var toolTip: String {
-                    if let jsonData = (runeDTO.Tooltip ?? "").data(using: .utf8),
-                       let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
-                       let itemPartBox = jsonDict["Element_002"] as? [String: Any],
-                       let valueDict = itemPartBox["value"] as? [String: String],
-                       let toolTip = valueDict["Element_001"] {
-                        return toolTip
-                    } else {
-                        return ""
-                    }
+            let tripod = ($0.Tripods ?? []).compactMap {
+                if $0.IsSelected == true {
+                    return CharacterDetailEntity.Tripod(
+                        name: $0.Name ?? "",
+                        imageUrl: $0.Icon ?? "",
+                        level: $0.Level ?? 0,
+                        isSelected: $0.IsSelected ?? false,
+                        tooltip: $0.Tooltip ?? ""
+                    )
+                } else {
+                    return nil
                 }
-                rune = CharacterDetailEntity.Rune(name: runeDTO.Name ?? "",
-                                                  imageUrl: runeDTO.Icon ?? "",
-                                                  grade: Grade(rawValue: runeDTO.Grade ?? "") ?? .unknown,
-                                                  tooltip: toolTip)
             }
-            
-            return CharacterDetailEntity.Skill(
-                name: $0.Name ?? "",
-                imageUrl: $0.Icon ?? "",
-                level: $0.Level ?? 0,
-                tripods: ($0.Tripods ?? []).compactMap {
-                    if $0.IsSelected == true {
-                        return CharacterDetailEntity.Tripod(
-                            name: $0.Name ?? "",
-                            imageUrl: $0.Icon ?? "",
-                            level: $0.Level ?? 0,
-                            isSelected: $0.IsSelected ?? false,
-                            tooltip: $0.Tooltip ?? ""
-                        )
-                    } else {
-                        return nil
+            //룬&트라이포드가 없고 1레벨인 스킬은 미장착 스킬로 판단해 nil return
+            if $0.Rune == nil && tripod.isEmpty == true && $0.Level == 1 {
+                return nil
+            } else {
+                var rune: CharacterDetailEntity.Rune?
+                if let runeDTO = $0.Rune {
+                    var toolTip: String {
+                        if let jsonData = (runeDTO.Tooltip ?? "").data(using: .utf8),
+                           let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
+                           let itemPartBox = jsonDict["Element_002"] as? [String: Any],
+                           let valueDict = itemPartBox["value"] as? [String: String],
+                           let toolTip = valueDict["Element_001"] {
+                            return toolTip
+                        } else {
+                            return ""
+                        }
                     }
-                },
-                rune: rune,
-                tooltip: $0.Tooltip ?? ""
-            )
+                    rune = CharacterDetailEntity.Rune(name: runeDTO.Name ?? "",
+                                                      imageUrl: runeDTO.Icon ?? "",
+                                                      grade: Grade(rawValue: runeDTO.Grade ?? "") ?? .unknown,
+                                                      tooltip: toolTip)
+                }
+                
+                return CharacterDetailEntity.Skill(
+                    name: $0.Name ?? "",
+                    imageUrl: $0.Icon ?? "",
+                    level: $0.Level ?? 0,
+                    tripods: tripod,
+                    rune: rune,
+                    tooltip: $0.Tooltip ?? ""
+                )
+            }
         }
     }
 }
