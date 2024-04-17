@@ -135,10 +135,6 @@ final class Container: Containerable {
         return CharacterDetailSkillVC()
     }
     
-    private func makeSkillDetailViewModel(skill: Skill) -> SkillDetailViewModelable {
-        return SkillDetailViewModel(skill: skill)
-    }
-    
     func makeCharactersViewController(userName: String, userInfoViewModelDelegate: UserInfoViewModelDelegate) -> CharactersViewController {
         return CharactersViewController(viewModel: makeCharactersViewModel(userName: userName, userInfoViewModelDelegate: userInfoViewModelDelegate))
     }
