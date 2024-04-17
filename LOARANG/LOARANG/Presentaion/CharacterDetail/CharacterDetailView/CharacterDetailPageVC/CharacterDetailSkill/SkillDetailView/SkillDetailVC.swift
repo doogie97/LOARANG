@@ -6,10 +6,8 @@
 //
 
 import UIKit
-import RxSwift
 
 final class SkillDetailVC: UIViewController {
-    private let viewModel: SkillDetailViewModelable? = nil
     private let skill: Skill
     
     init(skill: Skill) {
@@ -24,7 +22,6 @@ final class SkillDetailVC: UIViewController {
     }
     
     private let skillDetailView = SkillDetailView()
-    private let disposeBag = DisposeBag()
     
     override func loadView() {
         super.loadView()
@@ -32,27 +29,30 @@ final class SkillDetailVC: UIViewController {
     }
     
     override func viewDidLoad() {
+        skillDetailView.closeButton.addTarget(self, action: #selector(touchCloseButton), for: .touchUpInside)
+        skillDetailView.tripodsTableView.dataSource = self
         skillDetailView.setViewContents(skill)
-        bindView()
     }
     
-    private func bindView() {
-        viewModel?.dismiss
-            .bind(onNext: { [weak self] in
-                self?.dismiss(animated: true)
-            })
-            .disposed(by: disposeBag)
-        
-        skillDetailView.closeButton.rx.tap
-            .bind(onNext: { [weak self] in
-                self?.dismiss(animated: true)
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel?.tripods
-            .bind(to: skillDetailView.tripodsTableView.rx.items(cellIdentifier: "\(TripodTVCell.self)", cellType: TripodTVCell.self)) { index, tripod, cell in
-                cell.setCellContents(tripod: tripod)
-            }
-            .disposed(by: disposeBag)
+    @objc private func touchCloseButton() {
+        self.dismiss(animated: true)
     }
+}
+
+extension SkillDetailVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return skill.tripods.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TripodTVCell.self)", for: indexPath) as? TripodTVCell,
+              let tripod = skill.tripods[safe: indexPath.row] else {
+            return UITableViewCell()
+        }
+        cell.setCellContents(tripod: tripod)
+        
+        return cell
+    }
+    
+    
 }
