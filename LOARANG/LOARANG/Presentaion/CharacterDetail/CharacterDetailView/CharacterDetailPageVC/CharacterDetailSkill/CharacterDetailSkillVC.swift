@@ -39,18 +39,32 @@ final class CharacterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
         return tableView
     }()
     
+    private lazy var separatorView = {
+        let separatorView = UIView()
+        separatorView.backgroundColor = .systemGray5
+        separatorView.isHidden = true
+        return separatorView
+    }()
+    
     private func setLayout() {
         self.view.addSubview(skillPointLabel)
+        self.view.addSubview(separatorView)
         self.view.addSubview(skillTableView)
         
         skillPointLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(5)
+            $0.top.equalToSuperview().inset(10)
             $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(20)
         }
         
+        separatorView.snp.makeConstraints {
+            $0.top.equalTo(skillPointLabel.snp.bottom).inset(-10)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        
         skillTableView.snp.makeConstraints {
-            $0.top.equalTo(skillPointLabel.snp.bottom)
+            $0.top.equalTo(separatorView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -89,5 +103,16 @@ extension CharacterDetailSkillVC: UITableViewDataSource, UITableViewDelegate {
         //
         //                self?.present(skillDetailVC, animated: true)
         print("스킬 상세 노출")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y <= 10 {
+            self.separatorView.isHidden = true
+        }
+        
+        if scrollView.contentOffset.y > 10 {
+            self.separatorView.isHidden = false
+        }
     }
 }

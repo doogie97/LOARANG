@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class CharcterDetailSkillCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -21,7 +22,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
     private lazy var backView: UIView = {
         let view = UIView()
         
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 6
         
         view.backgroundColor = .cellColor
         view.addSubview(mainStackView)
@@ -33,7 +34,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
     }()
     
     private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView, runeLabel, gemLabel])
+        let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView, runeLabelView, gemLabelView])
         stackView.axis = .vertical
         stackView.spacing = 10
         
@@ -92,7 +93,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [firstTripodStackView, secondTripodStackView, thridTripodStackView])
         stackView.distribution = .fillEqually
         stackView.backgroundColor = .mainBackground
-        stackView.layer.cornerRadius = 10
+        stackView.layer.cornerRadius = 6
         stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 3, right: 5)
         stackView.isLayoutMarginsRelativeArrangement = true
         
@@ -140,19 +141,21 @@ final class CharcterDetailSkillCell: UITableViewCell {
     }
     
     //MARK: - Rune & Gem effect
-    private lazy var runeLabel = makePaddingLabel()
-    private lazy var gemLabel = makePaddingLabel()
+    private lazy var runeLabel = pretendardLabel(size: 12, family: .Regular, lineCount: 2)
+    private lazy var runeLabelView = makeInsetLabelView(label: runeLabel)
+    private lazy var gemLabel = pretendardLabel(size: 12, family: .Regular, lineCount: 2)
+    private lazy var gemLabelView = makeInsetLabelView(label: gemLabel)
     
-    private func makePaddingLabel() -> PaddingLabel {
-        let label = PaddingLabel(top: 8, bottom: 8, left: 8, right: 8)
-        label.font = .one(size: 12, family: .Regular)
-        label.numberOfLines = 2
-        label.lineBreakMode = .byCharWrapping
-        label.backgroundColor = .cellBackgroundColor
-        label.layer.cornerRadius = 10
-        label.clipsToBounds = true
+    private func makeInsetLabelView(label: UILabel) -> UIView {
+        let backView = UIView()
+        backView.backgroundColor = .cellBackgroundColor
+        backView.layer.cornerRadius = 6
+        backView.addSubview(label)
+        label.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(8)
+        }
         
-        return label
+        return backView
     }
     
     private func setLayout() {
@@ -162,13 +165,13 @@ final class CharcterDetailSkillCell: UITableViewCell {
         self.contentView.addSubview(backView)
         
         backView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(5)
-            $0.bottom.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.leading.trailing.equalToSuperview().inset(8)
         }
     }
     
     func setCellContents(skill: Skill) {
-        skillImageViewDataTask = skillImageView.setImage(urlString: skill.imageURL)
+        skillImageView.setImage(skill.imageURL)
         skillNameLabel.text = skill.name
         skillLvLabel.text = skill.skillLv
         
@@ -176,13 +179,13 @@ final class CharcterDetailSkillCell: UITableViewCell {
             tripodsStackView.isHidden = true
         } else {
             firstTripodNameLabel.text = skill.tripods[safe: 0]?.name
-            firstTripodImageViewDataTask = firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
+            firstTripodImageView.setImage(skill.tripods[safe: 0]?.imageURL)
             
             secondTripodNameLabel.text = skill.tripods[safe: 1]?.name
-            secondTripodImageViewDataTask = secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
+            secondTripodImageView.setImage(skill.tripods[safe: 1]?.imageURL)
             
             thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name
-            thirdTripodImageViewDataTask = thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
+            thirdTripodImageView.setImage(skill.tripods[safe: 2]?.imageURL)
         }
 
         
@@ -199,41 +202,29 @@ final class CharcterDetailSkillCell: UITableViewCell {
         }
     }
     
-    private var skillImageViewDataTask: URLSessionDataTask?
-    private var firstTripodImageViewDataTask: URLSessionDataTask?
-    private var secondTripodImageViewDataTask: URLSessionDataTask?
-    private var thirdTripodImageViewDataTask: URLSessionDataTask?
-    
     override func prepareForReuse() {
         super.prepareForReuse()
+        skillImageView.kf.cancelDownloadTask()
         skillImageView.image = nil
+        
         skillNameLabel.text = nil
         skillLvLabel.text = nil
         
         firstTripodNameLabel.text = nil
+        firstTripodImageView.kf.cancelDownloadTask()
         firstTripodImageView.image = nil
         
         secondTripodNameLabel.text = nil
+        secondTripodImageView.kf.cancelDownloadTask()
         secondTripodImageView.image = nil
         
         thirdTripodNameLabel.text = nil
+        thirdTripodImageView.kf.cancelDownloadTask()
         thirdTripodImageView.image = nil
         
         runeLabel.text = nil
         gemLabel.text = nil
         
         tripodsStackView.isHidden = false
-        
-        skillImageViewDataTask?.suspend()
-        skillImageViewDataTask?.cancel()
-        
-        firstTripodImageViewDataTask?.suspend()
-        firstTripodImageViewDataTask?.cancel()
-        
-        secondTripodImageViewDataTask?.suspend()
-        secondTripodImageViewDataTask?.cancel()
-        
-        thirdTripodImageViewDataTask?.suspend()
-        thirdTripodImageViewDataTask?.cancel()
     }
 }
