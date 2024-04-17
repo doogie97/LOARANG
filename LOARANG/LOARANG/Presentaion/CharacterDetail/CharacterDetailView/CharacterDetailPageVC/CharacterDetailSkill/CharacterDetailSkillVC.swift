@@ -50,6 +50,8 @@ final class CharacterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
         self.view.addSubview(skillPointLabel)
         self.view.addSubview(separatorView)
         self.view.addSubview(skillTableView)
+        self.view.addSubview(separatorView)
+
         
         skillPointLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
@@ -66,6 +68,12 @@ final class CharacterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
         skillTableView.snp.makeConstraints {
             $0.top.equalTo(separatorView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        separatorView.snp.makeConstraints {
+            $0.top.equalTo(skillPointLabel.snp.bottom).inset(-10)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
         }
     }
 

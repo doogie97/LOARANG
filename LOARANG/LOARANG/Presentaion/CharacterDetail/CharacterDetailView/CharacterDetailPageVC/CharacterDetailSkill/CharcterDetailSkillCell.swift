@@ -37,10 +37,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView, runeLabelView, gemLabelView])
         stackView.axis = .vertical
         stackView.spacing = 10
-        
-        runeLabel.setContentHuggingPriority(.required, for: .vertical)
-        runeLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        
+
         return stackView
     }()
     
@@ -141,21 +138,32 @@ final class CharcterDetailSkillCell: UITableViewCell {
     }
     
     //MARK: - Rune & Gem effect
-    private lazy var runeLabel = pretendardLabel(size: 12, family: .Regular, lineCount: 2)
-    private lazy var runeLabelView = makeInsetLabelView(label: runeLabel)
-    private lazy var gemLabel = pretendardLabel(size: 12, family: .Regular, lineCount: 2)
-    private lazy var gemLabelView = makeInsetLabelView(label: gemLabel)
+    private lazy var runeLabel = makePaddingLabel()
+    private lazy var runeLabelView = makeLabelView(label: runeLabel)
+    private lazy var gemLabel = makePaddingLabel()
+    private lazy var gemLabelView = makeLabelView(label: gemLabel)
     
-    private func makeInsetLabelView(label: UILabel) -> UIView {
-        let backView = UIView()
-        backView.backgroundColor = .cellBackgroundColor
-        backView.layer.cornerRadius = 6
-        backView.addSubview(label)
+    private func makeLabelView(label: UILabel) -> UIView {
+        label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        let view = UIView()
+        view.backgroundColor = .cellBackgroundColor
+        view.layer.cornerRadius = 6
+        view.addSubview(label)
         label.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(8)
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(8)
         }
         
-        return backView
+        return view
+    }
+    
+    private func makePaddingLabel() -> PaddingLabel {
+        let label = PaddingLabel(top: 8, bottom: 8, left: 0, right: 0)
+        label.font = .one(size: 12, family: .Regular)
+        label.numberOfLines = 2
+        
+        return label
     }
     
     private func setLayout() {
