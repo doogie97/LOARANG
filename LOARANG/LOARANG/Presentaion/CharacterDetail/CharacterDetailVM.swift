@@ -70,9 +70,11 @@ final class CharacterDetailVM: CharacterDetailVMable {
         isLoading.accept(true)
         Task {
             do {
-                self.characterInfo = try await getCharacterDetailUseCase.excute(name: characterName)
+                let characterEntity = try await getCharacterDetailUseCase.excute(name: characterName)
+                self.characterInfo = characterEntity
                 await MainActor.run {
                     setViewContents.accept(())
+                    bookmarkUpdate(characterEntity)
                     isLoading.accept(false)
                 }
             } catch let error {
@@ -84,17 +86,17 @@ final class CharacterDetailVM: CharacterDetailVMable {
         }
     }
     
-//    private func bookmarkUpdate(_ character: CharacterDetailEntity) {
-//        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == character.profile.characterName }) {
-//            do {
-//                try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: character.profile.characterName,
-//                                                                           image: userInfo.mainInfo.userImage,
-//                                                                           class: userInfo.mainInfo.`class`))
-//            } catch {
-//                showAlert.accept((message: error.errorMessage, isPop: false))
-//            }
-//        }
-//    }
+    private func bookmarkUpdate(_ character: CharacterDetailEntity) {
+        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == character.profile.characterName }) {
+            do {
+                try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: character.profile.characterName,
+                                                                           imageUrl: character.profile.imageUrl,
+                                                                           characterClass: character.profile.characterClass))
+            } catch let error {
+                print(error.errorMessage)
+            }
+        }
+    }
     
     func touchSkillCell(_ index: Int) {
         guard let skill = characterInfo?.skillInfo.skills[safe: index] else {
