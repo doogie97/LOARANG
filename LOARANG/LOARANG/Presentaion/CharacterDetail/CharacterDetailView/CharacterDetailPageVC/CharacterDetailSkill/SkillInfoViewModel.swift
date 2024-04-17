@@ -37,7 +37,7 @@ final class SkillInfoViewModel: SkillInfoViewModelable {
     
     //MARK: - Input
     func viewDidLoad(_ characterDetail: CharacterDetailEntity) {
-        self.skillInfo.accept(characterDetail.skills)
+        self.skillInfo.accept(characterDetail.skillInfo)
         bind()
     }
     

@@ -23,7 +23,7 @@ struct GetCharacterDetailUseCase {
             
             return CharacterDetailEntity(
                 profile: profile(dto.ArmoryProfile),
-                skills: skillInfo
+                skillInfo: skillInfo
             )
         } catch let error {
             throw error
