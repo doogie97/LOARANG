@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class CharcterDetailSkillCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -21,7 +22,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
     private lazy var backView: UIView = {
         let view = UIView()
         
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 6
         
         view.backgroundColor = .cellColor
         view.addSubview(mainStackView)
@@ -92,7 +93,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [firstTripodStackView, secondTripodStackView, thridTripodStackView])
         stackView.distribution = .fillEqually
         stackView.backgroundColor = .mainBackground
-        stackView.layer.cornerRadius = 10
+        stackView.layer.cornerRadius = 6
         stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 3, right: 5)
         stackView.isLayoutMarginsRelativeArrangement = true
         
@@ -149,7 +150,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
         label.numberOfLines = 2
         label.lineBreakMode = .byCharWrapping
         label.backgroundColor = .cellBackgroundColor
-        label.layer.cornerRadius = 10
+        label.layer.cornerRadius = 6
         label.clipsToBounds = true
         
         return label
@@ -162,8 +163,8 @@ final class CharcterDetailSkillCell: UITableViewCell {
         self.contentView.addSubview(backView)
         
         backView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(5)
-            $0.bottom.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.leading.trailing.equalToSuperview().inset(8)
         }
     }
     
