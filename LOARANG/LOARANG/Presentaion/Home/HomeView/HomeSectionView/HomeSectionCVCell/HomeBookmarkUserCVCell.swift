@@ -50,8 +50,12 @@ final class HomeBookmarkUserCVCell: UICollectionViewCell {
         self.indexPath = indexPath
         self.viewModel = viewModel
         self.contentView.backgroundColor = .cellColor
-        self.characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
-            self?.characterImageView.image = image.cropImage(class: userInfo.characterClass.rawValue)
+        if userInfo.imageUrl.replacingOccurrences(of: " ", with: "").isEmpty {
+            self.characterImageView.image = UIImage(named: "unknownCharacterImg.png")
+        } else {
+            self.characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
+                self?.characterImageView.image = image.cropImage(class: userInfo.characterClass.rawValue)
+            }
         }
         self.characterNameLabel.text = userInfo.name
         self.contentView.layer.cornerRadius = 6
