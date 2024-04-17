@@ -220,13 +220,13 @@ final class SkillDetailView: UIView {
     
     func setViewContents(_ skill: Skill) {
         nameLabel.text = skill.name
-        let _ = skillImageView.setImage(urlString: skill.imageURL)
+        skillImageView.setImage(skill.imageURL)
         actionTypeLabel.attributedText = skill.actionType.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
-        skillTypeLabel.attributedText = skill.skillType.htmlToAttributedString(fontSize: 4, alignment: .RIGHT)
-        coolTimeLabel.attributedText = skill.coolTime.htmlToAttributedString(fontSize: 5, alignment: .LEFT)
+        skillTypeLabel.attributedText = skill.skillType.htmlToAttributedString(fontSize: 3, alignment: .RIGHT)
+        coolTimeLabel.attributedText = skill.coolTime.htmlToAttributedString(fontSize: 4, alignment: .LEFT)
         skillLvLabel.text = skill.skillLv
         battleTypeLabel.attributedText = skill.battleType.htmlToAttributedString(fontSize: 4, alignment: .RIGHT)
-        effetcLabel.attributedText = skill.skillDescription.htmlToAttributedString(fontSize: 5)
+        effetcLabel.attributedText = skill.skillDescription.htmlToAttributedString(fontSize: 4)
         runeLabel.attributedText = skill.runeEffect
         gemLabel.attributedText = skill.gemEffect
         

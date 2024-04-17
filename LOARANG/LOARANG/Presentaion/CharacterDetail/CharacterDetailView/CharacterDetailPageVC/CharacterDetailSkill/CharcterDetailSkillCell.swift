@@ -44,7 +44,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
     //MARK: - Basic StackView
     private lazy var basicStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [skillImageView, skillNameLabel, skillLvLabel])
-        stackView.spacing = 5
+        stackView.spacing = 10
         
         skillImageView.snp.makeConstraints {
             $0.height.equalTo(50)
@@ -68,21 +68,9 @@ final class CharcterDetailSkillCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var skillNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .headline)
-        
-        return label
-    }()
+    private lazy var skillNameLabel = pretendardLabel(size: 16, family: .SemiBold)
     
-    private lazy var skillLvLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .right
-        label.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        label.font = .preferredFont(forTextStyle: .headline)
-        
-        return label
-    }()
+    private lazy var skillLvLabel = pretendardLabel(size: 14, family: .SemiBold, color:  #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), alignment: .right)
     
     //MARK: - Tripods StackView
     
