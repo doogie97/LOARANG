@@ -274,7 +274,15 @@ final class HomeVM: HomeVMable {
     
     private func changeMainUser(_ userInfo: CharacterDetailEntity) {
         do {
-            try changeMainUserUseCase.execute(user: userInfo.toLocalStorageEntity)
+            try changeMainUserUseCase.execute(user: MainUserEntity(
+                imageUrl: userInfo.profile.imageUrl,
+                battleLV: userInfo.profile.battleLevel,
+                name: userInfo.profile.characterName,
+                characterClass: userInfo.profile.characterClass,
+                itemLV: userInfo.profile.itemLevel,
+                expeditionLV: userInfo.profile.expeditionLevel,
+                gameServer: userInfo.profile.gameServer
+            ))
             showAlert.accept(.basic(message: "대표 캐릭터 설정이 완료되었습니다!"))
         } catch let error {
             showAlert.accept(.basic(message: error.errorMessage))
