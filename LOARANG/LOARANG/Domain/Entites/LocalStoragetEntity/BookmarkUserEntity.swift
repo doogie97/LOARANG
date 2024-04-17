@@ -9,14 +9,14 @@ import UIKit
 
 struct BookmarkUserEntity {
     let name: String
-    let image: UIImage
-    let `class`: String
+    let imageUrl: String
+    let characterClass: CharacterClass
     
     var toDTO: BookmarkUserDTO {
         let bookmarkUser = BookmarkUserDTO()
         bookmarkUser.name = self.name
-        bookmarkUser.imageData = self.image.pngData() ?? Data()
-        bookmarkUser.class = self.`class`
+        bookmarkUser.characterClass = self.characterClass.rawValue
+        bookmarkUser.imageUrl = self.imageUrl
         
         return bookmarkUser
     }

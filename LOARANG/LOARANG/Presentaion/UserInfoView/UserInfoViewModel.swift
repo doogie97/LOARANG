@@ -95,8 +95,8 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 try deleteBookmarkUseCase.execute(name: userName)
             } else {
                 try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: userInfo.mainInfo.name,
-                                                                        image: userInfo.mainInfo.userImage,
-                                                                        class: userInfo.mainInfo.`class`))
+                                                                        imageUrl: "",
+                                                                        characterClass: CharacterClass(rawValue: userInfo.mainInfo.`class`) ?? .unknown))
             }
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
@@ -126,8 +126,8 @@ final class UserInfoViewModel: UserInfoViewModelable {
         if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
             do {
                 try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: userName,
-                                                                           image: userInfo.mainInfo.userImage,
-                                                                           class: userInfo.mainInfo.`class`))
+                                                                           imageUrl: "",
+                                                                           characterClass: CharacterClass(rawValue: userInfo.mainInfo.`class`) ?? .unknown))
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))
             }

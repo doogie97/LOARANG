@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIImage {
+    //class CharacterClass 받도록 수정 필요
     func cropImage(class: String) -> UIImage? {
         var cropZone = CGRect()
         

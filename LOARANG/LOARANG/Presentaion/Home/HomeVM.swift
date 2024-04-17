@@ -93,7 +93,7 @@ final class HomeVM: HomeVMable {
                         for index in 0..<bookmarkUsers.count {
                             let oldUserInfo = oldBookmarkUsers[index]
                             let newUserInfo = bookmarkUsers[index]
-                            if oldUserInfo.name != newUserInfo.name || oldUserInfo.class != newUserInfo.class || oldUserInfo.image != newUserInfo.image {
+                            if oldUserInfo.name != newUserInfo.name || oldUserInfo.characterClass != newUserInfo.characterClass || oldUserInfo.imageUrl != newUserInfo.imageUrl {
                                 changedIndex = index
                             }
                         }
@@ -101,7 +101,7 @@ final class HomeVM: HomeVMable {
                             return
                         }
                         owner.updateBookmarkCell.accept(IndexPath(item: changedIndex,
-                                                            section: HomeSectionView.SectionCase.bookmark.rawValue))
+                                                                  section: HomeSectionView.SectionCase.bookmark.rawValue))
                         return
                     }
                 }

@@ -84,6 +84,18 @@ final class CharacterDetailVM: CharacterDetailVMable {
         }
     }
     
+//    private func bookmarkUpdate(_ character: CharacterDetailEntity) {
+//        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == character.profile.characterName }) {
+//            do {
+//                try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: character.profile.characterName,
+//                                                                           image: userInfo.mainInfo.userImage,
+//                                                                           class: userInfo.mainInfo.`class`))
+//            } catch {
+//                showAlert.accept((message: error.errorMessage, isPop: false))
+//            }
+//        }
+//    }
+    
     func touchSkillCell(_ index: Int) {
         guard let skill = characterInfo?.skillInfo.skills[safe: index] else {
             return
