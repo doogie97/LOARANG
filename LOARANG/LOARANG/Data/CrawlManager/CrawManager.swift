@@ -8,6 +8,7 @@
 import UIKit
 import SwiftSoup
 import Alamofire
+import SwiftyJSON
 
 protocol CrawlManagerable {
     func getUserInfo(_ name: String) async throws -> UserInfo
@@ -202,10 +203,5 @@ struct CrawlManager: CrawlManagerable {
         let cardInfo = jsonInfoManager.getCardInfo()
         
         return UserJsonInfo(equips: equips, skillInfo: skillInfo, cardInfo: cardInfo)
-    }
-}
-        }
-        
-        }
     }
 }

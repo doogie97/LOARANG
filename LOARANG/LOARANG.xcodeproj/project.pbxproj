@@ -188,6 +188,8 @@
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
 		C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */; };
 		C6666B0D2BCF578F00DF7DA5 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6666B0C2BCF578E00DF7DA5 /* Pretendard-SemiBold.otf */; };
+		C6666B102BCFADBD00DF7DA5 /* NewCrawlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6666B0F2BCFADBD00DF7DA5 /* NewCrawlManager.swift */; };
+		C6666B132BCFAFAC00DF7DA5 /* NewJsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6666B122BCFAFAC00DF7DA5 /* NewJsonManager.swift */; };
 		C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */; };
 		C683F41E2BCC286400A5E699 /* GetCharacterDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */; };
 		C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */; };
@@ -389,6 +391,8 @@
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
 		C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMainUserUseCase.swift; sourceTree = "<group>"; };
 		C6666B0C2BCF578E00DF7DA5 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		C6666B0F2BCFADBD00DF7DA5 /* NewCrawlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCrawlManager.swift; sourceTree = "<group>"; };
+		C6666B122BCFAFAC00DF7DA5 /* NewJsonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJsonManager.swift; sourceTree = "<group>"; };
 		C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeManager.swift; sourceTree = "<group>"; };
 		C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterDetailUseCase.swift; sourceTree = "<group>"; };
 		C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEntity.swift; sourceTree = "<group>"; };
@@ -814,7 +818,6 @@
 			isa = PBXGroup;
 			children = (
 				ACAEF34B287FF9B900AE98F1 /* Equips */,
-				AC86403E28B5D1FA004B7EBB /* SkillInfo */,
 				AC5B6D7228C2E4DC003B4B54 /* Cards */,
 			);
 			path = UserJsonInfos;
@@ -835,7 +838,6 @@
 				ACAEF338287FF60000AE98F1 /* Model */,
 				AC8F11C72881026600D06AA6 /* CrawManager.swift */,
 				AC0E68A128AE04C000575631 /* JsonInfoManager.swift */,
-				ACBA78F62898B34600CB39D5 /* CrawlError.swift */,
 			);
 			path = CrawlManager;
 			sourceTree = "<group>";
@@ -1095,6 +1097,25 @@
 			path = LocalStorageUseCase;
 			sourceTree = "<group>";
 		};
+		C6666B0E2BCFADAF00DF7DA5 /* NewCrawlManager */ = {
+			isa = PBXGroup;
+			children = (
+				C6666B112BCFAE0700DF7DA5 /* Models */,
+				C6666B0F2BCFADBD00DF7DA5 /* NewCrawlManager.swift */,
+				C6666B122BCFAFAC00DF7DA5 /* NewJsonManager.swift */,
+				ACBA78F62898B34600CB39D5 /* CrawlError.swift */,
+			);
+			path = NewCrawlManager;
+			sourceTree = "<group>";
+		};
+		C6666B112BCFAE0700DF7DA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC86403E28B5D1FA004B7EBB /* SkillInfo */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C67780502BC57BDB00E0BC42 /* ViewChangeManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1135,6 +1156,7 @@
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C6666B0E2BCFADAF00DF7DA5 /* NewCrawlManager */,
 				714E8AE92BBFDF610000D90E /* Repository */,
 				AC6C81962940276D00C0EEC1 /* Network */,
 				AC8F11C62881025900D06AA6 /* CrawlManager */,
@@ -1430,6 +1452,7 @@
 				AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */,
 				C6224F8D2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift in Sources */,
 				AC2C2B7028B3673700621753 /* AvatarDetailViewModel.swift in Sources */,
+				C6666B102BCFADBD00DF7DA5 /* NewCrawlManager.swift in Sources */,
 				AC2C2B5528B3209B00621753 /* EquipmentEngraveCell.swift in Sources */,
 				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
 				7162BF8C2BC7D65D00702530 /* HomeSectionHeader.swift in Sources */,
@@ -1502,6 +1525,7 @@
 				ACDE28AC28B11D2000BFD206 /* Int + Extension.swift in Sources */,
 				AC4E19F028C4666D00542EAE /* CardSetEffectTVCell.swift in Sources */,
 				ACDE28AA28B0A99300BFD206 /* EquipmentDetailViewModel.swift in Sources */,
+				C6666B132BCFAFAC00DF7DA5 /* NewJsonManager.swift in Sources */,
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
 				C6224F7B2BC844A600CABA30 /* GameNoticeDTO.swift in Sources */,
 				71892D512BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift in Sources */,
