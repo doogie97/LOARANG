@@ -5,6 +5,8 @@
 //  Created by Doogie on 4/15/24.
 //
 
+import Foundation
+
 struct GetCharacterDetailUseCase {
     private let networkRepository: NetworkRepositoryable
     init(networkRepository: NetworkRepositoryable) {
@@ -35,10 +37,21 @@ struct GetCharacterDetailUseCase {
         return (dto ?? []).compactMap {
             var rune: CharacterDetailEntity.Rune?
             if let runeDTO = $0.Rune {
+                var toolTip: String {
+                    if let jsonData = (runeDTO.Tooltip ?? "").data(using: .utf8),
+                       let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
+                       let itemPartBox = jsonDict["Element_002"] as? [String: Any],
+                       let valueDict = itemPartBox["value"] as? [String: String],
+                       let toolTip = valueDict["Element_001"] {
+                        return toolTip
+                    } else {
+                        return ""
+                    }
+                }
                 rune = CharacterDetailEntity.Rune(name: runeDTO.Name ?? "",
                                                   imageUrl: runeDTO.Icon ?? "",
                                                   grade: Grade(rawValue: runeDTO.Grade ?? "") ?? .unknown,
-                                                  tooltip: runeDTO.Tooltip ?? "")
+                                                  tooltip: toolTip)
             }
             
             return CharacterDetailEntity.Skill(
