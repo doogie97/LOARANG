@@ -9,14 +9,14 @@ import UIKit
 
 struct RecentUserEntity {
     let name: String
-    let image: UIImage
-    let `class`: String
+    let imageUrl: String
+    let characterClass: CharacterClass
     
     var toDTO: RecentUserDTO {
         let recentUser = RecentUserDTO()
         recentUser.name = self.name
-        recentUser.imageData = self.image.pngData() ?? Data()
-        recentUser.class = self.`class`
+        recentUser.imageUrl = self.imageUrl
+        recentUser.characterClass = self.characterClass.rawValue
         
         return recentUser
     }

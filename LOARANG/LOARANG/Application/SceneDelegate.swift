@@ -46,6 +46,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         newObject?["imageUrl"] = ""
                         newObject?["characterClass"] = oldObject?["class"]
                     }
+                    
+                    migration.enumerateObjects(ofType: RecentUserDTO.className()) { oldObject, newObject in
+                        newObject?["imageUrl"] = ""
+                        newObject?["characterClass"] = oldObject?["class"]
+                    }
                 }
             }
         Realm.Configuration.defaultConfiguration = config
