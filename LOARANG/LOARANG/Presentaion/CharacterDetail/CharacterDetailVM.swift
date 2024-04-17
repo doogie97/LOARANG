@@ -20,6 +20,7 @@ protocol CharacterDetailVMOutput {
     var isLoading: PublishRelay<Bool> { get }
     var setViewContents: PublishRelay<Void> { get }
     var changeBookmarkButton: PublishRelay<Bool> { get }
+    var showAlert: PublishRelay<(message: String, isPop: Bool)> { get }
     var popView: PublishRelay<Void> { get }
     var showNextView: PublishRelay<CharacterDetailVM.NextViewCase> { get }
 }
@@ -77,7 +78,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
             
             isBookmark = !self.isBookmark
         } catch let error {
-            print(error)
+            showAlert.accept((message: error.errorMessage, isPop: false))
         }
     }
     
@@ -94,7 +95,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
                 }
             } catch let error {
                 await MainActor.run {
-                    print(error.errorMessage)
+                    showAlert.accept((message: error.errorMessage, isPop: true))
                     isLoading.accept(false)
                 }
             }
@@ -108,7 +109,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
                                                                            imageUrl: character.profile.imageUrl,
                                                                            characterClass: character.profile.characterClass))
             } catch let error {
-                print(error.errorMessage)
+                showAlert.accept((message: error.errorMessage, isPop: false))
             }
         }
     }
@@ -133,6 +134,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     let isLoading = PublishRelay<Bool>()
     let setViewContents = PublishRelay<Void>()
     let changeBookmarkButton = PublishRelay<Bool>()
+    let showAlert = PublishRelay<(message: String, isPop: Bool)>()
     let popView = PublishRelay<Void>()
     let showNextView = PublishRelay<NextViewCase>()
 }
