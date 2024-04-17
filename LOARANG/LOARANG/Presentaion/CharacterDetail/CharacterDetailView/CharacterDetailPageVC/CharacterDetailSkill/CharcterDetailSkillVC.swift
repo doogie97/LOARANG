@@ -10,6 +10,7 @@ import RxSwift
 
 final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
     private let viewModel: SkillInfoViewModelable = SkillInfoViewModel()
+    private weak var newViewModel: CharacterDetailVMable?
     
     init() {
        super.init(nibName: nil, bundle: nil)
@@ -19,25 +20,79 @@ final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let characterDetailSkillView = CharacterDetailSkillView()
-    private let disposeBag = DisposeBag()
+    private lazy var skillPointLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.font = .one(size: 15, family: .Bold)
+        
+        return label
+    }()
     
-    override func loadView() {
-        super.loadView()
-        self.view = characterDetailSkillView
+    private(set) lazy var skillTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .mainBackground
+        tableView.separatorStyle = .none
+        tableView.dataSource = self
+        tableView.register(CharcterDetailSkillCell.self)
+        
+        return tableView
+    }()
+    
+    private func setLayout() {
+        self.view.addSubview(skillPointLabel)
+        self.view.addSubview(skillTableView)
+        
+        skillPointLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(5)
+            $0.leading.trailing.equalToSuperview().inset(10)
+            $0.height.equalTo(20)
+        }
+        
+        skillTableView.snp.makeConstraints {
+            $0.top.equalTo(skillPointLabel.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindView()
+        setLayout()
     }
     
+    
+    
+    
+    
+    
+    
+    
     func setViewContents(viewModel: CharacterDetailVMable?) {
+        self.newViewModel = viewModel
+        let skillInfo = viewModel?.characterInfoData?.skillInfo
+        
+        skillPointLabel.text = "스킬 포인트 : \(skillInfo?.usedSkillPoint ?? "") / \(skillInfo?.totalSkillPoint ?? "")"
+        
+        
+        
+        
+        
         guard let characterDetail = viewModel?.characterInfoData else {
             return
         }
         self.viewModel.viewDidLoad(characterDetail)
     }
+    
+    private let characterDetailSkillView = CharacterDetailSkillView()
+    private let disposeBag = DisposeBag()
+    
+    override func loadView() {
+        super.loadView()
+//        self.view = characterDetailSkillView
+    }
+    
+
     
     private func bindView() {
         viewModel.skillInfo
@@ -70,5 +125,20 @@ final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
                 self?.viewModel.touchSkillCell($0.row)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension CharcterDetailSkillVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newViewModel?.characterInfoData?.skillInfo.skills.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharcterDetailSkillCell.self)") as? CharcterDetailSkillCell,
+              let skill = newViewModel?.characterInfoData?.skillInfo.skills[safe: indexPath.row] else {
+            return UITableViewCell()
+        }
+        cell.setCellContents(skill: skill)
+        return cell
     }
 }
