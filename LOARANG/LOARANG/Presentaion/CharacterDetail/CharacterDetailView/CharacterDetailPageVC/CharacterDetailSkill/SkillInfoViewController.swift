@@ -8,14 +8,11 @@
 import UIKit
 import RxSwift
 
-final class SkillInfoViewController: UIViewController {
-    private let viewModel: SkillInfoViewModelable
-    private let container: Container
+final class SkillInfoViewController: UIViewController, PageViewInnerVCDelegate {
+    private let viewModel: SkillInfoViewModelable = SkillInfoViewModel()
     
-    init(viewModel: SkillInfoViewModelable, container: Container) {
-        self.viewModel = viewModel
-        self.container = container
-        super.init(nibName: nil, bundle: nil)
+    init() {
+       super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +32,13 @@ final class SkillInfoViewController: UIViewController {
         bindView()
     }
     
+    func setViewContents(viewModel: CharacterDetailVMable?) {
+        guard let characterDetail = viewModel?.characterInfoData else {
+            return
+        }
+        self.viewModel.viewDidLoad(characterDetail)
+    }
+    
     private func bindView() {
         viewModel.skillInfo
             .bind(onNext: {[weak self] in
@@ -50,12 +54,14 @@ final class SkillInfoViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.showSkillDetailView
-            .bind(onNext: { [weak self] in
-                guard let skillDetailVC = self?.container.makeSkillDetailViewController(skill: $0) else {
-                    return
-                }
+            .bind(onNext: { [weak self] _ in
+//                guard let skillDetailVC = self?.container.makeSkillDetailViewController(skill: $0) else {
+//                    return
+//                }
+//                
+//                self?.present(skillDetailVC, animated: true)
+                print("스킬 상세 노출")
                 
-                self?.present(skillDetailVC, animated: true)
             })
             .disposed(by: disposeBag)
         
