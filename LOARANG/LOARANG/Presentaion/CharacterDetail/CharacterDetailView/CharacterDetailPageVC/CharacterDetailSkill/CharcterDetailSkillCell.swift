@@ -34,13 +34,10 @@ final class CharcterDetailSkillCell: UITableViewCell {
     }()
     
     private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView, runeLabel, gemLabel])
+        let stackView = UIStackView(arrangedSubviews: [basicStackView, tripodsStackView, runeLabelView, gemLabelView])
         stackView.axis = .vertical
         stackView.spacing = 10
-        
-        runeLabel.setContentHuggingPriority(.required, for: .vertical)
-        runeLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        
+
         return stackView
     }()
     
@@ -142,16 +139,29 @@ final class CharcterDetailSkillCell: UITableViewCell {
     
     //MARK: - Rune & Gem effect
     private lazy var runeLabel = makePaddingLabel()
+    private lazy var runeLabelView = makeLabelView(label: runeLabel)
     private lazy var gemLabel = makePaddingLabel()
+    private lazy var gemLabelView = makeLabelView(label: gemLabel)
+    
+    private func makeLabelView(label: UILabel) -> UIView {
+        label.setContentHuggingPriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        let view = UIView()
+        view.backgroundColor = .cellBackgroundColor
+        view.layer.cornerRadius = 6
+        view.addSubview(label)
+        label.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(8)
+        }
+        
+        return view
+    }
     
     private func makePaddingLabel() -> PaddingLabel {
-        let label = PaddingLabel(top: 8, bottom: 8, left: 8, right: 8)
+        let label = PaddingLabel(top: 8, bottom: 8, left: 0, right: 0)
         label.font = .one(size: 12, family: .Regular)
         label.numberOfLines = 2
-        label.lineBreakMode = .byCharWrapping
-        label.backgroundColor = .cellBackgroundColor
-        label.layer.cornerRadius = 6
-        label.clipsToBounds = true
         
         return label
     }
