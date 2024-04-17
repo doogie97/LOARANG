@@ -12,14 +12,16 @@ protocol CharacterDetailVMInput {
     func viewDidLoad()
     func touchBackButton()
     func touchBookmarkButton()
-    func touchSegment(_ index: Int)
+    func touchSkillCell(_ index: Int)
 }
+
 protocol CharacterDetailVMOutput {
     var characterInfoData: CharacterDetailEntity? { get }
     var isLoading: PublishRelay<Bool> { get }
     var setViewContents: PublishRelay<Void> { get }
     var changeBookmarkButton: PublishRelay<Bool> { get }
     var popView: PublishRelay<Void> { get }
+    var showNextView: PublishRelay<CharacterDetailVM.NextViewCase> { get }
 }
 
 final class CharacterDetailVM: CharacterDetailVMable {
@@ -67,16 +69,26 @@ final class CharacterDetailVM: CharacterDetailVMable {
         }
     }
     
-    func touchSegment(_ index: Int) {
-        print(index)
+    func touchSkillCell(_ index: Int) {
+        guard let skill = characterInfo?.skillInfo.skills[safe: index] else {
+            return
+        }
+        
+        showNextView.accept(.skillDetail(skill: skill))
     }
     
     //MARK: - Output
     var characterInfoData: CharacterDetailEntity? {
         return self.characterInfo
     }
+    
+    enum NextViewCase {
+        case skillDetail(skill: Skill)
+    }
+    
     let isLoading = PublishRelay<Bool>()
     let setViewContents = PublishRelay<Void>()
     let changeBookmarkButton = PublishRelay<Bool>()
     let popView = PublishRelay<Void>()
+    let showNextView = PublishRelay<NextViewCase>()
 }

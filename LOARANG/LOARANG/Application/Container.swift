@@ -135,13 +135,6 @@ final class Container: Containerable {
         return CharacterDetailSkillVC()
     }
     
-    func makeSkillDetailViewController(skill: Skill) -> SkillDetailViewController {
-        let detailVC = SkillDetailViewController(viewModel: makeSkillDetailViewModel(skill: skill))
-        detailVC.modalPresentationStyle = .overFullScreen
-        detailVC.modalTransitionStyle = .crossDissolve
-        return detailVC
-    }
-    
     private func makeSkillDetailViewModel(skill: Skill) -> SkillDetailViewModelable {
         return SkillDetailViewModel(skill: skill)
     }

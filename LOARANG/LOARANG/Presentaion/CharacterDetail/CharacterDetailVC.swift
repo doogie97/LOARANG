@@ -60,5 +60,14 @@ final class CharacterDetailVC: UIViewController {
                 owner.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
+        
+        viewModel.showNextView.withUnretained(self)
+            .subscribe { owner, viewCase in
+                switch viewCase {
+                case .skillDetail(let skill):
+                    owner.present(SkillDetailVC(skill: skill), animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

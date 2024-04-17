@@ -96,13 +96,7 @@ extension CharacterDetailSkillVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(viewModel?.characterInfoData?.skillInfo.skills[safe: indexPath.row]?.name)
-        //                guard let skillDetailVC = self?.container.makeSkillDetailViewController(skill: $0) else {
-        //                    return
-        //                }
-        //
-        //                self?.present(skillDetailVC, animated: true)
-        print("스킬 상세 노출")
+        viewModel?.touchSkillCell(indexPath.row)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

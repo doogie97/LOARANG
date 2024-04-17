@@ -77,7 +77,7 @@
 		AC3FEC2C288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2B288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift */; };
 		AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */; };
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
-		AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */; };
+		AC49D60228B8598E002C0033 /* SkillDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailVC.swift */; };
 		AC49D60428B85999002C0033 /* SkillDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */; };
 		AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60528B8727C002C0033 /* TripodTVCell.swift */; };
 		AC4E19EB28C444E600542EAE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E19EA28C444E600542EAE /* CardView.swift */; };
@@ -275,7 +275,7 @@
 		AC3FEC2B288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView_UICollectionView + Extenstion.swift.swift"; sourceTree = "<group>"; };
 		AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
-		AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewController.swift; sourceTree = "<group>"; };
+		AC49D60128B8598E002C0033 /* SkillDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailVC.swift; sourceTree = "<group>"; };
 		AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailViewModel.swift; sourceTree = "<group>"; };
 		AC49D60528B8727C002C0033 /* TripodTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripodTVCell.swift; sourceTree = "<group>"; };
 		AC4E19EA28C444E600542EAE /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -678,10 +678,10 @@
 		AC49D60028B85978002C0033 /* SkillDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				AC49D5FE28B85976002C0033 /* SkillDetailView.swift */,
-				AC49D60128B8598E002C0033 /* SkillDetailViewController.swift */,
-				AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */,
+				AC49D60128B8598E002C0033 /* SkillDetailVC.swift */,
 				AC49D60528B8727C002C0033 /* TripodTVCell.swift */,
+				AC49D5FE28B85976002C0033 /* SkillDetailView.swift */,
+				AC49D60328B85999002C0033 /* SkillDetailViewModel.swift */,
 			);
 			path = SkillDetailView;
 			sourceTree = "<group>";
@@ -1443,7 +1443,7 @@
 				C683F4252BCD703D00A5E699 /* CharacterDetailVC.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUserDTO.swift in Sources */,
-				AC49D60228B8598E002C0033 /* SkillDetailViewController.swift in Sources */,
+				AC49D60228B8598E002C0033 /* SkillDetailVC.swift in Sources */,
 				7162BF832BC7CF8A00702530 /* HomeMainUserCVCell.swift in Sources */,
 				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				AC4E19EB28C444E600542EAE /* CardView.swift in Sources */,
