@@ -38,7 +38,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         newObject?["imageUrl"] = ""
                         newObject?["expeditionLV"] = 0
                         newObject?["characterClass"] = oldObject?["class"]
-                        newObject?["gameServer"] = oldObject?["server"]
+                        let oldValue = (oldObject?["server"] as? String) ?? ""
+                        newObject?["gameServer"] = oldValue.replacingOccurrences(of: "@", with: "")
                     }
                     
                     migration.enumerateObjects(ofType: BookmarkUserDTO.className()) { oldObject, newObject in
