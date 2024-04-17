@@ -168,7 +168,7 @@ final class CharcterDetailSkillCell: UITableViewCell {
     }
     
     func setCellContents(skill: Skill) {
-        skillImageViewDataTask = skillImageView.setImage(urlString: skill.imageURL)
+        skillImageView.setImage(skill.imageURL)
         skillNameLabel.text = skill.name
         skillLvLabel.text = skill.skillLv
         
@@ -176,13 +176,13 @@ final class CharcterDetailSkillCell: UITableViewCell {
             tripodsStackView.isHidden = true
         } else {
             firstTripodNameLabel.text = skill.tripods[safe: 0]?.name
-            firstTripodImageViewDataTask = firstTripodImageView.setImage(urlString: skill.tripods[safe: 0]?.imageURL)
+            firstTripodImageView.setImage(skill.tripods[safe: 0]?.imageURL)
             
             secondTripodNameLabel.text = skill.tripods[safe: 1]?.name
-            secondTripodImageViewDataTask = secondTripodImageView.setImage(urlString: skill.tripods[safe: 1]?.imageURL)
+            secondTripodImageView.setImage(skill.tripods[safe: 1]?.imageURL)
             
             thirdTripodNameLabel.text = skill.tripods[safe: 2]?.name
-            thirdTripodImageViewDataTask = thirdTripodImageView.setImage(urlString: skill.tripods[safe: 2]?.imageURL)
+            thirdTripodImageView.setImage(skill.tripods[safe: 2]?.imageURL)
         }
 
         
@@ -199,41 +199,28 @@ final class CharcterDetailSkillCell: UITableViewCell {
         }
     }
     
-    private var skillImageViewDataTask: URLSessionDataTask?
-    private var firstTripodImageViewDataTask: URLSessionDataTask?
-    private var secondTripodImageViewDataTask: URLSessionDataTask?
-    private var thirdTripodImageViewDataTask: URLSessionDataTask?
-    
     override func prepareForReuse() {
         super.prepareForReuse()
+        skillImageView.kf.cancelDownloadTask()
         skillImageView.image = nil
         skillNameLabel.text = nil
         skillLvLabel.text = nil
         
         firstTripodNameLabel.text = nil
+        firstTripodImageView.kf.cancelDownloadTask()
         firstTripodImageView.image = nil
         
         secondTripodNameLabel.text = nil
+        secondTripodImageView.kf.cancelDownloadTask()
         secondTripodImageView.image = nil
         
         thirdTripodNameLabel.text = nil
+        thirdTripodImageView.kf.cancelDownloadTask()
         thirdTripodImageView.image = nil
         
         runeLabel.text = nil
         gemLabel.text = nil
         
         tripodsStackView.isHidden = false
-        
-        skillImageViewDataTask?.suspend()
-        skillImageViewDataTask?.cancel()
-        
-        firstTripodImageViewDataTask?.suspend()
-        firstTripodImageViewDataTask?.cancel()
-        
-        secondTripodImageViewDataTask?.suspend()
-        secondTripodImageViewDataTask?.cancel()
-        
-        thirdTripodImageViewDataTask?.suspend()
-        thirdTripodImageViewDataTask?.cancel()
     }
 }
