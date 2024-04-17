@@ -82,6 +82,17 @@ final class CharacterDetailSkillCell: UITableViewCell {
         }
     }
     
+    //MARK: - Rune & Gem
+    private lazy var runeLabel = {
+        let label = PaddingLabel(top: 8, bottom: 8, left: 8, right: 0)
+        label.numberOfLines = 2
+        label.font = .pretendard(size: 12, family: .Regular)
+        label.backgroundColor = .cellBackgroundColor
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 6
+        return label
+    }()
+    
     //MARK: - Set Layout
     private lazy var backView = {
         let view = UIView()
@@ -91,6 +102,7 @@ final class CharacterDetailSkillCell: UITableViewCell {
         view.addSubview(skillNameLabel)
         view.addSubview(skillLevelLabel)
         view.addSubview(tripodSectionView)
+        view.addSubview(runeLabel)
         
         skillImageView.snp.makeConstraints {
             $0.height.width.equalTo(50)
@@ -111,6 +123,11 @@ final class CharacterDetailSkillCell: UITableViewCell {
             $0.top.equalTo(skillImageView.snp.bottom).inset(-8)
             $0.leading.trailing.equalToSuperview().inset(margin(.width, 8))
             $0.height.equalTo(60)
+        }
+        
+        runeLabel.snp.makeConstraints {
+            $0.top.equalTo(tripodSectionView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 8))
             $0.bottom.equalToSuperview().inset(30)//다음 뷰로 이동
         }
         
@@ -125,6 +142,10 @@ final class CharacterDetailSkillCell: UITableViewCell {
         skillNameLabel.text = skill.name
         skillLevelLabel.text = "스킬 레벨 " + skill.level.description
         setTripodView(skill.tripods)
+        runeLabel.text = skill.rune == nil ? "장착 룬 없음" : "[\(skill.rune?.name ?? "")] \(skill.rune?.tooltip ?? "")"
+        runeLabel.asFontColor(targetString: skill.rune?.name ?? "",
+                              font: .pretendard(size: 12, family: .Regular),
+                              color: skill.rune?.grade.textColor ?? .white)
         setLayout()
     }
     
