@@ -10,12 +10,12 @@ import RealmSwift
 
 final class BookmarkUserDTO: Object {
     @Persisted(primaryKey: true) var name: String
-    @Persisted var imageData: Data
-    @Persisted var `class`: String
+    @Persisted var imageUrl: String
+    @Persisted var characterClass: String
     
     var toEntity: BookmarkUserEntity {
-        return BookmarkUserEntity(name: self.name,
-                                  image: UIImage(data: imageData) ?? UIImage(),
-                                  class: self.`class`)
+        return BookmarkUserEntity(name: self.name, 
+                                  imageUrl: self.imageUrl,
+                                  characterClass: CharacterClass(rawValue: self.characterClass) ?? .unknown)
     }
 }

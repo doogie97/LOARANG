@@ -60,7 +60,7 @@ extension UIViewController {
     
     //추 후 삭제 필요
     func showCheckUserAlert(_ mainUser: MainUserEntity, action: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.`class`))",
+        let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.characterClass.rawValue))",
                                       message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "확인", style: .default) { _ in
             guard let action = action else {

@@ -24,16 +24,3 @@ extension CharacterDetailEntity {
         let imageUrl: String
     }
 }
-
-extension CharacterDetailEntity {
-    var toLocalStorageEntity: MainUserEntity {
-        return MainUserEntity(imageUrl: self.profile.imageUrl,
-                              image: UIImage(),
-                              battleLV: self.profile.battleLevel,
-                              name: self.profile.characterName,
-                              class: self.profile.characterClass.rawValue,
-                              itemLV: self.profile.itemLevel,
-                              expeditionLV: self.profile.expeditionLevel,
-                              server: self.profile.gameServer.rawValue)
-    }
-}

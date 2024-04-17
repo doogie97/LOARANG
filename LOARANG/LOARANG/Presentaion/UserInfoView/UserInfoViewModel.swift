@@ -91,30 +91,28 @@ final class UserInfoViewModel: UserInfoViewModelable {
         }
         
         do {
-            if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
+            if userInfo.mainInfo.name.isBookmark {
                 try deleteBookmarkUseCase.execute(name: userName)
             } else {
                 try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: userInfo.mainInfo.name,
-                                                                        image: userInfo.mainInfo.userImage,
-                                                                        class: userInfo.mainInfo.`class`))
+                                                                        imageUrl: "",
+                                                                        characterClass: CharacterClass(rawValue: userInfo.mainInfo.`class`) ?? .unknown))
             }
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }
-        isBookmarkUser.accept(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }))
+        isBookmarkUser.accept(userInfo.mainInfo.name.isBookmark)
     }
     
     private func mainUserUpdate(_ userInfo: UserInfo) {
         if ViewChangeManager.shared.mainUser.value?.name == userInfo.mainInfo.name {
             do {
                 let mainUser = MainUserEntity(imageUrl: ViewChangeManager.shared.mainUser.value?.imageUrl ?? "",
-                                              image: userInfo.mainInfo.userImage,
-                                              battleLV: Int(userInfo.mainInfo.battleLV) ?? 0,
-                                              name: userInfo.mainInfo.name,
-                                              class: userInfo.mainInfo.`class`,
+                                              battleLV: Int(userInfo.mainInfo.battleLV) ?? 0, 
+                                              name: userInfo.mainInfo.name, characterClass: CharacterClass(rawValue: userInfo.mainInfo.`class`) ?? .unknown,
                                               itemLV: userInfo.mainInfo.itemLV,
                                               expeditionLV: Int(userInfo.mainInfo.expeditionLV) ?? 0,
-                                              server: userInfo.mainInfo.server)
+                                              gameServer: GameServer(rawValue: userInfo.mainInfo.server) ?? .unknown)
                 try changeMainUserUseCase.execute(user: mainUser)
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))
@@ -123,11 +121,11 @@ final class UserInfoViewModel: UserInfoViewModelable {
     }
     
     private func bookmarkUpdate(_ userInfo: UserInfo) {
-        if ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == userInfo.mainInfo.name }) {
+        if userInfo.mainInfo.name.isBookmark {
             do {
                 try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: userName,
-                                                                           image: userInfo.mainInfo.userImage,
-                                                                           class: userInfo.mainInfo.`class`))
+                                                                           imageUrl: "",
+                                                                           characterClass: CharacterClass(rawValue: userInfo.mainInfo.`class`) ?? .unknown))
             } catch {
                 showAlert.accept((message: error.errorMessage, isPop: false))
             }
@@ -152,7 +150,7 @@ final class UserInfoViewModel: UserInfoViewModelable {
                 await MainActor.run {
                     userInfo.accept(searchResult)
                     skillInfo.accept(searchResult.userJsonInfo.skillInfo)
-                    isBookmarkUser.accept(ViewChangeManager.shared.bookmarkUsers.value.contains(where: { $0.name == searchResult.mainInfo.name }))
+                    isBookmarkUser.accept(searchResult.mainInfo.name.isBookmark)
                     userName = searchResult.mainInfo.name
                     sucssesSearching.accept(())
                     

@@ -77,8 +77,9 @@ final class SearchViewModel: SearchViewModelable {
         } else {
             do {
                 try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: recentUser.name,
-                                                                        image: recentUser.image,
-                                                                        class: recentUser.`class`))
+                                                                        imageUrl: "",
+                                                                        //추후 애초에 최근 유저 저장시에도 CharacterClass 이용하도록 수정 필요
+                                                                        characterClass: CharacterClass(rawValue: recentUser.class) ?? .unknown))
             } catch {}
         }
     }

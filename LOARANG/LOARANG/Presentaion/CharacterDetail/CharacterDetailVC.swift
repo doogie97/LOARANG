@@ -61,6 +61,16 @@ final class CharacterDetailVC: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.showAlert.withUnretained(self)
+            .subscribe { owner, alertInfo in
+                owner.showAlert(message: alertInfo.message) {
+                    if alertInfo.isPop {
+                        owner.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.showNextView.withUnretained(self)
             .subscribe { owner, viewCase in
                 switch viewCase {

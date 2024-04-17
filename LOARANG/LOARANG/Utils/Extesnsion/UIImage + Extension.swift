@@ -8,10 +8,11 @@
 import UIKit
 
 extension UIImage {
-    func cropImage(class: String) -> UIImage? {
+    //class CharacterClass 받도록 수정 필요
+    func cropImage(characterClass: CharacterClass) -> UIImage? {
         var cropZone = CGRect()
         
-        if `class` == "기상술사" || `class` == "도화가" || `class` == "스페셜리스트" {
+        if characterClass == .aeromancer || characterClass == .artist || characterClass.rawValue == "스페셜리스트" {
             cropZone = CGRect(x: 215, y: 180, width: 180, height: 180)
         } else {
             cropZone = CGRect(x: 210, y: 60, width: 200, height: 200)

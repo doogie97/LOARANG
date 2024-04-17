@@ -133,6 +133,6 @@ final class MainInfoView: UIView {
         titleLabel.text = "칭호 : \(mainInfo.title)"
         guildLabel.text = "길드 : \(mainInfo.guild)"
         wisdomLabel.text = "영지 : \(mainInfo.wisdom)"
-        userImageView.image = mainInfo.userImage.cropImage(class: mainInfo.`class`)
+        userImageView.image = mainInfo.userImage.cropImage(characterClass: CharacterClass(rawValue: mainInfo.`class`) ?? .unknown)
     }
 }

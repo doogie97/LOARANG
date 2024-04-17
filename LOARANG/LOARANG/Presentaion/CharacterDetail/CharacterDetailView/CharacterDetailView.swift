@@ -66,8 +66,7 @@ final class CharacterDetailView: UIView {
         self.viewModel = viewModel
         pageVC.dataSource = self
         pageVC.delegate = self
-        navigationbar.setViewContents(viewModel: viewModel,
-                                      name: viewModel?.characterInfoData?.profile.characterName)
+        navigationbar.setViewContents(viewModel: viewModel)
         for vc in self.pageVCList {
             (vc as? PageViewInnerVCDelegate)?.setViewContents(viewModel: viewModel)
         }

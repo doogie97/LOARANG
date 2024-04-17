@@ -93,7 +93,7 @@ final class HomeVM: HomeVMable {
                         for index in 0..<bookmarkUsers.count {
                             let oldUserInfo = oldBookmarkUsers[index]
                             let newUserInfo = bookmarkUsers[index]
-                            if oldUserInfo.name != newUserInfo.name || oldUserInfo.class != newUserInfo.class || oldUserInfo.image != newUserInfo.image {
+                            if oldUserInfo.name != newUserInfo.name || oldUserInfo.characterClass != newUserInfo.characterClass || oldUserInfo.imageUrl != newUserInfo.imageUrl {
                                 changedIndex = index
                             }
                         }
@@ -101,7 +101,7 @@ final class HomeVM: HomeVMable {
                             return
                         }
                         owner.updateBookmarkCell.accept(IndexPath(item: changedIndex,
-                                                            section: HomeSectionView.SectionCase.bookmark.rawValue))
+                                                                  section: HomeSectionView.SectionCase.bookmark.rawValue))
                         return
                     }
                 }
@@ -209,7 +209,7 @@ final class HomeVM: HomeVMable {
             guard let name = ViewChangeManager.shared.mainUser.value?.name else {
                 return
             }
-            showNextView.accept(.characterDetailV2(name: name))
+            showNextView.accept(.characterDetail(name: name))
         case .touchRegistMainUserButton:
             showAlert.accept(.searchMainUser)
         case .searchMainUser(let name):
@@ -274,7 +274,15 @@ final class HomeVM: HomeVMable {
     
     private func changeMainUser(_ userInfo: CharacterDetailEntity) {
         do {
-            try changeMainUserUseCase.execute(user: userInfo.toLocalStorageEntity)
+            try changeMainUserUseCase.execute(user: MainUserEntity(
+                imageUrl: userInfo.profile.imageUrl,
+                battleLV: userInfo.profile.battleLevel,
+                name: userInfo.profile.characterName,
+                characterClass: userInfo.profile.characterClass,
+                itemLV: userInfo.profile.itemLevel,
+                expeditionLV: userInfo.profile.expeditionLevel,
+                gameServer: userInfo.profile.gameServer
+            ))
             showAlert.accept(.basic(message: "대표 캐릭터 설정이 완료되었습니다!"))
         } catch let error {
             showAlert.accept(.basic(message: error.errorMessage))
@@ -286,7 +294,6 @@ final class HomeVM: HomeVMable {
         case searchView
         case webView(url: String?, title: String)
         case characterDetail(name: String)
-        case characterDetailV2(name: String)
     }
     
     enum AlertCase {

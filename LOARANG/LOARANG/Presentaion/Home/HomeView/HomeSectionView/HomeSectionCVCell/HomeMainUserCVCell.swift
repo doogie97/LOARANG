@@ -242,17 +242,17 @@ final class HomeMainUserCVCell: UICollectionViewCell {
     
     private func setUserInfo(_ userInfo: MainUserEntity?) {
         if let userInfo = userInfo {
-            classLabel.text = userInfo.`class`
+            classLabel.text = userInfo.characterClass.rawValue
             if userInfo.imageUrl.replacingOccurrences(of: " ", with: "").isEmpty {
                 self.characterImageView.image = UIImage(named: "unknownCharacterImg.png")
             } else {
                 characterImageView.setImage(userInfo.imageUrl) { [weak self] image in
-                    self?.characterImageView.image = image.cropImage(class: userInfo.`class`)
+                    self?.characterImageView.image = image.cropImage(characterClass: userInfo.characterClass)
                 }
             }
             
-            characterNameLabel.text = userInfo.name + " " + userInfo.server
-            characterNameLabel.asFontColor(targetString: userInfo.server,
+            characterNameLabel.text = userInfo.name + " " + userInfo.gameServer.rawValue
+            characterNameLabel.asFontColor(targetString: userInfo.gameServer.rawValue,
                                            font: .pretendard(size: 14, family: .Regular),
                                            color: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
             itemLvLabel.text = userInfo.itemLV.replacingOccurrences(of: ",", with: "")

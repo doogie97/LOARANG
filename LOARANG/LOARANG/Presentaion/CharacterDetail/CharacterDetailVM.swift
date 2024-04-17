@@ -20,13 +20,15 @@ protocol CharacterDetailVMOutput {
     var isLoading: PublishRelay<Bool> { get }
     var setViewContents: PublishRelay<Void> { get }
     var changeBookmarkButton: PublishRelay<Bool> { get }
+    var showAlert: PublishRelay<(message: String, isPop: Bool)> { get }
     var popView: PublishRelay<Void> { get }
     var showNextView: PublishRelay<CharacterDetailVM.NextViewCase> { get }
 }
 
 final class CharacterDetailVM: CharacterDetailVMable {
     private let characterName: String
-    private var isBookmark = false {
+    private let isSearch: Bool
+    private var isBookmark: Bool {
         didSet {
             changeBookmarkButton.accept(isBookmark)
         }
@@ -34,9 +36,27 @@ final class CharacterDetailVM: CharacterDetailVMable {
     private var characterInfo: CharacterDetailEntity? 
     
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
-    init(characterName: String, getCharacterDetailUseCase: GetCharacterDetailUseCase) {
+    private let changeMainUserUseCase: ChangeMainUserUseCase
+    private let addBookmarkUseCase: AddBookmarkUseCase
+    private let deleteBookmarkUseCase: DeleteBookmarkUseCase
+    private let updateBookmarkUseCase: UpdateBookmarkUseCase
+    
+    init(characterName: String,
+         isSearch: Bool,
+         getCharacterDetailUseCase: GetCharacterDetailUseCase,
+         changeMainUserUseCase: ChangeMainUserUseCase,
+         addBookmarkUseCase: AddBookmarkUseCase,
+         deleteBookmarkUseCase: DeleteBookmarkUseCase,
+         updateBookmarkUseCase: UpdateBookmarkUseCase) {
         self.characterName = characterName
+        self.isSearch = isSearch
+        self.isBookmark = characterName.isBookmark
         self.getCharacterDetailUseCase = getCharacterDetailUseCase
+        self.changeMainUserUseCase = changeMainUserUseCase
+        self.addBookmarkUseCase = addBookmarkUseCase
+        self.deleteBookmarkUseCase = deleteBookmarkUseCase
+        self.updateBookmarkUseCase = updateBookmarkUseCase
+        
     }
     //MARK: - Input
     func viewDidLoad() {
@@ -48,24 +68,63 @@ final class CharacterDetailVM: CharacterDetailVMable {
     }
     
     func touchBookmarkButton() {
-        isBookmark = !self.isBookmark
+        do {
+            if isBookmark {
+                try deleteBookmarkUseCase.execute(name: characterName)
+            } else {
+                try addBookmarkUseCase.execute(
+                    user: BookmarkUserEntity(name: characterName,
+                                             imageUrl: characterInfoData?.profile.imageUrl ?? "",
+                                             characterClass: characterInfoData?.profile.characterClass ?? .unknown)
+                )
+            }
+            
+            isBookmark = !self.isBookmark
+        } catch let error {
+            showAlert.accept((message: error.errorMessage, isPop: false))
+        }
     }
     
     private func getCharacterDetail() {
         isLoading.accept(true)
         Task {
             do {
-                self.characterInfo = try await getCharacterDetailUseCase.excute(name: characterName)
+                let characterEntity = try await getCharacterDetailUseCase.excute(name: characterName)
+                self.characterInfo = characterEntity
                 await MainActor.run {
                     setViewContents.accept(())
+                    localStorageUpdate(characterEntity)
                     isLoading.accept(false)
                 }
             } catch let error {
                 await MainActor.run {
-                    print(error.errorMessage)
+                    showAlert.accept((message: error.errorMessage, isPop: true))
                     isLoading.accept(false)
                 }
             }
+        }
+    }
+    
+    private func localStorageUpdate(_ character: CharacterDetailEntity) {
+        do {
+            if character.profile.characterName.isBookmark {
+                try updateBookmarkUseCase.execute(user: BookmarkUserEntity(name: character.profile.characterName,
+                                                                           imageUrl: character.profile.imageUrl,
+                                                                           characterClass: character.profile.characterClass))
+            }
+            if character.profile.characterName.isMainUser {
+                try changeMainUserUseCase.execute(user: MainUserEntity(
+                    imageUrl: character.profile.imageUrl,
+                    battleLV: character.profile.battleLevel,
+                    name: character.profile.characterName,
+                    characterClass: character.profile.characterClass,
+                    itemLV: character.profile.itemLevel,
+                    expeditionLV: character.profile.expeditionLevel,
+                    gameServer: character.profile.gameServer
+                ))
+            }
+        } catch let error {
+            showAlert.accept((message: error.errorMessage, isPop: false))
         }
     }
     
@@ -89,6 +148,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     let isLoading = PublishRelay<Bool>()
     let setViewContents = PublishRelay<Void>()
     let changeBookmarkButton = PublishRelay<Bool>()
+    let showAlert = PublishRelay<(message: String, isPop: Bool)>()
     let popView = PublishRelay<Void>()
     let showNextView = PublishRelay<NextViewCase>()
 }

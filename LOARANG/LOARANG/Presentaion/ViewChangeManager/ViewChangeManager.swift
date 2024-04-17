@@ -15,3 +15,13 @@ final class ViewChangeManager {
     let bookmarkUsers = BehaviorRelay<[BookmarkUserEntity]>(value: [])
     let recentUsers = BehaviorRelay<[RecentUserEntity]>(value: [])
 }
+
+extension String {
+    var isBookmark: Bool {
+        ViewChangeManager.shared.bookmarkUsers.value.contains { $0.name == self }
+    }
+    
+    var isMainUser: Bool {
+        ViewChangeManager.shared.mainUser.value?.name == self
+    }
+}
