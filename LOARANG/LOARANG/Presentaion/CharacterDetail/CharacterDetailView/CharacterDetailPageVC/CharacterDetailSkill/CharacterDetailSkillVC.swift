@@ -1,5 +1,5 @@
 //
-//  CharcterDetailSkillVC.swift
+//  CharacterDetailSkillVC.swift
 //  LOARANG-MVVM
 //
 //  Created by 최최성균 on 2022/07/29.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
+final class CharacterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
     private weak var viewModel: CharacterDetailVMable?
     
     init() {
@@ -27,7 +27,7 @@ final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
         return label
     }()
     
-    private(set) lazy var skillTableView: UITableView = {
+    private lazy var skillTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .mainBackground
         tableView.separatorStyle = .none
@@ -67,7 +67,7 @@ final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
     }
 }
 
-extension CharcterDetailSkillVC: UITableViewDataSource, UITableViewDelegate {
+extension CharacterDetailSkillVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.characterInfoData?.skillInfo.skills.count ?? 0
     }

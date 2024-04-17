@@ -19,7 +19,7 @@ final class CharacterDetailView: UIView {
         }
     }
     private let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    private let pageVCList = [CharacterDetailProfileVC(), CharcterDetailSkillVC(), CharacterDetailOwnCharctersVC()]
+    private let pageVCList = [CharacterDetailProfileVC(), CharacterDetailSkillVC(), CharacterDetailOwnCharctersVC()]
     init() {
         super.init(frame: .zero)
         self.backgroundColor = .mainBackground
