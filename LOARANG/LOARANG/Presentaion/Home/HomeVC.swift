@@ -109,6 +109,8 @@ final class HomeVC: UIViewController {
         viewModel.showAlert.withUnretained(self)
             .subscribe { owner, alertCase in
                 switch alertCase {
+                case .inspection(let message):
+                    owner.showInspectionAlert(message: message)
                 case .pop(let message):
                     owner.showAlert(message: message) {
                         exit(0)
@@ -126,5 +128,27 @@ final class HomeVC: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func showInspectionAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "홈페이지 이동", style: .default) { _ in
+            guard let url = URL(string: "https://lostark.game.onstove.com/Inspection/Information") else {
+                return
+            }
+            UIApplication.shared.open(url, options: [:])
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+                exit(0)
+            }
+        }
+        
+        let noAction = UIAlertAction(title: "종료", style: .destructive) { _ in
+            exit(0)
+        }
+        
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        
+        self.present(alert, animated: true)
     }
 }

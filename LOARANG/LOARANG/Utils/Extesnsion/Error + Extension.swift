@@ -13,7 +13,7 @@ extension Error {
                 return "서버 통신 중 오류가 발생했습니다\n고객 센터를 통해 문의 부탁드립니다 (\(self))"
             case .statusCodeError(let statusCode):
                 if statusCode == 503 {
-                    return "로스트아크 서바가 점검중입니다.\n자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요!"
+                    return "로스트아크 서버가 점검중입니다.\n자세한 사항은 로스트아크 공식 홈페이지를 확인해 주세요!"
                 } else {
                     return "서버 통신간 오류가 발생했습니다\nerrorCode: \(statusCode)"
                 }

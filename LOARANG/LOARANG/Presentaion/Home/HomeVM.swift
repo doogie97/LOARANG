@@ -167,7 +167,12 @@ final class HomeVM: HomeVMable {
                 }
             } catch let error {
                 await MainActor.run {
-                    showAlert.accept(.pop(messege: error.errorMessage))
+                    if let error = (error as? APIError),
+                       error == .statusCodeError(503) {
+                        showAlert.accept(.inspection(message: error.errorMessage))
+                    } else {
+                        showAlert.accept(.pop(messege: error.errorMessage))
+                    }
                     isLoading.accept(false)
                 }
             }
@@ -285,6 +290,7 @@ final class HomeVM: HomeVMable {
     }
     
     enum AlertCase {
+        case inspection(message: String)
         case pop(messege: String)
         case basic(message: String)
         case searchMainUser
