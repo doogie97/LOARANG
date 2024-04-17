@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import RxSwift
+import SnapKit
 
 final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
-    private let viewModel: SkillInfoViewModelable = SkillInfoViewModel()
-    private weak var newViewModel: CharacterDetailVMable?
+    private weak var viewModel: CharacterDetailVMable?
     
     init() {
        super.init(nibName: nil, bundle: nil)
@@ -32,7 +31,9 @@ final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
         let tableView = UITableView()
         tableView.backgroundColor = .mainBackground
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(CharcterDetailSkillCell.self)
         
         return tableView
@@ -53,92 +54,40 @@ final class CharcterDetailSkillVC: UIViewController, PageViewInnerVCDelegate {
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
     }
     
-    
-    
-    
-    
-    
-    
-    
     func setViewContents(viewModel: CharacterDetailVMable?) {
-        self.newViewModel = viewModel
+        self.viewModel = viewModel
         let skillInfo = viewModel?.characterInfoData?.skillInfo
-        
         skillPointLabel.text = "스킬 포인트 : \(skillInfo?.usedSkillPoint ?? "") / \(skillInfo?.totalSkillPoint ?? "")"
-        
-        
-        
-        
-        
-        guard let characterDetail = viewModel?.characterInfoData else {
-            return
-        }
-        self.viewModel.viewDidLoad(characterDetail)
-    }
-    
-    private let characterDetailSkillView = CharacterDetailSkillView()
-    private let disposeBag = DisposeBag()
-    
-    override func loadView() {
-        super.loadView()
-//        self.view = characterDetailSkillView
-    }
-    
-
-    
-    private func bindView() {
-        viewModel.skillInfo
-            .bind(onNext: {[weak self] in
-                let skillPointString = "스킬 포인트 : \($0?.usedSkillPoint ?? "") / \($0?.totalSkillPoint ?? "")"
-                self?.characterDetailSkillView.setViewContents(skillPointString: skillPointString)
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.skills
-            .bind(to: characterDetailSkillView.skillTableView.rx.items(cellIdentifier: "\(CharcterDetailSkillCell.self)", cellType: CharcterDetailSkillCell.self)){ index, skill, cell in
-                    cell.setCellContents(skill: skill)
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.showSkillDetailView
-            .bind(onNext: { [weak self] _ in
-//                guard let skillDetailVC = self?.container.makeSkillDetailViewController(skill: $0) else {
-//                    return
-//                }
-//                
-//                self?.present(skillDetailVC, animated: true)
-                print("스킬 상세 노출")
-                
-            })
-            .disposed(by: disposeBag)
-        
-        characterDetailSkillView.skillTableView.rx.itemSelected
-            .bind(onNext: { [weak self] in
-                self?.viewModel.touchSkillCell($0.row)
-            })
-            .disposed(by: disposeBag)
     }
 }
 
-extension CharcterDetailSkillVC: UITableViewDataSource {
+extension CharcterDetailSkillVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newViewModel?.characterInfoData?.skillInfo.skills.count ?? 0
+        return viewModel?.characterInfoData?.skillInfo.skills.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharcterDetailSkillCell.self)") as? CharcterDetailSkillCell,
-              let skill = newViewModel?.characterInfoData?.skillInfo.skills[safe: indexPath.row] else {
+              let skill = viewModel?.characterInfoData?.skillInfo.skills[safe: indexPath.row] else {
             return UITableViewCell()
         }
         cell.setCellContents(skill: skill)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(viewModel?.characterInfoData?.skillInfo.skills[safe: indexPath.row]?.name)
+        //                guard let skillDetailVC = self?.container.makeSkillDetailViewController(skill: $0) else {
+        //                    return
+        //                }
+        //
+        //                self?.present(skillDetailVC, animated: true)
+        print("스킬 상세 노출")
     }
 }

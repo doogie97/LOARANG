@@ -106,7 +106,6 @@
 		AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403F28B5D213004B7EBB /* SkillInfo.swift */; };
 		AC86404228B5D478004B7EBB /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404128B5D478004B7EBB /* Skill.swift */; };
 		AC86404428B5EAF8004B7EBB /* CharacterDetailSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404328B5EAF8004B7EBB /* CharacterDetailSkillView.swift */; };
-		AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */; };
 		AC86404828B5F325004B7EBB /* CharcterDetailSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */; };
 		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11D328814F5800D06AA6 /* BookmarkUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11D228814F5800D06AA6 /* BookmarkUserDTO.swift */; };
@@ -305,7 +304,6 @@
 		AC86403F28B5D213004B7EBB /* SkillInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
 		AC86404128B5D478004B7EBB /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		AC86404328B5EAF8004B7EBB /* CharacterDetailSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSkillView.swift; sourceTree = "<group>"; };
-		AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfoViewModel.swift; sourceTree = "<group>"; };
 		AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharcterDetailSkillCell.swift; sourceTree = "<group>"; };
 		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11D228814F5800D06AA6 /* BookmarkUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserDTO.swift; sourceTree = "<group>"; };
@@ -747,7 +745,6 @@
 			children = (
 				AC86404328B5EAF8004B7EBB /* CharacterDetailSkillView.swift */,
 				AC6CA2952893BC270049C12F /* CharcterDetailSkillVC.swift */,
-				AC86404528B5EB00004B7EBB /* SkillInfoViewModel.swift */,
 				AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */,
 				AC49D60028B85978002C0033 /* SkillDetailView */,
 			);
@@ -1396,7 +1393,6 @@
 				AC0341C729458CCE005F4533 /* APIError.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				7162BF782BC7BB1D00702530 /* HomeVC.swift in Sources */,
-				AC86404628B5EB00004B7EBB /* SkillInfoViewModel.swift in Sources */,
 				C6074DE92BC6D8C000FE3004 /* GetRecentUsersUseCase.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
