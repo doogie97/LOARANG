@@ -187,6 +187,7 @@
 		C64C45252BC592B200AD503D /* GetHomeCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */; };
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
 		C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */; };
+		C6666B0D2BCF578F00DF7DA5 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6666B0C2BCF578E00DF7DA5 /* Pretendard-SemiBold.otf */; };
 		C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */; };
 		C683F41E2BCC286400A5E699 /* GetCharacterDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */; };
 		C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */; };
@@ -387,6 +388,7 @@
 		C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeCharactersUseCase.swift; sourceTree = "<group>"; };
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
 		C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMainUserUseCase.swift; sourceTree = "<group>"; };
+		C6666B0C2BCF578E00DF7DA5 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		C67780512BC57BE900E0BC42 /* ViewChangeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChangeManager.swift; sourceTree = "<group>"; };
 		C683F41D2BCC286400A5E699 /* GetCharacterDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterDetailUseCase.swift; sourceTree = "<group>"; };
 		C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEntity.swift; sourceTree = "<group>"; };
@@ -923,6 +925,7 @@
 				ACAEF3682880077C00AE98F1 /* ONE-Mobile-Regular.ttf */,
 				717713252BC8D9CD0040C602 /* Pretendard-Black.otf */,
 				717713242BC8D9CC0040C602 /* Pretendard-Bold.otf */,
+				C6666B0C2BCF578E00DF7DA5 /* Pretendard-SemiBold.otf */,
 				717713262BC8D9CD0040C602 /* Pretendard-Light.otf */,
 				717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */,
 			);
@@ -1317,6 +1320,7 @@
 				717713292BC8E2020040C602 /* Pretendard-Bold.otf in Resources */,
 				ACAEF36A2880077C00AE98F1 /* ONE-Mobile-Light.ttf in Resources */,
 				AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */,
+				C6666B0D2BCF578F00DF7DA5 /* Pretendard-SemiBold.otf in Resources */,
 				ACAEF3692880077C00AE98F1 /* ONE-Mobile-Bold.ttf in Resources */,
 				717713282BC8E1FF0040C602 /* Pretendard-Light.otf in Resources */,
 				ACAEF36B2880077C00AE98F1 /* ONE-Mobile-Regular.ttf in Resources */,

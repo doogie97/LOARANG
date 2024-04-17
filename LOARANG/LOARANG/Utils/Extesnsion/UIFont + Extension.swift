@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
     enum Family: String {
-        case Bold, Light, Regular, Black
+        case Bold, Light, Regular, Black, SemiBold
     }
     
     static func one(size: Int, family: Family) -> UIFont {
