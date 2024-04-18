@@ -52,8 +52,8 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchSearchButton(_ name: String) {
-        showUserInfo.accept(name)
         hideKeyboard.accept(())
+        showUserInfo.accept(name)
     }
     
     func touchRecentUserCell(_ index: Int) {
