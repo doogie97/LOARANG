@@ -46,13 +46,12 @@ struct GetOwnCharactersUseCase {
         return dto.compactMap {
             return OwnCharactersEntity.Character(gameServer: GameServer(rawValue: $0.serverName ?? "") ?? .unknown,
                                                  characterName: $0.characterName ?? "",
-                                                 characterLevel: $0.characterLevel ?? 0,
+                                                 battelLevel: $0.characterLevel ?? 0,
                                                  characterClass: CharacterClass(rawValue: $0.characterClassName ?? "") ?? .unknown,
-                                                 itemAvgLevel: $0.itemAvgLevel ?? "",
-                                                 itemMaxLevel: $0.itemMaxLevel ?? "")
+                                                 itemLevel: $0.itemMaxLevel ?? "")
         }.sorted {
-            let firstDoubleItemLevel = Double($0.itemMaxLevel.replacingOccurrences(of: ",", with: "")) ?? 0
-            let secondDoubleItemLevel = Double($1.itemMaxLevel.replacingOccurrences(of: ",", with: "")) ?? 0
+            let firstDoubleItemLevel = Double($0.itemLevel.replacingOccurrences(of: ",", with: "")) ?? 0
+            let secondDoubleItemLevel = Double($1.itemLevel.replacingOccurrences(of: ",", with: "")) ?? 0
             return firstDoubleItemLevel > secondDoubleItemLevel
         }
     }

@@ -105,7 +105,7 @@ extension CharacterDetailView: ScrollableSegementDelegate {
         setPageView(index)
     }
     
-    private func setPageView(_ index: Int, isFirst: Bool = false) {
+    func setPageView(_ index: Int, isFirst: Bool = false) {
         if canChangeTab == false {
             return
         }
@@ -150,20 +150,23 @@ extension CharacterDetailView: UIPageViewControllerDataSource, UIPageViewControl
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            let previousIndex = self.currentPageIndex
-            
-            if let currentVC = pageVC.viewControllers?.first,
-               let currentIndex = pageVCList.firstIndex(of: currentVC) {
-                self.currentPageIndex = currentIndex
-                
-                scrollableSegment.scrollToSelecteCell(index: currentIndex)
-                
-                let segmentCV = scrollableSegment.segmentCV
-                segmentCV.delegate?.collectionView?(segmentCV,
-                                                    didSelectItemAt: IndexPath(item: currentIndex, section: 0))
-                segmentCV.delegate?.collectionView?(segmentCV,
-                                                    didDeselectItemAt: IndexPath(item: previousIndex, section: 0))
+            if let toMoveVC = pageVC.viewControllers?.first,
+               let toMoveIndex = pageVCList.firstIndex(of: toMoveVC) {
+                changeSegment(toMoveIndex: toMoveIndex)
+                self.currentPageIndex = toMoveIndex
             }
         }
+    }
+    
+    func changeSegment(toMoveIndex: Int) {
+        let previousIndex = self.currentPageIndex
+
+        scrollableSegment.scrollToSelecteCell(index: toMoveIndex)
+        
+        let segmentCV = scrollableSegment.segmentCV
+        segmentCV.delegate?.collectionView?(segmentCV,
+                                            didDeselectItemAt: IndexPath(item: previousIndex, section: 0))
+        segmentCV.delegate?.collectionView?(segmentCV,
+                                            didSelectItemAt: IndexPath(item: toMoveIndex, section: 0))
     }
 }

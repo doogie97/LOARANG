@@ -19,6 +19,7 @@
 		7168675E2BCCA3DD0008C28F /* CharacterDetailGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168675D2BCCA3DD0008C28F /* CharacterDetailGET.swift */; };
 		716867602BCCA4790008C28F /* CharactersDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168675F2BCCA4790008C28F /* CharactersDetailDTO.swift */; };
 		716867622BCCE0730008C28F /* DeleteMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716867612BCCE0730008C28F /* DeleteMainUserUseCase.swift */; };
+		716C46D82BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C46D72BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift */; };
 		717713272BC8E1FD0040C602 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */; };
 		717713282BC8E1FF0040C602 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713262BC8D9CD0040C602 /* Pretendard-Light.otf */; };
 		717713292BC8E2020040C602 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 717713242BC8D9CC0040C602 /* Pretendard-Bold.otf */; };
@@ -176,7 +177,7 @@
 		C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */; };
 		C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */; };
 		C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */; };
-		C63C615C2BADC3D70023D123 /* CharacterBasicInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */; };
+		C63C615C2BADC3D70023D123 /* OwnCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615B2BADC3D70023D123 /* OwnCharactersEntity.swift */; };
 		C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615E2BADC42F0023D123 /* GameServer.swift */; };
 		C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */; };
 		C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61622BADC8530023D123 /* CharacterClase.swift */; };
@@ -227,6 +228,7 @@
 		7168675D2BCCA3DD0008C28F /* CharacterDetailGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGET.swift; sourceTree = "<group>"; };
 		7168675F2BCCA4790008C28F /* CharactersDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDetailDTO.swift; sourceTree = "<group>"; };
 		716867612BCCE0730008C28F /* DeleteMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMainUserUseCase.swift; sourceTree = "<group>"; };
+		716C46D72BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailOwnCharacterCell.swift; sourceTree = "<group>"; };
 		717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		717713242BC8D9CC0040C602 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		717713252BC8D9CD0040C602 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -374,7 +376,7 @@
 		C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserEntity.swift; sourceTree = "<group>"; };
 		C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserEntity.swift; sourceTree = "<group>"; };
 		C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserEntity.swift; sourceTree = "<group>"; };
-		C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBasicInfoEntity.swift; sourceTree = "<group>"; };
+		C63C615B2BADC3D70023D123 /* OwnCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharactersEntity.swift; sourceTree = "<group>"; };
 		C63C615E2BADC42F0023D123 /* GameServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServer.swift; sourceTree = "<group>"; };
 		C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnCharactersUseCase.swift; sourceTree = "<group>"; };
 		C63C61622BADC8530023D123 /* CharacterClase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClase.swift; sourceTree = "<group>"; };
@@ -501,6 +503,15 @@
 			path = CharacterDetailGET;
 			sourceTree = "<group>";
 		};
+		716C46D92BD0B6A8009A474F /* CharacterDetailOwnCharacters */ = {
+			isa = PBXGroup;
+			children = (
+				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
+				716C46D72BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift */,
+			);
+			path = CharacterDetailOwnCharacters;
+			sourceTree = "<group>";
+		};
 		71892D3D2BCDF8ED0008CD8C /* ScrollableSegement */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,7 +527,7 @@
 				71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */,
 				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
 				AC6CA2902893BBD70049C12F /* CharacterDetailSkill */,
-				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
+				716C46D92BD0B6A8009A474F /* CharacterDetailOwnCharacters */,
 			);
 			path = CharacterDetailPageVC;
 			sourceTree = "<group>";
@@ -1015,7 +1026,7 @@
 				C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */,
 				C6224F932BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift */,
 				C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */,
-				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
+				C63C615B2BADC3D70023D123 /* OwnCharactersEntity.swift */,
 			);
 			path = NetworkEntity;
 			sourceTree = "<group>";
@@ -1370,6 +1381,7 @@
 				AC0341B1294587A3005F4533 /* NetworkManager.swift in Sources */,
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
+				716C46D82BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift in Sources */,
 				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
 				C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
@@ -1456,7 +1468,7 @@
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				716867602BCCA4790008C28F /* CharactersDetailDTO.swift in Sources */,
-				C63C615C2BADC3D70023D123 /* CharacterBasicInfoEntity.swift in Sources */,
+				C63C615C2BADC3D70023D123 /* OwnCharactersEntity.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,
