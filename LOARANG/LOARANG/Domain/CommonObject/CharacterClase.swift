@@ -42,5 +42,99 @@ enum CharacterClass: String {
     case artist = "도화가"
     case aeromancer = "기상술사"
     
+    //전직 전
+    case specialist = "스페셜리스트"
+    case magician = "마법사"
+    case warrior = "전사(남)"
+    case warrior_female = "전사(여)"
+    case hunter = "헌터(남)"
+    case hunter_female = "헌터(여)"
+    case assassin = "암살자"
+    case fighter = "무도가(여)"
+    case fighter_male = "무도가(남)"
     case unknown = "알 수 없음"
+}
+
+//emblem
+extension CharacterClass {
+    var classImageURL: String? {
+        let baseURL = "https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/thumb/emblem_"
+        switch self {
+            
+            //전직 후
+        case .destroyer:
+            return baseURL + "destroyer.png"
+        case .warlord:
+            return baseURL + "warlord.png"
+        case .berserker:
+            return baseURL + "berserker.png"
+        case .holyknight:
+            return baseURL + "holyknight.png"
+        case .striker:
+            return baseURL + "battle_master_male.png"
+        case .breaker:
+            return baseURL + "infighter_male.png"
+        case .battleMaster:
+            return baseURL + "battle_master.png"
+        case .infighter:
+            return baseURL + "infighter.png"
+        case .soulMaster:
+            return baseURL + "force_master.png"
+        case .lanceMaster:
+            return baseURL + "lance_master.png"
+        case .devilHunter:
+            return baseURL + "devil_hunter.png"
+        case .blaster:
+            return baseURL + "blaster.png"
+        case .hawkEye:
+            return baseURL + "hawk_eye.png"
+        case .scouter:
+            return baseURL + "scouter.png"
+        case .gunslinger:
+            return baseURL + "devil_hunter_female.png"
+        case .bard:
+            return baseURL + "bard.png"
+        case .summoner:
+            return baseURL + "summoner.png"
+        case .arcana:
+            return baseURL + "arcana.png"
+        case .sorceress:
+            return baseURL + "elemental_master.png"
+        case .blade:
+            return baseURL + "blade.png"
+        case .demonic:
+            return baseURL + "demonic.png"
+        case .reaper:
+            return baseURL + "reaper.png"
+        case .artist:
+            return baseURL + "yinyangshi.png"
+        case .aeromancer:
+            return baseURL + "weather_artist.png"
+        case .slayer:
+            return baseURL + "berserker_female.png"
+        case .souleater:
+            return baseURL + "soul_eater.png"
+            //전직 전
+        case .specialist:
+            return baseURL + "specialist.png"
+        case .magician:
+            return baseURL + "magician.png"
+        case .warrior:
+            return baseURL + "warrior.png"
+        case .warrior_female:
+            return baseURL + "warrior_female.png"
+        case .hunter:
+            return baseURL + "hunter.png"
+        case .hunter_female:
+            return baseURL + "hunter_female.png"
+        case .assassin:
+            return baseURL + "assassin.png"
+        case .fighter_male:
+            return baseURL + "fighter_male.png"
+        case .fighter:
+            return baseURL + "fighter.png"
+        default:
+            return nil
+        }
+    }
 }

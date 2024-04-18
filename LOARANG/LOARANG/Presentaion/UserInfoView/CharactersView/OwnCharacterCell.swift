@@ -143,7 +143,8 @@ final class OwnCharacterCell: UITableViewCell {
     }
     
     func setCellContents(characterInfo: CharacterBasicInfoDTO) {
-        _ = classImageView.setImage(urlString: characterInfo.characterClassName?.classImageURL)
+        let charcterClass = CharacterClass(rawValue: characterInfo.characterClassName ?? "") ?? .unknown
+        _ = classImageView.setImage(urlString: charcterClass.classImageURL)
         classLabel.text = characterInfo.characterClassName
         serverLabel.text = characterInfo.serverName
         userNameLabel.text = characterInfo.characterName
