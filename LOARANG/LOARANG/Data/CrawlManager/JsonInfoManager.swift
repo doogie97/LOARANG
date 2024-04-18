@@ -178,7 +178,7 @@ extension JsonInfoManager {
                                  emblem: emblem)
     }
     
-    private func getEquipmentPart(_ json: JSON, type: EquipmentType) -> EquipmentPart {
+    private func getEquipmentPart(_ json: JSON, type: oldEquipmentType) -> EquipmentPart {
         var battleEffects: String? {
             switch type {
             case .battleEquipment:

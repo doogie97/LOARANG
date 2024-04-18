@@ -69,7 +69,7 @@ struct Equips {
     }
 }
 
-enum EquipmentType { //나중에 JsonInfoManager안에 넣을지 고민 필요
+enum oldEquipmentType { //나중에 JsonInfoManager안에 넣을지 고민 필요
     case battleEquipment
     case accessory
     case avatar
