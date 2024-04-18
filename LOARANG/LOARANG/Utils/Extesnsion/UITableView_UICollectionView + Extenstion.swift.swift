@@ -14,7 +14,7 @@ extension UITableView {
 }
 
 extension UICollectionView {
-    func register(_ cellType: UITableViewCell.Type) {
+    func register(_ cellType: UICollectionViewCell.Type) {
         self.register(cellType, forCellWithReuseIdentifier: "\(cellType)")
     }
 }

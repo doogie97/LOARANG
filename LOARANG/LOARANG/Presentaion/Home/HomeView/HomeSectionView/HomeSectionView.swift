@@ -226,10 +226,10 @@ extension HomeSectionView {
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
         
-        collectionView.register(HomeMainUserCVCell.self, forCellWithReuseIdentifier: "\(HomeMainUserCVCell.self)")
-        collectionView.register(HomeBookmarkUserCVCell.self, forCellWithReuseIdentifier: "\(HomeBookmarkUserCVCell.self)")
-        collectionView.register(HomeNoticeCVCell.self, forCellWithReuseIdentifier: "\(HomeNoticeCVCell.self)")
-        collectionView.register(HomeImageCVCell.self, forCellWithReuseIdentifier: "\(HomeImageCVCell.self)")
+        collectionView.register(HomeMainUserCVCell.self)
+        collectionView.register(HomeBookmarkUserCVCell.self)
+        collectionView.register(HomeNoticeCVCell.self)
+        collectionView.register(HomeImageCVCell.self)
         
         collectionView.register(HomeSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(HomeSectionHeader.self)")
         
