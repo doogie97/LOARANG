@@ -35,8 +35,3 @@ extension CharacterDetailEntity {
         let grade: Grade
     }
 }
-
-enum EquipmentType: String {
-    case 무기
-    case unknown
-}
