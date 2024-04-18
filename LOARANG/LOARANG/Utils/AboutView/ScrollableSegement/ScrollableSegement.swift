@@ -114,7 +114,7 @@ final class ScrollableSegement: UIView {
             $0.leading.equalToSuperview()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.02) { [weak self] in
             self?.setUnderlinePosition(animated: false)
         }
         
