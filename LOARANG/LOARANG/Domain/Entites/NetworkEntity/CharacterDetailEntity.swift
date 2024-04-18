@@ -33,5 +33,9 @@ extension CharacterDetailEntity {
         let name: String
         let imageUrl: String
         let grade: Grade
+        //여기부터 tooltip info
+        let qualityValue: Int
+        let itemLevel: String
+        let itemTypeTitle: String
     }
 }
