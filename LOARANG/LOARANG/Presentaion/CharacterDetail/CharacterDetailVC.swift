@@ -76,6 +76,9 @@ final class CharacterDetailVC: UIViewController {
                 switch viewCase {
                 case .skillDetail(let skill):
                     owner.present(SkillDetailVC(skill: skill), animated: true)
+                case .characterDetail(let name):
+                    let characterDetailVC = owner.container.characterDetailVC(name: name, isSearch: false)
+                    owner.navigationController?.pushViewController(characterDetailVC, animated: true)
                 }
             }
             .disposed(by: disposeBag)

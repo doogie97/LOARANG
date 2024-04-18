@@ -90,4 +90,8 @@ extension CharacterDetailOwnCharctersVC: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.touchOwnCharacterCell(indexPath)
+    }
 }

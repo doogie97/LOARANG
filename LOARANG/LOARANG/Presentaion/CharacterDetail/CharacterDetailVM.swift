@@ -6,6 +6,7 @@
 //
 
 import RxRelay
+import Foundation
 
 protocol CharacterDetailVMable: CharacterDetailVMInput, CharacterDetailVMOutput, AnyObject {}
 protocol CharacterDetailVMInput {
@@ -13,6 +14,7 @@ protocol CharacterDetailVMInput {
     func touchBackButton()
     func touchBookmarkButton()
     func touchSkillCell(_ index: Int)
+    func touchOwnCharacterCell(_ indexPath: IndexPath)
 }
 
 protocol CharacterDetailVMOutput {
@@ -152,6 +154,14 @@ final class CharacterDetailVM: CharacterDetailVMable {
         showNextView.accept(.skillDetail(skill: skill))
     }
     
+    func touchOwnCharacterCell(_ indexPath: IndexPath) {
+        guard let name = ownCharactersInfo[safe: indexPath.section]?.characters[safe: indexPath.row]?.characterName else {
+            return
+        }
+        
+        showNextView.accept(.characterDetail(name: name))
+    }
+    
     //MARK: - Output
     var characterInfoData: CharacterDetailEntity? {
         return self.characterInfo
@@ -163,6 +173,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     
     enum NextViewCase {
         case skillDetail(skill: Skill)
+        case characterDetail(name: String)
     }
     
     let isLoading = PublishRelay<Bool>()
