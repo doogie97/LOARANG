@@ -47,7 +47,8 @@ final class Container: Containerable {
             changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository),
             addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
             deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
-            updateBookmarkUseCase: UpdateBookmarkUseCase(localStorageRepository: localStorageRepository)
+            updateBookmarkUseCase: UpdateBookmarkUseCase(localStorageRepository: localStorageRepository),
+            addRecentUserUseCase: AddRecentUserUseCase(localStorageRepository: localStorageRepository)
         )
         return CharacterDetailVC(container: self,
                                  viewModel: viewModel)

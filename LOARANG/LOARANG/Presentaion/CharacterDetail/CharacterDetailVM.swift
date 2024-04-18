@@ -40,6 +40,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
     private let updateBookmarkUseCase: UpdateBookmarkUseCase
+    private let addRecentUserUseCase: AddRecentUserUseCase
     
     init(characterName: String,
          isSearch: Bool,
@@ -47,7 +48,8 @@ final class CharacterDetailVM: CharacterDetailVMable {
          changeMainUserUseCase: ChangeMainUserUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
-         updateBookmarkUseCase: UpdateBookmarkUseCase) {
+         updateBookmarkUseCase: UpdateBookmarkUseCase,
+         addRecentUserUseCase: AddRecentUserUseCase) {
         self.characterName = characterName
         self.isSearch = isSearch
         self.isBookmark = characterName.isBookmark
@@ -56,6 +58,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
         self.updateBookmarkUseCase = updateBookmarkUseCase
+        self.addRecentUserUseCase = addRecentUserUseCase
         
     }
     //MARK: - Input
@@ -122,6 +125,11 @@ final class CharacterDetailVM: CharacterDetailVMable {
                     expeditionLV: character.profile.expeditionLevel,
                     gameServer: character.profile.gameServer
                 ))
+            }
+            if isSearch {
+                try addRecentUserUseCase.execute(user: RecentUserEntity(name: character.profile.characterName,
+                                                                        imageUrl: character.profile.imageUrl,
+                                                                        characterClass: character.profile.characterClass))
             }
         } catch let error {
             showAlert.accept((message: error.errorMessage, isPop: false))

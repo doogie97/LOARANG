@@ -52,8 +52,8 @@ final class SearchViewModel: SearchViewModelable {
     }
     
     func touchSearchButton(_ name: String) {
-        showUserInfo.accept(name)
         hideKeyboard.accept(())
+        showUserInfo.accept(name)
     }
     
     func touchRecentUserCell(_ index: Int) {
@@ -77,9 +77,8 @@ final class SearchViewModel: SearchViewModelable {
         } else {
             do {
                 try addBookmarkUseCase.execute(user: BookmarkUserEntity(name: recentUser.name,
-                                                                        imageUrl: "",
-                                                                        //추후 애초에 최근 유저 저장시에도 CharacterClass 이용하도록 수정 필요
-                                                                        characterClass: CharacterClass(rawValue: recentUser.class) ?? .unknown))
+                                                                        imageUrl: recentUser.imageUrl,
+                                                                        characterClass: recentUser.characterClass))
             } catch {}
         }
     }

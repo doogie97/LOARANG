@@ -38,11 +38,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         newObject?["imageUrl"] = ""
                         newObject?["expeditionLV"] = 0
                         newObject?["characterClass"] = oldObject?["class"]
-                        let oldValue = (oldObject?["server"] as? String) ?? ""
-                        newObject?["gameServer"] = oldValue.replacingOccurrences(of: "@", with: "")
+                        
+                        let oldBattleLV = (oldObject?["battleLV"] as? String) ?? ""
+                        newObject?["battleLV"] = Int(oldBattleLV) ?? 0
+                        
+                        let oldSever = (oldObject?["server"] as? String) ?? ""
+                        newObject?["gameServer"] = oldSever.replacingOccurrences(of: "@", with: "")
                     }
                     
                     migration.enumerateObjects(ofType: BookmarkUserDTO.className()) { oldObject, newObject in
+                        newObject?["imageUrl"] = ""
+                        newObject?["characterClass"] = oldObject?["class"]
+                    }
+                    
+                    migration.enumerateObjects(ofType: RecentUserDTO.className()) { oldObject, newObject in
                         newObject?["imageUrl"] = ""
                         newObject?["characterClass"] = oldObject?["class"]
                     }

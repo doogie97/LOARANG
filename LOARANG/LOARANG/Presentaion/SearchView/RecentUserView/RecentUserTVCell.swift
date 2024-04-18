@@ -21,7 +21,7 @@ final class RecentUserTVCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var userImageView: UIImageView = {
+    private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderColor = UIColor.systemGray.cgColor
         imageView.layer.borderWidth = 0.1
@@ -74,23 +74,23 @@ final class RecentUserTVCell: UITableViewCell {
         self.backgroundColor = .mainBackground
         self.selectionStyle = .none
         
-        self.contentView.addSubview(userImageView)
+        self.contentView.addSubview(characterImageView)
         self.contentView.addSubview(nameLabel)
         self.contentView.addSubview(deleteButton)
         self.contentView.addSubview(bookmarkButton)
         
-        userImageView.snp.makeConstraints {
+        characterImageView.snp.makeConstraints {
             let height = UIScreen.main.bounds.width * 0.1
             $0.height.equalTo(height)
             $0.width.equalTo(height)
             $0.top.leading.equalToSuperview().inset(10)
             $0.bottom.lessThanOrEqualToSuperview().inset(10)
             
-            userImageView.layer.cornerRadius = height / 2
+            characterImageView.layer.cornerRadius = height / 2
         }
         
         nameLabel.snp.makeConstraints {
-            $0.leading.equalTo(userImageView.snp.trailing).offset(16)
+            $0.leading.equalTo(characterImageView.snp.trailing).offset(16)
             $0.top.bottom.equalToSuperview()
         }
         
@@ -110,8 +110,13 @@ final class RecentUserTVCell: UITableViewCell {
                          index: Int) {
         self.viewModel = viewModel
         self.index = index
-        
-        self.userImageView.image = recentUser.image.cropImage(characterClass: CharacterClass(rawValue: recentUser.class) ?? .unknown)
+        if recentUser.imageUrl.replacingOccurrences(of: " ", with: "").isEmpty {
+            self.characterImageView.image = UIImage(named: "unknownCharacterImg.png")
+        } else {
+            self.characterImageView.setImage(recentUser.imageUrl) { [weak self] in
+                self?.characterImageView.image = $0.cropImage(characterClass: recentUser.characterClass)
+            }
+        }
         self.nameLabel.text = recentUser.name
         self.bookmarkButton.setBookmarkButtonColor(recentUser.name.isBookmark)
     }

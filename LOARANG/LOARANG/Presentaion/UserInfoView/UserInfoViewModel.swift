@@ -135,8 +135,8 @@ final class UserInfoViewModel: UserInfoViewModelable {
     private func addRecentUser(_ userInfo: UserInfo) {
         do {
             try addRecentUserUseCase.execute(user: RecentUserEntity(name: userInfo.mainInfo.name,
-                                                                    image: userInfo.mainInfo.userImage,
-                                                                    class: userInfo.mainInfo.`class`))
+                                                                    imageUrl: "",
+                                                                    characterClass: CharacterClass(rawValue: userInfo.mainInfo.`class`) ?? .unknown))
         } catch {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }

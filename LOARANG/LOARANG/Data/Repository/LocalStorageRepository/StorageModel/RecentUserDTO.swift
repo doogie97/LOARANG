@@ -10,12 +10,12 @@ import RealmSwift
 
 final class RecentUserDTO: Object {
     @Persisted(primaryKey: true) var name: String
-    @Persisted var imageData: Data
-    @Persisted var `class`: String
+    @Persisted var imageUrl: String
+    @Persisted var characterClass: String
     
     var toEntity: RecentUserEntity {
         return RecentUserEntity(name: self.name,
-                                image: UIImage(data: imageData) ?? UIImage(),
-                                class: self.`class`)
+                                imageUrl: self.imageUrl,
+                                characterClass: CharacterClass(rawValue: self.characterClass) ?? .unknown)
     }
 }
