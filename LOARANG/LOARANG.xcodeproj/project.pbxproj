@@ -176,7 +176,7 @@
 		C62FA10D2BC6D45F00C15A12 /* RecentUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */; };
 		C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */; };
 		C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */; };
-		C63C615C2BADC3D70023D123 /* CharacterBasicInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */; };
+		C63C615C2BADC3D70023D123 /* OwnCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615B2BADC3D70023D123 /* OwnCharactersEntity.swift */; };
 		C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615E2BADC42F0023D123 /* GameServer.swift */; };
 		C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */; };
 		C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61622BADC8530023D123 /* CharacterClase.swift */; };
@@ -374,7 +374,7 @@
 		C62FA10C2BC6D45F00C15A12 /* RecentUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserEntity.swift; sourceTree = "<group>"; };
 		C62FA10E2BC6D4DD00C15A12 /* BookmarkUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserEntity.swift; sourceTree = "<group>"; };
 		C62FA1102BC6D57300C15A12 /* MainUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserEntity.swift; sourceTree = "<group>"; };
-		C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBasicInfoEntity.swift; sourceTree = "<group>"; };
+		C63C615B2BADC3D70023D123 /* OwnCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnCharactersEntity.swift; sourceTree = "<group>"; };
 		C63C615E2BADC42F0023D123 /* GameServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServer.swift; sourceTree = "<group>"; };
 		C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnCharactersUseCase.swift; sourceTree = "<group>"; };
 		C63C61622BADC8530023D123 /* CharacterClase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClase.swift; sourceTree = "<group>"; };
@@ -1015,7 +1015,7 @@
 				C6224F8C2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift */,
 				C6224F932BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift */,
 				C683F41F2BCC28D000A5E699 /* CharacterDetailEntity.swift */,
-				C63C615B2BADC3D70023D123 /* CharacterBasicInfoEntity.swift */,
+				C63C615B2BADC3D70023D123 /* OwnCharactersEntity.swift */,
 			);
 			path = NetworkEntity;
 			sourceTree = "<group>";
@@ -1456,7 +1456,7 @@
 				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				AC6CA2942893BC1D0049C12F /* BasicInfoViewController.swift in Sources */,
 				716867602BCCA4790008C28F /* CharactersDetailDTO.swift in Sources */,
-				C63C615C2BADC3D70023D123 /* CharacterBasicInfoEntity.swift in Sources */,
+				C63C615C2BADC3D70023D123 /* OwnCharactersEntity.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
 				C62FA1112BC6D57300C15A12 /* MainUserEntity.swift in Sources */,
 				ACB0F16528BF865200C6BB2F /* EngravingsView.swift in Sources */,

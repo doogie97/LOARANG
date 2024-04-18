@@ -1,5 +1,5 @@
 //
-//  CharacterBasicInfoEntity.swift
+//  OwnCharactersEntity.swift
 //  LOARANG
 //
 //  Created by Doogie on 3/22/24.
