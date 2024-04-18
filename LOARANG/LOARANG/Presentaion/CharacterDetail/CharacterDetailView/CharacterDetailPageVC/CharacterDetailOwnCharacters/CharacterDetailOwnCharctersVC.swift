@@ -25,9 +25,11 @@ final class CharacterDetailOwnCharctersVC: UIViewController, PageViewInnerVCDele
     }
     
     private lazy var ownCharactersTV = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .mainBackground
         tableView.separatorStyle = .none
+        tableView.sectionHeaderHeight = 0
+        tableView.sectionFooterHeight = 0
         tableView.register(CharacterDetailOwnCharacterCell.self)
         tableView.dataSource = self
         tableView.delegate = self
@@ -65,5 +67,27 @@ extension CharacterDetailOwnCharctersVC: UITableViewDataSource, UITableViewDeleg
         }
         cell.setCellContents(character)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let severInfo = viewModel?.ownCharactersInfoData[safe: section] else {
+            return nil
+        }
+        
+        let headerView = UIView()
+        let severName = severInfo.gameServer.rawValue
+        let characterCount = severInfo.characters.count
+        let serverLabel = view.pretendardLabel(size: 14, family: .Regular, color: .systemGray, text: "\(severName)(\(characterCount))")
+        headerView.addSubview(serverLabel)
+        serverLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.equalToSuperview().inset(view.margin(.width, 16))
+        }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 }
