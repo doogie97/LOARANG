@@ -17,6 +17,7 @@ protocol CharacterDetailVMInput {
 
 protocol CharacterDetailVMOutput {
     var characterInfoData: CharacterDetailEntity? { get }
+    var ownCharactersInfoData: [OwnCharactersEntity.ServerInfo] { get }
     var isLoading: PublishRelay<Bool> { get }
     var setViewContents: PublishRelay<Void> { get }
     var changeBookmarkButton: PublishRelay<Bool> { get }
@@ -34,8 +35,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
         }
     }
     private var characterInfo: CharacterDetailEntity? 
+    private var ownCharactersInfo = [OwnCharactersEntity.ServerInfo]()
     
     private let getCharacterDetailUseCase: GetCharacterDetailUseCase
+    private let getOwnCharactersUseCase: GetOwnCharactersUseCase
     private let changeMainUserUseCase: ChangeMainUserUseCase
     private let addBookmarkUseCase: AddBookmarkUseCase
     private let deleteBookmarkUseCase: DeleteBookmarkUseCase
@@ -45,6 +48,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     init(characterName: String,
          isSearch: Bool,
          getCharacterDetailUseCase: GetCharacterDetailUseCase,
+         getOwnCharactersUseCase: GetOwnCharactersUseCase,
          changeMainUserUseCase: ChangeMainUserUseCase,
          addBookmarkUseCase: AddBookmarkUseCase,
          deleteBookmarkUseCase: DeleteBookmarkUseCase,
@@ -53,7 +57,9 @@ final class CharacterDetailVM: CharacterDetailVMable {
         self.characterName = characterName
         self.isSearch = isSearch
         self.isBookmark = characterName.isBookmark
+        
         self.getCharacterDetailUseCase = getCharacterDetailUseCase
+        self.getOwnCharactersUseCase = getOwnCharactersUseCase
         self.changeMainUserUseCase = changeMainUserUseCase
         self.addBookmarkUseCase = addBookmarkUseCase
         self.deleteBookmarkUseCase = deleteBookmarkUseCase
@@ -93,7 +99,9 @@ final class CharacterDetailVM: CharacterDetailVMable {
         Task {
             do {
                 let characterEntity = try await getCharacterDetailUseCase.excute(name: characterName)
+                let ownCharacterEntity = try await getOwnCharactersUseCase.execute(name: characterName)
                 self.characterInfo = characterEntity
+                self.ownCharactersInfo = ownCharacterEntity.serverList
                 await MainActor.run {
                     setViewContents.accept(())
                     localStorageUpdate(characterEntity)
@@ -147,6 +155,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
     //MARK: - Output
     var characterInfoData: CharacterDetailEntity? {
         return self.characterInfo
+    }
+    
+    var ownCharactersInfoData: [OwnCharactersEntity.ServerInfo] {
+        return self.ownCharactersInfo
     }
     
     enum NextViewCase {
