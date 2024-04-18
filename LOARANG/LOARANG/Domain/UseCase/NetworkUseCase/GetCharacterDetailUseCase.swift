@@ -53,4 +53,16 @@ struct GetCharacterDetailUseCase {
             )
         }
     }
+//CharacterDetail 마무리 후 문제없이 작동하면 strint + Extension파일로 이동 예정
+extension String {
+    var insideAngleBrackets: String {
+        let firstString = self.replacingOccurrences(of: "><", with: "")
+        guard let startIndex = firstString.firstIndex(of: ">"),
+              let endIndex = firstString.lastIndex(of: "<"),
+              startIndex < endIndex else {
+            return self
+        }
+        let extractedString = firstString[firstString.index(after: startIndex)..<endIndex]
+        return String(extractedString)
+    }
 }
