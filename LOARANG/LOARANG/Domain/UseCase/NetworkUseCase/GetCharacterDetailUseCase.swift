@@ -61,11 +61,21 @@ struct GetCharacterDetailUseCase {
     
     private func equipmentDetailInfo(_ tooltip: String?) -> EquipmentDetailInfo {
         let jsonData = JSON((tooltip ?? "").data(using: .utf8) ?? Data())
+        //세트옵션
+        var setOption = ""
+        for number in 8...12 {
+            let setOptionInfo = jsonData["Element_\(number.formattedNumber)"]["value"]
+            if setOptionInfo["Element_000"].stringValue.contains("세트 효과 레벨") {
+                setOption = setOptionInfo["Element_001"].stringValue
+            }
+        }
         let itemTitle = jsonData["Element_001"]["value"]
         return EquipmentDetailInfo(
             qualityValue: itemTitle["qualityValue"].intValue,
             itemLevel: itemTitle["leftStr2"].stringValue.insideAngleBrackets,
-            itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets
+            itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets, 
+            setOptionName: setOption.components(separatedBy: " <").first ?? "",
+            setOptionLevelStr: setOption.insideAngleBrackets
         )
     }
     
@@ -73,6 +83,8 @@ struct GetCharacterDetailUseCase {
         let qualityValue: Int
         let itemLevel: String
         let itemTypeTitle: String
+        let setOptionName: String
+        let setOptionLevelStr: String
     }
 }
 

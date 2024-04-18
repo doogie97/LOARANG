@@ -37,5 +37,7 @@ extension CharacterDetailEntity {
         let qualityValue: Int
         let itemLevel: String
         let itemTypeTitle: String
+        let setOptionName: String
+        let setOptionLevelStr: String
     }
 }
