@@ -159,7 +159,11 @@ final class CharacterDetailVM: CharacterDetailVMable {
             return
         }
         
-        showNextView.accept(.characterDetail(name: name))
+        if name == self.characterName {
+            showNextView.accept(.selectFirstTab)
+        } else {
+            showNextView.accept(.characterDetail(name: name))
+        }
     }
     
     //MARK: - Output
@@ -174,6 +178,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     enum NextViewCase {
         case skillDetail(skill: Skill)
         case characterDetail(name: String)
+        case selectFirstTab
     }
     
     let isLoading = PublishRelay<Bool>()
