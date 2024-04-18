@@ -23,7 +23,8 @@ struct GetCharacterDetailUseCase {
             
             return CharacterDetailEntity(
                 profile: profile(dto.ArmoryProfile),
-                skillInfo: skillInfo
+                skillInfo: skillInfo, 
+                equipments: equipments(dto.ArmoryEquipment)
             )
         } catch let error {
             throw error
@@ -40,5 +41,16 @@ struct GetCharacterDetailUseCase {
             characterClass: CharacterClass(rawValue: dto?.CharacterClassName ?? "") ?? .unknown,
             imageUrl: dto?.CharacterImage ?? ""
         )
+    }
+    
+    private func equipments(_ dto: [CharactersDetailDTO.Equipment]?) -> [CharacterDetailEntity.Equipment] {
+        return (dto ?? []).compactMap {
+            return CharacterDetailEntity.Equipment(
+                equipment: EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown,
+                name: $0.Name ?? "",
+                imageUrl: $0.Icon ?? "",
+                grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown
+            )
+        }
     }
 }

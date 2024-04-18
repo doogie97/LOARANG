@@ -7,7 +7,7 @@
 
 struct CharactersDetailDTO: Decodable {
     let ArmoryProfile: ArmoryProfile?
-    let ArmorySkills: [ArmorySkill]?
+    let ArmoryEquipment: [Equipment]?
 }
 
 //MARK: - ArmoryProfile
@@ -55,30 +55,20 @@ extension CharactersDetailDTO {
     }
 }
 
-//MARK: - ArmorySkills
+//MARK: - Equipment
 extension CharactersDetailDTO {
-    struct ArmorySkill: Decodable {
-        let Name: String?
-        let Icon: String?
-        let Level: Int?
-        let Tripods: [Tripod]?
-        let Rune: Rune?
-        let Tooltip: String?
-    }
-    
-    struct Tripod: Decodable {
-        let Name: String?
-        let Icon: String?
-        let Level: Int?
-        let IsSelected: Bool?
-        let Tooltip: String?
-    }
-    
-    struct Rune: Decodable {
+    struct Equipment: Decodable {
+        let equipmentType: String?
         let Name: String?
         let Icon: String?
         let Grade: String?
         let Tooltip: String?
+        enum CodingKeys: String, CodingKey {
+            case equipmentType = "Type"
+            case Name
+            case Icon
+            case Grade
+            case Tooltip
+        }
     }
 }
-
