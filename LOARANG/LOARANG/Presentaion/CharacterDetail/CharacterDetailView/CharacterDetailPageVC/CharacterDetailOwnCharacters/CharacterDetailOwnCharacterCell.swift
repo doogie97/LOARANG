@@ -13,6 +13,8 @@ final class CharacterDetailOwnCharacterCell: UITableViewCell {
     private lazy var classImageView = UIImageView()
     
     func setCellContents(_ character: OwnCharactersEntity.Character) {
+        self.selectionStyle = .none
+        self.backgroundColor = .cellBackgroundColor
         classImageView.setImage(character.characterClass.classImageURL)
         setLayout()
     }

@@ -503,6 +503,15 @@
 			path = CharacterDetailGET;
 			sourceTree = "<group>";
 		};
+		716C46D92BD0B6A8009A474F /* CharacterDetailOwnCharacters */ = {
+			isa = PBXGroup;
+			children = (
+				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
+				716C46D72BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift */,
+			);
+			path = CharacterDetailOwnCharacters;
+			sourceTree = "<group>";
+		};
 		71892D3D2BCDF8ED0008CD8C /* ScrollableSegement */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,8 +527,7 @@
 				71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */,
 				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
 				AC6CA2902893BBD70049C12F /* CharacterDetailSkill */,
-				71892D4D2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift */,
-				716C46D72BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift */,
+				716C46D92BD0B6A8009A474F /* CharacterDetailOwnCharacters */,
 			);
 			path = CharacterDetailPageVC;
 			sourceTree = "<group>";
