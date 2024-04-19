@@ -201,6 +201,8 @@
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
 		C6C1A6F52BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */; };
+		C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */; };
+		C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
 		C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */; };
@@ -402,6 +404,8 @@
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailProfileSectionView.swift; sourceTree = "<group>"; };
+		C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBasicInfoCell.swift; sourceTree = "<group>"; };
+		C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBattleEquipmentCell.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGameInfoEntity.swift; sourceTree = "<group>"; };
@@ -1159,8 +1163,18 @@
 			isa = PBXGroup;
 			children = (
 				C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */,
+				C6C1A6F62BD2B2A900EA7B8C /* CharacterDetailProfileCells */,
 			);
 			path = CharacterDetailProfileSection;
+			sourceTree = "<group>";
+		};
+		C6C1A6F62BD2B2A900EA7B8C /* CharacterDetailProfileCells */ = {
+			isa = PBXGroup;
+			children = (
+				C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */,
+				C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */,
+			);
+			path = CharacterDetailProfileCells;
 			sourceTree = "<group>";
 		};
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
@@ -1395,6 +1409,7 @@
 				ACB837F82897DBBF00F75BA2 /* BasicInfoViewModel.swift in Sources */,
 				ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */,
 				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
+				C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */,
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				C683F4232BCD703600A5E699 /* CharacterDetailView.swift in Sources */,
 				7162BF802BC7C50300702530 /* HomeSectionView.swift in Sources */,
@@ -1425,6 +1440,7 @@
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				71892D4E2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift in Sources */,
+				C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */,
 				C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */,
 				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,
 				7162BF852BC7CFD300702530 /* HomeBookmarkUserCVCell.swift in Sources */,

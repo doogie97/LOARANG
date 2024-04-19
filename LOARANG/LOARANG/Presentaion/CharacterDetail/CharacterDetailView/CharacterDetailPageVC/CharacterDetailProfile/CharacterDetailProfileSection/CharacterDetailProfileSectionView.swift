@@ -10,17 +10,121 @@ import SnapKit
 
 final class CharacterDetailProfileSectionView: UIView {
     private weak var viewModel: CharacterDetailVMable?
-    enum ProfileSectionCase {
+    enum ProfileSectionCase: CaseIterable {
         case basicInfo
         case battleEquipment
     }
     
+    private lazy var sectionCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     func setViewContents(viewModel: CharacterDetailVMable?) {
         self.viewModel = viewModel
+        self.sectionCV = createSectionCV()
         setLayout()
     }
     
     private func setLayout() {
+        self.addSubview(sectionCV)
+        sectionCV.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+}
+
+extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return ProfileSectionCase.allCases.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let section = ProfileSectionCase.allCases[safe: section] else {
+            return 0
+        }
         
+        switch section {
+        case .basicInfo:
+            return 1
+        case .battleEquipment:
+            return viewModel?.characterInfoData?.battleEquipments.count ?? 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let section = ProfileSectionCase.allCases[safe: indexPath.section] else {
+            return UICollectionViewCell()
+        }
+        
+        switch section {
+        case .basicInfo:
+            return basicInfoCell(collectionView: collectionView, indexPath: indexPath)
+        case .battleEquipment:
+            return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
+        }
+    }
+    
+    private func basicInfoCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBasicInfoCell.self)", for: indexPath) as? CharacterDetailBasicInfoCell else {
+            return UICollectionViewCell()
+        }
+        cell.setCellContents()
+        return cell
+    }
+    
+    private func battleEquipmentCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell else {
+            return UICollectionViewCell()
+        }
+        cell.setCellContents()
+        return cell
+    }
+}
+
+//MARK: - make CollectionView
+extension CharacterDetailProfileSectionView {
+    private func createSectionCV() -> UICollectionView {
+        let layout = createLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .mainBackground
+        collectionView.dataSource = self
+        
+        collectionView.register(CharacterDetailBasicInfoCell.self)
+        collectionView.register(CharacterDetailBattleEquipmentCell.self)
+        
+        return collectionView
+    }
+    private func createLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { [weak self] (sectionIndex, _) -> NSCollectionLayoutSection? in
+            guard let section = ProfileSectionCase.allCases[safe: sectionIndex] else {
+                return nil
+            }
+            
+            switch section {
+            case .basicInfo:
+                return self?.basicInfoLayout()
+            case .battleEquipment:
+                return self?.battleEquipmentLayout()
+            }
+        }
+    }
+    
+    private func basicInfoLayout() -> NSCollectionLayoutSection {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalWidth(0.6))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        
+        return section
+    }
+    
+    private func battleEquipmentLayout() -> NSCollectionLayoutSection {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalWidth(0.6))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        
+        return section
     }
 }
