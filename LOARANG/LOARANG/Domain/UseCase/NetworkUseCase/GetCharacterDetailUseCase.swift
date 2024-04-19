@@ -57,7 +57,8 @@ struct GetCharacterDetailUseCase {
                 itemTypeTitle: equipmentDetailInfo.itemTypeTitle,
                 setOptionName: equipmentDetailInfo.setOptionName,
                 setOptionLevelStr: equipmentDetailInfo.setOptionLevelStr, 
-                elixirs: equipmentDetailInfo.elixirs
+                elixirs: equipmentDetailInfo.elixirs,
+                transcendence: equipmentDetailInfo.transcendence
             )
         }
     }
@@ -66,17 +67,19 @@ struct GetCharacterDetailUseCase {
         let jsonData = JSON((tooltip ?? "").data(using: .utf8) ?? Data())
         var setOption = ""
         var elixirs: [CharacterDetailEntity.Elixir]?
+        var transcendence: CharacterDetailEntity.Transcendence?
         for number in 8...12 {
             //세트옵션
-            let jsonInfo = jsonData["Element_\(number.formattedNumber)"]["value"]
+            let firstParseJson = jsonData["Element_\(number.formattedNumber)"]["value"]
             
-            if jsonInfo["Element_000"].stringValue.contains("세트 효과 레벨") {
-                setOption = jsonInfo["Element_001"].stringValue
+            if firstParseJson["Element_000"].stringValue.contains("세트 효과 레벨") {
+                setOption = firstParseJson["Element_001"].stringValue
             }
             
+            let secondParseJsonStr = firstParseJson["Element_000"]["topStr"].stringValue
             //엘릭서
-            if jsonInfo["Element_000"]["topStr"].stringValue.contains("엘릭서") {
-                let elixirsJson = jsonInfo["Element_000"]["contentStr"]
+            if secondParseJsonStr.contains("엘릭서") {
+                let elixirsJson = firstParseJson["Element_000"]["contentStr"]
                 var elixirStrings = [String]()
                 var elementIndex = 0
                 while elementIndex != -1 {
@@ -97,6 +100,15 @@ struct GetCharacterDetailUseCase {
                     )
                 }
             }
+            
+            //초월
+            if secondParseJsonStr.contains("[초월]") {
+                let separatedStrArr = secondParseJsonStr.components(separatedBy: ">")
+                transcendence = CharacterDetailEntity.Transcendence(
+                    grade: Int(separatedStrArr[safe: 3]?.components(separatedBy: "<").first ?? "") ?? 0,
+                    count: Int(separatedStrArr.last ?? "") ?? 0
+                )
+            }
         }
         let itemTitle = jsonData["Element_001"]["value"]
         return EquipmentDetailInfo(
@@ -105,7 +117,8 @@ struct GetCharacterDetailUseCase {
             itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets, 
             setOptionName: setOption.components(separatedBy: " <").first ?? "",
             setOptionLevelStr: setOption.insideAngleBrackets, 
-            elixirs: elixirs
+            elixirs: elixirs, 
+            transcendence: transcendence
         )
     }
     
@@ -116,11 +129,15 @@ struct GetCharacterDetailUseCase {
         let setOptionName: String
         let setOptionLevelStr: String
         let elixirs: [CharacterDetailEntity.Elixir]?
+        let transcendence: CharacterDetailEntity.Transcendence?
     }
 }
 
 //CharacterDetail 마무리 후 문제없이 작동하면 strint + Extension파일로 이동 예정
 extension String {
+    var isEmptyString: Bool {
+        self.replacingOccurrences(of: " ", with: "").isEmpty
+    }
     var insideAngleBrackets: String {
         let firstString = self.replacingOccurrences(of: "><", with: "")
         guard let startIndex = firstString.firstIndex(of: ">"),

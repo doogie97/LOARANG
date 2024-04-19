@@ -40,11 +40,17 @@ extension CharacterDetailEntity {
         let setOptionName: String
         let setOptionLevelStr: String
         let elixirs: [Elixir]?
+        let transcendence: Transcendence?
     }
     
     struct Elixir {
         let name: String
         let level: String
         let effect: String
+    }
+    
+    struct Transcendence {
+        let grade: Int
+        let count: Int
     }
 }
