@@ -54,19 +54,40 @@ struct GetCharacterDetailUseCase {
                 grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
                 qualityValue: equipmentDetailInfo.qualityValue,
                 itemLevel: equipmentDetailInfo.itemLevel,
-                itemTypeTitle: equipmentDetailInfo.itemTypeTitle
+                itemTypeTitle: equipmentDetailInfo.itemTypeTitle,
+                setOptionName: equipmentDetailInfo.setOptionName,
+                setOptionLevelStr: equipmentDetailInfo.setOptionLevelStr, 
+                elixirs: equipmentDetailInfo.elixirs
             )
         }
     }
     
     private func equipmentDetailInfo(_ tooltip: String?) -> EquipmentDetailInfo {
         let jsonData = JSON((tooltip ?? "").data(using: .utf8) ?? Data())
-        //세트옵션
         var setOption = ""
+        var elixirs: [CharacterDetailEntity.Elixir]?
         for number in 8...12 {
-            let setOptionInfo = jsonData["Element_\(number.formattedNumber)"]["value"]
-            if setOptionInfo["Element_000"].stringValue.contains("세트 효과 레벨") {
-                setOption = setOptionInfo["Element_001"].stringValue
+            //세트옵션
+            let jsonInfo = jsonData["Element_\(number.formattedNumber)"]["value"]
+            
+            if jsonInfo["Element_000"].stringValue.contains("세트 효과 레벨") {
+                setOption = jsonInfo["Element_001"].stringValue
+            }
+            
+            //엘릭서
+            if jsonInfo["Element_000"]["topStr"].stringValue.contains("엘릭서") {
+                let elixirsJson = jsonInfo["Element_000"]["contentStr"]
+                let firstElixir = elixirsJson["Element_000"]["contentStr"].stringValue
+                let secondElixir = elixirsJson["Element_001"]["contentStr"].stringValue
+                elixirs = [firstElixir, secondElixir].compactMap {
+                    let firstSearated = $0.components(separatedBy: ">")
+                    var secondSeparated = firstSearated
+                    return CharacterDetailEntity.Elixir(
+                        name: firstSearated[safe: 2]?.components(separatedBy: " <").first ?? "",
+                        level: firstSearated[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "",
+                        effect: firstSearated.last ?? ""
+                    )
+                }
             }
         }
         let itemTitle = jsonData["Element_001"]["value"]
@@ -75,7 +96,8 @@ struct GetCharacterDetailUseCase {
             itemLevel: itemTitle["leftStr2"].stringValue.insideAngleBrackets,
             itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets, 
             setOptionName: setOption.components(separatedBy: " <").first ?? "",
-            setOptionLevelStr: setOption.insideAngleBrackets
+            setOptionLevelStr: setOption.insideAngleBrackets, 
+            elixirs: elixirs
         )
     }
     
@@ -85,6 +107,7 @@ struct GetCharacterDetailUseCase {
         let itemTypeTitle: String
         let setOptionName: String
         let setOptionLevelStr: String
+        let elixirs: [CharacterDetailEntity.Elixir]?
     }
 }
 
