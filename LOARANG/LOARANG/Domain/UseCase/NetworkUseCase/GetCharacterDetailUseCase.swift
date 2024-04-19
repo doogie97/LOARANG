@@ -77,15 +77,23 @@ struct GetCharacterDetailUseCase {
             //엘릭서
             if jsonInfo["Element_000"]["topStr"].stringValue.contains("엘릭서") {
                 let elixirsJson = jsonInfo["Element_000"]["contentStr"]
-                let firstElixir = elixirsJson["Element_000"]["contentStr"].stringValue
-                let secondElixir = elixirsJson["Element_001"]["contentStr"].stringValue
-                elixirs = [firstElixir, secondElixir].compactMap {
-                    let firstSearated = $0.components(separatedBy: ">")
-                    var secondSeparated = firstSearated
+                var elixirStrings = [String]()
+                var elementIndex = 0
+                while elementIndex != -1 {
+                    let elixirString = elixirsJson["Element_\(elementIndex.formattedNumber)"]["contentStr"].stringValue
+                    if elixirString.isEmptyString {
+                        elementIndex = -1
+                    } else {
+                        elixirStrings.append(elixirString)
+                        elementIndex += 1
+                    }
+                }
+                elixirs = elixirStrings.compactMap {
+                    let searatedStrArr = $0.components(separatedBy: ">")
                     return CharacterDetailEntity.Elixir(
-                        name: firstSearated[safe: 2]?.components(separatedBy: " <").first ?? "",
-                        level: firstSearated[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "",
-                        effect: firstSearated.last ?? ""
+                        name: searatedStrArr[safe: 2]?.components(separatedBy: " <").first ?? "",
+                        level: searatedStrArr[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "",
+                        effect: searatedStrArr.last ?? ""
                     )
                 }
             }
