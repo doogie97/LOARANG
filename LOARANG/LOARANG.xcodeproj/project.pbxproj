@@ -200,6 +200,7 @@
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
+		C6C1A6F52BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
 		C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */; };
@@ -400,6 +401,7 @@
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
+		C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailProfileSectionView.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGameInfoEntity.swift; sourceTree = "<group>"; };
@@ -527,7 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */,
-				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
+				C6C1A6F22BD264B500EA7B8C /* CharacterDetailProfile */,
 				AC6CA2902893BBD70049C12F /* CharacterDetailSkill */,
 				716C46D92BD0B6A8009A474F /* CharacterDetailOwnCharacters */,
 			);
@@ -1144,6 +1146,23 @@
 			path = CharacterDetailView;
 			sourceTree = "<group>";
 		};
+		C6C1A6F22BD264B500EA7B8C /* CharacterDetailProfile */ = {
+			isa = PBXGroup;
+			children = (
+				71892D492BCE6D800008CD8C /* CharacterDetailProfileVC.swift */,
+				C6C1A6F32BD264CB00EA7B8C /* CharacterDetailProfileSection */,
+			);
+			path = CharacterDetailProfile;
+			sourceTree = "<group>";
+		};
+		C6C1A6F32BD264CB00EA7B8C /* CharacterDetailProfileSection */ = {
+			isa = PBXGroup;
+			children = (
+				C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */,
+			);
+			path = CharacterDetailProfileSection;
+			sourceTree = "<group>";
+		};
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1435,6 +1454,7 @@
 				AC799A8228A50C0D008A2865 /* BasicEquipmentViewController.swift in Sources */,
 				AC035C1E28C20BB800DD8BA4 /* PropensitiesView.swift in Sources */,
 				ACA27A3028B4D1AE0080EF4F /* SpecialEquipmentCell.swift in Sources */,
+				C6C1A6F52BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift in Sources */,
 				ACB0F16228BF7FE700C6BB2F /* EquipmentsView.swift in Sources */,
 				716867622BCCE0730008C28F /* DeleteMainUserUseCase.swift in Sources */,
 				ACD547B628EC2A1000D44ACA /* RecentUserTVCell.swift in Sources */,
