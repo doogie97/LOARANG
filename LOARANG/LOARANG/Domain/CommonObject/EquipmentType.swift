@@ -15,7 +15,7 @@ enum EquipmentType: String {
     case 목걸이
     case 귀걸이
     case 반지
-    case 어빌리티스톤
+    case 어빌리티스톤 = "어빌리티 스톤"
     case 팔찌
     case 나침반
     case 부적

@@ -20,12 +20,30 @@ struct GetCharacterDetailUseCase {
     func excute(name: String) async throws -> CharacterDetailEntity {
         do {
             let dto = try await networkRepository.getCharacterDetail(name: name)
+            
             let skillInfo = try await crawlManager.getSkillInfo(name)
+            let equipments = equipments(dto.ArmoryEquipment)
+            
+            var battleEquipments = [CharacterDetailEntity.Equipment]()
+            var jewelrys = [CharacterDetailEntity.Equipment]()
+            var etcEquipments = [CharacterDetailEntity.Equipment]()
+            for equipment in equipments {
+                switch equipment.equipmentType {
+                case .무기, .투구, .상의, .하의, .장갑, .어깨:
+                    battleEquipments.append(equipment)
+                case .목걸이, .귀걸이, .반지, .어빌리티스톤, .팔찌:
+                    jewelrys.append(equipment)
+                case .나침반, .부적, .unknown:
+                    etcEquipments.append(equipment)
+                }
+            }
             
             return CharacterDetailEntity(
                 profile: profile(dto.ArmoryProfile),
                 skillInfo: skillInfo,
-                equipments: equipments(dto.ArmoryEquipment)
+                battleEquipments: battleEquipments,
+                jewelrys: jewelrys,
+                etcEquipments: etcEquipments
             )
         } catch let error {
             throw error
@@ -48,7 +66,7 @@ struct GetCharacterDetailUseCase {
         return (dto ?? []).compactMap {
             let equipmentDetailInfo = equipmentDetailInfo($0.Tooltip)
             return CharacterDetailEntity.Equipment(
-                equipment: EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown,
+                equipmentType: EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown,
                 name: $0.Name ?? "",
                 imageUrl: $0.Icon ?? "",
                 grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
