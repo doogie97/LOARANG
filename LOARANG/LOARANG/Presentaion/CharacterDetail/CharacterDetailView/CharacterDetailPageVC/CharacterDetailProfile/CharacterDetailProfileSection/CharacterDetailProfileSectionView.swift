@@ -70,10 +70,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func battleEquipmentCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell,
+              let equipment = viewModel?.characterInfoData?.battleEquipments[safe: indexPath.row] else {
             return UICollectionViewCell()
         }
-        cell.setCellContents()
+        cell.setCellContents(equipment: equipment)
         return cell
     }
 }
@@ -84,6 +85,7 @@ extension CharacterDetailProfileSectionView {
         let layout = createLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .mainBackground
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         
         collectionView.register(CharacterDetailBasicInfoCell.self)
@@ -118,12 +120,14 @@ extension CharacterDetailProfileSectionView {
     }
     
     private func battleEquipmentLayout() -> NSCollectionLayoutSection {
+        let itemHeightInset = 8.0
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalWidth(0.6))
+                                              heightDimension: .absolute(95 + itemHeightInset))
         let item = NSCollectionLayoutItem(layoutSize: size)
+        item.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 8, trailing: margin(.width, 8))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
         
         return section
     }
