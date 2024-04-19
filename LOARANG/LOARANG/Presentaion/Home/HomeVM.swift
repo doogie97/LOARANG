@@ -238,7 +238,7 @@ final class HomeVM: HomeVMable {
     
     private func deleteBookmarkUser(_ rowIndex: Int) {
         guard let userName = ViewChangeManager.shared.bookmarkUsers.value[safe: rowIndex]?.name else {
-            showAlert.accept(.basic(message: "해당 유저를 찾을 수 없습니다."))
+            showAlert.accept(.basic(message: "캐릭터 정보를 찾을 수 없습니다.\n캐릭터명을 다시 한 번 확인해 주세요!"))
             return
         }
         
@@ -262,7 +262,7 @@ final class HomeVM: HomeVMable {
             } catch let error {
                 await MainActor.run {
                     if let apiError = error as? APIError, apiError == .DecodingError {
-                        showAlert.accept(.basic(message: "해당 캐릭터를 찾을 수 없습니다."))
+                        showAlert.accept(.basic(message: "캐릭터 정보를 찾을 수 없습니다.\n캐릭터명을 다시 한 번 확인해 주세요!"))
                     } else {
                         showAlert.accept(.basic(message: error.errorMessage))
                     }

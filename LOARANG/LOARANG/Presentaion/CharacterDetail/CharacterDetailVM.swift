@@ -109,9 +109,9 @@ final class CharacterDetailVM: CharacterDetailVMable {
                     localStorageUpdate(characterEntity)
                     isLoading.accept(false)
                 }
-            } catch let error {
+            } catch {
                 await MainActor.run {
-                    showAlert.accept((message: error.errorMessage, isPop: true))
+                    showAlert.accept((message: "캐릭터 정보를 찾을 수 없습니다.\n캐릭터명을 다시 한 번 확인해 주세요!", isPop: true))
                     isLoading.accept(false)
                 }
             }
