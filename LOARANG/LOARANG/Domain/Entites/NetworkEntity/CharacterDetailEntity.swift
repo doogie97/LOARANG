@@ -41,6 +41,7 @@ extension CharacterDetailEntity {
         let setOptionLevelStr: String
         let elixirs: [Elixir]?
         let transcendence: Transcendence?
+        let highReforgingLevel: Int?
     }
     
     struct Elixir {

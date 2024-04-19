@@ -58,13 +58,22 @@ struct GetCharacterDetailUseCase {
                 setOptionName: equipmentDetailInfo.setOptionName,
                 setOptionLevelStr: equipmentDetailInfo.setOptionLevelStr, 
                 elixirs: equipmentDetailInfo.elixirs,
-                transcendence: equipmentDetailInfo.transcendence
+                transcendence: equipmentDetailInfo.transcendence, 
+                highReforgingLevel: equipmentDetailInfo.highReforgingLevel
             )
         }
     }
     
     private func equipmentDetailInfo(_ tooltip: String?) -> EquipmentDetailInfo {
         let jsonData = JSON((tooltip ?? "").data(using: .utf8) ?? Data())
+        
+        //상급재련
+        var highReforgingLevel: Int?
+        let highReforgingInfo = jsonData["Element_005"]["value"].stringValue
+        if highReforgingInfo.contains("상급 재련") {
+            let str = highReforgingInfo.components(separatedBy: ">").joined().components(separatedBy: "'")[safe: 6]?.components(separatedBy: "<").first ?? ""
+            highReforgingLevel = Int(str)
+        }
         
         var basicEffect = [String]()
         var additionalEffect = [String]()
@@ -131,6 +140,7 @@ struct GetCharacterDetailUseCase {
             qualityValue: itemTitle["qualityValue"].intValue,
             itemLevel: itemTitle["leftStr2"].stringValue.insideAngleBrackets,
             itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets, 
+            highReforgingLevel: highReforgingLevel,
             basicEffect: basicEffect,
             additionalEffect: additionalEffect,
             setOptionName: setOption.components(separatedBy: " <").first ?? "",
@@ -144,6 +154,7 @@ struct GetCharacterDetailUseCase {
         let qualityValue: Int
         let itemLevel: String
         let itemTypeTitle: String
+        let highReforgingLevel: Int?
         let basicEffect: [String]
         let additionalEffect: [String]
         let setOptionName: String
