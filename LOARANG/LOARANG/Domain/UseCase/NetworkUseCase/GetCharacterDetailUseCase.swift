@@ -65,14 +65,28 @@ struct GetCharacterDetailUseCase {
     
     private func equipmentDetailInfo(_ tooltip: String?) -> EquipmentDetailInfo {
         let jsonData = JSON((tooltip ?? "").data(using: .utf8) ?? Data())
+        
+        var basicEffect = [String]()
+        var additionalEffect = [String]()
         var setOption = ""
         var elixirs: [CharacterDetailEntity.Elixir]?
         var transcendence: CharacterDetailEntity.Transcendence?
-        for number in 8...12 {
-            //세트옵션
+        for number in 4...12 {
             let firstParseJson = jsonData["Element_\(number.formattedNumber)"]["value"]
             
-            if firstParseJson["Element_000"].stringValue.contains("세트 효과 레벨") {
+            let firstParseJson000Str = firstParseJson["Element_000"].stringValue
+            //기본 효과
+            if firstParseJson000Str.contains("기본 효과") {
+                basicEffect = firstParseJson["Element_001"].stringValue.components(separatedBy: "<BR>").compactMap { return $0.insideAngleBrackets }
+            }
+            
+            // 추가 효과
+            if firstParseJson000Str.contains("추가 효과") || firstParseJson000Str.contains("세공 단계") {
+                additionalEffect = firstParseJson["Element_001"].stringValue.components(separatedBy: "<BR>").compactMap { return $0.insideAngleBrackets }
+            }
+            
+            //세트 옵션
+            if firstParseJson000Str.contains("세트 효과 레벨") {
                 setOption = firstParseJson["Element_001"].stringValue
             }
             
@@ -110,11 +124,15 @@ struct GetCharacterDetailUseCase {
                 )
             }
         }
+        
         let itemTitle = jsonData["Element_001"]["value"]
+        
         return EquipmentDetailInfo(
             qualityValue: itemTitle["qualityValue"].intValue,
             itemLevel: itemTitle["leftStr2"].stringValue.insideAngleBrackets,
             itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets, 
+            basicEffect: basicEffect,
+            additionalEffect: additionalEffect,
             setOptionName: setOption.components(separatedBy: " <").first ?? "",
             setOptionLevelStr: setOption.insideAngleBrackets, 
             elixirs: elixirs, 
@@ -126,6 +144,8 @@ struct GetCharacterDetailUseCase {
         let qualityValue: Int
         let itemLevel: String
         let itemTypeTitle: String
+        let basicEffect: [String]
+        let additionalEffect: [String]
         let setOptionName: String
         let setOptionLevelStr: String
         let elixirs: [CharacterDetailEntity.Elixir]?
@@ -138,6 +158,7 @@ extension String {
     var isEmptyString: Bool {
         self.replacingOccurrences(of: " ", with: "").isEmpty
     }
+    
     var insideAngleBrackets: String {
         let firstString = self.replacingOccurrences(of: "><", with: "")
         guard let startIndex = firstString.firstIndex(of: ">"),
