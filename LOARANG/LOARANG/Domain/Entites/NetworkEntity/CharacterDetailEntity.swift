@@ -39,5 +39,12 @@ extension CharacterDetailEntity {
         let itemTypeTitle: String
         let setOptionName: String
         let setOptionLevelStr: String
+        let elixirs: [Elixir]?
+    }
+    
+    struct Elixir {
+        let name: String
+        let level: String
+        let effect: String
     }
 }
