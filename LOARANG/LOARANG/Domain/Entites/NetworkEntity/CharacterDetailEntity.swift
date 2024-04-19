@@ -42,6 +42,7 @@ extension CharacterDetailEntity {
         let elixirs: [Elixir]?
         let transcendence: Transcendence?
         let highReforgingLevel: Int?
+        let engraving: [(name: String, value: Int)]
     }
     
     struct Elixir {

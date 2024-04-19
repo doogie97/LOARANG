@@ -56,10 +56,11 @@ struct GetCharacterDetailUseCase {
                 itemLevel: equipmentDetailInfo.itemLevel,
                 itemTypeTitle: equipmentDetailInfo.itemTypeTitle,
                 setOptionName: equipmentDetailInfo.setOptionName,
-                setOptionLevelStr: equipmentDetailInfo.setOptionLevelStr, 
+                setOptionLevelStr: equipmentDetailInfo.setOptionLevelStr,
                 elixirs: equipmentDetailInfo.elixirs,
-                transcendence: equipmentDetailInfo.transcendence, 
-                highReforgingLevel: equipmentDetailInfo.highReforgingLevel
+                transcendence: equipmentDetailInfo.transcendence,
+                highReforgingLevel: equipmentDetailInfo.highReforgingLevel, 
+                engraving: equipmentDetailInfo.engraving
             )
         }
     }
@@ -78,8 +79,10 @@ struct GetCharacterDetailUseCase {
         var basicEffect = [String]()
         var additionalEffect = [String]()
         var setOption = ""
+        var engraving = [(name: String, value: Int)]()
         var elixirs: [CharacterDetailEntity.Elixir]?
         var transcendence: CharacterDetailEntity.Transcendence?
+        
         for number in 4...12 {
             let firstParseJson = jsonData["Element_\(number.formattedNumber)"]["value"]
             
@@ -97,6 +100,26 @@ struct GetCharacterDetailUseCase {
             //세트 옵션
             if firstParseJson000Str.contains("세트 효과 레벨") {
                 setOption = firstParseJson["Element_001"].stringValue
+            }
+            
+            //각인 효과
+            if firstParseJson["Element_000"]["topStr"].stringValue.contains("각인 효과") {
+                let engravingsJson = firstParseJson["Element_000"]["contentStr"]
+                var elementIndex = 0
+                while elementIndex != -1 {
+                    if elementIndex != -1 {
+                        let engravingStr = engravingsJson["Element_\(elementIndex.formattedNumber)"]["contentStr"].stringValue
+                        if engravingStr.contains("활성도"){
+                            let separated = engravingStr.components(separatedBy: "] ")
+                            let name = separated.first?.insideAngleBrackets ?? ""
+                            let value = Int(separated.last?.replacingOccurrences(of: "<BR>", with: "").replacingOccurrences(of: "활성도 ", with: "") ?? "") ?? 0
+                            engraving.append((name: name, value: value))
+                            elementIndex += 1
+                        } else {
+                            elementIndex = -1
+                        }
+                    }
+                }
             }
             
             let secondParseJsonStr = firstParseJson["Element_000"]["topStr"].stringValue
@@ -139,14 +162,15 @@ struct GetCharacterDetailUseCase {
         return EquipmentDetailInfo(
             qualityValue: itemTitle["qualityValue"].intValue,
             itemLevel: itemTitle["leftStr2"].stringValue.insideAngleBrackets,
-            itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets, 
+            itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets,
             highReforgingLevel: highReforgingLevel,
             basicEffect: basicEffect,
             additionalEffect: additionalEffect,
             setOptionName: setOption.components(separatedBy: " <").first ?? "",
-            setOptionLevelStr: setOption.insideAngleBrackets, 
-            elixirs: elixirs, 
-            transcendence: transcendence
+            setOptionLevelStr: setOption.insideAngleBrackets,
+            elixirs: elixirs,
+            transcendence: transcendence, 
+            engraving: engraving
         )
     }
     
@@ -161,6 +185,7 @@ struct GetCharacterDetailUseCase {
         let setOptionLevelStr: String
         let elixirs: [CharacterDetailEntity.Elixir]?
         let transcendence: CharacterDetailEntity.Transcendence?
+        let engraving: [(name: String, value: Int)]
     }
 }
 
