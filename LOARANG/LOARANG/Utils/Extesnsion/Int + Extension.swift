@@ -40,4 +40,9 @@ extension Int {
             return UIScreen.main.bounds.width * 0.38
         }
     }
+    
+    ///Int를 -> 세 자리 숫자로 변환
+    var formattedNumber: String {
+            return String(format: "%03d", self)
+        }
 }

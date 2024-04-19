@@ -17,6 +17,7 @@ final class HomeMainUserCVCell: UICollectionViewCell {
     private lazy var userInfoView = {
         let view = UIView()
         view.isHidden = true
+        view.layer.opacity = 0
         view.backgroundColor = .cellColor
         view.layer.cornerRadius = 6
         view.addSubview(classLabelView)
@@ -259,8 +260,14 @@ final class HomeMainUserCVCell: UICollectionViewCell {
             battleLvLabel.text = "Lv." + userInfo.battleLV.description
             expeditionLvLabel.text = "Lv." + userInfo.expeditionLV.description
             userInfoView.isHidden = false
+            if userInfoView.layer.opacity == 0 {
+                UIView.animate(withDuration: 0.3) { [weak self] in
+                    self?.userInfoView.layer.opacity = 1
+                }
+            }
         } else {
             emptyView.isHidden = false
+            userInfoView.layer.opacity = 0
         }
     }
     
