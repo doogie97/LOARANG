@@ -157,12 +157,14 @@ struct GetCharacterDetailUseCase {
             }
         }
         
+        let reinforcementLevel = Int(jsonData["Element_000"]["value"].stringValue.components(separatedBy: ">+").last?.components(separatedBy: " ").first ?? "") ?? 0
         let itemTitle = jsonData["Element_001"]["value"]
         
         return EquipmentDetailInfo(
             qualityValue: itemTitle["qualityValue"].intValue,
             itemLevel: itemTitle["leftStr2"].stringValue.insideAngleBrackets,
             itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets,
+            reinforcementLevel: reinforcementLevel,
             highReforgingLevel: highReforgingLevel,
             basicEffect: basicEffect,
             additionalEffect: additionalEffect,
@@ -178,6 +180,9 @@ struct GetCharacterDetailUseCase {
         let qualityValue: Int
         let itemLevel: String
         let itemTypeTitle: String
+        ///기본 강화 레벨
+        let reinforcementLevel: Int
+        ///상급 강화 레벨
         let highReforgingLevel: Int?
         let basicEffect: [String]
         let additionalEffect: [String]
