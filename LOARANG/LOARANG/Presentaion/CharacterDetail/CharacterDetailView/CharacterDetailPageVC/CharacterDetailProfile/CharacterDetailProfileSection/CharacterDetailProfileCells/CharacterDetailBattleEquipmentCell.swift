@@ -83,6 +83,7 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         transcendenceCountLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.leading.equalTo(transcendenceGradeLabel.snp.trailing)
+            $0.trailing.equalToSuperview()
         }
         
         return view
@@ -134,6 +135,7 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
     }
     
     private func addElixirStackView(_ elixirs: [CharacterDetailEntity.Elixir]) {
+        elixirStackView.isHidden = elixirs.isEmpty
         for elixir in elixirs {
             let label = PaddingLabel(top: 0, bottom: 0, left: 8, right: 8)
             label.font = .pretendard(size: 12, family: .Bold)
