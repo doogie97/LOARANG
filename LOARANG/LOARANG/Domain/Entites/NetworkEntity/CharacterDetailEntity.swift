@@ -37,7 +37,7 @@ extension CharacterDetailEntity {
         let grade: Grade
         //여기부터 tooltip info
         let qualityValue: Int
-        let itemLevel: String
+        let itemLevel: Int
         let itemTypeTitle: String
         let setOptionName: String
         let setOptionLevelStr: String

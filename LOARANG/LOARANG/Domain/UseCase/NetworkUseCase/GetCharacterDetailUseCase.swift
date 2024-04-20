@@ -180,7 +180,7 @@ struct GetCharacterDetailUseCase {
         
         return EquipmentDetailInfo(
             qualityValue: itemTitle["qualityValue"].intValue,
-            itemLevel: itemTitle["leftStr2"].stringValue.insideAngleBrackets,
+            itemLevel: Int(itemTitle["leftStr2"].stringValue.components(separatedBy: " ")[safe: 3] ?? "") ?? 0,
             itemTypeTitle: itemTitle["leftStr0"].stringValue.insideAngleBrackets,
             reinforcementLevel: reinforcementLevel,
             highReforgingLevel: highReforgingLevel,
@@ -196,7 +196,7 @@ struct GetCharacterDetailUseCase {
     
     struct EquipmentDetailInfo {
         let qualityValue: Int
-        let itemLevel: String
+        let itemLevel: Int
         let itemTypeTitle: String
         ///기본 강화 레벨
         let reinforcementLevel: Int
