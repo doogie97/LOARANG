@@ -10,6 +10,7 @@ import SnapKit
 
 final class CharacterDetailProfileVC: UIViewController, PageViewInnerVCDelegate {
     private weak var viewModel: CharacterDetailVMable?
+    private let sectionView = CharacterDetailProfileSectionView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -26,9 +27,15 @@ final class CharacterDetailProfileVC: UIViewController, PageViewInnerVCDelegate 
     
     func setViewContents(viewModel: CharacterDetailVMable?) {
         self.viewModel = viewModel
+        sectionView.setViewContents(viewModel: viewModel)
     }
     
     private func setLayout() {
-        self.view.backgroundColor = .systemRed
+        self.view.backgroundColor = .cellBackgroundColor
+        self.view.addSubview(sectionView)
+        
+        sectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
