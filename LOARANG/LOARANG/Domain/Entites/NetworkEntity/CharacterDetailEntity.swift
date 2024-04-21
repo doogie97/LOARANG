@@ -27,6 +27,22 @@ extension CharacterDetailEntity {
         let characterName: String
         let characterClass: CharacterClass
         let imageUrl: String
+        let title: String
+        let pvpGradeName: String
+        let townName: String
+        let guildName: String
+        let stats: [Stat]
+        let tendencies: [Tendency]
+    }
+    
+    struct Stat {
+        let statType: StatType
+        let value: Int
+    }
+    
+    struct Tendency {
+        let tendencyType: TendencyType
+        let value: Int
     }
 }
 

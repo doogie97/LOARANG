@@ -94,7 +94,23 @@ struct GetCharacterDetailUseCase {
             expeditionLevel: dto?.ExpeditionLevel ?? 0,
             characterName: dto?.CharacterName ?? "",
             characterClass: CharacterClass(rawValue: dto?.CharacterClassName ?? "") ?? .unknown,
-            imageUrl: dto?.CharacterImage ?? ""
+            imageUrl: dto?.CharacterImage ?? "",
+            title: dto?.Title ?? "",
+            pvpGradeName: dto?.PvpGradeName ?? "",
+            townName: dto?.TownName ?? "",
+            guildName: dto?.GuildName ?? "",
+            stats: (dto?.Stats ?? []).compactMap {
+                return CharacterDetailEntity.Stat(
+                    statType: StatType(rawValue: $0.statType ?? "") ?? .unknown,
+                    value: Int($0.Value ?? "") ?? 0
+                )
+            },
+            tendencies: (dto?.Tendencies ?? []).compactMap {
+                return CharacterDetailEntity.Tendency(
+                    tendencyType: TendencyType(rawValue: $0.tendencyType ?? "") ?? .unknown,
+                    value: $0.Value ?? 0
+                )
+            }
         )
     }
     
