@@ -27,10 +27,23 @@ struct GetCharacterDetailUseCase {
             var battleEquipments = [CharacterDetailEntity.Equipment]()
             var jewelrys = [CharacterDetailEntity.Equipment]()
             var etcEquipments = [CharacterDetailEntity.Equipment]()
+            
+            var elixirTotalLevel = 0
+            var elixirInfo: CharacterDetailEntity.ElixirInfo? {
+                if elixirTotalLevel == 0 {
+                    return nil
+                } else {
+                    return CharacterDetailEntity.ElixirInfo(totlaLevel: elixirTotalLevel)
+                }
+            }
+            
             for equipment in equipments {
                 switch equipment.equipmentType {
                 case .무기, .투구, .상의, .하의, .장갑, .어깨:
                     battleEquipments.append(equipment)
+                    equipment.elixirs?.forEach {
+                        elixirTotalLevel += $0.level
+                    }
                 case .목걸이, .귀걸이, .반지, .어빌리티스톤, .팔찌:
                     jewelrys.append(equipment)
                 case .나침반, .부적, .unknown:
@@ -43,7 +56,8 @@ struct GetCharacterDetailUseCase {
                 skillInfo: skillInfo,
                 battleEquipments: battleEquipments,
                 jewelrys: jewelrys,
-                etcEquipments: etcEquipments
+                etcEquipments: etcEquipments, 
+                elixirInfo: elixirInfo
             )
         } catch let error {
             throw error
@@ -182,7 +196,7 @@ struct GetCharacterDetailUseCase {
     
     private func parseElixirs(_ firstParseJson: JSON) -> [CharacterDetailEntity.Elixir] {
         var elixirs = [CharacterDetailEntity.Elixir]()
-        
+        var levelSum = 0
         let elixirsJson = firstParseJson["Element_000"]["contentStr"]
         var elementIndex = 0
         while elementIndex != -1 {
@@ -191,9 +205,11 @@ struct GetCharacterDetailUseCase {
                 elementIndex = -1
             } else {
                 let searatedStrArr = elixirString.components(separatedBy: ">")
+                let level = Int((searatedStrArr[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "").replacingOccurrences(of: "Lv.", with: "")) ?? 0
+                levelSum += level
                 elixirs.append(CharacterDetailEntity.Elixir(
                     name: searatedStrArr[safe: 2]?.components(separatedBy: " <").first ?? "",
-                    level: searatedStrArr[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "",
+                    level: level,
                     effect: searatedStrArr.last ?? "")
                 )
                 elementIndex += 1
