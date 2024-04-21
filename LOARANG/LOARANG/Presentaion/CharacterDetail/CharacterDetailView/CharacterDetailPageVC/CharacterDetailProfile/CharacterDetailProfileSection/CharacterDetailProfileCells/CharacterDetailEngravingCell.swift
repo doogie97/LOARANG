@@ -11,7 +11,7 @@ import Kingfisher
 
 final class CharacterDetailEngravingCell: UICollectionViewCell {
     func setCellContents() {
-        self.backgroundColor = .systemGreen
+        self.contentView.backgroundColor = .cellColor
         setLayout()
     }
     

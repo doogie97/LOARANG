@@ -103,10 +103,13 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func twoRwoSection(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let profile = viewModel?.characterInfoData?.profile else {
+            return UICollectionViewCell()
+        }
         var cell: UICollectionViewCell? {
             if indexPath.row == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailStatCell.self)", for: indexPath) as? CharacterDetailStatCell
-                cell?.setCellContents()
+                cell?.setCellContents(profileInfo: profile)
                 return cell
             }
             
@@ -196,10 +199,10 @@ extension CharacterDetailProfileSectionView {
     
     private func twoRowSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
-                                              heightDimension: .fractionalWidth(1))
+                                              heightDimension: .absolute(400))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .fractionalWidth(1))
+                                               heightDimension: .absolute(400))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
