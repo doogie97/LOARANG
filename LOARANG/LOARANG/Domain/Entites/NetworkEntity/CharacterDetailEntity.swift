@@ -43,6 +43,7 @@ extension CharacterDetailEntity {
         let setOptionName: String
         let setOptionLevelStr: String
         let elixirs: [Elixir]?
+        let specialElixirEffect: SpecialElixirEffectInfo?
         let transcendence: Transcendence?
         let highReforgingLevel: Int?
         let engraving: [(name: String, value: Int)]
@@ -54,6 +55,18 @@ extension CharacterDetailEntity {
         let effects: [(effect: String, value: String)]
     }
     
+    struct SpecialElixirEffectInfo {
+        let name: String
+        let grade: Int
+        let effects: [SpecialElixirEffect]
+    }
+    
+    struct SpecialElixirEffect {
+        let title: String
+        let activeLevel: Int
+        let effect: String
+    }
+    
     struct Transcendence {
         let grade: Int
         let count: Int
@@ -61,5 +74,6 @@ extension CharacterDetailEntity {
     
     struct ElixirInfo {
         let totlaLevel: Int
+        let activeSpecialEffect: SpecialElixirEffectInfo?
     }
 }

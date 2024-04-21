@@ -29,11 +29,13 @@ struct GetCharacterDetailUseCase {
             var etcEquipments = [CharacterDetailEntity.Equipment]()
             
             var elixirTotalLevel = 0
+            var activeSpecialEffect: CharacterDetailEntity.SpecialElixirEffectInfo?
             var elixirInfo: CharacterDetailEntity.ElixirInfo? {
                 if elixirTotalLevel == 0 {
                     return nil
                 } else {
-                    return CharacterDetailEntity.ElixirInfo(totlaLevel: elixirTotalLevel)
+                    return CharacterDetailEntity.ElixirInfo(totlaLevel: elixirTotalLevel, 
+                                                            activeSpecialEffect: activeSpecialEffect)
                 }
             }
             
@@ -43,6 +45,9 @@ struct GetCharacterDetailUseCase {
                     battleEquipments.append(equipment)
                     equipment.elixirs?.forEach {
                         elixirTotalLevel += $0.level
+                    }
+                    if activeSpecialEffect == nil, equipment.specialElixirEffect != nil {
+                        activeSpecialEffect = equipment.specialElixirEffect
                     }
                 case .목걸이, .귀걸이, .반지, .어빌리티스톤, .팔찌:
                     jewelrys.append(equipment)
@@ -56,7 +61,7 @@ struct GetCharacterDetailUseCase {
                 skillInfo: skillInfo,
                 battleEquipments: battleEquipments,
                 jewelrys: jewelrys,
-                etcEquipments: etcEquipments, 
+                etcEquipments: etcEquipments,
                 elixirInfo: elixirInfo
             )
         } catch let error {
@@ -89,9 +94,10 @@ struct GetCharacterDetailUseCase {
                 itemTypeTitle: equipmentDetailInfo.itemTypeTitle,
                 setOptionName: equipmentDetailInfo.setOptionName,
                 setOptionLevelStr: equipmentDetailInfo.setOptionLevelStr,
-                elixirs: equipmentDetailInfo.elixirs,
+                elixirs: equipmentDetailInfo.elixirs, 
+                specialElixirEffect: equipmentDetailInfo.specialElixirEffect,
                 transcendence: equipmentDetailInfo.transcendence,
-                highReforgingLevel: equipmentDetailInfo.highReforgingLevel, 
+                highReforgingLevel: equipmentDetailInfo.highReforgingLevel,
                 engraving: equipmentDetailInfo.engraving
             )
         }
@@ -105,6 +111,7 @@ struct GetCharacterDetailUseCase {
         var setOption = ""
         var engraving = [(name: String, value: Int)]()
         var elixirs: [CharacterDetailEntity.Elixir]?
+        var specialElixirEffect: CharacterDetailEntity.SpecialElixirEffectInfo?
         var transcendence: CharacterDetailEntity.Transcendence?
         
         for number in 4...12 {
@@ -130,9 +137,14 @@ struct GetCharacterDetailUseCase {
                 engraving = parseEngraving(firstParseJson)
             }
             
+            
             let secondParseJsonStr = firstParseJson["Element_000"]["topStr"].stringValue
             if secondParseJsonStr.contains("엘릭서") {
                 elixirs = parseElixirs(firstParseJson)
+            }
+            
+            if secondParseJsonStr.contains("연성 추가 효과") && secondParseJsonStr.contains("단계") {
+                specialElixirEffect = parseSpecialElixirEffect(firstParseJson)
             }
             
             if secondParseJsonStr.contains("[초월]") {
@@ -157,7 +169,8 @@ struct GetCharacterDetailUseCase {
             setOptionName: setOption.components(separatedBy: " <").first ?? "",
             setOptionLevelStr: setOption.insideAngleBrackets,
             elixirs: elixirs,
-            transcendence: transcendence, 
+            specialElixirEffect: specialElixirEffect,
+            transcendence: transcendence,
             engraving: engraving
         )
     }
@@ -195,7 +208,6 @@ struct GetCharacterDetailUseCase {
     
     private func parseElixirs(_ firstParseJson: JSON) -> [CharacterDetailEntity.Elixir] {
         var elixirs = [CharacterDetailEntity.Elixir]()
-        var levelSum = 0
         let elixirsJson = firstParseJson["Element_000"]["contentStr"]
         var elementIndex = 0
         while elementIndex != -1 {
@@ -230,6 +242,28 @@ struct GetCharacterDetailUseCase {
         return elixirs
     }
     
+    private func parseSpecialElixirEffect(_ firstParseJson: JSON) -> CharacterDetailEntity.SpecialElixirEffectInfo {
+        let effectJson = firstParseJson["Element_000"]
+        let separatedTitle = firstParseJson["Element_000"]["topStr"].stringValue.components(separatedBy: "<")[safe: 4]?.components(separatedBy: ">").last?.components(separatedBy: " (")
+        let name = separatedTitle?.first ?? ""
+        let grade = Int(separatedTitle?.last?.replacingOccurrences(of: "단계)", with: "") ?? "") ?? 0
+        var effects = [CharacterDetailEntity.SpecialElixirEffect]()
+        if grade > 0 {
+            for index in 0..<grade {
+                let separatedEffect = effectJson["contentStr"]["Element_\(index.formattedNumber)"]["contentStr"].stringValue.components(separatedBy: "<br>")
+                let separatedFirstEffect = separatedEffect.first?.components(separatedBy: ">") ?? []
+                let gradeStr = separatedFirstEffect[safe: 2]?.components(separatedBy: " : ").first ?? ""
+                let activeLevelStr = separatedFirstEffect[safe: 4]?.components(separatedBy: "<").first?.components(separatedBy: " ").last
+                effects.append(CharacterDetailEntity.SpecialElixirEffect(title: name + " " + gradeStr,
+                                                                         activeLevel: Int(activeLevelStr ?? "") ?? 0,
+                                                                         effect: separatedEffect.last ?? ""))
+            }
+        }
+        return CharacterDetailEntity.SpecialElixirEffectInfo(name: name,
+                                                             grade: grade,
+                                                             effects: effects)
+    }
+    
     struct EquipmentDetailInfo {
         let qualityValue: Int
         let itemLevel: Int
@@ -243,6 +277,7 @@ struct GetCharacterDetailUseCase {
         let setOptionName: String
         let setOptionLevelStr: String
         let elixirs: [CharacterDetailEntity.Elixir]?
+        let specialElixirEffect: CharacterDetailEntity.SpecialElixirEffectInfo?
         let transcendence: CharacterDetailEntity.Transcendence?
         let engraving: [(name: String, value: Int)]
     }
