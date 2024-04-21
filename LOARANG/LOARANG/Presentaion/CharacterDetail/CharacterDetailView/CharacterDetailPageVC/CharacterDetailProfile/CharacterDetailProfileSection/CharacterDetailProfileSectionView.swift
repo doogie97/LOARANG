@@ -12,6 +12,7 @@ final class CharacterDetailProfileSectionView: UIView {
     private weak var viewModel: CharacterDetailVMable?
     enum ProfileSectionCase: CaseIterable {
         case basicInfo
+        case equipmentEffectView
         case battleEquipment
     }
     
@@ -43,6 +44,13 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         switch section {
         case .basicInfo:
             return 1
+        case .equipmentEffectView:
+            let characterInfo = viewModel?.characterInfoData
+            if !(characterInfo?.jewelrys ?? []).contains(where: { $0.equipmentType == .팔찌 }) && characterInfo?.elixirInfo == nil && characterInfo?.transcendenceInfo == nil {
+                return 0
+            } else {
+                return 1
+            }
         case .battleEquipment:
             return viewModel?.characterInfoData?.battleEquipments.count ?? 0
         }
@@ -56,6 +64,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         switch section {
         case .basicInfo:
             return basicInfoCell(collectionView: collectionView, indexPath: indexPath)
+        case .equipmentEffectView:
+            return equipmentEffectCell(collectionView: collectionView, indexPath: indexPath)
         case .battleEquipment:
             return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
         }
@@ -63,6 +73,14 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     
     private func basicInfoCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBasicInfoCell.self)", for: indexPath) as? CharacterDetailBasicInfoCell else {
+            return UICollectionViewCell()
+        }
+        cell.setCellContents()
+        return cell
+    }
+    
+    private func equipmentEffectCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailequipmentEffectCell.self)", for: indexPath) as? CharacterDetailequipmentEffectCell else {
             return UICollectionViewCell()
         }
         cell.setCellContents()
@@ -89,6 +107,7 @@ extension CharacterDetailProfileSectionView {
         collectionView.dataSource = self
         
         collectionView.register(CharacterDetailBasicInfoCell.self)
+        collectionView.register(CharacterDetailequipmentEffectCell.self)
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
         
         return collectionView
@@ -102,6 +121,8 @@ extension CharacterDetailProfileSectionView {
             switch section {
             case .basicInfo:
                 return self?.basicInfoLayout()
+            case .equipmentEffectView:
+                return self?.equipmentEffectViewLayout()
             case .battleEquipment:
                 return self?.battleEquipmentLayout()
             }
@@ -111,6 +132,17 @@ extension CharacterDetailProfileSectionView {
     private func basicInfoLayout() -> NSCollectionLayoutSection {
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalWidth(0.6))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        
+        return section
+    }
+    
+    private func equipmentEffectViewLayout() -> NSCollectionLayoutSection {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(70))
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)

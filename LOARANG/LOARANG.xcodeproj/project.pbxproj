@@ -200,6 +200,7 @@
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
+		C6B73C462BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */; };
 		C6C1A6F52BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */; };
 		C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */; };
 		C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */; };
@@ -403,6 +404,7 @@
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
+		C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailequipmentEffectCell.swift; sourceTree = "<group>"; };
 		C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailProfileSectionView.swift; sourceTree = "<group>"; };
 		C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBasicInfoCell.swift; sourceTree = "<group>"; };
 		C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBattleEquipmentCell.swift; sourceTree = "<group>"; };
@@ -1172,6 +1174,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */,
+				C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */,
 				C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */,
 			);
 			path = CharacterDetailProfileCells;
@@ -1440,6 +1443,7 @@
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				71892D4E2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift in Sources */,
+				C6B73C462BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift in Sources */,
 				C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */,
 				C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */,
 				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,
