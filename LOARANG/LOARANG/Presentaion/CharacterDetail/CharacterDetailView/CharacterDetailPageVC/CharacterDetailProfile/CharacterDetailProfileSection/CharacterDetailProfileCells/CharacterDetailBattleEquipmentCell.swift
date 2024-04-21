@@ -141,8 +141,9 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
             label.font = .pretendard(size: 12, family: .Bold)
             label.textAlignment = .center
             label.clipsToBounds = true
-            label.layer.cornerRadius = 6
-            label.backgroundColor = #colorLiteral(red: 0.8319634242, green: 0.5703660988, blue: 0.4756819447, alpha: 1)
+            label.layer.cornerRadius = 12.5
+            label.layer.borderWidth = 0.5
+            label.layer.borderColor = UIColor.systemGray.cgColor
             label.text = elixir.name + " Lv.\(elixir.level)"
             elixirStackView.addArrangedSubview(label)
         }
