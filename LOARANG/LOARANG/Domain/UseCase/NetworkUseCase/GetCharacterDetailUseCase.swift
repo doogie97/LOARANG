@@ -100,15 +100,19 @@ struct GetCharacterDetailUseCase {
     
     private func equipments(_ dto: [CharactersDetailDTO.Equipment]?) -> [CharacterDetailEntity.Equipment] {
         return (dto ?? []).compactMap {
-            let equipmentDetailInfo = equipmentDetailInfo($0.Tooltip)
+            let equipmentType = EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown
+            let equipmentDetailInfo = equipmentDetailInfo($0.Tooltip,
+                                                          equipmentType: equipmentType)
             return CharacterDetailEntity.Equipment(
-                equipmentType: EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown,
+                equipmentType: equipmentType,
                 name: $0.Name ?? "",
                 imageUrl: $0.Icon ?? "",
                 grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
                 qualityValue: equipmentDetailInfo.qualityValue,
                 itemLevel: equipmentDetailInfo.itemLevel,
                 itemTypeTitle: equipmentDetailInfo.itemTypeTitle,
+                basicEffect: equipmentDetailInfo.basicEffect,
+                additionalEffect: equipmentDetailInfo.additionalEffect,
                 setOptionName: equipmentDetailInfo.setOptionName,
                 setOptionLevelStr: equipmentDetailInfo.setOptionLevelStr,
                 elixirs: equipmentDetailInfo.elixirs, 
@@ -120,7 +124,7 @@ struct GetCharacterDetailUseCase {
         }
     }
     
-    private func equipmentDetailInfo(_ tooltip: String?) -> EquipmentDetailInfo {
+    private func equipmentDetailInfo(_ tooltip: String?, equipmentType: EquipmentType) -> EquipmentDetailInfo {
         let jsonData = JSON((tooltip ?? "").data(using: .utf8) ?? Data())
         
         var basicEffect = [String]()
@@ -136,8 +140,13 @@ struct GetCharacterDetailUseCase {
             
             let firstParseJson000Str = firstParseJson["Element_000"].stringValue
             
-            if firstParseJson000Str.contains("기본 효과") {
+            if firstParseJson000Str.contains("기본 효과") || firstParseJson000Str.contains("팔찌 효과") {
                 basicEffect = firstParseJson["Element_001"].stringValue.components(separatedBy: "<BR>").compactMap { return $0.insideAngleBrackets }
+                if equipmentType == .팔찌 {
+                    let effects = braceletEffects(firstParseJson)
+                    basicEffect = effects.basic
+                    additionalEffect = effects.additional
+                }
             }
             
             if firstParseJson000Str.contains("추가 효과") || firstParseJson000Str.contains("세공 단계") {
@@ -190,6 +199,23 @@ struct GetCharacterDetailUseCase {
             transcendence: transcendence,
             engraving: engraving
         )
+    }
+    
+    func braceletEffects(_ firstParseJson: JSON) -> (basic: [String], additional: [String]) {
+        var effects = (basic: [String](), additional: [String]())
+        firstParseJson["Element_001"].stringValue.components(separatedBy: "<img src=\'emoticon_tooltip_bracelet").forEach {
+            if !$0.isEmptyString {
+                if $0.contains(" +") {
+                    effects.basic.append($0.insideAngleBrackets.trimmingCharacters(in: .whitespaces))
+                } else {
+                    
+                    if let effect = $0.components(separatedBy: "[<FONT COLOR=\'\'>")[safe: 1]?.components(separatedBy: "<").first {
+                        effects.additional.append(effect)
+                    }
+                }
+            }
+        }
+        return effects
     }
     
     private func parseHighReforgingLevel(_ jsonData: JSON) -> Int? {

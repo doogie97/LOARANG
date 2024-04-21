@@ -41,6 +41,8 @@ extension CharacterDetailEntity {
         let qualityValue: Int
         let itemLevel: Int
         let itemTypeTitle: String
+        let basicEffect: [String]
+        let additionalEffect: [String]
         let setOptionName: String
         let setOptionLevelStr: String
         let elixirs: [Elixir]?
