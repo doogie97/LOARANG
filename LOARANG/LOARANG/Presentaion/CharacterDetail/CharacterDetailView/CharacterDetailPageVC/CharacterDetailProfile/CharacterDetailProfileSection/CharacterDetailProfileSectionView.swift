@@ -80,10 +80,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func equipmentEffectCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailequipmentEffectCell.self)", for: indexPath) as? CharacterDetailequipmentEffectCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailequipmentEffectCell.self)", for: indexPath) as? CharacterDetailequipmentEffectCell,
+              let characterInfo = viewModel?.characterInfoData else {
             return UICollectionViewCell()
         }
-        cell.setCellContents()
+        cell.setCellContents(characterInfo: characterInfo)
         return cell
     }
     
@@ -146,7 +147,7 @@ extension CharacterDetailProfileSectionView {
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 10, trailing: margin(.width, 8))
         
         return section
     }
