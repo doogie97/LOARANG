@@ -50,14 +50,13 @@ final class CharacterDetailEngravingCell: UICollectionViewCell {
                 view.addSubview(imageView)
                 view.addSubview(titleLabel)
                 imageView.snp.makeConstraints {
-                    $0.centerY.equalToSuperview()
                     $0.height.width.equalTo(40)
-                    $0.leading.equalToSuperview()
+                    $0.top.leading.equalToSuperview()
                 }
                 
                 titleLabel.snp.makeConstraints {
-                    $0.centerY.equalToSuperview()
-                    $0.leading.equalTo(imageView.snp.trailing).inset(margin(.width, -4))
+                    $0.centerY.equalTo(imageView)
+                    $0.leading.equalTo(imageView.snp.trailing).inset(margin(.width, -8))
                 }
                 
                 engravigStackView.addArrangedSubview(view)
@@ -73,14 +72,14 @@ final class CharacterDetailEngravingCell: UICollectionViewCell {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(margin(.width, 16))
-            $0.leading.equalToSuperview().inset(margin(.width, 8))
+            $0.leading.equalToSuperview().inset(margin(.width, 4))
             $0.height.equalTo(24)
             $0.width.equalTo(68)
         }
         
         engravigStackView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).inset(-16)
-            $0.leading.trailing.bottom.equalToSuperview().inset(margin(.width, 4))
+            $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
