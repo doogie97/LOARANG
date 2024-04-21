@@ -143,25 +143,22 @@ struct GetCharacterDetailUseCase {
             let secondParseJsonStr = firstParseJson["Element_000"]["topStr"].stringValue
             //엘릭서
             if secondParseJsonStr.contains("엘릭서") {
+                elixirs = [CharacterDetailEntity.Elixir]()
                 let elixirsJson = firstParseJson["Element_000"]["contentStr"]
-                var elixirStrings = [String]()
                 var elementIndex = 0
                 while elementIndex != -1 {
                     let elixirString = elixirsJson["Element_\(elementIndex.formattedNumber)"]["contentStr"].stringValue
                     if elixirString.isEmptyString {
                         elementIndex = -1
                     } else {
-                        elixirStrings.append(elixirString)
+                        let searatedStrArr = elixirString.components(separatedBy: ">")
+                        elixirs?.append(CharacterDetailEntity.Elixir(
+                            name: searatedStrArr[safe: 2]?.components(separatedBy: " <").first ?? "",
+                            level: searatedStrArr[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "",
+                            effect: searatedStrArr.last ?? "")
+                        )
                         elementIndex += 1
                     }
-                }
-                elixirs = elixirStrings.compactMap {
-                    let searatedStrArr = $0.components(separatedBy: ">")
-                    return CharacterDetailEntity.Elixir(
-                        name: searatedStrArr[safe: 2]?.components(separatedBy: " <").first ?? "",
-                        level: searatedStrArr[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "",
-                        effect: searatedStrArr.last ?? ""
-                    )
                 }
             }
             
