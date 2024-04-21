@@ -8,6 +8,7 @@
 struct CharactersDetailDTO: Decodable {
     let ArmoryProfile: ArmoryProfile?
     let ArmoryEquipment: [Equipment]?
+    let ArmoryEngraving: ArmoryEngraving?
 }
 
 //MARK: - ArmoryProfile
@@ -70,5 +71,19 @@ extension CharactersDetailDTO {
             case Grade
             case Tooltip
         }
+    }
+}
+
+//MARK: - Engraving
+extension CharactersDetailDTO {
+    struct ArmoryEngraving: Decodable {
+        let Effects: [Engravig]?
+    }
+    
+    struct Engravig: Decodable {
+        let Icon: String?
+        ///이름 + 레벨
+        let Name: String?
+        let Description: String?
     }
 }

@@ -79,13 +79,14 @@ struct GetCharacterDetailUseCase {
                 jewelrys: jewelrys,
                 etcEquipments: etcEquipments,
                 elixirInfo: elixirInfo, 
-                transcendenceInfo: transcendenceInfo
+                transcendenceInfo: transcendenceInfo,
+                engravigs: engravig(dto.ArmoryEngraving)
             )
         } catch let error {
             throw error
         }
     }
-    
+    //MARK: - profile
     private func profile(_ dto: CharactersDetailDTO.ArmoryProfile?) -> CharacterDetailEntity.Profile {
         return CharacterDetailEntity.Profile(
             gameServer: GameServer(rawValue: dto?.ServerName ?? "") ?? .unknown,
@@ -94,10 +95,38 @@ struct GetCharacterDetailUseCase {
             expeditionLevel: dto?.ExpeditionLevel ?? 0,
             characterName: dto?.CharacterName ?? "",
             characterClass: CharacterClass(rawValue: dto?.CharacterClassName ?? "") ?? .unknown,
-            imageUrl: dto?.CharacterImage ?? ""
+            imageUrl: dto?.CharacterImage ?? "",
+            title: dto?.Title ?? "",
+            pvpGradeName: dto?.PvpGradeName ?? "",
+            townName: dto?.TownName ?? "",
+            guildName: dto?.GuildName ?? "",
+            stats: (dto?.Stats ?? []).compactMap {
+                return CharacterDetailEntity.Stat(
+                    statType: StatType(rawValue: $0.statType ?? "") ?? .unknown,
+                    value: Int($0.Value ?? "") ?? 0
+                )
+            },
+            tendencies: (dto?.Tendencies ?? []).compactMap {
+                return CharacterDetailEntity.Tendency(
+                    tendencyType: TendencyType(rawValue: $0.tendencyType ?? "") ?? .unknown,
+                    value: $0.Value ?? 0
+                )
+            }
         )
     }
-    
+    //MARK: - engravig
+    private func engravig(_ dto: CharactersDetailDTO.ArmoryEngraving?) -> [CharacterDetailEntity.Engravig] {
+        return (dto?.Effects ?? []).compactMap {
+            let separtedInfo = $0.Name?.components(separatedBy: " Lv. ")
+            return CharacterDetailEntity.Engravig(
+                imageUrl: $0.Icon ?? "",
+                name: separtedInfo?.first ?? "",
+                level: Int(separtedInfo?.last ?? "") ?? 0,
+                description: $0.Description ?? ""
+            )
+        }
+    }
+    //MARK: - equipment
     private func equipments(_ dto: [CharactersDetailDTO.Equipment]?) -> [CharacterDetailEntity.Equipment] {
         return (dto ?? []).compactMap {
             let equipmentType = EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown

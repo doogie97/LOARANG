@@ -15,6 +15,7 @@ struct CharacterDetailEntity { //일단 지금 당장 필요한 정보만 전달
     let etcEquipments: [Equipment]
     let elixirInfo: ElixirInfo?
     let transcendenceInfo: TranscendenceInfo?
+    let engravigs: [Engravig]
 }
 
 //MARK: - Profile
@@ -27,6 +28,22 @@ extension CharacterDetailEntity {
         let characterName: String
         let characterClass: CharacterClass
         let imageUrl: String
+        let title: String
+        let pvpGradeName: String
+        let townName: String
+        let guildName: String
+        let stats: [Stat]
+        let tendencies: [Tendency]
+    }
+    
+    struct Stat {
+        let statType: StatType
+        let value: Int
+    }
+    
+    struct Tendency {
+        let tendencyType: TendencyType
+        let value: Int
     }
 }
 
@@ -83,5 +100,14 @@ extension CharacterDetailEntity {
     struct TranscendenceInfo {
         let averageGrade: Double
         let totalCount: Int
+    }
+}
+
+extension CharacterDetailEntity {
+    struct Engravig {
+        let imageUrl: String
+        let name: String
+        let level: Int
+        let description: String
     }
 }
