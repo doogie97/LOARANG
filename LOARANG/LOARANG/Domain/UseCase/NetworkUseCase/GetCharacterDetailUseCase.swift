@@ -39,6 +39,19 @@ struct GetCharacterDetailUseCase {
                 }
             }
             
+            var transcendenceGradeSum = 0
+            var transcendenceTotalCount = 0
+            var transcendenceInfo: CharacterDetailEntity.TranscendenceInfo? {
+                if transcendenceGradeSum == 0 {
+                    return nil
+                } else {
+                    return CharacterDetailEntity.TranscendenceInfo(
+                        averageGrade: round(Double(transcendenceGradeSum) / 6 * 10) / 10,
+                        totalCount: transcendenceTotalCount
+                    )
+                }
+            }
+            
             for equipment in equipments {
                 switch equipment.equipmentType {
                 case .무기, .투구, .상의, .하의, .장갑, .어깨:
@@ -46,6 +59,9 @@ struct GetCharacterDetailUseCase {
                     equipment.elixirs?.forEach {
                         elixirTotalLevel += $0.level
                     }
+                    
+                    transcendenceGradeSum += equipment.transcendence?.grade ?? 0
+                    transcendenceTotalCount += equipment.transcendence?.count ?? 0
                     if activeSpecialEffect == nil, equipment.specialElixirEffect != nil {
                         activeSpecialEffect = equipment.specialElixirEffect
                     }
@@ -62,7 +78,8 @@ struct GetCharacterDetailUseCase {
                 battleEquipments: battleEquipments,
                 jewelrys: jewelrys,
                 etcEquipments: etcEquipments,
-                elixirInfo: elixirInfo
+                elixirInfo: elixirInfo, 
+                transcendenceInfo: transcendenceInfo
             )
         } catch let error {
             throw error
