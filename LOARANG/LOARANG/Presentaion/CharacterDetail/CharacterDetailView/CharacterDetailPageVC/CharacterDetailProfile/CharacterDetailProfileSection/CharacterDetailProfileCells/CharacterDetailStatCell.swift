@@ -12,11 +12,18 @@ import Kingfisher
 final class CharacterDetailStatCell: UICollectionViewCell {
     private lazy var basicStatTitle = statTitle(text: "기본 특성")
     
-    private lazy var attTitleLabel = pretendardLabel(family: .Regular, text: "공격력")
-    private lazy var attLabel = pretendardLabel(family: .SemiBold, alignment: .right)
+    private lazy var attTitleLabel = pretendardLabel(family: .Regular, text: "공격력",alignment: .center)
+    private lazy var hpTitleLabel = pretendardLabel(family: .Regular, text: "최대 생명력", alignment: .center)
     
-    private lazy var hpTitleLabel = pretendardLabel(family: .Regular, text: "최대 생명력")
-    private lazy var hpLabel = pretendardLabel(family: .SemiBold, alignment: .right)
+    private lazy var attLabel = pretendardLabel(family: .SemiBold, alignment: .center)
+    private lazy var hpLabel = pretendardLabel(family: .SemiBold, alignment: .center)
+    
+    private lazy var basicStatStackView = {
+        let attView = equalStackView(subviews: [attTitleLabel, attLabel])
+        let hpView = equalStackView(subviews: [hpTitleLabel, hpLabel])
+        
+        return equalStackView(subviews: [attView, hpView], axis: .vertical, spacing: 16)
+    }()
     
     private lazy var battleStatTitle = statTitle(text: "전투 특성")
     
@@ -95,6 +102,8 @@ final class CharacterDetailStatCell: UICollectionViewCell {
     
     func setCellContents(profileInfo: CharacterDetailEntity.Profile) {
         self.contentView.backgroundColor = .cellColor
+        self.contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        self.contentView.layer.cornerRadius = 6
         for stat in profileInfo.stats {
             switch stat.statType {
             case .치명:
@@ -137,10 +146,7 @@ final class CharacterDetailStatCell: UICollectionViewCell {
     
     private func setLayout() {
         self.contentView.addSubview(basicStatTitle)
-        self.contentView.addSubview(attTitleLabel)
-        self.contentView.addSubview(attLabel)
-        self.contentView.addSubview(hpTitleLabel)
-        self.contentView.addSubview(hpLabel)
+        self.contentView.addSubview(basicStatStackView)
         
         self.contentView.addSubview(battleStatTitle)
         self.contentView.addSubview(battleStatStackView)
@@ -155,24 +161,9 @@ final class CharacterDetailStatCell: UICollectionViewCell {
             $0.width.equalTo(68)
         }
         
-        attTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(basicStatTitle.snp.bottom).inset(-16)
-            $0.leading.equalToSuperview().inset(margin(.width, 24))
-        }
-        
-        attLabel.snp.makeConstraints {
-            $0.centerY.equalTo(attTitleLabel)
-            $0.trailing.equalToSuperview().inset(margin(.width, 10))
-        }
-        
-        hpTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(attTitleLabel.snp.bottom).inset(-16)
-            $0.leading.equalTo(attTitleLabel)
-        }
-        
-        hpLabel.snp.makeConstraints {
-            $0.centerY.equalTo(hpTitleLabel)
-            $0.trailing.equalTo(attLabel)
+        basicStatStackView.snp.makeConstraints {
+            $0.top.equalTo(basicStatTitle.snp.bottom).inset(margin(.width, -16))
+            $0.leading.trailing.equalToSuperview().inset(margin(.width, 16))
         }
         
         battleStatTitle.snp.makeConstraints {

@@ -105,7 +105,6 @@ extension CharacterDetailEntity {
 
 extension CharacterDetailEntity {
     struct Engravig {
-        ///이름 + 레벨
         let imageUrl: String
         let name: String
         let level: Int
