@@ -15,6 +15,7 @@ struct CharacterDetailEntity { //일단 지금 당장 필요한 정보만 전달
     let etcEquipments: [Equipment]
     let elixirInfo: ElixirInfo?
     let transcendenceInfo: TranscendenceInfo?
+    let engravigs: [Engravig]
 }
 
 //MARK: - Profile
@@ -99,5 +100,15 @@ extension CharacterDetailEntity {
     struct TranscendenceInfo {
         let averageGrade: Double
         let totalCount: Int
+    }
+}
+
+extension CharacterDetailEntity {
+    struct Engravig {
+        ///이름 + 레벨
+        let imageUrl: String
+        let name: String
+        let level: Int
+        let description: String
     }
 }
