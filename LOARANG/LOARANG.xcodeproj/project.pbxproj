@@ -203,6 +203,8 @@
 		C6B73C462BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */; };
 		C6B73C482BD50C0800A6B6BD /* StatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C472BD50C0800A6B6BD /* StatType.swift */; };
 		C6B73C4A2BD50C5100A6B6BD /* TendencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C492BD50C5100A6B6BD /* TendencyType.swift */; };
+		C6B73C4C2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C4B2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift */; };
+		C6B73C4E2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C4D2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift */; };
 		C6C1A6F52BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */; };
 		C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */; };
 		C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */; };
@@ -409,6 +411,8 @@
 		C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailequipmentEffectCell.swift; sourceTree = "<group>"; };
 		C6B73C472BD50C0800A6B6BD /* StatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatType.swift; sourceTree = "<group>"; };
 		C6B73C492BD50C5100A6B6BD /* TendencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendencyType.swift; sourceTree = "<group>"; };
+		C6B73C4B2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailStatCell.swift; sourceTree = "<group>"; };
+		C6B73C4D2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEngravingCell.swift; sourceTree = "<group>"; };
 		C6C1A6F42BD264E100EA7B8C /* CharacterDetailProfileSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailProfileSectionView.swift; sourceTree = "<group>"; };
 		C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBasicInfoCell.swift; sourceTree = "<group>"; };
 		C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBattleEquipmentCell.swift; sourceTree = "<group>"; };
@@ -1182,6 +1186,8 @@
 				C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */,
 				C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */,
 				C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */,
+				C6B73C4B2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift */,
+				C6B73C4D2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift */,
 			);
 			path = CharacterDetailProfileCells;
 			sourceTree = "<group>";
@@ -1433,6 +1439,7 @@
 				C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorageRepository.swift in Sources */,
+				C6B73C4C2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift in Sources */,
 				AC799A8428A50C1B008A2865 /* AvatarViewController.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
 				AC799A8D28A51B3E008A2865 /* CharacterImageView.swift in Sources */,
@@ -1460,6 +1467,7 @@
 				ACB837F62897DB4D00F75BA2 /* BasicInfoView.swift in Sources */,
 				ACB0F15E28BF6B3200C6BB2F /* MainInfoView.swift in Sources */,
 				ACBA78F72898B34600CB39D5 /* CrawlError.swift in Sources */,
+				C6B73C4E2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift in Sources */,
 				C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */,
 				C6224F892BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift in Sources */,
 				C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */,

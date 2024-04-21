@@ -14,6 +14,7 @@ final class CharacterDetailProfileSectionView: UIView {
         case basicInfo
         case equipmentEffectView
         case battleEquipment
+        case twoRowSection
     }
     
     private lazy var sectionCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
@@ -53,6 +54,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             }
         case .battleEquipment:
             return viewModel?.characterInfoData?.battleEquipments.count ?? 0
+        case .twoRowSection:
+            return 2
         }
     }
     
@@ -68,6 +71,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return equipmentEffectCell(collectionView: collectionView, indexPath: indexPath)
         case .battleEquipment:
             return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
+        case .twoRowSection:
+            return twoRwoSection(collectionView: collectionView, indexPath: indexPath)
         }
     }
     
@@ -96,6 +101,26 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         cell.setCellContents(equipment: equipment)
         return cell
     }
+    
+    private func twoRwoSection(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        var cell: UICollectionViewCell? {
+            if indexPath.row == 0 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailStatCell.self)", for: indexPath) as? CharacterDetailStatCell
+                cell?.setCellContents()
+                return cell
+            }
+            
+            if indexPath.row == 1 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailEngravingCell.self)", for: indexPath) as? CharacterDetailEngravingCell
+                cell?.setCellContents()
+                return cell
+            }
+            
+            return nil
+        }
+        
+        return cell ?? UICollectionViewCell()
+    }
 }
 
 //MARK: - make CollectionView
@@ -110,6 +135,8 @@ extension CharacterDetailProfileSectionView {
         collectionView.register(CharacterDetailBasicInfoCell.self)
         collectionView.register(CharacterDetailequipmentEffectCell.self)
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
+        collectionView.register(CharacterDetailStatCell.self)
+        collectionView.register(CharacterDetailEngravingCell.self)
         
         return collectionView
     }
@@ -126,6 +153,8 @@ extension CharacterDetailProfileSectionView {
                 return self?.equipmentEffectViewLayout()
             case .battleEquipment:
                 return self?.battleEquipmentLayout()
+            case .twoRowSection:
+                return self?.twoRowSectionLayout()
             }
         }
     }
@@ -161,6 +190,19 @@ extension CharacterDetailProfileSectionView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
+        
+        return section
+    }
+    
+    private func twoRowSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                                              heightDimension: .fractionalWidth(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .fractionalWidth(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
         
         return section
     }
