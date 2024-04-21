@@ -45,4 +45,11 @@ extension Int {
     var formattedNumber: String {
             return String(format: "%03d", self)
         }
+    
+    var commaNumber: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        return numberFormatter.string(from: NSNumber(value: self)) ?? "0"
+    }
 }
