@@ -34,7 +34,7 @@ struct GetCharacterDetailUseCase {
                 if elixirTotalLevel == 0 {
                     return nil
                 } else {
-                    return CharacterDetailEntity.ElixirInfo(totlaLevel: elixirTotalLevel, 
+                    return CharacterDetailEntity.ElixirInfo(totlaLevel: elixirTotalLevel,
                                                             activeSpecialEffect: activeSpecialEffect)
                 }
             }
@@ -78,7 +78,7 @@ struct GetCharacterDetailUseCase {
                 battleEquipments: battleEquipments,
                 jewelrys: jewelrys,
                 etcEquipments: etcEquipments,
-                elixirInfo: elixirInfo, 
+                elixirInfo: elixirInfo,
                 transcendenceInfo: transcendenceInfo,
                 engravigs: engravig(dto.ArmoryEngraving)
             )
@@ -126,7 +126,9 @@ struct GetCharacterDetailUseCase {
             )
         }
     }
-    //MARK: - equipment
+}
+//MARK: - equipment
+extension GetCharacterDetailUseCase {
     private func equipments(_ dto: [CharactersDetailDTO.Equipment]?) -> [CharacterDetailEntity.Equipment] {
         return (dto ?? []).compactMap {
             let equipmentType = EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown
