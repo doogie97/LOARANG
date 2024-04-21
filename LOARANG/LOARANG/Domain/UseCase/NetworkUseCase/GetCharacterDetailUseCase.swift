@@ -79,7 +79,6 @@ struct GetCharacterDetailUseCase {
     private func equipments(_ dto: [CharactersDetailDTO.Equipment]?) -> [CharacterDetailEntity.Equipment] {
         return (dto ?? []).compactMap {
             let equipmentDetailInfo = equipmentDetailInfo($0.Tooltip)
-            print(equipmentDetailInfo.engraving)
             return CharacterDetailEntity.Equipment(
                 equipmentType: EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown,
                 name: $0.Name ?? "",
@@ -174,24 +173,24 @@ struct GetCharacterDetailUseCase {
     }
     
     private func parseEngraving(_ firstParseJson: JSON) -> [(name: String, value: Int)] {
-            var engraving = [(name: String, value: Int)]()
-            let engravingsJson = firstParseJson["Element_000"]["contentStr"]
-            var elementIndex = 0
-            while elementIndex != -1 {
-                if elementIndex != -1 {
-                    let engravingStr = engravingsJson["Element_\(elementIndex.formattedNumber)"]["contentStr"].stringValue
-                    if engravingStr.contains("활성도"){
-                        let separated = engravingStr.components(separatedBy: "] ")
-                        let name = separated.first?.insideAngleBrackets ?? ""
-                        let value = Int(separated.last?.replacingOccurrences(of: "<BR>", with: "").replacingOccurrences(of: "활성도 ", with: "") ?? "") ?? 0
-                        engraving.append((name: name, value: value))
-                        elementIndex += 1
-                    } else {
-                        elementIndex = -1
-                    }
+        var engraving = [(name: String, value: Int)]()
+        let engravingsJson = firstParseJson["Element_000"]["contentStr"]
+        var elementIndex = 0
+        while elementIndex != -1 {
+            if elementIndex != -1 {
+                let engravingStr = engravingsJson["Element_\(elementIndex.formattedNumber)"]["contentStr"].stringValue
+                if engravingStr.contains("활성도"){
+                    let separated = engravingStr.components(separatedBy: "] ")
+                    let name = separated.first?.insideAngleBrackets ?? ""
+                    let value = Int(separated.last?.replacingOccurrences(of: "<BR>", with: "").replacingOccurrences(of: "활성도 ", with: "") ?? "") ?? 0
+                    engraving.append((name: name, value: value))
+                    elementIndex += 1
+                } else {
+                    elementIndex = -1
                 }
             }
-            return engraving
+        }
+        return engraving
     }
     
     private func parseElixirs(_ firstParseJson: JSON) -> [CharacterDetailEntity.Elixir] {
@@ -204,13 +203,26 @@ struct GetCharacterDetailUseCase {
             if elixirString.isEmptyString {
                 elementIndex = -1
             } else {
-                let searatedStrArr = elixirString.components(separatedBy: ">")
-                let level = Int((searatedStrArr[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "").replacingOccurrences(of: "Lv.", with: "")) ?? 0
-                levelSum += level
+                let separatedStrArr = elixirString.components(separatedBy: ">")
+                let level = Int((separatedStrArr[safe: 3]?.replacingOccurrences(of: "</FONT", with: "") ?? "").replacingOccurrences(of: "Lv.", with: "")) ?? 0
+                var effects = [(effect: String, value: String)]()
+                var effectIndex = 5
+                while effectIndex != -1 {
+                    if let effectStr = separatedStrArr[safe: effectIndex] {
+                        var separated = effectStr.components(separatedBy: " ")
+                        let value = separated.removeLast()
+                        let effect = separated.joined(separator: " ")
+                        effects.append((effect: effect, value: value))
+                        effectIndex += 1
+                    } else {
+                        effectIndex = -1
+                    }
+                }
+                
                 elixirs.append(CharacterDetailEntity.Elixir(
-                    name: searatedStrArr[safe: 2]?.components(separatedBy: " <").first ?? "",
+                    name: separatedStrArr[safe: 2]?.components(separatedBy: " <").first ?? "",
                     level: level,
-                    effect: searatedStrArr.last ?? "")
+                    effects: effects)
                 )
                 elementIndex += 1
             }

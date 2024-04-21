@@ -51,7 +51,7 @@ extension CharacterDetailEntity {
     struct Elixir {
         let name: String
         let level: Int
-        let effect: String
+        let effects: [(effect: String, value: String)]
     }
     
     struct Transcendence {
