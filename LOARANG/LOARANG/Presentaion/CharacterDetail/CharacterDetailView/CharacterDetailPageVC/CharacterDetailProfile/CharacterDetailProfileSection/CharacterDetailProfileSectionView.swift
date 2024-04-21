@@ -143,7 +143,7 @@ extension CharacterDetailProfileSectionView {
     
     private func equipmentEffectViewLayout() -> NSCollectionLayoutSection {
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(70))
+                                              heightDimension: .absolute(85))
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)

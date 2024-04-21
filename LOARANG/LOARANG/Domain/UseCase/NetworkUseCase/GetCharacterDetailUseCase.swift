@@ -206,7 +206,9 @@ struct GetCharacterDetailUseCase {
         firstParseJson["Element_001"].stringValue.components(separatedBy: "<img src=\'emoticon_tooltip_bracelet").forEach {
             if !$0.isEmptyString {
                 if $0.contains(" +") {
-                    effects.basic.append($0.insideAngleBrackets.trimmingCharacters(in: .whitespaces))
+                    if let effect = $0.replacingOccurrences(of: "<BR>", with: "").components(separatedBy: ">").last {
+                        effects.basic.append(effect.trimmingCharacters(in: .whitespaces))
+                    }
                 } else {
                     
                     if let effect = $0.components(separatedBy: "[<FONT COLOR=\'\'>")[safe: 1]?.components(separatedBy: "<").first {
