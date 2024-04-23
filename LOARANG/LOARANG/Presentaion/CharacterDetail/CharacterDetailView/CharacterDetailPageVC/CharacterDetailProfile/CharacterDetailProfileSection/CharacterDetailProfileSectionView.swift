@@ -137,10 +137,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func cardCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardCell.self)", for: indexPath) as? CharacterDetailCardCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardCell.self)", for: indexPath) as? CharacterDetailCardCell,
+              let card = viewModel?.characterInfoData?.cardInfo.cards[safe: indexPath.row] else {
             return UICollectionViewCell()
         }
-        cell.setCellContents()
+        cell.setCellContents(card: card)
         return cell
     }
     
