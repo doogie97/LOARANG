@@ -29,18 +29,45 @@ final class CharacterDetailCardCell: UICollectionViewCell {
     
     private lazy var nameLabel = pretendardLabel(size: 12, family: .SemiBold, alignment: .center)
     
+    private lazy var pointStackview = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = -3
+        for _ in 0..<5 {
+            stackView.addArrangedSubview(UIImageView())
+        }
+        return stackView
+    }()
+    
     func setCellContents(card: CharacterDetailEntity.Card) {
         imageView.setImage(card.imageUrl)
         imageView.layer.borderColor = card.grade.textColor.cgColor
         nameLabel.text = card.name
         nameLabel.textColor = card.grade.textColor
+        setAwakePoint(totalCount: card.awakeTotal, awakeCount: card.awakeCount)
         setLayout()
+    }
+    
+    private func setAwakePoint(totalCount: Int, awakeCount: Int) {
+        if awakeCount > 0 {
+            for index in 0..<awakeCount {
+                (pointStackview.arrangedSubviews[index] as? UIImageView)?.image = UIImage(named: "activeGem")
+            }
+        }
+        
+        if awakeCount < 5 {
+            for index in awakeCount..<totalCount {
+                (pointStackview.arrangedSubviews[index] as? UIImageView)?.image = UIImage(named: "inActiveGem")
+            }
+        }
     }
     
     private func setLayout() {
         self.contentView.addSubview(imageView)
         self.imageView.addSubview(topBlurView)
         self.contentView.addSubview(nameLabel)
+        self.contentView.addSubview(pointStackview)
         
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -53,6 +80,11 @@ final class CharacterDetailCardCell: UICollectionViewCell {
         
         nameLabel.snp.makeConstraints {
             $0.edges.equalTo(topBlurView)
+        }
+        
+        pointStackview.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(35)
         }
     }
 }
