@@ -62,7 +62,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         case .cardListView:
             return viewModel?.characterInfoData?.cardInfo.cards.count ?? 0
         case .cardEffectsView:
-            return 1
+            if viewModel?.characterInfoData?.cardInfo.effects.isEmpty == true {
+                return 0
+            } else {
+                return 1
+            }
         }
     }
     
