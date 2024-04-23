@@ -14,7 +14,10 @@ final class CharacterDetailProfileSectionView: UIView {
         case basicInfo
         case equipmentEffectView
         case battleEquipment
+        ///Stat & Engraving
         case twoRowSection
+        case cardListView
+        case cardEffectsView
     }
     
     private lazy var sectionCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
@@ -56,6 +59,10 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return viewModel?.characterInfoData?.battleEquipments.count ?? 0
         case .twoRowSection:
             return 2
+        case .cardListView:
+            return viewModel?.characterInfoData?.cardInfo.cards.count ?? 0
+        case .cardEffectsView:
+            return 1
         }
     }
     
@@ -72,7 +79,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         case .battleEquipment:
             return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
         case .twoRowSection:
-            return twoRwoSection(collectionView: collectionView, indexPath: indexPath)
+            return twoRwoSectionCell(collectionView: collectionView, indexPath: indexPath)
+        case .cardListView:
+            return cardCell(collectionView: collectionView, indexPath: indexPath)
+        case .cardEffectsView:
+            return cardEffectCell(collectionView: collectionView, indexPath: indexPath)
         }
     }
     
@@ -102,7 +113,7 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         return cell
     }
     
-    private func twoRwoSection(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    private func twoRwoSectionCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         guard let characterInfo = viewModel?.characterInfoData else {
             return UICollectionViewCell()
         }
@@ -124,6 +135,22 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         
         return cell ?? UICollectionViewCell()
     }
+    
+    private func cardCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardCell.self)", for: indexPath) as? CharacterDetailCardCell else {
+            return UICollectionViewCell()
+        }
+        cell.setCellContents()
+        return cell
+    }
+    
+    private func cardEffectCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardEffectCell.self)", for: indexPath) as? CharacterDetailCardEffectCell else {
+            return UICollectionViewCell()
+        }
+        cell.setCellContents()
+        return cell
+    }
 }
 
 //MARK: - make CollectionView
@@ -140,6 +167,8 @@ extension CharacterDetailProfileSectionView {
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
         collectionView.register(CharacterDetailStatCell.self)
         collectionView.register(CharacterDetailEngravingCell.self)
+        collectionView.register(CharacterDetailCardCell.self)
+        collectionView.register(CharacterDetailCardEffectCell.self)
         
         return collectionView
     }
@@ -158,6 +187,11 @@ extension CharacterDetailProfileSectionView {
                 return self?.battleEquipmentLayout()
             case .twoRowSection:
                 return self?.twoRowSectionLayout()
+            case .cardListView:
+                return self?.cardListSectionLayout()
+            case .cardEffectsView:
+                let count = self?.viewModel?.characterInfoData?.cardInfo.effects.count ?? 0
+                return self?.cartEffectsSectionLayout(effectsCount: count)
             }
         }
     }
@@ -206,6 +240,40 @@ extension CharacterDetailProfileSectionView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 16, trailing: margin(.width, 8))
+        
+        return section
+    }
+    
+    private func cardListSectionLayout() -> NSCollectionLayoutSection {
+        let widthDimension = NSCollectionLayoutDimension.fractionalWidth(1 / 3)
+        let heightDimension = NSCollectionLayoutDimension.fractionalWidth(1 / 3 * 1.44)
+        let itemInset = margin(.width, 4)
+        let itemSize = NSCollectionLayoutSize(widthDimension: widthDimension,
+                                              heightDimension: heightDimension)
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .init(top: itemInset,
+                                   leading: itemInset,
+                                   bottom: itemInset,
+                                   trailing: itemInset)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: heightDimension)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 16, trailing: margin(.width, 4))
+        
+        return section
+    }
+    
+    private func cartEffectsSectionLayout(effectsCount: Int) -> NSCollectionLayoutSection {
+        let headerHeight = 20.0
+        let effectHeight = 30.0
+        let heightDimension = NSCollectionLayoutDimension.absolute(headerHeight + effectHeight * CGFloat(effectsCount))
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: heightDimension)
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 8, trailing: margin(.width, 8))
         
         return section
     }
