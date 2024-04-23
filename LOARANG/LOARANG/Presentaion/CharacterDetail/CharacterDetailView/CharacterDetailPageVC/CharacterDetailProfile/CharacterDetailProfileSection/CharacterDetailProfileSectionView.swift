@@ -157,6 +157,9 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
 extension CharacterDetailProfileSectionView {
     private func createSectionCV() -> UICollectionView {
         let layout = createLayout()
+        layout.register(CharacterDetailCardSectionBG.self,
+                        forDecorationViewOfKind: "\(CharacterDetailCardSectionBG.self)")
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .mainBackground
         collectionView.showsVerticalScrollIndicator = false
@@ -169,6 +172,7 @@ extension CharacterDetailProfileSectionView {
         collectionView.register(CharacterDetailEngravingCell.self)
         collectionView.register(CharacterDetailCardCell.self)
         collectionView.register(CharacterDetailCardEffectCell.self)
+        
         
         return collectionView
     }
@@ -259,8 +263,12 @@ extension CharacterDetailProfileSectionView {
                                                heightDimension: heightDimension)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 16, trailing: margin(.width, 4))
-        
+        section.contentInsets = .init(top: margin(.width, 50),
+                                      leading: margin(.width, 12),
+                                      bottom: margin(.width, 8 + 16), // + 뒤 수를 BG로 전달
+                                      trailing: margin(.width, 12))
+        let sectionBGDecoration = NSCollectionLayoutDecorationItem.background(elementKind: "\(CharacterDetailCardSectionBG.self)")
+        section.decorationItems = [sectionBGDecoration]
         return section
     }
     

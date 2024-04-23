@@ -11,7 +11,7 @@ import Kingfisher
 
 final class CharacterDetailCardCell: UICollectionViewCell {
     func setCellContents() {
-        self.contentView.backgroundColor = .cellColor
+        self.contentView.backgroundColor = .mainBackground
         self.contentView.layer.cornerRadius = 6
     
         setLayout()

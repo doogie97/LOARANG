@@ -28,6 +28,7 @@
 		7177132D2BC8E6960040C602 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7177132C2BC8E6960040C602 /* Kingfisher */; };
 		71826A652BD797A10076E89A /* CharacterDetailCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71826A642BD797A10076E89A /* CharacterDetailCardCell.swift */; };
 		71826A672BD797AD0076E89A /* CharacterDetailCardEffectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71826A662BD797AD0076E89A /* CharacterDetailCardEffectCell.swift */; };
+		71826A692BD7A0D50076E89A /* CharacterDetailCardSectionBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71826A682BD7A0D50076E89A /* CharacterDetailCardSectionBG.swift */; };
 		71892D3F2BCDF9400008CD8C /* ScrollableSegement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */; };
 		71892D412BCDFA0E0008CD8C /* ScrollableSegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */; };
 		71892D452BCE5EF60008CD8C /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71892D442BCE5EF60008CD8C /* Grade.swift */; };
@@ -247,6 +248,7 @@
 		717713262BC8D9CD0040C602 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		71826A642BD797A10076E89A /* CharacterDetailCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCardCell.swift; sourceTree = "<group>"; };
 		71826A662BD797AD0076E89A /* CharacterDetailCardEffectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCardEffectCell.swift; sourceTree = "<group>"; };
+		71826A682BD7A0D50076E89A /* CharacterDetailCardSectionBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCardSectionBG.swift; sourceTree = "<group>"; };
 		71892D3E2BCDF9400008CD8C /* ScrollableSegement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegement.swift; sourceTree = "<group>"; };
 		71892D402BCDFA0E0008CD8C /* ScrollableSegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentCell.swift; sourceTree = "<group>"; };
 		71892D442BCE5EF60008CD8C /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
@@ -1192,6 +1194,7 @@
 				C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */,
 				C6B73C4B2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift */,
 				C6B73C4D2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift */,
+				71826A682BD7A0D50076E89A /* CharacterDetailCardSectionBG.swift */,
 				71826A642BD797A10076E89A /* CharacterDetailCardCell.swift */,
 				71826A662BD797AD0076E89A /* CharacterDetailCardEffectCell.swift */,
 			);
@@ -1425,6 +1428,7 @@
 				AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */,
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
 				AC0341C9294591BA005F4533 /* GameEventListGET.swift in Sources */,
+				71826A692BD7A0D50076E89A /* CharacterDetailCardSectionBG.swift in Sources */,
 				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
 				C6B73C482BD50C0800A6B6BD /* StatType.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUserDTO.swift in Sources */,
