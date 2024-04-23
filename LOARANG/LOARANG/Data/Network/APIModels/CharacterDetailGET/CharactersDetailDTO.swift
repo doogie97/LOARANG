@@ -9,6 +9,7 @@ struct CharactersDetailDTO: Decodable {
     let ArmoryProfile: ArmoryProfile?
     let ArmoryEquipment: [Equipment]?
     let ArmoryEngraving: ArmoryEngraving?
+    let ArmoryCard: ArmoryCard?
 }
 
 //MARK: - ArmoryProfile
@@ -87,3 +88,29 @@ extension CharactersDetailDTO {
         let Description: String?
     }
 }
+
+//MARK: - Cards
+extension CharactersDetailDTO {
+    struct ArmoryCard: Decodable {
+        let Cards: [Card]?
+        let Effects: [CardEffect]?
+    }
+    
+    struct Card: Decodable {
+        let Name: String?
+        let Icon: String?
+        let AwakeCount: Int?
+        let AwakeTotal: Int?
+        let Grade: String?
+    }
+    
+    struct CardEffect: Decodable {
+        let Items: [CardEffectItem]?
+    }
+    
+    struct CardEffectItem: Decodable {
+        let Name: String?
+        let Description: String?
+    }
+}
+

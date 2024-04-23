@@ -80,7 +80,8 @@ struct GetCharacterDetailUseCase {
                 etcEquipments: etcEquipments,
                 elixirInfo: elixirInfo,
                 transcendenceInfo: transcendenceInfo,
-                engravigs: engravig(dto.ArmoryEngraving)
+                engravigs: engravig(dto.ArmoryEngraving), 
+                cardInfo: cardInfo(dto.ArmoryCard)
             )
         } catch let error {
             throw error
@@ -125,6 +126,30 @@ struct GetCharacterDetailUseCase {
                 description: $0.Description ?? ""
             )
         }
+    }
+    private func cardInfo(_ dto: CharactersDetailDTO.ArmoryCard?) -> CharacterDetailEntity.CardInfo {
+        let cards = (dto?.Cards ?? []).compactMap {
+            return CharacterDetailEntity.Card(
+                name: $0.Name ?? "",
+                imageUrl: $0.Icon ?? "",
+                awakeCount: $0.AwakeCount ?? 0,
+                awakeTotal: $0.AwakeTotal ?? 0,
+                grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown
+            )
+        }
+        
+        var effects = [CharacterDetailEntity.CardEffect]()
+        for effect in dto?.Effects ?? [] {
+            (effect.Items ?? []).forEach {
+                effects.append(CharacterDetailEntity.CardEffect(
+                    name: $0.Name ?? "",
+                    description: $0.Description ?? ""
+                ))
+            }
+        }
+        
+        return CharacterDetailEntity.CardInfo(cards: cards,
+                                              effects: effects)
     }
 }
 //MARK: - equipment
