@@ -34,7 +34,7 @@ struct GetCharacterDetailUseCase {
                 if elixirTotalLevel == 0 {
                     return nil
                 } else {
-                    return CharacterDetailEntity.ElixirInfo(totlaLevel: elixirTotalLevel, 
+                    return CharacterDetailEntity.ElixirInfo(totlaLevel: elixirTotalLevel,
                                                             activeSpecialEffect: activeSpecialEffect)
                 }
             }
@@ -78,9 +78,10 @@ struct GetCharacterDetailUseCase {
                 battleEquipments: battleEquipments,
                 jewelrys: jewelrys,
                 etcEquipments: etcEquipments,
-                elixirInfo: elixirInfo, 
+                elixirInfo: elixirInfo,
                 transcendenceInfo: transcendenceInfo,
-                engravigs: engravig(dto.ArmoryEngraving)
+                engravigs: engravig(dto.ArmoryEngraving), 
+                cardInfo: cardInfo(dto.ArmoryCard)
             )
         } catch let error {
             throw error
@@ -126,7 +127,33 @@ struct GetCharacterDetailUseCase {
             )
         }
     }
-    //MARK: - equipment
+    private func cardInfo(_ dto: CharactersDetailDTO.ArmoryCard?) -> CharacterDetailEntity.CardInfo {
+        let cards = (dto?.Cards ?? []).compactMap {
+            return CharacterDetailEntity.Card(
+                name: $0.Name ?? "",
+                imageUrl: $0.Icon ?? "",
+                awakeCount: $0.AwakeCount ?? 0,
+                awakeTotal: $0.AwakeTotal ?? 0,
+                grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown
+            )
+        }
+        
+        var effects = [CharacterDetailEntity.CardEffect]()
+        for effect in dto?.Effects ?? [] {
+            (effect.Items ?? []).forEach {
+                effects.append(CharacterDetailEntity.CardEffect(
+                    name: $0.Name ?? "",
+                    description: $0.Description ?? ""
+                ))
+            }
+        }
+        
+        return CharacterDetailEntity.CardInfo(cards: cards,
+                                              effects: effects)
+    }
+}
+//MARK: - equipment
+extension GetCharacterDetailUseCase {
     private func equipments(_ dto: [CharactersDetailDTO.Equipment]?) -> [CharacterDetailEntity.Equipment] {
         return (dto ?? []).compactMap {
             let equipmentType = EquipmentType(rawValue: $0.equipmentType ?? "") ?? .unknown
