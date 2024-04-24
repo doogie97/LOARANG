@@ -9,6 +9,7 @@ struct CharactersDetailDTO: Decodable {
     let ArmoryProfile: ArmoryProfile?
     let ArmoryEquipment: [Equipment]?
     let ArmoryEngraving: ArmoryEngraving?
+    let ArmoryGem: ArmoryGem?
     let ArmoryCard: ArmoryCard?
 }
 
@@ -89,6 +90,21 @@ extension CharactersDetailDTO {
     }
 }
 
+//MARK: - Gems
+extension CharactersDetailDTO {
+    struct ArmoryGem: Decodable {
+        let Gems: [Gem]?
+        
+    }
+    
+    struct Gem: Decodable {
+        let Name: String?
+        let Icon: String?
+        let Level: Int?
+        let Grade: String?
+        let Tooltip: String?
+    }
+}
 //MARK: - Cards
 extension CharactersDetailDTO {
     struct ArmoryCard: Decodable {

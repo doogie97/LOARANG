@@ -81,6 +81,7 @@ struct GetCharacterDetailUseCase {
                 elixirInfo: elixirInfo,
                 transcendenceInfo: transcendenceInfo,
                 engravigs: engravig(dto.ArmoryEngraving), 
+                gems: gems(dto.ArmoryGem),
                 cardInfo: cardInfo(dto.ArmoryCard)
             )
         } catch let error {
@@ -127,6 +128,19 @@ struct GetCharacterDetailUseCase {
             )
         }
     }
+    
+    private func gems(_ dto: CharactersDetailDTO.ArmoryGem?) -> [CharacterDetailEntity.Gem] {
+        return (dto?.Gems ?? []).compactMap {
+            return CharacterDetailEntity.Gem(
+                name: $0.Name ?? "",
+                imageUrl: $0.Icon ?? "",
+                level: $0.Level ?? 0,
+                Grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
+                description: $0.Tooltip ?? ""
+            )
+        }
+    }
+    
     private func cardInfo(_ dto: CharactersDetailDTO.ArmoryCard?) -> CharacterDetailEntity.CardInfo {
         let cards = (dto?.Cards ?? []).compactMap {
             return CharacterDetailEntity.Card(
