@@ -31,6 +31,7 @@ final class CharacterDetailCardSectionBG: UICollectionReusableView {
     private func setLayout() {
         let view = UIView()
         view.backgroundColor = .cellColor
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.cornerRadius = 6
         
         self.addSubview(view)
@@ -39,7 +40,7 @@ final class CharacterDetailCardSectionBG: UICollectionReusableView {
         view.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(margin(.width, 8))
-            $0.bottom.equalToSuperview().inset(margin(.width, 16))
+            $0.bottom.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints {

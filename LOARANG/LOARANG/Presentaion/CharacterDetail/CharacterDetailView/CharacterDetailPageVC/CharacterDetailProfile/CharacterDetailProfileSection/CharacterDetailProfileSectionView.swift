@@ -150,10 +150,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func cardEffectCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardEffectCell.self)", for: indexPath) as? CharacterDetailCardEffectCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardEffectCell.self)", for: indexPath) as? CharacterDetailCardEffectCell,
+              let effects = viewModel?.characterInfoData?.cardInfo.effects else {
             return UICollectionViewCell()
         }
-        cell.setCellContents()
+        cell.setCellContents(effects: effects)
         return cell
     }
 }
@@ -199,8 +200,7 @@ extension CharacterDetailProfileSectionView {
             case .cardListView:
                 return self?.cardListSectionLayout()
             case .cardEffectsView:
-                let count = self?.viewModel?.characterInfoData?.cardInfo.effects.count ?? 0
-                return self?.cartEffectsSectionLayout(effectsCount: count)
+                return self?.cartEffectsSectionLayout()
             }
         }
     }
@@ -270,17 +270,42 @@ extension CharacterDetailProfileSectionView {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: margin(.width, 50),
                                       leading: margin(.width, 12),
-                                      bottom: margin(.width, 8 + 16), // + 뒤 수를 BG로 전달
+                                      bottom: margin(.width, 8),
                                       trailing: margin(.width, 12))
         let sectionBGDecoration = NSCollectionLayoutDecorationItem.background(elementKind: "\(CharacterDetailCardSectionBG.self)")
         section.decorationItems = [sectionBGDecoration]
         return section
     }
-    
-    private func cartEffectsSectionLayout(effectsCount: Int) -> NSCollectionLayoutSection {
-        let headerHeight = 20.0
-        let effectHeight = 30.0
-        let heightDimension = NSCollectionLayoutDimension.absolute(headerHeight + effectHeight * CGFloat(effectsCount))
+    func numberOfLines(text: String, labelWidth: CGFloat, font: UIFont) -> Int {
+        let textSize = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
+        let boundingRect = (text as NSString).boundingRect(with: textSize,
+                                                            options: .usesLineFragmentOrigin,
+                                                            attributes: [NSAttributedString.Key.font: font],
+                                                            context: nil)
+        let numberOfLines = Int(ceil(boundingRect.height / font.lineHeight))
+        return numberOfLines
+    }
+    private func cartEffectsSectionLayout() -> NSCollectionLayoutSection {
+        let effects = self.viewModel?.characterInfoData?.cardInfo.effects ?? []
+        let count = CGFloat(effects.count)
+        let headerHeight = count * (19.33 +  margin(.width, 4))
+        var descriptionHight: CGFloat {
+            var height = 0.0
+            for effect in effects {
+                let lineCount = numberOfLines(
+                    text: effect.description,
+                    labelWidth: UIScreen.main.bounds.width - margin(.width, 48),
+                    font: .pretendard(size: 14, family: .SemiBold)
+                )
+                
+                height += CGFloat(lineCount) * 17
+            }
+            return height
+        }
+        let spacingHeight = (count - 1) * 16
+        
+        let finalHight = headerHeight + descriptionHight + spacingHeight + 16
+        let heightDimension = NSCollectionLayoutDimension.absolute(finalHight)
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: heightDimension)
         let item = NSCollectionLayoutItem(layoutSize: size)

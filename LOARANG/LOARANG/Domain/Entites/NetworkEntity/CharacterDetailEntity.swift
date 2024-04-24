@@ -130,7 +130,7 @@ extension CharacterDetailEntity {
     }
     
     struct CardEffect {
-        let name: String?
-        let description: String?
+        let name: String
+        let description: String
     }
 }
