@@ -133,9 +133,11 @@ struct GetCharacterDetailUseCase {
         var attGems = [CharacterDetailEntity.Gem]()
         var cooltimeGems = [CharacterDetailEntity.Gem]()
         (dto?.Gems ?? []).forEach {
+            let isEventGem = ($0.Name ?? "").contains("귀속")
+            
             let jsonData = JSON(($0.Tooltip ?? "").data(using: .utf8) ?? Data())
-            let tooltipStr = jsonData["Element_004"]["value"]["Element_001"].stringValue
-            let description = tooltipStr.insideAngleBrackets + (jsonData["Element_004"]["value"]["Element_001"].stringValue.components(separatedBy: ">").last ?? "")
+            let tooltipStr = jsonData["Element_\((isEventGem ? 005 : 004).formattedNumber)"]["value"]["Element_001"].stringValue
+            let description = tooltipStr.insideAngleBrackets + (tooltipStr.components(separatedBy: ">").last ?? "")
             let gem = CharacterDetailEntity.Gem(
                 name: ($0.Name ?? "").insideAngleBrackets,
                 imageUrl: $0.Icon ?? "",
@@ -150,7 +152,7 @@ struct GetCharacterDetailUseCase {
             }
         }
         
-        return attGems + cooltimeGems
+        return attGems.sorted(by: { $0.level > $1.level }) + cooltimeGems.sorted(by: { $0.level > $1.level })
     }
     
     private func cardInfo(_ dto: CharactersDetailDTO.ArmoryCard?) -> CharacterDetailEntity.CardInfo {
