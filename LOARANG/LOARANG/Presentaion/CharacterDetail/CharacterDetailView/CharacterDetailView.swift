@@ -19,7 +19,7 @@ final class CharacterDetailView: UIView {
         }
     }
     private let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    private let pageVCList = [CharacterDetailProfileVC(), CharacterDetailSkillVC(), CharacterDetailOwnCharctersVC()]
+    private let pageVCList = [CharacterDetailProfileVC(), CharacterDetailAvatarVC(), CharacterDetailSkillVC(), CharacterDetailOwnCharctersVC()]
     init() {
         super.init(frame: .zero)
         self.backgroundColor = .mainBackground
@@ -39,7 +39,7 @@ final class CharacterDetailView: UIView {
     
     private let segmentHeight = 43.0
     private lazy var scrollableSegment = {
-        let segment = ScrollableSegement(segmentTitles: ["기본 정보", "스킬", "보유캐릭터"],
+        let segment = ScrollableSegement(segmentTitles: ["기본 정보", "아바타", "스킬", "보유캐릭터"],
                                          itemHight: segmentHeight)
         segment.delegate = self
         segment.selectedFont = .pretendard(size: 14, family: .Bold)

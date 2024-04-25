@@ -205,6 +205,7 @@
 		C68A27792BD9EFB00039F748 /* CustomHalfModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */; };
 		C68A277B2BD9F2000039F748 /* GemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277A2BD9F2000039F748 /* GemDetailView.swift */; };
 		C68A277E2BD9F85A0039F748 /* GemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */; };
+		C68A27812BDA04910039F748 /* CharacterDetailAvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -421,6 +422,7 @@
 		C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfModal.swift; sourceTree = "<group>"; };
 		C68A277A2BD9F2000039F748 /* GemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailView.swift; sourceTree = "<group>"; };
 		C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailCell.swift; sourceTree = "<group>"; };
+		C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailAvatarVC.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 			children = (
 				71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */,
 				C6C1A6F22BD264B500EA7B8C /* CharacterDetailProfile */,
+				C68A277F2BDA04730039F748 /* CharacterDetailAvatar */,
 				AC6CA2902893BBD70049C12F /* CharacterDetailSkill */,
 				716C46D92BD0B6A8009A474F /* CharacterDetailOwnCharacters */,
 			);
@@ -1188,6 +1191,14 @@
 			path = GemDetailView;
 			sourceTree = "<group>";
 		};
+		C68A277F2BDA04730039F748 /* CharacterDetailAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */,
+			);
+			path = CharacterDetailAvatar;
+			sourceTree = "<group>";
+		};
 		C6C1A6F22BD264B500EA7B8C /* CharacterDetailProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1542,6 +1553,7 @@
 				71826A672BD797AD0076E89A /* CharacterDetailCardEffectCell.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* CharactersViewController.swift in Sources */,
 				C6224F782BC8443800CABA30 /* GameNoticeListGET.swift in Sources */,
+				C68A27812BDA04910039F748 /* CharacterDetailAvatarVC.swift in Sources */,
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
