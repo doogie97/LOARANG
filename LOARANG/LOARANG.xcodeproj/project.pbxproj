@@ -205,6 +205,9 @@
 		C68A27792BD9EFB00039F748 /* CustomHalfModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */; };
 		C68A277B2BD9F2000039F748 /* GemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277A2BD9F2000039F748 /* GemDetailView.swift */; };
 		C68A277E2BD9F85A0039F748 /* GemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */; };
+		C68A27812BDA04910039F748 /* CharacterDetailAvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */; };
+		C68A27832BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */; };
+		C68A27872BDA124F0039F748 /* AvatarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27862BDA124F0039F748 /* AvatarType.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -421,6 +424,9 @@
 		C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfModal.swift; sourceTree = "<group>"; };
 		C68A277A2BD9F2000039F748 /* GemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailView.swift; sourceTree = "<group>"; };
 		C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailCell.swift; sourceTree = "<group>"; };
+		C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailAvatarVC.swift; sourceTree = "<group>"; };
+		C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharatcerDetailAvatarCell.swift; sourceTree = "<group>"; };
+		C68A27862BDA124F0039F748 /* AvatarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarType.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -560,6 +566,7 @@
 			children = (
 				71892D502BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift */,
 				C6C1A6F22BD264B500EA7B8C /* CharacterDetailProfile */,
+				C68A277F2BDA04730039F748 /* CharacterDetailAvatar */,
 				AC6CA2902893BBD70049C12F /* CharacterDetailSkill */,
 				716C46D92BD0B6A8009A474F /* CharacterDetailOwnCharacters */,
 			);
@@ -1099,6 +1106,7 @@
 				C63C61622BADC8530023D123 /* CharacterClase.swift */,
 				71892D442BCE5EF60008CD8C /* Grade.swift */,
 				716C46F62BD115B4009A474F /* EquipmentType.swift */,
+				C68A27862BDA124F0039F748 /* AvatarType.swift */,
 				C6B73C472BD50C0800A6B6BD /* StatType.swift */,
 				C6B73C492BD50C5100A6B6BD /* TendencyType.swift */,
 			);
@@ -1186,6 +1194,15 @@
 				C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */,
 			);
 			path = GemDetailView;
+			sourceTree = "<group>";
+		};
+		C68A277F2BDA04730039F748 /* CharacterDetailAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */,
+				C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */,
+			);
+			path = CharacterDetailAvatar;
 			sourceTree = "<group>";
 		};
 		C6C1A6F22BD264B500EA7B8C /* CharacterDetailProfile */ = {
@@ -1470,6 +1487,7 @@
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
 				716C46D82BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift in Sources */,
+				C68A27832BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift in Sources */,
 				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
 				C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
@@ -1542,6 +1560,7 @@
 				71826A672BD797AD0076E89A /* CharacterDetailCardEffectCell.swift in Sources */,
 				AC6CA29A2893BC390049C12F /* CharactersViewController.swift in Sources */,
 				C6224F782BC8443800CABA30 /* GameNoticeListGET.swift in Sources */,
+				C68A27812BDA04910039F748 /* CharacterDetailAvatarVC.swift in Sources */,
 				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
 				AC2C2B6C28B3672A00621753 /* AvatarDetailView.swift in Sources */,
 				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
@@ -1583,6 +1602,7 @@
 				C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
+				C68A27872BDA124F0039F748 /* AvatarType.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				71892D4A2BCE6D800008CD8C /* CharacterDetailProfileVC.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,

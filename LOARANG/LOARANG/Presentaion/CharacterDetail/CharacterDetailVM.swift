@@ -7,6 +7,7 @@
 
 import RxRelay
 import Foundation
+import UIKit
 
 protocol CharacterDetailVMable: CharacterDetailVMInput, CharacterDetailVMOutput, AnyObject {}
 protocol CharacterDetailVMInput {
@@ -16,6 +17,7 @@ protocol CharacterDetailVMInput {
     func touchGem()
     func touchSkillCell(_ index: Int)
     func touchOwnCharacterCell(_ indexPath: IndexPath)
+    func touchShareImageButton(_ image: UIImage)
 }
 
 protocol CharacterDetailVMOutput {
@@ -171,6 +173,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
         }
     }
     
+    func touchShareImageButton(_ image: UIImage) {
+        showNextView.accept(.shareImage(image: image))
+    }
+    
     //MARK: - Output
     var characterInfoData: CharacterDetailEntity? {
         return self.characterInfo
@@ -185,6 +191,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
         case characterDetail(name: String)
         case selectFirstTab
         case gemDetail
+        case shareImage(image: UIImage)
     }
     
     let isLoading = PublishRelay<Bool>()
