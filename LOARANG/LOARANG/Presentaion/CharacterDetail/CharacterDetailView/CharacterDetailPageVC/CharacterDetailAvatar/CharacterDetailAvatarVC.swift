@@ -45,6 +45,14 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
         viewModel?.touchShareImageButton(image)
     }
     
+    private lazy var avatarListTV = {
+        let tableView = DynamicHeightTableView()
+        tableView.separatorStyle = .none
+        tableView.register(CharatcerDetailAvatarCell.self)
+        
+        return tableView
+    }()
+    
     func setViewContents(viewModel: CharacterDetailVMable?) {
         self.viewModel = viewModel
         characterImageView.setImage(viewModel?.characterInfoData?.profile.imageUrl)
@@ -56,6 +64,7 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
         scrollView.addSubview(contentsView)
         contentsView.addSubview(characterImageView)
         contentsView.addSubview(shareButton)
+        contentsView.addSubview(avatarListTV)
         
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -69,11 +78,15 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
         characterImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(UIScreen.main.bounds.width * 1.16)
-            $0.bottom.equalToSuperview() //다음 뷰로 이동 예정
         }
         
         shareButton.snp.makeConstraints {
             $0.top.trailing.equalTo(characterImageView).inset(view.margin(.width, 16))
+        }
+        
+        avatarListTV.snp.makeConstraints {
+            $0.top.equalTo(characterImageView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

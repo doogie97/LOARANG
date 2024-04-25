@@ -206,6 +206,7 @@
 		C68A277B2BD9F2000039F748 /* GemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277A2BD9F2000039F748 /* GemDetailView.swift */; };
 		C68A277E2BD9F85A0039F748 /* GemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */; };
 		C68A27812BDA04910039F748 /* CharacterDetailAvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */; };
+		C68A27832BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -423,6 +424,7 @@
 		C68A277A2BD9F2000039F748 /* GemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailView.swift; sourceTree = "<group>"; };
 		C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailCell.swift; sourceTree = "<group>"; };
 		C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailAvatarVC.swift; sourceTree = "<group>"; };
+		C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharatcerDetailAvatarCell.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1195,6 +1197,7 @@
 			isa = PBXGroup;
 			children = (
 				C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */,
+				C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */,
 			);
 			path = CharacterDetailAvatar;
 			sourceTree = "<group>";
@@ -1481,6 +1484,7 @@
 				AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */,
 				AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */,
 				716C46D82BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift in Sources */,
+				C68A27832BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift in Sources */,
 				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
 				C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
