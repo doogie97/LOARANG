@@ -85,4 +85,14 @@ extension String {
         
         return dateFormatter.string(from: date)
     }
+    
+    func numberOfLines(labelWidth: CGFloat, font: UIFont) -> Int {
+        let textSize = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
+        let boundingRect = (self as NSString).boundingRect(with: textSize,
+                                                            options: .usesLineFragmentOrigin,
+                                                            attributes: [NSAttributedString.Key.font: font],
+                                                            context: nil)
+        let numberOfLines = Int(ceil(boundingRect.height / font.lineHeight))
+        return numberOfLines
+    }
 }

@@ -16,6 +16,7 @@ final class CharacterDetailProfileSectionView: UIView {
         case battleEquipment
         ///Stat & Engraving
         case twoRowSection
+        case gemSection
         case cardListView
         case cardEffectsView
     }
@@ -35,6 +36,7 @@ final class CharacterDetailProfileSectionView: UIView {
     }
 }
 
+//MARK: - CollectionViewDataSource
 extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return ProfileSectionCase.allCases.count
@@ -59,6 +61,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return viewModel?.characterInfoData?.battleEquipments.count ?? 0
         case .twoRowSection:
             return 2
+        case .gemSection:
+            return viewModel?.characterInfoData?.gems.count ?? 0
         case .cardListView:
             return viewModel?.characterInfoData?.cardInfo.cards.count ?? 0
         case .cardEffectsView:
@@ -84,6 +88,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
         case .twoRowSection:
             return twoRwoSectionCell(collectionView: collectionView, indexPath: indexPath)
+        case .gemSection:
+            return gemCell(collectionView: collectionView, indexPath: indexPath)
         case .cardListView:
             return cardCell(collectionView: collectionView, indexPath: indexPath)
         case .cardEffectsView:
@@ -140,6 +146,16 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         return cell ?? UICollectionViewCell()
     }
     
+    private func gemCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailGemCell.self)", for: indexPath) as? CharacterDetailGemCell,
+              let gem = viewModel?.characterInfoData?.gems[safe: indexPath.row] else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setCellContents(gem: gem)
+        return cell
+    }
+    
     private func cardCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardCell.self)", for: indexPath) as? CharacterDetailCardCell,
               let card = viewModel?.characterInfoData?.cardInfo.cards[safe: indexPath.row] else {
@@ -159,23 +175,43 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
 }
 
+//MARK: - CollectionViewDelegate
+extension CharacterDetailProfileSectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = ProfileSectionCase.allCases[safe: indexPath.section] else {
+            return
+        }
+        
+        switch section {
+        case .gemSection:
+            viewModel?.touchGem()
+        case .basicInfo, .equipmentEffectView, .battleEquipment, .twoRowSection, .cardListView, .cardEffectsView:
+            return
+        }
+    }
+}
+
 //MARK: - make CollectionView
 extension CharacterDetailProfileSectionView {
     private func createSectionCV() -> UICollectionView {
         let layout = createLayout()
         layout.register(CharacterDetailCardSectionBG.self,
                         forDecorationViewOfKind: "\(CharacterDetailCardSectionBG.self)")
+        layout.register(CharacterDetailGemSectionBG.self,
+                        forDecorationViewOfKind: "\(CharacterDetailGemSectionBG.self)")
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .mainBackground
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         collectionView.register(CharacterDetailBasicInfoCell.self)
         collectionView.register(CharacterDetailequipmentEffectCell.self)
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
         collectionView.register(CharacterDetailStatCell.self)
         collectionView.register(CharacterDetailEngravingCell.self)
+        collectionView.register(CharacterDetailGemCell.self)
         collectionView.register(CharacterDetailCardCell.self)
         collectionView.register(CharacterDetailCardEffectCell.self)
         
@@ -197,6 +233,8 @@ extension CharacterDetailProfileSectionView {
                 return self?.battleEquipmentLayout()
             case .twoRowSection:
                 return self?.twoRowSectionLayout()
+            case .gemSection:
+                return self?.gemSectionLayout()
             case .cardListView:
                 return self?.cardListSectionLayout()
             case .cardEffectsView:
@@ -253,6 +291,20 @@ extension CharacterDetailProfileSectionView {
         return section
     }
     
+    private func gemSectionLayout() -> NSCollectionLayoutSection {
+        let size = NSCollectionLayoutSize(widthDimension: .absolute(70),
+                                              heightDimension: .absolute(70))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: margin(.width, 32) + 14 , leading: margin(.width, 8), bottom: 32, trailing: margin(.width, 8))
+        let sectionBGDecoration = NSCollectionLayoutDecorationItem.background(elementKind: "\(CharacterDetailGemSectionBG.self)")
+        section.decorationItems = [sectionBGDecoration]
+        
+        return section
+    }
+    
     private func cardListSectionLayout() -> NSCollectionLayoutSection {
         let widthDimension = NSCollectionLayoutDimension.fractionalWidth(1 / 3)
         let heightDimension = NSCollectionLayoutDimension.fractionalWidth(1 / 3 * 1.44)
@@ -276,15 +328,7 @@ extension CharacterDetailProfileSectionView {
         section.decorationItems = [sectionBGDecoration]
         return section
     }
-    func numberOfLines(text: String, labelWidth: CGFloat, font: UIFont) -> Int {
-        let textSize = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
-        let boundingRect = (text as NSString).boundingRect(with: textSize,
-                                                            options: .usesLineFragmentOrigin,
-                                                            attributes: [NSAttributedString.Key.font: font],
-                                                            context: nil)
-        let numberOfLines = Int(ceil(boundingRect.height / font.lineHeight))
-        return numberOfLines
-    }
+    
     private func cartEffectsSectionLayout() -> NSCollectionLayoutSection {
         let effects = self.viewModel?.characterInfoData?.cardInfo.effects ?? []
         let count = CGFloat(effects.count)
@@ -292,8 +336,7 @@ extension CharacterDetailProfileSectionView {
         var descriptionHight: CGFloat {
             var height = 0.0
             for effect in effects {
-                let lineCount = numberOfLines(
-                    text: effect.description,
+                let lineCount = effect.description.numberOfLines(
                     labelWidth: UIScreen.main.bounds.width - margin(.width, 48),
                     font: .pretendard(size: 14, family: .SemiBold)
                 )

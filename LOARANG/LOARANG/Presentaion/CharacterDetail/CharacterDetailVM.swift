@@ -13,6 +13,7 @@ protocol CharacterDetailVMInput {
     func viewDidLoad()
     func touchBackButton()
     func touchBookmarkButton()
+    func touchGem()
     func touchSkillCell(_ index: Int)
     func touchOwnCharacterCell(_ indexPath: IndexPath)
 }
@@ -146,6 +147,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
         }
     }
     
+    func touchGem() {
+        showNextView.accept(.gemDetail)
+    }
+    
     func touchSkillCell(_ index: Int) {
         guard let skill = characterInfo?.skillInfo.skills[safe: index] else {
             return
@@ -179,6 +184,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
         case skillDetail(skill: Skill)
         case characterDetail(name: String)
         case selectFirstTab
+        case gemDetail
     }
     
     let isLoading = PublishRelay<Bool>()

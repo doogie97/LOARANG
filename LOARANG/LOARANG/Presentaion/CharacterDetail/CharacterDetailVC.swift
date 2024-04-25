@@ -82,8 +82,18 @@ final class CharacterDetailVC: UIViewController {
                 case .selectFirstTab:
                     owner.charcterDetailView.changeSegment(toMoveIndex: 0)
                     owner.charcterDetailView.setPageView(0)
+                case .gemDetail:
+                    owner.showGemDetail()
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func showGemDetail() {
+        let halfModal = CustomHalfModal()
+        let gemDetailView = GemDetailView()
+        halfModal.contentsView = gemDetailView
+        gemDetailView.setViewContents(gems: viewModel.characterInfoData?.gems ?? [])
+        self.present(halfModal, animated: false)
     }
 }
