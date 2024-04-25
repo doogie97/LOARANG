@@ -98,10 +98,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func basicInfoCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBasicInfoCell.self)", for: indexPath) as? CharacterDetailBasicInfoCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBasicInfoCell.self)", for: indexPath) as? CharacterDetailBasicInfoCell,
+              let profile = viewModel?.characterInfoData?.profile else {
             return UICollectionViewCell()
         }
-        cell.setCellContents()
+        cell.setCellContents(profile: profile)
         return cell
     }
     
@@ -245,7 +246,7 @@ extension CharacterDetailProfileSectionView {
     
     private func basicInfoLayout() -> NSCollectionLayoutSection {
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalWidth(0.6))
+                                              heightDimension: .absolute(230))
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
