@@ -48,11 +48,11 @@ extension CharactersDetailDTO {
     
     struct Tendencies: Decodable {
         let tendencyType: String?
-        let Value: Int?
+        let Point: Int?
         let MaxPoint: Int?
         enum CodingKeys: String, CodingKey {
             case tendencyType = "Type"
-            case Value
+            case Point
             case MaxPoint
         }
     }

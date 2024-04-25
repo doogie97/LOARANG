@@ -111,7 +111,7 @@ struct GetCharacterDetailUseCase {
             tendencies: (dto?.Tendencies ?? []).compactMap {
                 return CharacterDetailEntity.Tendency(
                     tendencyType: TendencyType(rawValue: $0.tendencyType ?? "") ?? .unknown,
-                    value: $0.Value ?? 0
+                    value: $0.Point ?? 0
                 )
             }
         )
