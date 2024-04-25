@@ -186,7 +186,7 @@ struct GetCharacterDetailUseCase {
             let isOverDressing = JSON(($0.Tooltip ?? "").data(using: .utf8) ?? Data())["Element_005"]["value"].stringValue.contains("덧입기")
             return CharacterDetailEntity.Avatar(
                 avatarType: AvatarType(rawValue: $0.avatarType ?? "") ?? .unknown,
-                isOverdressing: true,
+                isOverdressing: isOverDressing,
                 name: $0.Name ?? "",
                 imageUrl: $0.Icon ?? "",
                 grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown

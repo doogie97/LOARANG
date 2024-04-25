@@ -49,6 +49,7 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
         let tableView = DynamicHeightTableView()
         tableView.separatorStyle = .none
         tableView.register(CharatcerDetailAvatarCell.self)
+        tableView.dataSource = self
         
         return tableView
     }()
@@ -88,5 +89,21 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
             $0.top.equalTo(characterImageView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+}
+
+extension CharacterDetailAvatarVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.characterInfoData?.avatars.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CharatcerDetailAvatarCell.self)", for: indexPath) as? CharatcerDetailAvatarCell,
+              let avatar = viewModel?.characterInfoData?.avatars[safe: indexPath.row] else {
+            return UITableViewCell()
+        }
+        
+        cell.setCellContents(avatar: avatar)
+        return cell
     }
 }
