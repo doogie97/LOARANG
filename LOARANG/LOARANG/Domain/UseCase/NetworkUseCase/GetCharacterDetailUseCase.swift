@@ -140,7 +140,7 @@ struct GetCharacterDetailUseCase {
                 name: ($0.Name ?? "").insideAngleBrackets,
                 imageUrl: $0.Icon ?? "",
                 level: $0.Level ?? 0,
-                Grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
+                grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
                 description: description
             )
             if gem.name.contains("멸화") {

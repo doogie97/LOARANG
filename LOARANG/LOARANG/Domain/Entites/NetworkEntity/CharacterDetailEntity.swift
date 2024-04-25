@@ -121,7 +121,7 @@ extension CharacterDetailEntity {
         let name: String
         let imageUrl: String
         let level: Int
-        let Grade: Grade
+        let grade: Grade
         let description: String
     }
 }
