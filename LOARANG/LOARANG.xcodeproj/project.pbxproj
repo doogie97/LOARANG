@@ -202,6 +202,7 @@
 		C685D9DA2BC997D3009C815B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D92BC997D3009C815B /* UILabel + Extension.swift */; };
 		C68A27752BD9DD250039F748 /* CharacterDetailGemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */; };
 		C68A27772BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */; };
+		C68A27792BD9EFB00039F748 /* CustomHalfModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -415,6 +416,7 @@
 		C685D9D92BC997D3009C815B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGemCell.swift; sourceTree = "<group>"; };
 		C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGemSectionBG.swift; sourceTree = "<group>"; };
+		C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfModal.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1246,6 +1248,7 @@
 				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
 				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
 				C6224F752BC840D400CABA30 /* LoadingView.swift */,
+				C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */,
 			);
 			path = AboutView;
 			sourceTree = "<group>";
@@ -1443,6 +1446,7 @@
 				ACB0F16028BF6D7C00C6BB2F /* BasicAbillityView.swift in Sources */,
 				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
 				C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */,
+				C68A27792BD9EFB00039F748 /* CustomHalfModal.swift in Sources */,
 				AC2C2B6E28B3673100621753 /* AvatarDetailViewController.swift in Sources */,
 				C683F4232BCD703600A5E699 /* CharacterDetailView.swift in Sources */,
 				7162BF802BC7C50300702530 /* HomeSectionView.swift in Sources */,
