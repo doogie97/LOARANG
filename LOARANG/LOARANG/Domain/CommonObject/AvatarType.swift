@@ -13,5 +13,6 @@ enum AvatarType: String {
     case 얼굴1아바타 = "얼굴1 아바타"
     case 얼굴2아바타 = "얼굴2 아바타"
     case 이동효과 = "이동 효과"
+    case 변신스킨 = "변신 스킨"
     case unknown
 }
