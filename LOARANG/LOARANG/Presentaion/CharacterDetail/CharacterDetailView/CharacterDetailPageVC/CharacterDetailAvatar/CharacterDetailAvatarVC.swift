@@ -24,11 +24,33 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
         setLayout()
     }
     
+    private lazy var scrollView = UIScrollView()
+    private lazy var contentsView = UIView()
+    private lazy var characterImageView = UIImageView()
+    
     func setViewContents(viewModel: CharacterDetailVMable?) {
         self.viewModel = viewModel
+        characterImageView.setImage(viewModel?.characterInfoData?.profile.imageUrl)
     }
     
     private func setLayout() {
-        self.view.backgroundColor = .cellBackgroundColor
+        self.view.backgroundColor = #colorLiteral(red: 0.07950355858, green: 0.09458512813, blue: 0.1114221141, alpha: 1)
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(contentsView)
+        contentsView.addSubview(characterImageView)
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        contentsView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        characterImageView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(UIScreen.main.bounds.width * 1.16)
+        }
     }
 }
