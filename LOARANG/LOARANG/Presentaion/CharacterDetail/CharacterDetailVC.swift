@@ -84,6 +84,11 @@ final class CharacterDetailVC: UIViewController {
                     owner.charcterDetailView.setPageView(0)
                 case .gemDetail:
                     owner.showGemDetail()
+                case .shareImage(image: let image):
+                    let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                    activityVC.popoverPresentationController?.sourceView = owner.view
+                    
+                    owner.present(activityVC, animated: true)
                 }
             }
             .disposed(by: disposeBag)
