@@ -130,15 +130,27 @@ struct GetCharacterDetailUseCase {
     }
     
     private func gems(_ dto: CharactersDetailDTO.ArmoryGem?) -> [CharacterDetailEntity.Gem] {
-        return (dto?.Gems ?? []).compactMap {
-            return CharacterDetailEntity.Gem(
-                name: $0.Name ?? "",
+        var attGems = [CharacterDetailEntity.Gem]()
+        var cooltimeGems = [CharacterDetailEntity.Gem]()
+        (dto?.Gems ?? []).forEach {
+            let jsonData = JSON(($0.Tooltip ?? "").data(using: .utf8) ?? Data())
+            let tooltipStr = jsonData["Element_004"]["value"]["Element_001"].stringValue
+            let description = tooltipStr.insideAngleBrackets + (jsonData["Element_004"]["value"]["Element_001"].stringValue.components(separatedBy: ">").last ?? "")
+            let gem = CharacterDetailEntity.Gem(
+                name: ($0.Name ?? "").insideAngleBrackets,
                 imageUrl: $0.Icon ?? "",
                 level: $0.Level ?? 0,
                 Grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
-                description: $0.Tooltip ?? ""
+                description: description
             )
+            if gem.name.contains("멸화") {
+                attGems.append(gem)
+            } else {
+                cooltimeGems.append(gem)
+            }
         }
+        
+        return attGems + cooltimeGems
     }
     
     private func cardInfo(_ dto: CharactersDetailDTO.ArmoryCard?) -> CharacterDetailEntity.CardInfo {
