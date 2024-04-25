@@ -200,6 +200,8 @@
 		C683F42A2BCD77E900A5E699 /* CharacterDetailNavigationbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */; };
 		C685D9D82BC97E1C009C815B /* BookmarkFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */; };
 		C685D9DA2BC997D3009C815B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C685D9D92BC997D3009C815B /* UILabel + Extension.swift */; };
+		C68A27752BD9DD250039F748 /* CharacterDetailGemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */; };
+		C68A27772BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -411,6 +413,8 @@
 		C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailNavigationbar.swift; sourceTree = "<group>"; };
 		C685D9D72BC97E1C009C815B /* BookmarkFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkFooter.swift; sourceTree = "<group>"; };
 		C685D9D92BC997D3009C815B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGemCell.swift; sourceTree = "<group>"; };
+		C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGemSectionBG.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1194,6 +1198,8 @@
 				C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */,
 				C6B73C4B2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift */,
 				C6B73C4D2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift */,
+				C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */,
+				C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */,
 				71826A682BD7A0D50076E89A /* CharacterDetailCardSectionBG.swift */,
 				71826A642BD797A10076E89A /* CharacterDetailCardCell.swift */,
 				71826A662BD797AD0076E89A /* CharacterDetailCardEffectCell.swift */,
@@ -1419,6 +1425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6224F902BC84B3300CABA30 /* ChallengeGuardianRaidsGET.swift in Sources */,
+				C68A27772BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift in Sources */,
 				C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */,
 				7168675E2BCCA3DD0008C28F /* CharacterDetailGET.swift in Sources */,
 				C683F4272BCD704200A5E699 /* CharacterDetailVM.swift in Sources */,
@@ -1482,6 +1489,7 @@
 				C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */,
 				C6224F892BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift in Sources */,
 				C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */,
+				C68A27752BD9DD250039F748 /* CharacterDetailGemCell.swift in Sources */,
 				C6224F922BC84B3A00CABA30 /* ChallengeGuardianRaidsDTO.swift in Sources */,
 				AC799A8828A518F7008A2865 /* BasicEquipmentView.swift in Sources */,
 				AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */,

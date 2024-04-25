@@ -16,6 +16,7 @@ final class CharacterDetailProfileSectionView: UIView {
         case battleEquipment
         ///Stat & Engraving
         case twoRowSection
+        case gemSection
         case cardListView
         case cardEffectsView
     }
@@ -59,6 +60,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return viewModel?.characterInfoData?.battleEquipments.count ?? 0
         case .twoRowSection:
             return 2
+        case .gemSection:
+            return viewModel?.characterInfoData?.gems.count ?? 0
         case .cardListView:
             return viewModel?.characterInfoData?.cardInfo.cards.count ?? 0
         case .cardEffectsView:
@@ -84,6 +87,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
         case .twoRowSection:
             return twoRwoSectionCell(collectionView: collectionView, indexPath: indexPath)
+        case .gemSection:
+            return gemCell(collectionView: collectionView, indexPath: indexPath)
         case .cardListView:
             return cardCell(collectionView: collectionView, indexPath: indexPath)
         case .cardEffectsView:
@@ -140,6 +145,16 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         return cell ?? UICollectionViewCell()
     }
     
+    private func gemCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailGemCell.self)", for: indexPath) as? CharacterDetailGemCell,
+              let gem = viewModel?.characterInfoData?.gems[safe: indexPath.row] else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setCellContents(gem: gem)
+        return cell
+    }
+    
     private func cardCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailCardCell.self)", for: indexPath) as? CharacterDetailCardCell,
               let card = viewModel?.characterInfoData?.cardInfo.cards[safe: indexPath.row] else {
@@ -165,6 +180,8 @@ extension CharacterDetailProfileSectionView {
         let layout = createLayout()
         layout.register(CharacterDetailCardSectionBG.self,
                         forDecorationViewOfKind: "\(CharacterDetailCardSectionBG.self)")
+        layout.register(CharacterDetailGemSectionBG.self,
+                        forDecorationViewOfKind: "\(CharacterDetailGemSectionBG.self)")
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .mainBackground
@@ -176,6 +193,7 @@ extension CharacterDetailProfileSectionView {
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
         collectionView.register(CharacterDetailStatCell.self)
         collectionView.register(CharacterDetailEngravingCell.self)
+        collectionView.register(CharacterDetailGemCell.self)
         collectionView.register(CharacterDetailCardCell.self)
         collectionView.register(CharacterDetailCardEffectCell.self)
         
@@ -197,6 +215,8 @@ extension CharacterDetailProfileSectionView {
                 return self?.battleEquipmentLayout()
             case .twoRowSection:
                 return self?.twoRowSectionLayout()
+            case .gemSection:
+                return self?.gemSectionLayout()
             case .cardListView:
                 return self?.cardListSectionLayout()
             case .cardEffectsView:
@@ -249,6 +269,21 @@ extension CharacterDetailProfileSectionView {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 16, trailing: margin(.width, 8))
+        
+        return section
+    }
+    
+    private func gemSectionLayout() -> NSCollectionLayoutSection {
+        let size = NSCollectionLayoutSize(widthDimension: .absolute(70 + margin(.width, 8)),
+                                              heightDimension: .absolute(70 ))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        item.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 0, trailing: margin(.width, 4))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: margin(.width, 32) + 24 , leading: margin(.width, 4), bottom: 32, trailing: margin(.width, 4))
+        let sectionBGDecoration = NSCollectionLayoutDecorationItem.background(elementKind: "\(CharacterDetailGemSectionBG.self)")
+        section.decorationItems = [sectionBGDecoration]
         
         return section
     }

@@ -1,14 +1,14 @@
 //
-//  CharacterDetailCardSectionBG.swift
+//  CharacterDetailGemSectionBG.swift
 //  LOARANG
 //
-//  Created by Doogie on 4/23/24.
+//  Created by Doogie on 4/25/24.
 //
 
 import UIKit
 import SnapKit
 
-final class CharacterDetailCardSectionBG: UICollectionReusableView {
+final class CharacterDetailGemSectionBG: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
@@ -19,7 +19,7 @@ final class CharacterDetailCardSectionBG: UICollectionReusableView {
     }
     
     private lazy var titleLabel = {
-        let label = pretendardLabel(text: "카드", alignment: .center)
+        let label = pretendardLabel(text: "보석", alignment: .center)
         label.clipsToBounds = true
         label.layer.cornerRadius = 12
         label.backgroundColor = #colorLiteral(red: 0.1511179507, green: 0.1611060798, blue: 0.178067416, alpha: 1)
@@ -32,16 +32,14 @@ final class CharacterDetailCardSectionBG: UICollectionReusableView {
     private func setLayout() {
         let view = UIView()
         view.backgroundColor = .cellColor
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.layer.cornerRadius = 6
         
         self.addSubview(view)
         view.addSubview(titleLabel)
         
         view.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(margin(.width, 8))
-            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(16)
         }
         
         titleLabel.snp.makeConstraints {
