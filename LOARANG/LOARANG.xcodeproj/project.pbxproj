@@ -204,6 +204,7 @@
 		C68A27772BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */; };
 		C68A27792BD9EFB00039F748 /* CustomHalfModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */; };
 		C68A277B2BD9F2000039F748 /* GemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277A2BD9F2000039F748 /* GemDetailView.swift */; };
+		C68A277E2BD9F85A0039F748 /* GemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -419,6 +420,7 @@
 		C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGemSectionBG.swift; sourceTree = "<group>"; };
 		C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfModal.swift; sourceTree = "<group>"; };
 		C68A277A2BD9F2000039F748 /* GemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailView.swift; sourceTree = "<group>"; };
+		C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailCell.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1170,11 +1172,20 @@
 			isa = PBXGroup;
 			children = (
 				C683F4222BCD703600A5E699 /* CharacterDetailView.swift */,
-				C68A277A2BD9F2000039F748 /* GemDetailView.swift */,
+				C68A277C2BD9F8480039F748 /* GemDetailView */,
 				C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */,
 				71892D4F2BCE707B0008CD8C /* CharacterDetailPageVC */,
 			);
 			path = CharacterDetailView;
+			sourceTree = "<group>";
+		};
+		C68A277C2BD9F8480039F748 /* GemDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				C68A277A2BD9F2000039F748 /* GemDetailView.swift */,
+				C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */,
+			);
+			path = GemDetailView;
 			sourceTree = "<group>";
 		};
 		C6C1A6F22BD264B500EA7B8C /* CharacterDetailProfile */ = {
@@ -1510,6 +1521,7 @@
 				AC2C2B5D28B3545900621753 /* AvatarView.swift in Sources */,
 				71892D412BCDFA0E0008CD8C /* ScrollableSegmentCell.swift in Sources */,
 				AC2C2B7228B38A5900621753 /* GemCell.swift in Sources */,
+				C68A277E2BD9F85A0039F748 /* GemDetailCell.swift in Sources */,
 				C6B73C4A2BD50C5100A6B6BD /* TendencyType.swift in Sources */,
 				ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */,
 				ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */,

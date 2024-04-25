@@ -93,7 +93,7 @@ final class CharacterDetailVC: UIViewController {
         let halfModal = CustomHalfModal()
         let gemDetailView = GemDetailView()
         halfModal.contentsView = gemDetailView
-        gemDetailView.setViewContents()
+        gemDetailView.setViewContents(gems: viewModel.characterInfoData?.gems ?? [])
         self.present(halfModal, animated: false)
     }
 }
