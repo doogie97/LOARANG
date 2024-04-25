@@ -17,7 +17,7 @@ final class CustomHalfModal: UIViewController, CustomHalfModalDelegate {
     var blurViewOpacity = 0.7
     var grabberIsHidden = false {
         didSet {
-            grabberView.backgroundColor = grabberIsHidden ? .clear : .systemGray
+            grabberView.backgroundColor = grabberIsHidden ? .clear : .white
         }
     }
     
@@ -101,7 +101,7 @@ final class CustomHalfModal: UIViewController, CustomHalfModalDelegate {
     
     private lazy var grabberView = {
         let view = UIView()
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .white
         
         return view
     }()

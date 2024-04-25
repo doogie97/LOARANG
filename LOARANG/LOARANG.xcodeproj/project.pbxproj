@@ -203,6 +203,7 @@
 		C68A27752BD9DD250039F748 /* CharacterDetailGemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */; };
 		C68A27772BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */; };
 		C68A27792BD9EFB00039F748 /* CustomHalfModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */; };
+		C68A277B2BD9F2000039F748 /* GemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277A2BD9F2000039F748 /* GemDetailView.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -417,6 +418,7 @@
 		C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGemCell.swift; sourceTree = "<group>"; };
 		C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailGemSectionBG.swift; sourceTree = "<group>"; };
 		C68A27782BD9EFB00039F748 /* CustomHalfModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHalfModal.swift; sourceTree = "<group>"; };
+		C68A277A2BD9F2000039F748 /* GemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailView.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1168,6 +1170,7 @@
 			isa = PBXGroup;
 			children = (
 				C683F4222BCD703600A5E699 /* CharacterDetailView.swift */,
+				C68A277A2BD9F2000039F748 /* GemDetailView.swift */,
 				C683F4292BCD77E900A5E699 /* CharacterDetailNavigationbar.swift */,
 				71892D4F2BCE707B0008CD8C /* CharacterDetailPageVC */,
 			);
@@ -1561,6 +1564,7 @@
 				C683F41E2BCC286400A5E699 /* GetCharacterDetailUseCase.swift in Sources */,
 				C6224F802BC847C300CABA30 /* GameNoticeEntity.swift in Sources */,
 				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
+				C68A277B2BD9F2000039F748 /* GemDetailView.swift in Sources */,
 				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */,
 				C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */,

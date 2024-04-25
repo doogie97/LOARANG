@@ -148,7 +148,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
     }
     
     func touchGem() {
-        
+        showNextView.accept(.gemDetail)
     }
     
     func touchSkillCell(_ index: Int) {
@@ -184,6 +184,7 @@ final class CharacterDetailVM: CharacterDetailVMable {
         case skillDetail(skill: Skill)
         case characterDetail(name: String)
         case selectFirstTab
+        case gemDetail
     }
     
     let isLoading = PublishRelay<Bool>()
