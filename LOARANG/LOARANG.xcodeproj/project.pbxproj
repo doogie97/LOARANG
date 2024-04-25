@@ -207,6 +207,7 @@
 		C68A277E2BD9F85A0039F748 /* GemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */; };
 		C68A27812BDA04910039F748 /* CharacterDetailAvatarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */; };
 		C68A27832BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */; };
+		C68A27872BDA124F0039F748 /* AvatarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A27862BDA124F0039F748 /* AvatarType.swift */; };
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
@@ -425,6 +426,7 @@
 		C68A277D2BD9F85A0039F748 /* GemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemDetailCell.swift; sourceTree = "<group>"; };
 		C68A27802BDA04910039F748 /* CharacterDetailAvatarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailAvatarVC.swift; sourceTree = "<group>"; };
 		C68A27822BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharatcerDetailAvatarCell.swift; sourceTree = "<group>"; };
+		C68A27862BDA124F0039F748 /* AvatarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarType.swift; sourceTree = "<group>"; };
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
@@ -1104,6 +1106,7 @@
 				C63C61622BADC8530023D123 /* CharacterClase.swift */,
 				71892D442BCE5EF60008CD8C /* Grade.swift */,
 				716C46F62BD115B4009A474F /* EquipmentType.swift */,
+				C68A27862BDA124F0039F748 /* AvatarType.swift */,
 				C6B73C472BD50C0800A6B6BD /* StatType.swift */,
 				C6B73C492BD50C5100A6B6BD /* TendencyType.swift */,
 			);
@@ -1599,6 +1602,7 @@
 				C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
 				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
+				C68A27872BDA124F0039F748 /* AvatarType.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				71892D4A2BCE6D800008CD8C /* CharacterDetailProfileVC.swift in Sources */,
 				ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */,

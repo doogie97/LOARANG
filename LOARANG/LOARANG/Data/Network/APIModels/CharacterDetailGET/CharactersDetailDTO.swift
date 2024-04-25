@@ -8,6 +8,7 @@
 struct CharactersDetailDTO: Decodable {
     let ArmoryProfile: ArmoryProfile?
     let ArmoryEquipment: [Equipment]?
+    let ArmoryAvatars: [Avatar]?
     let ArmoryEngraving: ArmoryEngraving?
     let ArmoryGem: ArmoryGem?
     let ArmoryCard: ArmoryCard?
@@ -68,6 +69,24 @@ extension CharactersDetailDTO {
         let Tooltip: String?
         enum CodingKeys: String, CodingKey {
             case equipmentType = "Type"
+            case Name
+            case Icon
+            case Grade
+            case Tooltip
+        }
+    }
+}
+
+//MARK: - Avatar
+extension CharactersDetailDTO {
+    struct Avatar: Decodable {
+        let avatarType: String?
+        let Name: String?
+        let Icon: String?
+        let Grade: String?
+        let Tooltip: String?
+        enum CodingKeys: String, CodingKey {
+            case avatarType = "Type"
             case Name
             case Icon
             case Grade
