@@ -36,6 +36,7 @@ final class CharacterDetailProfileSectionView: UIView {
     }
 }
 
+//MARK: - CollectionViewDataSource
 extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return ProfileSectionCase.allCases.count
@@ -174,6 +175,22 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
 }
 
+//MARK: - CollectionViewDelegate
+extension CharacterDetailProfileSectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = ProfileSectionCase.allCases[safe: indexPath.section] else {
+            return
+        }
+        
+        switch section {
+        case .gemSection:
+            viewModel?.touchGem()
+        case .basicInfo, .equipmentEffectView, .battleEquipment, .twoRowSection, .cardListView, .cardEffectsView:
+            return
+        }
+    }
+}
+
 //MARK: - make CollectionView
 extension CharacterDetailProfileSectionView {
     private func createSectionCV() -> UICollectionView {
@@ -187,6 +204,7 @@ extension CharacterDetailProfileSectionView {
         collectionView.backgroundColor = .mainBackground
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         collectionView.register(CharacterDetailBasicInfoCell.self)
         collectionView.register(CharacterDetailequipmentEffectCell.self)

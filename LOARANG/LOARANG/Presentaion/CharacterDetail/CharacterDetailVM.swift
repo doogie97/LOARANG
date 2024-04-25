@@ -13,6 +13,7 @@ protocol CharacterDetailVMInput {
     func viewDidLoad()
     func touchBackButton()
     func touchBookmarkButton()
+    func touchGem()
     func touchSkillCell(_ index: Int)
     func touchOwnCharacterCell(_ indexPath: IndexPath)
 }
@@ -144,6 +145,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
         } catch let error {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }
+    }
+    
+    func touchGem() {
+        
     }
     
     func touchSkillCell(_ index: Int) {
