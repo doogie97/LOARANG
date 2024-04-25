@@ -274,14 +274,13 @@ extension CharacterDetailProfileSectionView {
     }
     
     private func gemSectionLayout() -> NSCollectionLayoutSection {
-        let size = NSCollectionLayoutSize(widthDimension: .absolute(70 + margin(.width, 8)),
-                                              heightDimension: .absolute(70 ))
+        let size = NSCollectionLayoutSize(widthDimension: .absolute(70),
+                                              heightDimension: .absolute(70))
         let item = NSCollectionLayoutItem(layoutSize: size)
-        item.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 0, trailing: margin(.width, 4))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = .init(top: margin(.width, 32) + 24 , leading: margin(.width, 4), bottom: 32, trailing: margin(.width, 4))
+        section.contentInsets = .init(top: margin(.width, 32) + 14 , leading: margin(.width, 8), bottom: 32, trailing: margin(.width, 8))
         let sectionBGDecoration = NSCollectionLayoutDecorationItem.background(elementKind: "\(CharacterDetailGemSectionBG.self)")
         section.decorationItems = [sectionBGDecoration]
         
