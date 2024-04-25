@@ -276,15 +276,7 @@ extension CharacterDetailProfileSectionView {
         section.decorationItems = [sectionBGDecoration]
         return section
     }
-    func numberOfLines(text: String, labelWidth: CGFloat, font: UIFont) -> Int {
-        let textSize = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
-        let boundingRect = (text as NSString).boundingRect(with: textSize,
-                                                            options: .usesLineFragmentOrigin,
-                                                            attributes: [NSAttributedString.Key.font: font],
-                                                            context: nil)
-        let numberOfLines = Int(ceil(boundingRect.height / font.lineHeight))
-        return numberOfLines
-    }
+    
     private func cartEffectsSectionLayout() -> NSCollectionLayoutSection {
         let effects = self.viewModel?.characterInfoData?.cardInfo.effects ?? []
         let count = CGFloat(effects.count)
@@ -292,8 +284,7 @@ extension CharacterDetailProfileSectionView {
         var descriptionHight: CGFloat {
             var height = 0.0
             for effect in effects {
-                let lineCount = numberOfLines(
-                    text: effect.description,
+                let lineCount = effect.description.numberOfLines(
                     labelWidth: UIScreen.main.bounds.width - margin(.width, 48),
                     font: .pretendard(size: 14, family: .SemiBold)
                 )
