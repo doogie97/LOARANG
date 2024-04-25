@@ -29,9 +29,9 @@ enum Grade: String {
         case .hero:
             return #colorLiteral(red: 0.2530562878, green: 0.06049384922, blue: 0.3300251961, alpha: 1)
         case .legendary:
-            return #colorLiteral(red: 0.5773422718, green: 0.3460586369, blue: 0.01250262465, alpha: 1)
+            return #colorLiteral(red: 0.5246120691, green: 0.3031592071, blue: 0.003560988232, alpha: 1)
         case .artifact:
-            return #colorLiteral(red: 0.4901602268, green: 0.2024044096, blue: 0.03712747619, alpha: 1)
+            return #colorLiteral(red: 0.5784874356, green: 0.1879552667, blue: 0.0295805793, alpha: 1)
         case .ancient:
             return #colorLiteral(red: 0.7324138284, green: 0.6683282852, blue: 0.5068081021, alpha: 1)
         case .esther:
