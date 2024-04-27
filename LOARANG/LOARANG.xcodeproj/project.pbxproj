@@ -74,8 +74,6 @@
 		AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC687AB4291373E70064C92B /* GoogleService-Info.plist */; };
 		AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC6C81942940270A00C0EEC1 /* Alamofire */; };
 		AC6CA2962893BC270049C12F /* CharacterDetailSkillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* CharacterDetailSkillVC.swift */; };
-		AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */; };
-		AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */; };
 		AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */; };
 		AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403F28B5D213004B7EBB /* SkillInfo.swift */; };
 		AC86404228B5D478004B7EBB /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404128B5D478004B7EBB /* Skill.swift */; };
@@ -238,8 +236,6 @@
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
 		AC687AB4291373E70064C92B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* CharacterDetailSkillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSkillVC.swift; sourceTree = "<group>"; };
-		AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCVCell.swift; sourceTree = "<group>"; };
-		AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllView.swift; sourceTree = "<group>"; };
 		AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
 		AC86403F28B5D213004B7EBB /* SkillInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
 		AC86404128B5D478004B7EBB /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
@@ -598,15 +594,6 @@
 			path = CharacterDetailSkill;
 			sourceTree = "<group>";
 		};
-		AC7E9F7D28C5D10700859E06 /* SegmentController */ = {
-			isa = PBXGroup;
-			children = (
-				AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */,
-				AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */,
-			);
-			path = SegmentController;
-			sourceTree = "<group>";
-		};
 		AC86403A28B5C968004B7EBB /* StorageModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -930,7 +917,6 @@
 			isa = PBXGroup;
 			children = (
 				AC62F87D28DC7F2F00E4A92D /* WebView */,
-				AC7E9F7D28C5D10700859E06 /* SegmentController */,
 				71892D3D2BCDF8ED0008CD8C /* ScrollableSegement */,
 				AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */,
 				ACBE041D28B7109900FCB74D /* PaddingLabel.swift */,
@@ -1243,9 +1229,7 @@
 				71892D512BCE70950008CD8C /* CharacterDetailPageVCDelegate.swift in Sources */,
 				C62FA10F2BC6D4DD00C15A12 /* BookmarkUserEntity.swift in Sources */,
 				ACD547B128EBF8A000D44ACA /* RecentUserDTO.swift in Sources */,
-				AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */,
 				7162BF7A2BC7BB2200702530 /* HomeVM.swift in Sources */,
-				AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */,
 				C6074DEB2BC6DBE800FE3004 /* AddRecentUserUseCase.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
 				ACE5DC6B294613BC009BFEAC /* OwnCharactersGET.swift in Sources */,
