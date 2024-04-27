@@ -18,7 +18,7 @@ extension UIButton {
         } else {
             let image = UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate)
             self.setImage(image, for: .normal)
-            self.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            self.tintColor = .white
             self.tag = 1
         }
     }
@@ -31,7 +31,7 @@ extension UIButton {
         } else {
             let image = UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate)
             self.setImage(image, for: .normal)
-            self.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            self.tintColor = .white
         }
     }
 }

@@ -14,6 +14,7 @@ protocol CharacterDetailVMInput {
     func viewDidLoad()
     func touchBackButton()
     func touchBookmarkButton()
+    func touchMoveHomeButton()
     func touchGem()
     func touchSkillCell(_ index: Int)
     func touchOwnCharacterCell(_ indexPath: IndexPath)
@@ -29,6 +30,7 @@ protocol CharacterDetailVMOutput {
     var showAlert: PublishRelay<(message: String, isPop: Bool)> { get }
     var popView: PublishRelay<Void> { get }
     var showNextView: PublishRelay<CharacterDetailVM.NextViewCase> { get }
+    var popToHome: PublishRelay<Void> { get }
 }
 
 final class CharacterDetailVM: CharacterDetailVMable {
@@ -97,6 +99,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
         } catch let error {
             showAlert.accept((message: error.errorMessage, isPop: false))
         }
+    }
+    
+    func touchMoveHomeButton() {
+        popToHome.accept(())
     }
     
     private func getCharacterDetail() {
@@ -200,4 +206,5 @@ final class CharacterDetailVM: CharacterDetailVMable {
     let showAlert = PublishRelay<(message: String, isPop: Bool)>()
     let popView = PublishRelay<Void>()
     let showNextView = PublishRelay<NextViewCase>()
+    let popToHome = PublishRelay<Void>()
 }

@@ -54,6 +54,7 @@ final class CharacterDetailView: UIView {
     private lazy var pageView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainBackground
+        view.layer.opacity = 0
         
         return view
     }()
@@ -74,6 +75,10 @@ final class CharacterDetailView: UIView {
         setPageView(0, isFirst: true)
         
         setLayout()
+        
+        UIView.animate(withDuration: 0.3, delay: 0.3) { [weak self] in
+            self?.pageView.layer.opacity = 1
+        }
     }
     
     private func setLayout() {

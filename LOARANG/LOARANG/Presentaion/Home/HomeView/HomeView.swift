@@ -23,8 +23,8 @@ final class HomeView: UIView {
     }
     
     private(set) lazy var loadingView = LoadingView()
-    private let navigationbar = HomeNavigationbar()
-    private let homeSectionView = HomeSectionView()
+    private lazy var navigationbar = HomeNavigationbar()
+    private(set) lazy var homeSectionView = HomeSectionView()
     
     func setViewContents(viewContents: HomeVM.ViewContents) {
         navigationbar.setViewContents(viewModel: viewContents.viewModel)

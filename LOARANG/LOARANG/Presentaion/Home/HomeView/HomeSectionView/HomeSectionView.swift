@@ -14,6 +14,7 @@ final class HomeSectionView: UIView {
     enum SectionCase: Int, CaseIterable {
         case mainUser
         case bookmark
+        case adSection
         case challengeAbyssDungeons
         case challengeGuardianRaids
         case event
@@ -53,6 +54,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return 1
         case .bookmark:
             return ViewChangeManager.shared.bookmarkUsers.value.count
+        case .adSection:
+            return 1
         case .challengeAbyssDungeons:
             return 2
         case .challengeGuardianRaids:
@@ -79,6 +82,8 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return mainUserCell
         case .bookmark:
             return bookmarkCell(collectionView: collectionView, indexPath: indexPath)
+        case .adSection:
+            return adCell(collectionView: collectionView, indexPath: indexPath)
         case .challengeAbyssDungeons, .challengeGuardianRaids, .event:
             return homeImageCVCell(collectionView: collectionView, section: section, indexPath: indexPath)
         case .notice:
@@ -98,6 +103,16 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                                          userInfo: userInfo)
         return bookmarkUserCell
     }
+    
+    private func adCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HomeAdCell.self)", for: indexPath) as? HomeAdCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setCellContents(viewModel: viewModel)
+        return cell
+    }
+    
     private func homeImageCVCell(collectionView: UICollectionView, section: SectionCase, indexPath: IndexPath) -> UICollectionViewCell {
         var cellData: (imageUrl: String, imageTitle: String?, textColor: UIColor)? {
             switch section {
@@ -112,7 +127,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             case .event:
                 let guardianRaidInfo = self.viewContents?.homeGameInfo.eventList[safe: indexPath.row]
                 return (guardianRaidInfo?.imageUrl ?? "", guardianRaidInfo?.endDate, .white)
-            case .notice, .mainUser, .bookmark:
+            case .notice, .mainUser, .bookmark, .adSection:
                 return nil
             }
         }
@@ -158,7 +173,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                     return .event
                 case .notice:
                     return .notice
-                case .mainUser:
+                case .mainUser, .adSection:
                     return nil
                 }
             }
@@ -179,7 +194,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
                 }
                 footer.setViewContents(viewModel: self.viewModel)
                 return footer
-            case .mainUser, .challengeAbyssDungeons, .challengeGuardianRaids, .event, .notice:
+            case .mainUser, .challengeAbyssDungeons, .challengeGuardianRaids, .event, .notice, .adSection:
                 return UICollectionReusableView()
             }
         }
@@ -201,7 +216,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             viewModel?.touchViewAction(.event(rowIndex: indexPath.row))
         case .notice:
             viewModel?.touchViewAction(.notice(rowIndex: indexPath.row))
-        case .challengeAbyssDungeons, .challengeGuardianRaids:
+        case .challengeAbyssDungeons, .challengeGuardianRaids, .adSection:
             return
         }
     }
@@ -228,6 +243,7 @@ extension HomeSectionView {
         
         collectionView.register(HomeMainUserCVCell.self)
         collectionView.register(HomeBookmarkUserCVCell.self)
+        collectionView.register(HomeAdCell.self)
         collectionView.register(HomeNoticeCVCell.self)
         collectionView.register(HomeImageCVCell.self)
         
@@ -249,6 +265,8 @@ extension HomeSectionView {
                 return self?.mainUserSectionLayout()
             case .bookmark:
                 return self?.bookmarkSectionLayout()
+            case .adSection:
+                return self?.adSectionLayout()
             case .challengeAbyssDungeons:
                 return self?.imageSectionLayout(imageSectionCase: .challengeAbyssDungeons)
             case .challengeGuardianRaids:
@@ -303,6 +321,17 @@ extension HomeSectionView {
                                                             elementKind: UICollectionView.elementKindSectionFooter,
                                                             alignment: .bottomLeading))
         }
+        return section
+    }
+    
+    private func adSectionLayout() -> NSCollectionLayoutSection {
+        let hasAd = viewModel?.hasAd ?? false
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                          heightDimension: .absolute(hasAd ? 60 : 0))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: hasAd ? 16 : 0, trailing: 0)
         return section
     }
     

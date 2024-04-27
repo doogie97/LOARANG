@@ -92,6 +92,12 @@ final class CharacterDetailVC: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        viewModel.popToHome.withUnretained(self)
+            .subscribe { owner, _ in
+                owner.navigationController?.popToRootViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func showGemDetail() {
