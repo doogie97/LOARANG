@@ -7,11 +7,7 @@
 
 import UIKit
 
-extension String {
-    var toDouble: Double? {
-        return Double(self.replacingOccurrences(of: ",", with: ""))
-    }
-    
+extension String {    
     func changeToPercent() -> String {
         let string = self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
@@ -19,17 +15,6 @@ extension String {
             return "error"
         }
         return string
-    }
-    
-    func threeNum(_ isFullLv: Bool) -> String {
-        if isFullLv {
-            return self
-        } else {
-            guard let num = Int(self) else {
-                return ""
-            }
-            return String(format: "%03d", num + 1)
-        }
     }
     
     enum HtmlAlignment: String {
@@ -62,15 +47,6 @@ extension String {
     
     var htmlToString: String {
         return htmlToAttributedString()?.string ?? ""
-    }
-    
-    func stringWithSpacing(_ spacing: CGFloat) -> NSMutableAttributedString {
-        let attrString = NSMutableAttributedString(string: self)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = spacing
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
-        
-        return attrString
     }
     
     var convetDateType: String {
