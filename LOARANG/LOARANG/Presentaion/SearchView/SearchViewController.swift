@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 final class SearchViewController: UIViewController {
     private let viewModel: SearchViewModelable

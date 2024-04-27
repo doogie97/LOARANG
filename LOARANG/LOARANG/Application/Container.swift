@@ -13,7 +13,6 @@ protocol Containerable {
     func characterDetailVC(name: String, isSearch: Bool) -> CharacterDetailVC
     func makeSearchViewController() -> SearchViewController
     func makeWebViewViewController(url: URL, title: String) -> WebViewViewController
-    func makeUserInfoViewController(_ userName: String, isSearching: Bool) -> UserInfoViewController
 }
 
 final class Container: Containerable {
@@ -74,83 +73,6 @@ final class Container: Containerable {
                                addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
                                deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
                                deleteRecentUserUseCase: DeleteRecentUserUseCase(localStorageRepository: localStorageRepository))
-    }
-    
-//MARK: - about UserInfoView
-    func makeUserInfoViewController(_ userName: String, isSearching: Bool = false) -> UserInfoViewController {
-        return UserInfoViewController(viewModel: makeUserInfoViewModel(userName, isSearching: isSearching))
-    }
-    
-    private func makeUserInfoViewModel(_ userName: String, isSearching: Bool) -> UserInfoViewModelable {
-        return UserInfoViewModel(changeMainUserUseCase: ChangeMainUserUseCase(localStorageRepository: localStorageRepository), 
-                                 addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
-                                 deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository), 
-                                 updateBookmarkUseCase: UpdateBookmarkUseCase(localStorageRepository: localStorageRepository),
-                                 addRecentUserUseCase: AddRecentUserUseCase(localStorageRepository: localStorageRepository),
-                                 container: self,
-                                 userName: userName,
-                                 isSearching: isSearching)
-    }
-    //MARK: - about BasicInfoView
-    func makeBasicInfoVC(userInfo: BehaviorRelay<UserInfo?>) -> BasicInfoViewController {
-        return BasicInfoViewController(viewModel: makeBasicInfoViewModel(userInfo: userInfo))
-    }
-    
-    private func makeBasicInfoViewModel(userInfo: BehaviorRelay<UserInfo?>) -> BasicInfoViewModelable {
-        return BasicInfoViewModel(userInfo: userInfo, container: self)
-    }
-    //MARK: - about BasicEquipment
-    func makeBasicEquipmentViewController(equips: BehaviorRelay<Equips?>) -> BasicEquipmentViewController {
-        return BasicEquipmentViewController(viewModel: makeBasicEquipmentViewModel(equips: equips), container: self)
-    }
-    
-    private func makeBasicEquipmentViewModel(equips: BehaviorRelay<Equips?>) -> BasicEquipmentViewModelable {
-        return BasicEquipmentViewModel(equips: equips)
-    }
-    
-    func makeEquipmentDetailViewController(equipmentInfo: EquipmentPart) -> EquipmentDetailViewController {
-        let detailVC = EquipmentDetailViewController(viewModel: makeEquipmentDetailViewModel(equipmentInfo: equipmentInfo))
-        detailVC.modalPresentationStyle = .overFullScreen
-        detailVC.modalTransitionStyle = .crossDissolve
-        return detailVC
-    }
-    
-    private func makeEquipmentDetailViewModel(equipmentInfo: EquipmentPart) -> EquipmentDetailViewModelable {
-        return EquipmentDetailViewModel(equipmentInfo: equipmentInfo)
-    }
-
-    //MARK: - about Avatar
-    func makeAvatarViewController(equips: BehaviorRelay<Equips?>) -> AvatarViewController {
-        return AvatarViewController(viewModel: makeAvatarViewModel(equips: equips), container: self)
-    }
-    
-    private func makeAvatarViewModel(equips: BehaviorRelay<Equips?>) -> AvatarViewModelable {
-        return AvatarViewModel(equips: equips)
-    }
-    
-    func makeAvatarDetailViewController(equipmentInfo: EquipmentPart) -> AvatarDetailViewController {
-        let detailVC = AvatarDetailViewController(viewModel: makeAvatarDetailViewModel(equipmentInfo: equipmentInfo))
-        detailVC.modalPresentationStyle = .overFullScreen
-        detailVC.modalTransitionStyle = .crossDissolve
-        return detailVC
-    }
-    
-    private func makeAvatarDetailViewModel(equipmentInfo: EquipmentPart) -> AvatarDetailViewModelable {
-        return AvatarDetailViewModel(equipments: equipmentInfo)
-    }
-    
-    //MARK: - about SkillInfoView
-    func makeSkillInfoViewController(skillInfo: BehaviorRelay<SkillInfo?>) -> CharacterDetailSkillVC {
-        return CharacterDetailSkillVC()
-    }
-    
-    func makeCharactersViewController(userName: String, userInfoViewModelDelegate: UserInfoViewModelDelegate) -> CharactersViewController {
-        return CharactersViewController(viewModel: makeCharactersViewModel(userName: userName, userInfoViewModelDelegate: userInfoViewModelDelegate))
-    }
-    
-    private func makeCharactersViewModel(userName: String,userInfoViewModelDelegate: UserInfoViewModelDelegate) -> CharactersViewModelable {
-        return CharactersViewModel(userName: userName,
-                                     userInfoViewModelDelegate: userInfoViewModelDelegate)
     }
     
     //MARK: - about settingVIew
