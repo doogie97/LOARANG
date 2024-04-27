@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import GoogleMobileAds
 
 final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
     private weak var viewModel: CharacterDetailVMable?
+    var hasBanner: Bool?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -22,6 +24,11 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bannerView.load(GADRequest())
     }
     
     private lazy var scrollView = UIScrollView()
@@ -54,6 +61,14 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
         return tableView
     }()
     
+    private(set) lazy var bannerView: GADBannerView = {
+        let bannerView = view.adMobView
+        bannerView.layer.opacity = 0
+        bannerView.delegate = self
+        
+        return bannerView
+    }()
+    
     func setViewContents(viewModel: CharacterDetailVMable?) {
         self.viewModel = viewModel
         characterImageView.setImage(viewModel?.characterInfoData?.profile.imageUrl)
@@ -66,6 +81,7 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
         contentsView.addSubview(characterImageView)
         contentsView.addSubview(shareButton)
         contentsView.addSubview(avatarListTV)
+        self.view.addSubview(bannerView)
         
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -89,6 +105,12 @@ final class CharacterDetailAvatarVC: UIViewController, PageViewInnerVCDelegate {
             $0.top.equalTo(characterImageView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+        
+        bannerView.snp.makeConstraints {
+            $0.top.equalTo(scrollView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(60)
+        }
     }
 }
 
@@ -105,5 +127,57 @@ extension CharacterDetailAvatarVC: UITableViewDataSource {
         
         cell.setCellContents(avatar: avatar)
         return cell
+    }
+}
+
+extension CharacterDetailAvatarVC: GADBannerViewDelegate {
+    func showAdView(_ isShow: Bool) {
+        if self.hasBanner == isShow {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let bannerView = self?.bannerView,
+                  let scrollView = self?.scrollView,
+                  let safeAreaLayoutGuide = self?.view.safeAreaLayoutGuide else {
+                return
+            }
+            if isShow {
+                scrollView.snp.remakeConstraints {
+                    $0.top.leading.trailing.equalToSuperview()
+                    $0.bottom.equalTo(bannerView.snp.top)
+                }
+                
+                bannerView.snp.remakeConstraints {
+                    $0.bottom.equalTo(safeAreaLayoutGuide)
+                    $0.leading.trailing.equalToSuperview()
+                    $0.height.equalTo(60)
+                }
+                bannerView.layer.opacity = 1
+            } else {
+                scrollView.snp.remakeConstraints {
+                    $0.edges.equalToSuperview()
+                }
+                
+                bannerView.snp.remakeConstraints {
+                    $0.top.equalTo(scrollView.snp.bottom)
+                    $0.leading.trailing.equalToSuperview()
+                    $0.height.equalTo(60)
+                }
+                bannerView.layer.opacity = 0
+            }
+            
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        showAdView(true)
+        self.hasBanner = true
+    }
+    
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        showAdView(false)
+        self.hasBanner = false
     }
 }
