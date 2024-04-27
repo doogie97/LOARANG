@@ -23,7 +23,7 @@ final class HomeAdCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private(set) lazy var bannerView: GADBannerView = {
+    private lazy var bannerView: GADBannerView = {
         let bannerView = adMobView
         bannerView.delegate = self
         
