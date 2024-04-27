@@ -18,7 +18,7 @@ protocol Containerable {
 final class Container: Containerable {
     private let networkRepository = NetworkRepository(networkManager: NetworkManager())
     private let localStorageRepository: LocalStorageRepositoryable
-    private let crawlManager: NewCrawlManagerable = NewCrawlManager()
+    private let crawlManager: CrawlManagerable = CrawlManager()
     
     init(localStorageRepository: LocalStorageRepositoryable) {
         self.localStorageRepository = localStorageRepository

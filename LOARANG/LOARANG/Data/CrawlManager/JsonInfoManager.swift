@@ -1,5 +1,5 @@
 //
-//  NewJsonManager.swift
+//  JsonInfoManager.swift
 //  LOARANG
 //
 //  Created by Doogie on 4/17/24.
@@ -8,11 +8,11 @@
 import SwiftyJSON
 import Foundation
 
-protocol NewJsonInfoManagerable {
+protocol JsonInfoManagerable {
     func getSkills(jsonString: String) -> [Skill]
 }
 
-final class NewJsonInfoManager: NewJsonInfoManagerable {
+final class JsonInfoManager: JsonInfoManagerable {
     private let imageBaseURL = "https://cdn-lostark.game.onstove.com/"
     
     func getSkills(jsonString: String) -> [Skill] {
