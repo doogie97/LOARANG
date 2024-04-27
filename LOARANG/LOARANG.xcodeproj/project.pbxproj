@@ -185,6 +185,7 @@
 		C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615E2BADC42F0023D123 /* GameServer.swift */; };
 		C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */; };
 		C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61622BADC8530023D123 /* CharacterClase.swift */; };
+		C64BEA882BDD0CA9005BA0A4 /* HomeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64BEA872BDD0CA9005BA0A4 /* HomeAdCell.swift */; };
 		C64C45252BC592B200AD503D /* GetHomeCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */; };
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
 		C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */; };
@@ -404,6 +405,7 @@
 		C63C615E2BADC42F0023D123 /* GameServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServer.swift; sourceTree = "<group>"; };
 		C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnCharactersUseCase.swift; sourceTree = "<group>"; };
 		C63C61622BADC8530023D123 /* CharacterClase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClase.swift; sourceTree = "<group>"; };
+		C64BEA872BDD0CA9005BA0A4 /* HomeAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdCell.swift; sourceTree = "<group>"; };
 		C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeCharactersUseCase.swift; sourceTree = "<group>"; };
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
 		C64C45282BC5969100AD503D /* ChangeMainUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMainUserUseCase.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 			children = (
 				7162BF822BC7CF8A00702530 /* HomeMainUserCVCell.swift */,
 				7162BF842BC7CFD300702530 /* HomeBookmarkUserCVCell.swift */,
+				C64BEA872BDD0CA9005BA0A4 /* HomeAdCell.swift */,
 				7162BF882BC7D0A100702530 /* HomeNoticeCVCell.swift */,
 				C6224F732BC8367900CABA30 /* HomeImageCVCell.swift */,
 			);
@@ -1489,6 +1492,7 @@
 				716C46D82BD0B1D0009A474F /* CharacterDetailOwnCharacterCell.swift in Sources */,
 				C68A27832BDA0B1C0039F748 /* CharatcerDetailAvatarCell.swift in Sources */,
 				ACB3813528D42CFB0081F8A1 /* CharactersView.swift in Sources */,
+				C64BEA882BDD0CA9005BA0A4 /* HomeAdCell.swift in Sources */,
 				C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */,
 				ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */,
 				ACBA7902289929A100CB39D5 /* LocalStorageRepository.swift in Sources */,
