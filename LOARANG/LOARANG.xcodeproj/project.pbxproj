@@ -57,7 +57,6 @@
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
 		AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B89F8289B81D6005BE193 /* SettingView.swift */; };
 		AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */; };
-		AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5628B33A0300621753 /* JSON + Extension.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
@@ -220,7 +219,6 @@
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		AC0B89F8289B81D6005BE193 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
-		AC2C2B5628B33A0300621753 /* JSON + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON + Extension.swift"; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -508,7 +506,6 @@
 				ACBA78FF28990B6D00CB39D5 /* UIButton + Extension.swift */,
 				ACBA78F82898B4EC00CB39D5 /* String + Extension.swift */,
 				ACDE28AB28B11D2000BFD206 /* Int + Extension.swift */,
-				AC2C2B5628B33A0300621753 /* JSON + Extension.swift */,
 				ACDC581B28B4877700EF8F0C /* Collection + Extension.swift */,
 				AC3FEC2D2880F95900CDE796 /* UIImage + Extension.swift */,
 				ACBA78FA2898CC6900CB39D5 /* UIImageView + Extension.swift */,
@@ -1231,7 +1228,6 @@
 				ACD547B128EBF8A000D44ACA /* RecentUserDTO.swift in Sources */,
 				7162BF7A2BC7BB2200702530 /* HomeVM.swift in Sources */,
 				C6074DEB2BC6DBE800FE3004 /* AddRecentUserUseCase.swift in Sources */,
-				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
 				ACE5DC6B294613BC009BFEAC /* OwnCharactersGET.swift in Sources */,
 				7162BF7D2BC7BD8300702530 /* HomeNavigationbar.swift in Sources */,
 			);
