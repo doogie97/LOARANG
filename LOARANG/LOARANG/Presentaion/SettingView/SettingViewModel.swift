@@ -14,7 +14,7 @@ protocol SettingViewModeInput {
     func touchSearchButton(_ userName: String)
     func touchDeleteMainUserCell()
     func deleteMainUser()
-    func changeMainUser(_ mainUser: MainUserEntity)
+    func changeMainUser(_ charcterInfo: CharacterDetailEntity)
     func touchNoticeCell()
     func touchSuggestioinCell()
 }
@@ -45,13 +45,7 @@ final class SettingViewModel: SettingViewModelable {
             do {
                 let searchResult = try await getCharacterDetailUseCase.excute(name: userName)
                 await MainActor.run {
-                    showAlert.accept(.checkUser(userInfo: MainUserEntity(imageUrl: searchResult.profile.imageUrl,
-                                                                         battleLV: searchResult.profile.battleLevel,
-                                                                         name: searchResult.profile.characterName,
-                                                                         characterClass: searchResult.profile.characterClass,
-                                                                         itemLV: searchResult.profile.itemLevel,
-                                                                         expeditionLV: searchResult.profile.expeditionLevel,
-                                                                         gameServer: searchResult.profile.gameServer)))
+                    showAlert.accept(.checkUser(userInfo: searchResult))
                     finishedLoading.accept(())
                 }
             } catch let error {
@@ -63,9 +57,17 @@ final class SettingViewModel: SettingViewModelable {
         }
     }
     
-    func changeMainUser(_ mainUser: MainUserEntity) {
+    func changeMainUser(_ charcterInfo: CharacterDetailEntity) {
         do {
-            try changeMainUserUseCase.execute(user: mainUser)
+            try changeMainUserUseCase.execute(user: MainUserEntity(
+                imageUrl: charcterInfo.profile.imageUrl,
+                battleLV: charcterInfo.profile.battleLevel,
+                name: charcterInfo.profile.characterName,
+                characterClass: charcterInfo.profile.characterClass,
+                itemLV: charcterInfo.profile.itemLevel,
+                expeditionLV: charcterInfo.profile.expeditionLevel,
+                gameServer: charcterInfo.profile.gameServer
+            ))
             showAlert.accept(.basic(message: "대표 캐릭터 설정이 완료되었습니다!"))
         } catch {
             showAlert.accept(.basic(message: error.errorMessage))
@@ -105,7 +107,7 @@ final class SettingViewModel: SettingViewModelable {
     //MARK: - Output
     enum AlertCase {
         case basic(message: String)
-        case checkUser(userInfo: MainUserEntity)
+        case checkUser(userInfo: CharacterDetailEntity)
         case deleteMainUser
     }
     

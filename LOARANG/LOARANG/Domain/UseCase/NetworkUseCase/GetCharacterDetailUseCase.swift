@@ -10,9 +10,9 @@ import SwiftyJSON
 
 struct GetCharacterDetailUseCase {
     private let networkRepository: NetworkRepositoryable
-    private let crawlManager: NewCrawlManagerable
+    private let crawlManager: CrawlManagerable
     init(networkRepository: NetworkRepositoryable,
-         crawlManagerable: NewCrawlManagerable) {
+         crawlManagerable: CrawlManagerable) {
         self.networkRepository = networkRepository
         self.crawlManager = crawlManagerable
     }

@@ -95,7 +95,7 @@ final class TripodTVCell: UITableViewCell {
     
     func setCellContents(tripod: Tripod) {
         if !tripod.name.isEmpty {
-            let _ = tripodImageView.setImage(urlString: tripod.imageURL)
+            tripodImageView.setImage(tripod.imageURL)
             tripodNameLabel.text = tripod.name
             tripodLvLabel.attributedText = tripod.lv.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
             tripodEffectLabel.attributedText = tripod.description.htmlToAttributedString(fontSize: 1, alignment: .LEFT)
@@ -105,5 +105,11 @@ final class TripodTVCell: UITableViewCell {
                 $0.centerY.equalTo(tripodImageView)
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        tripodImageView.kf.cancelDownloadTask()
+        tripodImageView.image = nil
     }
 }

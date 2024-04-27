@@ -1,5 +1,5 @@
 //
-//  NewCrawlManager.swift
+//  CrawlManager.swift
 //  LOARANG
 //
 //  Created by Doogie on 4/17/24.
@@ -10,12 +10,12 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-protocol NewCrawlManagerable {
+protocol CrawlManagerable {
     func getSkillInfo(_ name: String) async throws -> SkillInfo
 }
 
-final class NewCrawlManager: NewCrawlManagerable {
-    private let jsonManger: NewJsonInfoManagerable = NewJsonInfoManager()
+final class CrawlManager: CrawlManagerable {
+    private let jsonManger: JsonInfoManagerable = JsonInfoManager()
     private let baseURL = "https://m-lostark.game.onstove.com/Profile/Character/"
     
     private func makeDocument(name: String) async throws -> Document {
