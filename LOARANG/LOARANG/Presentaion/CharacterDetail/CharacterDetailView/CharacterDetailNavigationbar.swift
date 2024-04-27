@@ -20,7 +20,7 @@ final class CharacterDetailNavigationbar: UIView {
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.imageView?.tintColor = .buttonColor
+        button.imageView?.tintColor = .white
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
         button.addTarget(self, action: #selector(touchButton), for: .touchUpInside)
@@ -34,6 +34,15 @@ final class CharacterDetailNavigationbar: UIView {
         return button
     }()
     
+    private lazy var homeButton: UIButton = {
+        let button = UIButton()
+        button.imageView?.tintColor = .white
+        button.setImage(UIImage(systemName: "house"), for: .normal)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .default), forImageIn: .normal)
+        button.addTarget(self, action: #selector(touchButton), for: .touchUpInside)
+        return button
+    }()
+    
     @objc private func touchButton(_ sender: UIButton) {
         if sender.tag == 0 {
             viewModel?.touchBackButton()
@@ -41,6 +50,10 @@ final class CharacterDetailNavigationbar: UIView {
         
         if sender.tag == 1 {
             viewModel?.touchBookmarkButton()
+        }
+        
+        if sender.tag == 2 {
+            viewModel?.touchMoveHomeButton()
         }
     }
     
@@ -51,6 +64,7 @@ final class CharacterDetailNavigationbar: UIView {
         bookmarkButton.changeBookmarkButtonColor(name.isBookmark)
         backButton.tag = 0
         bookmarkButton.tag = 1
+        homeButton.tag = 2
         setLayout()
     }
     
@@ -58,6 +72,7 @@ final class CharacterDetailNavigationbar: UIView {
         self.addSubview(backButton)
         self.addSubview(titleLabel)
         self.addSubview(bookmarkButton)
+        self.addSubview(homeButton)
         
         backButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
@@ -73,6 +88,12 @@ final class CharacterDetailNavigationbar: UIView {
         bookmarkButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.trailing.equalToSuperview()
+            $0.width.equalTo(40)
+        }
+        
+        homeButton.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.trailing.equalTo(bookmarkButton.snp.leading).inset(margin(.width, -4))
             $0.width.equalTo(40)
         }
     }
