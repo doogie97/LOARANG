@@ -56,13 +56,8 @@
 		AC035E9C28910E680068DC7E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9B28910E680068DC7E /* SearchViewModel.swift */; };
 		AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC035E9E289120750068DC7E /* UIViewController + Extension.swift */; };
 		AC0B89F9289B81D6005BE193 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B89F8289B81D6005BE193 /* SettingView.swift */; };
-		AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E68A128AE04C000575631 /* JsonInfoManager.swift */; };
-		AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E68A428AE0E4C00575631 /* Equips.swift */; };
 		AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */; };
-		AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5128B313CA00621753 /* EquipedEngrave.swift */; };
 		AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5628B33A0300621753 /* JSON + Extension.swift */; };
-		AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B5A28B34CF500621753 /* Accessories.swift */; };
-		AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C2B6128B360CE00621753 /* SpecialEquipments.swift */; };
 		AC3FEC132880567800CDE796 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC122880567800CDE796 /* SearchView.swift */; };
 		AC3FEC152880568400CDE796 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC142880568400CDE796 /* SearchViewController.swift */; };
 		AC3FEC1728805DA400CDE796 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */; };
@@ -73,9 +68,6 @@
 		AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D5FE28B85976002C0033 /* SkillDetailView.swift */; };
 		AC49D60228B8598E002C0033 /* SkillDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60128B8598E002C0033 /* SkillDetailVC.swift */; };
 		AC49D60628B8727C002C0033 /* TripodTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49D60528B8727C002C0033 /* TripodTVCell.swift */; };
-		AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */; };
-		AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7528C2E515003B4B54 /* Card.swift */; };
-		AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */; };
 		AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */; };
 		AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87E28DC7F5200E4A92D /* WebViewView.swift */; };
 		AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */; };
@@ -85,23 +77,14 @@
 		AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */; };
 		AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */; };
 		AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */; };
-		AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */; };
 		AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86403F28B5D213004B7EBB /* SkillInfo.swift */; };
 		AC86404228B5D478004B7EBB /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404128B5D478004B7EBB /* Skill.swift */; };
 		AC86404828B5F325004B7EBB /* CharcterDetailSkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */; };
-		AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11C72881026600D06AA6 /* CrawManager.swift */; };
 		AC8F11D328814F5800D06AA6 /* BookmarkUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F11D228814F5800D06AA6 /* BookmarkUserDTO.swift */; };
 		ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */; };
 		ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF324287FF0D200AE98F1 /* SceneDelegate.swift */; };
 		ACAEF32C287FF0D300AE98F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */; };
 		ACAEF32F287FF0D300AE98F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF32D287FF0D300AE98F1 /* LaunchScreen.storyboard */; };
-		ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF339287FF62000AE98F1 /* UserInfo.swift */; };
-		ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */; };
-		ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF33E287FF91A00AE98F1 /* Stat.swift */; };
-		ACAEF349287FF9A200AE98F1 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF348287FF9A200AE98F1 /* Gem.swift */; };
-		ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */; };
-		ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */; };
-		ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF35A287FFB0400AE98F1 /* Avatar.swift */; };
 		ACAEF362288003A700AE98F1 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */; };
 		ACAEF3652880076C00AE98F1 /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3642880076C00AE98F1 /* BlackHanSans-Regular.ttf */; };
 		ACAEF3692880077C00AE98F1 /* ONE-Mobile-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAEF3662880077C00AE98F1 /* ONE-Mobile-Bold.ttf */; };
@@ -117,7 +100,6 @@
 		ACBA790828997D8F00CB39D5 /* LocalStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */; };
 		ACBE041E28B7109900FCB74D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE041D28B7109900FCB74D /* PaddingLabel.swift */; };
 		ACC420B728D2FE1A00425ED4 /* Error + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */; };
-		ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */; };
 		ACD4B78828A34ECD00846E21 /* SettingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */; };
 		ACD4B78A28A36AB800846E21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4B78928A36AB800846E21 /* SettingViewModel.swift */; };
 		ACD547B128EBF8A000D44ACA /* RecentUserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD547B028EBF8A000D44ACA /* RecentUserDTO.swift */; };
@@ -239,13 +221,8 @@
 		AC035E9B28910E680068DC7E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC035E9E289120750068DC7E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		AC0B89F8289B81D6005BE193 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		AC0E68A128AE04C000575631 /* JsonInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonInfoManager.swift; sourceTree = "<group>"; };
-		AC0E68A428AE0E4C00575631 /* Equips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equips.swift; sourceTree = "<group>"; };
 		AC284E0328B662FF005563C8 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
-		AC2C2B5128B313CA00621753 /* EquipedEngrave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipedEngrave.swift; sourceTree = "<group>"; };
 		AC2C2B5628B33A0300621753 /* JSON + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON + Extension.swift"; sourceTree = "<group>"; };
-		AC2C2B5A28B34CF500621753 /* Accessories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessories.swift; sourceTree = "<group>"; };
-		AC2C2B6128B360CE00621753 /* SpecialEquipments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEquipments.swift; sourceTree = "<group>"; };
 		AC3FEC122880567800CDE796 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AC3FEC142880568400CDE796 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AC3FEC1628805DA400CDE796 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -256,9 +233,6 @@
 		AC49D5FE28B85976002C0033 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		AC49D60128B8598E002C0033 /* SkillDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailVC.swift; sourceTree = "<group>"; };
 		AC49D60528B8727C002C0033 /* TripodTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripodTVCell.swift; sourceTree = "<group>"; };
-		AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
-		AC5B6D7528C2E515003B4B54 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetEffect.swift; sourceTree = "<group>"; };
 		AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		AC62F87E28DC7F5200E4A92D /* WebViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewView.swift; sourceTree = "<group>"; };
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
@@ -267,11 +241,9 @@
 		AC7E9F7E28C5D13400859E06 /* SegmentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCVCell.swift; sourceTree = "<group>"; };
 		AC7E9F8028C5D17B00859E06 /* SegmentControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllView.swift; sourceTree = "<group>"; };
 		AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
-		AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJsonInfo.swift; sourceTree = "<group>"; };
 		AC86403F28B5D213004B7EBB /* SkillInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
 		AC86404128B5D478004B7EBB /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		AC86404728B5F325004B7EBB /* CharcterDetailSkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharcterDetailSkillCell.swift; sourceTree = "<group>"; };
-		AC8F11C72881026600D06AA6 /* CrawManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawManager.swift; sourceTree = "<group>"; };
 		AC8F11D228814F5800D06AA6 /* BookmarkUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUserDTO.swift; sourceTree = "<group>"; };
 		ACAEF31F287FF0D200AE98F1 /* LOARANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOARANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAEF322287FF0D200AE98F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -279,13 +251,6 @@
 		ACAEF32B287FF0D300AE98F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACAEF32E287FF0D300AE98F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACAEF330287FF0D300AE98F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACAEF339287FF62000AE98F1 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfo.swift; sourceTree = "<group>"; };
-		ACAEF33E287FF91A00AE98F1 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
-		ACAEF348287FF9A200AE98F1 /* Gem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
-		ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEquipments.swift; sourceTree = "<group>"; };
-		ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentPart.swift; sourceTree = "<group>"; };
-		ACAEF35A287FFB0400AE98F1 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		ACAEF361288003A700AE98F1 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		ACAEF3642880076C00AE98F1 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		ACAEF3662880077C00AE98F1 /* ONE-Mobile-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE-Mobile-Bold.ttf"; sourceTree = "<group>"; };
@@ -301,7 +266,6 @@
 		ACBA790728997D8F00CB39D5 /* LocalStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageError.swift; sourceTree = "<group>"; };
 		ACBE041D28B7109900FCB74D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		ACC420B628D2FE1A00425ED4 /* Error + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extension.swift"; sourceTree = "<group>"; };
-		ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkNotice.swift; sourceTree = "<group>"; };
 		ACD4B78728A34ECD00846E21 /* SettingTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVCell.swift; sourceTree = "<group>"; };
 		ACD4B78928A36AB800846E21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ACD547B028EBF8A000D44ACA /* RecentUserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentUserDTO.swift; sourceTree = "<group>"; };
@@ -535,46 +499,6 @@
 			path = LocalStorageRepository;
 			sourceTree = "<group>";
 		};
-		AC0E68A328AE0E1F00575631 /* BattleEquipments */ = {
-			isa = PBXGroup;
-			children = (
-				ACAEF355287FFA9100AE98F1 /* BattleEquipments.swift */,
-			);
-			path = BattleEquipments;
-			sourceTree = "<group>";
-		};
-		AC2C2B5828B34C7400621753 /* Accessories */ = {
-			isa = PBXGroup;
-			children = (
-				AC2C2B5A28B34CF500621753 /* Accessories.swift */,
-			);
-			path = Accessories;
-			sourceTree = "<group>";
-		};
-		AC2C2B5928B34CAA00621753 /* EquipedEngrave */ = {
-			isa = PBXGroup;
-			children = (
-				AC2C2B5128B313CA00621753 /* EquipedEngrave.swift */,
-			);
-			path = EquipedEngrave;
-			sourceTree = "<group>";
-		};
-		AC2C2B6028B360AB00621753 /* SpecialEquipments */ = {
-			isa = PBXGroup;
-			children = (
-				AC2C2B6128B360CE00621753 /* SpecialEquipments.swift */,
-			);
-			path = SpecialEquipments;
-			sourceTree = "<group>";
-		};
-		AC2C2B7328B38BC900621753 /* Gems */ = {
-			isa = PBXGroup;
-			children = (
-				ACAEF348287FF9A200AE98F1 /* Gem.swift */,
-			);
-			path = Gems;
-			sourceTree = "<group>";
-		};
 		AC3FEBFE28804E9600CDE796 /* Extesnsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,16 +567,6 @@
 			path = SkillDetailView;
 			sourceTree = "<group>";
 		};
-		AC5B6D7228C2E4DC003B4B54 /* Cards */ = {
-			isa = PBXGroup;
-			children = (
-				AC5B6D7328C2E50E003B4B54 /* CardInfo.swift */,
-				AC5B6D7528C2E515003B4B54 /* Card.swift */,
-				AC5B6D7728C2F9DE003B4B54 /* CardSetEffect.swift */,
-			);
-			path = Cards;
-			sourceTree = "<group>";
-		};
 		AC62F87D28DC7F2F00E4A92D /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,15 +617,6 @@
 			path = StorageModel;
 			sourceTree = "<group>";
 		};
-		AC86403D28B5D1CF004B7EBB /* UserJsonInfos */ = {
-			isa = PBXGroup;
-			children = (
-				ACAEF34B287FF9B900AE98F1 /* Equips */,
-				AC5B6D7228C2E4DC003B4B54 /* Cards */,
-			);
-			path = UserJsonInfos;
-			sourceTree = "<group>";
-		};
 		AC86403E28B5D1FA004B7EBB /* SkillInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,16 +624,6 @@
 				AC86404128B5D478004B7EBB /* Skill.swift */,
 			);
 			path = SkillInfo;
-			sourceTree = "<group>";
-		};
-		AC8F11C62881025900D06AA6 /* CrawlManager */ = {
-			isa = PBXGroup;
-			children = (
-				ACAEF338287FF60000AE98F1 /* Model */,
-				AC8F11C72881026600D06AA6 /* CrawManager.swift */,
-				AC0E68A128AE04C000575631 /* JsonInfoManager.swift */,
-			);
-			path = CrawlManager;
 			sourceTree = "<group>";
 		};
 		ACAEF316287FF0D200AE98F1 = {
@@ -766,38 +661,6 @@
 			path = LOARANG;
 			sourceTree = "<group>";
 		};
-		ACAEF338287FF60000AE98F1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				ACB3812F28D425720081F8A1 /* UserInfo */,
-				ACC778E628E28D6D000EDA2F /* LostArkNotice.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		ACAEF34B287FF9B900AE98F1 /* Equips */ = {
-			isa = PBXGroup;
-			children = (
-				AC0E68A428AE0E4C00575631 /* Equips.swift */,
-				ACAEF357287FFA9F00AE98F1 /* EquipmentPart.swift */,
-				AC0E68A328AE0E1F00575631 /* BattleEquipments */,
-				AC2C2B5928B34CAA00621753 /* EquipedEngrave */,
-				AC2C2B5828B34C7400621753 /* Accessories */,
-				ACAEF34C287FF9C500AE98F1 /* Avatar */,
-				AC2C2B6028B360AB00621753 /* SpecialEquipments */,
-				AC2C2B7328B38BC900621753 /* Gems */,
-			);
-			path = Equips;
-			sourceTree = "<group>";
-		};
-		ACAEF34C287FF9C500AE98F1 /* Avatar */ = {
-			isa = PBXGroup;
-			children = (
-				ACAEF35A287FFB0400AE98F1 /* Avatar.swift */,
-			);
-			path = Avatar;
-			sourceTree = "<group>";
-		};
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -821,19 +684,6 @@
 				717713232BC8D9CC0040C602 /* Pretendard-Regular.otf */,
 			);
 			path = Font;
-			sourceTree = "<group>";
-		};
-		ACB3812F28D425720081F8A1 /* UserInfo */ = {
-			isa = PBXGroup;
-			children = (
-				ACAEF339287FF62000AE98F1 /* UserInfo.swift */,
-				ACAEF33B287FF8F600AE98F1 /* MainInfo.swift */,
-				ACAEF33E287FF91A00AE98F1 /* Stat.swift */,
-				AC86403B28B5C99F004B7EBB /* UserJsonInfo.swift */,
-				AC86403D28B5D1CF004B7EBB /* UserJsonInfos */,
-			);
-			name = UserInfo;
-			path = UserInfo/UserInfo;
 			sourceTree = "<group>";
 		};
 		ACD547B428EC130700D44ACA /* RecentUserView */ = {
@@ -1053,7 +903,6 @@
 				C6666B0E2BCFADAF00DF7DA5 /* NewCrawlManager */,
 				714E8AE92BBFDF610000D90E /* Repository */,
 				AC6C81962940276D00C0EEC1 /* Network */,
-				AC8F11C62881025900D06AA6 /* CrawlManager */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1277,10 +1126,8 @@
 				ACAEF36F288007FE00AE98F1 /* UIFont + Extension.swift in Sources */,
 				AC0341C9294591BA005F4533 /* GameEventListGET.swift in Sources */,
 				71826A692BD7A0D50076E89A /* CharacterDetailCardSectionBG.swift in Sources */,
-				ACAEF33A287FF62000AE98F1 /* UserInfo.swift in Sources */,
 				C6B73C482BD50C0800A6B6BD /* StatType.swift in Sources */,
 				AC8F11D328814F5800D06AA6 /* BookmarkUserDTO.swift in Sources */,
-				AC2C2B5B28B34CF500621753 /* Accessories.swift in Sources */,
 				C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */,
 				C68A27792BD9EFB00039F748 /* CustomHalfModal.swift in Sources */,
 				C683F4232BCD703600A5E699 /* CharacterDetailView.swift in Sources */,
@@ -1298,13 +1145,10 @@
 				ACBA7902289929A100CB39D5 /* LocalStorageRepository.swift in Sources */,
 				C6B73C4C2BD50F9C00A6B6BD /* CharacterDetailStatCell.swift in Sources */,
 				ACBA78FB2898CC6900CB39D5 /* UIImageView + Extension.swift in Sources */,
-				ACAEF358287FFA9F00AE98F1 /* EquipmentPart.swift in Sources */,
 				C685D9DA2BC997D3009C815B /* UILabel + Extension.swift in Sources */,
 				7162BF762BC7BB1800702530 /* HomeView.swift in Sources */,
-				ACAEF35B287FFB0400AE98F1 /* Avatar.swift in Sources */,
 				C64C45252BC592B200AD503D /* GetHomeCharactersUseCase.swift in Sources */,
 				AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */,
-				ACAEF356287FFA9100AE98F1 /* BattleEquipments.swift in Sources */,
 				AC0341C729458CCE005F4533 /* APIError.swift in Sources */,
 				ACAEF323287FF0D200AE98F1 /* AppDelegate.swift in Sources */,
 				7162BF782BC7BB1D00702530 /* HomeVC.swift in Sources */,
@@ -1344,20 +1188,15 @@
 				AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */,
 				C6224F8D2BC849AE00CABA30 /* ChallengeAbyssDungeonEntity.swift in Sources */,
 				C6666B102BCFADBD00DF7DA5 /* NewCrawlManager.swift in Sources */,
-				AC2C2B5228B313CA00621753 /* EquipedEngrave.swift in Sources */,
 				7162BF8C2BC7D65D00702530 /* HomeSectionHeader.swift in Sources */,
 				71826A672BD797AD0076E89A /* CharacterDetailCardEffectCell.swift in Sources */,
 				C6224F782BC8443800CABA30 /* GameNoticeListGET.swift in Sources */,
 				C68A27812BDA04910039F748 /* CharacterDetailAvatarVC.swift in Sources */,
-				AC0E68A228AE04C000575631 /* JsonInfoManager.swift in Sources */,
-				ACAEF33F287FF91A00AE98F1 /* Stat.swift in Sources */,
-				AC86403C28B5C99F004B7EBB /* UserJsonInfo.swift in Sources */,
 				C683F4252BCD703D00A5E699 /* CharacterDetailVC.swift in Sources */,
 				AC3FEC2C288079BC00CDE796 /* UITableView_UICollectionView + Extenstion.swift.swift in Sources */,
 				ACBA78FD2898DDE700CB39D5 /* MainUserDTO.swift in Sources */,
 				AC49D60228B8598E002C0033 /* SkillDetailVC.swift in Sources */,
 				7162BF832BC7CF8A00702530 /* HomeMainUserCVCell.swift in Sources */,
-				AC0E68A528AE0E4C00575631 /* Equips.swift in Sources */,
 				AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */,
 				C6224F942BC84BA800CABA30 /* ChallengeGuardianRaidEntity.swift in Sources */,
 				C6074DED2BC6DCA500FE3004 /* DeleteRecentUserUseCase.swift in Sources */,
@@ -1366,7 +1205,6 @@
 				71892D3F2BCDF9400008CD8C /* ScrollableSegement.swift in Sources */,
 				AC6CA2962893BC270049C12F /* CharacterDetailSkillVC.swift in Sources */,
 				AC3FEC132880567800CDE796 /* SearchView.swift in Sources */,
-				ACAEF33C287FF8F600AE98F1 /* MainInfo.swift in Sources */,
 				716867602BCCA4790008C28F /* CharactersDetailDTO.swift in Sources */,
 				C63C615C2BADC3D70023D123 /* OwnCharactersEntity.swift in Sources */,
 				AC86404028B5D213004B7EBB /* SkillInfo.swift in Sources */,
@@ -1376,12 +1214,10 @@
 				C6224F802BC847C300CABA30 /* GameNoticeEntity.swift in Sources */,
 				AC0341B42945883C005F4533 /* Requestable.swift in Sources */,
 				C68A277B2BD9F2000039F748 /* GemDetailView.swift in Sources */,
-				AC2C2B6228B360CE00621753 /* SpecialEquipments.swift in Sources */,
 				C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */,
 				C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */,
 				C683F4202BCC28D000A5E699 /* CharacterDetailEntity.swift in Sources */,
 				AC3FEC1A28805DDC00CDE796 /* SettingViewController.swift in Sources */,
-				AC5B6D7628C2E515003B4B54 /* Card.swift in Sources */,
 				C68A27872BDA124F0039F748 /* AvatarType.swift in Sources */,
 				AC3FEC2E2880F95900CDE796 /* UIImage + Extension.swift in Sources */,
 				71892D4A2BCE6D800008CD8C /* CharacterDetailProfileVC.swift in Sources */,
@@ -1389,7 +1225,6 @@
 				C64C45292BC5969100AD503D /* ChangeMainUserUseCase.swift in Sources */,
 				C6224F742BC8367900CABA30 /* HomeImageCVCell.swift in Sources */,
 				C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */,
-				ACC778E728E28D6D000EDA2F /* LostArkNotice.swift in Sources */,
 				C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */,
 				ACD547B328EBFED500D44ACA /* RecentUserView.swift in Sources */,
 				C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */,
@@ -1398,11 +1233,9 @@
 				C683F42A2BCD77E900A5E699 /* CharacterDetailNavigationbar.swift in Sources */,
 				71892D452BCE5EF60008CD8C /* Grade.swift in Sources */,
 				AC3FEC27288071CF00CDE796 /* Container.swift in Sources */,
-				AC5B6D7828C2F9DE003B4B54 /* CardSetEffect.swift in Sources */,
 				ACBA78F92898B4EC00CB39D5 /* String + Extension.swift in Sources */,
 				AC49D5FF28B85976002C0033 /* SkillDetailView.swift in Sources */,
 				ACAEF325287FF0D200AE98F1 /* SceneDelegate.swift in Sources */,
-				ACAEF349287FF9A200AE98F1 /* Gem.swift in Sources */,
 				ACDE28AC28B11D2000BFD206 /* Int + Extension.swift in Sources */,
 				C6666B132BCFAFAC00DF7DA5 /* NewJsonManager.swift in Sources */,
 				ACDC581C28B4877700EF8F0C /* Collection + Extension.swift in Sources */,
@@ -1413,8 +1246,6 @@
 				AC7E9F8128C5D17B00859E06 /* SegmentControllView.swift in Sources */,
 				7162BF7A2BC7BB2200702530 /* HomeVM.swift in Sources */,
 				AC7E9F7F28C5D13400859E06 /* SegmentCVCell.swift in Sources */,
-				AC8F11C82881026600D06AA6 /* CrawManager.swift in Sources */,
-				AC5B6D7428C2E50E003B4B54 /* CardInfo.swift in Sources */,
 				C6074DEB2BC6DBE800FE3004 /* AddRecentUserUseCase.swift in Sources */,
 				AC2C2B5728B33A0300621753 /* JSON + Extension.swift in Sources */,
 				ACE5DC6B294613BC009BFEAC /* OwnCharactersGET.swift in Sources */,

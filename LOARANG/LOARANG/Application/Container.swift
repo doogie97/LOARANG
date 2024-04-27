@@ -20,8 +20,6 @@ final class Container: Containerable {
     private let localStorageRepository: LocalStorageRepositoryable
     private let crawlManager: NewCrawlManagerable = NewCrawlManager()
     
-    private let oldCrawlManager = CrawlManager() //추후 제거 예정
-    
     init(localStorageRepository: LocalStorageRepositoryable) {
         self.localStorageRepository = localStorageRepository
     }
