@@ -109,7 +109,7 @@ extension HomeSectionView: UICollectionViewDelegate, UICollectionViewDataSource 
             return UICollectionViewCell()
         }
         
-        cell.setCellContents()
+        cell.setCellContents(viewModel: viewModel)
         return cell
     }
     
@@ -325,12 +325,13 @@ extension HomeSectionView {
     }
     
     private func adSectionLayout() -> NSCollectionLayoutSection {
+        let hasAd = viewModel?.hasAd ?? false
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                          heightDimension: .absolute(60))
+                                          heightDimension: .absolute(hasAd ? 60 : 0))
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: hasAd ? 16 : 0, trailing: 0)
         return section
     }
     

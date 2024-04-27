@@ -16,6 +16,7 @@ protocol HomeVMable: HomeVMInput, HomeVMOutput, AnyObject {}
 protocol HomeVMInput {
     func viewDidLoad()
     func touchViewAction(_ touchCase: HomeVM.ActionCase)
+    func didLoadAd(_ isSuccess: Bool)
 }
 
 protocol HomeVMOutput {
@@ -28,6 +29,8 @@ protocol HomeVMOutput {
     var isLoading: PublishRelay<Bool> { get }
     var showAlert: PublishRelay<HomeVM.AlertCase> { get }
     var showNextView: PublishRelay<HomeVM.NextViewCase> { get }
+    var reloadAdSection: PublishRelay<Void> { get }
+    var hasAd: Bool { get }
 }
 
 final class HomeVM: HomeVMable {
@@ -289,6 +292,15 @@ final class HomeVM: HomeVMable {
         }
     }
     
+    func didLoadAd(_ isSuccess: Bool) {
+        if isSuccess == self.hasAd {
+            return
+        } else {
+            hasAd = isSuccess
+            reloadAdSection.accept(())
+        }
+    }
+    
     //MARK: - Output
     enum NextViewCase {
         case searchView
@@ -318,4 +330,6 @@ final class HomeVM: HomeVMable {
     let isLoading = PublishRelay<Bool>()
     let showAlert = PublishRelay<AlertCase>()
     let showNextView = PublishRelay<HomeVM.NextViewCase>()
+    let reloadAdSection = PublishRelay<Void>()
+    var hasAd = true
 }

@@ -126,6 +126,12 @@ final class HomeVC: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        viewModel.reloadAdSection.withUnretained(self)
+            .subscribe { owner, _ in
+                owner.homeView.homeSectionView.sectionCV.reloadSections(IndexSet(integer: HomeSectionView.SectionCase.adSection.rawValue))
+            }
+            .disposed(by: disposeBag)
     }
     
     private func showInspectionAlert(message: String) {

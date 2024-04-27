@@ -10,6 +10,7 @@ import SnapKit
 import GoogleMobileAds
 
 final class HomeAdCell: UICollectionViewCell {
+    private weak var viewModel: HomeVMable?
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.addSubview(bannerView)
@@ -29,17 +30,18 @@ final class HomeAdCell: UICollectionViewCell {
         return bannerView
     }()
     
-    func setCellContents() {
+    func setCellContents(viewModel: HomeVMable?) {
+        self.viewModel = viewModel
         bannerView.load(GADRequest())
     }
 }
 
 extension HomeAdCell: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("성공")
+        viewModel?.didLoadAd(true)
     }
     
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        print("실패")
+        viewModel?.didLoadAd(false)
     }
 }
