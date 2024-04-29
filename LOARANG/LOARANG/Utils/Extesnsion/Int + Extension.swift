@@ -13,31 +13,27 @@ extension Int {
         case 10..<30:
             return #colorLiteral(red: 1, green: 0.82471174, blue: 0, alpha: 1)
         case 30..<70:
-            return #colorLiteral(red: 0.561450541, green: 0.9948626161, blue: 0, alpha: 1)
+            return #colorLiteral(red: 0.05244830996, green: 0.6807646751, blue: 0.03629573435, alpha: 1)
         case 70..<90:
-            return #colorLiteral(red: 0.007898607291, green: 0.7087070346, blue: 1, alpha: 1)
+            return #colorLiteral(red: 0.07340445369, green: 0.3782957196, blue: 0.9231976271, alpha: 1)
         case 90..<100:
-            return #colorLiteral(red: 0.8060045242, green: 0.261687547, blue: 0.9900844693, alpha: 1)
+            return #colorLiteral(red: 0.875810802, green: 0.09193015844, blue: 0.8918681145, alpha: 1)
         case 100:
-            return #colorLiteral(red: 0.9972185493, green: 0.5881507397, blue: 0.007285744417, alpha: 1)
+            return #colorLiteral(red: 0.9174560905, green: 0.4091003239, blue: 0.06985279918, alpha: 1)
         default:
             return #colorLiteral(red: 0.7534232736, green: 0.001419665525, blue: 0.009936906397, alpha: 1)
         }
     }
-    var engravingHeight: CGFloat {
-        switch self {
-        case 0:
-            return UIScreen.main.bounds.width * 0.12
-        case 1...2:
-            return UIScreen.main.bounds.width * 0.1
-        case 3...4:
-            return UIScreen.main.bounds.width * 0.17
-        case 5...6:
-            return UIScreen.main.bounds.width * 0.24
-        case 7...8:
-            return UIScreen.main.bounds.width * 0.31
-        default:
-            return UIScreen.main.bounds.width * 0.38
+    
+    ///Int를 -> 세 자리 숫자로 변환
+    var formattedNumber: String {
+            return String(format: "%03d", self)
         }
+    
+    var commaNumber: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        return numberFormatter.string(from: NSNumber(value: self)) ?? "0"
     }
 }

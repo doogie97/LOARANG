@@ -9,6 +9,47 @@ import UIKit
 import GoogleMobileAds
 
 extension UIView {
+    enum Direction {
+        case height
+        case width
+    }
+    
+    func margin(_ direction: Direction, _ margine: Double) -> Double {
+        let defaultHeight: Double = 852
+        let deaultWidth: Double = 393
+        
+        switch direction {
+        case .height:
+            return round(UIScreen.main.bounds.height * margine/defaultHeight)
+        case .width:
+            return round(UIScreen.main.bounds.width * margine/deaultWidth)
+        }
+    }
+    
+    var isSE: Bool {
+        return UIScreen.main.bounds.height <= 667
+    }
+    
+    func pretendardLabel(size: Int = 14, family: UIFont.Family = .Bold, color: UIColor = .white, text: String = "", alignment: NSTextAlignment = .left, lineCount: Int = 1) -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.pretendard(size: size, family: family)
+        label.textColor = color
+        label.text = text
+        label.textAlignment = alignment
+        label.numberOfLines = lineCount
+        
+        return label
+    }
+    
+    func blackHanSansLabel(size: Int = 20, color: UIColor = .white, text: String = "") -> UILabel {
+        let label = UILabel()
+        label.font = UIFont.BlackHanSans(size: size)
+        label.textColor = color
+        label.text = text
+        
+        return label
+    }
+    
     var adMobView: GADBannerView {
         let bannerView = GADBannerView()
 #if DEBUG

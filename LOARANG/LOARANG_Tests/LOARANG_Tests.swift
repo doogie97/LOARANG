@@ -13,10 +13,10 @@ final class LOARANG_MVVMTests: XCTestCase {
         //given
         let promise = expectation(description: "News를 잘 가져오는지")
         let networkManager = NetworkManager()
-        let api = NewsAPIModel()
+        let api = GameEventListGET()
         
         //when
-        networkManager.request(api, resultType: [News].self) { result in
+        networkManager.request(api, resultType: [EventDTO].self) { result in
             switch result {
                 //then
             case .success(let news):
@@ -35,10 +35,10 @@ final class LOARANG_MVVMTests: XCTestCase {
         //given
         let promise = expectation(description: "Characters를 잘 가져오는지")
         let networkManager = NetworkManager()
-        let api = NewsAPIModel()
+        let api = GameEventListGET()
         
         //when
-        NetworkManager().request(CharactersAPIModel(name: "최지근"), resultType: [CharacterInfo].self) { result in
+        NetworkManager().request(OwnCharactersGET(name: "최지근"), resultType: [CharacterBasicInfoDTO].self) { result in
             switch result {
             case .success(let characters):
                 guard let character = characters.first else {

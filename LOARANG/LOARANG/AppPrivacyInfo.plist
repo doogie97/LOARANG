@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Lostark_API_Key</key>
-	<string>Please_enter_the_API-Key</string>
 	<key>Lostark_API_Key_Array</key>
 	<array/>
 </dict>

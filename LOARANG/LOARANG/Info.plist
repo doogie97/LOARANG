@@ -213,6 +213,11 @@
 		<string>ONE-Mobile-Bold.ttf</string>
 		<string>ONE-Mobile-Light.ttf</string>
 		<string>ONE-Mobile-Regular.ttf</string>
+		<string>Pretendard-Black.otf</string>
+		<string>Pretendard-Bold.otf</string>
+		<string>Pretendard-SemiBold.otf</string>
+		<string>Pretendard-Light.otf</string>
+		<string>Pretendard-Regular.otf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

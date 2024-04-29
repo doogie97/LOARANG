@@ -33,15 +33,15 @@ extension UIViewController {
         
         let noAction = UIAlertAction(title: "취소", style: .destructive)
         
-        alert.addAction(yesAction)
         alert.addAction(noAction)
+        alert.addAction(yesAction)
         alert.addTextField()
         
         self.present(alert, animated: true)
     }
     
-    func showCheckUserAlert(_ mainUser: MainUser, action: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: "\(mainUser.name) Lv.\(mainUser.itemLV)(\(mainUser.`class`))",
+    func showCheckUserAlert(_ character: CharacterDetailEntity, action: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: "\(character.profile.characterName) Lv.\(character.profile.itemLevel)(\(character.profile.characterClass.rawValue))",
                                       message: "대표 캐릭터를 설정 하시겠습니까?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "확인", style: .default) { _ in
             guard let action = action else {
@@ -52,8 +52,8 @@ extension UIViewController {
         }
         let noAction = UIAlertAction(title: "취소", style: .destructive)
         
-        alert.addAction(yesAction)
         alert.addAction(noAction)
+        alert.addAction(yesAction)
         
         self.present(alert, animated: true)
     }
