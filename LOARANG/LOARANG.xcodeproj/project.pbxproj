@@ -42,7 +42,6 @@
 		7199CC672BC78CFD0071E126 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 7199CC662BC78CFD0071E126 /* SwiftSoup */; };
 		71CE75C62BC79E610048B257 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 71CE75C52BC79E610048B257 /* RxDataSources */; };
 		71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCE92BC778B60080ECC1 /* SnapKit */; };
-		71E9CCED2BC77AB70080ECC1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */; };
 		71E9CCF02BC78A600080ECC1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */; };
 		71E9CCF32BC78B740080ECC1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCF22BC78B740080ECC1 /* Realm */; };
 		71E9CCF52BC78B740080ECC1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71E9CCF42BC78B740080ECC1 /* RealmSwift */; };
@@ -70,7 +69,6 @@
 		AC62F87C28DC7F0700E4A92D /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */; };
 		AC62F87F28DC7F5200E4A92D /* WebViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F87E28DC7F5200E4A92D /* WebViewView.swift */; };
 		AC62F88128DC7F6900E4A92D /* WebViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */; };
-		AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC687AB4291373E70064C92B /* GoogleService-Info.plist */; };
 		AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC6C81942940270A00C0EEC1 /* Alamofire */; };
 		AC6CA2962893BC270049C12F /* CharacterDetailSkillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CA2952893BC270049C12F /* CharacterDetailSkillVC.swift */; };
 		AC853BF828B8BB88001C69E8 /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */; };
@@ -155,6 +153,8 @@
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
+		C6B706C52BE85A0200563620 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C6B706C42BE85A0200563620 /* FirebaseAnalytics */; };
+		C6B706C92BE85A9A00563620 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6B706C82BE85A9A00563620 /* GoogleService-Info.plist */; };
 		C6B73C462BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */; };
 		C6B73C482BD50C0800A6B6BD /* StatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C472BD50C0800A6B6BD /* StatType.swift */; };
 		C6B73C4A2BD50C5100A6B6BD /* TendencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C492BD50C5100A6B6BD /* TendencyType.swift */; };
@@ -232,7 +232,6 @@
 		AC62F87B28DC7F0700E4A92D /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		AC62F87E28DC7F5200E4A92D /* WebViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewView.swift; sourceTree = "<group>"; };
 		AC62F88028DC7F6900E4A92D /* WebViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewModel.swift; sourceTree = "<group>"; };
-		AC687AB4291373E70064C92B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC6CA2952893BC270049C12F /* CharacterDetailSkillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailSkillVC.swift; sourceTree = "<group>"; };
 		AC853BF728B8BB88001C69E8 /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
 		AC86403F28B5D213004B7EBB /* SkillInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
@@ -318,6 +317,7 @@
 		C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkUseCase.swift; sourceTree = "<group>"; };
 		C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookmarkUseCase.swift; sourceTree = "<group>"; };
+		C6B706C82BE85A9A00563620 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailequipmentEffectCell.swift; sourceTree = "<group>"; };
 		C6B73C472BD50C0800A6B6BD /* StatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatType.swift; sourceTree = "<group>"; };
 		C6B73C492BD50C5100A6B6BD /* TendencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendencyType.swift; sourceTree = "<group>"; };
@@ -348,13 +348,13 @@
 				71CE75C62BC79E610048B257 /* RxDataSources in Frameworks */,
 				71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */,
 				7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */,
+				C6B706C52BE85A0200563620 /* FirebaseAnalytics in Frameworks */,
 				7199CC642BC78C700071E126 /* SwiftyJSON in Frameworks */,
 				71E9CCF52BC78B740080ECC1 /* RealmSwift in Frameworks */,
 				AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */,
 				7192BA9D2BC78DA500B3959A /* RxSwift in Frameworks */,
 				7177132D2BC8E6960040C602 /* Kingfisher in Frameworks */,
 				71E9CCF02BC78A600080ECC1 /* GoogleMobileAds in Frameworks */,
-				71E9CCED2BC77AB70080ECC1 /* FirebaseAnalytics in Frameworks */,
 				7199CC672BC78CFD0071E126 /* SwiftSoup in Frameworks */,
 				7192BA9B2BC78DA500B3959A /* RxRelay in Frameworks */,
 			);
@@ -638,7 +638,7 @@
 				ACAEF3602880039F00AE98F1 /* Utils */,
 				C6EDB7D32BADA525004E7AC9 /* Resource */,
 				ACAEF330287FF0D300AE98F1 /* Info.plist */,
-				AC687AB4291373E70064C92B /* GoogleService-Info.plist */,
+				C6B706C82BE85A9A00563620 /* GoogleService-Info.plist */,
 				AC0341C229458976005F4533 /* AppPrivacyInfo.plist */,
 				AC0341C4294589E3005F4533 /* LOARANG++Bundle.swift */,
 			);
@@ -988,7 +988,6 @@
 			packageProductDependencies = (
 				AC6C81942940270A00C0EEC1 /* Alamofire */,
 				71E9CCE92BC778B60080ECC1 /* SnapKit */,
-				71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */,
 				71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */,
 				71E9CCF22BC78B740080ECC1 /* Realm */,
 				71E9CCF42BC78B740080ECC1 /* RealmSwift */,
@@ -999,6 +998,7 @@
 				7192BA9C2BC78DA500B3959A /* RxSwift */,
 				71CE75C52BC79E610048B257 /* RxDataSources */,
 				7177132C2BC8E6960040C602 /* Kingfisher */,
+				C6B706C42BE85A0200563620 /* FirebaseAnalytics */,
 			);
 			productName = "LOARANG-MVVM";
 			productReference = ACAEF31F287FF0D200AE98F1 /* LOARANG.app */;
@@ -1035,7 +1035,6 @@
 			packageReferences = (
 				AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				71E9CCF12BC78B740080ECC1 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7199CC622BC78C700071E126 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
@@ -1043,6 +1042,7 @@
 				7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift" */,
 				71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				7177132B2BC8E6960040C602 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = ACAEF320287FF0D200AE98F1 /* Products */;
 			projectDirPath = "";
@@ -1066,6 +1066,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B706C92BE85A9A00563620 /* GoogleService-Info.plist in Resources */,
 				717713292BC8E2020040C602 /* Pretendard-Bold.otf in Resources */,
 				ACAEF36A2880077C00AE98F1 /* ONE-Mobile-Light.ttf in Resources */,
 				AC0341C329458976005F4533 /* AppPrivacyInfo.plist in Resources */,
@@ -1078,7 +1079,6 @@
 				ACAEF32C287FF0D300AE98F1 /* Assets.xcassets in Resources */,
 				ACAEF3652880076C00AE98F1 /* BlackHanSans-Regular.ttf in Resources */,
 				7177132A2BC8E2040040C602 /* Pretendard-Black.otf in Resources */,
-				AC687AB5291373E70064C92B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1558,14 +1558,6 @@
 				minimumVersion = 5.6.0;
 			};
 		};
-		71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.24.0;
-			};
-		};
 		71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
@@ -1588,6 +1580,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.25.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1633,11 +1633,6 @@
 			package = 71E9CCE82BC778B60080ECC1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		71E9CCEC2BC77AB70080ECC1 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 71E9CCEB2BC77AB70080ECC1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
 		71E9CCEF2BC78A600080ECC1 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 71E9CCEE2BC78A600080ECC1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
@@ -1657,6 +1652,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C6B706C42BE85A0200563620 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
