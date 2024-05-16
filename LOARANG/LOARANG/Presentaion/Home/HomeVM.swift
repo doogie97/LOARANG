@@ -190,7 +190,7 @@ final class HomeVM: HomeVMable {
             return
         }
         if appstoreVersion > currentVersion {
-            print("업데이트 필요")
+            showAlert.accept(.update)
         }
     }
     
@@ -326,6 +326,7 @@ final class HomeVM: HomeVMable {
         case basic(message: String)
         case searchMainUser
         case checkMainUer(userInfo: CharacterDetailEntity)
+        case update
     }
     
     struct ViewContents {
