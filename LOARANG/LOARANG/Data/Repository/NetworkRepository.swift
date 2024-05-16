@@ -6,6 +6,7 @@
 //
 
 protocol NetworkRepositoryable {
+    func getAppVersion() async -> String?
     func getEventList() async throws -> [GameEventDTO]
     func getGameNoticeList() async throws -> [GameNoticeDTO]
     func getChallengeAbyssDungeons() async throws -> [ChallengeAbyssDungeonDTO]
@@ -18,6 +19,12 @@ struct NetworkRepository: NetworkRepositoryable {
     private let networkManager: NetworkManagerable
     init(networkManager: NetworkManagerable) {
         self.networkManager = networkManager
+    }
+    
+    func getAppVersion() async -> String? {
+        let requstable = AppVersionGET()
+        
+        return try? await networkManager.request(requstable, resultType: AppVersionDTO.self).results?.first?.version
     }
     
     func getEventList() async throws -> [GameEventDTO] {

@@ -126,6 +126,7 @@
 		C63C615F2BADC42F0023D123 /* GameServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C615E2BADC42F0023D123 /* GameServer.swift */; };
 		C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */; };
 		C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61622BADC8530023D123 /* CharacterClase.swift */; };
+		C63CE07F2BF6170900236147 /* AppVersionGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63CE07E2BF6170900236147 /* AppVersionGET.swift */; };
 		C64BEA882BDD0CA9005BA0A4 /* HomeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64BEA872BDD0CA9005BA0A4 /* HomeAdCell.swift */; };
 		C64C45252BC592B200AD503D /* GetHomeCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */; };
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
@@ -290,6 +291,7 @@
 		C63C615E2BADC42F0023D123 /* GameServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameServer.swift; sourceTree = "<group>"; };
 		C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnCharactersUseCase.swift; sourceTree = "<group>"; };
 		C63C61622BADC8530023D123 /* CharacterClase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClase.swift; sourceTree = "<group>"; };
+		C63CE07E2BF6170900236147 /* AppVersionGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionGET.swift; sourceTree = "<group>"; };
 		C64BEA872BDD0CA9005BA0A4 /* HomeAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdCell.swift; sourceTree = "<group>"; };
 		C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeCharactersUseCase.swift; sourceTree = "<group>"; };
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 		AC0341B229458816005F4533 /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
+				C63CE07E2BF6170900236147 /* AppVersionGET.swift */,
 				7168675C2BCCA3CD0008C28F /* CharacterDetailGET */,
 				C6224F862BC8489B00CABA30 /* GameEventListGET */,
 				C6224F792BC8449B00CABA30 /* GameNoticeListGET */,
@@ -1150,6 +1153,7 @@
 				C6B73C4E2BD50FA600A6B6BD /* CharacterDetailEngravingCell.swift in Sources */,
 				C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */,
 				C6224F892BC8494600CABA30 /* ChallengeAbyssDungeonsGET.swift in Sources */,
+				C63CE07F2BF6170900236147 /* AppVersionGET.swift in Sources */,
 				C67780522BC57BE900E0BC42 /* ViewChangeManager.swift in Sources */,
 				C68A27752BD9DD250039F748 /* CharacterDetailGemCell.swift in Sources */,
 				C6224F922BC84B3A00CABA30 /* ChallengeGuardianRaidsDTO.swift in Sources */,
@@ -1345,7 +1349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1399,7 +1403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
