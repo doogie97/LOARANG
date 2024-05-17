@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import FirebaseCore
 import GoogleMobileAds
 import Mixpanel
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
         if let mixPanelToken = Bundle.main.mixpanelToken {
             Mixpanel.initialize(token: mixPanelToken, trackAutomaticEvents: true)
         }

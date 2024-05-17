@@ -154,7 +154,6 @@
 		C6A2097D2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097C2BC6BFEE00A13BA5 /* AddBookmarkUseCase.swift */; };
 		C6A2097F2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A2097E2BC6C13D00A13BA5 /* DeleteBookmarkUseCase.swift */; };
 		C6A209812BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A209802BC6C51100A13BA5 /* UpdateBookmarkUseCase.swift */; };
-		C6B706C52BE85A0200563620 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C6B706C42BE85A0200563620 /* FirebaseAnalytics */; };
 		C6B706C92BE85A9A00563620 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6B706C82BE85A9A00563620 /* GoogleService-Info.plist */; };
 		C6B73C462BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */; };
 		C6B73C482BD50C0800A6B6BD /* StatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B73C472BD50C0800A6B6BD /* StatType.swift */; };
@@ -352,7 +351,6 @@
 				C6D93FA02BF6E95500AEF35F /* Mixpanel in Frameworks */,
 				71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */,
 				7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */,
-				C6B706C52BE85A0200563620 /* FirebaseAnalytics in Frameworks */,
 				7199CC642BC78C700071E126 /* SwiftyJSON in Frameworks */,
 				71E9CCF52BC78B740080ECC1 /* RealmSwift in Frameworks */,
 				AC6C81952940270A00C0EEC1 /* Alamofire in Frameworks */,
@@ -1003,7 +1001,6 @@
 				7192BA9C2BC78DA500B3959A /* RxSwift */,
 				71CE75C52BC79E610048B257 /* RxDataSources */,
 				7177132C2BC8E6960040C602 /* Kingfisher */,
-				C6B706C42BE85A0200563620 /* FirebaseAnalytics */,
 				C6D93F9F2BF6E95500AEF35F /* Mixpanel */,
 			);
 			productName = "LOARANG-MVVM";
@@ -1048,7 +1045,6 @@
 				7192BA972BC78DA500B3959A /* XCRemoteSwiftPackageReference "RxSwift" */,
 				71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				7177132B2BC8E6960040C602 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C6D93F9E2BF6E95500AEF35F /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = ACAEF320287FF0D200AE98F1 /* Products */;
@@ -1590,14 +1586,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.25.0;
-			};
-		};
 		C6D93F9E2BF6E95500AEF35F /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
@@ -1668,11 +1656,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC6C81932940270A00C0EEC1 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		C6B706C42BE85A0200563620 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
 		};
 		C6D93F9F2BF6E95500AEF35F /* Mixpanel */ = {
 			isa = XCSwiftPackageProductDependency;
