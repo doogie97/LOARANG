@@ -165,6 +165,7 @@
 		C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */; };
 		C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
+		C6D93FA02BF6E95500AEF35F /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = C6D93F9F2BF6E95500AEF35F /* Mixpanel */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
 		C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */; };
 		C6EDB7DE2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */; };
@@ -348,6 +349,7 @@
 			files = (
 				71E9CCF32BC78B740080ECC1 /* Realm in Frameworks */,
 				71CE75C62BC79E610048B257 /* RxDataSources in Frameworks */,
+				C6D93FA02BF6E95500AEF35F /* Mixpanel in Frameworks */,
 				71E9CCEA2BC778B60080ECC1 /* SnapKit in Frameworks */,
 				7192BA992BC78DA500B3959A /* RxCocoa in Frameworks */,
 				C6B706C52BE85A0200563620 /* FirebaseAnalytics in Frameworks */,
@@ -1002,6 +1004,7 @@
 				71CE75C52BC79E610048B257 /* RxDataSources */,
 				7177132C2BC8E6960040C602 /* Kingfisher */,
 				C6B706C42BE85A0200563620 /* FirebaseAnalytics */,
+				C6D93F9F2BF6E95500AEF35F /* Mixpanel */,
 			);
 			productName = "LOARANG-MVVM";
 			productReference = ACAEF31F287FF0D200AE98F1 /* LOARANG.app */;
@@ -1046,6 +1049,7 @@
 				71CE75C42BC79E610048B257 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				7177132B2BC8E6960040C602 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C6D93F9E2BF6E95500AEF35F /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = ACAEF320287FF0D200AE98F1 /* Products */;
 			projectDirPath = "";
@@ -1435,7 +1439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Doogie.LOARANG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1469,7 +1473,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Doogie.LOARANG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1594,6 +1598,14 @@
 				minimumVersion = 10.25.0;
 			};
 		};
+		C6D93F9E2BF6E95500AEF35F /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1661,6 +1673,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6B706C32BE85A0200563620 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		C6D93F9F2BF6E95500AEF35F /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6D93F9E2BF6E95500AEF35F /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
