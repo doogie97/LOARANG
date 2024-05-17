@@ -6,8 +6,8 @@
 //
 
 import RxRelay
-import Foundation
 import UIKit
+import Mixpanel
 
 protocol CharacterDetailVMable: CharacterDetailVMInput, CharacterDetailVMOutput, AnyObject {}
 protocol CharacterDetailVMInput {
@@ -116,6 +116,10 @@ final class CharacterDetailVM: CharacterDetailVMable {
                 await MainActor.run {
                     setViewContents.accept(())
                     localStorageUpdate(characterEntity)
+                    Mixpanel.mainInstance().track(
+                        event: "SearchCharacter",
+                        properties: ["characterName" : characterName]
+                    )
                     isLoading.accept(false)
                 }
             } catch {
