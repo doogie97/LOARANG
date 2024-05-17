@@ -166,6 +166,8 @@ final class HomeVM: HomeVMable {
                 await MainActor.run {
                     setViewContents.accept(ViewContents(viewModel: self,
                                                         homeGameInfo: homeGameInfo))
+                    checkAppVersion(appstoreVersion: homeGameInfo.appStoreVesion,
+                                    currentVersion: homeGameInfo.currentVersion)
                     isLoading.accept(false)
                 }
             } catch let error {
@@ -179,6 +181,16 @@ final class HomeVM: HomeVMable {
                     isLoading.accept(false)
                 }
             }
+        }
+    }
+    
+    private func checkAppVersion(appstoreVersion: String, currentVersion: String) {
+        guard let appstoreVersion = Int(appstoreVersion.replacingOccurrences(of: ".", with: "")),
+              let currentVersion = Int(currentVersion.replacingOccurrences(of: ".", with: "")) else {
+            return
+        }
+        if appstoreVersion > currentVersion {
+            showAlert.accept(.update)
         }
     }
     
@@ -314,6 +326,7 @@ final class HomeVM: HomeVMable {
         case basic(message: String)
         case searchMainUser
         case checkMainUer(userInfo: CharacterDetailEntity)
+        case update
     }
     
     struct ViewContents {
