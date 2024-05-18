@@ -118,80 +118,18 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         return stackView
     }()
     
-    func setCellContents(equipment: CharacterDetailEntity.Equipment?, equipmentType: EquipmentType) {
-        if let equipment = equipment {
-            self.contentView.backgroundColor = .cellColor
-            self.contentView.layer.cornerRadius = 6
-            self.isHidden = false
-            
-            imageView.setImage(equipment.imageUrl)
-            imageView.backgroundColor = equipment.grade.backgroundColor
-            qualityProgressView.isHidden = equipment.qualityValue < 0
-            qualityProgressView.progressTintColor = equipment.qualityValue.qualityColor
-            qualityProgressView.progress = Float(equipment.qualityValue)/100
-            qualityLabel.text = equipment.qualityValue.description
-            equipmentTypeLabel.text = equipment.equipmentType.rawValue
-            itemLevelLabel.isHidden = equipment.itemLevel <= 0
-            itemLevelLabel.text = "Lv.\(equipment.itemLevel)"
-            highReforgingLevelLabel.isHidden = equipment.highReforgingLevel == nil || equipment.highReforgingLevel == 0
-            highReforgingLevelLabel.text = "+\(equipment.highReforgingLevel ?? 0)"
-            nameLabel.text = equipment.name
-            nameLabel.textColor = equipment.grade.textColor
-            transcendenceView.isHidden = equipment.transcendence == nil
-            transcendenceGradeLabel.text = "Lv.\(equipment.transcendence?.grade ?? 0)"
-            transcendenceCountLabel.text = "×\(equipment.transcendence?.count ?? 0)"
-            setOptionLabel.isHidden = !equipment.engraving.isEmpty || equipment.equipmentType == .팔찌
-            setOptionLabel.text = equipment.setOptionName + " " + equipment.setOptionLevelStr
-            addElixirStackView(equipment.elixirs ?? [])
-            addEngravingStackView(equipment.engraving)
-            
-            setLayout()
-        } else {
-            self.isHidden = true
-        }
-    }
-    
-    private func addElixirStackView(_ elixirs: [CharacterDetailEntity.Elixir]) {
-        elixirStackView.isHidden = elixirs.isEmpty
-        for elixir in elixirs {
-            let label = PaddingLabel(top: 0, bottom: 0, left: 8, right: 8)
-            label.font = .pretendard(size: 12, family: .Bold)
-            label.textAlignment = .center
-            label.clipsToBounds = true
-            label.layer.cornerRadius = 12.5
-            label.layer.borderWidth = 0.5
-            label.layer.borderColor = UIColor.systemGray.cgColor
-            label.text = elixir.name + " Lv.\(elixir.level)"
-            elixirStackView.addArrangedSubview(label)
-        }
-    }
-    
-    private func addEngravingStackView(_ engravings: [(name: String, value: Int)]) {
-        engravingStackView.isHidden = engravings.isEmpty
-        for engraving in engravings {
-            let label = PaddingLabel(top: 0, bottom: 0, left: 8, right: 8)
-            label.font = .pretendard(size: 11, family: .Bold)
-            label.textAlignment = .center
-            label.clipsToBounds = true
-            label.layer.cornerRadius = 6
-            label.layer.borderWidth = 0.5
-            label.backgroundColor = #colorLiteral(red: 0.1511179507, green: 0.1611060798, blue: 0.178067416, alpha: 1)
-            label.text = engraving.name + " \(engraving.value)"
-            engravingStackView.addArrangedSubview(label)
-        }
-    }
-    
-    private func setLayout() {
-        self.contentView.addSubview(imageView)
-        self.contentView.addSubview(qualityProgressView)
-        self.contentView.addSubview(equipmentTypeLabel)
-        self.contentView.addSubview(itemLevelLabel)
-        self.contentView.addSubview(highReforgingLevelLabel)
-        self.contentView.addSubview(nameLabel)
-        self.contentView.addSubview(transcendenceView)
-        self.contentView.addSubview(setOptionLabel)
-        self.contentView.addSubview(elixirStackView)
-        self.contentView.addSubview(engravingStackView)
+    private lazy var equipmentView = {
+        let view = UIView()
+        view.addSubview(imageView)
+        view.addSubview(qualityProgressView)
+        view.addSubview(equipmentTypeLabel)
+        view.addSubview(itemLevelLabel)
+        view.addSubview(highReforgingLevelLabel)
+        view.addSubview(nameLabel)
+        view.addSubview(transcendenceView)
+        view.addSubview(setOptionLabel)
+        view.addSubview(elixirStackView)
+        view.addSubview(engravingStackView)
         
         imageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(margin(.width, 10))
@@ -248,6 +186,89 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
             $0.top.equalTo(nameLabel.snp.bottom).inset(-8)
             $0.height.equalTo(25)
             $0.leading.equalTo(nameLabel)
+        }
+        
+        return view
+    }()
+    
+    private lazy var noEquipmentLabel = pretendardLabel(size: 14, family: .SemiBold, alignment: .center)
+    
+    func setCellContents(equipment: CharacterDetailEntity.Equipment?, equipmentType: EquipmentType) {
+        self.contentView.backgroundColor = .cellColor
+        self.contentView.layer.cornerRadius = 6
+        if let equipment = equipment {
+            equipmentView.isHidden = false
+            noEquipmentLabel.isHidden = true
+            
+            imageView.setImage(equipment.imageUrl)
+            imageView.backgroundColor = equipment.grade.backgroundColor
+            qualityProgressView.isHidden = equipment.qualityValue < 0
+            qualityProgressView.progressTintColor = equipment.qualityValue.qualityColor
+            qualityProgressView.progress = Float(equipment.qualityValue)/100
+            qualityLabel.text = equipment.qualityValue.description
+            equipmentTypeLabel.text = equipment.equipmentType.rawValue
+            itemLevelLabel.isHidden = equipment.itemLevel <= 0
+            itemLevelLabel.text = "Lv.\(equipment.itemLevel)"
+            highReforgingLevelLabel.isHidden = equipment.highReforgingLevel == nil || equipment.highReforgingLevel == 0
+            highReforgingLevelLabel.text = "+\(equipment.highReforgingLevel ?? 0)"
+            nameLabel.text = equipment.name
+            nameLabel.textColor = equipment.grade.textColor
+            transcendenceView.isHidden = equipment.transcendence == nil
+            transcendenceGradeLabel.text = "Lv.\(equipment.transcendence?.grade ?? 0)"
+            transcendenceCountLabel.text = "×\(equipment.transcendence?.count ?? 0)"
+            setOptionLabel.isHidden = !equipment.engraving.isEmpty || equipment.equipmentType == .팔찌
+            setOptionLabel.text = equipment.setOptionName + " " + equipment.setOptionLevelStr
+            addElixirStackView(equipment.elixirs ?? [])
+            addEngravingStackView(equipment.engraving)
+        } else {
+            equipmentView.isHidden = true
+            noEquipmentLabel.isHidden = false
+            noEquipmentLabel.text = "장착 \(equipmentType.rawValue) 없음"
+        }
+        
+        setLayout()
+    }
+    
+    private func addElixirStackView(_ elixirs: [CharacterDetailEntity.Elixir]) {
+        elixirStackView.isHidden = elixirs.isEmpty
+        for elixir in elixirs {
+            let label = PaddingLabel(top: 0, bottom: 0, left: 8, right: 8)
+            label.font = .pretendard(size: 12, family: .Bold)
+            label.textAlignment = .center
+            label.clipsToBounds = true
+            label.layer.cornerRadius = 12.5
+            label.layer.borderWidth = 0.5
+            label.layer.borderColor = UIColor.systemGray.cgColor
+            label.text = elixir.name + " Lv.\(elixir.level)"
+            elixirStackView.addArrangedSubview(label)
+        }
+    }
+    
+    private func addEngravingStackView(_ engravings: [(name: String, value: Int)]) {
+        engravingStackView.isHidden = engravings.isEmpty
+        for engraving in engravings {
+            let label = PaddingLabel(top: 0, bottom: 0, left: 8, right: 8)
+            label.font = .pretendard(size: 11, family: .Bold)
+            label.textAlignment = .center
+            label.clipsToBounds = true
+            label.layer.cornerRadius = 6
+            label.layer.borderWidth = 0.5
+            label.backgroundColor = #colorLiteral(red: 0.1511179507, green: 0.1611060798, blue: 0.178067416, alpha: 1)
+            label.text = engraving.name + " \(engraving.value)"
+            engravingStackView.addArrangedSubview(label)
+        }
+    }
+    
+    private func setLayout() {
+        self.contentView.addSubview(equipmentView)
+        self.contentView.addSubview(noEquipmentLabel)
+        
+        equipmentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        noEquipmentLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     

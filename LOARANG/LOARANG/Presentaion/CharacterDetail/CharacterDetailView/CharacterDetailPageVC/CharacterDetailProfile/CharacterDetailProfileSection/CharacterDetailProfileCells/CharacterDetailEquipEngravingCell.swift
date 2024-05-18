@@ -19,7 +19,7 @@ class CharacterDetailEquipEngravingCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var noEngravingLabel = pretendardLabel(size: 14, family: .SemiBold, text: "장착된 각인이 없습니다.", alignment: .center)
+    private lazy var noEngravingLabel = pretendardLabel(size: 14, family: .SemiBold, text: "장착 각인 없음", alignment: .center)
     
     func setCellContents(engravings: [CharacterDetailEntity.EquipEngravig]) {
         self.contentView.backgroundColor = .cellColor
