@@ -19,15 +19,14 @@ class CharacterDetailEquipEngravingCell: UICollectionViewCell {
         return stackView
     }()
     
+    private lazy var noEngravingLabel = pretendardLabel(size: 14, family: .SemiBold, text: "장착된 각인이 없습니다.", alignment: .center)
+    
     func setCellContents(engravings: [CharacterDetailEntity.EquipEngravig]) {
         self.contentView.backgroundColor = .cellColor
         self.contentView.layer.cornerRadius = 6
         engravingStackView.isHidden = engravings.isEmpty
-        if !engravings.isEmpty {
-            addEngravingView(engravings)
-        } else {
-            
-        }
+        noEngravingLabel.isHidden = !engravings.isEmpty
+        addEngravingView(engravings)
         setLayout()
     }
     
@@ -86,8 +85,14 @@ class CharacterDetailEquipEngravingCell: UICollectionViewCell {
     }
     
     private func setLayout() {
-        self.addSubview(engravingStackView)
+        self.contentView.addSubview(engravingStackView)
+        self.contentView.addSubview(noEngravingLabel)
+        
         engravingStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        noEngravingLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
