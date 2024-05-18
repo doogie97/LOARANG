@@ -1,5 +1,5 @@
 //
-//  CharacterDetailStatCell.swift
+//  TwoRowSectionStatCell.swift
 //  LOARANG
 //
 //  Created by Doogie on 4/21/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class CharacterDetailStatCell: UICollectionViewCell {
+final class TwoRowSectionStatCell: UICollectionViewCell {
     private lazy var basicStatTitle = statTitle(text: "기본 특성")
     
     private lazy var attTitleLabel = pretendardLabel(family: .Regular, text: "공격력",alignment: .center)

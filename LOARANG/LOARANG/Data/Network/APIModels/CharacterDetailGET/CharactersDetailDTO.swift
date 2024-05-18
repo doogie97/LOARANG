@@ -98,7 +98,14 @@ extension CharactersDetailDTO {
 //MARK: - Engraving
 extension CharactersDetailDTO {
     struct ArmoryEngraving: Decodable {
+        let Engravings: [EquipEngravig]?
         let Effects: [Engravig]?
+    }
+    
+    struct EquipEngravig: Decodable {
+        let Name: String?
+        let Icon: String?
+        let Tooltip: String?
     }
     
     struct Engravig: Decodable {

@@ -10,10 +10,11 @@ import SnapKit
 
 final class CharacterDetailProfileSectionView: UIView {
     private weak var viewModel: CharacterDetailVMable?
-    enum ProfileSectionCase: CaseIterable {
+    enum ProfileSectionCase: Int, CaseIterable {
         case basicInfo
         case equipmentEffectView
-        case battleEquipment
+        ///배틀 장비에 악세까지 포함해 section에 표시
+        case equipments
         ///Stat & Engraving
         case twoRowSection
         case gemSection
@@ -51,14 +52,9 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         case .basicInfo:
             return 1
         case .equipmentEffectView:
-            let characterInfo = viewModel?.characterInfoData
-            if !(characterInfo?.jewelrys ?? []).contains(where: { $0.equipmentType == .팔찌 }) && characterInfo?.elixirInfo == nil && characterInfo?.transcendenceInfo == nil {
-                return 0
-            } else {
-                return 1
-            }
-        case .battleEquipment:
-            return viewModel?.characterInfoData?.battleEquipments.count ?? 0
+            return 1
+        case .equipments:
+            return 14
         case .twoRowSection:
             return 2
         case .gemSection:
@@ -74,6 +70,23 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "\(EquipmentEffectHeaderView.self)",
+                for: indexPath
+            ) as? EquipmentEffectHeaderView else {
+                return UICollectionReusableView()
+            }
+            
+            header.setLayout(sectionCase: ProfileSectionCase(rawValue: indexPath.section))
+            return header
+        }
+        
+        return UICollectionReusableView()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let section = ProfileSectionCase.allCases[safe: indexPath.section] else {
             return UICollectionViewCell()
@@ -84,8 +97,12 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return basicInfoCell(collectionView: collectionView, indexPath: indexPath)
         case .equipmentEffectView:
             return equipmentEffectCell(collectionView: collectionView, indexPath: indexPath)
-        case .battleEquipment:
-            return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
+        case .equipments:
+            if indexPath.row == 6 { //6번째 index는 장착 각인
+                return equipEngravingCell(collectionView: collectionView, indexPath: indexPath)
+            } else {
+                return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
+            }
         case .twoRowSection:
             return twoRwoSectionCell(collectionView: collectionView, indexPath: indexPath)
         case .gemSection:
@@ -116,11 +133,68 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func battleEquipmentCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell,
-              let equipment = viewModel?.characterInfoData?.battleEquipments[safe: indexPath.row] else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell else {
             return UICollectionViewCell()
         }
-        cell.setCellContents(equipment: equipment)
+        let characterInfoData = viewModel?.characterInfoData
+        var equipmentInfo: (equipment: CharacterDetailEntity.Equipment?, equipmentType: EquipmentType) {
+            switch indexPath.row {
+            case 0:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .무기 })
+                return (equipment, .무기)
+            case 1:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .투구 })
+                return (equipment, .투구)
+            case 2:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .상의 })
+                return (equipment, .상의)
+            case 3:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .하의 })
+                return (equipment, .하의)
+            case 4:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .장갑 })
+                return (equipment, .장갑)
+            case 5:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .어깨 })
+                return (equipment, .어깨)
+            case 7:
+                let equipment = characterInfoData?.jewelrys.first(where: { $0.equipmentType == .목걸이 })
+                return (equipment, .목걸이)
+            case 8:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .귀걸이}).first
+                return (equipment, .귀걸이)
+            case 9:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .귀걸이}).last
+                return (equipment, .귀걸이)
+            case 10:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .반지}).first
+                return (equipment, .반지)
+            case 11:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .반지}).last
+                return (equipment, .반지)
+            case 12:
+                let equipment = characterInfoData?.jewelrys.first(where: { $0.equipmentType == .어빌리티스톤 })
+                return (equipment, .어빌리티스톤)
+            case 13:
+                let equipment = characterInfoData?.jewelrys.first(where: { $0.equipmentType == .팔찌 })
+                return (equipment, .팔찌)
+            default:
+                return (nil, .unknown)
+            }
+        }
+        
+        cell.setCellContents(equipment: equipmentInfo.equipment,
+                             equipmentType: equipmentInfo.equipmentType)
+        return cell
+    }
+    
+    private func equipEngravingCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailEquipEngravingCell.self)", for: indexPath) as? CharacterDetailEquipEngravingCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setCellContents(engravings: viewModel?.characterInfoData?.equipEngravings ?? [])
+        
         return cell
     }
     
@@ -130,13 +204,13 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         }
         var cell: UICollectionViewCell? {
             if indexPath.row == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailStatCell.self)", for: indexPath) as? CharacterDetailStatCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(TwoRowSectionStatCell.self)", for: indexPath) as? TwoRowSectionStatCell
                 cell?.setCellContents(profileInfo: characterInfo.profile)
                 return cell
             }
             
             if indexPath.row == 1 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailEngravingCell.self)", for: indexPath) as? CharacterDetailEngravingCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(TwoRowSectionEngravingCell.self)", for: indexPath) as? TwoRowSectionEngravingCell
                 cell?.setCellContents(characterInfo.engravigs)
                 return cell
             }
@@ -186,7 +260,7 @@ extension CharacterDetailProfileSectionView: UICollectionViewDelegate {
         switch section {
         case .gemSection:
             viewModel?.touchGem()
-        case .basicInfo, .equipmentEffectView, .battleEquipment, .twoRowSection, .cardListView, .cardEffectsView:
+        case .basicInfo, .equipmentEffectView, .equipments, .twoRowSection, .cardListView, .cardEffectsView:
             return
         }
     }
@@ -207,11 +281,16 @@ extension CharacterDetailProfileSectionView {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        collectionView.register(EquipmentEffectHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "\(EquipmentEffectHeaderView.self)")
+        
         collectionView.register(CharacterDetailBasicInfoCell.self)
         collectionView.register(CharacterDetailequipmentEffectCell.self)
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
-        collectionView.register(CharacterDetailStatCell.self)
-        collectionView.register(CharacterDetailEngravingCell.self)
+        collectionView.register(CharacterDetailEquipEngravingCell.self)
+        collectionView.register(TwoRowSectionStatCell.self)
+        collectionView.register(TwoRowSectionEngravingCell.self)
         collectionView.register(CharacterDetailGemCell.self)
         collectionView.register(CharacterDetailCardCell.self)
         collectionView.register(CharacterDetailCardEffectCell.self)
@@ -230,7 +309,7 @@ extension CharacterDetailProfileSectionView {
                 return self?.basicInfoLayout()
             case .equipmentEffectView:
                 return self?.equipmentEffectViewLayout()
-            case .battleEquipment:
+            case .equipments:
                 return self?.battleEquipmentLayout()
             case .twoRowSection:
                 return self?.twoRowSectionLayout()
@@ -250,31 +329,49 @@ extension CharacterDetailProfileSectionView {
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         return section
     }
     
     private func equipmentEffectViewLayout() -> NSCollectionLayoutSection {
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(85))
+                                          heightDimension: .absolute(85))
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 10, trailing: margin(.width, 8))
-        
+        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 0, trailing: margin(.width, 8))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .topLeading
+        )
+        section.boundarySupplementaryItems = [header]
         return section
     }
     
     private func battleEquipmentLayout() -> NSCollectionLayoutSection {
         let itemHeightInset = 8.0
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(95 + itemHeightInset))
+                                          heightDimension: .absolute(95 + itemHeightInset))
         let item = NSCollectionLayoutItem(layoutSize: size)
-        item.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 8, trailing: margin(.width, 8))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        item.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 8, trailing: margin(.width, 4))
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95),
+                                               heightDimension: .absolute((95 + itemHeightInset) * 7))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 8, trailing: margin(.width, 4))
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .topLeading
+        )
+        section.boundarySupplementaryItems = [header]
         
         return section
     }
