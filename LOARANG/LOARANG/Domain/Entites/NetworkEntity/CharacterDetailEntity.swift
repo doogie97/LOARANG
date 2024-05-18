@@ -16,6 +16,7 @@ struct CharacterDetailEntity { //일단 지금 당장 필요한 정보만 전달
     let avatars: [Avatar]
     let elixirInfo: ElixirInfo?
     let transcendenceInfo: TranscendenceInfo?
+    let equipEngravings: [EquipEngravig]
     let engravigs: [Engravig]
     let gems: [Gem]
     let cardInfo: CardInfo
@@ -118,6 +119,12 @@ extension CharacterDetailEntity {
 }
 //MARK: - Engravig
 extension CharacterDetailEntity {
+    struct EquipEngravig {
+        let name: String
+        let imageUrl: String
+        let value: String
+    }
+    
     struct Engravig {
         let imageUrl: String
         let name: String
