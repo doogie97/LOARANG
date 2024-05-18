@@ -283,14 +283,14 @@ extension CharacterDetailProfileSectionView {
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                           heightDimension: .absolute(95 + itemHeightInset))
         let item = NSCollectionLayoutItem(layoutSize: size)
-        item.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 8, trailing: margin(.width, 8))
+        item.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 8, trailing: margin(.width, 4))
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95),
                                                heightDimension: .absolute((95 + itemHeightInset) * 7))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 8, trailing: margin(.width, 4))
         
         return section
     }
