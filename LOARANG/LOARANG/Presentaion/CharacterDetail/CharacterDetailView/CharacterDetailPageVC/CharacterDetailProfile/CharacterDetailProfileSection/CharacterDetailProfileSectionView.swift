@@ -124,17 +124,56 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell else {
             return UICollectionViewCell()
         }
-        
-        if indexPath.row < 6 { //장착 장비
-            let equipment = viewModel?.characterInfoData?.battleEquipments[safe: indexPath.row]
-            cell.setCellContents(equipment: equipment)
-            return cell
-        } else { //장착 악세
-            let jwelryIndex = indexPath.row - 7
-            let equipment = viewModel?.characterInfoData?.jewelrys[safe: jwelryIndex]
-            cell.setCellContents(equipment: equipment)
-            return cell
+        let characterInfoData = viewModel?.characterInfoData
+        var equipmentInfo: (equipment: CharacterDetailEntity.Equipment?, equipmentType: EquipmentType) {
+            switch indexPath.row {
+            case 0:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .무기 })
+                return (equipment, .무기)
+            case 1:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .투구 })
+                return (equipment, .투구)
+            case 2:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .상의 })
+                return (equipment, .상의)
+            case 3:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .하의 })
+                return (equipment, .하의)
+            case 4:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .장갑 })
+                return (equipment, .장갑)
+            case 5:
+                let equipment = characterInfoData?.battleEquipments.first(where: { $0.equipmentType == .어깨 })
+                return (equipment, .어깨)
+            case 7:
+                let equipment = characterInfoData?.jewelrys.first(where: { $0.equipmentType == .목걸이 })
+                return (equipment, .목걸이)
+            case 8:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .귀걸이}).first
+                return (equipment, .귀걸이)
+            case 9:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .귀걸이}).last
+                return (equipment, .귀걸이)
+            case 10:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .반지}).first
+                return (equipment, .반지)
+            case 11:
+                let equipment = characterInfoData?.jewelrys.filter ({ $0.equipmentType == .반지}).last
+                return (equipment, .반지)
+            case 12:
+                let equipment = characterInfoData?.jewelrys.first(where: { $0.equipmentType == .어빌리티스톤 })
+                return (equipment, .어빌리티스톤)
+            case 13:
+                let equipment = characterInfoData?.jewelrys.first(where: { $0.equipmentType == .팔찌 })
+                return (equipment, .팔찌)
+            default:
+                return (nil, .unknown)
+            }
         }
+        
+        cell.setCellContents(equipment: equipmentInfo.equipment,
+                             equipmentType: equipmentInfo.equipmentType)
+        return cell
     }
     
     private func equipEngravingCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {

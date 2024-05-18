@@ -118,7 +118,7 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         return stackView
     }()
     
-    func setCellContents(equipment: CharacterDetailEntity.Equipment?) {
+    func setCellContents(equipment: CharacterDetailEntity.Equipment?, equipmentType: EquipmentType) {
         if let equipment = equipment {
             self.contentView.backgroundColor = .cellColor
             self.contentView.layer.cornerRadius = 6
