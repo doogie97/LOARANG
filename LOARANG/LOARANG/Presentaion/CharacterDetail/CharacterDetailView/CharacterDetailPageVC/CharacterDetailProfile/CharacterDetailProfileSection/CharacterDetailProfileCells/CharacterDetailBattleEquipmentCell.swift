@@ -110,28 +110,33 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         return stackView
     }()
     
-    func setCellContents(equipment: CharacterDetailEntity.Equipment) {
-        self.contentView.backgroundColor = .cellColor
-        self.contentView.layer.cornerRadius = 6
-        
-        imageView.setImage(equipment.imageUrl)
-        imageView.backgroundColor = equipment.grade.backgroundColor
-        qualityProgressView.progressTintColor = equipment.qualityValue.qualityColor
-        qualityProgressView.progress = Float(equipment.qualityValue)/100
-        qualityLabel.text = equipment.qualityValue.description
-        equipmentTypeLabel.text = equipment.equipmentType.rawValue
-        itemLevelLabel.text = "Lv.\(equipment.itemLevel)"
-        highReforgingLevelLabel.isHidden = equipment.highReforgingLevel == nil || equipment.highReforgingLevel == 0
-        highReforgingLevelLabel.text = "+\(equipment.highReforgingLevel ?? 0)"
-        nameLabel.text = equipment.name
-        nameLabel.textColor = equipment.grade.textColor
-        transcendenceView.isHidden = equipment.transcendence == nil
-        transcendenceGradeLabel.text = "Lv.\(equipment.transcendence?.grade ?? 0)"
-        transcendenceCountLabel.text = "×\(equipment.transcendence?.count ?? 0)"
-        setOptionLabel.text = equipment.setOptionName + " " + equipment.setOptionLevelStr
-        addElixirStackView(equipment.elixirs ?? [])
-        
-        setLayout()
+    func setCellContents(equipment: CharacterDetailEntity.Equipment?) {
+        if let equipment = equipment {
+            self.contentView.backgroundColor = .cellColor
+            self.contentView.layer.cornerRadius = 6
+            self.isHidden = false
+            
+            imageView.setImage(equipment.imageUrl)
+            imageView.backgroundColor = equipment.grade.backgroundColor
+            qualityProgressView.progressTintColor = equipment.qualityValue.qualityColor
+            qualityProgressView.progress = Float(equipment.qualityValue)/100
+            qualityLabel.text = equipment.qualityValue.description
+            equipmentTypeLabel.text = equipment.equipmentType.rawValue
+            itemLevelLabel.text = "Lv.\(equipment.itemLevel)"
+            highReforgingLevelLabel.isHidden = equipment.highReforgingLevel == nil || equipment.highReforgingLevel == 0
+            highReforgingLevelLabel.text = "+\(equipment.highReforgingLevel ?? 0)"
+            nameLabel.text = equipment.name
+            nameLabel.textColor = equipment.grade.textColor
+            transcendenceView.isHidden = equipment.transcendence == nil
+            transcendenceGradeLabel.text = "Lv.\(equipment.transcendence?.grade ?? 0)"
+            transcendenceCountLabel.text = "×\(equipment.transcendence?.count ?? 0)"
+            setOptionLabel.text = equipment.setOptionName + " " + equipment.setOptionLevelStr
+            addElixirStackView(equipment.elixirs ?? [])
+            
+            setLayout()
+        } else {
+            self.isHidden = true
+        }
     }
     
     private func addElixirStackView(_ elixirs: [CharacterDetailEntity.Elixir]) {

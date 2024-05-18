@@ -13,7 +13,8 @@ final class CharacterDetailProfileSectionView: UIView {
     enum ProfileSectionCase: CaseIterable {
         case basicInfo
         case equipmentEffectView
-        case battleEquipment
+        ///배틀 장비에 악세까지 포함해 section에 표시
+        case equipments
         ///Stat & Engraving
         case twoRowSection
         case gemSection
@@ -57,8 +58,8 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             } else {
                 return 1
             }
-        case .battleEquipment:
-            return viewModel?.characterInfoData?.battleEquipments.count ?? 0
+        case .equipments:
+            return 14
         case .twoRowSection:
             return 2
         case .gemSection:
@@ -84,7 +85,7 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return basicInfoCell(collectionView: collectionView, indexPath: indexPath)
         case .equipmentEffectView:
             return equipmentEffectCell(collectionView: collectionView, indexPath: indexPath)
-        case .battleEquipment:
+        case .equipments:
             return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
         case .twoRowSection:
             return twoRwoSectionCell(collectionView: collectionView, indexPath: indexPath)
@@ -116,12 +117,23 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
     }
     
     private func battleEquipmentCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell,
-              let equipment = viewModel?.characterInfoData?.battleEquipments[safe: indexPath.row] else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailBattleEquipmentCell.self)", for: indexPath) as? CharacterDetailBattleEquipmentCell else {
             return UICollectionViewCell()
         }
-        cell.setCellContents(equipment: equipment)
-        return cell
+        
+        if indexPath.row < 6 { //장착 장비
+            let equipment = viewModel?.characterInfoData?.battleEquipments[safe: indexPath.row]
+            cell.setCellContents(equipment: equipment)
+            return cell
+        } else if indexPath.row == 6 { //장착 각인
+            cell.setCellContents(equipment: nil)
+            return cell
+        } else { //장착 악세
+            let jwelryIndex = indexPath.row - 7
+            let equipment = viewModel?.characterInfoData?.jewelrys[safe: jwelryIndex]
+            cell.setCellContents(equipment: equipment)
+            return cell
+        }
     }
     
     private func twoRwoSectionCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
@@ -186,7 +198,7 @@ extension CharacterDetailProfileSectionView: UICollectionViewDelegate {
         switch section {
         case .gemSection:
             viewModel?.touchGem()
-        case .basicInfo, .equipmentEffectView, .battleEquipment, .twoRowSection, .cardListView, .cardEffectsView:
+        case .basicInfo, .equipmentEffectView, .equipments, .twoRowSection, .cardListView, .cardEffectsView:
             return
         }
     }
@@ -230,7 +242,7 @@ extension CharacterDetailProfileSectionView {
                 return self?.basicInfoLayout()
             case .equipmentEffectView:
                 return self?.equipmentEffectViewLayout()
-            case .battleEquipment:
+            case .equipments:
                 return self?.battleEquipmentLayout()
             case .twoRowSection:
                 return self?.twoRowSectionLayout()
@@ -269,11 +281,15 @@ extension CharacterDetailProfileSectionView {
     private func battleEquipmentLayout() -> NSCollectionLayoutSection {
         let itemHeightInset = 8.0
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(95 + itemHeightInset))
+                                          heightDimension: .absolute(95 + itemHeightInset))
         let item = NSCollectionLayoutItem(layoutSize: size)
         item.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 8, trailing: margin(.width, 8))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute((95 + itemHeightInset) * 7))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
         section.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
         
         return section
