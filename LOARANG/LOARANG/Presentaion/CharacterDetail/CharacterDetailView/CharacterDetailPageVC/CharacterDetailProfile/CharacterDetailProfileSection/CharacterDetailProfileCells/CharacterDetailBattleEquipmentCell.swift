@@ -118,6 +118,9 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         return stackView
     }()
     
+    private lazy var braceletTopLabel = pretendardLabel(size: 12, family: .SemiBold, color: .systemGray, lineCount: 2)
+    private lazy var braceletbottomLabel = pretendardLabel(size: 12, family: .SemiBold)
+    
     private lazy var equipmentView = {
         let view = UIView()
         view.addSubview(imageView)
@@ -130,6 +133,8 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         view.addSubview(setOptionLabel)
         view.addSubview(elixirStackView)
         view.addSubview(engravingStackView)
+        view.addSubview(braceletTopLabel)
+        view.addSubview(braceletbottomLabel)
         
         imageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(margin(.width, 10))
@@ -188,6 +193,16 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
             $0.leading.equalTo(nameLabel)
         }
         
+        braceletTopLabel.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).inset(-2)
+            $0.leading.equalTo(nameLabel)
+        }
+        
+        braceletbottomLabel.snp.makeConstraints {
+            $0.top.equalTo(braceletTopLabel.snp.bottom).inset(-2)
+            $0.leading.equalTo(nameLabel)
+        }
+        
         return view
     }()
     
@@ -196,6 +211,8 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
     func setCellContents(equipment: CharacterDetailEntity.Equipment?, equipmentType: EquipmentType) {
         self.contentView.backgroundColor = .cellColor
         self.contentView.layer.cornerRadius = 6
+        braceletTopLabel.isHidden = equipmentType != .팔찌
+        braceletbottomLabel.isHidden = equipmentType != .팔찌
         if let equipment = equipment {
             equipmentView.isHidden = false
             noEquipmentLabel.isHidden = true
@@ -220,6 +237,8 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
             setOptionLabel.text = equipment.setOptionName + " " + equipment.setOptionLevelStr
             addElixirStackView(equipment.elixirs ?? [])
             addEngravingStackView(equipment.engraving)
+            braceletTopLabel.text = equipment.basicEffect.joined(separator: " ")
+            braceletbottomLabel.text = equipment.additionalEffect.joined(separator: " ")
         } else {
             equipmentView.isHidden = true
             noEquipmentLabel.isHidden = false
