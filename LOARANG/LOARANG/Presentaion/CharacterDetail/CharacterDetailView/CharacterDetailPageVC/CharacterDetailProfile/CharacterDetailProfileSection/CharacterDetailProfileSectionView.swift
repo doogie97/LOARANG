@@ -142,13 +142,13 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         }
         var cell: UICollectionViewCell? {
             if indexPath.row == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailStatCell.self)", for: indexPath) as? CharacterDetailStatCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(TwoRowSectionStatCell.self)", for: indexPath) as? TwoRowSectionStatCell
                 cell?.setCellContents(profileInfo: characterInfo.profile)
                 return cell
             }
             
             if indexPath.row == 1 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailEngravingCell.self)", for: indexPath) as? CharacterDetailEngravingCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(TwoRowSectionEngravingCell.self)", for: indexPath) as? TwoRowSectionEngravingCell
                 cell?.setCellContents(characterInfo.engravigs)
                 return cell
             }
@@ -222,8 +222,8 @@ extension CharacterDetailProfileSectionView {
         collectionView.register(CharacterDetailBasicInfoCell.self)
         collectionView.register(CharacterDetailequipmentEffectCell.self)
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
-        collectionView.register(CharacterDetailStatCell.self)
-        collectionView.register(CharacterDetailEngravingCell.self)
+        collectionView.register(TwoRowSectionStatCell.self)
+        collectionView.register(TwoRowSectionEngravingCell.self)
         collectionView.register(CharacterDetailGemCell.self)
         collectionView.register(CharacterDetailCardCell.self)
         collectionView.register(CharacterDetailCardEffectCell.self)
