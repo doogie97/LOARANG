@@ -62,14 +62,23 @@ final class CharacterDetailequipmentEffectCell: UICollectionViewCell {
         }
         
         infoStackView.isHidden = characterInfo.elixirInfo == nil && characterInfo.transcendenceInfo == nil
-        
+        noEffectLabel.isHidden = characterInfo.elixirInfo != nil && characterInfo.transcendenceInfo != nil
         setLayout()
     }
+    private lazy var noEffectLabel = pretendardLabel(size: 15, family: .SemiBold, text: "적용된 엘릭서 & 초월 효과가 없습니다.", alignment: .center)
     
     private func setLayout() {
         self.contentView.addSubview(infoStackView)
+        self.contentView.addSubview(noEffectLabel)
         
         infoStackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        noEffectLabel.backgroundColor = .cellColor
+        noEffectLabel.layer.cornerRadius = 6
+        noEffectLabel.clipsToBounds = true
+        noEffectLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
