@@ -10,7 +10,7 @@ import SnapKit
 
 final class CharacterDetailProfileSectionView: UIView {
     private weak var viewModel: CharacterDetailVMable?
-    enum ProfileSectionCase: CaseIterable {
+    enum ProfileSectionCase: Int, CaseIterable {
         case basicInfo
         case equipmentEffectView
         ///배틀 장비에 악세까지 포함해 section에 표시
@@ -52,12 +52,7 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         case .basicInfo:
             return 1
         case .equipmentEffectView:
-            let characterInfo = viewModel?.characterInfoData
-            if characterInfo?.elixirInfo == nil && characterInfo?.transcendenceInfo == nil {
-                return 0
-            } else {
-                return 1
-            }
+            return 1
         case .equipments:
             return 14
         case .twoRowSection:
@@ -73,6 +68,23 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
                 return 1
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "\(EquipmentEffectHeaderView.self)",
+                for: indexPath
+            ) as? EquipmentEffectHeaderView else {
+                return UICollectionReusableView()
+            }
+            
+            header.setLayout(sectionCase: ProfileSectionCase(rawValue: indexPath.section))
+            return header
+        }
+        
+        return UICollectionReusableView()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -269,6 +281,10 @@ extension CharacterDetailProfileSectionView {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        collectionView.register(EquipmentEffectHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "\(EquipmentEffectHeaderView.self)")
+        
         collectionView.register(CharacterDetailBasicInfoCell.self)
         collectionView.register(CharacterDetailequipmentEffectCell.self)
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
@@ -313,19 +329,25 @@ extension CharacterDetailProfileSectionView {
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         return section
     }
     
     private func equipmentEffectViewLayout() -> NSCollectionLayoutSection {
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(85))
+                                          heightDimension: .absolute(85))
         let item = NSCollectionLayoutItem(layoutSize: size)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 10, trailing: margin(.width, 8))
-        
+        section.contentInsets = .init(top: 0, leading: margin(.width, 8), bottom: 0, trailing: margin(.width, 8))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .topLeading
+        )
+        section.boundarySupplementaryItems = [header]
         return section
     }
     
@@ -342,6 +364,14 @@ extension CharacterDetailProfileSectionView {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         section.contentInsets = .init(top: 0, leading: margin(.width, 4), bottom: 8, trailing: margin(.width, 4))
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .topLeading
+        )
+        section.boundarySupplementaryItems = [header]
         
         return section
     }
