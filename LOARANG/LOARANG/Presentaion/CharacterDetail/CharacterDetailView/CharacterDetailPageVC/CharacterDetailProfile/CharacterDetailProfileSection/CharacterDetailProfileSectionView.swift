@@ -53,7 +53,7 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             return 1
         case .equipmentEffectView:
             let characterInfo = viewModel?.characterInfoData
-            if !(characterInfo?.jewelrys ?? []).contains(where: { $0.equipmentType == .팔찌 }) && characterInfo?.elixirInfo == nil && characterInfo?.transcendenceInfo == nil {
+            if characterInfo?.elixirInfo == nil && characterInfo?.transcendenceInfo == nil {
                 return 0
             } else {
                 return 1
