@@ -118,10 +118,12 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
             
             imageView.setImage(equipment.imageUrl)
             imageView.backgroundColor = equipment.grade.backgroundColor
+            qualityProgressView.isHidden = equipment.qualityValue < 0
             qualityProgressView.progressTintColor = equipment.qualityValue.qualityColor
             qualityProgressView.progress = Float(equipment.qualityValue)/100
             qualityLabel.text = equipment.qualityValue.description
             equipmentTypeLabel.text = equipment.equipmentType.rawValue
+            itemLevelLabel.isHidden = equipment.itemLevel <= 0
             itemLevelLabel.text = "Lv.\(equipment.itemLevel)"
             highReforgingLevelLabel.isHidden = equipment.highReforgingLevel == nil || equipment.highReforgingLevel == 0
             highReforgingLevelLabel.text = "+\(equipment.highReforgingLevel ?? 0)"
