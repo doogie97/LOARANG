@@ -110,6 +110,14 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         return stackView
     }()
     
+    private lazy var engravingStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = margin(.width, 4)
+        
+        return stackView
+    }()
+    
     func setCellContents(equipment: CharacterDetailEntity.Equipment?) {
         if let equipment = equipment {
             self.contentView.backgroundColor = .cellColor
@@ -132,8 +140,10 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
             transcendenceView.isHidden = equipment.transcendence == nil
             transcendenceGradeLabel.text = "Lv.\(equipment.transcendence?.grade ?? 0)"
             transcendenceCountLabel.text = "×\(equipment.transcendence?.count ?? 0)"
+            setOptionLabel.isHidden = !equipment.engraving.isEmpty || equipment.equipmentType == .팔찌
             setOptionLabel.text = equipment.setOptionName + " " + equipment.setOptionLevelStr
             addElixirStackView(equipment.elixirs ?? [])
+            addEngravingStackView(equipment.engraving)
             
             setLayout()
         } else {
@@ -156,6 +166,21 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         }
     }
     
+    private func addEngravingStackView(_ engravings: [(name: String, value: Int)]) {
+        engravingStackView.isHidden = engravings.isEmpty
+        for engraving in engravings {
+            let label = PaddingLabel(top: 0, bottom: 0, left: 8, right: 8)
+            label.font = .pretendard(size: 11, family: .Bold)
+            label.textAlignment = .center
+            label.clipsToBounds = true
+            label.layer.cornerRadius = 6
+            label.layer.borderWidth = 0.5
+            label.backgroundColor = #colorLiteral(red: 0.1511179507, green: 0.1611060798, blue: 0.178067416, alpha: 1)
+            label.text = engraving.name + " \(engraving.value)"
+            engravingStackView.addArrangedSubview(label)
+        }
+    }
+    
     private func setLayout() {
         self.contentView.addSubview(imageView)
         self.contentView.addSubview(qualityProgressView)
@@ -166,6 +191,7 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         self.contentView.addSubview(transcendenceView)
         self.contentView.addSubview(setOptionLabel)
         self.contentView.addSubview(elixirStackView)
+        self.contentView.addSubview(engravingStackView)
         
         imageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(margin(.width, 10))
@@ -217,6 +243,12 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
             $0.height.equalTo(25)
             $0.leading.equalTo(setOptionLabel.snp.trailing).inset(margin(.width, -8))
         }
+        
+        engravingStackView.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).inset(-8)
+            $0.height.equalTo(25)
+            $0.leading.equalTo(nameLabel)
+        }
     }
     
     override func prepareForReuse() {
@@ -224,5 +256,6 @@ final class CharacterDetailBattleEquipmentCell: UICollectionViewCell {
         imageView.kf.cancelDownloadTask()
         imageView.image = nil
         elixirStackView.subviews.forEach { $0.removeFromSuperview() }
+        engravingStackView.subviews.forEach { $0.removeFromSuperview() }
     }
 }
