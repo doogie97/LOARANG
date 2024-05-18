@@ -127,6 +127,7 @@
 		C63C61612BADC68E0023D123 /* GetOwnCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */; };
 		C63C61632BADC8530023D123 /* CharacterClase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C61622BADC8530023D123 /* CharacterClase.swift */; };
 		C63CE07F2BF6170900236147 /* AppVersionGET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63CE07E2BF6170900236147 /* AppVersionGET.swift */; };
+		C64382ED2BF84CDE00E92043 /* CharacterDetailEquipEngravingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64382EC2BF84CDE00E92043 /* CharacterDetailEquipEngravingCell.swift */; };
 		C64BEA882BDD0CA9005BA0A4 /* HomeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64BEA872BDD0CA9005BA0A4 /* HomeAdCell.swift */; };
 		C64C45252BC592B200AD503D /* GetHomeCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */; };
 		C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */; };
@@ -292,6 +293,7 @@
 		C63C61602BADC68E0023D123 /* GetOwnCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnCharactersUseCase.swift; sourceTree = "<group>"; };
 		C63C61622BADC8530023D123 /* CharacterClase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClase.swift; sourceTree = "<group>"; };
 		C63CE07E2BF6170900236147 /* AppVersionGET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionGET.swift; sourceTree = "<group>"; };
+		C64382EC2BF84CDE00E92043 /* CharacterDetailEquipEngravingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEquipEngravingCell.swift; sourceTree = "<group>"; };
 		C64BEA872BDD0CA9005BA0A4 /* HomeAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdCell.swift; sourceTree = "<group>"; };
 		C64C45242BC592B100AD503D /* GetHomeCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeCharactersUseCase.swift; sourceTree = "<group>"; };
 		C64C45262BC5931600AD503D /* HomeCharactersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersEntity.swift; sourceTree = "<group>"; };
@@ -882,6 +884,7 @@
 				C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */,
 				C6B73C452BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift */,
 				C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */,
+				C64382EC2BF84CDE00E92043 /* CharacterDetailEquipEngravingCell.swift */,
 				C64382EA2BF8471700E92043 /* TwoRowSection */,
 				C68A27762BD9DFF90039F748 /* CharacterDetailGemSectionBG.swift */,
 				C68A27742BD9DD250039F748 /* CharacterDetailGemCell.swift */,
@@ -1152,6 +1155,7 @@
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				71892D4E2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift in Sources */,
 				C6B73C462BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift in Sources */,
+				C64382ED2BF84CDE00E92043 /* CharacterDetailEquipEngravingCell.swift in Sources */,
 				C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */,
 				C64C45272BC5931600AD503D /* HomeCharactersEntity.swift in Sources */,
 				AC0341C5294589E3005F4533 /* LOARANG++Bundle.swift in Sources */,

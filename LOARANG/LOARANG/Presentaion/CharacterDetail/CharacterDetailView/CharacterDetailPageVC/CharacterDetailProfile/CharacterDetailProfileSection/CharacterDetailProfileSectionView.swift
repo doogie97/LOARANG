@@ -86,7 +86,11 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
         case .equipmentEffectView:
             return equipmentEffectCell(collectionView: collectionView, indexPath: indexPath)
         case .equipments:
-            return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
+            if indexPath.row == 6 { //6번째 index는 장착 각인
+                return equipEngravingCell(collectionView: collectionView, indexPath: indexPath)
+            } else {
+                return battleEquipmentCell(collectionView: collectionView, indexPath: indexPath)
+            }
         case .twoRowSection:
             return twoRwoSectionCell(collectionView: collectionView, indexPath: indexPath)
         case .gemSection:
@@ -125,15 +129,22 @@ extension CharacterDetailProfileSectionView: UICollectionViewDataSource {
             let equipment = viewModel?.characterInfoData?.battleEquipments[safe: indexPath.row]
             cell.setCellContents(equipment: equipment)
             return cell
-        } else if indexPath.row == 6 { //장착 각인
-            cell.setCellContents(equipment: nil)
-            return cell
         } else { //장착 악세
             let jwelryIndex = indexPath.row - 7
             let equipment = viewModel?.characterInfoData?.jewelrys[safe: jwelryIndex]
             cell.setCellContents(equipment: equipment)
             return cell
         }
+    }
+    
+    private func equipEngravingCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CharacterDetailEquipEngravingCell.self)", for: indexPath) as? CharacterDetailEquipEngravingCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setCellContents(engravings: viewModel?.characterInfoData?.equipEngravings ?? [])
+        
+        return cell
     }
     
     private func twoRwoSectionCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
@@ -222,6 +233,7 @@ extension CharacterDetailProfileSectionView {
         collectionView.register(CharacterDetailBasicInfoCell.self)
         collectionView.register(CharacterDetailequipmentEffectCell.self)
         collectionView.register(CharacterDetailBattleEquipmentCell.self)
+        collectionView.register(CharacterDetailEquipEngravingCell.self)
         collectionView.register(TwoRowSectionStatCell.self)
         collectionView.register(TwoRowSectionEngravingCell.self)
         collectionView.register(CharacterDetailGemCell.self)
