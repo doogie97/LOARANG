@@ -168,4 +168,20 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
             throw LocalStorageError.deleteRecentUserError
         }
     }
+    
+    static var forPreview: LocalStorageRepository {
+        let realm = try! Realm()
+        let repository = LocalStorageRepository(realm: realm)
+        let testUser = RecentUserDTO()
+        testUser.name = "테스트유저"
+        testUser.characterClass = "블레이드"
+        testUser.imageUrl = "https://akaikaze00.cafe24.com/web/product/big/202208/3a16878b23ad06a987ff7e5c85106598.jpg"
+        try! repository.addRecentUser(testUser)
+        let testUser2 = RecentUserDTO()
+        testUser2.name = "테스트유저2"
+        testUser2.characterClass = "슬레이어"
+        testUser2.imageUrl = "https://randomuser.me/api/portraits/men/50.jpg"
+        try! repository.addRecentUser(testUser2)
+        return repository
+    }
 }
