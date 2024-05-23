@@ -11,10 +11,22 @@ import Kingfisher
 struct SerchView_SwiftUI: View {
     @EnvironmentObject var recentUserData: RecentUserData
     var body: some View {
-        Text(recentUserData.recentUserList.first?.name ?? "")
-        //        KFImage(URL(string: recentUserList.first?.imageUrl ?? ""))
-        //            .resizable()
-        //            .frame(width: 20, height: 20)
+        ZStack {
+            Color(UIColor.mainBackground)
+                .edgesIgnoringSafeArea(.all)
+            List {
+                ForEach(recentUserData.recentUserList, id: \.self) { user in
+                    let index = recentUserData.recentUserList.firstIndex(of: user) ?? 0
+                    RecentUserItemView(
+                        isBookmark: $recentUserData.recentUserList[index].isBookmark,
+                        recentUser: user
+                    )
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                }
+            }
+            .listStyle(.plain)
+        }
     }
 }
 
