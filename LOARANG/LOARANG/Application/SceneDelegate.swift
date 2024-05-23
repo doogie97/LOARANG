@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func setRealmConfig() {
         let config = Realm.Configuration(
-            schemaVersion: 1) { migration, oldSchemaVersion in
+            schemaVersion: 2) { migration, oldSchemaVersion in
                 if oldSchemaVersion < 1 {
                     migration.enumerateObjects(ofType: MainUserDTO.className()) { oldObject, newObject in
                         newObject?["imageUrl"] = ""
@@ -55,6 +55,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         newObject?["imageUrl"] = ""
                         newObject?["characterClass"] = oldObject?["class"]
                     }
+                }
+                
+                if oldSchemaVersion < 2 {
+                    migration.enumerateObjects(ofType: RecentUserDTO.className()) { _, newObject in
+                        newObject?["isBookmark"] = false
+                    }
+
                 }
             }
         Realm.Configuration.defaultConfiguration = config

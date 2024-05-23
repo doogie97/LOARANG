@@ -12,10 +12,12 @@ final class RecentUserDTO: Object {
     @Persisted(primaryKey: true) var name: String
     @Persisted var imageUrl: String
     @Persisted var characterClass: String
+    @Persisted var isBookmark: Bool
     
     var toEntity: RecentUserEntity {
         return RecentUserEntity(name: self.name,
                                 imageUrl: self.imageUrl,
-                                characterClass: CharacterClass(rawValue: self.characterClass) ?? .unknown)
+                                characterClass: CharacterClass(rawValue: self.characterClass) ?? .unknown,
+                                isBookmark: self.isBookmark)
     }
 }

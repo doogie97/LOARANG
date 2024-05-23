@@ -150,9 +150,12 @@ final class CharacterDetailVM: CharacterDetailVMable {
                 ))
             }
             if isSearch {
-                try addRecentUserUseCase.execute(user: RecentUserEntity(name: character.profile.characterName,
-                                                                        imageUrl: character.profile.imageUrl,
-                                                                        characterClass: character.profile.characterClass))
+                try addRecentUserUseCase.execute(
+                    user: RecentUserEntity(name: character.profile.characterName,
+                                           imageUrl: character.profile.imageUrl,
+                                           characterClass: character.profile.characterClass,
+                                           isBookmark: character.profile.characterName.isBookmark)
+                )
             }
         } catch let error {
             showAlert.accept((message: error.errorMessage, isPop: false))
