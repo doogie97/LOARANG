@@ -14,19 +14,26 @@ struct SearchView_SwiftUI: View {
         ZStack {
             Color(UIColor.mainBackground)
                 .edgesIgnoringSafeArea(.all)
-            List {
-                ForEach(recentUserData.recentUserList, id: \.self) { user in
-                    let index = recentUserData.recentUserList.firstIndex(of: user) ?? 0
-                    RecentUserItemView(
-                        isBookmark: $recentUserData.recentUserList[index].isBookmark,
-                        recentUser: user
-                    )
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                }
-            }
-            .listStyle(.plain)
+            listView
         }
+    }
+}
+
+extension SearchView_SwiftUI {
+    var listView: some View {
+        List {
+            ForEach(recentUserData.recentUserList, id: \.self) { user in
+                let index = recentUserData.recentUserList.firstIndex(of: user) ?? 0
+                RecentUserItemView(
+                    isBookmark: $recentUserData.recentUserList[index].isBookmark,
+                    recentUser: user
+                )
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
+            }
+        }
+        .padding()
+        .listStyle(.plain)
     }
 }
 
