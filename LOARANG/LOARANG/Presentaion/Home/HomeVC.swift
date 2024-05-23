@@ -7,14 +7,15 @@
 
 import UIKit
 import RxSwift
+import SwiftUI
 
 final class HomeVC: UIViewController {
-    private let container: Containerable
+    private let container: Container
     private let viewModel: HomeVMable
     private let homeView = HomeView()
     private let disposeBag = DisposeBag()
     
-    init(container: Containerable,
+    init(container: Container,
          viewModel: HomeVMable) {
         self.container = container
         self.viewModel = viewModel
@@ -87,7 +88,9 @@ final class HomeVC: UIViewController {
                         return owner.container.characterDetailVC(name: name, 
                                                                  isSearch: false)
                     case .searchView:
-                        return owner.container.makeSearchViewController()
+                        let searchView = owner.container.searchView()
+                        let hostingController = UIHostingController(rootView: searchView)
+                        return hostingController
                     case .webView(let url, let title):
                         guard let url = URL(string: url ?? "") else {
                             return nil

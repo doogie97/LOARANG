@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import RxRelay
 
 protocol Containerable {
@@ -16,12 +17,14 @@ protocol Containerable {
 }
 
 final class Container: Containerable {
+    private let recentUserData: RecentUserData
     private let networkRepository = NetworkRepository(networkManager: NetworkManager())
     private let localStorageRepository: LocalStorageRepositoryable
     private let crawlManager: CrawlManagerable = CrawlManager()
     
     init(localStorageRepository: LocalStorageRepositoryable) {
         self.localStorageRepository = localStorageRepository
+        self.recentUserData = RecentUserData(localRepository: localStorageRepository)
     }
     
 //MARK: - about Main View
@@ -71,6 +74,10 @@ final class Container: Containerable {
                                addBookmarkUseCase: AddBookmarkUseCase(localStorageRepository: localStorageRepository),
                                deleteBookmarkUseCase: DeleteBookmarkUseCase(localStorageRepository: localStorageRepository),
                                deleteRecentUserUseCase: DeleteRecentUserUseCase(localStorageRepository: localStorageRepository))
+    }
+    
+    func searchView() -> some View {
+        return SearchView_SwiftUI().environmentObject(recentUserData)
     }
     
     //MARK: - about settingVIew
