@@ -1,5 +1,5 @@
 //
-//  SerchView_SwiftUI.swift
+//  SearchView_SwiftUI.swift
 //  LOARANG
 //
 //  Created by Doogie on 5/23/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct SerchView_SwiftUI: View {
+struct SearchView_SwiftUI: View {
     @EnvironmentObject var recentUserData: RecentUserData
     var body: some View {
         ZStack {
@@ -32,6 +32,6 @@ struct SerchView_SwiftUI: View {
 
 #Preview {
     let recentUserData = RecentUserData(localRepository: LocalStorageRepository.forPreview)
-    return SerchView_SwiftUI()
+    return SearchView_SwiftUI()
         .environmentObject(recentUserData)
 }

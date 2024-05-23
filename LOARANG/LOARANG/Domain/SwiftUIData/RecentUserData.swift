@@ -18,5 +18,5 @@ class RecentUserData: ObservableObject {
         }
     }
     
-    @Published var recentUserList = [RecentUserEntity]()
+    @Published var recentUserList: [RecentUserEntity]
 }
