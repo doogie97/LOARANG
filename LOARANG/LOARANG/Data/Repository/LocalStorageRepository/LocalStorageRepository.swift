@@ -175,12 +175,12 @@ final class LocalStorageRepository: LocalStorageRepositoryable {
         let testUser = RecentUserDTO()
         testUser.name = "테스트유저"
         testUser.characterClass = "블레이드"
-        testUser.imageUrl = "https://akaikaze00.cafe24.com/web/product/big/202208/3a16878b23ad06a987ff7e5c85106598.jpg"
+        testUser.imageUrl = "https://img.lostark.co.kr/armory/7/c099600e3be48afc300f44101a83e9a093202f6720a3a4025db35cf09fa18afe.png?v=20240324044337"
         try! repository.addRecentUser(testUser)
         let testUser2 = RecentUserDTO()
         testUser2.name = "테스트유저2"
-        testUser2.characterClass = "슬레이어"
-        testUser2.imageUrl = "https://randomuser.me/api/portraits/men/50.jpg"
+        testUser2.characterClass = "도화가"
+        testUser2.imageUrl = "https://img.lostark.co.kr/armory/5/972ed959a6ffef17575734cf933824800fd22debd0b82777ceccd567e927bd3a.png?v=20240517173702"
         try! repository.addRecentUser(testUser2)
         return repository
     }
