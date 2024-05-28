@@ -13,19 +13,27 @@ struct RecentUserItemView: View {
     let recentUser: RecentUserEntity
     var body: some View {
         HStack {
-            KFImage(URL(string: recentUser.imageUrl))
-                .resizable()
-                .frame(width: 50, height: 50)
+            image
             Text("이름 : \(recentUser.name)")
-            Divider()
-            Text(isBookmark ? "북마크" : "아님")
-            Spacer()
-            Button {
-                isBookmark.toggle()
-            } label: {
-                Text("버튼")
-            }
+            //            Divider()
+            //            Text(isBookmark ? "북마크" : "아님")
+            //            Spacer()
+            //            Button {
+//                isBookmark.toggle()
+//            } label: {
+//                Text("버튼")
+//            }
         }
+    }
+    
+    var image: some View {
+        CircleCropImage(
+            info: CircleCropImage.Info(
+                imageUrl: recentUser.imageUrl,
+                characterClass: recentUser.characterClass,
+                sideLength: 50
+            )
+        )
     }
 }
 

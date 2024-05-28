@@ -25,9 +25,9 @@ struct RecentUserEntity: Hashable {
     
     static var forPreview: RecentUserEntity {
         return RecentUserEntity(
-            name: "테스트",
-            imageUrl: "https://akaikaze00.cafe24.com/web/product/big/202208/3a16878b23ad06a987ff7e5c85106598.jpg",
-            characterClass: .blade,
+            name: "테스ssf트",
+            imageUrl: "https://img.lostark.co.kr/armory/5/972ed959a6ffef17575734cf933824800fd22debd0b82777ceccd567e927bd3a.png?v=20240517173702",
+            characterClass: .aeromancer,
             isBookmark: true)
     }
 }
