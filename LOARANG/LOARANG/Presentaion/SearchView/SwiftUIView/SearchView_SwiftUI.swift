@@ -30,6 +30,14 @@ extension SearchView_SwiftUI {
                 )
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
+                .listRowInsets(
+                    EdgeInsets(
+                        top: 10,
+                        leading: 10,
+                        bottom: 10,
+                        trailing: 10
+                    )
+                )
             }
         }
         .padding()
