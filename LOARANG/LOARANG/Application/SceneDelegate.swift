@@ -59,9 +59,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
                 if oldSchemaVersion < 2 {
                     migration.enumerateObjects(ofType: RecentUserDTO.className()) { _, newObject in
-                        newObject?["isBookmark"] = false
+                        if let recentUserData = try? Realm().objects(BookmarkUserDTO.self),
+                           let name = (newObject?["name"] as? String),
+                           Array(recentUserData).contains(where: { $0.name == name}) {
+                            newObject?["isBookmark"] = true
+                        } else {
+                            newObject?["isBookmark"] = false
+                        }
                     }
-
                 }
             }
         Realm.Configuration.defaultConfiguration = config
