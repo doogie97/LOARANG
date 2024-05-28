@@ -169,6 +169,7 @@
 		C6C1A6F82BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */; };
 		C6C1A6FA2BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */; };
 		C6C4B7372AFA9318002F06D6 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */; };
+		C6D1F2B42BFF2501003162EF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D1F2B32BFF2501003162EF /* ImageView.swift */; };
 		C6D93FA02BF6E95500AEF35F /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = C6D93F9F2BF6E95500AEF35F /* Mixpanel */; };
 		C6EDB7D72BADA6CC004E7AC9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */; };
 		C6EDB7DB2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */; };
@@ -339,6 +340,7 @@
 		C6C1A6F72BD2B2CE00EA7B8C /* CharacterDetailBasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBasicInfoCell.swift; sourceTree = "<group>"; };
 		C6C1A6F92BD2B31C00EA7B8C /* CharacterDetailBattleEquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailBattleEquipmentCell.swift; sourceTree = "<group>"; };
 		C6C4B7362AFA9318002F06D6 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		C6D1F2B32BFF2501003162EF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		C6EDB7D62BADA6CC004E7AC9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		C6EDB7DA2BADA7D6004E7AC9 /* HomeGameInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGameInfoEntity.swift; sourceTree = "<group>"; };
 		C6EDB7DD2BADA84F004E7AC9 /* GetHomeGameInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeGameInfoUseCase.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 		ACAEF3602880039F00AE98F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C6D1F2B22BFF24F4003162EF /* Helper */,
 				C6EDB7D42BADA561004E7AC9 /* AboutView */,
 				AC3FEBFE28804E9600CDE796 /* Extesnsion */,
 			);
@@ -922,6 +925,14 @@
 			path = CharacterDetailProfileCells;
 			sourceTree = "<group>";
 		};
+		C6D1F2B22BFF24F4003162EF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C6D1F2B32BFF2501003162EF /* ImageView.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		C6EDB7D12BADA488004E7AC9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1191,7 @@
 				C6074DE92BC6D8C000FE3004 /* GetRecentUsersUseCase.swift in Sources */,
 				AC284E0428B662FF005563C8 /* UINavigationController + Extension.swift in Sources */,
 				71826A652BD797A10076E89A /* CharacterDetailCardCell.swift in Sources */,
+				C6D1F2B42BFF2501003162EF /* ImageView.swift in Sources */,
 				AC035E9F289120750068DC7E /* UIViewController + Extension.swift in Sources */,
 				71892D4E2BCE6D930008CD8C /* CharacterDetailOwnCharctersVC.swift in Sources */,
 				C6B73C462BD4DB5900A6B6BD /* CharacterDetailequipmentEffectCell.swift in Sources */,
