@@ -12,17 +12,15 @@ struct RecentUserItemView: View {
     @Binding var isBookmark: Bool
     let recentUser: RecentUserEntity
     var body: some View {
-        HStack {
-            image
-            Text("이름 : \(recentUser.name)")
-            //            Divider()
-            //            Text(isBookmark ? "북마크" : "아님")
-            //            Spacer()
-            //            Button {
-//                isBookmark.toggle()
-//            } label: {
-//                Text("버튼")
-//            }
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .center, spacing: 16) {
+                image
+                CustomText(recentUser.name,
+                           font: .one(family: .Bold),
+                           size: 16)
+            }
+            Spacer(minLength: 0)
+            Divider()
         }
     }
     
@@ -31,7 +29,7 @@ struct RecentUserItemView: View {
             info: CircleCropImage.Info(
                 imageUrl: recentUser.imageUrl,
                 characterClass: recentUser.characterClass,
-                sideLength: 50
+                sideLength: 40
             )
         )
     }
