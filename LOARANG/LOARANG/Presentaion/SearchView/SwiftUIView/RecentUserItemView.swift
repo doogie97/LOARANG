@@ -18,6 +18,8 @@ struct RecentUserItemView: View {
                 CustomText(recentUser.name,
                            font: .one(family: .Bold),
                            size: 16)
+                Spacer()
+                starButton
             }
             Spacer(minLength: 0)
             Divider()
@@ -32,6 +34,15 @@ struct RecentUserItemView: View {
                 sideLength: 40
             )
         )
+    }
+    
+    var starButton: some View {
+        Button {
+            isBookmark.toggle()
+        } label: {
+            Image(systemName: isBookmark ? "star.fill" : "star")
+                .foregroundStyle(isBookmark ? Color("mainPink") : .white)
+        }
     }
 }
 
