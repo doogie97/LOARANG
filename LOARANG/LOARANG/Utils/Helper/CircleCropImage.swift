@@ -32,10 +32,19 @@ struct CircleCropImage: View {
     }
     
     var body: some View {
+        if info.imageUrl == "" {
+            Image("unknownCharacterImg")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(.circle)
+                .frame(width: info.sideLength,
+                       height: info.sideLength)
+        } else {
             circleImage
-            .frame(width: info.sideLength,
-                   height: info.sideLength)
-            .scaleEffect(scale)
+                .frame(width: info.sideLength,
+                       height: info.sideLength)
+                .scaleEffect(scale)
+        }
     }
     
     var circleImage: some View {
@@ -51,8 +60,8 @@ struct CircleCropImage: View {
 #Preview {
     CircleCropImage(
         info: CircleCropImage.Info(
-            imageUrl: "https://img.lostark.co.kr/armory/5/972ed959a6ffef17575734cf933824800fd22debd0b82777ceccd567e927bd3a.png?v=20240517173702",
-            characterClass: .specialist, 
+            imageUrl: "",
+            characterClass: .specialist,
             sideLength: 200
         )
     )
