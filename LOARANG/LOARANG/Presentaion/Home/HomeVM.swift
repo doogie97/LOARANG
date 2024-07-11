@@ -277,7 +277,7 @@ final class HomeVM: HomeVMable {
             } catch let error {
                 await MainActor.run {
                     if let apiError = error as? APIError, apiError == .DecodingError {
-                        showAlert.accept(.basic(message: "캐릭터 정보를 찾을 수 없습니다.\n캐릭터명을 다시 한 번 확인해 주세요!"))
+                        showAlert.accept(.basic(message: "캐릭터 정보를 찾을 수 없습니다.\n(시즌3 이후 미접속 캐릭터는 검색되지 않습니다.)"))
                     } else {
                         showAlert.accept(.basic(message: error.errorMessage))
                     }
