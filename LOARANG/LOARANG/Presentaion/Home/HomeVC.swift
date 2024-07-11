@@ -123,6 +123,16 @@ final class HomeVC: UIViewController {
                     owner.showCheckUserAlert(userInfo) {
                         owner.viewModel.touchViewAction(.changeMainUser(userInfo: userInfo))
                     }
+                case .update:
+                    owner.showAlert(message: "새로운 버전이 출시되었습니다.\n업데이트 하시겠습니까?",
+                                    action: {
+                        guard let url = URL(string: "itms-apps://itunes.apple.com/app/apple-store/6444625201") else {
+                            return
+                        }
+                        UIApplication.shared.open(url, options: [:])
+                    },
+                                    cancelActionTitle: "나중에")
+                    
                 }
             }
             .disposed(by: disposeBag)

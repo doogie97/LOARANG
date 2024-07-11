@@ -1,5 +1,5 @@
 //
-//  CharacterDetailEngravingCell.swift
+//  TwoRowSectionEngravingCell.swift
 //  LOARANG
 //
 //  Created by Doogie on 4/21/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class CharacterDetailEngravingCell: UICollectionViewCell {
+final class TwoRowSectionEngravingCell: UICollectionViewCell {
     private lazy var titleLabel = {
         let label = pretendardLabel(text: "각인", alignment: .center)
         label.clipsToBounds = true

@@ -72,6 +72,8 @@ struct GetCharacterDetailUseCase {
                 }
             }
             
+            let engravigInfo = engravig(dto.ArmoryEngraving)
+            
             return CharacterDetailEntity(
                 profile: profile(dto.ArmoryProfile),
                 skillInfo: skillInfo,
@@ -81,7 +83,8 @@ struct GetCharacterDetailUseCase {
                 avatars: avatars(dto.ArmoryAvatars),
                 elixirInfo: elixirInfo,
                 transcendenceInfo: transcendenceInfo,
-                engravigs: engravig(dto.ArmoryEngraving), 
+                equipEngravings: engravigInfo.equipEngraving,
+                engravigs: engravigInfo.effects,
                 gems: gems(dto.ArmoryGem),
                 cardInfo: cardInfo(dto.ArmoryCard)
             )
@@ -118,8 +121,23 @@ struct GetCharacterDetailUseCase {
         )
     }
     //MARK: - engravig
-    private func engravig(_ dto: CharactersDetailDTO.ArmoryEngraving?) -> [CharacterDetailEntity.Engravig] {
-        return (dto?.Effects ?? []).compactMap {
+    struct EngravigInfo {
+        let equipEngraving: [CharacterDetailEntity.EquipEngravig]
+        let effects: [CharacterDetailEntity.Engravig]
+    }
+    
+    private func engravig(_ dto: CharactersDetailDTO.ArmoryEngraving?) -> EngravigInfo {
+        let equipEngraving = (dto?.Engravings ?? []).compactMap {
+            let jsonData = JSON(($0.Tooltip ?? "").data(using: .utf8) ?? Data())
+            let value = jsonData["Element_002"]["value"].stringValue.components(separatedBy: "포인트를").last?.insideAngleBrackets
+            return CharacterDetailEntity.EquipEngravig(
+                name: $0.Name ?? "",
+                imageUrl: $0.Icon ?? "",
+                value: value ?? "0"
+            )
+        }
+        
+        let effects = (dto?.Effects ?? []).compactMap {
             let separtedInfo = $0.Name?.components(separatedBy: " Lv. ")
             return CharacterDetailEntity.Engravig(
                 imageUrl: $0.Icon ?? "",
@@ -128,6 +146,7 @@ struct GetCharacterDetailUseCase {
                 description: $0.Description ?? ""
             )
         }
+        return EngravigInfo(equipEngraving: equipEngraving, effects: effects)
     }
     
     private func gems(_ dto: CharactersDetailDTO.ArmoryGem?) -> [CharacterDetailEntity.Gem] {
@@ -258,7 +277,7 @@ extension GetCharacterDetailUseCase {
             
             
             if firstParseJson["Element_000"]["topStr"].stringValue.contains("각인 효과") {
-                engraving = parseEngraving(firstParseJson)
+                engraving = parseEngraving(firstParseJson, isStone: equipmentType == .어빌리티스톤)
             }
             
             
@@ -278,6 +297,7 @@ extension GetCharacterDetailUseCase {
                     count: Int(separatedStrArr.last ?? "") ?? 0
                 )
             }
+            
         }
         
         let itemTitle = jsonData["Element_001"]["value"]
@@ -328,7 +348,7 @@ extension GetCharacterDetailUseCase {
         }
     }
     
-    private func parseEngraving(_ firstParseJson: JSON) -> [(name: String, value: Int)] {
+    private func parseEngraving(_ firstParseJson: JSON, isStone: Bool) -> [(name: String, value: Int)] {
         var engraving = [(name: String, value: Int)]()
         let engravingsJson = firstParseJson["Element_000"]["contentStr"]
         var elementIndex = 0
@@ -336,11 +356,19 @@ extension GetCharacterDetailUseCase {
             if elementIndex != -1 {
                 let engravingStr = engravingsJson["Element_\(elementIndex.formattedNumber)"]["contentStr"].stringValue
                 if engravingStr.contains("활성도"){
-                    let separated = engravingStr.components(separatedBy: "] ")
-                    let name = separated.first?.insideAngleBrackets ?? ""
-                    let value = Int(separated.last?.replacingOccurrences(of: "<BR>", with: "").replacingOccurrences(of: "활성도 ", with: "") ?? "") ?? 0
-                    engraving.append((name: name, value: value))
-                    elementIndex += 1
+                    if isStone {
+                        let separated = engravingStr.components(separatedBy: "<")
+                        let name = separated[safe: 2]?.components(separatedBy: ">").last ?? ""
+                        let value = Int(separated[safe: 3]?.components(separatedBy: " 활성도 ").last ?? "") ?? 0
+                        engraving.append((name: name, value: value))
+                        elementIndex += 1
+                    } else {
+                        let separated = engravingStr.components(separatedBy: "] ")
+                        let name = separated.first?.insideAngleBrackets ?? ""
+                        let value = Int(separated.last?.replacingOccurrences(of: "<BR>", with: "").replacingOccurrences(of: "활성도 ", with: "") ?? "") ?? 0
+                        engraving.append((name: name, value: value))
+                        elementIndex += 1
+                    }
                 } else {
                     elementIndex = -1
                 }

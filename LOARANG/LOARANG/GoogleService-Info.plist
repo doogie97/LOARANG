@@ -19,16 +19,20 @@
 	<key>STORAGE_BUCKET</key>
 	<string>loarang-ebc2e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:866597718104:ios:73bf5de12a6944e8aee22d</string>
+	<key>DATABASE_URL</key>
+	<string>https://loarang-ebc2e-default-rtdb.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-4143146215451138~3893627529</string>
 </dict>
 </plist>

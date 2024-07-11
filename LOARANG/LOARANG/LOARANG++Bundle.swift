@@ -27,4 +27,16 @@ extension Bundle {
         
         return apiKeys
     }
+    
+    var mixpanelToken: String? {
+        guard let filePath = self.path(forResource: "AppPrivacyInfo", ofType: "plist") else {
+            return nil
+        }
+        
+        guard let resource = NSDictionary(contentsOfFile: filePath) else {
+            return nil
+        }
+        
+        return resource["MixpanelKey"] as? String
+    }
 }

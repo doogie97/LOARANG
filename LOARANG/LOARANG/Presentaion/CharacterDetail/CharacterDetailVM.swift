@@ -6,8 +6,8 @@
 //
 
 import RxRelay
-import Foundation
 import UIKit
+import Mixpanel
 
 protocol CharacterDetailVMable: CharacterDetailVMInput, CharacterDetailVMOutput, AnyObject {}
 protocol CharacterDetailVMInput {
@@ -116,11 +116,15 @@ final class CharacterDetailVM: CharacterDetailVMable {
                 await MainActor.run {
                     setViewContents.accept(())
                     localStorageUpdate(characterEntity)
+                    Mixpanel.mainInstance().track(
+                        event: "SearchCharacter",
+                        properties: ["characterName" : characterName]
+                    )
                     isLoading.accept(false)
                 }
             } catch {
                 await MainActor.run {
-                    showAlert.accept((message: "캐릭터 정보를 찾을 수 없습니다.\n캐릭터명을 다시 한 번 확인해 주세요!", isPop: true))
+                    showAlert.accept((message: "캐릭터 정보를 찾을 수 없습니다.\n(시즌3 이후 미접속 캐릭터는 검색되지 않습니다.)", isPop: true))
                     isLoading.accept(false)
                 }
             }
