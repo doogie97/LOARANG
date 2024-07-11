@@ -277,7 +277,7 @@ extension GetCharacterDetailUseCase {
             
             
             if firstParseJson["Element_000"]["topStr"].stringValue.contains("각인 효과") {
-                engraving = parseEngraving(firstParseJson)
+                engraving = parseEngraving(firstParseJson, isStone: equipmentType == .어빌리티스톤)
             }
             
             
@@ -297,6 +297,7 @@ extension GetCharacterDetailUseCase {
                     count: Int(separatedStrArr.last ?? "") ?? 0
                 )
             }
+            
         }
         
         let itemTitle = jsonData["Element_001"]["value"]
@@ -347,7 +348,7 @@ extension GetCharacterDetailUseCase {
         }
     }
     
-    private func parseEngraving(_ firstParseJson: JSON) -> [(name: String, value: Int)] {
+    private func parseEngraving(_ firstParseJson: JSON, isStone: Bool) -> [(name: String, value: Int)] {
         var engraving = [(name: String, value: Int)]()
         let engravingsJson = firstParseJson["Element_000"]["contentStr"]
         var elementIndex = 0
@@ -355,11 +356,19 @@ extension GetCharacterDetailUseCase {
             if elementIndex != -1 {
                 let engravingStr = engravingsJson["Element_\(elementIndex.formattedNumber)"]["contentStr"].stringValue
                 if engravingStr.contains("활성도"){
-                    let separated = engravingStr.components(separatedBy: "] ")
-                    let name = separated.first?.insideAngleBrackets ?? ""
-                    let value = Int(separated.last?.replacingOccurrences(of: "<BR>", with: "").replacingOccurrences(of: "활성도 ", with: "") ?? "") ?? 0
-                    engraving.append((name: name, value: value))
-                    elementIndex += 1
+                    if isStone {
+                        let separated = engravingStr.components(separatedBy: "<")
+                        let name = separated[safe: 2]?.components(separatedBy: ">").last ?? ""
+                        let value = Int(separated[safe: 3]?.components(separatedBy: " 활성도 ").last ?? "") ?? 0
+                        engraving.append((name: name, value: value))
+                        elementIndex += 1
+                    } else {
+                        let separated = engravingStr.components(separatedBy: "] ")
+                        let name = separated.first?.insideAngleBrackets ?? ""
+                        let value = Int(separated.last?.replacingOccurrences(of: "<BR>", with: "").replacingOccurrences(of: "활성도 ", with: "") ?? "") ?? 0
+                        engraving.append((name: name, value: value))
+                        elementIndex += 1
+                    }
                 } else {
                     elementIndex = -1
                 }
