@@ -156,14 +156,24 @@ struct GetCharacterDetailUseCase {
             let isEventGem = ($0.Name ?? "").contains("귀속")
             
             let jsonData = JSON(($0.Tooltip ?? "").data(using: .utf8) ?? Data())
-            let tooltipStr = jsonData["Element_\((isEventGem ? 005 : 004).formattedNumber)"]["value"]["Element_001"].stringValue
-            let description = tooltipStr.insideAngleBrackets + (tooltipStr.components(separatedBy: ">").last ?? "")
+            var tooltipStr: String {
+                if jsonData["Element_005"]["value"]["Element_001"].stringValue != "" {
+                    return jsonData["Element_005"]["value"]["Element_001"].stringValue
+                } else {
+                    return jsonData["Element_006"]["value"]["Element_001"].stringValue
+                }
+            }
+            let separated = tooltipStr.components(separatedBy: ">")
+            let skillName = separated[safe: 1]?.components(separatedBy: "<").first ?? ""
+            let basicEffect = separated[safe: 2]?.components(separatedBy: "<").first ?? ""
+            let aditaionalEffect = separated[safe: 7]
             let gem = CharacterDetailEntity.Gem(
                 name: ($0.Name ?? "").insideAngleBrackets,
                 imageUrl: $0.Icon ?? "",
                 level: $0.Level ?? 0,
                 grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
-                description: description
+                description: skillName + basicEffect,
+                aditionalEffect: aditaionalEffect
             )
             if gem.name.contains("멸화") {
                 attGems.append(gem)

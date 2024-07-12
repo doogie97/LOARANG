@@ -141,6 +141,7 @@ extension CharacterDetailEntity {
         let level: Int
         let grade: Grade
         let description: String
+        let aditionalEffect: String?
     }
 }
 
