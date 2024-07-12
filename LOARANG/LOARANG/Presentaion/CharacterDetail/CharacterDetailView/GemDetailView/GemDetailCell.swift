@@ -21,6 +21,7 @@ final class GemDetailCell: UITableViewCell {
     }()
     
     private lazy var nameLabel = pretendardLabel()
+    private lazy var additionalLabel = pretendardLabel(size: 12, family: .Regular)
     private lazy var descriptionLabel = pretendardLabel(family: .SemiBold)
     
     func setCellContents(gem: CharacterDetailEntity.Gem) {
@@ -33,6 +34,8 @@ final class GemDetailCell: UITableViewCell {
         nameLabel.text = gem.name
         nameLabel.textColor = gem.grade.textColor
         
+        additionalLabel.text = gem.additionalEffect == nil ? "" : ("(\(gem.additionalEffect ?? ""))")
+        
         descriptionLabel.text = gem.description
         
         setLayout()
@@ -40,6 +43,7 @@ final class GemDetailCell: UITableViewCell {
     
     private func setLayout() {
         self.contentView.addSubview(gemImageView)
+        self.contentView.addSubview(additionalLabel)
         self.contentView.addSubview(nameLabel)
         self.contentView.addSubview(descriptionLabel)
         
@@ -48,9 +52,17 @@ final class GemDetailCell: UITableViewCell {
             $0.height.width.equalTo(50)
         }
         
+        nameLabel.setContentHuggingPriority(.required, for: .horizontal)
+        nameLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         nameLabel.snp.makeConstraints {
             $0.top.equalTo(gemImageView).inset(margin(.width, 4))
             $0.leading.equalTo(gemImageView.snp.trailing).inset(margin(.width, -8))
+        }
+        
+        additionalLabel.snp.makeConstraints {
+            $0.bottom.equalTo(nameLabel)
+            $0.leading.equalTo(nameLabel.snp.trailing).inset(-2)
+            $0.trailing.equalToSuperview()
         }
         
         descriptionLabel.snp.makeConstraints {
