@@ -173,7 +173,7 @@ struct GetCharacterDetailUseCase {
                 level: $0.Level ?? 0,
                 grade: Grade(rawValue: $0.Grade ?? "") ?? .unknown,
                 description: skillName + basicEffect,
-                aditionalEffect: aditaionalEffect
+                additionalEffect: aditaionalEffect
             )
             if gem.name.contains("멸화") {
                 attGems.append(gem)
