@@ -252,7 +252,7 @@ extension GetCharacterDetailUseCase {
         var specialElixirEffect: CharacterDetailEntity.SpecialElixirEffectInfo?
         var transcendence: CharacterDetailEntity.Transcendence?
         
-        for number in 4...12 {
+        for number in 4...13 {
             let firstParseJson = jsonData["Element_\(number.formattedNumber)"]["value"]
             
             let firstParseJson000Str = firstParseJson["Element_000"].stringValue
