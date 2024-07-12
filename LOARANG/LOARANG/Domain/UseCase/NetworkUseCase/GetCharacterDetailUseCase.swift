@@ -293,7 +293,7 @@ extension GetCharacterDetailUseCase {
             if secondParseJsonStr.contains("[초월]") {
                 let separatedStrArr = secondParseJsonStr.components(separatedBy: ">")
                 transcendence = CharacterDetailEntity.Transcendence(
-                    grade: Int(separatedStrArr[safe: 3]?.components(separatedBy: "<").first ?? "") ?? 0,
+                    grade: Int(separatedStrArr[safe: 6]?.components(separatedBy: "<").first ?? "") ?? 0,
                     count: Int(separatedStrArr.last ?? "") ?? 0
                 )
             }
